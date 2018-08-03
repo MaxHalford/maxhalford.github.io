@@ -1,0 +1,36 @@
+language: go
+
+go:
+  - 1.7
+
+install: true
+
+addons:
+  apt:
+    packages:
+      - python-pygments
+
+env:
+  global:
+    - HUGO_VERSION=0.40
+
+before_install:
+  - mkdir -p bin
+  - curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
+    -o bin/hugo.tar.gz
+  - tar xzvvf bin/hugo.tar.gz -C ./bin
+
+script:
+  - ./bin/hugo
+
+deploy:
+  local_dir: public
+  repo: MaxHalford/maxhalford.github.io
+  target_branch: master
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  email: maxhalford25@gmail.com
+  name: "Max Halford"
+  on:
+    branch: dev

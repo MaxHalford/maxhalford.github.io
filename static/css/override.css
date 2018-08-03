@@ -1,0 +1,89 @@
+/* override css styles of the main theme here */
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: 'Merriweather', 'Georgia', 'Times', serif;
+  line-height: 1.75;
+  letter-spacing: -.004em
+}
+
+section.main .container .content .post-item {
+  font-family: 'Merriweather', 'Georgia', 'Times', serif;
+}
+
+section.header .name {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+section.header h3.self-intro {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+section.header nav {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+section.main .content .title-container .initials {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+section.main .content .page-heading {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+section.main .container.f04 .content .num {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+section.main .container .content .no-bullet .date {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+section.main .content .markdown h1,
+section.main .content .markdown h2,
+section.main .content .markdown h3,
+section.main .content .markdown h4,
+section.main .content .markdown h5,
+section.main .content .markdown h6 {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+section.main .content .markdown code,
+section.main .content .markdown pre {
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', 'Courier', monospace;
+}
+
+section.main .content .markdown pre {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+figcaption {
+  margin-bottom: 20px;
+}
+
+span.ln {
+  margin-right: 20px;
+}
+
+section.main .content .markdown p, li {
+  font-size: 18px;
+}
+
+section.main .content .post-item {
+  font-size: 16px;
+}
+
+section.header nav ul li {
+  font-size: 15px;
+}
+
+section.icons .content a .icon {
+  width: 20px;
+  height: 20px;
+}
+
+section.main .content .markdown img {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}

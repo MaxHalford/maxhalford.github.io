@@ -1,0 +1,81 @@
+baseurl             = "https://maxhalford.github.io/"
+builddrafts         = false
+canonifyurls        = true
+contentdir          = "content"
+languageCode        = "en-US"
+layoutdir           = "layouts"
+publishdir          = "public"
+theme               = "cocoa"
+author              = "Max Halford"
+title               = "Max Halford"
+pygmentsuseclasses  = true
+pygmentsCodefences  = true
+# pygmentsOptions     = "linenos=inline"
+pluralizelisttitles = false
+googleAnalytics     = "UA-63302552-1"
+extensionsmask = "noIntraEmphasis=false"
+
+[permalinks]
+blog  = "blog/:slug/"
+
+[[menu.main]]
+name                   = "Blog"
+weight                 = -120
+identifier             = "blog"
+url                    = "/blog/"
+
+[[menu.main]]
+name                   = "Links"
+weight                 = -110
+identifier             = "links"
+url                    = "/links/"
+
+[[menu.main]]
+name                   = "About"
+weight                 = -100
+identifier             = "about"
+url                    = "/about/"
+
+[[menu.main]]
+name                   = "Resume"
+weight                 = -90
+identifier             = "resume"
+url                    = "/files/resume_max_halford.pdf"
+
+[params]
+include_rss            = true                          # include RSS <link> tag in <head> and show RSS icon
+latestpostscount       = 5                             # how many posts to display on the home page
+i18n_flags             = false                         # whether to display small country flags for available translations
+author                 = "Max Halford"
+cachebuster            = true                          # add the current unix timestamp in query string for cache busting css assets
+dateform               = "Jan 2, 2006"
+dateformfull           = "Mon Jan 2 2006 15:04:05 MST"
+description            = "Max Halford's personal website"
+email                  = "maxhalford@gmail.com"
+extracssfiles          = [ "/css/override.css" ]       # In your `static` directory, add/remove files as necessary.
+faviconfile            = "img/favicon.ico"
+github                 = "//github.com/MaxHalford"
+lang                   = "en"
+linkedin               = "//linkedin.com/in/maxhalford"
+noshowreadtime         = false                         # if true, don't show "<x> minutes read" in posts
+selfintro              = ""                            # appears in the site header when set to a non-empty string
+spotify                = "//play.spotify.com/user/1166811350"
+
+highlightjs            = true
+# highlightjslanguages = ["go"]                        # additional languages not included in the "common" set
+highlightjsStyle       = "github"
+
+piwik                  = false                         # If true, Piwik integration is enabled
+# piwik_url            = "//www.example.com/piwik/"    # URL to your Piwik installation. Must End with a slash
+# piwik_id             = 2                             # Id of your site in Piwik
+
+gitalk                 = false
+# if gitalk is true, the following params should be set. These parameters could be retrieved from github OAuth
+gitalk_clientID        = "your client id"
+gitalk_clientSecret    = "your client secret"
+gitalk_repo            = "your repo url"
+gitalk_owner           = "the owner of this repo"
+gitalk_admin           = ['a', 'list', 'of', 'administrator']
+
+avatar                 = "img/stampa.jpg" # path to image in static dir e.g img/avatar.png (do not use in the same time as gravatar)
+# gravatar             = ""                # gravatar hash. see https://en.gravatar.com/site/implement/hash/. do not use in the same time as avatar

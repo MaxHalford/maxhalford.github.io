@@ -1,0 +1,24 @@
+{{ partial "header.html" . }}
+<section class="main">
+    <div class="container">
+        <div class="content">
+            {{ if .Content }}
+                <div class="markdown">
+                    {{ .Content }}
+                </div>
+            {{ end }}
+            {{ $totalpostscount := len (where .Data.Pages "Section" "blog") }}
+            {{ $latestpostscount := .Site.Params.latestpostscount | default $totalpostscount }}
+            {{ if gt $latestpostscount 0 }}
+                <div class="page-heading">Blog</div>
+                <ul>
+                    {{ range (first $totalpostscount (where .Data.Pages.ByPublishDate.Reverse "Section" "blog")) }}
+                        {{ partial "li.html" . }}
+                    {{ end }}
+                </ul>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ partial "footer.html" . }}
+

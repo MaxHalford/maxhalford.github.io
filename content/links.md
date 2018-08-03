@@ -1,0 +1,34 @@
+---
+layout: default
+title: Links
+---
+
+## Papers
+
+- [Cost models in database query optimisation bibliography](https://www.sharelatex.com/project/59f0867a5cd281015b4cd5c6)
+- [Detailed solutions to the first 30 Project Euler problems](/files/papers/project_euler_solutions.pdf)
+
+## Presentations
+
+- [Docker for data science](/files/presentations/docker-data-science.pdf)
+
+## Datasets
+
+- [OpenBikes 2016 challenge](https://www.dropbox.com/s/ic8m0b3mf5wxk4r/challenge.zip?dl=0)
+
+## Internship hand ins
+
+- Undergraduate ([report](/files/internships/L3_report.pdf), [slides](/files/internships/L3_slides.pdf))
+- First Master's year ([report](/files/internships/M1_report.pdf), [slides](/files/internships/M1_slides.pdf))
+
+## Hall of fame
+
+The following are papers, books, and blog posts that I really enjoyed and thoroughly recommend.
+
+- [Advanced Data Analysis - Cosma Rohilla Shalizi](http://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/ADAfaEPoV.pdf)
+- [The Elements of Statistical Learning](http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf)
+- [Machine Learning - Tom Mitchell](http://personal.disco.unimib.it/Vanneschi/McGrawHill_-_Machine_Learning_-Tom_Mitchell.pdf)
+- [Artificial Intelligence: A Modern Approach - Russel & Norvig](http://web.cecs.pdx.edu/~mperkows/CLASS_479/2017_ZZ_00/02__GOOD_Russel=Norvig=Artificial%20Intelligence%20A%20Modern%20Approach%20(3rd%20Edition).pdf)
+- [A Few Useful Things to Know about Machine Learning - Pedro Domingos](https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf)
+- [Choose Boring Technology - Dan McKinley](http://mcfunley.com/choose-boring-technology)
+- [How to Write a Spelling Corrector - Peter Norvig](https://norvig.com/spell-correct.html)
