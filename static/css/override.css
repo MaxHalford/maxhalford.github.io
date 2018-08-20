@@ -1,4 +1,5 @@
-/* override css styles of the main theme here */
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 html {
   font-size: 100%;
 }
@@ -14,25 +15,29 @@ section.main .container .content .post-item {
 }
 
 section.header .name {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-size: 28px;
+  text-transform: capitalize;
+  font-family: 'Merriweather', 'Georgia', 'Times', serif;
 }
 section.header h3.self-intro {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 section.header nav {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 section.main .content .title-container .initials {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 section.main .content .page-heading {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-size: 22px;
+  text-transform: capitalize;
 }
 section.main .container.f04 .content .num {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 section.main .container .content .no-bullet .date {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 section.main .content .markdown h1,
 section.main .content .markdown h2,
@@ -40,7 +45,7 @@ section.main .content .markdown h3,
 section.main .content .markdown h4,
 section.main .content .markdown h5,
 section.main .content .markdown h6 {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
 section.main .content .markdown code,
@@ -71,7 +76,8 @@ section.main .content .post-item {
 }
 
 section.header nav ul li {
-  font-size: 15px;
+  font-size: 20px;
+  text-transform: capitalize;
 }
 
 section.icons .content a .icon {
@@ -80,7 +86,7 @@ section.icons .content a .icon {
 }
 
 section.main .content .markdown img {
-  max-width: 70%;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
   display: block;
