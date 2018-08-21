@@ -32,3 +32,4 @@ The following are papers, books, and blog posts that I really enjoyed and thorou
 - [A Few Useful Things to Know about Machine Learning - Pedro Domingos](https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf)
 - [Choose Boring Technology - Dan McKinley](http://mcfunley.com/choose-boring-technology)
 - [How to Write a Spelling Corrector - Peter Norvig](https://norvig.com/spell-correct.html)
+- [Machine learning cheat sheets (good ones)](https://stanford.edu/~shervine/teaching/cs-229.html)
