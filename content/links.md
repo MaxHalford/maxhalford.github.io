@@ -38,3 +38,4 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Rules of Machine Learning: Best Practices for ML Engineering - Martin Zinkevich](https://developers.google.com/machine-learning/guides/rules-of-ml/)
 - [Your Easy Guide to Latent Dirichlet Allocation](https://medium.com/@lettier/how-does-lda-work-ill-explain-using-emoji-108abf40fa7d)
 - [Graphical Models in a Nutshell - Koller et al.](https://ai.stanford.edu/~koller/Papers/Koller+al:SRL07.pdf)
+- [Semi-Supervised Learning Tutorial - Xiaojin Zhu](http://pages.cs.wisc.edu/~jerryzhu/pub/sslicml07.pdf)

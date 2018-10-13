@@ -93,3 +93,8 @@ section.main .content .markdown img {
   margin-top: 2em;
   margin-bottom: 2em;
 }
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
