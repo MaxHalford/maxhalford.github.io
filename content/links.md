@@ -39,3 +39,5 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Your Easy Guide to Latent Dirichlet Allocation](https://medium.com/@lettier/how-does-lda-work-ill-explain-using-emoji-108abf40fa7d)
 - [Graphical Models in a Nutshell - Koller et al.](https://ai.stanford.edu/~koller/Papers/Koller+al:SRL07.pdf)
 - [Semi-Supervised Learning Tutorial - Xiaojin Zhu](http://pages.cs.wisc.edu/~jerryzhu/pub/sslicml07.pdf)
+- [CS231n Convolutional Neural Networks for Visual Recognition - Stanford](http://cs231n.github.io/convolutional-networks/)
+- [An Intuitive Explanation of Convolutional Neural Networks - Ujjwal Karn](https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/)
