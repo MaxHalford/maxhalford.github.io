@@ -23,7 +23,7 @@ title: Links
 
 ## Hall of fame
 
-The following is a hall of fame of papers, books, and blog posts that have a very high {signal to noise ratio](https://www.urbandictionary.com/define.php?term=signal%20to%20noise%20ratio) and that I thoroughly recommend.
+The following is a hall of fame of papers, books, and blog posts that have a very high [signal to noise ratio](https://www.urbandictionary.com/define.php?term=signal%20to%20noise%20ratio) and that I thoroughly recommend.
 
 - [The Elements of Statistical Learning](http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf)
 - [Machine Learning - Tom Mitchell](http://personal.disco.unimib.it/Vanneschi/McGrawHill_-_Machine_Learning_-Tom_Mitchell.pdf)
