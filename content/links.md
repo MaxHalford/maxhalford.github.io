@@ -41,3 +41,4 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Semi-Supervised Learning Tutorial - Xiaojin Zhu](http://pages.cs.wisc.edu/~jerryzhu/pub/sslicml07.pdf)
 - [CS231n Convolutional Neural Networks for Visual Recognition - Stanford](http://cs231n.github.io/convolutional-networks/)
 - [An Intuitive Explanation of Convolutional Neural Networks - Ujjwal Karn](https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/)
+- [An overview of gradient descent optimization algorithms - Sebastian Ruder](http://ruder.io/optimizing-gradient-descent/)
