@@ -42,3 +42,5 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [CS231n Convolutional Neural Networks for Visual Recognition - Stanford](http://cs231n.github.io/convolutional-networks/)
 - [An Intuitive Explanation of Convolutional Neural Networks - Ujjwal Karn](https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/)
 - [An overview of gradient descent optimization algorithms - Sebastian Ruder](http://ruder.io/optimizing-gradient-descent/)
+- [How to explain gradient boosting - Terence Parr and Jeremy Howard](https://explained.ai/gradient-boosting/index.html)
+- [Why Does XGBoost Win "Every" Machine Learning Competition? - Didrik Nielsen](https://brage.bibsys.no/xmlui/bitstream/handle/11250/2433761/16128_FULLTEXT.pdf)
