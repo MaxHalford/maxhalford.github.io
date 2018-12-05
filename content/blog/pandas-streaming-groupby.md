@@ -116,12 +116,15 @@ def stream_groupby_csv(path, key, agg, chunk_size=1e6, pool=None, **kwargs):
 
     for chunk in chunks:
 
+        # Add the previous orphans to the chunk
+        chunk = pd.concat((orphans, chunk))
+
         # Determine which rows are orphans
         last_val = chunk[key].iloc[-1]
         is_orphan = chunk[key] == last_val
 
-        # Put the new orphans aside and add the previous orphans to the chunk
-        chunk, orphans = chunk[~is_orphan].append(orphans), chunk[is_orphan]
+        # Put the new orphans aside
+        chunk, orphans = chunk[~is_orphan], chunk[is_orphan]
 
         # If a pool is provided then we use apply_async
         if pool:
