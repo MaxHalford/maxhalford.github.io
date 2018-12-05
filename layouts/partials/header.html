@@ -39,10 +39,14 @@
 </section>
 
 <section class="icons">
-    <div class="container">
+    <div class="container" style="justify-content: center;">
         <div class="content">
         {{ if .Site.Params.github }}
             <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener"><img class="icon" src="/img/github.svg" alt="github" /></a>
+        {{ end }}
+
+        {{ if .Site.Params.kaggle }}
+            <a href="{{ .Site.Params.kaggle }}" target="_blank" rel="noopener"><img class="icon" src="/img/kaggle.svg" alt="kaggle" /></a>
         {{ end }}
 
         {{ if .Site.Params.twitter }}

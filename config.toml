@@ -60,6 +60,7 @@ linkedin               = "//linkedin.com/in/maxhalford"
 noshowreadtime         = false                         # if true, don't show "<x> minutes read" in posts
 selfintro              = ""                            # appears in the site header when set to a non-empty string
 spotify                = "//play.spotify.com/user/1166811350"
+kaggle                 = "//kaggle.com/maxhalford"
 
 highlightjs            = true
 # highlightjslanguages = ["go"]                        # additional languages not included in the "common" set

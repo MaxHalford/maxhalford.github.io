@@ -109,7 +109,10 @@ def stream_groupby_csv(path, key, agg, chunk_size=1e6, pool=None, **kwargs):
 
     # Chain the chunks
     kwargs['chunksize'] = chunk_size
-    chunks = itertools.chain(*[pd.read_csv(p, **kwargs) for p in path])
+    chunks = itertools.chain(*[
+        pd.read_csv(p, **kwargs)
+        for p in path
+    ])
 
     results = []
     orphans = pd.DataFrame()
@@ -132,7 +135,7 @@ def stream_groupby_csv(path, key, agg, chunk_size=1e6, pool=None, **kwargs):
         else:
             results.append(agg(chunk))
 
-    # If a pool is used then we have to wait for the results to arrive
+    # If a pool is used then we have to wait for the results
     if pool:
         results = [r.get() for r in results]
 
