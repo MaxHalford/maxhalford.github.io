@@ -44,3 +44,6 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [An overview of gradient descent optimization algorithms - Sebastian Ruder](http://ruder.io/optimizing-gradient-descent/)
 - [How to explain gradient boosting - Terence Parr and Jeremy Howard](https://explained.ai/gradient-boosting/index.html)
 - [Why Does XGBoost Win "Every" Machine Learning Competition? - Didrik Nielsen](https://brage.bibsys.no/xmlui/bitstream/handle/11250/2433761/16128_FULLTEXT.pdf)
+- [Algorithmes d’optimisation non-linéaire sans contrainte (French) - Michel Bergmann](https://www.math.u-bordeaux.fr/~mbergman/PDF/These/annexeC.pdf)
+- [Good sleep, good learning, good life - Piotr Wozniak](https://web.archive.org/web/20181017190008/https://www.supermemo.com/en/articles/sleep)
+- [Make for data scientists - Paul Butler](http://blog.kaggle.com/2012/10/15/make-for-data-scientists/)
