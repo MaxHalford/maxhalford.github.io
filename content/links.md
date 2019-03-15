@@ -95,3 +95,4 @@ This is a list of blogs I regularly scroll through.
 - [Simply Statistics](https://simplystatistics.org/)
 - [Practically Predictable](http://practicallypredictable.com/)
 - [koaning.io](http://koaning.io/) -- By Vincent Warmerdam, who did [this](https://www.youtube.com/watch?v=68ABAU_V8qI&feature=youtu.be) great presentation
+- [blogarithms](https://blogarithms.github.io/)
