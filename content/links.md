@@ -10,7 +10,7 @@ title: Links
 
 ## Presentations
 
-- [Docker for data science](/files/presentations/docker-data-science.pdf)
+- [Docker for data science](slides/docker-data-science.pdf)
 
 ## Datasets
 
@@ -94,5 +94,6 @@ This is a list of blogs I regularly scroll through.
 - [Probably Overthinking It](https://www.allendowney.com/blog/)
 - [Simply Statistics](https://simplystatistics.org/)
 - [Practically Predictable](http://practicallypredictable.com/)
-- [koaning.io](http://koaning.io/) -- By Vincent Warmerdam, who did [this](https://www.youtube.com/watch?v=68ABAU_V8qI&feature=youtu.be) great presentation
+- [koaning](http://koaning.io/) -- By Vincent Warmerdam, who did [this](https://www.youtube.com/watch?v=68ABAU_V8qI&feature=youtu.be) great presentation
 - [blogarithms](https://blogarithms.github.io/)
+- [Possibly Wrong ](https://possiblywrong.wordpress.com/)
