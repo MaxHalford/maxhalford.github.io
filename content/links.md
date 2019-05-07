@@ -12,6 +12,7 @@ title: Links
 
 - [Docker for data science](slides/docker-data-science.pdf)
 - [DASFAA 2019](slides/dasfaa-2019.pdf)
+- [PyData Amsterdam 2019](slides/creme-pydata)
 
 ## Datasets
 
