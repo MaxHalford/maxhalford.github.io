@@ -69,6 +69,10 @@
             <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener"><img class="icon" src="/img/linkedin.svg" alt="linkedin" /></a>
         {{ end }}
 
+        {{ if .Site.Params.google_scholar }}
+            <a href="{{ .Site.Params.google_scholar }}" target="_blank" rel="noopener"><img class="icon" src="/img/google_scholar.svg" alt="google_scholar" /></a>
+        {{ end }}
+
         {{ if .Site.Params.facebook }}
             <a href="{{ .Site.Params.facebook }}" target="_blank" rel="noopener"><img class="icon" src="/img/facebook.svg" alt="facebook" /></a>
         {{ end }}
