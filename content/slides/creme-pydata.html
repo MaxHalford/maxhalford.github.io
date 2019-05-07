@@ -8,12 +8,19 @@
       @import url(https://fonts.googleapis.com/css?family=Fira+Mono:400,700,400italic);
 
       body, h1, h2, h3 { font-family: 'Open Sans'; }
-      h3 { text-align: center; }
+      h1, h2, h3 { text-align: center; }
 
       .bullets {
         display: flex;
         flex-direction: row;
         justify-content: center;
+      }
+
+      .bigbullets {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-size: 32px;
       }
 
       .remark-slide-content {
@@ -54,7 +61,7 @@ class: center, middle
   </div>
 
   <div align="center">
-    <img height="115px" src="https://docs.google.com/drawings/d/e/2PACX-1vSl80T4MnWRsPX3KvlB2kn6zVdHdUleG_w2zBiLS7RxLGAHxiSYTnw3LZtXh__YMv6KcIOYOvkSt9PB/pub?w=841&h=350" />
+    <img height="125px" src="https://docs.google.com/drawings/d/e/2PACX-1vSl80T4MnWRsPX3KvlB2kn6zVdHdUleG_w2zBiLS7RxLGAHxiSYTnw3LZtXh__YMv6KcIOYOvkSt9PB/pub?w=841&h=350" />
   </div>
 
 </div>
@@ -153,9 +160,12 @@ class: center, middle
 
 ---
 
-### Online learning
+background-color: #607bd4
+class: middle, white
 
-.bullets[
+## Online learning
+
+.bigbullets[
 - Data comes from a stream
 - Models learn 1 observation at a time
 - Observations do not have to be stored
@@ -164,9 +174,12 @@ class: center, middle
 
 ---
 
-### Different names, same thing
+background-color: #FF7F50
+class: middle, white
 
-.bullets[
+## Different names, same thing
+
+.bigbullets[
 - Online learning
 - Incremental learning
 - Sequential learning
@@ -176,9 +189,12 @@ class: center, middle
 
 ---
 
-### Applications
+background-color: #008080
+class: middle, white
 
-.bullets[
+## Applications
+
+.bigbullets[
 - Time series forecasting
 - Spam filtering
 - Recommender systems
@@ -197,9 +213,12 @@ class: center, middle
 
 ---
 
-### Why is batch learning so popular?
+background-color: #e66868ff
+class: middle, white
 
-.bullets[
+## Why is batch learning so popular?
+
+.bigbullets[
 - Taught at university
 - (Bad) habits
 - Hype
@@ -610,7 +629,11 @@ def predict_proba_one(self, x):
 ### Django model
 
 ```python
-class Model(BaseModel):
+from django.db import models
+from picklefield import fields as picklefield
+
+
+class CremeModel(models.Model):
     name = models.TextField(unique=True)
     pipeline = picklefield.PickledObjectField()
 
@@ -633,7 +656,7 @@ class Model(BaseModel):
 ```python
 match = fetch_match(match_id)
 
-model = models.Model.objects.get(name='My awesome model')
+model = models.CremeModel.objects.get(name='My awesome model')
 
 duration = model.predict_one(match.raw_info)
 
@@ -649,7 +672,7 @@ match.save()
 When the match ends, it has a `true_duration` property.
 
 ```python
-model = models.Model.objects.get(id=match.predicted_by.id)
+model = models.CremeModel.objects.get(id=match.predicted_by.id)
 
 model.fit_one(
     x=match.raw_info,
