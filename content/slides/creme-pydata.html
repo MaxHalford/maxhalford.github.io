@@ -404,6 +404,7 @@ for x, y in X_y:
 - `compat`
 - `compose`
 - `datasets`
+- `dummy`
 - `ensemble`
 - `feature_extraction`
 - `feature_selection`
@@ -419,6 +420,7 @@ for x, y in X_y:
 - `reco`
 - `stats`
 - `stream`
+- `tree`
 - `utils`
 ]
 
@@ -467,6 +469,10 @@ For every incoming $x$, do:
 1.25
 
 ```
+
+???
+
+This is called Welford's algorithm, it can be extended to skew and kurtosis
 
 ---
 
@@ -636,12 +642,12 @@ class: middle
 
 ```python
 from django.db import models
-from picklefield import fields as picklefield
+from picklefield.fields import PickledObjectField
 
 
 class CremeModel(models.Model):
     name = models.TextField(unique=True)
-    pipeline = picklefield.PickledObjectField()
+    pipeline = PickledObjectField()
 
     class Meta:
         db_table = 't_models'
@@ -758,7 +764,7 @@ avg_error = agg['duration__avg']
 - [creme-ml.github.io](https://creme-ml.github.io/)
 - [github.com/creme-ml](https://github.com/creme-ml/)
 - You can shoot emails to [maxhalford25@gmail.com](mailto:maxhalford25@gmail.com)
-- Get in contact if you want to use `creme` in production and want advice
+- Get in contact if you want to try `creme` and want advice
 - Spread the word!
 
 <div align="center">
