@@ -333,7 +333,7 @@ def main():
         json.dump(results, f)
 ```
 
-The TPC-DS benchmark contains 113 queries. My script produces a total of 5.122.790 queries in under 4 minutes. Here's the breakdown per query:
+The TPC-DS benchmark contains 113 queries. My script produces a total of 5,122,790 queries in under 4 minutes. Here's the breakdown per query:
 
 ```sh
 Query 10a: 477
