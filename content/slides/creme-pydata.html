@@ -20,13 +20,12 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        font-size: 32px;
+        font-size: 35px;
       }
 
       .remark-slide-content {
-        font-size: 23px;
+        font-size: 25px;
         color: #1f282d;
-        padding: 1em 2em 1em 2em;
       }
 
       .remark-code, .remark-inline-code { font-family: 'Fira Mono'; }
@@ -37,6 +36,29 @@
       .white {
         color: #FFFAFA;
       }
+
+      .title-slide .remark-slide-number {
+        display: none;
+      }
+
+      blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
 
       a { color: hotpink; text-decoration: none; }
       li {  margin: 10px 0; }
@@ -131,36 +153,38 @@ class: center, middle
 background-color: #2ac380
 class: center, middle, white
 
-## Models have to be retrained from scratch with new data
+# Models have to be retrained from scratch with new data
 
 ---
 
 background-color: #1f282d
 class: center, middle, white
 
-## Ever increasing computational requirements
+# Ever increasing computational requirements
 
 ---
 
 background-color: #dbaaa8
 class: center, middle, white
 
-## Models are static and rot faster than bananas 🍌
+# Models are static and rot faster than bananas 🍌
 
 ---
 
 background-color: #e69138
 class: center, middle, white
 
-## Features that you develop locally might not be available in real-time
+# Features that you develop locally might not be available in real-time
 
 ---
 
 class: center, middle
 
-#### *There must be a better way; if only he could stop bumping for a moment to think of it*.
-
 <img height="400px" src="/img/slides/creme/edward-bear-bump-bump.png" />
+
+<blockquote>
+It is, as far as he knows, the only way of coming downstairs, but sometimes he feels that there really is another way, if only he could stop bumping for a moment and think of it.
+</blockquote>
 
 ---
 
@@ -204,7 +228,7 @@ class: middle, white
 - Recommender systems
 - Ad placement
 - Internet of things
-- Anything event based
+- <span style="text-decoration:underline">Anything event based</span>
 ]
 
 ---
@@ -799,10 +823,13 @@ class: center, middle
       }
       var slideshow = remark.create(
         {
-          slideNumberFormat: function (current, total) { return current; },
+          slideNumberFormat: function (current, total) {
+            if (current === 1) { return "" }
+            return current;
+          },
           highlightStyle: 'github',
           highlightLines: true,
-          ratio: '4:3'
+          ratio: '16:9'
         },
         renderMath
       );
