@@ -5,6 +5,7 @@ title: Links
 
 ## Papers
 
+- [An Approach Based on Bayesian Networks for Query Selectivity Estimation](https://link.springer.com/chapter/10.1007/978-3-030-18579-4_1)
 - [Cost models in database query optimisation bibliography](https://www.sharelatex.com/project/59f0867a5cd281015b4cd5c6)
 - [Detailed solutions to the first 30 Project Euler problems](/files/papers/project_euler_solutions.pdf)
 
@@ -12,7 +13,7 @@ title: Links
 
 - [Docker for data science](/slides/docker-data-science.pdf)
 - [DASFAA 2019](/slides/dasfaa-2019.pdf)
-- [PyData Amsterdam 2019](/slides/creme-pydata)
+- [PyData Amsterdam 2019](/slides/creme-pydata) (press <kbd>Shift</kbd>+<kbd>p</kbd> for speaker notes)
 
 ## Datasets
 
