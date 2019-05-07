@@ -607,6 +607,27 @@ def predict_proba_one(self, x):
 
 ---
 
+### Django model
+
+```python
+class Model(BaseModel):
+    name = models.TextField(unique=True)
+    pipeline = picklefield.PickledObjectField()
+
+    class Meta:
+        db_table = 't_models'
+        verbose_name_plural = 'models'
+
+    def fit_one(self, x, y):
+        self.pipeline.fit_one(x, y)
+        return self
+
+    def predict_one(self, x):
+        return self.pipeline.predict_one(x)
+```
+
+---
+
 ### Code for predicting
 
 ```python
@@ -614,7 +635,7 @@ match = fetch_match(match_id)
 
 model = models.Model.objects.get(name='My awesome model')
 
-duration = model.pipeline.predict_one(match.raw_info)
+duration = model.predict_one(match.raw_info)
 
 match.predicted_ended_at = match.started_at + predicted_duration
 match.predicted_by = model
@@ -630,7 +651,7 @@ When the match ends, it has a `true_duration` property.
 ```python
 model = models.Model.objects.get(id=match.predicted_by.id)
 
-model.pipeline.fit_one(
+model.fit_one(
     x=match.raw_info,
     y=match.true_duration.seconds
 )
