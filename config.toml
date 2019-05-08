@@ -61,6 +61,7 @@ noshowreadtime         = false                         # if true, don't show "<x
 selfintro              = ""                            # appears in the site header when set to a non-empty string
 spotify                = "//play.spotify.com/user/1166811350"
 kaggle                 = "//kaggle.com/maxhalford"
+google_scholar         = "//scholar.google.com/citations?user=erRNNi0AAAAJ&hl=en"
 
 highlightjs            = true
 # highlightjslanguages = ["go"]                        # additional languages not included in the "common" set

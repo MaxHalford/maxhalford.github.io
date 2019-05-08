@@ -7,22 +7,20 @@ title: Links
 
 - [An Approach Based on Bayesian Networks for Query Selectivity Estimation](https://link.springer.com/chapter/10.1007/978-3-030-18579-4_1)
 - [Cost models in database query optimisation bibliography](https://www.sharelatex.com/project/59f0867a5cd281015b4cd5c6)
+- Master 2 year internship ([report](/files/internships/M2_report.pdf), [slides](/files/internships/M2_slides.pdf))
+- Master 1 year internship ([report](/files/internships/M1_report.pdf), [slides](/files/internships/M1_slides.pdf))
+- Undergraduate internship ([report](/files/internships/L3_report.pdf), [slides](/files/internships/L3_slides.pdf))
 - [Detailed solutions to the first 30 Project Euler problems](/files/papers/project_euler_solutions.pdf)
 
 ## Presentations
 
-- [Docker for data science](/slides/docker-data-science.pdf)
-- [DASFAA 2019](/slides/dasfaa-2019.pdf)
 - [PyData Amsterdam 2019](/slides/creme-pydata) (press <kbd>Shift</kbd>+<kbd>p</kbd> for speaker notes)
+- [DASFAA 2019](/slides/dasfaa-2019.pdf)
+- [Docker for data science](/slides/docker-data-science.pdf)
 
 ## Datasets
 
 - [OpenBikes 2016 challenge](https://www.dropbox.com/s/ic8m0b3mf5wxk4r/challenge.zip?dl=0)
-
-## Internship hand ins
-
-- Undergraduate ([report](/files/internships/L3_report.pdf), [slides](/files/internships/L3_slides.pdf))
-- First Master's year ([report](/files/internships/M1_report.pdf), [slides](/files/internships/M1_slides.pdf))
 
 ## Hall of fame
 
