@@ -7,9 +7,9 @@ title: Links
 
 - [An Approach Based on Bayesian Networks for Query Selectivity Estimation](https://link.springer.com/chapter/10.1007/978-3-030-18579-4_1)
 - [Cost models in database query optimisation bibliography](https://www.sharelatex.com/project/59f0867a5cd281015b4cd5c6)
-- Master 2 year internship ([report](/files/internships/M2_report.pdf), [slides](/files/internships/M2_slides.pdf))
-- Master 1 year internship ([report](/files/internships/M1_report.pdf), [slides](/files/internships/M1_slides.pdf))
-- Undergraduate internship ([report](/files/internships/L3_report.pdf), [slides](/files/internships/L3_slides.pdf))
+- Master 2 year internship at [HelloFresh](https://www.hellofresh.com/) ([report](/files/internships/M2_report.pdf), [slides](/files/internships/M2_slides.pdf))
+- Master 1 year internship at [Privateaser](https://www.privateaser.com/) ([report](/files/internships/M1_report.pdf), [slides](/files/internships/M1_slides.pdf))
+- Undergraduate internship at [INSA Toulouse](http://www.insa-toulouse.fr/fr/index.html) ([report](/files/internships/L3_report.pdf), [slides](/files/internships/L3_slides.pdf))
 - [Detailed solutions to the first 30 Project Euler problems](/files/papers/project_euler_solutions.pdf)
 
 ## Presentations
