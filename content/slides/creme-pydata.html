@@ -108,6 +108,11 @@ Hello!
   <iframe src="https://giphy.com/embed/ZoAa7lsmym6UE" width="480" height="223" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </div>
 
+???
+
+My goal is to convince you that the way most people do machine learning isn't the way to go in production scenarios. Online learning is more suitable and nullifies many issues. I'll introduce a new library me and some friends have been working on, and I'll show you we're using for a pet project
+trying to forecast the duration of League of Legends matches.
+
 ---
 
 ### Batch learning
@@ -128,6 +133,10 @@ With code:
 >>> y_pred = model.predict(X_test)
 ```
 
+???
+
+The most common form of machine learning is called batch learning. It's what you do when you use scikit-learn and do Kaggle competitions. I won't dwell on this too long as I'm pretty sure you're all acquainted with it. In short: load, fit, predict.
+
 ---
 
 class: center, middle
@@ -137,6 +146,10 @@ class: center, middle
 <div align="center">
   <img height="500px" src="/img/slides/creme/batch_production.svg" />
 </div>
+
+???
+
+There isn't a clear pattern as to how to put into production a batch learning system. Typically this involves training a model periodically, and then serializing it before saving it somewhere. API calls can then be issues to make predictions. This is such a difficult thing to get right that startups and tech giants are building products around it.
 
 ---
 
@@ -176,6 +189,10 @@ class: center, middle, white
 
 # Features that you develop locally might not be available in real-time
 
+???
+
+This is more subtle. Sometimes it isn't possible to recreate features for past instances. If you don't store information for an instance at every particular point in time, then it isn't possible to reproduce the true state during your feature extraction process. In other words you need a solid data engineering team that cares about time.
+
 ---
 
 class: center, middle
@@ -183,6 +200,10 @@ class: center, middle
 <img height="400px" src="/img/slides/creme/edward-bear-bump-bump.png" />
 
 > It is, as far as he knows, the only way of coming downstairs, but sometimes he feels that there really is another way, if only he could stop bumping for a moment and think of it.
+
+???
+
+And just like Winnie the Pooh, we're spending too much time banging our heads to be able to think about a better way of doing things.
 
 ---
 
@@ -337,7 +358,7 @@ from creme import stream
 
 X_y = stream.iter_csv('some/csv/file.csv')
 
-model = linear_model.LinearRegression()
+model = linear_model.LogisticRegression()
 
 for x, y in X_y:
     model.fit_one(x, y)
@@ -355,7 +376,7 @@ from creme import stream
 
 X_y = stream.iter_csv('some/csv/file.csv')
 
-model = linear_model.LinearRegression()
+model = linear_model.LogisticRegression()
 
 for x, y in X_y:
 *   y_pred_before = model.predict_one(x)
@@ -378,9 +399,9 @@ from creme import stream
 
 X_y = stream.iter_csv('some/csv/file.csv')
 
-model = linear_model.LinearRegression()
+model = linear_model.LogisticRegression()
 
-* metric = metrics.MSE()
+* metric = metrics.Accuracy()
 
 for x, y in X_y:
     y_pred = model.predict_one(x)
@@ -404,11 +425,11 @@ from creme import stream
 X_y = stream.iter_csv('some/csv/file.csv')
 
 scale = preprocessing.StandardScaler()
-lin_reg = linear_model.LinearRegression()
+lin_reg = linear_model.LogisticRegression()
 
 * model = scale | lin_reg
 
-metric = metrics.MSE()
+metric = metrics.Accuracy()
 
 for x, y in X_y:
     y_pred = model.predict_one(x)
@@ -799,9 +820,17 @@ class: center, middle
 
 # Thanks for listening!
 
-<div align="center" style="margin-top: 80px;">
+.left-column[
+<div align="center" style="margin-top: 50px;">
   <iframe src="https://giphy.com/embed/7zusy37fwKjfy" width="480px" height="343px" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </div>
+]
+
+.right-column[
+<div align="center" style="margin-top: 50px;">
+  <img height="343px" src="/img/slides/creme/qr_code.svg" />
+</div>
+]
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
