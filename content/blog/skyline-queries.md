@@ -182,7 +182,6 @@ def find_skyline_bnl(df, to_min, to_max):
 
         to_drop = set()
         is_dominated = False
-        dominates = False
 
         for j in skyline:
 
