@@ -5,7 +5,7 @@ title: Links
 
 ## Papers
 
-- [An Approach Based on Bayesian Networks for Query Selectivity Estimation](https://link.springer.com/chapter/10.1007/978-3-030-18579-4_1)
+- [An Approach Based on Bayesian Networks for Query Selectivity Estimation](https://link.springer.com/chapter/10.1007/978-3-030-18579-4_1) ([slides](/slides/dasfaa-2019.pdf))
 - [Cost models in database query optimisation bibliography](https://www.sharelatex.com/project/59f0867a5cd281015b4cd5c6)
 - Master 2 year internship at [HelloFresh](https://www.hellofresh.com/) ([report](/files/internships/M2_report.pdf), [slides](/files/internships/M2_slides.pdf))
 - Master 1 year internship at [Privateaser](https://www.privateaser.com/) ([report](/files/internships/M1_report.pdf), [slides](/files/internships/M1_slides.pdf))
@@ -14,9 +14,9 @@ title: Links
 
 ## Presentations
 
-- [PyData Amsterdam 2019](/slides/creme-pydata) (press <kbd>Shift</kbd>+<kbd>p</kbd> for speaker notes)
-- [DASFAA 2019](/slides/dasfaa-2019.pdf)
-- [Docker for data science](/slides/docker-data-science.pdf)
+- [Online machine learning with creme - PyData Amsterdam 2019](/slides/creme-pydata) (press <kbd>Shift</kbd>+<kbd>p</kbd> for speaker notes)
+- [Docker for data science - HelloFresh Data Science Academy](/slides/docker-data-science.pdf)
+- [Forecasting bicycle-sharing usage - Toulouse Data Science 2016](https://www.youtube.com/watch?v=vQGdzKkyPP0)
 
 ## Datasets
 

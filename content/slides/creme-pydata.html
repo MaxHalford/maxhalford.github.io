@@ -161,6 +161,10 @@ class: center, middle
   <img height="300px" src="/img/slides/creme/boromir.jpg" />
 </div>
 
+???
+
+Works fine for Kaggle cases and when you have a clear split between train and test. But things are not so smooth in production.
+
 ---
 
 background-color: #2ac380
@@ -427,7 +431,7 @@ X_y = stream.iter_csv('some/csv/file.csv')
 scale = preprocessing.StandardScaler()
 lin_reg = linear_model.LogisticRegression()
 
-* model = scale | lin_reg
+* model = scale | lin_reg  # Pipeline shorthand
 
 metric = metrics.Accuracy()
 
@@ -618,13 +622,13 @@ Bagging is a popular and simple ensemble algorithm:
 2. Train each model on a sample with replacement
 3. Average the predictions of each model on the test set
 
-Each observations is sampled $K$ times where $K$ follows a binomial distribution:
+Each observation is sampled $K$ times where $K$ follows a binomial distribution:
 
 $$P(K=k) = {n \choose k} \times (\frac{1}{n})^k \times (1 - \frac{1}{n})^{n-k}$$
 
 As $n$ grows towards infinity, $K$ can be approximated by a Poisson(1):
 
-$$K \sim \frac{e^{-1}}{k!} $$
+$$P(K=k) \sim \frac{e^{-1}}{k!} $$
 
 ---
 
