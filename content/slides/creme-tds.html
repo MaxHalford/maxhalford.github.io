@@ -161,6 +161,13 @@ class: center, middle, white
 
 ---
 
+background-color: #e69138
+class: center, middle, white
+
+# Models that work locally don't always work in production
+
+---
+
 class: center, middle
 
 <img height="400px" src="/img/slides/creme/edward-bear-bump-bump.png" />
@@ -570,24 +577,24 @@ lin_reg = linear_model.LinearRegression(
 >>> import creme
 
 >>> X = [
-...     {'place': 'Taco Bell', 'revenue': 42},
-...     {'place': 'Burger King', 'revenue': 16},
-...     {'place': 'Burger King', 'revenue': 24},
-...     {'place': 'Taco Bell', 'revenue': 58}
+...     {'meal': 🍕, 'sales': 42},
+...     {'meal': 🍔, 'sales': 16},
+...     {'meal': 🍔, 'sales': 24},
+...     {'meal': 🍕, 'sales': 58}
 ... ]
 
 >>> agg = creme.feature_extraction.Agg(
-...     on='revenue',
-...     by='place',
+...     on='sales',
+...     by='meal',
 ...     how=creme.stats.Mean()
 ... )
 
 >>> for x in X:
 ...     print(agg.fit_one(x).transform_one(x))
-{'revenue_mean_by_place': 42.0}
-{'revenue_mean_by_place': 16.0}
-{'revenue_mean_by_place': 20.0}
-{'revenue_mean_by_place': 50.0}
+{'sales_mean_by_meal': 42.0}
+{'sales_mean_by_meal': 16.0}
+{'sales_mean_by_meal': 20.0}
+{'sales_mean_by_meal': 50.0}
 ```
 
 ---
@@ -637,12 +644,12 @@ def predict_proba_one(self, x):
 
 - A version of Hoeffding trees is being implemented
 - Basic idea:
-  - Start with a leaf
-  - Find the leaf where an observation belongs
-  - Update the leaf's sufficient statistics
-  - Measure information gain every `k` observations
-  - Split when the information gain is good enough
-- Mondrian trees are another possibility but they only work for continuous attributes
+  - Start with a leaf 🍃
+  - Find the leaf where an observation belongs 🔎
+  - Update the leaf's sufficient statistics 📊
+  - Measure information gain every so often 🔬
+  - Split when the information gain is good enough 🍂
+- Mondrian trees 👨‍🎨 are another possibility but they only work for continuous attributes
 
 ---
 
@@ -699,9 +706,8 @@ class: center, middle
 
 ---
 
-### Future work
+### Current work
 
-.left-column[
 .bullets[
 - Decision trees (nearly there!)
 - Gradient boosting
@@ -709,24 +715,20 @@ class: center, middle
 - Latent Dirichlet Allocation
 - Many issues [on GitHub](https://github.com/creme-ml/creme/issues)
 ]
-]
-.right-column[
 
-<div align="center" style="margin-top: 80px;">
-  <iframe src="https://giphy.com/embed/SuEFqeWxlLcvm" width="240" height="240" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<div align="center">
+  <iframe src="https://giphy.com/embed/JltOMwYmi0VrO" width="480" height="220" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </div>
-
-]
 
 ---
 
-### If you want to contribute
+### Going further
 
 - [creme-ml.github.io](https://creme-ml.github.io/)
 - [github.com/creme-ml](https://github.com/creme-ml/)
 - You can shoot emails to [maxhalford25@gmail.com](mailto:maxhalford25@gmail.com)
 - Get in contact if you want to try `creme` and want advice
-- Star us on GitHub 🌟
+- Starring us on GitHub helps a lot 🌟
 
 <div align="center">
   <img height="230px" src="/img/slides/creme/we_need_you.jpg" />
