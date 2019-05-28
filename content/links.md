@@ -14,7 +14,8 @@ title: Links
 
 ## Presentations
 
-- [Online machine learning with creme - PyData Amsterdam 2019](/slides/creme-pydata) (press <kbd>Shift</kbd>+<kbd>p</kbd> for speaker notes)
+- [Machine learning incrémental: des concepts à la pratique - TDS Meetup 2019](/slides/creme-tds)
+- [Online machine learning with creme - PyData Amsterdam 2019](/slides/creme-pydata)
 - [Docker for data science - HelloFresh Data Science Academy](/slides/docker-data-science.pdf)
 - [Forecasting bicycle-sharing usage - Toulouse Data Science 2016](https://www.youtube.com/watch?v=vQGdzKkyPP0)
 
