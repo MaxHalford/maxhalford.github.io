@@ -157,10 +157,10 @@ class: center, middle, white
 
 ---
 
-background-color: #dbaaa8
+background-color: #663399
 class: center, middle, white
 
-# Models needs more and more memory
+# Models needs increasing amounts of power 🔌
 
 ---
 
@@ -174,7 +174,7 @@ class: center, middle, white
 background-color: #e69138
 class: center, middle, white
 
-# Models that work locally don't always work in production
+# Models that work locally don't always work in production 😭
 
 ---
 
@@ -203,34 +203,35 @@ class: middle, white
 
 ---
 
-## Everything changes
+## Everything changes 💥
 
 <div style="display: flex; flex-direction: row;">
 <iframe src="https://giphy.com/embed/1xdHOjP8eRr6tpuYJG" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 <div style="display: flex; flex-direction: column;">
-<iframe src="https://giphy.com/embed/H1BE3dRF6z5FtR7bGo" width="480" height="180" frameBorder="0" class="giphy-embed" allowFullScreen style="margin-bottom: 30px"></iframe>
-<iframe src="https://giphy.com/embed/l1J9wSXhprtRF1HYA" width="480" height="180" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe src="https://giphy.com/embed/H1BE3dRF6z5FtR7bGo" width="480" height="225" frameBorder="0" class="giphy-embed" allowFullScreen style="margin-bottom: 30px"></iframe>
+<iframe src="https://giphy.com/embed/l1J9wSXhprtRF1HYA" width="480" height="225" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </div>
 </div>
 
 ---
 
-background-color: #FF7F50
+background-color: #008080
 class: middle, white
 
-## Different names, same thing
+## Different names, same thing 🤷
 
 .bigbullets[
 - Online learning
 - Incremental learning
 - Sequential learning
 - Iterative learning
+- Continuous learning
 - Out-of-core learning
 ]
 
 ---
 
-background-color: #008080
+background-color: #FF7F50
 class: middle, white
 
 ## Applications
@@ -520,14 +521,16 @@ This is called Welford's algorithm, it can be extended to skew and kurtosis
 
 ### Standard scaling
 
-With the mean and the variance, we can scale incoming data so that it has zero mean and unit variance.
+Using the mean and the variance, we can rescale incoming data.
 
 ```python
 >>> scaler = creme.preprocessing.StandardScaler()
 
 >>> for x in [2, 3, 4, 5]:
-...     scaler.fit_one(x)
-...     print(f'{x} becomes {scaler.transform_one(x)})
+...     features = {'x': x}
+...     scaler.fit_one(features)
+...     new_x = scaler.transform_one(features)['x']
+...     print(f'{x} becomes {new_x})
 2 becomes 0.0
 3 becomes 0.9999999999999996
 4 becomes 1.224744871391589
@@ -536,7 +539,7 @@ With the mean and the variance, we can scale incoming data so that it has zero m
 ```
 
 <div align="center">
-  <iframe src="https://giphy.com/embed/r1HGFou3mUwMw" width="480" height="180" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+  <iframe src="https://giphy.com/embed/nlWGe7Q64zwQ0" width="480" height="180" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </div>
 
 ---
@@ -755,7 +758,7 @@ class: center, middle
 
 ---
 
-### Going further
+### What next?
 
 - [creme-ml.github.io](https://creme-ml.github.io/)
 - [github.com/creme-ml](https://github.com/creme-ml/)
@@ -809,7 +812,7 @@ class: center, middle
           },
           highlightStyle: 'github',
           highlightLines: true,
-          //ratio: '16:9'
+          ratio: '16:9'
         },
         renderMath
       );
