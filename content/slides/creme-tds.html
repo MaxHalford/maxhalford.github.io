@@ -372,8 +372,8 @@ for x, y in X_y:
 ```
 
 - `X_y` is a **generator** and consumes a tiny amount of memory
-- The point is that we want to **handle data points one by one**
-- Source depends on your use case (can be CSV file, Kakfa topic, HTTP requests, etc.)
+- The point is that we only need one data point at a time
+- Source depends on your use case (CSV file, Kafka consumer, HTTP requests, etc.)
 
 ---
 
