@@ -320,9 +320,11 @@ for x, y in X_y:
 
 ---
 
-### Observations
+class: middle
 
-Representing an observation with a `dict` is natural:
+### Features
+
+Representing a set of features using a `dict` is natural:
 
 ```python
 x = {
@@ -337,6 +339,8 @@ x = {
 - Python's standard library plays nicely with `dict`s
 
 ---
+
+class: middle
 
 ### Targets
 
@@ -361,6 +365,8 @@ y = {
 
 ---
 
+class: middle
+
 ### Streaming data
 
 ```python
@@ -374,9 +380,11 @@ for x, y in X_y:
 
 - `X_y` is a **generator** and consumes a tiny amount of memory
 - The point is that we only need one data point at a time
-- Source depends on your use case (CSV file, Kafka consumer, HTTP requests, etc.)
+- Source depends on your use case (CSV file, Kafka consumer, HTTP requests)
 
 ---
+
+class: middle
 
 ### Training with `fit_one`
 
@@ -395,6 +403,8 @@ for x, y in X_y:
 Every `creme` estimator has a `fit_one` method
 
 ---
+
+class: middle
 
 ### Predicting with `predict_one`
 
@@ -417,7 +427,9 @@ for x, y in X_y:
 
 ---
 
-### Monitoring performance
+class: middle
+
+### Monitoring performance 💯
 
 ```python
 from creme import linear_model
@@ -437,9 +449,11 @@ for x, y in X_y:
     print(metric)
 ```
 
-Validation score is available for free! No need to do any cross-validation. You can also use `online_score` from the `model_selection` module.
+Validation score is available for free! No need for cross-validation. You can also use `online_score` from the `model_selection` module.
 
 ---
+
+class: middle
 
 ### Composing estimators is easy
 
@@ -673,32 +687,37 @@ class: center, middle
 
 ### `creme`'s current modules
 
-.left-column[
-- `cluster`
-- `compat`
-- `compose`
-- `datasets`
-- `dummy`
-- `ensemble`
-- `feature_extraction`
-- `feature_selection`
-- `impute`
-- `linear_model`
-- `model_selection`
-]
-.right-column[
-- `multiclass`
-- `naive_bayes`
-- `optim`
-- `plot`
-- `preprocessing`
-- `proba`
-- `reco`
-- `stats`
-- `stream`
-- `tree`
-- `utils`
-]
+<div style="display: flex; justify-content: space-around;">
+  <ul>
+    <li><pre>cluster</pre></li>
+    <li><pre>compat</pre></li>
+    <li><pre>compose</pre></li>
+    <li><pre>datasets</pre></li>
+    <li><pre>dummy</pre></li>
+    <li><pre>ensemble</pre></li>
+    <li><pre>feature_extraction</pre></li>
+  </ul>
+  <ul>
+    <li><pre>feature_selection</pre></li>
+    <li><pre>impute</pre></li>
+    <li><pre>linear_model</pre></li>
+    <li><pre>model_selection</pre></li>
+    <li><pre>multiclass</pre></li>
+    <li><pre>naive_bayes</pre></li>
+    <li><pre>optim</pre></li>
+    <li><pre>plot</pre></li>
+  </ul>
+  <ul>
+    <li><pre>preprocessing</pre></li>
+    <li><pre>proba</pre></li>
+    <li><pre>reco</pre></li>
+    <li><pre>stats</pre></li>
+    <li><pre>stream</pre></li>
+    <li><pre>tree</pre></li>
+    <li><pre>utils</pre></li>
+  </ul>
+
+</div>
 
 ---
 
@@ -732,12 +751,12 @@ class: center, middle
 .bullets[
 - No need to schedule model training
 - Easy to monitor
-- You're not "far" from production
+- You're very close to production
 - Way more fun than batch learning
 ]
 
-<div align="center" style="margin-top: 50px;">
-  <iframe src="https://giphy.com/embed/IKyw3IP1keKk0" width="480" height="180" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<div align="center" style="margin-top: 20px;">
+  <iframe src="https://giphy.com/embed/IKyw3IP1keKk0" width="480" height="220" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </div>
 
 ---
@@ -778,13 +797,13 @@ class: center, middle
 
 .left-column[
 <div align="center" style="margin-top: 50px;">
-  <iframe src="https://giphy.com/embed/DUrdT2xEmJWbS" width="343px" height="343px" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+  <iframe src="https://giphy.com/embed/DUrdT2xEmJWbS" width="400px" height="400px" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </div>
 ]
 
 .right-column[
 <div align="center" style="margin-top: 50px;">
-  <img height="343px" src="/img/slides/creme/qr_code.svg" />
+  <img height="400px" src="/img/slides/creme/qr_code.svg" />
 </div>
 ]
 
