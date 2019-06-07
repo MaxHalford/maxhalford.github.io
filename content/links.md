@@ -53,6 +53,8 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Kaggle contest on Observing Dark World - Cam Davidson-Pilon](https://nbviewer.jupyter.org/github/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Chapter5_LossFunctions/Ch5_LossFunctions_PyMC3.ipynb#Example:-Kaggle-contest-on-Observing-Dark-World) -- If you're not convinced about the power of Bayesian machine learning then read this and get your mind blown.
 - [A Concrete Introduction to Probability (using Python) - Peter Norvig](https://nbviewer.jupyter.org/url/norvig.com/ipython/Probability.ipynb) -- Extremely elegant Python coding.
 - [The Hungarian Maximum Likelihood Trick - Louis Abraham](https://louisabraham.github.io/notebooks/hungarian_trick.html)
+- [Machine Learning for Signal Processing - University of Illinois](https://courses.engr.illinois.edu/cs598ps/fa2018/material.html)
+- [Don't Call Yourself A Programmer, And Other Career Advice](https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/)
 
 
 ## Blogs

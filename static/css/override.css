@@ -4,14 +4,26 @@ html {
   font-size: 100%;
 }
 
+a {
+  color: #008080;
+}
+
 body {
   font-family: 'Merriweather', 'Georgia', 'Times', serif;
   line-height: 1.75;
   letter-spacing: -.004em
 }
 
+section.main {
+  max-width: 850px;
+}
+
 section.main .container .content .post-item {
   font-family: 'Merriweather', 'Georgia', 'Times', serif;
+}
+
+section.header .content {
+  align-items: center;
 }
 
 section.header .name {
@@ -69,10 +81,6 @@ span.ln {
 
 section.main .content .markdown p, li {
   font-size: 18px;
-}
-
-section.main .content .post-item {
-  font-size: 16px;
 }
 
 section.header nav ul li {
