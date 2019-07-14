@@ -22,6 +22,10 @@ section.main .container .content .post-item {
   font-family: 'Merriweather', 'Georgia', 'Times', serif;
 }
 
+section.main .container .content .post-item .meta {
+  min-width: 120px;
+}
+
 section.header .content {
   align-items: center;
 }
