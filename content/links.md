@@ -56,6 +56,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Machine Learning for Signal Processing - University of Illinois](https://courses.engr.illinois.edu/cs598ps/fa2018/material.html)
 - [Don't Call Yourself A Programmer, And Other Career Advice](https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/)
 - [Tidy Data - Hadley Wickham](https://vita.had.co.nz/papers/tidy-data.pdf) -- If you like playing with data then you need to be aware of this one.
+- [Gaussian Process, not quite for dummies - Yuge Shi](https://yugeten.github.io/posts/2019/09/GP/) -- Gaussian processes are quite difficult to understand (at least, for me) but Yuge gives some great visual intuitions.
 
 ## Blogs
 
