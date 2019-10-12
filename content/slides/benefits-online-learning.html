@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Benefits of Online Learning</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
+      @import url(https://fonts.googleapis.com/css?family=Fira+Mono:400,700,400italic);
+
+      body, h1, h2, h3 { font-family: 'Open Sans'; }
+      h1, h2, h3 { text-align: center; }
+
+      .bullets {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .bigbullets {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-size: 35px;
+      }
+
+      .remark-slide-content {
+        font-size: 25px;
+        color: #1f282d;
+      }
+
+      .remark-code, .remark-inline-code { font-family: 'Fira Mono'; }
+      .remark-inline-code { background: #f0f0f0; padding: 0px 4px; }
+
+      .left-column { width: 50%; float: left; }
+      .right-column { width: 50%; float: right; }
+      .white {
+        color: #FFFAFA;
+      }
+
+      .title-slide .remark-slide-number {
+        display: none;
+      }
+
+      blockquote {
+        background: #f9f9f9;
+        border-left: 10px solid #ccc;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        quotes: "\201C""\201D""\2018""\2019";
+      }
+      blockquote:before {
+        color: #ccc;
+        content: open-quote;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+      }
+      blockquote p {
+        display: inline;
+      }
+
+      a { color: hotpink; text-decoration: none; }
+      li {  margin: 10px 0; }
+
+      .green { color: green; }
+      .red { color: red; }
+
+      .pure-table {
+        font-size: 17px;
+        border-style: hidden !important;
+      }
+
+      .pure-table td {
+        border-left: 0px !important;
+      }
+
+      .pure-table th {
+        border-left: 0px !important;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+## The Benefits of Online Learning
+
+### (and other shenanigans)
+
+#### Max Halford
+
+<div style="display: flex; flex-direction: row; justify-content: center;">
+
+  <div align="center">
+    <img height="180px" src="/img/slides/creme/element-ai.jpg" />
+    <img height="180px" src="/img/slides/creme/creme.svg" />
+  </div>
+
+</div>
+
+???
+
+Hello!
+
+---
+
+class: middle
+
+## Outline
+
+<div align="center">
+  <img height="300px" src="/img/slides/creme/knowledge.jpg" />
+</div>
+
+---
+
+### A bit about me
+
+.left-column[
+<div align="center">
+  <img height="500px" src="/img/slides/creme/moneyball.jpg" />
+</div>
+]
+
+.right-column[
+- 3rd year PhD student in Toulouse
+- PhD on Bayesian networks applied to database cost models
+- Topics of interest:
+  - Online machine learning
+  - Systems for machine learning
+  - Machine learning for systems
+  - Competitive machine learning
+  - Fair and explainable learning
+- Into opensource (mostly Python)
+- Kaggle Master (rank 247)
+]
+
+---
+
+### Batch learning in a nutshell
+
+.bullets[
+1. Collect features $X$ and labels $Y$
+2. Train a model on $(X, Y)$
+3. Save the model somewhere
+4. Load the model to make predictions
+]
+
+With code:
+
+```python
+>>> model.fit(X_train, y_train)
+>>> dump(model, 'model.json')
+>>> model = load('model.json')
+>>> y_pred = model.predict(X_test)
+```
+
+---
+
+## Lambda architecture
+
+<div align="center">
+  <img height="500px" src="/img/slides/creme/lambda_architecture.svg" />
+</div>
+
+---
+
+background-color: #e66868ff
+class: middle, white
+
+## Batch learning in production has issues
+
+.bigbullets[
+
+1. Models are retrained from scratch with new data 🕒
+2. Models require powerful machines 💰
+3. Models are static and "rot" faster than bananas 🍌
+4. Models that work in development don't always work in production  🤷
+]
+
+???
+
+- [Continuum: a platform for cost-aware low-latency continual learning](https://blog.acolyer.org/2018/11/21/continuum-a-platform-for-cost-aware-low-latency-continual-learning/)
+- [Applied machine learning at Facebook: a datacenter infrastructure perspective](https://blog.acolyer.org/2018/12/17/applied-machine-learning-at-facebook-a-datacenter-infrastructure-perspective/)
+
+As we looked at last month with Continuum, the latency of incorporating the latest data into the models is also really important. There’s a nice section of this paper where the authors study the impact of losing the ability to train models for a period of time and have to serve requests from stale models. The Community Integrity team for example rely on frequently trained models to keep up with the ever changing ways adversaries try to bypass Facebook’s protections and show objectionable content to users. Here training iterations take on the order of days. Even more dependent on the incorporation of recent data into models is the news feed ranking. “Stale News Feed models have a measurable impact on quality.” And if we look at the very core of the business, the Ads Ranking models, “we learned that the impact of leveraging a stale ML model is measured in hours. In other words, using a one-day-old model is measurably worse than using a one-hour old model.” One of the conclusions in this section of the paper is that disaster recovery / high availability for training workloads is key importance. (Another place to practice your chaos engineering ;) ).
+
+---
+
+## Banana rotting time
+
+<div align="center">
+  <img height="440px" src="/img/slides/creme/banana_rotting_time.png" />
+</div>
+
+---
+
+### "If everyone's doing it, it's got to be the best way, right?"
+
+<div align="center">
+  <img height="480px" src="/img/slides/creme/everyone_is_doing_it.png" />
+</div>
+
+---
+
+## Kappa architecture
+
+<div align="center">
+  <img height="500px" src="/img/slides/creme/kappa_architecture.svg" />
+</div>
+
+???
+
+This looks great, but our favorite models such as LightGBM, can be updated incrementally.
+
+---
+
+background-color: #b5ddd1
+class: middle
+
+## Online machine learning
+
+.bigbullets[
+- Subdiscipline of machine learning
+- Data is a stream, potentially infinite
+- Models learn from one observation at a time
+- Features and labels can be dynamic
+- Can be supervised or unsupervised
+]
+
+---
+
+background-color: #2ac380
+class: middle, white
+
+## Different names, same thing 🤔
+
+.bigbullets[
+- Online learning
+- Incremental learning
+- Sequential learning
+- Iterative learning
+- Continuous learning
+- Out-of-core learning
+]
+
+---
+
+background-color: #607bd4
+class: middle, white
+
+## Benefits of online machine learning
+
+.bigbullets[
+1. Models don't have to be retrained
+2. Nothing is too big
+3. Online models (usually) adapt to drift
+4. Model development is closer to reality
+5. Training can be monitored in real-time
+]
+
+---
+
+background-color: #e69138
+class: middle, white
+
+## Applications
+
+.bigbullets[
+- Time series forecasting
+- Spam filtering
+- Recommender systems
+- Ad placement
+- Internet of things
+- Basically, <span style="text-decoration:underline">anything event based</span>
+]
+
+---
+
+background-color: #FF7F50
+class: middle, white
+
+## Why is batch learning so popular?
+
+.bigbullets[
+- Taught at university 🎓
+- (Bad) habits
+- Hype
+- Kaggle 🎯
+- Library availability
+]
+
+---
+
+class: center, middle
+
+<img height="400px" src="/img/slides/creme/edward-bear-bump-bump.png" />
+
+> It is, as far as he knows, the only way of coming downstairs, but sometimes he feels that there really is another way, if only he could stop bumping for a moment and think of it.
+
+???
+
+And just like Winnie the Pooh, we're spending too much time banging our heads to be able to think about a better way of doing things.
+
+---
+
+class: middle
+
+<div align="center">
+  <img height="250" src="/img/slides/creme/creme.svg" alt="creme_logo"/>
+</div>
+
+.bullets[
+- Online machine learning library for Python 🐍
+- Easy to pick up API inspired by `sklearn`
+- Written with production scenarios in mind
+- First commit in January 2019
+- Version `0.4.0` released this month
+]
+
+---
+
+class: center, middle
+
+### PyData Amsterdam 2019 🐍 🇳🇱 🧀
+
+<div align="center">
+  <img height="400px" src="/img/slides/creme/max_pydata.jpg" />
+</div>
+
+---
+
+class: middle
+
+### Features
+
+Representing a set of features using a `dict` is natural:
+
+```python
+x = {
+    'date': dt.datetime(2019, 4, 22),
+    'price': 42.95,
+    'shop': 'Ikea'
+}
+```
+
+- Values can be of any type
+- Feature names can be used instead of array indexes
+- Web request payloads are dictionaries
+
+---
+
+class: middle
+
+### Targets
+
+A target's type depends on the context:
+
+```python
+# Regression
+y = 42
+
+# Binary classification
+y = True
+
+# Multi-class classification
+y = 'setosa'
+
+# Multi-output regression
+y = {
+    'height': 29.7,
+    'width': 21
+}
+```
+
+---
+
+class: middle
+
+### Streaming data
+
+```python
+from creme import stream
+
+X_y = stream.iter_csv('some/csv/file.csv')
+
+for x, y in X_y:
+    print(x, y)
+```
+
+- `X_y` is a **generator**, it doesn't hold data in memory
+- Source depends on your use case (CSV file, Kafka consumer, HTTP requests)
+
+---
+
+class: middle
+
+### Training with `fit_one`
+
+```python
+from creme import linear_model
+from creme import stream
+
+X_y = stream.iter_csv('some/csv/file.csv')
+
+model = linear_model.LogisticRegression()
+
+for x, y in X_y:
+*   model.fit_one(x, y)
+```
+
+Every `creme` estimator has a `fit_one` method
+
+---
+
+class: middle
+
+### Predicting with `predict_one`
+
+```python
+from creme import linear_model
+from creme import stream
+
+X_y = stream.iter_csv('some/csv/file.csv')
+
+model = linear_model.LogisticRegression()
+
+for x, y in X_y:
+*   y_pred = model.predict_one(x)
+    model.fit_one(x, y)
+```
+
+- Classifiers also have a `predict_proba_one` method
+- Transformers have a `transform_one` method
+- Training and predicting phases are inter-leaved
+
+---
+
+class: middle
+
+### Progressive validation 💯
+
+```python
+from creme import linear_model
+from creme import metrics
+from creme import stream
+
+X_y = stream.iter_csv('some/csv/file.csv')
+
+model = linear_model.LogisticRegression()
+
+metric = metrics.Accuracy()
+
+for x, y in X_y:
+    y_pred = model.predict_one(x)
+    model.fit_one(x, y)
+*   metric.update(y, y_pred)
+    print(metric)
+```
+
+Validation score is available for free! No need for cross-validation. You can also use `online_score` from the `model_selection` module.
+
+---
+
+class: middle
+
+### Composing estimators is easy
+
+.left-column[
+```python
+from creme import *
+
+counts = feature_extraction.CountVectorizer()
+tdidf = feature_extraction.TFIDFVectorizer()
+
+scale = preprocessing.StandardScaler()
+
+log_reg = linear_model.LogisticRegression()
+
+model = (counts + tdidf) | scale | log_reg
+
+model.draw()
+```
+]
+
+.right-column[
+<div align="center">
+  <img height="400px" src="/img/slides/creme/pipeline.svg" />
+</div>
+]
+
+---
+
+### Online mean
+
+For every incoming $x$, do:
+
+1. $n = n + 1$
+2. $\mu\_{i+1} = \mu\_{i} + \frac{x - \mu\_{i}}{n}$
+
+```python
+>>> mean = creme.stats.Mean()
+
+>>> mean.update(5)
+>>> mean.get()
+5
+
+>>> mean.update(10)
+>>> mean.get()
+7.5
+```
+
+---
+
+### Online variance
+
+For every incoming $x$, do:
+
+1. $n = n + 1$
+2. $\mu\_{i+1} = \mu\_{i} + \frac{x - \mu\_{i}}{n}$
+3. $s\_{i+1} = s\_i + (x - \mu\_{i}) \times (x - \mu\_{i+1})$
+4. $\sigma\_{i+1} = \frac{s\_{i+1}}{n}$
+
+```python
+>>> variance = creme.stats.Variance()
+
+>>> X = [2, 3, 4, 5]
+>>> for x in X:
+...     variance.update(x)
+>>> variance.get()
+1.25
+
+>>> numpy.var(X)
+1.25
+
+```
+
+???
+
+This is called Welford's algorithm, it can be extended to skew and kurtosis
+
+---
+
+class: middle
+
+### Standard scaling
+
+Using the mean and the variance, we can rescale incoming data.
+
+```python
+>>> scaler = creme.preprocessing.StandardScaler()
+
+>>> for x in [2, 3, 4, 5]:
+...     features = {'x': x}
+...     scaler.fit_one(features)
+...     new_x = scaler.transform_one(features)['x']
+...     print(f'{x} becomes {new_x})
+2 becomes 0.0
+3 becomes 0.9999999999999996
+4 becomes 1.224744871391589
+5 becomes 1.3416407864998738
+
+```
+
+In practice, works better than normalized gradient descent 😲
+
+---
+
+class: middle
+
+### Linear models
+
+Model is:
+
+$$\hat{y}_t = f(w_t, x_t) + b_t$$
+
+Update weights with gradients:
+
+$$w_{t+1}  = u(w_t, x_t, \partial L(y_t, \hat{y}_t))$$
+
+Many models can be derived, for example:
+
+- Use Hinge loss for SVM
+- Add L1/L2 regularisation for LASSO/ridge
+- Add interactions for factorization machines
+
+---
+
+class: middle
+
+### Many online optimizers to choose from
+
+.bullets[
+- Stochastic gradient descent (SGD)
+- Passive-Aggressive (PA)
+- ADAM
+- RMSProp
+- Follow the Regularized Leader (FTRL)
+- Approximate Large Margin Algorithm (ALMA)
+]
+
+<div align="center">
+Many variants of each, as you know
+</div>
+
+---
+
+class: middle
+
+### Nearest neighbors
+
+.bullets[
+- Three parameters:
+  1. The distance function
+  2. The number of neighbors
+  3. The window size
+- .green[Naturally adapts to drift]
+- .red[Lazy]
+]
+
+---
+
+class: middle
+
+### Decision trees 🌳
+
+- A version of Hoeffding trees is being implemented
+- Basic idea:
+  - Start with a leaf 🍃
+  - Find the leaf where an observation belongs 🔎
+  - Update the leaf's "sufficient statistics" 📊
+  - Measure information gain every so often 🔬
+  - Split when the information gain is good enough 🍂
+- Mondrian trees 👨‍🎨 are another possibility but they only work for continuous attributes
+
+---
+
+class: middle
+
+### Decision trees 🌳
+
+Quality criterion of split $x < t$ can be evaluated with:
+
+$$P(y \mid x < t) = \frac{P(x < t \mid y) \times P(y)}{P(x < t)}$$
+
+and:
+
+$$P(y \mid x \geq t) = \frac{(1 - P(x < t \mid y)) \times P(y)}{1 - P(x < t)}$$
+
+- For classification, $P(x < t \mid y)$ is a set of online CDFs and $P(y)$ is a PMF.
+- For regression, $P(x < t \mid y)$ is a 2D CDF and $P(y)$ is a PDF
+- All these distributions can be updated online
+
+---
+
+class: middle
+
+### Bagging
+
+Each observation is sampled $K$ times where $K$ follows a binomial distribution:
+
+$$P(K=k) = {n \choose k} \times (\frac{1}{n})^k \times (1 - \frac{1}{n})^{n-k}$$
+
+As $n$ grows towards infinity, $K$ can be approximated by a Poisson(1):
+
+$$P(K=k) \sim \frac{e^{-1}}{k!} $$
+
+This leads to a simple and efficient online algorithm:
+
+```python
+for model in models:
+    for _ in range(random.poisson(λ=1)):
+        model.fit_one(x, y)
+```
+
+---
+
+class: middle
+
+### AR(I)MA
+
+Model is usually defined as:
+
+$$\hat{y}\_t = \sum\_{i=1}^p \alpha\_i y\_{t-i} + \sum\_{i=1}^q \beta\_i (y\_{t-i} - \hat{y}\_{t-i})$$
+
+Classically, Kalman filters are used to find the weights $\alpha\_i$ and $\beta\_i$. But $y\_{t-i}$ and $\hat{y}\_{t-i}$ can also be [seen as features in an online setting](https://dl.acm.org/citation.cfm?id=3016160):
+
+- Any online learning model can be used
+- Detrending can be done online, so stationarity isn't a problem
+- Heteroscedasticity can be handled
+
+---
+
+class: middle
+
+### Online aggregated features
+
+```python
+>>> import creme
+
+>>> X = [
+...     {'meal': 'tika masala', 'sales': 42},
+...     {'meal': 'kale salad', 'sales': 16},
+...     {'meal': 'kale salad', 'sales': 24},
+...     {'meal': 'tika masala', 'sales': 58}
+... ]
+
+>>> agg = creme.feature_extraction.Agg(
+...     on='sales',
+...     by='meal',
+...     how=creme.stats.Mean()
+... )
+
+>>> for x in X:
+...     print(agg.fit_one(x).transform_one(x))
+{'sales_mean_by_meal': 42.0}
+{'sales_mean_by_meal': 16.0}
+{'sales_mean_by_meal': 20.0}
+{'sales_mean_by_meal': 50.0}
+```
+
+---
+
+background-color: #008080
+class: middle, white
+
+## There is more!
+
+.bullets[
+- Half-space trees for anomaly detection
+- $k$-means clustering
+- Latent Dirichlet allocation (LDA)
+- Expert learning
+- Stacking
+- Recommendation systems
+- See [creme-ml.github.io/api](https://creme-ml.github.io/api.html)
+]
+
+---
+
+### Alternative frameworks
+
+<div align="center">
+  <img height="500px" src="/img/slides/creme/others.svg" />
+</div>
+
+---
+
+class: center, middle
+
+### Binary classification benchmark with default parameters
+
+<div align="center">
+.pure-table.pure-table-striped[
+| Library | Method | Accuracy | Average fit time | Average predict time |
+|---------|------------|----------|------------------|----------------------|
+| creme | LogisticRegression | 0.61810 | .green[26μs] | .green[10μs] |
+| creme | PAClassifier | 0.55009 | 35μs | 22μs |
+| creme      | DecisionTreeClassifier       | 0.64663      | 356μs       |  15μs      |
+| creme      | RandomForestClassifier       | .green[0.65915]      | 3ms, 972μs       |  208μs      |
+| Keras on TF (CPU) | Dense | 0.61840 | 463μs | 534μs |
+| PyTorch (CPU) | Linear | 0.61840 | 926μs | 621μs |
+| scikit-garden | MondrianTreeClassifier | .red[0.53875] | 864μs | 208μs |
+| scikit-garden | MondrianForestClassifier | 0.60061 | .red[9ms, 773μs] | .red[1ms, 233μs] |
+| scikit-learn | SGDClassifier | 0.56161 | 420μs | 116μs |
+| scikit-learn | PassiveAggressiveClassifier | 0.55009 | 398μs | 114μs |
+]
+</div>
+
+---
+
+class: center, middle
+
+### Linear regression benchmark
+
+<div align="center">
+.pure-table.pure-table-striped[
+| Library | Method | MSE | Average fit time | Average predict time |
+|---------|------------|----------|------------------|----------------------|
+| creme | LinearRegression | 23.035085 | 18μs | 4μs |
+| Keras on TF (CPU) | Dense | 23.035086 | 1ms, 208μs | 722μs |
+| PyTorch (CPU) | Linear | 23.035086 | 577μs | 187μs |
+| scikit-learn | SGDRegressor | 25.295369 | 305μs | 108μs |
+]
+</div>
+
+---
+
+background-color: #1f282d
+class: middle, white
+
+## Current work (1)
+
+.bullets[
+- Boosting, many methods but no clear winner:
+  - [Online Bagging and Boosting (Oza-Russell, 2005)](https://ti.arc.nasa.gov/m/profile/oza/files/ozru01a.pdf)
+  - [Online Gradient Boosting (Beygelzimer, 2015)](https://arxiv.org/pdf/1506.04820.pdf)
+  - [Optimal and Adaptive Algorithms for Online Boosting (Beygelzimer, 2015)](http://proceedings.mlr.press/v37/beygelzimer15.pdf)
+- Mixture models through expectation-maximization:
+  - [Recursive Parameter Estimation Using Incomplete Data (Titterington, 1982)](https://apps.dtic.mil/dtic/tr/fulltext/u2/a116190.pdf)
+  - [A View of the EM Algorithm that Justifies Incremental, Sparse, and other Variants (Neal-Hinton, 1998)](http://www.cs.toronto.edu/~fritz/absps/emk.pdf)
+  - [Online EM Algorithm for Latent Data Models (Cappé-Moulines 2009)](https://hal.archives-ouvertes.fr/hal-00201327/document)
+]
+
+---
+
+background-color: #1f282d
+class: middle, white
+
+## Current work (2)
+
+.bullets[
+- Field-aware factorization machines (FFM):
+  - [Factorization Machines (Rendle, 2010)](https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf)
+  - [Field-aware Factorization Machines for CTR Prediction (Juan et al., 2016)](https://www.csie.ntu.edu.tw/~cjlin/papers/ffm.pdf)
+  - [Field-aware Factorization Machines in a Real-world Online Advertising System (Juan-Lefortier-Chappelle, 2017)](https://arxiv.org/pdf/1701.04099.pdf)
+- Metric learning:
+  - [Online and Batch Learning of Pseudo-Metrics (Shwartz-Singer-Ng, 2004)](https://ai.stanford.edu/~ang/papers/icml04-onlinemetric.pdf)
+  - [Information-Theoretic Metric Learning (Davis et al., 2007)](http://www.cs.utexas.edu/users/pjain/pubs/metriclearning_icml.pdf)
+  - [Online Metric Learning and Fast Similarity Search (Jain et al., 2009)](http://people.bu.edu/bkulis/pubs/nips_online.pdf)
+]
+
+---
+
+class: center, middle
+
+# Thanks for listening!
+
+.left-column[
+<div align="center">
+  <img height="440px" src="/img/slides/creme/yoda.jpg" />
+</div>
+]
+
+.right-column[
+<div align="center" style="margin-top: 50px;">
+  <img height="400px" src="/img/slides/creme/qr_code.svg" />
+</div>
+]
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+      var options = {};
+      var renderMath = function() {
+        renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+        ]});
+      }
+      var slideshow = remark.create(
+        {
+          slideNumberFormat: function (current, total) {
+            if (current === 1) { return "" }
+            return current;
+          },
+          highlightStyle: 'github',
+          highlightLines: true,
+          ratio: '16:9'
+        },
+        renderMath
+      );
+    </script>
+  </body>
+</html>
