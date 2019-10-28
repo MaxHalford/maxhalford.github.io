@@ -58,6 +58,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Tidy Data - Hadley Wickham](https://vita.had.co.nz/papers/tidy-data.pdf) -- If you like playing with data then you need to be aware of this one.
 - [Gaussian Process, not quite for dummies - Yuge Shi](https://yugeten.github.io/posts/2019/09/GP/) -- Gaussian processes are quite difficult to understand (at least, for me) but Yuge gives some great visual intuitions.
 - [Continuous Delivery for Machine Learning - Martin Fowler](https://martinfowler.com/articles/cd4ml.html)
+- [Memos - Sriram Krishnan](https://sriramk.com/memos)
 
 ## Blogs
 

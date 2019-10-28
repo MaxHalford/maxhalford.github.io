@@ -95,7 +95,6 @@ class: center, middle
 <div style="display: flex; flex-direction: row; justify-content: center;">
 
   <div align="center">
-    <img height="180px" src="/img/slides/creme/element-ai.jpg" />
     <img height="180px" src="/img/slides/creme/creme.svg" />
   </div>
 
@@ -315,17 +314,17 @@ class: middle
 
 .bullets[
 - Online machine learning library for Python 🐍
-- Easy to pick up API inspired by `sklearn`
+- Easy to pick up API inspired by scikit-learn
 - Written with production scenarios in mind
 - First commit in January 2019
-- Version `0.4.0` released this month
+- Version `0.4.3` released this week (with wheels!)
 ]
 
 ---
 
 class: center, middle
 
-### PyData Amsterdam 2019 🐍 🇳🇱 🧀
+### PyData Amsterdam, May 2019 🐍 🇳🇱 🧀
 
 <div align="center">
   <img height="400px" src="/img/slides/creme/max_pydata.jpg" />
@@ -610,6 +609,38 @@ Many variants of each, as you know
 
 class: middle
 
+### Bayesian linear models
+
+We want the posterior target distribution on the target:
+
+$$\color{forestgreen} p(y\_t | x\_t) \color{black} \propto \color{crimson} p(y_t | w_t, x_t) \color{royalblue} p(w_t)$$
+
+We first need to compute the posterior distribution of the weights:
+
+$$\color{blueviolet} p(w\_{t} | w\_{t-1}, x\_t, y\_t) \color{black} \propto \color{crimson} p(y\_t | w\_{t-1}, x\_t) \color{royalblue} p(w\_{t-1})$$
+
+This is old-school Bayesian learning, it is different from and predecesses the Monte-Carlo mumbo-jumbo.
+
+---
+
+class: middle
+
+### Online belief updating
+
+Before any data comes in, the model parameters follow the initial distribution we picked, which is $\color{royalblue} p(w\_0)$. Next, once the first observation $(x\_0, y\_0)$ arrives, we can obtain the distribution of $w\_1$:
+
+$$\color{blueviolet} p(w\_1 | w\_0, x\_0, y\_0) \color{black} \propto \color{crimson} p(y\_0 | w\_0, x\_0) \color{royalblue} p(w\_0)$$
+
+Once the second observation $(x\_1, y\_1)$ is available, the distribution of the model parameters is obtained in the same way:
+
+$$\color{blueviolet} p(w\_2 | w\_1, x\_1, y\_1) \color{black} \propto \color{crimson} p(y\_1 | w\_1, x\_1) \color{royalblue} p(w\_1) \propto \color{crimson} p(y\_1 | w\_1, x\_1) \color{blueviolet} p(w\_1 | w\_0, x\_0, y\_0)$$
+
+The $\propto$ symbol means there is an analytical formula that can be derived.
+
+---
+
+class: middle
+
 ### Nearest neighbors
 
 .bullets[
@@ -680,17 +711,18 @@ for model in models:
 
 class: middle
 
-### AR(I)MA
+### (S)AR(I)MA(X)
 
 Model is usually defined as:
 
-$$\hat{y}\_t = \sum\_{i=1}^p \alpha\_i y\_{t-i} + \sum\_{i=1}^q \beta\_i (y\_{t-i} - \hat{y}\_{t-i})$$
+$$\hat{y}\_t = \sum\_{i=1}^p \alpha\_i y\_{t-i} + \sum\_{i=1}^q \beta\_i (y\_{t-i} - \hat{y}\_{t-i}) $$
 
-Classically, Kalman filters are used to find the weights $\alpha\_i$ and $\beta\_i$. But $y\_{t-i}$ and $\hat{y}\_{t-i}$ can also be [seen as features in an online setting](https://dl.acm.org/citation.cfm?id=3016160) (teacher forcing?):
+Classically, Kalman filters are used to find the weights $\alpha\_i$ and $\beta\_i$. But $y\_{t-i}$ and $\hat{y}\_{t-i}$ can also be [seen as features in an online setting](https://dl.acm.org/citation.cfm?id=3016160):
 
 - Any online learning model can be used
-- Detrending can be done online, so stationarity isn't a problem
-- Heteroscedasticity can be handled
+- Detrending can be done online
+- Heteroscedasticity can be handled online
+- Exogenous variables can be added
 
 ---
 
@@ -727,7 +759,7 @@ class: middle
 background-color: #008080
 class: middle, white
 
-## There is more!
+## There is much more
 
 .bullets[
 - Half-space trees for anomaly detection
@@ -825,6 +857,20 @@ class: middle, white
 
 ---
 
+background-color: #85144b
+class: middle, white
+
+## You can help
+
+.bigbullets[
+- Use it and tell us about it
+- Share it with others
+- Take on issues on GitHub
+- Become a core contributor
+]
+
+---
+
 class: center, middle
 
 # Thanks for listening!
@@ -846,7 +892,7 @@ class: center, middle
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
-    <link rel="stylesheet" href="https://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
     <script type="text/javascript">
       var options = {};
