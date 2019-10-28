@@ -711,16 +711,17 @@ for model in models:
 
 class: middle
 
-### (S)AR(I)MA(X)
+### (S)(N)(AR)(I)(MA)(X)
 
-Model is usually defined as:
+ARMA model is defined as so:
 
 $$\hat{y}\_t = \sum\_{i=1}^p \alpha\_i y\_{t-i} + \sum\_{i=1}^q \beta\_i (y\_{t-i} - \hat{y}\_{t-i}) $$
 
 Classically, Kalman filters are used to find the weights $\alpha\_i$ and $\beta\_i$. But $y\_{t-i}$ and $\hat{y}\_{t-i}$ can also be [seen as features in an online setting](https://dl.acm.org/citation.cfm?id=3016160):
 
+- Seasonality can be handled online
 - Any online learning model can be used
-- Detrending can be done online
+- Detrending by differencing can be done online
 - Heteroscedasticity can be handled online
 - Exogenous variables can be added
 

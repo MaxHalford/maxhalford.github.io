@@ -5,19 +5,25 @@ title: Links
 
 ## Papers
 
-- [An Approach Based on Bayesian Networks for Query Selectivity Estimation](https://link.springer.com/chapter/10.1007/978-3-030-18579-4_1) ([slides](/slides/dasfaa-2019.pdf))
-- [Cost models in database query optimisation bibliography](https://www.sharelatex.com/project/59f0867a5cd281015b4cd5c6)
+- [An Approach Based on Bayesian Networks for Query Selectivity Estimation - DASFAA, 2019](https://link.springer.com/chapter/10.1007/978-3-030-18579-4_1)
 - Master 2 year internship at [HelloFresh](https://www.hellofresh.com/) ([report](/files/internships/M2_report.pdf), [slides](/files/internships/M2_slides.pdf))
 - Master 1 year internship at [Privateaser](https://www.privateaser.com/) ([report](/files/internships/M1_report.pdf), [slides](/files/internships/M1_slides.pdf))
 - Undergraduate internship at [INSA Toulouse](http://www.insa-toulouse.fr/fr/index.html) ([report](/files/internships/L3_report.pdf), [slides](/files/internships/L3_slides.pdf))
 - [Detailed solutions to the first 30 Project Euler problems](/files/papers/project_euler_solutions.pdf)
 
-## Presentations
+## Talks
 
-- [Machine learning incrémental: des concepts à la pratique - TDS Meetup 2019](/slides/creme-tds)
-- [Online machine learning with creme - PyData Amsterdam 2019](/slides/creme-pydata)
-- [Docker for data science - HelloFresh Data Science Academy](/slides/docker-data-science.pdf)
-- [Forecasting bicycle-sharing usage - Toulouse Data Science 2016](https://www.youtube.com/watch?v=vQGdzKkyPP0)
+I've given a few talks at conferences and companies.
+
+- [The Benefits of Online Learning - Quantmetry, Paris, 2019](/slides/the-benefits-of-online-learning)
+- [The Benefits of Online Learning - Element AI, London, 2019](/slides/the-benefits-of-online-learning)
+- [The Benefits of Online Learning - Airbus BizLab, Toulouse, 2019](/slides/the-benefits-of-online-learning)
+- [An Approach Based on Bayesian Networks for Query Selectivity Estimation - DASFAA, 2019](/slides/dasfaa-2019.pdf)
+- [Machine learning incrémental: des concepts à la pratique - Toulouse Data Science, 2019](/slides/creme-tds)
+- [Online machine learning with creme - PyData, Amsterdam, 2019](/slides/creme-pydata)
+- [Docker for data science - HelloFresh, Berlin, 2017](/slides/docker-data-science.pdf)
+- [Challenge Big Data - Toulouse, 2017](https://www.youtube.com/watch?v=oQd1h-8Srf4&feature=youtu.be)
+- [Forecasting bicycle-sharing usage - Toulouse Data Science, 2016](https://www.youtube.com/watch?v=vQGdzKkyPP0)
 
 ## Datasets
 

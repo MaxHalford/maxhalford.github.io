@@ -31,10 +31,10 @@ identifier             = "links"
 url                    = "/links/"
 
 [[menu.main]]
-name                   = "About"
+name                   = "Bio"
 weight                 = -100
-identifier             = "about"
-url                    = "/about/"
+identifier             = "bio"
+url                    = "/bio/"
 
 [[menu.main]]
 name                   = "Resume"
