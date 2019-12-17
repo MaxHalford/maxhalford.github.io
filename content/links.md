@@ -65,6 +65,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Gaussian Process, not quite for dummies - Yuge Shi](https://yugeten.github.io/posts/2019/09/GP/) -- Gaussian processes are quite difficult to understand (at least, for me) but Yuge gives some great visual intuitions.
 - [Continuous Delivery for Machine Learning - Martin Fowler](https://martinfowler.com/articles/cd4ml.html)
 - [Memos - Sriram Krishnan](https://sriramk.com/memos)
+- [Frequentism and Bayesianism: A Python-driven Primer](https://arxiv.org/pdf/1411.5018.pdf)
 
 ## Blogs
 
