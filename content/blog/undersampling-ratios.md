@@ -127,6 +127,8 @@ True: 10049 (0.10049)
 Now let's sample the values using our methodology:
 
 ```python
+rng = random.Random(42)
+
 rates = {
     True: 1,
     False: (desired[False] * actual[True]) / (desired[True] * actual[False])
@@ -134,7 +136,7 @@ rates = {
 
 sample = []
 for v in values:
-    p = random.random()
+    p = rng.random()
     if p < rates[v]:
         sample.append(v)
 
@@ -160,7 +162,7 @@ rng = random.Random(42)
 
 def stream_values(n):
     for _ in range(n):
-        p = random.random()
+        p = rng.random()
         if p < .1:
             yield 'a'
         elif p < 0.7:
@@ -230,9 +232,11 @@ In our case this gives us:
 Now let's sample:
 
 ```python
+rng = random.Random(42)
+
 sample = []
 for v in values:
-    p = random.random()
+    p = rng.random()
     if p < rates[v]:
         sample.append(v)
 
@@ -264,7 +268,7 @@ desired = {'a': 0.5, 'b': 0.3, 'c': 0.2}
 
 def stream_values(n):
     for _ in range(n):
-        p = random.random()
+        p = rng.random()
         if p < .1:
             yield 'a'
         elif p < 0.7:
@@ -279,7 +283,7 @@ for v in stream_values(n):
     pivot = max(actual.keys(), key=lambda x: desired[x] / actual[x])
     ratio = (desired[v] * actual[pivot]) / (desired[pivot] * actual[v])
 
-    p = random.random()
+    p = rng.random()
     if p < ratio:
         sample_counts[v] += 1
 
@@ -290,9 +294,9 @@ for v, c in sorted(sample_counts.items()):
 This gives us:
 
 ```python
-a: 9914 (0.49632040050062576)
-b: 6091 (0.3049311639549437)
-c: 3970 (0.19874843554443053)
+a: 10022 (0.500999800039992)
+b: 6021 (0.3009898020395921)
+c: 3961 (0.19801039792041591)
 ```
 
 I'm quite satisfied by this result. I'll probably be adding an implementation to [`creme`](https://github.com/creme-ml/creme) in the next few days.
