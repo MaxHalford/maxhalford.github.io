@@ -4,13 +4,19 @@ draft = true
 title = "Some useful pandas tricks"
 +++
 
-Largest number of consecutive null values.
+## Rolling counts
+
+```python
+df.groupby(['id', 'moment']).agg({'variable': 'size'}).groupby('id').cumsum()
+```
+
+## Largest number of consecutive null values
 
 ```python
 weather.air_temperature.isnull().astype(int).groupby(weather.air_temperature.notnull().astype(int).cumsum()).sum().max()
 ```
 
-Aggregates on shifted windows.
+## Aggregates on shifted windows
 
 ```python
 import pandas as pd
@@ -42,7 +48,7 @@ for feature in agg:
     df[feature] = df.groupby(by)[feature].ffill()
 ```
 
-Saving to Dropbox.
+## Saving to Dropbox
 
 ```python
 import dropbox

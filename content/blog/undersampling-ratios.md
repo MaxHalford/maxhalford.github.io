@@ -6,7 +6,7 @@ title = "Under-sampling a dataset with desired ratios"
 
 ## Introduction
 
-I've just spent a few hours looking at under-sampling and how it can help a classifier learn from an imbalanced dataset. The idea is quite simple: randomly sample the majority class and leave the majority class untouched. There are more sophisticated ways to do this -- for instance by creating synthetic observations from the minority class *à la* [SMOTE](http://rikunert.com/SMOTE_explained) -- but I won't be discussing that here.
+I've just spent a few hours looking at under-sampling and how it can help a classifier learn from an imbalanced dataset. The idea is quite simple: randomly sample the majority class and leave the minority class untouched. There are more sophisticated ways to do this -- for instance by creating synthetic observations from the minority class *à la* [SMOTE](http://rikunert.com/SMOTE_explained) -- but I won't be discussing that here.
 
 I checked out the [`imblearn`](https://imbalanced-learn.readthedocs.io/en/stable/index.html) library and noticed they have an implementation of random under-sampling aptly named [`RandomUnderSampler`](https://imbalanced-learn.readthedocs.io/en/stable/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler). It contains a `sampling_strategy` parameter which gives some control over the sampling. By the default the observations are resampled so that each class is equally represented:
 
@@ -263,7 +263,7 @@ rng = random.Random(42)
 n = 100000
 sample_counts = collections.defaultdict(int)
 actual = collections.defaultdict(int)
-desired = {'a': 0.5, 'b': 0.3, 'c': 0.2}
+desired = {'a': .5, 'b': .3, 'c': .2}
 
 
 def stream_values(n):
@@ -271,7 +271,7 @@ def stream_values(n):
         p = rng.random()
         if p < .1:
             yield 'a'
-        elif p < 0.7:
+        elif p < .7:
             yield 'b'
         else:
             yield 'c'
