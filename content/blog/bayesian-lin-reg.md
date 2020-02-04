@@ -19,15 +19,15 @@ I like to think of a Bayesian model as a set of blocks. For forecasting purposes
 
 {{<color forestgreen "$$p(y_i | x_i)$$">}}
 
-{{<color forestgreen "This is the distribution we want">}}. Later on we'll see how the predictive distribution is derived from the rest of the blocks.
+{{<color forestgreen "This is the distribution we want">}}. It's the goal of many practitioners who want to take into account predictive uncertainty. Later on we'll see how the predictive distribution is obtained by assembling the rest of the blocks.
 </p>
 
 <p style="border:3px; border-style:solid; border-color:crimson; padding: 1em">
-The next block is the {{<color crimson likelihood>}}, which is the probability distribution of an observation $y_i)$ conditioned on the current model parameters $w_i$ and a set of features $x_i$. In other words, given the current state of the model, the likelihood tells you how realistic it is to predict $y_i$ when receiving $x_i$. We'll write it down as follows:
+The next block is the {{<color crimson likelihood>}}, which is the probability distribution of an observation $y_i$ conditioned on the current model parameters $w_i$ and a set of features $x_i$. In other words, given the current state of the model, the likelihood tells you how realistic it is to predict $y_i$ when receiving $x_i$. We'll write it down as follows:
 
 {{<color crimson "$$p(y_i | w_i, x_i)$$">}}
 
-The thing is that the likelihood is usually imposed by the problem you're dealing with. For example you could assume that $y_i$ is related to $x_i$ and that the relationship has Gaussian noise in it. Most of the time the likelihood is presented as a Gaussian distribution or a Bernoulli distribution, mostly because these distributions occur naturally. The point I want to make is that {{<color crimson "the likelihood is something you have to choose">}}.
+The thing is that the likelihood is usually imposed by the problem you're dealing with. For example you could assume that $y_i$ is related to $x_i$ and that the relationship has Gaussian noise in it. Most of the time the likelihood is presented as a Gaussian distribution or a Bernoulli distribution, mostly because these distributions occur naturally. However the likelihood can be any parametric distribution. The point I want to make is that {{<color crimson "the likelihood is something you have to choose">}}.
 </p>
 
 <p style="border:3px; border-style:solid; border-color:royalblue; padding: 1em">
@@ -35,7 +35,7 @@ Next, we have the {{<color royalblue "prior distribution">}} of the model parame
 
 {{<color royalblue "$$p(w_{i})$$">}}
 
-Choosing a prior is important, because for our case it can add regularization to our model. The trick is that if we choose a prior distribution that is so-called <i>conjugate</i> for the likelihood, then we get access to analytical formulas for updating the model parameters. If however the prior and the likelihood are not compatible with each other, then we have to resort to using approximate methods such as <a href="ttps://twiecki.io/blog/2015/11/10/mcmc-sampling">MCMC</a> and <a href="https://www.wikiwand.com/en/Variational_Bayesian_methods">variational inference</a>. The issue is that as cool as they may be, these tools are designed for situations where all the data is available at once. In other words they are not applicable in a streaming context, whereas analytical formulas (usually) are.
+Choosing a prior is important, because for our case it can add regularization to our model. The trick is that if we choose a prior distribution that is so-called <i>conjugate</i> for the {{<color crimson likelihood>}}, then we get access to analytical formulas for updating the model parameters. If however the prior and the likelihood are not compatible with each other, then we have to resort to using approximate methods such as <a href="ttps://twiecki.io/blog/2015/11/10/mcmc-sampling">MCMC</a> and <a href="https://www.wikiwand.com/en/Variational_Bayesian_methods">variational inference</a>. As cool as they may be, these tools are designed for situations where all the data is available at once. In other words they are not applicable in a streaming context, whereas analytical formulas are.
 </p>
 
 <p style="border:3px; border-style:solid; border-color:blueviolet; padding: 1em">
@@ -46,11 +46,11 @@ Finally, the {{<color blueviolet "posterior distribution">}} represents the dist
 As you might have understood, the {{<color blueviolet "posterior distribution">}} is obtained by combining the {{<color crimson likelihood>}} of $(x_{i}, y_{i})$ and the {{<color royalblue "prior distribution">}} of the current model parameters $w_{i}$. As a mnemonic, {{<color crimson red>}} $+$ {{<color royalblue blue>}} $=$ {{<color blueviolet purple>}}.
 </p>
 
-Now that we have all our blocks, we need to put them together. It's quite straightforward once you understand the blocks are related. {{<color crimson "You start off with the likelihood, which is a probability distribution you have to choose">}}. For example if you're looking to predict counts then you would use a Poisson distribution. I'm refraining from giving a more detailed example simply because we will be going over one later on. What matters for the while is to develop an intuition. {{<color royalblue "Once you have settled on a likelihood, you need to choose a prior distribution for the model parameters">}}. Because our focus is on online learning, we want to pick a prior distribution which is conjugate to the likelihood. As already mentioned, the reason why is because we would like to have a quick analytical formula that doesn't require any MCMC voodoo. Note that most distributions have at least one other distribution which is conjugate to them, as detailed [here](https://www.wikiwand.com/en/Conjugate_prior#/Table_of_conjugate_distributions). {{<color blueviolet "Now that you decided which likelihood to use and what prior to associate with it, you may derive the posterior distribution of the model parameters">}}. This operation is the cornerstone of Bayesian inference, and is done via Bayes' rule:
+Now that we have all our blocks, we need to put them together. It's quite straightforward once you understand how the blocks are related. {{<color crimson "You start off with the likelihood, which is a probability distribution you have to choose">}}. For example if you're looking to predict counts then you would use a Poisson distribution. I'm refraining from giving a more detailed example simply because we will be going over one later on. What matters for the while is to develop an intuition, and for that I want to keep the notation as general as possible. {{<color royalblue "Once you have settled on a likelihood, you need to choose a prior distribution for the model parameters">}}. Because our focus is on online learning, we want to have access to quick analytical formulas, and not MCMC voodoo. In order to so, we need to pick a prior distribution which is conjugate to the likelihood. Note that most distributions have at least one other distribution which is conjugate to them, as detailed [here](https://www.wikiwand.com/en/Conjugate_prior#/Table_of_conjugate_distributions). {{<color blueviolet "Now that you have decided which likelihood to use and what prior to associate with it, you may derive the posterior distribution of the model parameters">}}. This operation is the cornerstone of Bayesian inference, and is done via Bayes' rule:
 
 $$\color{blueviolet} p(w_{i+1} | w_i, x_i, y_i) \color{black} = \frac{\color{crimson} p(y_i | w_i, x_i) \color{royalblue} p(w_i)}{\color{black} p(x_i | y_i)}$$
 
-Now you may be wondering what $p(x_i | y_i)$ is. It turns out it is the distribution of the data, and is something that we don't know! The trick is that we can determine it by integrating the numerator with respect to $w_i$, which gives us:
+On a side-note, check out [this recent video by 3Blue1Brown](https://www.youtube.com/watch?v=HZGCoVF3YvM) on Bayes' rule. Now you may be wondering what $p(x_i | y_i)$ is. It turns out it is the distribution of the data, and is something that we don't know! If we knew it, then we wouldn't have to be doing machine learning in the first place: we would know the process which generates the data. The trick is that we can determine it by integrating the numerator with respect to $w_i$, which gives us:
 
 $$\color{blueviolet} p(w_{i+1} | w_i, x_i, y_i) \color{black} = \frac{\color{crimson} p(y_i | w_i, x_i) \color{royalblue} p(w_i)}{\color{black} \int \color{crimson} p(y_i | \textbf{w}, x_i) \color{royalblue} p(\textbf{w}) \color{black} d\textbf{w}}$$
 
@@ -96,6 +96,8 @@ $$y\_i = w\_i x\_i^t + \epsilon_i$$
 Each prediction is the scalar product between $p$ features $x_i$ and $p$ weights $w_i$. The trick here is that we're going to assume that the noise $\epsilon_i$ follows a given distribution. By doing so, we're also assuming that the target follows the same distribution, but at a different scale.
 
 ### Gaussian prior
+
+https://www.youtube.com/watch?v=nrd4AnDLR3U&list=PLD0F06AA0D2E8FFBA&index=61
 
 The likelihood is a Gaussian distribution:
 
@@ -148,10 +150,10 @@ class BayesLinReg:
 
     def update(self, x, y):
 
-        # Calculate the new inverse covariance (Bishop eq. 3.51)
+        # Update the inverse covariance matrix (Bishop eq. 3.51)
         cov_inv = self.cov_inv + self.beta * np.outer(x, x)
 
-        # Calculate the new mean (Bishop eq. 3.50)
+        # Update the mean vector (Bishop eq. 3.50)
         cov = np.linalg.inv(cov_inv)
         mean = cov @ (self.cov_inv @ self.mean + self.beta * x * y)
 
@@ -160,10 +162,10 @@ class BayesLinReg:
 
     def predict(self, x):
 
-        # Bishop eq. 3.58
+        # Obtain the predictive mean (Bishop eq. 3.58)
         y_pred_mean = np.dot(self.mean, x)
 
-        # Bishop eq. 3.59
+        # Obtain the predictive variance (Bishop eq. 3.59)
         w_cov = np.linalg.inv(self.cov_inv)
         y_pred_var = 1 / self.beta + x @ w_cov @ x.T
 
@@ -195,9 +197,11 @@ for x, y in X_y:
 print(metric)
 ```
 
-### Zero-mean isotropic Gaussian prior
+## One step further: learning $\beta$
 
-### Isotropic Gaussian prior
+## Zero-mean isotropic Gaussian prior
+
+## Isotropic Gaussian prior
 
 ## Going further
 
