@@ -1,7 +1,7 @@
 +++
 date = "2019-06-02"
 draft = true
-title = "Bayesian, online, linear, regression"
+title = "Bayesian linear regression for colorful people"
 +++
 
 ## Motivation
