@@ -265,6 +265,6 @@ ax.set_title('Running time in seconds of the BNL algorithm')
 
 ![durations](/img/blog/skyline-queries/durations.svg)
 
-I didn't take the time to code any other algorithm but I'm rather satisfied with this for the moment. I'm going to open an issue on `pandas` and see if there is any interest to pursue this further. One property of the block nested loop algorithm that might have gone unnoticed is that it works for streaming scenarios, and I will thus be adding to [creme](https://github.com/creme-ml/creme) in the upcoming days.
+I didn't take the time to code any other algorithm but I'm rather satisfied with this for the moment. I'm going to open an issue on `pandas` and see if there is any interest to pursue this further. One property of the block nested loop algorithm that might have gone unnoticed is that it works for streaming scenarios, and I will thus be adding an implementation to [creme](https://github.com/creme-ml/creme) in the upcoming days.
 
 I hope you enjoyed the read. Feel free to get in touch if anything bugs you or if you know any better algorithm.
