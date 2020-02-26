@@ -1,18 +1,13 @@
 language: go
 
 go:
-  - 1.7
+  - 1.12
 
 install: true
 
-addons:
-  apt:
-    packages:
-      - python-pygments
-
 env:
   global:
-    - HUGO_VERSION=0.40
+    - HUGO_VERSION=0.64.0
 
 before_install:
   - mkdir -p bin
