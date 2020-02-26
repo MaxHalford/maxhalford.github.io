@@ -233,3 +233,28 @@ pre {
   bottom: 0;
   background: white;
 }
+
+/* details and summary (basically a collapsable div) */
+
+details {
+  margin-bottom: 16px;
+  border-color: #E6EBF1;
+  border-width: 3px;
+  border-radius: 5px;
+  border-style: solid;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+details > summary {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+details > pre {
+  margin-top: 6px;
+}
+
+summary:hover {
+  cursor: pointer;
+}

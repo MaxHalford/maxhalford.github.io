@@ -58,11 +58,7 @@ Now that we have all our blocks, we need to put them together. It's quite straig
 
 $$\color{blueviolet} p(\theta_{i+1} | \theta_i, x_i, y_i) \color{black} = \frac{\color{crimson} p(y_i | x_i, \theta_i) \color{royalblue} p(\theta_i)}{\color{black} p(x_i, y_i)}$$
 
-Now you may be wondering what $p(x_i, y_i)$ is. It turns out it is the distribution of the data, and is something that we don't know! Indeed, if we knew the generating process of the data, then we wouldn't really have to be doing machine learning in the first place, right? The trick is that we can determine it by integrating the numerator with respect to $\theta_i$, which gives us:
-
-$$\color{blueviolet} p(\theta_{i+1} | \theta_i, x_i, y_i) \color{black} = \frac{\color{crimson} p(y_i | x_i, \theta_i) \color{royalblue} p(\theta_i)}{\color{black} \int \color{crimson} p(y_i | x_i, \textbf{w}) \color{royalblue} p(\textbf{w}) \color{black} d\textbf{w}}$$
-
-The symbol $\textbf{w}$ stands for all the possible values that $\theta_i$ can take. This is why some people say that Bayesian models take into account uncertainty by considering "all possible worlds". In the general case, the integral in the denominator has no analytical solution, which motivates the use of [MCMC](https://www.wikiwand.com/en/Markov_chain_Monte_Carlo) and [variational](https://www.wikiwand.com/en/Variational_Bayesian_methods) methods. For instance, this is the case for [Bayesian deep learning](https://twiecki.io/blog/2016/06/01/bayesian-deep-learning/). Meanwhile, analytical solutions do exist when the likelihood and the prior are conjugate to each other, which is the case in which we are interested for online learning purposes. To keep things general, we will simply write down:
+Now you may be wondering what $p(x_i, y_i)$ is. It turns out it is the distribution of the data, and is something that we don't know! Indeed, if we knew the generating process of the data, then we wouldn't really have to be doing machine learning in the first place, right? There are however analytical formulas that use the rest of the information at our disposal -- namely the {{<color royalblue prior>}} and the {{<color crimson likelihood>}} -- but they require the likelihood and the prior to be conjugate to each other. These formula involve a sequence of mathematical steps which we will omit. All you have to know is that if the {{<color royalblue prior>}} and the {{<color crimson likelihood>}} are conjugate to each other, then an analytical formula for computing the posterior is available, which allows us to perform online learning. To keep things general, we will simply write down:
 
 $$\color{blueviolet} p(\theta_{i+1} | \theta_i, x_i, y_i) \color{black} \propto \color{crimson} p(y_i | x_i, \theta_i) \color{royalblue} p(\theta_i)$$
 
@@ -103,6 +99,8 @@ When the first pair $(x_2, y_2)$ arrives, the distribution of the weights will b
 $$\color{blueviolet} p(\theta_3 | \theta_1, x_2, y_2) \color{black} \propto \color{crimson} p(y_2 | x_2, \theta_2) \color{black} \underbrace{\color{crimson} p(y_1 | x_1, \theta_1) \color{black} \underbrace{\color{crimson} p(y_0 | x_0, \theta_0) \color{royalblue} p(\theta_0)}_{\color{royalblue} p(\theta_1)}  }\_{\color{royalblue} p(\theta_2)}$$
 
 Hopefully, by now you've understood that there is recursive relationship that links each iteration: the posterior distribution at step $i$ becomes the prior distribution at step $i+1$. This simple fact is the reason why analytical Bayesian inference can naturally be used as an online machine learning algorithm. Indeed, we only need to store the current distribution of the weights to make everything work. When I started to understand this for the first time, I found it slightly magical.
+
+On a sidenote, I want to mention that this presentation of Bayesian inference is very much "old school". Most people who do Bayesian inference use MCMC and variational inference techniques. These tools are really cool, and I highly recommend checking out libraries such as [Stan](https://github.com/stan-dev/stan), [PyMC3](https://docs.pymc.io/) -- (and [PyMC4](https://github.com/pymc-devs/pymc4) which will be it's successor), [Edward](https://github.com/blei-lab/edward), and [Pyro](https://github.com/pyro-ppl/pyro). The issue with these tools is that they require having all the training data available in memory, and thus are not able to learn in an online manner. There do however seem to be some variants that work online, such as [sequential Monte Carlo](https://www.wikiwand.com/en/Particle_filter) and [stochastic variational inference](http://www.columbia.edu/~jwp2128/Papers/HoffmanBleiWangPaisley2013.pdf). In my experience these algorithms work well for mini-batches, but not necessarily in a pure online setting where the observations are processed one-by-one. I will probably be discussing these methods in a future blog post.
 
 ## The case of linear regression
 
@@ -234,7 +232,10 @@ There are a couple of differences with the previous snippet: the data is scaled 
 
 ## Some visualisation
 
-In a Bayesian linear regression, the weights follow a distribution that quantifies their uncertainty. In the case where there are two features -- and therefore two weights in a linear regression -- this distribution can be represented with a [contour plot](https://www.itl.nist.gov/div898/handbook/eda/section3/contour.htm). As for the predictive distribution, which quantifies the uncertainty of the model regarding the spread of possible feature values, we can visualize it with a shaded area, as is sometimes done in [control charts](https://www.wikiwand.com/en/Control_chart). The following snippet contains all the code for producing a visualization of both distributions. The data is generated by taking samples from a linear regression of fixed parameters with some Gaussian noise added to the output.
+In a Bayesian linear regression, the weights follow a distribution that quantifies their uncertainty. In the case where there are two features -- and therefore two weights in a linear regression -- this distribution can be represented with a [contour plot](https://www.itl.nist.gov/div898/handbook/eda/section3/contour.htm). As for the predictive distribution, which quantifies the uncertainty of the model regarding the spread of possible feature values, we can visualize it with a shaded area, as is sometimes done in [control charts](https://www.wikiwand.com/en/Control_chart). The following piece of code contains all the steps for producing a visualization of both distributions. The data is generated by taking samples from a linear regression of fixed parameters with some Gaussian noise added to the output.
+
+<details>
+  <summary>Click to see the code</summary>
 
 ```python
 from mpl_toolkits.axes_grid1 import ImageGrid
@@ -316,8 +317,7 @@ for i, (xi, yi) in enumerate(sample(n_samples)):
     # Plot the true target distribution
     ax.plot(w, [np.dot(weights, [1, xi]) for xi in w], color='red')
 ```
-
-I tried to keep the code as terse as possible, but it's still rather verbose, which I apologize for. Anyway, here's the output:
+</details>
 
 ![viz](/img/blog/bayesian-linear-regression/viz.png)
 
@@ -627,6 +627,9 @@ $$m\_{i+1} = S\_{i+1}(\gamma S\_i^{-1} m\_i + (1 - \gamma) \beta x_i y_i)$$
 
 Note that in the new implementation nothing changes for the `predict` method; we've therefore inherited from `BayesLinReg` to avoid an unnecessary copy/paste. The smoothing works essentially like an exponentially weighted average -- as a reference, see the `alpha` parametrisation of the [`ewm` method in `pandas`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.ewm.html). Let's check out the performance of this model on the same scenario when using a smoothing factor of `0.8` -- which is actually the only value I tried because it worked.
 
+<details>
+  <summary>Click to see the code</summary>
+
 ```python
 np.random.seed(42)
 
@@ -665,6 +668,7 @@ ax.set_ylabel('Absolute error')
 ax.legend()
 ax.grid()
 ```
+</details>
 
 ![drift_robust](/img/blog/bayesian-linear-regression/drift_robust.png)
 

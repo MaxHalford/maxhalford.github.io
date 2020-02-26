@@ -9,12 +9,12 @@ enableRobotsTXT = true
   name = "Max Halford"
 
 [params]
-headTitle = "Max Halford"
-mainSections = ["blog"]
-favicon = "/img/favicon.ico"
+  headTitle = "Max Halford"
+  mainSections = ["blog"]
+  favicon = "/img/favicon.ico"
 
 [markup.goldmark.renderer]
-unsafe= true
+  unsafe= true
 
 [sitemap]
   changefreq = "monthly"
