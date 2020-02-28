@@ -69,6 +69,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [A Few Useful Things To Know About Machine Learning - Pedro Domingos](https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf)
 - [Multiworld Testing Decision Service: A System for Experimentation, Learning, And Decision-Making](https://arxiv.org/pdf/1606.03966.pdf)
 - [Machine Learning:The High-Interest Credit Card of Technical Debt - Google](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43146.pdf)
+- [Variational Inference: A Review for Statisticians - David Blei and his flock](https://arxiv.org/pdf/1601.00670.pdf)
 
 ## Blogroll
 
