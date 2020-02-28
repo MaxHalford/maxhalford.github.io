@@ -58,7 +58,7 @@ Now that we have all our blocks, we need to put them together. It's quite straig
 
 $$\color{blueviolet} p(\theta_{i+1} | \theta_i, x_i, y_i) \color{black} = \frac{\color{crimson} p(y_i | x_i, \theta_i) \color{royalblue} p(\theta_i)}{\color{black} p(x_i, y_i)}$$
 
-Now you may be wondering what $p(x_i, y_i)$ is. It turns out it is the distribution of the data, and is something that we don't know! Indeed, if we knew the generating process of the data, then we wouldn't really have to be doing machine learning in the first place, right? There are however analytical formulas that use the rest of the information at our disposal -- namely the {{<color royalblue prior>}} and the {{<color crimson likelihood>}} -- but they require the likelihood and the prior to be conjugate to each other. These formula involve a sequence of mathematical steps which we will omit. All you have to know is that if the {{<color royalblue prior>}} and the {{<color crimson likelihood>}} are conjugate to each other, then an analytical formula for computing the posterior is available, which allows us to perform online learning. To keep things general, we will simply write down:
+Now you may be wondering what $p(x_i, y_i)$ is. It turns out it is the distribution of the data, and is something that we don't know! Indeed, if we knew the generating process of the data, then we wouldn't really have to be doing machine learning in the first place, right? There are however analytical formulas that use the rest of the information at our disposal -- namely the {{<color royalblue prior>}} and the {{<color crimson likelihood>}} -- but they require the likelihood and the prior to be conjugate to each other. These formulas involve a sequence of mathematical steps which we will omit. All you have to know is that if the {{<color royalblue prior>}} and the {{<color crimson likelihood>}} are conjugate to each other, then an analytical formula for computing the posterior is available, which allows us to perform online learning. To keep things general, we will simply write down:
 
 $$\color{blueviolet} p(\theta_{i+1} | \theta_i, x_i, y_i) \color{black} \propto \color{crimson} p(y_i | x_i, \theta_i) \color{royalblue} p(\theta_i)$$
 
@@ -684,11 +684,11 @@ $$\color{royalblue} p(w_0) = \mathcal{N}(0, \alpha^{-1}I)$$
 
 This leads to the following posterior distribution for the weights:
 
-$$\color{blueviolet} p(w\_{i+1} | w\_i, x\_i, y\_i) = \mathcal{N}(m\_{i+1}, S\_{i+1}$$
+$$\color{blueviolet} p(w\_{i+1} | w\_i, x\_i, y\_i) = \mathcal{N}(m\_{i+1}, S\_{i+1})$$
 
 $$S\_{i+1} = (\alpha I + \beta x\_i^\intercal x_i)^{-1}$$
 
-$$m\_{i+1} = \beta S_{i+1} x_i^\intercal y_i)$$
+$$m\_{i+1} = \beta S_{i+1} x_i^\intercal y_i$$
 
 At a first glance, these formulas look just as heavy as before because they still necessitate a matrix inversion. The trick is that the equation for obtaining $S\_{i+1}$ has a particular structure that we can exploit. Indeed, it turns out that there is a wonderful formula to evaluate this equation without having to explicitely apply the inverse operation -- I love it when this happens. It's called the [Sherman–Morrison formula](https://www.wikiwand.com/en/Sherman%E2%80%93Morrison_formula). Here it is with Wikipedia's notation:
 
