@@ -13,8 +13,7 @@ title: Links
 
 ## Talks
 
-I've given a few talks at conferences and companies.
-
+- [Global explanation of machine learning with sensitivity analysis - MASCOT-NUM, Paris, 2020](/slides/gdr-mascotnum-2020.pdf)
 - [The Benefits of Online Learning - Quantmetry, Paris, 2019](/slides/the-benefits-of-online-learning)
 - [The Benefits of Online Learning - Element AI, London, 2019](/slides/the-benefits-of-online-learning)
 - [The Benefits of Online Learning - Airbus BizLab, Toulouse, 2019](/slides/the-benefits-of-online-learning)
