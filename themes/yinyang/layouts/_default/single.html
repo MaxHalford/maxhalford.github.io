@@ -57,12 +57,17 @@
         <div class="post-ads">{{ .Site.Params.postAds | safeHTML }}</div>
         {{ end }}
         <!-- split -->
-        <div style="height: 50px;"></div>
-        {{ if .Site.Params.disqus }}
-        <div class="post-comments">
-          {{ partial "disqus.html" . }}
-        </div>
-        {{ end }}
+        <div style="height: 30px;"></div>
+
+        <script
+          src="https://utteranc.es/client.js"
+          repo="MaxHalford/maxhalford.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+        </script>
+
         {{ end }}
 
         {{ partial "footer.html" . }}
@@ -74,6 +79,7 @@
   {{ if .Site.Params.extraBody }}
   {{ .Site.Params.extraBody | safeHTML }}
   {{ end }}
+
 
 </body>
 
