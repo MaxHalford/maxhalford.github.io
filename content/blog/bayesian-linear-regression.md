@@ -82,7 +82,7 @@ Before any data comes in, the model parameters follow the initial distribution w
 
 $$\color{forestgreen} p(y\_0 | x\_0) \color{black} \propto \color{crimson} p(y_0 | x_0, \theta_0) \color{royalblue} p(\theta_0)$$
 
-Next, once the first observation $(x_0, y_0)$ arrives, we can update the update the distribution of the parameters:
+Next, once the first observation $(x_0, y_0)$ arrives, we can update the distribution of the parameters:
 
 $$\color{blueviolet} p(\theta_1 | \theta_0, x_0, y_0) \color{black} \propto \color{crimson} p(x_0, y_0 | \theta_0) \color{royalblue} p(\theta_0)$$
 
@@ -321,7 +321,7 @@ for i, (xi, yi) in enumerate(sample(n_samples)):
 
 ![viz](/img/blog/bayesian-linear-regression/viz.png)
 
-The first column represents the prior distribution of the weights. In other words, it shows what the model think the parameters should be, before seeing the next sample. The second column shows the distribution of the weights after the model has processed the next sample. In other words it represents the posterior distribution. You'll notice that the prior distribution at each row is equal to the posterior distribution of the previous row. This stems from the fact that the posterior after having seen a sample becomes the prior for the next sample. Finally, the third column shows how this impacts the uncertainty of the posterior predictive distribution. Intuitively, as more samples arrive, the uncertainty lowers and the shaded area -- which is a 95% predictive interval -- becomes slimmer. Likewise, the fact that the ellipse representing the weight distribution shrinks indicates that the model is growing in confidence. As we will see later on, this isn't always a good think -- hint: [concept drift](https://www.wikiwand.com/en/Concept_drift).
+The first column represents the prior distribution of the weights. In other words, it shows what the model think the parameters should be, before seeing the next sample. The second column shows the distribution of the weights after the model has processed the next sample. In other words it represents the posterior distribution. You'll notice that the prior distribution at each row is equal to the posterior distribution of the previous row. This stems from the fact that the posterior after having seen a sample becomes the prior for the next sample. Finally, the third column shows how this impacts the uncertainty of the posterior predictive distribution. Intuitively, as more samples arrive, the uncertainty lowers and the shaded area -- which is a 95% predictive interval -- becomes slimmer. Likewise, the fact that the ellipse representing the weight distribution shrinks indicates that the model is growing in confidence. As we will see later on, this isn't always a good thing -- hint: [concept drift](https://www.wikiwand.com/en/Concept_drift).
 
 ## Prediction intervals
 
