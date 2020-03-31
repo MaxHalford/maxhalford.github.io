@@ -1,5 +1,5 @@
 +++
-date = "2020-02-26"
+date = "2020-03-31"
 draft = false
 title = "Speeding up scikit-learn for single predictions"
 +++
