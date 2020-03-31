@@ -180,7 +180,7 @@ bb_scaler.fit(X)
 1.7 µs ± 34.6 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
-Now what if we want to use our custom `BarebonesLinearRegression`/`BarebonesLogisticRegression` and `BarebonesStandardScaler` at the same time? Well the canonical way to compose modeling steps in scikit-learn is through the use of [pipelines](https://scikit-learn.org/stable/modules/compose.html). We can implement a custom pipeline class, which inherits from scikit-learn's [pipeline.Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) and provides a `predict_single` function as well as a `predict_proba_single` function. Here goes:
+Now what if we want to use our custom `BarebonesStandardScaler` with `BarebonesLinearRegression` or `BarebonesLogisticRegression` at the same time? Well the canonical way to compose modeling steps in scikit-learn is through the use of [pipelines](https://scikit-learn.org/stable/modules/compose.html). We can implement a custom pipeline class, which inherits from scikit-learn's [pipeline.Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) and provides a `predict_single` function as well as a `predict_proba_single` function. Here goes:
 
 ```py
 from sklearn import pipeline
