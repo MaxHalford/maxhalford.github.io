@@ -96,23 +96,24 @@ This is a list of blogs I regularly scroll through.
 - [Katherine Bailey](https://katbailey.github.io/)
 - [Netflix Research](https://research.netflix.com/)
 - [inFERENce](https://www.inference.vc/)
-- [Hyndsight](https://robjhyndman.com/hyndsight/) -- Rob Hyndman is a time series specialist
+- [Hyndsight](https://robjhyndman.com/hyndsight/) -- Rob Hyndman is a time series specialist.
 - [While My MCMC Gently Samples](https://twiecki.io/)
-- [Ines Montani](https://ines.io/) -- By one of the founders of [spaCy](https://spacy.io/)
+- [Ines Montani](https://ines.io/) -- By one of the founders of [spaCy](https://spacy.io/).
 - [Stephen Smerity](https://smerity.com/articles/articles.html)
 - [Peter Norvig](http://norvig.com/)
-- [IT Best Kept Secret Is Optimization](https://www.ibm.com/developerworks/community/blogs/jfp/?lang=en) -- By Jean-Francois Puget, aka [CPMP](https://www.kaggle.com/cpmpml)
+- [IT Best Kept Secret Is Optimization](https://www.ibm.com/developerworks/community/blogs/jfp/?lang=en) -- By Jean-Francois Puget, aka [CPMP](https://www.kaggle.com/cpmpml).
 - [explained.ai](https://explained.ai/)
 - [Better Explained](https://betterexplained.com/)
 - [Genetic Argonaut](https://geneticargonaut.blogspot.com/)
 - [pandas blog](https://pandas-dev.github.io/pandas-blog/)
 - [Towards Data Science](https://towardsdatascience.com/)
-- [Linear Disgressions](https://lineardigressions.com/) -- data science podcasts
+- [Linear Disgressions](https://lineardigressions.com/) -- data science podcasts.
 - [Probably Overthinking It](https://www.allendowney.com/blog/)
 - [Simply Statistics](https://simplystatistics.org/)
 - [Practically Predictable](http://practicallypredictable.com/)
-- [koaning](http://koaning.io/) -- By Vincent Warmerdam, who did [this](https://www.youtube.com/watch?v=68ABAU_V8qI&feature=youtu.be) great presentation
+- [koaning](http://koaning.io/) -- By Vincent Warmerdam, who did [this](https://www.youtube.com/watch?v=68ABAU_V8qI&feature=youtu.be) great presentation.
 - [blogarithms](https://blogarithms.github.io/)
 - [Possibly Wrong ](https://possiblywrong.wordpress.com/)
 - [FastML](http://fastml.com/)
 - [Parameter-free Learning and Optimization Algorithms](https://parameterfree.com/)
+- [Todd W. Schneider](https://toddwschneider.com/) -- This guy is really good at exploratory data analysis.
