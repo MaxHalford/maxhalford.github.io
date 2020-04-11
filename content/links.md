@@ -13,6 +13,7 @@ title: Links
 
 ## Talks
 
+- [Our solution to the IDAO 2020 qualifiers - online webinar, 2020](/slides/idao-2020-qualifiers.pdf)
 - [Global explanation of machine learning with sensitivity analysis - MASCOT-NUM, Paris, 2020](/slides/gdr-mascotnum-2020.pdf)
 - [The Benefits of Online Learning - Quantmetry, Paris, 2019](/slides/the-benefits-of-online-learning)
 - [The Benefits of Online Learning - Element AI, London, 2019](/slides/the-benefits-of-online-learning)
@@ -69,6 +70,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Multiworld Testing Decision Service: A System for Experimentation, Learning, And Decision-Making](https://arxiv.org/pdf/1606.03966.pdf)
 - [Machine Learning:The High-Interest Credit Card of Technical Debt - Google](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43146.pdf)
 - [Variational Inference: A Review for Statisticians - David Blei and his flock](https://arxiv.org/pdf/1601.00670.pdf)
+- [The Performance of Decision Tree Evaluation Strategies - Andrew Tulloch](http://tullo.ch/articles/decision-tree-evaluation/)
 
 ## Blogroll
 

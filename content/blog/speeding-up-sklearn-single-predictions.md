@@ -87,7 +87,7 @@ bb_log_reg.fit(X, y)
 %timeit bb_log_reg.predict_proba_single(X[0])
 ```
 
-```sh
+```
 71.3 µs ± 3.59 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 ```
 
@@ -97,7 +97,7 @@ That's definitely a boost, but it's nothing to brag home about. We can check wha
 %prun -l 10 [bb_log_reg.predict_proba_single(X[0]) for _ in range(100000)]
 ```
 
-```sh
+```
         4400004 function calls in 4.414 seconds
 
 Ordered by: internal time
@@ -139,7 +139,7 @@ bb_log_reg.fit(X, y)
 %timeit bb_log_reg.predict_proba_single(X[0])
 ```
 
-```sh
+```
 14.7 µs ± 682 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 ```
 
@@ -155,7 +155,7 @@ scaler.fit(X)
 %timeit scaler.transform(X[[0]])[0]
 ```
 
-```sh
+```
 43 µs ± 1.07 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 ```
 
@@ -176,11 +176,11 @@ bb_scaler.fit(X)
 %timeit bb_scaler.transform_single(X[0])
 ```
 
-```sh
+```
 1.7 µs ± 34.6 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
-Now what if we want to use our custom `BarebonesStandardScaler` with `BarebonesLinearRegression` or `BarebonesLogisticRegression` at the same time? Well the canonical way to compose modeling steps in scikit-learn is through the use of [pipelines](https://scikit-learn.org/stable/modules/compose.html). We can implement a custom pipeline class, which inherits from scikit-learn's [pipeline.Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) and provides a `predict_single` function as well as a `predict_proba_single` function. Here goes:
+Now what if we want to use our custom `BarebonesStandardScaler` with `BarebonesLinearRegression` or `BarebonesLogisticRegression` at the same time? Well the canonical way to compose modeling steps in scikit-learn is through the [use of pipelines](https://scikit-learn.org/stable/modules/compose.html). We can implement a custom pipeline class, which inherits from scikit-learn's [`pipeline.Pipeline`](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) and provides a `predict_single` function as well as a `predict_proba_single` function. Here goes:
 
 ```py
 from sklearn import pipeline
@@ -206,7 +206,7 @@ bb_pp.fit(X, y)
 %timeit bb_pp.predict_single(X[0])
 ```
 
-```sh
+```
 3.96 µs ± 184 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 ```
 
@@ -218,7 +218,7 @@ pp.fit(X, y)
 %timeit pp.predict(X[[0]])[0]
 ```
 
-```sh
+```
 97.6 µs ± 4.19 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 ```
 
