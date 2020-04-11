@@ -119,3 +119,16 @@ This is a list of blogs I regularly scroll through.
 - [FastML](http://fastml.com/)
 - [Parameter-free Learning and Optimization Algorithms](https://parameterfree.com/)
 - [Todd W. Schneider](https://toddwschneider.com/) -- This guy is really good at exploratory data analysis.
+
+## Eye candy
+
+- [Tyler Hobbs](https://tylerxhobbs.com/) -- The god of generative arts.
+- [Some Jean Giraud stuff](https://imgur.com/a/iiTW0Ay)
+- [Mauro Martins](https://www.mauromartins.com/)
+- [A new way to knit by Petros Vrellis](http://artof01.com/vrellis/works/knit.html)
+- [A fascinating article about Manolo Gamboa Naon](https://www.artnome.com/news/2018/8/8/generative-art-finds-its-prodigy)
+- [Some Ukiyo-e](https://ukiyo-e.org/)
+- [Turtletoy](https://turtletoy.net/)
+- [Dwitter](https://www.dwitter.net/)
+- [generated.space](https://generated.space/)
+- [Pixel art by Marcus Blättermann](https://essenmitsosse.de/pixel/)
