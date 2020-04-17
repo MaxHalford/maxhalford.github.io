@@ -71,6 +71,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Machine Learning:The High-Interest Credit Card of Technical Debt - Google](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43146.pdf)
 - [Variational Inference: A Review for Statisticians - David Blei and his flock](https://arxiv.org/pdf/1601.00670.pdf)
 - [The Performance of Decision Tree Evaluation Strategies - Andrew Tulloch](http://tullo.ch/articles/decision-tree-evaluation/)
+- [Hidden Technical Debt in Machine Learning Systems - Google](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)
 
 ## Blogroll
 
