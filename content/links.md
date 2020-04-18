@@ -31,7 +31,7 @@ title: Links
 
 ## Hall of fame
 
-The following is a hall of fame of papers, books, and blog posts that have a very high [signal to noise ratio](https://www.urbandictionary.com/define.php?term=signal%20to%20noise%20ratio); I highly recommend reading some of them when you get time.
+The following is a hall of fame of papers, books, and blog posts that have a very high [signal to noise ratio](https://www.urbandictionary.com/define.php?term=signal%20to%20noise%20ratio) -- at least in my book. I highly recommend reading some of them when you get time.
 
 - [The Elements of Statistical Learning - Jerome H. Friedman, Robert Tibshirani, and Trevor Hastie](http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf)
 - [Machine Learning - Tom Mitchell](http://personal.disco.unimib.it/Vanneschi/McGrawHill_-_Machine_Learning_-Tom_Mitchell.pdf) -- I think this wonderful textbook is under-appreciated.
@@ -72,6 +72,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Variational Inference: A Review for Statisticians - David Blei and his flock](https://arxiv.org/pdf/1601.00670.pdf)
 - [The Performance of Decision Tree Evaluation Strategies - Andrew Tulloch](http://tullo.ch/articles/decision-tree-evaluation/)
 - [Hidden Technical Debt in Machine Learning Systems - Google](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)
+- [Distill: Why do we need Flask, Celery, and Redis? (with McDonalds in Between) - Lj Miranda](https://ljvmiranda921.github.io/notebook/2019/11/08/flask-redis-celery-mcdo/) -- A good example of the difference between abstract ideas and implementation details.
 
 ## Blogroll
 
