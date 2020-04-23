@@ -73,6 +73,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [The Performance of Decision Tree Evaluation Strategies - Andrew Tulloch](http://tullo.ch/articles/decision-tree-evaluation/)
 - [Hidden Technical Debt in Machine Learning Systems - Google](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)
 - [Distill: Why do we need Flask, Celery, and Redis? (with McDonalds in Between) - Lj Miranda](https://ljvmiranda921.github.io/notebook/2019/11/08/flask-redis-celery-mcdo/) -- A good example of the difference between abstract ideas and implementation details.
+- [Darts, Dice, and Coins: Sampling from a Discrete Distribution -- Keith Schwarz](https://www.keithschwarz.com/darts-dice-coins/)
 
 ## Blogroll
 
@@ -121,6 +122,7 @@ This is a list of blogs I regularly scroll through.
 - [FastML](http://fastml.com/)
 - [Parameter-free Learning and Optimization Algorithms](https://parameterfree.com/)
 - [Todd W. Schneider](https://toddwschneider.com/) -- This guy is really good at exploratory data analysis.
+- [Yann Thaddée](https://espadrine.github.io/blog/) -- Not directly related to data science but interesting nonetheless.
 
 ## Eye candy
 

@@ -10,8 +10,9 @@ Most supervised machine learning algorithms work in the batch setting, whereby t
 
 Online models are usually weaker than batch models when trained on the same amount of data. However, this discrepancy tends to get smaller as the size of the training data increases. Researchers try to build online models that are guaranteed to reach the same performance as a batch model when the size of the data grows -- they call this *convergence*. But comparing online models to batch models isn't really fair, because they're not meant to solve the same problems.
 
+<p>
 <img src="/img/blog/online-learning-evaluation/meme.png" width="30%">
-<br>
+</p>
 
 Batch models are meant to be used when you can afford to retrain your model from scratch every so often. Online models, on the contrary, are meant to be used when you want your model to learn from a stream of data, and therefore never have to restart from scratch. Learning from a stream of data is something a batch model can't do, and is very much different to the usual train/test split paradigm that machine learning practitioners are used to. In fact, there are other ways to evaluate the performance of an online model that make more sense than, say, cross-validation.
 
