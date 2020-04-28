@@ -136,3 +136,4 @@ This is a list of blogs I regularly scroll through.
 - [Dwitter](https://www.dwitter.net/)
 - [generated.space](https://generated.space/)
 - [Pixel art by Marcus Blättermann](https://essenmitsosse.de/pixel/)
+- [Nick Barnes' football bible](https://www.the42.ie/bbc-nick-barnes-football-notes-2111888-May2015/)
