@@ -30,10 +30,10 @@ I like to think of a Bayesian model as a set of blocks. For forecasting purposes
 This is the distribution we want to obtain. It's the Holy Grail for many practitioners who want to take into account predictive uncertainty. Later on we'll see how the predictive distribution is obtained by assembling the rest of the blocks.
 </div>
 
-<div style="border:3px; border-style:solid; border-color:crimson; padding: 1em; margin-bottom: 15px;">
-The next block is the <span style="color: crimson;">likelihood</span>, which is the probability distribution of an observation $y_i$ conditioned on the current model parameters $\theta_i$ and a set of features $x_i$. In other words, given the current state of the model, the likelihood tells you how realistic it is to observe the pair $(x_i, y_i)$. We'll write it down as follows:
+<div style="border:3px; border-style:solid; border-color:indianred; padding: 1em; margin-bottom: 15px;">
+The next block is the <span style="color: indianred;">likelihood</span>, which is the probability distribution of an observation $y_i$ conditioned on the current model parameters $\theta_i$ and a set of features $x_i$. In other words, given the current state of the model, the likelihood tells you how realistic it is to observe the pair $(x_i, y_i)$. We'll write it down as follows:
 
-{{<color crimson "$$p(y_i | x_i, \theta_i)$$">}}
+{{<color indianred "$$p(y_i | x_i, \theta_i)$$">}}
 
 The thing to understand is that the likelihood is usually imposed by the problem you're dealing with. In textbooks, the likelihood is often chosen to be a Gaussian or a binomial, mostly because these distributions occur naturally in textbook problems. However, the likelihood can be any parametric distribution. The key idea is that the likelihood is something defined by the problem at hand, and usually isn't something you have to much freedom with.
 </div>
@@ -43,60 +43,60 @@ Next, we have the <span style="color: royalblue;">prior distribution</span> of t
 
 {{<color royalblue "$$p(\theta_i)$$">}}
 
-Choosing a prior is important, because for our case it can add regularization to our model. The trick is that if we choose a prior distribution that is so-called <i>conjugate</i> for the <span style="color: crimson;">likelihood</span>, then we get access to analytical formulas for updating the model parameters. If, however, the prior and the likelihood are not compatible with each other, then we have to resort to using approximate methods such as <a href="ttps://twiecki.io/blog/2015/11/10/mcmc-sampling">MCMC</a> and <a href="https://www.wikiwand.com/en/Variational_Bayesian_methods">variational inference</a>. As cool and trendy as they may be, these tools are mostly designed for situations where all the data is available at once. In other words they are not applicable in a streaming context, whereas analytical formulas are.
+Choosing a prior is important, because for our case it can add regularization to our model. The trick is that if we choose a prior distribution that is so-called <i>conjugate</i> for the <span style="color: indianred;">likelihood</span>, then we get access to analytical formulas for updating the model parameters. If, however, the prior and the likelihood are not compatible with each other, then we have to resort to using approximate methods such as <a href="ttps://twiecki.io/blog/2015/11/10/mcmc-sampling">MCMC</a> and <a href="https://www.wikiwand.com/en/Variational_Bayesian_methods">variational inference</a>. As cool and trendy as they may be, these tools are mostly designed for situations where all the data is available at once. In other words they are not applicable in a streaming context, whereas analytical formulas are.
 </div>
 
-<div style="border:3px; border-style:solid; border-color:blueviolet; padding: 1em; margin-bottom: 15px;">
-Finally, the {{<color blueviolet "posterior distribution">}} represents the distribution of the model parameters $\theta_{i+1}$ once we've received a new pair $(x_{i}, y_{i})$. For online learning purposes, here is how we're going to write it down:
+<div style="border:3px; border-style:solid; border-color:mediumpurple; padding: 1em; margin-bottom: 15px;">
+Finally, the {{<color mediumpurple "posterior distribution">}} represents the distribution of the model parameters $\theta_{i+1}$ once we've received a new pair $(x_{i}, y_{i})$. For online learning purposes, here is how we're going to write it down:
 
-{{<color blueviolet "$$p(\theta_{i+1} | \theta_{i}, x_{i}, y_{i})$$">}}
+{{<color mediumpurple "$$p(\theta_{i+1} | \theta_{i}, x_{i}, y_{i})$$">}}
 
-As you might have guessed or already know, the {{<color blueviolet "posterior distribution">}} is obtained by combining the {{<color crimson likelihood>}} of $(x_{i}, y_{i})$ and the {{<color royalblue "prior distribution">}} of the current model parameters $\theta_{i}$. As a mnemonic, {{<color crimson red>}} $+$ {{<color royalblue blue>}} $=$ {{<color blueviolet purple>}}.
+As you might have guessed or already know, the {{<color mediumpurple "posterior distribution">}} is obtained by combining the {{<color indianred likelihood>}} of $(x_{i}, y_{i})$ and the {{<color royalblue "prior distribution">}} of the current model parameters $\theta_{i}$. As a mnemonic, {{<color indianred red>}} $+$ {{<color royalblue blue>}} $=$ {{<color mediumpurple purple>}}.
 </div>
 
-Now that we have all our blocks, we need to put them together. It's quite straightforward once you understand how the blocks are related. <span style="color: crimson;">You start off with the likelihood, which is a probability distribution you have to choose</span>. For example if you're looking to predict counts then you would use a Poisson distribution. I'm refraining from giving a more detailed example simply because we will be going over one later on. What matters for the while is to develop an intuition, and for that I want to keep the notation as general as possible. <span style="color: royalblue;">Once you have settled on a likelihood, you need to choose a prior distribution for the model parameters</span>. Because our focus is on online learning, we want to have access to quick analytical formulas, and not MCMC voodoo. In order to so, we need to pick a prior distribution which is conjugate to the likelihood. Note that most distributions have at least one other distribution which is conjugate to them, as detailed [here](https://www.wikiwand.com/en/Conjugate_prior#/Table_of_conjugate_distributions). <span style="color: blueviolet;">Now that you have decided which likelihood to use and what prior to associate with it, you may derive the posterior distribution of the model parameters</span>. This operation is the cornerstone of Bayesian inference, and is done via [Bayes' rule](https://www.youtube.com/watch?v=HZGCoVF3YvM):
+Now that we have all our blocks, we need to put them together. It's quite straightforward once you understand how the blocks are related. <span style="color: indianred;">You start off with the likelihood, which is a probability distribution you have to choose</span>. For example if you're looking to predict counts then you would use a Poisson distribution. I'm refraining from giving a more detailed example simply because we will be going over one later on. What matters for the while is to develop an intuition, and for that I want to keep the notation as general as possible. <span style="color: royalblue;">Once you have settled on a likelihood, you need to choose a prior distribution for the model parameters</span>. Because our focus is on online learning, we want to have access to quick analytical formulas, and not MCMC voodoo. In order to so, we need to pick a prior distribution which is conjugate to the likelihood. Note that most distributions have at least one other distribution which is conjugate to them, as detailed [here](https://www.wikiwand.com/en/Conjugate_prior#/Table_of_conjugate_distributions). <span style="color: mediumpurple;">Now that you have decided which likelihood to use and what prior to associate with it, you may derive the posterior distribution of the model parameters</span>. This operation is the cornerstone of Bayesian inference, and is done via [Bayes' rule](https://www.youtube.com/watch?v=HZGCoVF3YvM):
 
-$$\color{blueviolet} p(\theta_{i+1} | \theta_i, x_i, y_i) \color{black} = \frac{\color{crimson} p(y_i | x_i, \theta_i) \color{royalblue} p(\theta_i)}{\color{black} p(x_i, y_i)}$$
+$$\textcolor{mediumpurple}{p(\theta_{i+1} | \theta_i, x_i, y_i)} = \frac{\textcolor{indianred}{p(y_i | x_i, \theta_i)} \textcolor{royalblue}{p(\theta_i)}}{p(x_i, y_i)}$$
 
-Now you may be wondering what $p(x_i, y_i)$ is. It turns out it is the distribution of the data, and is something that we don't know! Indeed, if we knew the generating process of the data, then we wouldn't really have to be doing machine learning in the first place, right? There are however analytical formulas that use the rest of the information at our disposal -- namely the {{<color royalblue prior>}} and the {{<color crimson likelihood>}} -- but they require the likelihood and the prior to be conjugate to each other. These formulas involve a sequence of mathematical steps which we will omit. All you have to know is that if the {{<color royalblue prior>}} and the {{<color crimson likelihood>}} are conjugate to each other, then an analytical formula for computing the posterior is available, which allows us to perform online learning. To keep things general, we will simply write down:
+Now you may be wondering what $p(x_i, y_i)$ is. It turns out it is the distribution of the data, and is something that we don't know! Indeed, if we knew the generating process of the data, then we wouldn't really have to be doing machine learning in the first place, right? There are however analytical formulas that use the rest of the information at our disposal -- namely the {{<color royalblue prior>}} and the {{<color indianred likelihood>}} -- but they require the likelihood and the prior to be conjugate to each other. These formulas involve a sequence of mathematical steps which we will omit. All you have to know is that if the {{<color royalblue prior>}} and the {{<color indianred likelihood>}} are conjugate to each other, then an analytical formula for computing the posterior is available, which allows us to perform online learning. To keep things general, we will simply write down:
 
-$$\color{blueviolet} p(\theta_{i+1} | \theta_i, x_i, y_i) \color{black} \propto \color{crimson} p(y_i | x_i, \theta_i) \color{royalblue} p(\theta_i)$$
+$$\textcolor{mediumpurple}{p(\theta_{i+1} | \theta_i, x_i, y_i)} \propto \textcolor{indianred}{p(y_i | x_i, \theta_i)} \textcolor{royalblue}{p(\theta_i)}$$
 
 The previous statement simply expresses the fact that the posterior distribution of the model parameters is proportional to the product of the likelihood and the prior distribution. In other words, in can be obtained using an analytical formula that is specific to the chosen likelihood and prior distribution. If we're being pragmatic, then what we're really interested in is to obtain the <span style="color: forestgreen;">predictive distribution</span>, which is obtained by marginalizing over the model parameters $\theta_i$:
 
-$$\color{forestgreen} p(y\_i | x\_i) \color{black} = \int \color{crimson} p(y\_i | \textbf{w}, x\_i) \color{royalblue} p(\textbf{w}) \color{black} d\textbf{w}$$
+$$\textcolor{forestgreen}{p(y\_i | x\_i)} = \int \textcolor{indianred}{p(y\_i | \textbf{w}, x\_i)} \textcolor{royalblue}{p(\textbf{w})} d\textbf{w}$$
 
 Again, this isn't analytically tractable, except if the likelihood and the prior are conjugate to each other. The equation does make sense though, because essentially we're computing a weighted average of the potential $y_i$ values for each possible model parameter $\textbf{w}$.
 
-$$\color{forestgreen} p(y\_i | x\_i) \color{black} \propto \color{crimson} p(y_i | x_i, \theta_i) \color{royalblue} p(\theta_i)$$
+$$\textcolor{forestgreen}{p(y\_i | x\_i)} \propto \textcolor{indianred}{p(y_i | x_i, \theta_i)} \textcolor{royalblue}{p(\theta_i)}$$
 
-Basically, the thing to remember is that the <span style="color: forestgreen;">predictive distribution</span> can be obtained by using the <span style="color: crimson;">predictive distribution</span> and the <span style="color: royalblue;">current distribution of the weights</span>.
+Basically, the thing to remember is that the <span style="color: forestgreen;">predictive distribution</span> can be obtained by using the <span style="color: indianred;">predictive distribution</span> and the <span style="color: royalblue;">current distribution of the weights</span>.
 
 ## Online belief updating
 
 The important result of the previous section is that we can get update the distribution of the parameters when a new pair $(x_i, y_i)$ arrives:
 
-$$\color{blueviolet} p(w_{i+1} | \theta_i, x_i, y_i) \color{black} \propto \color{crimson} p(x_i, y_i | \theta_i) \color{royalblue} p(\theta_i)$$
+$$\textcolor{mediumpurple}{p(w_{i+1} | \theta_i, x_i, y_i)} \propto \textcolor{indianred}{p(x_i, y_i | \theta_i)} \textcolor{royalblue}{p(\theta_i)}$$
 
 Before any data comes in, the model parameters follow the initial distribution we picked, which is $p(\theta_0)$. At this point, if we're asked to predict $y_0$, then it's predictive distribution would be obtained as so:
 
-$$\color{forestgreen} p(y\_0 | x\_0) \color{black} \propto \color{crimson} p(y_0 | x_0, \theta_0) \color{royalblue} p(\theta_0)$$
+$$\textcolor{forestgreen}{p(y\_0 | x\_0)} \propto \textcolor{indianred}{p(y_0 | x_0, \theta_0)} \textcolor{royalblue}{p(\theta_0)}$$
 
 Next, once the first observation $(x_0, y_0)$ arrives, we can update the distribution of the parameters:
 
-$$\color{blueviolet} p(\theta_1 | \theta_0, x_0, y_0) \color{black} \propto \color{crimson} p(x_0, y_0 | \theta_0) \color{royalblue} p(\theta_0)$$
+$$\textcolor{mediumpurple}{p(\theta_1 | \theta_0, x_0, y_0)} \propto \textcolor{indianred}{p(x_0, y_0 | \theta_0)} \textcolor{royalblue}{p(\theta_0)}$$
 
 The predictive distribution, given a set of features $x_1$, is thus:
 
-$$\color{forestgreen} p(y\_1 | x\_1) \color{black} \propto \color{crimson} p(y_1 | x_1, \theta_1) \color{black} \underbrace{\color{blueviolet} p(\theta_1 | \theta_0, x_0, y_0)}_{\color{royalblue} p(\theta_1)}$$
+$$\textcolor{forestgreen}{p(y\_1 | x\_1)} \propto \textcolor{indianred}{p(y_1 | x_1, \theta_1)} \underbrace{\textcolor{mediumpurple}{p(\theta_1 | \theta_0, x_0, y_0)}}_{\textcolor{royalblue}{p(\theta_1)}}$$
 
 The previous equations expresses the fact that the prior of the weights for the current iteration is the posterior of the weights at the previous iteration. Once the second pair $(x_1, y_1)$ is available, the distribution of the model parameters is updated in the same way as before:
 
-$$\color{blueviolet} p(\theta_2 | \theta_1, x_1, y_1) \color{black} \propto \color{crimson} p(y_1 | x_1, \theta_1) \color{black} \underbrace{\color{crimson} p(y_0 | x_0, \theta_0) \color{royalblue} p(\theta_0)}\_{\color{royalblue} p(\theta_1)}$$
+$$\textcolor{mediumpurple}{p(\theta_2 | \theta_1, x_1, y_1)} \propto \textcolor{indianred}{p(y_1 | x_1, \theta_1)} \underbrace{\textcolor{indianred}{p(y_0 | x_0, \theta_0)} \textcolor{royalblue}{p(\theta_0)}}\_{\textcolor{royalblue}{p(\theta_1)}}$$
 
 When the first pair $(x_2, y_2)$ arrives, the distribution of the weights will be obtained as so:
 
-$$\color{blueviolet} p(\theta_3 | \theta_1, x_2, y_2) \color{black} \propto \color{crimson} p(y_2 | x_2, \theta_2) \color{black} \underbrace{\color{crimson} p(y_1 | x_1, \theta_1) \color{black} \underbrace{\color{crimson} p(y_0 | x_0, \theta_0) \color{royalblue} p(\theta_0)}_{\color{royalblue} p(\theta_1)}  }\_{\color{royalblue} p(\theta_2)}$$
+$$\textcolor{mediumpurple}{p(\theta_3 | \theta_1, x_2, y_2)} \propto \textcolor{indianred}{p(y_2 | x_2, \theta_2)} \underbrace{\textcolor{indianred}{p(y_1 | x_1, \theta_1)} \underbrace{\textcolor{indianred}{p(y_0 | x_0, \theta_0)} \textcolor{royalblue}{p(\theta_0)}}_{\textcolor{royalblue}{p(\theta_1)}}  }\_{\textcolor{royalblue}{p(\theta_2)}}$$
 
 Hopefully, by now you've understood that there is recursive relationship that links each iteration: the posterior distribution at step $i$ becomes the prior distribution at step $i+1$. This simple fact is the reason why analytical Bayesian inference can naturally be used as an online machine learning algorithm. Indeed, we only need to store the current distribution of the weights to make everything work. When I started to understand this for the first time, I found it slightly magical.
 
@@ -110,7 +110,7 @@ $$y_i = w\_i x\_i^\intercal + \epsilon_i$$
 
 Each prediction is the scalar product between $p$ features $x_i$ and $p$ weights $w_i$. The trick here is that we're going to assume that the noise $\epsilon_i$ follows a given distribution. In particular, we will be boring and use the Gaussian [ansatz](https://www.wikiwand.com/en/Ansatz), which implies that the likelihood function is a Gaussian distribution:
 
-$$\color{crimson} p(y_i | x_i, w_i) = \mathcal{N}(w_i x_i^\intercal, \beta^{-1})$$
+$$\color{indianred} p(y_i | x_i, w_i) = \mathcal{N}(w_i x_i^\intercal, \beta^{-1})$$
 
 Christopher Bishop calls $\beta$ the "noise precision parameter". In statistics, the [precision](https://www.wikiwand.com/en/Precision_(statistics)) is inversely related to the noise variance as so: $\beta = \frac{1}{\sigma^2}$. Basically, it translates our belief on how noisy the target distribution is. Both concepts coexist mostly because statisticians can't agree on a common Bible. There are ways to tune this parameter automatically from the data. However, for the purpose of simplicity, in this blog post we will "treat it as a known constant" -- I'm quoting Christopher Bishop. In any case, the appropriate prior distribution for the above likelihood function is the [multivariate Gaussian distribution](https://www.wikiwand.com/en/Multivariate_normal_distribution):
 
@@ -124,7 +124,7 @@ $$S\_0 = \begin{pmatrix} \alpha^{-1} & \dots & \dots \\\ \dots & \alpha^{-1} & \
 
 We can now determine the posterior distribution of the weights:
 
-$$\color{blueviolet} p(w\_{i+1} | w\_i, x\_i, y\_i) = \mathcal{N}(m\_{i+1}, S\_{i+1})$$
+$$\color{mediumpurple} p(w\_{i+1} | w\_i, x\_i, y\_i) = \mathcal{N}(m\_{i+1}, S\_{i+1})$$
 
 $$S\_{i+1} = (S\_i^{-1} + \beta x\_i^\intercal x_i)^{-1}$$
 
@@ -684,7 +684,7 @@ $$\color{royalblue} p(w_0) = \mathcal{N}(0, \alpha^{-1}I)$$
 
 This leads to the following posterior distribution for the weights:
 
-$$\color{blueviolet} p(w\_{i+1} | w\_i, x\_i, y\_i) = \mathcal{N}(m\_{i+1}, S\_{i+1})$$
+$$\color{mediumpurple} p(w\_{i+1} | w\_i, x\_i, y\_i) = \mathcal{N}(m\_{i+1}, S\_{i+1})$$
 
 $$S\_{i+1} = (\alpha I + \beta x\_i^\intercal x_i)^{-1}$$
 

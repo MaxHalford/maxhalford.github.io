@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "Max Halford"
 theme = "yinyang"
 enableRobotsTXT = true
+pygmentsUseClasses = true
 
 [author]
   email = "maxhalford25@gmail.com"
@@ -14,21 +15,9 @@ enableRobotsTXT = true
   favicon = "/img/favicon.ico"
 
 [markup.goldmark.renderer]
-  unsafe= true
+  unsafe = true
 
 [sitemap]
   changefreq = "monthly"
   filename = "sitemap.xml"
   priority = 0.5
-
-[markup]
-  [markup.highlight]
-    codeFences = true
-    guessSyntax = false
-    hl_Lines = ""
-    lineNoStart = 1
-    lineNos = false
-    lineNumbersInTable = true
-    noClasses = true
-    style = "github"
-    tabWidth = 4

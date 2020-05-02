@@ -115,7 +115,7 @@ Admittedly, this is quite hard to take in by itself. I designed this algorithm d
 
 As an example, I'll be using the [restaurants dataset](https://hpi.de/naumann/projects/repeatability/datasets/restaurants-dataset.html) from the Hasso Platner Institute -- the place where Felix Naumann works. Here are the first five rows of the dataset:
 
-<table border="1" class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: center; font-weight: bold;">
       <th>id</th>
@@ -247,7 +247,7 @@ restaurants['real_id'] = find_partitions(
 
 Here is a subset of the result, using `restaurants.loc[33:38]`:
 
-<table border="1" class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: center; font-weight: bold;">
       <th>id</th>
