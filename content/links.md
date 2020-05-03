@@ -123,6 +123,7 @@ This is a list of blogs I regularly scroll through.
 - [Parameter-free Learning and Optimization Algorithms](https://parameterfree.com/)
 - [Todd W. Schneider](https://toddwschneider.com/) -- This guy is really good at exploratory data analysis.
 - [Yann Thaddée](https://espadrine.github.io/blog/) -- Not directly related to data science but interesting nonetheless.
+- [Colins Blog](https://www.solipsys.co.uk/new/ColinsBlog.html)
 
 ## Eye candy
 
