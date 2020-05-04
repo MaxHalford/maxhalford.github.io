@@ -4,7 +4,7 @@ title = "Bio"
 
 Hello 👋
 
-I'm a PhD student living in Toulouse, France 🇫🇷. I'm half British 🇬🇧 and half Belgian 🇧🇪. My university background is a mix of maths, economics, and computer science. My PhD is at the intersection of database query optimisation and machine learning 🤖. As of now, I'm particularly interested in [incremental learning](https://www.wikiwand.com/en/Incremental_learning).
+I'm a PhD student living in Toulouse, France 🇫🇷. I'm half British 🇬🇧 and half Belgian 🇧🇪. My university background is a mix of maths, economics, and computer science. My PhD is at the intersection of database query optimisation and machine learning 🤖. I strive to not be a one-trick pony 🐴, but instead try to build an interest in different topics. As of now, I'm particularly interested in [incremental learning](https://www.wikiwand.com/en/Incremental_learning).
 
 I enjoy writing code and I maintain [a few open-source projects](https://github.com/MaxHalford/). I also like doing [Kaggle competitions](https://www.kaggle.com/maxhalford). If you have any questions or want some data science consultancy work done, then feel free to shoot me an email at [maxhalford25@gmail.com](mailto:maxhalford25@gmail.com).
 
