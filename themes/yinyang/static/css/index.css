@@ -118,14 +118,17 @@ body {
 /* post */
 
 @media screen and (max-width: 600px) {
-  .site-header {
-    display: none;
+  .post-header {
+    text-align: center;
   }
-  .post-content {
-    padding: 0 12px;
+  .site-title {
+    margin-bottom: 10px;
   }
-  .post-content p {
-    letter-spacing: 0.05em;
+  .end-xs {
+    justify-content: center !important;
+  }
+  .post-title {
+    font-size: 1.5em !important;
   }
   pre {
     font-size: 13px !important;
