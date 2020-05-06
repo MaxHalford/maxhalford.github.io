@@ -186,6 +186,9 @@ figcaption {
   .post-header {
     text-align: center;
   }
+  .post-desc {
+    margin-bottom: 30px;
+  }
   .site-title {
     margin-bottom: 10px;
   }
