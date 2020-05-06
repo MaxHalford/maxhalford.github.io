@@ -117,27 +117,6 @@ body {
 
 /* post */
 
-@media screen and (max-width: 600px) {
-  .post-header {
-    text-align: center;
-  }
-  .site-title {
-    margin-bottom: 10px;
-  }
-  .end-xs {
-    justify-content: center !important;
-  }
-  .post-title {
-    font-size: 1.5em !important;
-  }
-  pre {
-    font-size: 13px !important;
-  }
-  .markdown-body {
-    font-size: 16px;
-  }
-}
-
 .post-content img {
   max-width: 100%;
   display: block;
@@ -153,7 +132,7 @@ figcaption {
 }
 
 .post-header {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .post-title {
@@ -201,6 +180,30 @@ figcaption {
 
 .releated-content li {
   margin: 5px 0;
+}
+
+@media screen and (max-width: 600px) {
+  .post-header {
+    text-align: center;
+  }
+  .site-title {
+    margin-bottom: 10px;
+  }
+  .end-xs {
+    justify-content: center !important;
+  }
+  .post-title {
+    font-size: 1.5em !important;
+  }
+  .post-header {
+    margin-bottom: 10px;
+  }
+  pre {
+    font-size: 13px !important;
+  }
+  .markdown-body {
+    font-size: 16px;
+  }
 }
 
 /* taxonomy */
