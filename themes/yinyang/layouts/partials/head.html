@@ -28,7 +28,7 @@
   <meta property="og:type" content="website" />
   <meta name="description" content="{{ .Site.Params.description }}" />
   {{- else -}}
-  <title>Hey</title>
+  <title>{{ .Title }} - {{ .Site.Title }}</title>
   <meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}" />
   <meta property="og:type" content="article" />
   <meta name="description" content="{{ default .Summary .Description }}" />
