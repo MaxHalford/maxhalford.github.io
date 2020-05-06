@@ -192,6 +192,11 @@ figcaption {
   .site-title {
     margin-bottom: 10px;
   }
+  .site-footer {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    justify-content: center !important;
+  }
   .end-xs {
     justify-content: center !important;
   }
