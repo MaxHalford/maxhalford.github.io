@@ -13,7 +13,8 @@ title: Links
 
 ## Talks
 
-- [Our solution to the IDAO 2020 qualifiers - online webinar, 2020](/slides/idao-2020-qualifiers.pdf)
+- [Online machine learning with decision trees - virtual seminar, 2020](/slides/online-decision-trees.pdf)
+- [Our solution to the IDAO 2020 qualifiers - virtual seminar, 2020](/slides/idao-2020-qualifiers.pdf)
 - [Global explanation of machine learning with sensitivity analysis - MASCOT-NUM, Paris, 2020](/slides/gdr-mascotnum-2020.pdf)
 - [The Benefits of Online Learning - Quantmetry, Paris, 2019](/slides/the-benefits-of-online-learning)
 - [The Benefits of Online Learning - Element AI, London, 2019](/slides/the-benefits-of-online-learning)
@@ -138,3 +139,5 @@ This is a list of blogs I regularly scroll through.
 - [generated.space](https://generated.space/)
 - [Pixel art by Marcus Blättermann](https://essenmitsosse.de/pixel/)
 - [Nick Barnes' football bible](https://www.the42.ie/bbc-nick-barnes-football-notes-2111888-May2015/)
+- [Simon Stålenhag](http://www.simonstalenhag.se/)
+- [Syd Mead](https://www.iamag.co/the-art-of-syd-mead/) (who worked on Blade Runner)
