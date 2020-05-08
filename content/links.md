@@ -30,6 +30,57 @@ title: Links
 
 - [OpenBikes 2016 challenge](https://www.dropbox.com/s/ic8m0b3mf5wxk4r/challenge.zip?dl=0)
 
+## Blogroll
+
+This is a list of blogs I regularly scroll through.
+
+- [Tim Salimans on Data Analysis](http://timsalimans.com/)
+- [Randal Olson](http://www.randalolson.com/blog/)
+- [Sam & Max](http://sametmax.com/) -- French and NSFW!
+- [Sebastian Raschka](http://sebastianraschka.com/blog/index.html)
+- [Clean Coder](https://sites.google.com/site/unclebobconsultingllc/)
+- [Pythonic Perambulations](https://jakevdp.github.io/)
+- [Erik Bernhardsson](http://erikbern.com/)
+- [otoro](http://blog.otoro.net/)
+- [Terra Incognita](http://blog.christianperone.com/)
+- [Real Python](https://realpython.com/blog/)
+- [Airbnb Engineering](http://nerds.airbnb.com/)
+- [No Free Hunch](http://blog.kaggle.com/)
+- [The Unofficial Google Data Science Blog](http://www.unofficialgoogledatascience.com/)
+- [will wolf](http://willwolf.io/)
+- [Edwin Chen](http://blog.echen.me/)
+- [Use the index, Luke!](http://use-the-index-luke.com/)
+- [Jack Preston](https://unwttng.com/)
+- [Agustinus Kristiadi](https://wiseodd.github.io/)
+- [DataGenetics](http://datagenetics.com/blog.html)
+- [Katherine Bailey](https://katbailey.github.io/)
+- [Netflix Research](https://research.netflix.com/)
+- [inFERENce](https://www.inference.vc/)
+- [Hyndsight](https://robjhyndman.com/hyndsight/) -- Rob Hyndman is a time series specialist.
+- [While My MCMC Gently Samples](https://twiecki.io/)
+- [Ines Montani](https://ines.io/) -- By one of the founders of [spaCy](https://spacy.io/).
+- [Stephen Smerity](https://smerity.com/articles/articles.html)
+- [Peter Norvig](http://norvig.com/)
+- [IT Best Kept Secret Is Optimization](https://www.ibm.com/developerworks/community/blogs/jfp/?lang=en) -- By Jean-Francois Puget, aka [CPMP](https://www.kaggle.com/cpmpml).
+- [explained.ai](https://explained.ai/)
+- [Better Explained](https://betterexplained.com/)
+- [Genetic Argonaut](https://geneticargonaut.blogspot.com/)
+- [pandas blog](https://pandas-dev.github.io/pandas-blog/)
+- [Towards Data Science](https://towardsdatascience.com/)
+- [Linear Disgressions](https://lineardigressions.com/) -- data science podcasts.
+- [Not so standard deviations](http://nssdeviations.com/) -- more podcasts.
+- [Probably Overthinking It](https://www.allendowney.com/blog/)
+- [Simply Statistics](https://simplystatistics.org/)
+- [Practically Predictable](http://practicallypredictable.com/)
+- [koaning](http://koaning.io/) -- By Vincent Warmerdam, who did [this](https://www.youtube.com/watch?v=68ABAU_V8qI&feature=youtu.be) great presentation.
+- [blogarithms](https://blogarithms.github.io/)
+- [Possibly Wrong ](https://possiblywrong.wordpress.com/)
+- [FastML](http://fastml.com/)
+- [Parameter-free Learning and Optimization Algorithms](https://parameterfree.com/)
+- [Todd W. Schneider](https://toddwschneider.com/) -- This guy is really good at exploratory data analysis.
+- [Yann Thaddée](https://espadrine.github.io/blog/) -- Not directly related to data science but interesting nonetheless.
+- [Colins Blog](https://www.solipsys.co.uk/new/ColinsBlog.html)
+
 ## Hall of fame
 
 The following is a hall of fame of papers, books, and blog posts that have a very high [signal to noise ratio](https://www.urbandictionary.com/define.php?term=signal%20to%20noise%20ratio) -- at least in my book. I highly recommend reading some of them when you get time.
@@ -75,56 +126,8 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Hidden Technical Debt in Machine Learning Systems - Google](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)
 - [Distill: Why do we need Flask, Celery, and Redis? (with McDonalds in Between) - Lj Miranda](https://ljvmiranda921.github.io/notebook/2019/11/08/flask-redis-celery-mcdo/) -- A good example of the difference between abstract ideas and implementation details.
 - [Darts, Dice, and Coins: Sampling from a Discrete Distribution -- Keith Schwarz](https://www.keithschwarz.com/darts-dice-coins/)
-
-## Blogroll
-
-This is a list of blogs I regularly scroll through.
-
-- [Tim Salimans on Data Analysis](http://timsalimans.com/)
-- [Randal Olson](http://www.randalolson.com/blog/)
-- [Sam & Max](http://sametmax.com/) -- French and NSFW!
-- [Sebastian Raschka](http://sebastianraschka.com/blog/index.html)
-- [Clean Coder](https://sites.google.com/site/unclebobconsultingllc/)
-- [Pythonic Perambulations](https://jakevdp.github.io/)
-- [Erik Bernhardsson](http://erikbern.com/)
-- [otoro](http://blog.otoro.net/)
-- [Terra Incognita](http://blog.christianperone.com/)
-- [Real Python](https://realpython.com/blog/)
-- [Airbnb Engineering](http://nerds.airbnb.com/)
-- [No Free Hunch](http://blog.kaggle.com/)
-- [The Unofficial Google Data Science Blog](http://www.unofficialgoogledatascience.com/)
-- [will wolf](http://willwolf.io/)
-- [Edwin Chen](http://blog.echen.me/)
-- [Use the index, Luke!](http://use-the-index-luke.com/)
-- [Jack Preston](https://unwttng.com/)
-- [Agustinus Kristiadi](https://wiseodd.github.io/)
-- [DataGenetics](http://datagenetics.com/blog.html)
-- [Katherine Bailey](https://katbailey.github.io/)
-- [Netflix Research](https://research.netflix.com/)
-- [inFERENce](https://www.inference.vc/)
-- [Hyndsight](https://robjhyndman.com/hyndsight/) -- Rob Hyndman is a time series specialist.
-- [While My MCMC Gently Samples](https://twiecki.io/)
-- [Ines Montani](https://ines.io/) -- By one of the founders of [spaCy](https://spacy.io/).
-- [Stephen Smerity](https://smerity.com/articles/articles.html)
-- [Peter Norvig](http://norvig.com/)
-- [IT Best Kept Secret Is Optimization](https://www.ibm.com/developerworks/community/blogs/jfp/?lang=en) -- By Jean-Francois Puget, aka [CPMP](https://www.kaggle.com/cpmpml).
-- [explained.ai](https://explained.ai/)
-- [Better Explained](https://betterexplained.com/)
-- [Genetic Argonaut](https://geneticargonaut.blogspot.com/)
-- [pandas blog](https://pandas-dev.github.io/pandas-blog/)
-- [Towards Data Science](https://towardsdatascience.com/)
-- [Linear Disgressions](https://lineardigressions.com/) -- data science podcasts.
-- [Probably Overthinking It](https://www.allendowney.com/blog/)
-- [Simply Statistics](https://simplystatistics.org/)
-- [Practically Predictable](http://practicallypredictable.com/)
-- [koaning](http://koaning.io/) -- By Vincent Warmerdam, who did [this](https://www.youtube.com/watch?v=68ABAU_V8qI&feature=youtu.be) great presentation.
-- [blogarithms](https://blogarithms.github.io/)
-- [Possibly Wrong ](https://possiblywrong.wordpress.com/)
-- [FastML](http://fastml.com/)
-- [Parameter-free Learning and Optimization Algorithms](https://parameterfree.com/)
-- [Todd W. Schneider](https://toddwschneider.com/) -- This guy is really good at exploratory data analysis.
-- [Yann Thaddée](https://espadrine.github.io/blog/) -- Not directly related to data science but interesting nonetheless.
-- [Colins Blog](https://www.solipsys.co.uk/new/ColinsBlog.html)
+- [Simplifying Graph Convolutional Networks -- Felix Wu et al.](https://arxiv.org/pdf/1902.07153.pdf) -- A nice example of putting the horse before the cart.
+- [Data Scientist Jobs for Master’s Graduates](https://online.maryville.edu/online-masters-degrees/data-science/careers/) -- A somewhat up-to-date list of career paths for data science students.
 
 ## Eye candy
 
