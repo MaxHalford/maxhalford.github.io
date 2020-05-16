@@ -80,6 +80,7 @@ This is a list of blogs I regularly scroll through.
 - [Todd W. Schneider](https://toddwschneider.com/) -- This guy is really good at exploratory data analysis.
 - [Yann Thaddée](https://espadrine.github.io/blog/) -- Not directly related to data science but interesting nonetheless.
 - [Colins Blog](https://www.solipsys.co.uk/new/ColinsBlog.html)
+- [Fabien Sanglard](https://fabiensanglard.net) -- Nothing to do with data science, but such good taste!
 
 ## Hall of fame
 
@@ -128,6 +129,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Darts, Dice, and Coins: Sampling from a Discrete Distribution -- Keith Schwarz](https://www.keithschwarz.com/darts-dice-coins/)
 - [Simplifying Graph Convolutional Networks -- Felix Wu et al.](https://arxiv.org/pdf/1902.07153.pdf) -- A nice example of putting the horse before the cart.
 - [Data Scientist Jobs for Master’s Graduates](https://online.maryville.edu/online-masters-degrees/data-science/careers/) -- A somewhat up-to-date list of career paths for data science students.
+- [MIT 6.867 machine learning course notes -- Tommi Jaakola](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-867-machine-learning-fall-2006/lecture-notes/) -- For people who enjoy concise mathematical notation.
 
 ## Eye candy
 
@@ -144,3 +146,5 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Nick Barnes' football bible](https://www.the42.ie/bbc-nick-barnes-football-notes-2111888-May2015/)
 - [Simon Stålenhag](http://www.simonstalenhag.se/)
 - [Syd Mead](https://www.iamag.co/the-art-of-syd-mead/) (who worked on Blade Runner)
+- [Michael Fogleman's blog](https://www.michaelfogleman.com/)
+- [World of Warcraft art by Dreamwalker](https://imgur.com/user/imadreamwalker/posts)

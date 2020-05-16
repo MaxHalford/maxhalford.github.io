@@ -21,13 +21,6 @@
               </time>
               {{ end }}
             </div>
-            <div class="col-xs-6">
-              <!-- {{ if .Site.Author.name }}
-              <div class="post-author">
-                <a target="_blank" href="{{ .Site.Author.homepage }}">@{{ .Site.Author.name }}</a>
-              </div>
-              {{ end }} -->
-            </div>
           </div>
           {{ end }}
         </header>
@@ -60,15 +53,18 @@
 
         <!-- We only want to activate the comments section in production -->
         {{ if not (eq hugo.Environment "development") }}
-          <script
-            src="https://utteranc.es/client.js"
-            repo="MaxHalford/maxhalford.github.io"
-            issue-term="pathname"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
+          <script type="text/javascript">
+            // Dark mode
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+              document.write('<script src="https://utteranc.es/client.js" repo="MaxHalford/maxhalford.github.io" issue-term="pathname" theme="github-dark" crossorigin="anonymous" async>');
+            }
+            // Light mode
+            else {
+              document.write('<script src="https://utteranc.es/client.js" repo="MaxHalford/maxhalford.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>');
+            }
           </script>
         {{ end }}
+
 
         {{ end }}
 
