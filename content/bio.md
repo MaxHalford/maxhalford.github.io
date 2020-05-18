@@ -4,7 +4,7 @@ title = "Bio"
 
 Hello 👋
 
-I'm a PhD student living in Toulouse, France 🇫🇷. I'm half British 🇬🇧 and half Belgian 🇧🇪. My university background is a mix of maths, economics, and computer science. I got into data science after watching [*Moneyball*](https://www.wikiwand.com/en/Moneyball_(film)) ⚾. My PhD is at the intersection of database query optimisation and machine learning 🤖. I try to build an interest in different topics, so as to avoid becoming a one-trick pony 🐴. As of late, I'm especially interested in [online machine learning](https://www.wikiwand.com/en/Online_machine_learning).
+I'm a PhD student living in Toulouse, France 🇫🇷. I'm half British 🇬🇧 and half Belgian 🇧🇪. My university 🎓 background is a mix of maths 🧮, economics 💸, and computer science 🖥️. I started delving into data science in 2014 after watching [Moneyball](https://www.wikiwand.com/en/Moneyball_(film)) ⚾ and reading [The Signal and the Noise](https://www.wikiwand.com/en/The_Signal_and_the_Noise) 📖. My PhD is at the intersection of database query optimisation and machine learning 🤖. I'm more of a swiss army knife 🇨🇭 then a one-trick pony 🐴, and I'm keen on building an interest in different topics. As of late, I'm especially interested in [online machine learning](https://www.wikiwand.com/en/Online_machine_learning).
 
 I enjoy writing code and I [maintain some open-source projects](https://github.com/MaxHalford/). In particular, I'm the author of [creme](https://github.com/creme-ml/creme), which is a Python 🐍 library for online machine learning. I'm also a [Kaggle Master](https://www.kaggle.com/maxhalford) and enjoy competitive data science.
 
