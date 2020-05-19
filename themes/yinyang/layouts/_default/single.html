@@ -51,21 +51,28 @@
         <div class="post-ads">{{ .Site.Params.postAds | safeHTML }}</div>
         {{ end }}
 
-        <script src="https://utteranc.es/client.js" repo="MaxHalford/maxhalford.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
-
         <!-- We only want to activate the comments section in production -->
-        <!-- {{ if not (eq hugo.Environment "development") }}
+        {{ if not (eq hugo.Environment "development") }}
           <script type="text/javascript">
+
+            var s = document.createElement('script');
+            s.setAttribute( 'src', 'https://utteranc.es/client.js' );
+            s.setAttribute( 'repo', 'MaxHalford/maxhalford.github.io' );
+            s.setAttribute( 'issue-term', 'pathname' );
+            s.setAttribute( 'crossorigin', 'anonymous' );
+            s.setAttribute( 'async', null );
+
             // Dark mode
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-              document.write('<script src="https://utteranc.es/client.js" repo="MaxHalford/maxhalford.github.io" issue-term="pathname" theme="github-dark" crossorigin="anonymous" async>');
+              s.setAttribute( 'theme', 'github-dark' );
             }
             // Light mode
             else {
-              document.write('<script src="https://utteranc.es/client.js" repo="MaxHalford/maxhalford.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>');
+              s.setAttribute( 'theme', 'github-light' );
             }
+            document.body.appendChild( s );
           </script>
-        {{ end }} -->
+        {{ end }}
 
 
         {{ end }}
