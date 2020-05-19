@@ -13,7 +13,7 @@ title: Links
 
 ## Talks
 
-- [Online machine learning with decision trees - virtual seminar, 2020](/slides/online-decision-trees.pdf)
+- [Online machine learning with decision trees - Toulouse AOC workgroup, 2020](/slides/online-decision-trees.pdf)
 - [Our solution to the IDAO 2020 qualifiers - virtual seminar, 2020](/slides/idao-2020-qualifiers.pdf)
 - [Global explanation of machine learning with sensitivity analysis - MASCOT-NUM, Paris, 2020](/slides/gdr-mascotnum-2020.pdf)
 - [The benefits of online learning - Quantmetry, Paris, 2019](/slides/the-benefits-of-online-learning)
@@ -81,6 +81,7 @@ This is a list of blogs I regularly scroll through.
 - [Yann Thaddée](https://espadrine.github.io/blog/) -- Not directly related to data science but interesting nonetheless.
 - [Colins Blog](https://www.solipsys.co.uk/new/ColinsBlog.html)
 - [Fabien Sanglard](https://fabiensanglard.net) -- Nothing to do with data science, but such good taste!
+- [The Glowing Python](https://glowingpython.blogspot.com/) -- By the creator of [MiniSom](https://github.com/JustGlowing/minisom), which is worth checking out too.
 
 ## Hall of fame
 
@@ -128,7 +129,6 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Distill: Why do we need Flask, Celery, and Redis? (with McDonalds in Between) - Lj Miranda](https://ljvmiranda921.github.io/notebook/2019/11/08/flask-redis-celery-mcdo/) -- A good example of the difference between abstract ideas and implementation details.
 - [Darts, Dice, and Coins: Sampling from a Discrete Distribution -- Keith Schwarz](https://www.keithschwarz.com/darts-dice-coins/)
 - [Simplifying Graph Convolutional Networks -- Felix Wu et al.](https://arxiv.org/pdf/1902.07153.pdf) -- A nice example of putting the horse before the cart.
-- [Data Scientist Jobs for Master’s Graduates](https://online.maryville.edu/online-masters-degrees/data-science/careers/) -- A somewhat up-to-date list of career paths for data science students.
 - [MIT 6.867 machine learning course notes -- Tommi Jaakola](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-867-machine-learning-fall-2006/lecture-notes/) -- For people who enjoy concise mathematical notation.
 
 ## Eye candy
