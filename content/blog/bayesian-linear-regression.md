@@ -76,7 +76,7 @@ Basically, the thing to remember is that the <span style="color: forestgreen;">p
 
 The important result of the previous section is that we can get update the distribution of the parameters when a new pair $(x_i, y_i)$ arrives:
 
-$$\textcolor{mediumpurple}{p(w_{i+1} | \theta_i, x_i, y_i)} \propto \textcolor{indianred}{p(x_i, y_i | \theta_i)} \textcolor{royalblue}{p(\theta_i)}$$
+$$\textcolor{mediumpurple}{p(\theta_{i+1} | \theta_i, x_i, y_i)} \propto \textcolor{indianred}{p(x_i, y_i | \theta_i)} \textcolor{royalblue}{p(\theta_i)}$$
 
 Before any data comes in, the model parameters follow the initial distribution we picked, which is $p(\theta_0)$. At this point, if we're asked to predict $y_0$, then it's predictive distribution would be obtained as so:
 
