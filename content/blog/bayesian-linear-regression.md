@@ -70,7 +70,7 @@ Again, this isn't analytically tractable, except if the likelihood and the prior
 
 $$\textcolor{forestgreen}{p(y\_i | x\_i)} \propto \textcolor{indianred}{p(y_i | x_i, \theta_i)} \textcolor{royalblue}{p(\theta_i)}$$
 
-Basically, the thing to remember is that the <span style="color: forestgreen;">predictive distribution</span> can be obtained by using the <span style="color: indianred;">predictive distribution</span> and the <span style="color: royalblue;">current distribution of the weights</span>.
+Basically, the thing to remember is that the <span style="color: forestgreen;">predictive distribution</span> can be obtained by mixing the <span style="color: indianred;">likelihood</span> and the <span style="color: royalblue;">current distribution of the weights</span>.
 
 ## Online belief updating
 
@@ -94,9 +94,9 @@ The previous equations expresses the fact that the prior of the weights for the 
 
 $$\textcolor{mediumpurple}{p(\theta_2 | \theta_1, x_1, y_1)} \propto \textcolor{indianred}{p(y_1 | x_1, \theta_1)} \underbrace{\textcolor{indianred}{p(y_0 | x_0, \theta_0)} \textcolor{royalblue}{p(\theta_0)}}\_{\textcolor{royalblue}{p(\theta_1)}}$$
 
-When the first pair $(x_2, y_2)$ arrives, the distribution of the weights will be obtained as so:
+When the pair $(x_2, y_2)$ arrives, the distribution of the weights will be obtained as so:
 
-$$\textcolor{mediumpurple}{p(\theta_3 | \theta_1, x_2, y_2)} \propto \textcolor{indianred}{p(y_2 | x_2, \theta_2)} \underbrace{\textcolor{indianred}{p(y_1 | x_1, \theta_1)} \underbrace{\textcolor{indianred}{p(y_0 | x_0, \theta_0)} \textcolor{royalblue}{p(\theta_0)}}_{\textcolor{royalblue}{p(\theta_1)}}  }\_{\textcolor{royalblue}{p(\theta_2)}}$$
+$$\textcolor{mediumpurple}{p(\theta_3 | \theta_2, x_2, y_2)} \propto \textcolor{indianred}{p(y_2 | x_2, \theta_2)} \underbrace{\textcolor{indianred}{p(y_1 | x_1, \theta_1)} \underbrace{\textcolor{indianred}{p(y_0 | x_0, \theta_0)} \textcolor{royalblue}{p(\theta_0)}}_{\textcolor{royalblue}{p(\theta_1)}}  }\_{\textcolor{royalblue}{p(\theta_2)}}$$
 
 Hopefully, by now you've understood that there is recursive relationship that links each iteration: the posterior distribution at step $i$ becomes the prior distribution at step $i+1$. This simple fact is the reason why analytical Bayesian inference can naturally be used as an online machine learning algorithm. Indeed, we only need to store the current distribution of the weights to make everything work. When I started to understand this for the first time, I found it slightly magical.
 
@@ -130,7 +130,7 @@ $$S\_{i+1} = (S\_i^{-1} + \beta x\_i^\intercal x_i)^{-1}$$
 
 $$m\_{i+1} = S\_{i+1}(S\_i^{-1} m\_i + \beta x_i y_i)$$
 
-Note that $x\_i^\intercal x_i)^{-1}$ is the [outer product](https://www.wikiwand.com/en/Outer_product) of $x$ with itself. By now you might be thinking that I've produced these formulas from thin air, and you would be right. The steps for getting to these formulas are quite straightforward, assuming your calculus is not too rusty. However I won't be going into them in this blog post. If you want to go deeper into the maths, I recommend getting Christopher Bishop's and/or checking out [this video](https://www.youtube.com/watch?v=nrd4AnDLR3U&list=PLD0F06AA0D2E8FFBA&index=61). We can also obtain the predictive distribution:
+Note that $x\_i^\intercal x_i)^{-1}$ is the [outer product](https://www.wikiwand.com/en/Outer_product) of $x_i$ with itself. By now you might be thinking that I've produced these formulas from thin air, and you would be right. The steps for getting to these formulas are quite straightforward, assuming your calculus is not too rusty. However I won't be going into them in this blog post. If you want to go deeper into the maths, I recommend getting Christopher Bishop's and/or checking out [this video](https://www.youtube.com/watch?v=nrd4AnDLR3U&list=PLD0F06AA0D2E8FFBA&index=61). We can also obtain the predictive distribution:
 
 $$\color{forestgreen} p(y_i) = \mathcal{N}(\mu_i, \sigma_i)$$
 
@@ -181,7 +181,7 @@ class BayesLinReg:
     @property
     def weights_dist(self):
         cov = np.linalg.inv(self.cov_inv)
-        return stats.multivariate_normal(mean=model.mean, cov=cov)
+        return stats.multivariate_normal(mean=self.mean, cov=cov)
 ```
 
 Now that we've implemented Bayesian linear regression, let's use it!

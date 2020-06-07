@@ -13,6 +13,7 @@ title: Links
 
 ## Talks
 
+- [A brief introduction to online machine learning - Hong Kong Machine Learning, 2020](/slides/hkml2020.pdf)
 - [Online machine learning with decision trees - Toulouse AOC workgroup, 2020](/slides/online-decision-trees.pdf)
 - [Our solution to the IDAO 2020 qualifiers - virtual seminar, 2020](/slides/idao-2020-qualifiers.pdf)
 - [Global explanation of machine learning with sensitivity analysis - MASCOT-NUM, Paris, 2020](/slides/gdr-mascotnum-2020.pdf)
@@ -67,8 +68,9 @@ This is a list of blogs I regularly scroll through.
 - [Genetic Argonaut](https://geneticargonaut.blogspot.com/)
 - [pandas blog](https://pandas-dev.github.io/pandas-blog/)
 - [Towards Data Science](https://towardsdatascience.com/)
-- [Linear Disgressions](https://lineardigressions.com/) -- data science podcasts.
+- [Linear Digressions](https://lineardigressions.com/) -- data science podcasts.
 - [Not so standard deviations](http://nssdeviations.com/) -- more podcasts.
+- [Talking Machines](http://www.thetalkingmachines.com/episodes) -- even more podcasts.
 - [Probably Overthinking It](https://www.allendowney.com/blog/)
 - [Simply Statistics](https://simplystatistics.org/)
 - [Practically Predictable](http://practicallypredictable.com/)
@@ -82,6 +84,8 @@ This is a list of blogs I regularly scroll through.
 - [Colins Blog](https://www.solipsys.co.uk/new/ColinsBlog.html)
 - [Fabien Sanglard](https://fabiensanglard.net) -- Nothing to do with data science, but such good taste!
 - [The Glowing Python](https://glowingpython.blogspot.com/) -- By the creator of [MiniSom](https://github.com/JustGlowing/minisom), which is worth checking out too.
+- [Chai Time Data Science](https://sanyambhutani.com/)
+- [Matt Hancock](https://notmatthancock.github.io/notes/)
 
 ## Hall of fame
 
@@ -90,7 +94,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [The Elements of Statistical Learning - Jerome H. Friedman, Robert Tibshirani, and Trevor Hastie](http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf)
 - [Machine Learning - Tom Mitchell](http://personal.disco.unimib.it/Vanneschi/McGrawHill_-_Machine_Learning_-Tom_Mitchell.pdf) -- I think this wonderful textbook is under-appreciated.
 - [Artificial Intelligence: A Modern Approach - Russel & Norvig](http://web.cecs.pdx.edu/~mperkows/CLASS_479/2017_ZZ_00/02__GOOD_Russel=Norvig=Artificial%20Intelligence%20A%20Modern%20Approach%20(3rd%20Edition).pdf)
-- [mlcourse.ai](https://mlcourse.ai/) -- Of all the introductions to machine learning I think this is the one that strikes the best balance between theory and practice.
+- [mlcourse.ai](https://mlcourse.ai/) -- Of all the introductions to machine learning, I think this is the one that strikes the best balance between theory and practice.
 - [Machine learning cheat sheets - Shervine Amidi](https://stanford.edu/~shervine/teaching/cs-229.html)
 - [Kalman and Bayesian Filters in Python - Roger Labbe](http://nbviewer.jupyter.org/github/rlabbe/Kalman-and-Bayesian-Filters-in-Python/blob/master/table_of_contents.ipynb) -- Kalman filters are notoriously hard to grok, this tutorial nicely builds up the steps to understanding them.
 - [CS231n Convolutional Neural Networks for Visual Recognition - Stanford](http://cs231n.github.io/convolutional-networks/)
@@ -122,14 +126,15 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Frequentism and Bayesianism: A Python-driven Primer - Jake VanderPlas](https://arxiv.org/pdf/1411.5018.pdf)
 - [A Few Useful Things To Know About Machine Learning - Pedro Domingos](https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf)
 - [Multiworld Testing Decision Service: A System for Experimentation, Learning, And Decision-Making](https://arxiv.org/pdf/1606.03966.pdf)
-- [Machine Learning:The High-Interest Credit Card of Technical Debt - Google](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43146.pdf)
+- [Machine Learning: The High-Interest Credit Card of Technical Debt - Google](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43146.pdf)
 - [Variational Inference: A Review for Statisticians - David Blei and his flock](https://arxiv.org/pdf/1601.00670.pdf)
 - [The Performance of Decision Tree Evaluation Strategies - Andrew Tulloch](http://tullo.ch/articles/decision-tree-evaluation/)
 - [Hidden Technical Debt in Machine Learning Systems - Google](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)
 - [Distill: Why do we need Flask, Celery, and Redis? (with McDonalds in Between) - Lj Miranda](https://ljvmiranda921.github.io/notebook/2019/11/08/flask-redis-celery-mcdo/) -- A good example of the difference between abstract ideas and implementation details.
-- [Darts, Dice, and Coins: Sampling from a Discrete Distribution -- Keith Schwarz](https://www.keithschwarz.com/darts-dice-coins/)
-- [Simplifying Graph Convolutional Networks -- Felix Wu et al.](https://arxiv.org/pdf/1902.07153.pdf) -- A nice example of putting the horse before the cart.
-- [MIT 6.867 machine learning course notes -- Tommi Jaakola](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-867-machine-learning-fall-2006/lecture-notes/) -- For people who enjoy concise mathematical notation.
+- [Darts, Dice, and Coins: Sampling from a Discrete Distribution - Keith Schwarz](https://www.keithschwarz.com/darts-dice-coins/)
+- [Simplifying Graph Convolutional Networks - Felix Wu et al.](https://arxiv.org/pdf/1902.07153.pdf) -- A nice example of putting the horse before the cart.
+- [MIT 6.867 machine learning course notes - Tommi Jaakola](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-867-machine-learning-fall-2006/lecture-notes/) -- For people who enjoy concise mathematical notation.
+- [A Recipe for Training Neural Networks - Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
 
 ## Eye candy
 
