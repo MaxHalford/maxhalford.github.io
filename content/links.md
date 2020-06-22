@@ -86,6 +86,7 @@ This is a list of blogs I regularly scroll through.
 - [The Glowing Python](https://glowingpython.blogspot.com/) -- By the creator of [MiniSom](https://github.com/JustGlowing/minisom), which is worth checking out too.
 - [Chai Time Data Science](https://sanyambhutani.com/)
 - [Matt Hancock](https://notmatthancock.github.io/notes/)
+- [Francis Bach](https://francisbach.com/)
 
 ## Hall of fame
 
@@ -153,3 +154,4 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Syd Mead](https://www.iamag.co/the-art-of-syd-mead/) (who worked on Blade Runner)
 - [Michael Fogleman's blog](https://www.michaelfogleman.com/)
 - [World of Warcraft art by Dreamwalker](https://imgur.com/user/imadreamwalker/posts)
+- [*Hors-sol* de AKOREACRO](https://www.artcena.fr/artcena-tv/hors-sol-de-akoreacro)

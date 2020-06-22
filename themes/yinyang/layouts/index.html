@@ -14,10 +14,10 @@
 
             {{ range .Pages }}
             <div class="row posts-line">
-              <div class="posts-date col-sm-2 col-xs-5">
+              <div class="posts-date col-sm-3 col-xs-5">
                 <time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}}</time>
               </div>
-              <div class="posts-title col-sm-10 col-xs-7">
+              <div class="posts-title col-sm-9 col-xs-7">
                 <div class="row">
                   <div>
                     <a href="{{ .RelPermalink }}">{{ .Title }}</a>

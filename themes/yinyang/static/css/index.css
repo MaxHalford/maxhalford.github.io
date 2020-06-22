@@ -137,7 +137,9 @@ figcaption {
 
 .post-title {
   font-size: 2.5rem;
-  font-weight: 600;
+  font-weight: 800;
+  margin-bottom: 0.4em;
+  font-family: "PT Serif";
 }
 
 .post-category {
@@ -149,7 +151,7 @@ figcaption {
 
 .post-date {
   font-weight: 800;
-  font-style: italic;
+  color: gray;
 }
 
 .post-author {
