@@ -14,6 +14,12 @@
 
             {{ range .Pages }}
             <div class="row posts-line">
+              <div>
+              <a class="posts-line-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+              <time class="posts-line-date" datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}}</time>
+              </div>
+            </div>
+            <!-- <div class="row posts-line">
               <div class="posts-date col-sm-3 col-xs-5">
                 <time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}}</time>
               </div>
@@ -22,16 +28,9 @@
                   <div>
                     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                   </div>
-                  <!-- <div class="col-xs-3 col-sm-2 posts-categories">
-                    {{ range .Params.categories }}
-                    <div class="posts-category">
-                      <a href="/categories/{{ lower . }}/"><strong>{{ . }}</strong></a>
-                    </div>
-                    {{ end }}
-                  </div> -->
                 </div>
               </div>
-            </div>
+            </div> -->
             {{ end }}
           {{ end }}
         </div>

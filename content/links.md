@@ -86,7 +86,8 @@ This is a list of blogs I regularly scroll through.
 - [The Glowing Python](https://glowingpython.blogspot.com/) -- By the creator of [MiniSom](https://github.com/JustGlowing/minisom), which is worth checking out too.
 - [Chai Time Data Science](https://sanyambhutani.com/)
 - [Matt Hancock](https://notmatthancock.github.io/notes/)
-- [Francis Bach](https://francisbach.com/)
+- [Francis Bach](https://francisbach.com/) -- Someone with an h-index of over 80 must have some interesting things to say.
+- [Gwern Branwen](https://www.gwern.net/index) -- Cool in a weird way.
 
 ## Hall of fame
 

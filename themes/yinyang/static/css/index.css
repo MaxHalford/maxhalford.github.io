@@ -84,24 +84,28 @@ body {
   min-height: 70%;
 }
 
-.posts-date,
-.posts-title {
+.posts-line {
+  margin: 16px 0;
+  padding-left: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #fafafa;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.posts-line-title {
+  font-weight: bold;
+  margin-right: 7px;
   font-size: 1.2rem;
 }
 
-.posts-line {
-  margin: 12px 0;
-}
-.posts-categories {
-  font-size: 0.8rem;
-  margin: auto;
-  text-align: center;
-}
-
-.posts-category {
-  padding: 3px;
-  border: #333 2px solid;
-  margin-bottom: 3px;
+.posts-line-date {
+  color: gray;
+  font-size: 1rem;
+  padding-top: 3px;
 }
 
 .site-footer {
