@@ -88,6 +88,7 @@ This is a list of blogs I regularly scroll through.
 - [Matt Hancock](https://notmatthancock.github.io/notes/)
 - [Francis Bach](https://francisbach.com/) -- Someone with an h-index of over 80 must have some interesting things to say.
 - [Gwern Branwen](https://www.gwern.net/index) -- Cool in a weird way.
+- [Libres pensées d'un mathématicien ordinaire](http://djalil.chafai.net/blog/)
 
 ## Hall of fame
 
@@ -137,6 +138,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Simplifying Graph Convolutional Networks - Felix Wu et al.](https://arxiv.org/pdf/1902.07153.pdf) -- A nice example of putting the horse before the cart.
 - [MIT 6.867 machine learning course notes - Tommi Jaakola](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-867-machine-learning-fall-2006/lecture-notes/) -- For people who enjoy concise mathematical notation.
 - [A Recipe for Training Neural Networks - Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
+- [The Bitter Lesson - Richard Sutton](http://incompleteideas.net/IncIdeas/BitterLesson.html)
 
 ## Eye candy
 

@@ -18,6 +18,10 @@ a:hover {
   text-decoration: underline;
 }
 
+.markdown-body a {
+  color: #01579b;
+}
+
 .post-ads {
   margin: 50px 0;
 }
@@ -320,10 +324,6 @@ summary:hover {
 
   a {
     color: #c8c8cf;
-  }
-
-  .markdown-body a {
-    color: #8dc2fe;
   }
 
   img {
