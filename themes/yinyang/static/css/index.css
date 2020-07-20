@@ -343,6 +343,22 @@ summary:hover {
     background-color: #21232b !important;
   }
 
+  .posts-line {
+    background-color: #21252b;
+  }
+
+  .markdown-body a {
+    color: #8dc2fe;
+  }
+
+  .markdown-body table tr {
+    background-color: #21252b;
+  }
+
+  .markdown-body table tr:nth-child(2n) {
+    background-color: #16191d;
+  }
+
   /* Background */ .chroma { color: #d0d0d0; background-color: #202020 }
   /* Error */ .chroma .err { color: #a61717; background-color: #e3d2d2 }
   /* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
