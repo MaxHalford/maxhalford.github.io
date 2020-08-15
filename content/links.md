@@ -139,6 +139,9 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [MIT 6.867 machine learning course notes - Tommi Jaakola](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-867-machine-learning-fall-2006/lecture-notes/) -- For people who enjoy concise mathematical notation.
 - [A Recipe for Training Neural Networks - Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
 - [The Bitter Lesson - Richard Sutton](http://incompleteideas.net/IncIdeas/BitterLesson.html)
+- [The Best Medium-Hard Data Analyst SQL Interview Questions](https://quip.com/2gwZArKuWk7W) -- There are some great interactive SQL tutorials out there, such as [SQLBolt](https://sqlbolt.com/) and [Select Star SQL](https://selectstarsql.com/), but this one takes the cake due to its complexity.
+- [Rules of Programming - Rob Pike](http://users.ece.utexas.edu/~adnan/pike.html)
+- [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
 
 ## Eye candy
 
@@ -158,3 +161,4 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Michael Fogleman's blog](https://www.michaelfogleman.com/)
 - [World of Warcraft art by Dreamwalker](https://imgur.com/user/imadreamwalker/posts)
 - [*Hors-sol* de AKOREACRO](https://www.artcena.fr/artcena-tv/hors-sol-de-akoreacro)
+- [Erica Anderson](https://ericaofanderson.com/)

@@ -22,7 +22,7 @@ I've stumbled on many blogs, posts, textbooks, slides, that discussed Bayesian i
 
 In this post I would like to present a (my) pragmatic view of Bayesian inference, focused on online machine learning and practical aspects. Before getting into the code, I would like to give a generic overview of the topic. However, if you're in a hurry and want to dig into the code straight away, feel free to [move on forward](#the-case-of-linear-regression). I've purposefully chosen a mathematical notation that is particularly well suited to online machine learning. I've taken a bit of freedom with regards to the notation; if you're part of the [mathematical inquisition](http://mirror.uncyc.org/wiki/Mathematical_Inquisition) then take a chill pill. Note that there will probably be a fair bit of overlap with the blog posts I listed above, but I don't think that matters too much.
 
-<div style="border:3px; border-style:solid; border-color:forestgreen; padding: 1em; margin-bottom: 15px;">
+<div style="border:3px; border-style:solid; border-color:forestgreen; padding: 1em; padding-bottom: 0; margin-bottom: 15px;">
 I like to think of a Bayesian model as a set of blocks. For forecasting purposes, the block we're interested in is called the <span style="color: forestgreen;">predictive distribution</span>. The predictive distribution is the distribution of the target $y_i$ given a set of features $x_i$. We'll write it down as so:
 
 {{<color forestgreen "$$p(y_i | x_i)$$">}}
@@ -30,7 +30,7 @@ I like to think of a Bayesian model as a set of blocks. For forecasting purposes
 This is the distribution we want to obtain. It's the Holy Grail for many practitioners who want to take into account predictive uncertainty. Later on we'll see how the predictive distribution is obtained by assembling the rest of the blocks.
 </div>
 
-<div style="border:3px; border-style:solid; border-color:indianred; padding: 1em; margin-bottom: 15px;">
+<div style="border:3px; border-style:solid; border-color:indianred; padding: 1em; padding-bottom: 0; margin-bottom: 15px;">
 The next block is the <span style="color: indianred;">likelihood</span>, which is the probability distribution of an observation $y_i$ conditioned on the current model parameters $\theta_i$ and a set of features $x_i$. In other words, given the current state of the model, the likelihood tells you how realistic it is to observe the pair $(x_i, y_i)$. We'll write it down as follows:
 
 {{<color indianred "$$p(y_i | x_i, \theta_i)$$">}}
@@ -38,7 +38,7 @@ The next block is the <span style="color: indianred;">likelihood</span>, which i
 The thing to understand is that the likelihood is usually imposed by the problem you're dealing with. In textbooks, the likelihood is often chosen to be a Gaussian or a binomial, mostly because these distributions occur naturally in textbook problems. However, the likelihood can be any parametric distribution. The key idea is that the likelihood is something defined by the problem at hand, and usually isn't something you have to much freedom with.
 </div>
 
-<div style="border:3px; border-style:solid; border-color:royalblue; padding: 1em; margin-bottom: 15px;">
+<div style="border:3px; border-style:solid; border-color:royalblue; padding: 1em; padding-bottom: 0; margin-bottom: 15px;">
 Next, we have the <span style="color: royalblue;">prior distribution</span> of the model parameters. From an online learning perspective, I like to think of this as the current distribution of the model parameters. This will get clearer later on, I promise! We'll simply denote the prior distribution as so:
 
 {{<color royalblue "$$p(\theta_i)$$">}}
@@ -46,7 +46,7 @@ Next, we have the <span style="color: royalblue;">prior distribution</span> of t
 Choosing a prior is important, because for our case it can add regularization to our model. The trick is that if we choose a prior distribution that is so-called <i>conjugate</i> for the <span style="color: indianred;">likelihood</span>, then we get access to analytical formulas for updating the model parameters. If, however, the prior and the likelihood are not compatible with each other, then we have to resort to using approximate methods such as <a href="ttps://twiecki.io/blog/2015/11/10/mcmc-sampling">MCMC</a> and <a href="https://www.wikiwand.com/en/Variational_Bayesian_methods">variational inference</a>. As cool and trendy as they may be, these tools are mostly designed for situations where all the data is available at once. In other words they are not applicable in a streaming context, whereas analytical formulas are.
 </div>
 
-<div style="border:3px; border-style:solid; border-color:mediumpurple; padding: 1em; margin-bottom: 15px;">
+<div style="border:3px; border-style:solid; border-color:mediumpurple; padding: 1em; padding-bottom: 0; margin-bottom: 15px;">
 Finally, the {{<color mediumpurple "posterior distribution">}} represents the distribution of the model parameters $\theta_{i+1}$ once we've received a new pair $(x_{i}, y_{i})$. For online learning purposes, here is how we're going to write it down:
 
 {{<color mediumpurple "$$p(\theta_{i+1} | \theta_{i}, x_{i}, y_{i})$$">}}
