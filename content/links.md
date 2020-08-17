@@ -71,12 +71,13 @@ This is a list of blogs I regularly scroll through.
 - [Linear Digressions](https://lineardigressions.com/) -- data science podcasts.
 - [Not so standard deviations](http://nssdeviations.com/) -- more podcasts.
 - [Talking Machines](http://www.thetalkingmachines.com/episodes) -- even more podcasts.
+- [Practical AI](https://changelog.com/practicalai) -- here be podcasts.
 - [Probably Overthinking It](https://www.allendowney.com/blog/)
 - [Simply Statistics](https://simplystatistics.org/)
 - [Practically Predictable](http://practicallypredictable.com/)
 - [koaning](http://koaning.io/) -- By Vincent Warmerdam, who did [this](https://www.youtube.com/watch?v=68ABAU_V8qI&feature=youtu.be) great presentation.
 - [blogarithms](https://blogarithms.github.io/)
-- [Possibly Wrong ](https://possiblywrong.wordpress.com/)
+- [Possibly Wrong](https://possiblywrong.wordpress.com/)
 - [FastML](http://fastml.com/)
 - [Parameter-free Learning and Optimization Algorithms](https://parameterfree.com/)
 - [Todd W. Schneider](https://toddwschneider.com/) -- This guy is really good at exploratory data analysis.

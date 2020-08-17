@@ -1,6 +1,5 @@
 +++
 date = "2020-05-04"
-draft = false
 title = "Server-sent events in Flask without extra dependencies"
 +++
 
@@ -109,7 +108,6 @@ flask run
 In a separate terminal session, we can run a `listen.py` script which will subscribe to the `/listen` route. We can do this with the [`sseclient`](https://pypi.org/project/sseclient/) library, which is a thin wrapper on top of [`requests`](https://requests.readthedocs.io/en/master/):
 
 ```py
-import json
 import sseclient
 
 messages = sseclient.SSEClient('http://localhost:5000/listen')

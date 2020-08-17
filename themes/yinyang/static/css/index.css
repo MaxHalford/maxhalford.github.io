@@ -126,13 +126,11 @@ body {
 /* post */
 
 .post-content img {
-  max-width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
-  padding: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
 }
@@ -293,6 +291,23 @@ summary:hover {
 
 .site-footer-item {
   margin-right: 12px;
+}
+
+.katex {
+  font-size: 1.1em !important;
+}
+
+.markdown-body code {
+  padding-bottom: 2px !important;
+  padding-top: 5px !important;
+}
+
+table {
+  font-size: 0.9em !important;
+}
+
+.utterances {
+  margin-bottom: 30px !important;
 }
 
 /* Dark mode */
