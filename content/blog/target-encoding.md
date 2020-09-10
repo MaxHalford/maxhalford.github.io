@@ -110,7 +110,9 @@ The intuition is as follows. Imagine a new movie is posted on IMDB and it receiv
 
 Mathematically this is equivalent to:
 
-$$\mu = \frac{n \times \bar{x} + m \times w}{n + m}$$
+$$\begin{equation}
+\mu = \frac{n \times \bar{x} + m \times w}{n + m}
+\end{equation}$$
 
 where
 
@@ -122,7 +124,9 @@ where
 
 In this notation $m$ is the only parameter you have to set. The idea is that the higher $m$ is, the more you're going to rely on the overall mean $w$. If $m$ is equal to 0 then you're simply going to compute the empirical mean, which is:
 
-$$\mu = \frac{n \times \bar{x} + 0 \times w}{n + 0} = \frac{n \times \bar{x}}{n} = \bar{x}$$
+$$\begin{equation}
+\mu = \frac{n \times \bar{x} + 0 \times w}{n + 0} = \frac{n \times \bar{x}}{n} = \bar{x}
+\end{equation}$$
 
 In other words you're not doing any smoothing whatsoever.
 
@@ -167,11 +171,15 @@ df['x_1'] = calc_smooth_mean(df, by='x_1', on='y', m=10)
 
 It's should be quite noticeable that each computed value is much closer to the overall mean of 0.5. This is because a weight of 10 is rather large for a dataset of only 10 values. The value $d$ of variable $x_1$ has been replaced with 0.454545 instead of the 0 we got earlier. The equation for obtaining it was:
 
-$$d = \frac{1 \times 0 + 10 \times 0.5}{1 + 10} = \frac{0 + 5}{11} \simeq 0.454545$$
+$$\begin{equation}
+d = \frac{1 \times 0 + 10 \times 0.5}{1 + 10} = \frac{0 + 5}{11} \simeq 0.454545
+\end{equation}$$
 
 Meanwhile the new value for replacing the value $a$ of variable $x_0$ was:
 
-$$a = \frac{5 \times 0.8 + 10 \times 0.5}{5 + 10} = \frac{4 + 5}{15} = 0.6$$
+$$\begin{equation}
+a = \frac{5 \times 0.8 + 10 \times 0.5}{5 + 10} = \frac{4 + 5}{15} = 0.6
+\end{equation}$$
 
 Computing smooth means can be done extremely quickly. What's more you only have to choose a single parameter, which is $m$. I find that setting to something like 300 works well in most cases. It's quite intuitive really: you're saying that you require that there must be at least 300 values for the sample mean to overtake the global mean. There are other ways to do target encoding, such as [this one](https://kaggle2.blob.core.windows.net/forum-message-attachments/225952/7441/high%20cardinality%20categoricals.pdf) which is rather popular on Kaggle. However it produces encoded variables which are very correlated with the output of additive smoothing, at the cost of requiring two parameters.
 

@@ -11,3 +11,7 @@ I enjoy writing code and I [maintain some open-source projects](https://github.c
 Besides work, I like spending time with my friends and my girlfriend, reading 📚, watching movies 🍿, walking, looking at -- and sometimes making -- modern art, and cooking 🍲. My favorite food is peanut butter 🥜 and my favorite beer is Guinness ☘️. I have a [brother](https://jack.0x5.be/) who's into physics and operating systems. My mother runs a quirky restaurant in the French countryside called the [Ziboinboin](https://ziboinboin.com/).
 
 If you have any enquiries or simply want to get in touch, then feel free to shoot me an email at [maxhalford25@gmail.com](mailto:maxhalford25@gmail.com).
+
+<div style="width: 90%; margin: auto; padding-top: 10px;">
+    <img src="/img/beach.jpg" alt="pears">
+</div>

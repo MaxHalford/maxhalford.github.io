@@ -188,38 +188,6 @@ body {
   margin: 5px 0;
 }
 
-@media screen and (max-width: 600px) {
-  .post-header {
-    text-align: center;
-  }
-  .post-desc {
-    margin-bottom: 30px;
-  }
-  .site-title {
-    margin-bottom: 10px;
-  }
-  .site-footer {
-    margin-bottom: 20px;
-    margin-top: 20px;
-    justify-content: center !important;
-  }
-  .end-xs {
-    justify-content: center !important;
-  }
-  .post-title {
-    font-size: 1.5em !important;
-  }
-  .post-header {
-    margin-bottom: 10px;
-  }
-  pre {
-    font-size: 13px !important;
-  }
-  .markdown-body {
-    font-size: 16px;
-  }
-}
-
 /* taxonomy */
 
 .taxonomy-term {
@@ -238,22 +206,6 @@ body {
 .gallery-img-desc {
   font-size: 0.8em;
   font-weight: 800;
-}
-
-/* disqus */
-
-#disqus_thread {
-  position: relative;
-}
-
-#disqus_thread:after {
-  content: "";
-  display: block;
-  height: 55px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  background: white;
 }
 
 /* details and summary (basically a collapsable div) */
@@ -304,11 +256,61 @@ summary:hover {
 
 table {
   font-size: 0.9em !important;
+  margin-bottom: 1em !important;
 }
 
 .utterances {
   margin-bottom: 30px !important;
 }
+
+#player {
+    margin-bottom: 1em !important;
+}
+
+code.has-jax {
+    -webkit-font-smoothing: antialiased;
+    background: inherit !important;
+    border: none !important;
+    font-size: 100%;
+}
+
+/* Mobile */
+
+@media screen and (max-width: 600px) {
+    .post-header {
+      text-align: center;
+    }
+    .post-desc {
+      margin-bottom: 30px;
+    }
+    .site-title {
+      margin-bottom: 10px;
+    }
+    .site-footer {
+      margin-bottom: 20px;
+      margin-top: 20px;
+      justify-content: center !important;
+    }
+    .end-xs {
+      justify-content: center !important;
+    }
+    .post-title {
+      font-size: 1.5em !important;
+    }
+    .post-header {
+      margin-bottom: 10px;
+    }
+    pre {
+      font-size: 13px !important;
+    }
+    .markdown-body {
+      font-size: 19px;
+    }
+    .post-content p {
+        text-align: left !important;
+    }
+}
+
 
 /* Dark mode */
 

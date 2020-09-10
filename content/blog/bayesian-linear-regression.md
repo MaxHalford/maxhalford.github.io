@@ -56,19 +56,27 @@ As you might have guessed or already know, the {{<color mediumpurple "posterior 
 
 Now that we have all our blocks, we need to put them together. It's quite straightforward once you understand how the blocks are related. <span style="color: indianred;">You start off with the likelihood, which is a probability distribution you have to choose</span>. For example if you're looking to predict counts then you would use a Poisson distribution. I'm refraining from giving a more detailed example simply because we will be going over one later on. What matters for the while is to develop an intuition, and for that I want to keep the notation as general as possible. <span style="color: royalblue;">Once you have settled on a likelihood, you need to choose a prior distribution for the model parameters</span>. Because our focus is on online learning, we want to have access to quick analytical formulas, and not MCMC voodoo. In order to so, we need to pick a prior distribution which is conjugate to the likelihood. Note that most distributions have at least one other distribution which is conjugate to them, as detailed [here](https://www.wikiwand.com/en/Conjugate_prior#/Table_of_conjugate_distributions). <span style="color: mediumpurple;">Now that you have decided which likelihood to use and what prior to associate with it, you may derive the posterior distribution of the model parameters</span>. This operation is the cornerstone of Bayesian inference, and is done via [Bayes' rule](https://www.youtube.com/watch?v=HZGCoVF3YvM):
 
-$$\textcolor{mediumpurple}{p(\theta_{i+1} | \theta_i, x_i, y_i)} = \frac{\textcolor{indianred}{p(y_i | x_i, \theta_i)} \textcolor{royalblue}{p(\theta_i)}}{p(x_i, y_i)}$$
+$$\begin{equation}
+\textcolor{mediumpurple}{p(\theta_{i+1} | \theta_i, x_i, y_i)} = \frac{\textcolor{indianred}{p(y_i | x_i, \theta_i)} \textcolor{royalblue}{p(\theta_i)}}{p(x_i, y_i)}
+\end{equation}$$
 
 Now you may be wondering what $p(x_i, y_i)$ is. It turns out it is the distribution of the data, and is something that we don't know! Indeed, if we knew the generating process of the data, then we wouldn't really have to be doing machine learning in the first place, right? There are however analytical formulas that use the rest of the information at our disposal -- namely the {{<color royalblue prior>}} and the {{<color indianred likelihood>}} -- but they require the likelihood and the prior to be conjugate to each other. These formulas involve a sequence of mathematical steps which we will omit. All you have to know is that if the {{<color royalblue prior>}} and the {{<color indianred likelihood>}} are conjugate to each other, then an analytical formula for computing the posterior is available, which allows us to perform online learning. To keep things general, we will simply write down:
 
-$$\textcolor{mediumpurple}{p(\theta_{i+1} | \theta_i, x_i, y_i)} \propto \textcolor{indianred}{p(y_i | x_i, \theta_i)} \textcolor{royalblue}{p(\theta_i)}$$
+$$\begin{equation}
+\textcolor{mediumpurple}{p(\theta_{i+1} | \theta_i, x_i, y_i)} \propto \textcolor{indianred}{p(y_i | x_i, \theta_i)} \textcolor{royalblue}{p(\theta_i)}
+\end{equation}$$
 
 The previous statement simply expresses the fact that the posterior distribution of the model parameters is proportional to the product of the likelihood and the prior distribution. In other words, in can be obtained using an analytical formula that is specific to the chosen likelihood and prior distribution. If we're being pragmatic, then what we're really interested in is to obtain the <span style="color: forestgreen;">predictive distribution</span>, which is obtained by marginalizing over the model parameters $\theta_i$:
 
-$$\textcolor{forestgreen}{p(y\_i | x\_i)} = \int \textcolor{indianred}{p(y\_i | \textbf{w}, x\_i)} \textcolor{royalblue}{p(\textbf{w})} d\textbf{w}$$
+$$\begin{equation}
+\textcolor{forestgreen}{p(y\_i | x\_i)} = \int \textcolor{indianred}{p(y\_i | \textbf{w}, x\_i)} \textcolor{royalblue}{p(\textbf{w})} d\textbf{w}
+\end{equation}$$
 
 Again, this isn't analytically tractable, except if the likelihood and the prior are conjugate to each other. The equation does make sense though, because essentially we're computing a weighted average of the potential $y_i$ values for each possible model parameter $\textbf{w}$.
 
-$$\textcolor{forestgreen}{p(y\_i | x\_i)} \propto \textcolor{indianred}{p(y_i | x_i, \theta_i)} \textcolor{royalblue}{p(\theta_i)}$$
+$$\begin{equation}
+\textcolor{forestgreen}{p(y\_i | x\_i)} \propto \textcolor{indianred}{p(y_i | x_i, \theta_i)} \textcolor{royalblue}{p(\theta_i)}
+\end{equation}$$
 
 Basically, the thing to remember is that the <span style="color: forestgreen;">predictive distribution</span> can be obtained by mixing the <span style="color: indianred;">likelihood</span> and the <span style="color: royalblue;">current distribution of the weights</span>.
 
@@ -76,27 +84,39 @@ Basically, the thing to remember is that the <span style="color: forestgreen;">p
 
 The important result of the previous section is that we can get update the distribution of the parameters when a new pair $(x_i, y_i)$ arrives:
 
-$$\textcolor{mediumpurple}{p(\theta_{i+1} | \theta_i, x_i, y_i)} \propto \textcolor{indianred}{p(x_i, y_i | \theta_i)} \textcolor{royalblue}{p(\theta_i)}$$
+$$\begin{equation}
+\textcolor{mediumpurple}{p(\theta_{i+1} | \theta_i, x_i, y_i)} \propto \textcolor{indianred}{p(x_i, y_i | \theta_i)} \textcolor{royalblue}{p(\theta_i)}
+\end{equation}$$
 
 Before any data comes in, the model parameters follow the initial distribution we picked, which is $p(\theta_0)$. At this point, if we're asked to predict $y_0$, then it's predictive distribution would be obtained as so:
 
-$$\textcolor{forestgreen}{p(y\_0 | x\_0)} \propto \textcolor{indianred}{p(y_0 | x_0, \theta_0)} \textcolor{royalblue}{p(\theta_0)}$$
+$$\begin{equation}
+\textcolor{forestgreen}{p(y\_0 | x\_0)} \propto \textcolor{indianred}{p(y_0 | x_0, \theta_0)} \textcolor{royalblue}{p(\theta_0)}
+\end{equation}$$
 
 Next, once the first observation $(x_0, y_0)$ arrives, we can update the distribution of the parameters:
 
-$$\textcolor{mediumpurple}{p(\theta_1 | \theta_0, x_0, y_0)} \propto \textcolor{indianred}{p(x_0, y_0 | \theta_0)} \textcolor{royalblue}{p(\theta_0)}$$
+$$\begin{equation}
+\textcolor{mediumpurple}{p(\theta_1 | \theta_0, x_0, y_0)} \propto \textcolor{indianred}{p(x_0, y_0 | \theta_0)} \textcolor{royalblue}{p(\theta_0)}
+\end{equation}$$
 
 The predictive distribution, given a set of features $x_1$, is thus:
 
-$$\textcolor{forestgreen}{p(y\_1 | x\_1)} \propto \textcolor{indianred}{p(y_1 | x_1, \theta_1)} \underbrace{\textcolor{mediumpurple}{p(\theta_1 | \theta_0, x_0, y_0)}}_{\textcolor{royalblue}{p(\theta_1)}}$$
+$$\begin{equation}
+\textcolor{forestgreen}{p(y\_1 | x\_1)} \propto \textcolor{indianred}{p(y_1 | x_1, \theta_1)} \underbrace{\textcolor{mediumpurple}{p(\theta_1 | \theta_0, x_0, y_0)}}_{\textcolor{royalblue}{p(\theta_1)}}
+\end{equation}$$
 
 The previous equations expresses the fact that the prior of the weights for the current iteration is the posterior of the weights at the previous iteration. Once the second pair $(x_1, y_1)$ is available, the distribution of the model parameters is updated in the same way as before:
 
-$$\textcolor{mediumpurple}{p(\theta_2 | \theta_1, x_1, y_1)} \propto \textcolor{indianred}{p(y_1 | x_1, \theta_1)} \underbrace{\textcolor{indianred}{p(y_0 | x_0, \theta_0)} \textcolor{royalblue}{p(\theta_0)}}\_{\textcolor{royalblue}{p(\theta_1)}}$$
+$$\begin{equation}
+\textcolor{mediumpurple}{p(\theta_2 | \theta_1, x_1, y_1)} \propto \textcolor{indianred}{p(y_1 | x_1, \theta_1)} \underbrace{\textcolor{indianred}{p(y_0 | x_0, \theta_0)} \textcolor{royalblue}{p(\theta_0)}}\_{\textcolor{royalblue}{p(\theta_1)}}
+\end{equation}$$
 
 When the pair $(x_2, y_2)$ arrives, the distribution of the weights will be obtained as so:
 
-$$\textcolor{mediumpurple}{p(\theta_3 | \theta_2, x_2, y_2)} \propto \textcolor{indianred}{p(y_2 | x_2, \theta_2)} \underbrace{\textcolor{indianred}{p(y_1 | x_1, \theta_1)} \underbrace{\textcolor{indianred}{p(y_0 | x_0, \theta_0)} \textcolor{royalblue}{p(\theta_0)}}_{\textcolor{royalblue}{p(\theta_1)}}  }\_{\textcolor{royalblue}{p(\theta_2)}}$$
+$$\begin{equation}
+\textcolor{mediumpurple}{p(\theta_3 | \theta_2, x_2, y_2)} \propto \textcolor{indianred}{p(y_2 | x_2, \theta_2)} \underbrace{\textcolor{indianred}{p(y_1 | x_1, \theta_1)} \underbrace{\textcolor{indianred}{p(y_0 | x_0, \theta_0)} \textcolor{royalblue}{p(\theta_0)}}_{\textcolor{royalblue}{p(\theta_1)}}  }\_{\textcolor{royalblue}{p(\theta_2)}}
+\end{equation}$$
 
 Hopefully, by now you've understood that there is recursive relationship that links each iteration: the posterior distribution at step $i$ becomes the prior distribution at step $i+1$. This simple fact is the reason why analytical Bayesian inference can naturally be used as an online machine learning algorithm. Indeed, we only need to store the current distribution of the weights to make everything work. When I started to understand this for the first time, I found it slightly magical.
 
@@ -106,37 +126,59 @@ On a sidenote, I want to mention that this presentation of Bayesian inference is
 
 Up until now we didn't give any useful example. We will now see how to perform linear regression by using Bayesian inference. In a linear regression, the model parameters $\theta_i$ are just weights $w_i$ that are linearly applied to a set of features $x_i$:
 
-$$y_i = w\_i x\_i^\intercal + \epsilon_i$$
+$$\begin{equation}
+y_i = w\_i x\_i^\intercal + \epsilon_i
+\end{equation}$$
 
 Each prediction is the scalar product between $p$ features $x_i$ and $p$ weights $w_i$. The trick here is that we're going to assume that the noise $\epsilon_i$ follows a given distribution. In particular, we will be boring and use the Gaussian [ansatz](https://www.wikiwand.com/en/Ansatz), which implies that the likelihood function is a Gaussian distribution:
 
-$$\color{indianred} p(y_i | x_i, w_i) = \mathcal{N}(w_i x_i^\intercal, \beta^{-1})$$
+$$\begin{equation}
+\color{indianred} p(y_i | x_i, w_i) = \mathcal{N}(w_i x_i^\intercal, \beta^{-1})
+\end{equation}$$
 
 Christopher Bishop calls $\beta$ the "noise precision parameter". In statistics, the [precision](https://www.wikiwand.com/en/Precision_(statistics)) is inversely related to the noise variance as so: $\beta = \frac{1}{\sigma^2}$. Basically, it translates our belief on how noisy the target distribution is. Both concepts coexist mostly because statisticians can't agree on a common Bible. There are ways to tune this parameter automatically from the data. However, for the purpose of simplicity, in this blog post we will "treat it as a known constant" -- I'm quoting Christopher Bishop. In any case, the appropriate prior distribution for the above likelihood function is the [multivariate Gaussian distribution](https://www.wikiwand.com/en/Multivariate_normal_distribution):
 
-$$\color{royalblue} p(w_0) = \mathcal{N}(m_0, S_0)$$
+$$\begin{equation}
+\color{royalblue} p(w_0) = \mathcal{N}(m_0, S_0)
+\end{equation}$$
 
 $m_0$ is the mean of the distribution while $S_0$ is it's covariance matrix. Initially, their initial values will be:
 
-$$m\_0 = (0, \dots , 0)$$
+$$\begin{equation}
+m\_0 = (0, \dots , 0)
+\end{equation}$$
 
-$$S\_0 = \begin{pmatrix} \alpha^{-1} & \dots & \dots \\\ \dots & \alpha^{-1} & \dots \\\ \dots & \dots & \alpha^{-1} \end{pmatrix}$$
+$$\begin{equation}
+S\_0 = \begin{pmatrix} \alpha^{-1} & \dots & \dots \\\ \dots & \alpha^{-1} & \dots \\\ \dots & \dots & \alpha^{-1} \end{pmatrix}
+\end{equation}$$
 
 We can now determine the posterior distribution of the weights:
 
-$$\color{mediumpurple} p(w\_{i+1} | w\_i, x\_i, y\_i) = \mathcal{N}(m\_{i+1}, S\_{i+1})$$
+$$\begin{equation}
+\color{mediumpurple} p(w\_{i+1} | w\_i, x\_i, y\_i) = \mathcal{N}(m\_{i+1}, S\_{i+1})
+\end{equation}$$
 
-$$S\_{i+1} = (S\_i^{-1} + \beta x\_i^\intercal x_i)^{-1}$$
+$$\begin{equation}
+S\_{i+1} = (S\_i^{-1} + \beta x\_i^\intercal x_i)^{-1}
+\end{equation}$$
 
-$$m\_{i+1} = S\_{i+1}(S\_i^{-1} m\_i + \beta x_i y_i)$$
+$$\begin{equation}
+m\_{i+1} = S\_{i+1}(S\_i^{-1} m\_i + \beta x_i y_i)
+\end{equation}$$
 
 Note that $x\_i^\intercal x_i)^{-1}$ is the [outer product](https://www.wikiwand.com/en/Outer_product) of $x_i$ with itself. By now you might be thinking that I've produced these formulas from thin air, and you would be right. The steps for getting to these formulas are quite straightforward, assuming your calculus is not too rusty. However I won't be going into them in this blog post. If you want to go deeper into the maths, I recommend getting Christopher Bishop's and/or checking out [this video](https://www.youtube.com/watch?v=nrd4AnDLR3U&list=PLD0F06AA0D2E8FFBA&index=61). We can also obtain the predictive distribution:
 
-$$\color{forestgreen} p(y_i) = \mathcal{N}(\mu_i, \sigma_i)$$
+$$\begin{equation}
+\color{forestgreen} p(y_i) = \mathcal{N}(\mu_i, \sigma_i)
+\end{equation}$$
 
-$$\mu_i = w\_i x\_i^\intercal$$
+$$\begin{equation}
+\mu_i = w\_i x\_i^\intercal
+\end{equation}$$
 
-$$\sigma_i = \frac{1}{\beta} + x\_i S\_i x\_i^\intercal$$
+$$\begin{equation}
+\sigma_i = \frac{1}{\beta} + x\_i S\_i x\_i^\intercal
+\end{equation}$$
 
 If you're a programmer/hacker/practitioner, then the two previous sets of formulas are all you need to get rolling. Assuming someone has worked out the analytical solution for you, the formulas are quite straightforward to implement. That's the sweet and sour conundrum of analytical Bayesian inference: the math is relatively hard to work out, but once you're done it's devilishly simple to implement. I'm going to use Python and define a class with two methods: `learn` and `fit`. The `learn` method is what most Pythonistas call `fit`. I use `learn` because I feel that it conveys more meaning. I determined that the most efficient way to proceed is to store the inverse of the covariance matrix instead of it's non-inverted version. All in all the code is quite simply, mostly thanks to [numpy](https://numpy.org/) which takes care of all the linear algebra details. I made it so that the `predict` method returns an instance of [`scipy.stats.norm`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html). This instance is nothing more than a 1D probability distribution with useful methods such as `.mean()`, `.std()`, `.interval()`, and `.pdf()`. From what I gather this isn't a very efficient way proceed, but it sure is convenient.
 
@@ -680,25 +722,43 @@ It seems to be working very well! Some would say this is worth writing a researc
 
 This section title is a bit of a mouthful -- at least for me -- but it's actually simpler than it sounds. In his book, Christopher Bishop proposes a simpler prior distribution for the weights which significantly reduces the amount of computation to perform. Under this prior, which is still a $p$-dimensional Gaussian, the weights are centered around 0 -- hence the "zero mean" -- whilst they each have the same variance -- which corresponds to the "[isotropic](https://www.wikiwand.com/en/Isotropy)" part. Mathematically, the prior is defined as so:
 
-$$\color{royalblue} p(w_0) = \mathcal{N}(0, \alpha^{-1}I)$$
+$$\begin{equation}
+\color{royalblue} p(w_0) = \mathcal{N}(0, \alpha^{-1}I)
+\end{equation}$$
 
 This leads to the following posterior distribution for the weights:
 
-$$\color{mediumpurple} p(w\_{i+1} | w\_i, x\_i, y\_i) = \mathcal{N}(m\_{i+1}, S\_{i+1})$$
+$$\begin{equation}
+\color{mediumpurple} p(w\_{i+1} | w\_i, x\_i, y\_i) = \mathcal{N}(m\_{i+1}, S\_{i+1})
+\end{equation}$$
 
-$$S\_{i+1} = (\alpha I + \beta x\_i^\intercal x_i)^{-1}$$
+$$\begin{equation}
+S\_{i+1} = (\alpha I + \beta x\_i^\intercal x_i)^{-1}
+\end{equation}$$
 
-$$m\_{i+1} = \beta S_{i+1} x_i^\intercal y_i$$
+$$\begin{equation}
+m\_{i+1} = \beta S_{i+1} x_i^\intercal y_i
+\end{equation}$$
 
 At a first glance, these formulas look just as heavy as before because they still necessitate a matrix inversion. The trick is that the equation for obtaining $S\_{i+1}$ has a particular structure that we can exploit. Indeed, it turns out that there is a wonderful formula to evaluate this equation without having to explicitely apply the inverse operation -- I love it when this happens. It's called the [Sherman–Morrison formula](https://www.wikiwand.com/en/Sherman%E2%80%93Morrison_formula). Here it is with Wikipedia's notation:
 
-$$(A + uv^\intercal) = A^{-1} - \frac{A^{-1} uv^\intercal A^{-1}}{1 + v^\intercal A^{-1}u}$$
+$$\begin{equation}
+(A + uv^\intercal) = A^{-1} - \frac{A^{-1} uv^\intercal A^{-1}}{1 + v^\intercal A^{-1}u}
+\end{equation}$$
 
 In our case, we have:
 
-$$A \leftarrow \alpha I$$
-$$u \leftarrow x$$
-$$v \leftarrow x$$
+$$\begin{equation}
+A \leftarrow \alpha I
+\end{equation}$$
+
+$$\begin{equation}
+u \leftarrow x
+\end{equation}$$
+
+$$\begin{equation}
+v \leftarrow x
+\end{equation}$$
 
 This formula is efficient because we only have to compute $A^{-1}$ once. The following snippet contains the implementation of Bayesian linear regression with a zero mean isotropic Gaussian prior and the Sherman-Morrisson formula:
 

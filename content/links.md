@@ -90,6 +90,7 @@ This is a list of blogs I regularly scroll through.
 - [Francis Bach](https://francisbach.com/) -- Someone with an h-index of over 80 must have some interesting things to say.
 - [Gwern Branwen](https://www.gwern.net/index) -- Cool in a weird way.
 - [Libres pensées d'un mathématicien ordinaire](http://djalil.chafai.net/blog/)
+- [Count Bayesie](https://www.countbayesie.com/)
 
 ## Hall of fame
 
@@ -147,7 +148,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 ## Eye candy
 
 - [Tyler Hobbs](https://tylerxhobbs.com/) -- The god of generative arts.
-- [Some Jean Giraud stuff](https://imgur.com/a/iiTW0Ay)
+- [Some Jean Giraud stuff](https://imgur.com/gallery/AZvIf)
 - [Mauro Martins](https://www.mauromartins.com/)
 - [A new way to knit by Petros Vrellis](http://artof01.com/vrellis/works/knit.html)
 - [A fascinating article about Manolo Gamboa Naon](https://www.artnome.com/news/2018/8/8/generative-art-finds-its-prodigy)
