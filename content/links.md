@@ -91,6 +91,7 @@ This is a list of blogs I regularly scroll through.
 - [Gwern Branwen](https://www.gwern.net/index) -- Cool in a weird way.
 - [Libres pensées d'un mathématicien ordinaire](http://djalil.chafai.net/blog/)
 - [Count Bayesie](https://www.countbayesie.com/)
+- [Jim Savage](https://khakieconomics.github.io/)
 
 ## Hall of fame
 
@@ -144,6 +145,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [The Best Medium-Hard Data Analyst SQL Interview Questions](https://quip.com/2gwZArKuWk7W) -- There are some great interactive SQL tutorials out there, such as [SQLBolt](https://sqlbolt.com/) and [Select Star SQL](https://selectstarsql.com/), but this one takes the cake due to its complexity.
 - [Rules of Programming - Rob Pike](http://users.ece.utexas.edu/~adnan/pike.html)
 - [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
+- [Understanding Matrix capsules with EM Routing - Jonathan Hui](https://jhui.github.io/2017/11/14/Matrix-Capsules-with-EM-routing-Capsule-Network/)
 
 ## Eye candy
 

@@ -26,6 +26,10 @@ a:hover {
   margin: 50px 0;
 }
 
+.markdown-body > h2, h3 {
+    margin-top: 1.5em !important;
+}
+
 /* overwrite github-markdown */
 
 .markdown-body {
@@ -303,11 +307,8 @@ code.has-jax {
     pre {
       font-size: 13px !important;
     }
-    .markdown-body {
-      font-size: 19px;
-    }
     .post-content p {
-        text-align: left !important;
+      text-align: left !important;
     }
 }
 
