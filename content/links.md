@@ -5,7 +5,9 @@ title: Links
 
 ## Papers
 
-- [An Approach Based on Bayesian Networks for Query Selectivity Estimation - DASFAA, 2019](https://link.springer.com/chapter/10.1007/978-3-030-18579-4_1)
+- [Selectivity correction with online machine learning - BDA 2020](https://arxiv.org/abs/2009.09884)
+- [Selectivity Estimation with Attribute Value Dependencies using Linked Bayesian Networks - TLDKS 2020](https://arxiv.org/abs/2009.09883)
+- [An Approach Based on Bayesian Networks for Query Selectivity Estimation - DASFAA, 2019](https://arxiv.org/abs/1907.06295)
 - Master 2 year internship at [HelloFresh](https://www.hellofresh.com/) ([report](/files/internships/M2_report.pdf), [slides](/files/internships/M2_slides.pdf))
 - Master 1 year internship at [Privateaser](https://www.privateaser.com/) ([report](/files/internships/M1_report.pdf), [slides](/files/internships/M1_slides.pdf))
 - Undergraduate internship at [INSA Toulouse](http://www.insa-toulouse.fr/fr/index.html) ([report](/files/internships/L3_report.pdf), [slides](/files/internships/L3_slides.pdf))
