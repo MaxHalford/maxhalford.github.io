@@ -149,6 +149,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Rules of Programming - Rob Pike](http://users.ece.utexas.edu/~adnan/pike.html)
 - [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
 - [Understanding Matrix capsules with EM Routing - Jonathan Hui](https://jhui.github.io/2017/11/14/Matrix-Capsules-with-EM-routing-Capsule-Network/)
+- [A Machine Learning Primer - Mihail Eric](https://www.confetti.ai/assets/ml-primer/ml_primer.pdf) -- A good read for beginners in machine learning algorithms.
 
 ## Eye candy
 
