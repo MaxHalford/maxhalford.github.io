@@ -65,6 +65,7 @@
 
         {{ end }}
 
+        {{ if in site.Params.mainSections .Type }}
         <div class="footer">
             <div class="do-the-thing">
                 <div class="elevator">
@@ -76,6 +77,7 @@
                 </div>
             </div>
         </div>
+        {{ end }}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/elevator.js/1.0.0/elevator.min.js"></script>
         <script>
             var elementButton = document.querySelector('.elevator');
