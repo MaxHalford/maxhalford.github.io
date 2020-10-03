@@ -1,5 +1,5 @@
 +++
-date = "2020-10-04"
+date = "2020-10-03"
 draft = false
 title = "Classifying documents without any training data"
 +++
