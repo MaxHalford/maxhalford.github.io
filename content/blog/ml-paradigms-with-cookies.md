@@ -10,6 +10,8 @@ Tell a story, like https://www.tuxboard.com/les-differents-genre-de-metal-le-che
 
 ## Supervised learning
 
+## Weakly supervised learning
+
 ## Unsupervised learning
 
 Talk about anomaly detection.
@@ -19,6 +21,10 @@ Talk about anomaly detection.
 ## Reinforcement learning
 
 ## Imitation learning
+
+## Imbalanced learning
+
+## Cost-sensitive learning
 
 ## Fair learning
 
@@ -45,3 +51,9 @@ Talk about anomaly detection.
 ## Learning to rank
 
 ## Manifold learning
+
+## Generative learning
+
+## Federated learning
+
+## Continual learning

@@ -78,7 +78,7 @@ This is a list of blogs I regularly scroll through.
 - [Probably Overthinking It](https://www.allendowney.com/blog/)
 - [Simply Statistics](https://simplystatistics.org/)
 - [Practically Predictable](http://practicallypredictable.com/)
-- [koaning](http://koaning.io/) -- By Vincent Warmerdam, who did [this](https://www.youtube.com/watch?v=68ABAU_V8qI&feature=youtu.be) great presentation.
+- [koaning](http://koaning.io/) -- By Vincent Warmerdam, who made [calmcode](https://calmcode.io/).
 - [blogarithms](https://blogarithms.github.io/)
 - [Possibly Wrong](https://possiblywrong.wordpress.com/)
 - [FastML](http://fastml.com/)
@@ -88,13 +88,13 @@ This is a list of blogs I regularly scroll through.
 - [Colins Blog](https://www.solipsys.co.uk/new/ColinsBlog.html)
 - [Fabien Sanglard](https://fabiensanglard.net) -- Nothing to do with data science, but such good taste!
 - [The Glowing Python](https://glowingpython.blogspot.com/) -- By the creator of [MiniSom](https://github.com/JustGlowing/minisom), which is worth checking out too.
-- [Chai Time Data Science](https://sanyambhutani.com/)
 - [Matt Hancock](https://notmatthancock.github.io/notes/)
-- [Francis Bach](https://francisbach.com/) -- Someone with an h-index of over 80 must have some interesting things to say.
+- [Francis Bach](https://francisbach.com/) -- Someone with an h-index of 80+ who takes the time to blog is worth reading.
 - [Gwern Branwen](https://www.gwern.net/index) -- Cool in a weird way.
 - [Libres pensées d'un mathématicien ordinaire](http://djalil.chafai.net/blog/)
 - [Count Bayesie](https://www.countbayesie.com/)
 - [Jim Savage](https://khakieconomics.github.io/)
+- [Nick Higham](https://nhigham.com/) -- A lot of well explained algebra.
 
 ## Hall of fame
 
@@ -169,3 +169,4 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [World of Warcraft art by Dreamwalker](https://imgur.com/user/imadreamwalker/posts)
 - [*Hors-sol* de AKOREACRO](https://www.artcena.fr/artcena-tv/hors-sol-de-akoreacro)
 - [Erica Anderson](https://ericaofanderson.com/)
+- [Jack Sharp](https://www.jacksharp.co.uk/)
