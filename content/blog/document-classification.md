@@ -80,7 +80,7 @@ def clean_text(text):
 uk economy facing major risks the uk manufacturing sector will continue to face serious challenges over the next two years the british chamber of commerce bcc has said the groups quarterly survey of companies found exports had picked up in the last three months of 2004 to their best levels in eight years the rise came despite exchange rates being cited as a major concern however the bcc found the whole uk economy still faced major risks and warned that growth is set to slow it recently forecast economic growth will slow from more than 3 in 2004 to a little below 25 in both 2005 and 2006 manufacturers domestic sales growth fell back slightly in the quarter the survey of 5196 firms found employment in manufacturing also fell and job expectations were at their lowest level for a year despite some positive news for the export sector there are worrying signs for manufacturing the bcc said these results reinforce our concern over the sectors persistent inability to sustain recovery the outlook for the service sector was uncertain despite an increase in exports and orders over the quarter the bcc noted the bcc found confidence increased in the quarter across both the manufacturing and service sectors although overall it failed to reach the levels at the start of 2004 the reduced threat of interest rate increases had contributed to improved confidence it said the bank of england raised interest rates five times between november 2003 and august last year but rates have been kept on hold since then amid signs of falling consumer confidence and a slowdown in output the pressure on costs and margins the relentless increase in regulations and the threat of higher taxes remain serious problems bcc director general david frost said while consumer spending is set to decelerate significantly over the next 1218 months it is unlikely that investment and exports will rise sufficiently strongly to pick up the slack
 ```
 
-As you can, I've removed punctuation marks, removed unnecessary whitespace, got rid of carriage returns, and lowercased all the text. The one thing I haven't taken of are spelling mistakes. Indeed, if a word is misspelt, then we won't be able to match it with a word vector. This dataset has supposedly been scrapped from the [BBC website](https://www.bbc.com/), and thus shouldn't contain too many typos. A quick win would be to apply [Peter Norvig's spelling corrector](https://norvig.com/spell-correct.html), but that goes beyond the scope of this article.
+As you can see, I've removed punctuation marks, removed unnecessary whitespace, got rid of carriage returns, and lowercased all the text. The one thing I haven't taken care of is spelling mistakes. Indeed, if a word is misspelt, then we won't be able to match it with a word vector. Indeed word vectors are essentially discrete dictionaries that map a word to a vector. This dataset has supposedly been scrapped from the [BBC website](https://www.bbc.com/), and thus shouldn't contain too many typos. But you never know! A quick win would be to apply [Peter Norvig's spelling corrector](https://norvig.com/spell-correct.html), however that goes beyond the scope of this article.
 
 I'm going to be using [spaCy](https://spacy.io/) for manipulating word embeddings. I've decided to use the [`en_core_web_lg`](https://spacy.io/models/en#en_core_web_lg) embeddings, which contains [Word2vec](https://www.wikiwand.com/en/Word2vec) embeddings that were fitted on [Common Crawl](https://www.wikiwand.com/en/Common_Crawl) data. The embeddings can be downloaded from the command-line as so:
 
@@ -155,22 +155,18 @@ We're nearly done! The last piece of the puzzle is a mechanism to find the close
 (5, 300)
 ```
 
-Note that `embed` expects to be provided with a list of tokens as a first input. In our case, each label is made up of one single word, thus `label.split(' ')` is equivalent to `[label]`. If you're in a situation where a label is made up of multiple words, then you'll want to split it appropriately instead of treating it as a single word. Anyway, moving on, here's the code for fitting the nearest neighbors data structure:
+Note that `embed` expects to be provided with a list of tokens as a first input. In our case, each label is made up of one single word, thus `label.split(' ')` is equivalent to `[label]`. If you're in a situation where a label is made up of multiple words, then you'll want to split it appropriately instead of treating it as a single word. Anyway, moving on, here's the code for fitting the nearest neighbors data structure, and searching for the closest label:
 
 ```py
 >>> neigh = neighbors.NearestNeighbors(n_neighbors=1)
 >>> neigh.fit(label_vectors)
-```
 
-We can now classify our document by searching for the closest label:
-
-```py
 >>> closest_label = neigh.kneighbors([centroid], return_distance=False)[0, 0]
 >>> label_names[closest_label]
 'business'
 ```
 
-Hurray! I think this is quite cool, considering that we didn't train any supervised model. But I've already said that. The question, of course, is how well does this perform? Well we can easily process each document with a list comprehension:
+Hurray, our document got classified correctly! I think that this is quite cool, considering that we didn't train any supervised model. But I've already said that. The $64.000 question, of course, is how well does this perform? Well we can easily process each document with a list comprehension:
 
 ```py
 def predict(doc, nlp, neigh):
