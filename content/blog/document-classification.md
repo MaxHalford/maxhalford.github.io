@@ -82,10 +82,10 @@ uk economy facing major risks the uk manufacturing sector will continue to face 
 
 As you can, I've removed punctuation marks, removed unnecessary whitespace, got rid of carriage returns, and lowercased all the text. The one thing I haven't taken of are spelling mistakes. Indeed, if a word is misspelt, then we won't be able to match it with a word vector. This dataset has supposedly been scrapped from the [BBC website](https://www.bbc.com/), and thus shouldn't contain too many typos. A quick win would be to apply [Peter Norvig's spelling corrector](https://norvig.com/spell-correct.html), but that goes beyond the scope of this article.
 
-I'm going to be using [spaCy](https://spacy.io/) for manipulating word embeddings. I've decided to use the [`en_core_web_lg`](https://spacy.io/models/en#en_core_web_lg) embeddings, which contains [Word2vec](https://www.wikiwand.com/en/Word2vec) embeddings that were fitted on [Common Crawl](https://www.wikiwand.com/en/Common_Crawl) data. The embeddings can be downloaded as so:
+I'm going to be using [spaCy](https://spacy.io/) for manipulating word embeddings. I've decided to use the [`en_core_web_lg`](https://spacy.io/models/en#en_core_web_lg) embeddings, which contains [Word2vec](https://www.wikiwand.com/en/Word2vec) embeddings that were fitted on [Common Crawl](https://www.wikiwand.com/en/Common_Crawl) data. The embeddings can be downloaded from the command-line as so:
 
-```py
->>> python -m spacy download en_core_web_lg
+```sh
+$ python -m spacy download en_core_web_lg
 ```
 
 Note that you could use any pre-trained word embeddings, including `en_core_web_sm` and `en_core_web_md`, which are smaller variants of `en_core_web_lg`. The fastText embeddings that I mentionned above would work too. Naturally, the performance of this method is going to be highly dependent on the quality of the word embeddings, as well as their adequacy with the dataset at hand. I'll get back to this point later on.
