@@ -237,9 +237,9 @@ entertainment       0.76      0.69      0.72       386
  weighted avg       0.74      0.67      0.63      2225
 ```
 
-The overall performance went up by a significant margin, even though we only changed the distance metric. There's obviously a lot of other things that could be improved. For instance, an interesting observation is that the performance for the "tech" label is very weak. This is pure speculation, but I assume that it's because the word embeddings that we're using were not trained on a lot of articles about technology, and that the articles in question contain some niche terms.
+The overall performance went up by a significant margin, even though we only changed the distance metric. There's obviously a lot of other things that could be improved. For instance, an interesting observation is that the performance for the "tech" label is very weak. This is pure speculation, but I assume that this is because the word embeddings that we're using were not trained on a lot of articles pertaining to technology. Moreover, it could be that the tech articles at our disposal contain a lot of niche terms that do not occur in the `en_core_web_lg` embeddings.
 
-There is one trick we can do to improve the performance for the "tech" label. The trick is simply to use the term "technology" instead. Indeed, "technology" is more likely to be used than "tech" in a sentence, and thus might have a better representation in the embedded vector space. This may be done as so:
+There is one simple trick we can apply to improve the performance for the "tech" label. The trick is to use the term "technology" instead. Indeed, "technology" is more likely to be used than "tech" in a sentence, and thus might have a better representation in the embedded vector space. This may be done as so:
 
 ```py
 >>> label_names
