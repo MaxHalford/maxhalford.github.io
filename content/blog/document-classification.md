@@ -291,4 +291,4 @@ It works! This goes to show that the exact text used for each label is important
 
 I'm not an NLP expert, nor am I fond of it to be truthful, so I'm going to leave it at that. The point of this article was mostly to spark an idea and to nicely present it to my friend. If you have some input or have experience working with word embeddings in such a manner, then please leave a comment. If not, keep lurking.
 
-Edit: after having written this blog post, I stumbled on a [paper](https://www.aclweb.org/anthology/P19-1036/) that proposes something very similar. The paper is very well written. Note that they call the `tech -> technology` trick *label enrichment*.
+Edit: after having written this blog post, I stumbled on a [paper](https://www.aclweb.org/anthology/P19-1036/) called *Towards Unsupervised Text Classification Leveraging Experts and Word Embeddings* that proposes something very similar. The paper is very well written. Note that they call the `tech -> technology` trick *label enrichment*.
