@@ -217,6 +217,7 @@ The performance is not stellar, but it is significantly better than random. One 
 >>> neigh.fit(label_vectors)
 
 >>> preds = [label_names[predict(doc, nlp, neigh)] for doc in docs]
+
 >>> report = metrics.classification_report(
 ...     y_true=labels,
 ...     y_pred=preds,
@@ -253,7 +254,7 @@ There is one trick we can do to improve the performance for the "tech" label. Th
 ['business', 'entertainment', 'politics', 'sport', 'technology']
 ```
 
-The label vectors can now be rebuilt and the benchmark can be run once more.
+The label vectors may now be rebuilt, and the benchmark can be run once more.
 
 ```py
 >>> label_vectors = np.asarray([
@@ -267,7 +268,8 @@ The label vectors can now be rebuilt and the benchmark can be run once more.
 ... )
 >>> neigh.fit(label_vectors)
 
->>> preds = [label_names[predict(doc)] for doc in docs]
+>>> preds = [label_names[predict(doc, nlp, neigh)] for doc in docs]
+
 >>> report = metrics.classification_report(
 ...     y_true=labels,
 ...     y_pred=preds,
