@@ -176,9 +176,9 @@ def predict(doc, nlp, neigh):
     tokens = doc.split(' ')[:50]
     centroid = embed(tokens, nlp)
     closest_label = neigh.kneighbors([centroid], return_distance=False)[0][0]
-    return label_names[closest_label]
+    return closest_label
 
-preds = [predict(doc, nlp, neigh) for doc in docs]
+preds = [label_names[predict(doc, nlp, neigh)] for doc in docs]
 ```
 
 This runs in ~2 seconds on my laptop -- note that there are 2,225 documents. We can now use scikit-learn's [`classification_report`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html) to assess the predictive power of our method:
@@ -216,7 +216,7 @@ The performance is not stellar, but it is significantly better than random. One 
 ... )
 >>> neigh.fit(label_vectors)
 
->>> preds = [predict(doc, nlp, neigh) for doc in docs]
+>>> preds = [label_names[predict(doc, nlp, neigh)] for doc in docs]
 >>> report = metrics.classification_report(
 ...     y_true=labels,
 ...     y_pred=preds,
@@ -236,8 +236,57 @@ entertainment       0.76      0.69      0.72       386
  weighted avg       0.74      0.67      0.63      2225
 ```
 
-The overall performance went up a significant margin, even though we only changed the distance metric. There's obviously a lot of other things that could be improved. For instance, an interesting observation is that the performance for the "tech" label is very weak. This is pure speculation, but I assume that it's because the word embeddings that we're using were not trained on a lot of articles about technology, and that the articles in question contain some niche terms.
+The overall performance went up by a significant margin, even though we only changed the distance metric. There's obviously a lot of other things that could be improved. For instance, an interesting observation is that the performance for the "tech" label is very weak. This is pure speculation, but I assume that it's because the word embeddings that we're using were not trained on a lot of articles about technology, and that the articles in question contain some niche terms.
 
-If you think about it, we're attempting to classify news articles from the BBC website with word embeddings that were fitted on Common Crawl data from all over the web. It seems quite obvious that a big boost would come from using word embeddings that are trained on similar documents to those that we have. This could be done in a couple of ways, either by training a word embedding model from scratch on our documents, or by fine-tuning an existing set of embeddings.
+There is one trick we can do to improve the performance for the "tech" label. The trick is simply to use the term "technology" instead. Indeed, "technology" is more likely to be used than "tech" in a sentence, and thus might have a better representation in the embedded vector space. This may be done as so:
+
+```py
+>>> label_names
+['business', 'entertainment', 'politics', 'sport', 'tech']
+
+>>> replacements = {'tech': 'technology'}
+>>> new_label_names = [
+...     replacements.get(label, label)
+...     for label in label_names
+... ]
+>>> new_label_names
+['business', 'entertainment', 'politics', 'sport', 'technology']
+```
+
+The label vectors can now be rebuilt and the benchmark can be run once more.
+
+```py
+>>> label_vectors = np.asarray([
+...     embed(name.split(' '), nlp)
+...     for name in new_label_names
+... ])
+
+>>> neigh = neighbors.NearestNeighbors(
+...     n_neighbors=1,
+...     metric=spatial.distance.cosine
+... )
+>>> neigh.fit(label_vectors)
+
+>>> preds = [label_names[predict(doc)] for doc in docs]
+>>> report = metrics.classification_report(
+...     y_true=labels,
+...     y_pred=preds,
+...     labels=label_names
+... )
+>>> print(report)
+               precision    recall  f1-score   support
+
+     business       0.54      0.91      0.68       510
+entertainment       0.78      0.69      0.73       386
+     politics       0.69      0.74      0.72       417
+        sport       0.93      0.85      0.89       511
+         tech       0.95      0.27      0.42       401
+
+     accuracy                           0.71      2225
+    macro avg       0.78      0.69      0.69      2225
+ weighted avg       0.77      0.71      0.70      2225
+```
+
+It works! This goes to show that the exact text used for each label is important. I'm pretty sure there are loads of other tricks to try out. For instance, if you think about it, we're attempting to classify news articles from the BBC website with word embeddings that were fitted on Common Crawl data, which is quite generic. It seems fairly obvious that a big boost would come from using word embeddings that are trained on similar documents to those that we want to classify. This could be done in a couple of ways, either by training a word embedding model from scratch on our documents, or by fine-tuning an existing set of embeddings.
 
 I'm not an NLP expert, nor am I fond of it to be truthful, so I'm going to leave it at that. The point of this article was mostly to spark an idea and to nicely present it to my friend. If you have some input or have experience working with word embeddings in such a manner, then please leave a comment. If not, keep lurking.
