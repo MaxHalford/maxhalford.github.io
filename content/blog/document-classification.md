@@ -43,7 +43,7 @@ for label in label_names:
         docs.append(file.read_text(encoding='unicode_escape'))
 ```
 
-The first document is labeled as "business" and contains the following content:
+Note that we're the storing the document labels, but we won't be using them to train a (supervised) model. On the contrary, we'll only be using them to evaluate our (unsupervised) method. That's the whole appeal of this method: it doesn't require you to have any labeled training data whatsoever. The first document is labeled as "business" and has the following content:
 
 ```
 >>> doc = docs[0]
