@@ -171,3 +171,4 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [*Hors-sol* de AKOREACRO](https://www.artcena.fr/artcena-tv/hors-sol-de-akoreacro)
 - [Erica Anderson](https://ericaofanderson.com/)
 - [Jack Sharp](https://www.jacksharp.co.uk/)
+- [Archillect](https://archillect.com/) -- An AI that curates cool pictures, how awesome is that?

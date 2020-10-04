@@ -144,23 +144,25 @@ array([-0.25490612,  0.3020584 ,  0.06464471, -0.02984463, -0.00753056,
       dtype=float32)
 ```
 
-We're nearly done! The last piece of the puzzle is a mechanism to find the closest label for a given centroid. For this I decided to use the [`NearestNeighbors`](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html) class from scikit-learn. First, I extract the embeddings for each label, which can be done by reusing the `embed` function.
+We're nearly done! The last piece of the puzzle is a mechanism to find the closest label for a given centroid. For this I decided to use the [`NearestNeighbors`](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html) class from scikit-learn. But first, I have to extract the embeddings for each label, which can be done by simply reusing the `embed` function. This makes sense, because our goal is to project the document and the labels in the same domain.
 
 ```py
-from sklearn import neighbors
-
-label_vectors = np.asarray([
-    embed(label.split(' '), nlp)
-    for label in label_names
-])
-
-neigh = neighbors.NearestNeighbors(n_neighbors=1)
-neigh.fit(label_vectors)
+>>> label_vectors = np.asarray([
+...     embed(label.split(' '), nlp)
+...     for label in label_names
+... ])
+>>> label_vectors.shape
+(5, 300)
 ```
 
-Note that in our case each label is made up of one single word, thus `label.split(' ')` is equivalent to `[label]`. If you're in a situation where a label is made up of multiple words, then you'll want to split appropriately instead of treating it as a single word.
+Note that `embed` expects to be provided with a list of tokens as a first input. In our case, each label is made up of one single word, thus `label.split(' ')` is equivalent to `[label]`. If you're in a situation where a label is made up of multiple words, then you'll want to split appropriately instead of treating it as a single word. Anyway, moving on, here's the code for fitting the nearest neighbors data structure:
 
-We can now classify our document like so:
+```py
+>>> neigh = neighbors.NearestNeighbors(n_neighbors=1)
+>>> neigh.fit(label_vectors)
+```
+
+We can now classify our document by searching for the closest label:
 
 ```py
 >>> closest_label = neigh.kneighbors([centroid], return_distance=False)[0, 0]
