@@ -80,15 +80,15 @@ def clean_text(text):
 uk economy facing major risks the uk manufacturing sector will continue to face serious challenges over the next two years the british chamber of commerce bcc has said the groups quarterly survey of companies found exports had picked up in the last three months of 2004 to their best levels in eight years the rise came despite exchange rates being cited as a major concern however the bcc found the whole uk economy still faced major risks and warned that growth is set to slow it recently forecast economic growth will slow from more than 3 in 2004 to a little below 25 in both 2005 and 2006 manufacturers domestic sales growth fell back slightly in the quarter the survey of 5196 firms found employment in manufacturing also fell and job expectations were at their lowest level for a year despite some positive news for the export sector there are worrying signs for manufacturing the bcc said these results reinforce our concern over the sectors persistent inability to sustain recovery the outlook for the service sector was uncertain despite an increase in exports and orders over the quarter the bcc noted the bcc found confidence increased in the quarter across both the manufacturing and service sectors although overall it failed to reach the levels at the start of 2004 the reduced threat of interest rate increases had contributed to improved confidence it said the bank of england raised interest rates five times between november 2003 and august last year but rates have been kept on hold since then amid signs of falling consumer confidence and a slowdown in output the pressure on costs and margins the relentless increase in regulations and the threat of higher taxes remain serious problems bcc director general david frost said while consumer spending is set to decelerate significantly over the next 1218 months it is unlikely that investment and exports will rise sufficiently strongly to pick up the slack
 ```
 
-As you can, I've removed punctuation marks, removed unnecessary whitespace, got rid of carriage returns, and lowercased all the text. The one thing I haven't taken of are spelling mistakes. Indeed, if a word is misspelt, then we won't be able to match with a word vector. This dataset has supposedly been scrapped from the [BBC website](https://www.bbc.com/), and thus shouldn't contain too many typos. A quick win would be to apply [Peter Norvig's spelling corrector](https://norvig.com/spell-correct.html), but goes beyond the scope of this article.
+As you can, I've removed punctuation marks, removed unnecessary whitespace, got rid of carriage returns, and lowercased all the text. The one thing I haven't taken of are spelling mistakes. Indeed, if a word is misspelt, then we won't be able to match it with a word vector. This dataset has supposedly been scrapped from the [BBC website](https://www.bbc.com/), and thus shouldn't contain too many typos. A quick win would be to apply [Peter Norvig's spelling corrector](https://norvig.com/spell-correct.html), but that goes beyond the scope of this article.
 
-I'm going to be using [spaCy](https://spacy.io/) for manipulating word embeddings. I've decided to use the `en_core_web_lg` embeddings, which can be downloaded as so:
+I'm going to be using [spaCy](https://spacy.io/) for manipulating word embeddings. I've decided to use the [`en_core_web_lg`](https://spacy.io/models/en#en_core_web_lg) embeddings, which contains [Word2vec](https://www.wikiwand.com/en/Word2vec) embeddings that were fitted on [Common Crawl](https://www.wikiwand.com/en/Common_Crawl) data. The embeddings can be downloaded as so:
 
 ```py
 >>> python -m spacy download en_core_web_lg
 ```
 
-Note that you could use any pre-trained word embeddings, including `en_core_web_sm` and `en_core_web_md`. Naturally, the performance of this method is going to be highly dependent on the quality of the word embeddings, as well as their adequacy with the dataset at hand. I'll get back to this point later on.
+Note that you could use any pre-trained word embeddings, including `en_core_web_sm` and `en_core_web_md`, which are smaller variants of `en_core_web_lg`. Naturally, the performance of this method is going to be highly dependent on the quality of the word embeddings, as well as their adequacy with the dataset at hand. I'll get back to this point later on.
 
 The word vectors can be opened with a one-liner:
 
@@ -98,7 +98,7 @@ import spacy
 nlp = spacy.load('en_core_web_lg')
 ```
 
-I'm now going to define an `embed` function, which takes as input some tokens -- or words, if you prefer -- and outputs the centroid of their respective embeddings. I'm going to filter out tokens that are unknown, as well as [stop words](https://www.wikiwand.com/en/Stop_word) and those that only contain one character.
+I'm now going to define an `embed` function, which takes as input some tokens -- or words, if you prefer -- and outputs the centroid of their respective embeddings. I'm going to filter out tokens that are unknown, as well as [stop words](https://www.wikiwand.com/en/Stop_word) and those that contain a single character.
 
 ```py
 import numpy as np
@@ -168,7 +168,7 @@ We can now classify our document like so:
 'business'
 ```
 
-Hurray! I think this is quite cool, considering that we didn't train any supervised model. But I've already said that. The question is now, how well does this perform? Well we can easily process each document with a list comprehension:
+Hurray! I think this is quite cool, considering that we didn't train any supervised model. But I've already said that. The question, of course, is how well does this perform? Well we can easily process each document with a list comprehension:
 
 ```py
 def predict(doc, nlp, neigh):
@@ -181,7 +181,7 @@ def predict(doc, nlp, neigh):
 preds = [predict(doc, nlp, neigh) for doc in docs]
 ```
 
-This runs in ~2 seconds on my laptop. We can now use scikit-learn's [`classification_report`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html) to assess the performance of our method (I'm reluctant to call it a model):
+This runs in ~2 seconds on my laptop -- note that there are 2,225 documents. We can now use scikit-learn's [`classification_report`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html) to assess the predictive power of our method:
 
 ```py
 >>> from sklearn import metrics
@@ -205,7 +205,7 @@ entertainment       0.82      0.52      0.63       386
  weighted avg       0.71      0.59      0.57      2225
 ```
 
-The performance is not excellent, but it is better than random. One thing I thought about is to use a different distance metric when looking for the closest label for each centroid. By default, the `NearestNeighbors` class uses the Euclidean distance, but nothing is stopping us from using something more exotic, such as cosine similarity:
+The performance is not stellar, but it is significantly better than random. One thing I thought about is using a different distance metric when looking for the closest label of each centroid. By default, the `NearestNeighbors` class uses the [Euclidean distance](https://www.wikiwand.com/en/Euclidean_distance), but nothing is stopping us from using something more exotic, such as [cosine similarity](https://www.wikiwand.com/en/Cosine_similarity):
 
 ```py
 >>> from scipy import spatial
@@ -236,8 +236,8 @@ entertainment       0.76      0.69      0.72       386
  weighted avg       0.74      0.67      0.63      2225
 ```
 
-The overall performance went up a significant margin, even though we only changed the distance metric. There's obviously a lot of other things that could be improved. For instance, an interesting observation is that the performance for the "tech" label is very weak. This is pure speculation, but I assume that it's because the word embeddings that we're using were not trained on a lot of articles about technology.
+The overall performance went up a significant margin, even though we only changed the distance metric. There's obviously a lot of other things that could be improved. For instance, an interesting observation is that the performance for the "tech" label is very weak. This is pure speculation, but I assume that it's because the word embeddings that we're using were not trained on a lot of articles about technology, and that the articles in question contain some niche terms.
 
-If you think about it, we're attempting to classify news articles from the BBC website with word embeddings that were fitted on Wikipedia articles. It seems quite obvious that a big boost would come from using word embeddings that are trained on similar documents to those that we have. This could be done in a couple of ways, either by training a word embedding model from scratch on our documents, or by fine-tuning an existing set of embeddings.
+If you think about it, we're attempting to classify news articles from the BBC website with word embeddings that were fitted on Common Crawl data from all over the web. It seems quite obvious that a big boost would come from using word embeddings that are trained on similar documents to those that we have. This could be done in a couple of ways, either by training a word embedding model from scratch on our documents, or by fine-tuning an existing set of embeddings.
 
 I'm not an NLP expert, nor am I fond of it to be truthful, so I'm going to leave it at that. The point of this article was mostly to spark an idea and to nicely present it to my friend. If you have some input or have experience working with word embeddings in such a manner, then please leave a comment. If not, keep lurking.
