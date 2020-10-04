@@ -155,7 +155,7 @@ We're nearly done! The last piece of the puzzle is a mechanism to find the close
 (5, 300)
 ```
 
-Note that `embed` expects to be provided with a list of tokens as a first input. In our case, each label is made up of one single word, thus `label.split(' ')` is equivalent to `[label]`. If you're in a situation where a label is made up of multiple words, then you'll want to split appropriately instead of treating it as a single word. Anyway, moving on, here's the code for fitting the nearest neighbors data structure:
+Note that `embed` expects to be provided with a list of tokens as a first input. In our case, each label is made up of one single word, thus `label.split(' ')` is equivalent to `[label]`. If you're in a situation where a label is made up of multiple words, then you'll want to split it appropriately instead of treating it as a single word. Anyway, moving on, here's the code for fitting the nearest neighbors data structure:
 
 ```py
 >>> neigh = neighbors.NearestNeighbors(n_neighbors=1)
