@@ -88,7 +88,7 @@ I'm going to be using [spaCy](https://spacy.io/) for manipulating word embedding
 >>> python -m spacy download en_core_web_lg
 ```
 
-Note that you could use any pre-trained word embeddings, including `en_core_web_sm` and `en_core_web_md`, which are smaller variants of `en_core_web_lg`. Naturally, the performance of this method is going to be highly dependent on the quality of the word embeddings, as well as their adequacy with the dataset at hand. I'll get back to this point later on.
+Note that you could use any pre-trained word embeddings, including `en_core_web_sm` and `en_core_web_md`, which are smaller variants of `en_core_web_lg`. The fastText embeddings that I mentionned above would work too. Naturally, the performance of this method is going to be highly dependent on the quality of the word embeddings, as well as their adequacy with the dataset at hand. I'll get back to this point later on.
 
 The word vectors can be opened with a one-liner:
 
