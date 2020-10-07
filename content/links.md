@@ -150,6 +150,8 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
 - [Understanding Matrix capsules with EM Routing - Jonathan Hui](https://jhui.github.io/2017/11/14/Matrix-Capsules-with-EM-routing-Capsule-Network/)
 - [A Machine Learning Primer - Mihail Eric](https://www.confetti.ai/assets/ml-primer/ml_primer.pdf) -- A good read for beginners in machine learning algorithms.
+- [Fitting Bayesian structural time series with the bsts R package - Steven L. Scott](http://www.unofficialgoogledatascience.com/2017/07/fitting-bayesian-structural-time-series.html)
+- [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.nature.com/articles/d41586-019-02918-5)
 
 ## Eye candy
 

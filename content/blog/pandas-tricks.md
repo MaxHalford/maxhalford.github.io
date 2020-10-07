@@ -4,9 +4,9 @@ title = "A few intermediate pandas tricks"
 toc = true
 +++
 
-I want to use this post to share some `pandas` snippets that I find useful. I use them from time to time, in particular when I'm doing [time series competitions](https://www.kaggle.com/search?q=time+series+in%3Acompetitions) on Kaggle. Like any data scientist, I perform similar data processing steps on different datasets. Usually, I put repetitive patterns in [`xam`](https://github.com/MaxHalford/xam), which is my personal data science toolbox. However, I think that the following snippets are too small and too specific for being added into a library.
+I want to use this post to share some `pandas` snippets that I find useful. I use them from time to time, in particular when I'm doing [time series competitions](https://www.kaggle.com/search?q=time+series+in%3Acompetitions) on platforms such as Kaggle. Like any data scientist, I perform similar data processing steps on different datasets. Usually, I put repetitive patterns in [`xam`](https://github.com/MaxHalford/xam), which is my personal data science toolbox. However, I think that the following snippets are too small and too specific for being added into a library.
 
-Some of the following code assumes you're using [version `1.0` of `pandas`](https://pandas.pydata.org/docs/whatsnew/v1.0.0.html), which in particular added support for [typed missing values](https://pandas.pydata.org/docs/whatsnew/v1.0.0.html#experimental-na-scalar-to-denote-missing-values). Note that the following code is not guaranteed to be the optimal way of proceeding. If you have a quicker solution, then feel welcome to post a comment at the bottom of this post.
+Some of the following code assumes that you're using [version `1.0` of `pandas`](https://pandas.pydata.org/docs/whatsnew/v1.0.0.html), which in particular added support for [typed missing values](https://pandas.pydata.org/docs/whatsnew/v1.0.0.html#experimental-na-scalar-to-denote-missing-values). Note that the following code is not guaranteed to be the optimal way of proceeding. If you have a quicker solution, then feel welcome to post a comment at the bottom of this post.
 
 ## Time since/until event
 
@@ -31,7 +31,7 @@ weather
 | rain      |
 | rain      |
 
-Depending on the problem, it might be interesting to extract the time since an event occurred. For instance, we might want to produce a feature that indicates how long ago the `'rain'` value occurred. For the sake of simplicity, I'm going to assume that the period between each row is constant, and thus will simply count the number of steps since each value appeared. Ideally, we want to have one column for each distinct value. Here is the code I use for doing so:
+Depending on the problem, it might be worthwhile to extract the time since an event occurred. For instance, we might want to produce a feature that indicates how long ago the `'rain'` value occurred. For the sake of simplicity, I'm going to assume that the period between each row is constant. I will thus simply count the number of steps that occured since each value appeared. Ideally, we want to have one column for each distinct value. Here is the code I use for doing so:
 
 ```py
 def steps_since(series):
@@ -60,7 +60,7 @@ steps_since(weather)
 |                  0 | 2                  | 1                 |
 |                  0 | 3                  | 2                 |
 
-I've assumed that the provided series contains [categorical data](https://pandas.pydata.org/pandas-docs/stable/user_guide/categorical.html). This allows us to access the list of categories via `series.cat.categories`. You could use `series.unique()` instead. I've also taken care of inserting `NA`s whenever a given value never occurred before. Before version `1.0`, missing values were commonly indicated with `np.nan`, but this required the series to be of type `float64`. The modern approach is to use the `Int64` type in combination of `pd.NA` to store nullable integers.
+I've assumed that the provided series contains [categorical data](https://pandas.pydata.org/pandas-docs/stable/user_guide/categorical.html). This allows us to access the list of categories via `series.cat.categories`. You could use `series.unique()` instead. I've also taken care of inserting `NA`s for values that haven't yet occurred. Before version `1.0`, missing values were commonly indicated with `np.nan`, but this required the series to be of type `float64`. The modern approach is to use the `Int64` type in combination of `pd.NA` to store nullable integers.
 
 How about the following dataset?
 
@@ -83,7 +83,7 @@ weather_per_country
 | Germany   | rain      |
 | Germany   | sun       |
 
-In this case, we might want to extract the time since each event within each country. We can this via a `groupby`:
+In this case, we might want to extract the time since each event, within each country. We can so via a `groupby`:
 
 ```py
 pd.concat(
@@ -103,7 +103,7 @@ pd.concat(
 | 0                  | 2                  | 1                 | Germany   |
 | 0                  | 3                  | 2                 | Germany   |
 
-Finally, what about obtaining the number of steps *until* an event, rather than *since* an event? This can be done by reusing the code `steps_since` function, and inverting the series before counting:
+Finally, what about obtaining the number of steps *until* an event, rather than *since* an event? This can be done by rewriting the code `steps_since` function and inverting the series before counting:
 
 ```py
 def steps_until(series):
@@ -267,7 +267,9 @@ features
 | B          | Sunday   |        17 |                              20.3333 |                         61      |                             88 |                                           13 |
 | B          | Saturday |        25 |                              17      |                         49.3333 |                            100 |                                           24 |
 
-Note that I set `min_periods` to 1 so that statistics are still computed when there are less than `lag` values in a given window. As you can see, the `nan`s are present when there is not a single value in the past to aggregate on. When I do a Kaggle competition, I run the above code on a small subset of the data and manually check that it's doing what I want it to do. This is akin to [pointing and calling](https://www.wikiwand.com/en/Pointing_and_calling), and I highly recommend doing it in any data science endeavour.
+Note that I have set `min_periods` to 1 so that statistics are still computed when there are less than `lag` values in a given window. As you can see, the `nan`s are present when there are no past values to aggregate on.
+
+When I do a Kaggle competition, I run the above code on a small subset of the data and manually check that it's doing what I want it to do. This is akin to [pointing and calling](https://www.wikiwand.com/en/Pointing_and_calling), which I highly recommend doing in any data science endeavour whatsoever.
 
 You might have noticed that I used `apply` to shift the values backwards before aggregating. Since version `1.0`, it's also possible to define a custom window that does the shifting for us. This may be done by subclassing `pd.api.indexers.BaseIndexer`:
 
@@ -309,6 +311,6 @@ for on, lag, by, hows in AGGS:
     features = features.join(agg)
 ```
 
-However, [it turns out](https://github.com/pandas-dev/pandas/issues/35755#issuecomment-674584559) that custom windows within a `groupby` will only work once version `1.1.1` is released. As of writing this blog post, the above code will not produce the expected output, even though it won't raise any exception.
+However, [it turns out](https://github.com/pandas-dev/pandas/issues/35755#issuecomment-674584559) that custom windows within a `groupby` will only work once version `1.1.1` is released. As of writing this blog post, the above code will not produce the expected output, even though it won't raise any exception. But if you're reading from the near future, then it will work!
 
 That's all for now! I purposefully didn't go into the detail of each line of code. I rather expect people to copy/paste the above snippets to (hopefully) play around with them by themselves. Feel free to drop a comment if you have any question whatsoever.

@@ -229,7 +229,6 @@ def same_restaurant(r1, r2):
         manual_ritz(r1, r2) and
         manual_le_marais(r1, r2)
     )
-
 ```
 
 I know, it's a bit of a mouthful, but it works perfectly and makes no mistakes. As I mentioned earlier, this blog post isn't about finding an appropriate matching function, but instead about how to apply the function in order to retrieve the duplicates. Here is how to run the algorithm on the restaurants dataset:
