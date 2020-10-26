@@ -34,6 +34,8 @@ Talk about anomaly detection.
 
 ## One-shot learning
 
+## Few-shot learning
+
 ## Dictionary learning
 
 ## Curriculum learning
@@ -57,3 +59,5 @@ Talk about anomaly detection.
 ## Federated learning
 
 ## Continual learning
+
+## Meta learning

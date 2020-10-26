@@ -5,14 +5,15 @@ title: Links
 
 ## Papers
 
+- PhD - Statistical learning for selectivity estimation in relational databases ([manuscript](/files/PhD_manuscript.pdf), [slides](/files/PhD_slides.pdf))
 - [Selectivity correction with online machine learning - BDA 2020](https://arxiv.org/abs/2009.09884)
 - [Selectivity Estimation with Attribute Value Dependencies using Linked Bayesian Networks - TLDKS 2020](https://arxiv.org/abs/2009.09883)
 - [An Approach Based on Bayesian Networks for Query Selectivity Estimation - DASFAA, 2019](https://arxiv.org/abs/1907.06295)
 - [Entropic Variable Projection for Explainability and Intepretability - 2018](https://arxiv.org/abs/1810.07924)
-- Master 2 year internship at [HelloFresh](https://www.hellofresh.com/) ([report](/files/internships/M2_report.pdf), [slides](/files/internships/M2_slides.pdf))
-- Master 1 year internship at [Privateaser](https://www.privateaser.com/) ([report](/files/internships/M1_report.pdf), [slides](/files/internships/M1_slides.pdf))
-- Undergraduate internship at [INSA Toulouse](http://www.insa-toulouse.fr/fr/index.html) ([report](/files/internships/L3_report.pdf), [slides](/files/internships/L3_slides.pdf))
-- [Detailed solutions to the first 30 Project Euler problems](/files/papers/project_euler_solutions.pdf)
+- Master 2 year internship at [HelloFresh](https://www.hellofresh.com/) ([report](/files/M2_report.pdf), [slides](/files/M2_slides.pdf))
+- Master 1 year internship at [Privateaser](https://www.privateaser.com/) ([report](/files/M1_report.pdf), [slides](/files/M1_slides.pdf))
+- Undergraduate internship at [INSA Toulouse](http://www.insa-toulouse.fr/fr/index.html) ([report](/files/L3_report.pdf), [slides](/files/L3_slides.pdf))
+- [Detailed solutions to the first 30 Project Euler problems](/files/project_euler_solutions.pdf)
 
 ## Talks
 
@@ -174,3 +175,4 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Erica Anderson](https://ericaofanderson.com/)
 - [Jack Sharp](https://www.jacksharp.co.uk/)
 - [Archillect](https://archillect.com/) -- An AI that curates cool pictures, how awesome is that?
+- [Martin Kleppe](https://aem1k.com/)
