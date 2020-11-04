@@ -5,7 +5,7 @@ title: Links
 
 ## Papers
 
-- PhD - Statistical learning for selectivity estimation in relational databases ([manuscript](/files/PhD_manuscript.pdf), [slides](/files/PhD_slides.pdf))
+- PhD - Statistical learning for selectivity estimation in relational databases ([manuscript](/files/PhD_manuscript.pdf), [slides](/files/PhD_presentation.pdf))
 - [Selectivity correction with online machine learning - BDA 2020](https://arxiv.org/abs/2009.09884)
 - [Selectivity Estimation with Attribute Value Dependencies using Linked Bayesian Networks - TLDKS 2020](https://arxiv.org/abs/2009.09883)
 - [An Approach Based on Bayesian Networks for Query Selectivity Estimation - DASFAA, 2019](https://arxiv.org/abs/1907.06295)
