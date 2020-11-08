@@ -96,6 +96,7 @@ This is a list of blogs I regularly scroll through.
 - [Count Bayesie](https://www.countbayesie.com/)
 - [Jim Savage](https://khakieconomics.github.io/)
 - [Nick Higham](https://nhigham.com/) -- A lot of well explained algebra.
+- [Calmcode](https://calmcode.io/) -- Not a blog per se, but a nice collection of short to the point tutorials about various tools.
 
 ## Hall of fame
 
