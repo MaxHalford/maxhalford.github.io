@@ -1,5 +1,5 @@
 +++
-date = "2020-11-17"
+date = "2020-11-16"
 draft = false
 title = "Computing cross-correlations in SQL"
 +++
