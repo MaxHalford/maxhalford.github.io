@@ -17,18 +17,18 @@ After a lot of playing around I found a good solution compatible with `pandas`. 
 
 Okay I'm done with my rant. The trick I want to use is that groupbys can be performed sequentially as long as the grouping key is sorted in the dataset. For example take a look at the following dataset, which looks somewhat like the data from the PLAsTiCC competition.
 
-| object_id | passband | flux | mjd |
-|-----------|----------|------|-----|
-| 615 | $u$ | 52.91 | 59750 |
-| 615 | $g$ | 381.95 | 59750 |
-| 615 | $g$ | 384.18 | 59751 |
-| 615 | $u$ | 153.49 | 59751 |
-| 615 | $y$ | -111.06 | 59750 |
-| 713 | $y$ | -180.23 | 59751 |
-| 713 | $u$ | 61.06 | 59753 |
-| 713 | $u$ | 107.64 | 59754 |
-| 713 | $y$ | -133.42 | 59752 |
-| 713 | $u$ | 118.74 | 59755 |
+| object_id | passband | flux    | mjd   |
+| --------- | -------- | ------- | ----- |
+| 615       | $u$      | 52.91   | 59750 |
+| 615       | $g$      | 381.95  | 59750 |
+| 615       | $g$      | 384.18  | 59751 |
+| 615       | $u$      | 153.49  | 59751 |
+| 615       | $y$      | -111.06 | 59750 |
+| 713       | $y$      | -180.23 | 59751 |
+| 713       | $u$      | 61.06   | 59753 |
+| 713       | $u$      | 107.64  | 59754 |
+| 713       | $y$      | -133.42 | 59752 |
+| 713       | $u$      | 118.74  | 59755 |
 
 Say I want to calculate the average flux per object and per passband. With `pandas` I could be done with a simple `df.groupby(['object_id', 'passband'])['flux'].mean()`, but that's too kosher. The thing is that I know that my dataset is ordered by object identifier and by time ("mjd" stands for *Modified Julian Date*). I could thus read the data object by object and perform my groupby inside each object chunk. This is pretty easy to do with a sequential scan because every time I see a new object identifier it means that I've got all the data for the current one.
 
@@ -142,7 +142,7 @@ def stream_groupby_csv(path, key, agg, chunk_size=1e6, pool=None, **kwargs):
     return pd.concat(results)
 ```
 
-I've added some extra sugar in addition to the new `pool` argument. The `path` argument can now be a list of strings, all of the listed will then we processed sequentially. This is pretty easy to do with `itertools.chain` method. The `pool` argument has to be a class with an `apply_async` method. I've implemented it so that it will work even you don't provided any `pool`. From what I'm aware of the `multiprocessing` library has two different `pool` implementations, namely `multiprocessing.Pool` which uses processes and `multiprocessing.pool.ThreadPool` which uses threads. As a general rule of thumb threads are good for I/O bound tasks processes are good for CPU bound tasks.
+I've added some extra sugar in addition to the new `pool` argument. The `path` argument can now be a list of strings, all of the listed will then we processed sequentially. This can be done with the `itertools.chain` method. The `pool` argument has to be a class with an `apply_async` method. I've implemented it so that it will work even you don't provided any `pool`. From what I'm aware of the `multiprocessing` library has two different `pool` implementations, namely `multiprocessing.Pool` which uses processes and `multiprocessing.pool.ThreadPool` which uses threads. As a general rule of thumb threads are good for I/O bound tasks processes are good for CPU bound tasks.
 
 To conclude here is an example of how to use the `stream_groupby_csv` method:
 
