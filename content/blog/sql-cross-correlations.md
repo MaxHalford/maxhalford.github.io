@@ -15,7 +15,7 @@ Computing the cross-correlation between two series of numbers $X$ and $Y$ is sim
 
 ## Cross-correlation for two variables
 
-I'm going to be using PostgreSQL 12.3. I'm be using a fair amount of [common table expressions](https://www.postgresql.org/docs/9.1/queries-with.html) in order to clarify the steps the take. First, let's pick some dummy data:
+I'm going to be using PostgreSQL 12.3. I'm be using a fair amount of [common table expressions](https://www.postgresql.org/docs/9.1/queries-with.html) in order to clarify the steps to take. First, let's pick some dummy data:
 
 ```sql
 WITH dummy AS (
@@ -30,7 +30,7 @@ WITH dummy AS (
 )
 ```
 
-As mentioned, we would like our code to work for arbitrary number of steps forward. Therefore, let's define a range of delta values by which will be used to shift `Y` forward:
+As mentioned, we would like our code to work for an arbitrary number of steps forward. Therefore, let's define a range of delta values by which will be used to shift `Y` forward:
 
 ```sql
 , delta AS (
@@ -98,7 +98,7 @@ present     future      delta   present_x   future_y
 2020-01-04  2020-01-05  1       0           0
 ```
 
-Finally, we just have the compute the correlation within each group. The groups are defined by the `delta` field. In other words, we will compute the correlation for all values that match $(X_t, Y_{t+1})$, $(X_t, Y_{t+2})$, and $(X_t, Y_{t+3})$.
+Finally, we just have to compute the correlation within each group. The groups are defined by the `delta` field. In other words, we will compute the correlation for all values that match $(X_t, Y_{t+1})$, $(X_t, Y_{t+2})$, and $(X_t, Y_{t+3})$.
 
 ```sql
 , cross_corrs AS (
@@ -200,7 +200,7 @@ FROM dummy
 0.9
 ```
 
-Ideally, we would like to calculate both kinds of correlations (Pearson and Spearman) for each delta value. This is quite straighforward to do, albeit slightly verbose.
+Ideally, we would like to calculate both kinds of correlations (Pearson and Spearman) for each delta value. This is quite straightforward to do, albeit slightly verbose.
 
 ```sql
 WITH dummy AS (
@@ -296,7 +296,7 @@ delta   pearson                 spearman
 
 ## Multiple $X$s and $Y$s
 
-We now have a framework to compute different kinds of cross-correlations between two variables over multiple time steps. Let's push the enveloppe and make it so that can compute the cross-correlations for multiple variables. To be precise, we would like to compute cross-correlations between <span style="color: SlateBlue;">a group of initiatives ($X$s) </span> and <span style="color: MediumSeaGreen;">a group of metrics ($Y$s)</span>.
+We now have a framework to compute different kinds of cross-correlations between two variables over multiple time steps. Let's push the envelope and make it so that can compute the cross-correlations for multiple variables. To be precise, we would like to compute cross-correlations between <span style="color: SlateBlue;">a group of initiatives ($X$s) </span> and <span style="color: MediumSeaGreen;">a group of metrics ($Y$s)</span>.
 
 First of all, let's create some more dummy data. We'll also split the $X$s from the $Y$s. We're also going to [melt](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html) (or "unpivot" as some like to say) both groups. The reason why we do this is that it will simplify the subsequent code.
 
@@ -364,7 +364,7 @@ Next, we're going to be generating future dates in the exact same way as we did 
 )
 ```
 
-We do however need to change the definition of the `pairwise` CTE. It's quite straighforward as long as you're concentrating a minimum. Here goes:
+We do however need to change the definition of the `pairwise` CTE. It's quite straightforward as long as you're concentrating a minimum. Here goes:
 
 ```sql
 , pairwise AS (
@@ -396,7 +396,7 @@ present     future       delta  x_var x_val y_var   y_val
 2020-01-01  2020-01-03   2      x1    1     y1      50
 ```
 
-We can now compute all the correlations we want by grouping over `(delta, x_var, y_var)`. Again, this is still relatively straighforward as long as you procede step by step:
+We can now compute all the correlations we want by grouping over `(delta, x_var, y_var)`. Again, this is still relatively simple as long as you proceed step by step:
 
 ```sql
 , cross_corrs AS (
