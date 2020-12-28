@@ -5,7 +5,7 @@ title: Links
 
 ## Papers
 
-- PhD - Statistical learning for selectivity estimation in relational databases ([manuscript](/files/PhD_manuscript.pdf), [slides](/files/PhD_slides.pdf))
+- PhD - Statistical learning for selectivity estimation in relational databases ([manuscript](/files/PhD_manuscript.pdf), [slides](/files/PhD_presentation.pdf))
 - [Selectivity correction with online machine learning - BDA 2020](https://arxiv.org/abs/2009.09884)
 - [Selectivity Estimation with Attribute Value Dependencies using Linked Bayesian Networks - TLDKS 2020](https://arxiv.org/abs/2009.09883)
 - [An Approach Based on Bayesian Networks for Query Selectivity Estimation - DASFAA, 2019](https://arxiv.org/abs/1907.06295)
@@ -96,6 +96,8 @@ This is a list of blogs I regularly scroll through.
 - [Count Bayesie](https://www.countbayesie.com/)
 - [Jim Savage](https://khakieconomics.github.io/)
 - [Nick Higham](https://nhigham.com/) -- A lot of well explained algebra.
+- [Calmcode](https://calmcode.io/) -- Not a blog per se, but a nice collection of short to the point tutorials about various tools.
+- [Chris Said](https://chris-said.io/)
 
 ## Hall of fame
 
@@ -153,6 +155,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [A Machine Learning Primer - Mihail Eric](https://www.confetti.ai/assets/ml-primer/ml_primer.pdf) -- A good read for beginners in machine learning algorithms.
 - [Fitting Bayesian structural time series with the bsts R package - Steven L. Scott](http://www.unofficialgoogledatascience.com/2017/07/fitting-bayesian-structural-time-series.html)
 - [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.nature.com/articles/d41586-019-02918-5)
+- [Emerging Architectures for Modern Data Infrastructure - Matt Bornstein, Martin Casado, and Jennifer Li](https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/) -- Gives a good overview of the data analysis tooling landscape as of late 2020.
 - [Fred's ImageMagick Scripts](http://www.fmwconcepts.com/imagemagick/index.php)
 
 ## Eye candy
