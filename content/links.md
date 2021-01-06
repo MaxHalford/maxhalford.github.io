@@ -98,6 +98,8 @@ This is a list of blogs I regularly scroll through.
 - [Nick Higham](https://nhigham.com/) -- A lot of well explained algebra.
 - [Calmcode](https://calmcode.io/) -- Not a blog per se, but a nice collection of short to the point tutorials about various tools.
 - [Chris Said](https://chris-said.io/)
+- [Andrey Akinshin](https://aakinshin.net/)
+- [Single Lunch](https://www.singlelunch.com/blog/)
 
 ## Hall of fame
 
@@ -156,6 +158,9 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Fitting Bayesian structural time series with the bsts R package - Steven L. Scott](http://www.unofficialgoogledatascience.com/2017/07/fitting-bayesian-structural-time-series.html)
 - [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.nature.com/articles/d41586-019-02918-5)
 - [Emerging Architectures for Modern Data Infrastructure - Matt Bornstein, Martin Casado, and Jennifer Li](https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/) -- Gives a good overview of the data analysis tooling landscape as of late 2020.
+- [Cameras and Lenses - Bartosz Ciechanowski](https://ciechanow.ski/cameras-and-lenses/) -- 100% worth a read.
+- [Ditherpunk - Surma](https://surma.dev/things/ditherpunk/)
+- [Command-line Tools can be 235x Faster than your Hadoop Cluster - Adam Drake](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
 
 ## Eye candy
 
@@ -179,3 +184,4 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Jack Sharp](https://www.jacksharp.co.uk/)
 - [Archillect](https://archillect.com/) -- An AI that curates cool pictures, how awesome is that?
 - [Martin Kleppe](https://aem1k.com/)
+- [Zoomquilt](https://zoomquilt.org/)
