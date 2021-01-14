@@ -1,6 +1,6 @@
 +++
 date = "2021-01-14"
-title = "Converting PDF tables to pandas dataframes using Amazon Textract"
+title = "Converting Amazon Textract tables to pandas DataFrames"
 +++
 
 I'm currently doing a lot of document processing at work. One of my tasks is to extract tables from PDF files. I evaluated [Amazon Textract](https://aws.amazon.com/textract/?nc1=h_ls)'s [table extraction](https://docs.aws.amazon.com/textract/latest/dg/how-it-works-tables.html) capability as part of this task. It's very well documented, as is the rest of Textract. I was slightly disappointed by [the examples](https://docs.aws.amazon.com/textract/latest/dg/examples-blocks.html), but nothing serious.
