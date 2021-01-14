@@ -5,7 +5,7 @@ title = "Converting Amazon Textract tables to pandas DataFrames"
 
 I'm currently doing a lot of document processing at work. One of my tasks is to extract tables from PDF files. I evaluated [Amazon Textract](https://aws.amazon.com/textract/?nc1=h_ls)'s [table extraction](https://docs.aws.amazon.com/textract/latest/dg/how-it-works-tables.html) capability as part of this task. It's very well documented, as is the rest of Textract. I was slightly disappointed by [the examples](https://docs.aws.amazon.com/textract/latest/dg/examples-blocks.html), but nothing serious.
 
-I wanted to write this short blog post to share a piece of code I use to convert tables extracted through Amazon Textract to pandas dataframes. I'll be using the following anonymised image as an example:
+I wanted to write this short blog post to share a piece of code I use to convert tables extracted through Amazon Textract to [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)s. I'll be using the following anonymised image as an example:
 
 <img class="centered" src="/img/blog/textract-table-to-pandas/example.jpg"/>
 
