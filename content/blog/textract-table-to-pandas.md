@@ -35,7 +35,7 @@ import boto3
 
 client = boto3.client('textract')
 response = client.analyze_document(
-    Document={'Bytes': buffer.getvalue()},
+    Document={'Bytes': buffered.getvalue()},
     FeatureTypes=['TABLES']
 )
 ```
@@ -47,7 +47,7 @@ The response from Textract is made up of a list of blocks. Each block represents
 - A `WORD`.
 - A `SELECTION_ELEMENT`, which is essentially a checkbox.
 - A `CELL`, which is a block that contains one or more `WORD`s and/or a `SELECTION_ELEMENT`.
-- A `TABlE`, which is made up of cells.
+- A `TABlE`, which is made up of `CELL`s.
 
 The response data is not nested. The children of a block are specified in said block. For instance, here's a `CELL` block:
 
@@ -75,7 +75,7 @@ The response data is not nested. The children of a block are specified in said b
  'RowSpan': 1}
 ```
 
-The goal is to munge this data and convert the list of blocks to a `pandas.DataFrame`. I first mapped each ID to the corresponding blocks. I did this for the 4 type of blocks we may encounter.
+The goal is to munge this data and convert the list of blocks to a `pandas.DataFrame`. I first mapped each ID to the corresponding block. I did this for the four kind of blocks we may encounter.
 
 ```py
 def map_blocks(blocks, block_type):
