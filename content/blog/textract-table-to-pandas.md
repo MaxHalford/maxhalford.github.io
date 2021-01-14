@@ -24,8 +24,8 @@ Amazon Textract expects the image to be encoded via the [Base64](https://www.wik
 ```py
 import io
 
-buffer = io.BytesIO()
-im.save(buffer, format='PNG')
+buffered = io.BytesIO()
+im.save(buffered, format='PNG')
 ```
 
 Next, we want to call the Amazon Textract API. The easiest way to proceed is to use [`boto3`](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), which is the official Python SDK for interacting with AWS. Setting up `boto3` and linking it to your AWS account is [well explained](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html) in the official documentation. Once this is done, calling Textract is trivial:
