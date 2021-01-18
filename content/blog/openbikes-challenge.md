@@ -4,9 +4,9 @@ draft = false
 title = "A short introduction and conclusion to the OpenBikes 2016 Challenge"
 +++
 
-During my undergraduate internship in 2015 I started a side project called OpenBikes. The idea was to visualize and analyze bike sharing over multiple cities. [Axel Bellec](http://axelbellec.fr/) joined me and in 2016 we [won a national open data competition](http://www.opendatafrance.net/2016/02/05/le-prix-open-data-toulouse-metropole-remis-a-openbikes). Since then we haven't pursued anything major, instead we use OpenBikes to try out technologies and to apply concepts we learn at university and on online.
+During my undergraduate internship in 2015 I started a side project called OpenBikes. The idea was to visualize and analyze bike sharing over multiple cities. [Axel Bellec](http://axelbellec.fr/) joined me and in 2016 we [won a national open data competition](http://www.opendatafrance.net/2016/02/05/le-prix-open-data-toulouse-metropole-remis-a-openbikes). Since then we haven't pursued anything major, instead we use OpenBikes to try out technologies and to apply concepts we learn at university and online.
 
-Before the 2016 summer holidays one of my professors, [Aurélien Garivier](https://www.math.univ-toulouse.fr/~agarivie/), mentioned that he was considering using our data for a Kaggle-like competition between some statistics curriculums in France. Near the end of the summer I sat down with a group of professors and we decided upon a format for the so-called "Challenge". The general idea was to provide student teams with historical data on multiple bike stations and ask to do some forecasting which we would then score based on a secret truth. The whole thing lasted from the 5th of October 2016 till the 26th of January 2017 when the best team was crowned.
+Before the 2016 summer holidays one of my professors, [Aurélien Garivier](https://www.math.univ-toulouse.fr/~agarivie/) mentioned that he was considering using our data for a Kaggle-like competition between some statistics curriculums in France. Near the end of the summer, I sat down with a group of professors and we decided upon a format for the so-called "Challenge". The general idea was to provide student teams with historical data on multiple bike stations and ask them to do some forecasting which we would then score based on a secret truth. The whole thing lasted from the 5th of October 2016 till the 26th of January 2017 when the best team was crowned.
 
 The challenge was split into two phases. During the first phase, the teams were provided with data spanning from the 1st of April until the 5th of October at 10 AM. The data contained updates on the number of bikes at each station, the geographical position of the stations and the weather in each city. They were asked to forecast the number of bikes at 30 stations for 10 fixed timesteps ranging from the 5th of October at 10 AM until the 9th of October. We picked 10 stations from Toulouse, Lyon and Paris. Each team had access to an account page where they could deposit their submission which were then automatically scored. A public leaderboard was available at the homepage of the website Axel and I built.
 
@@ -592,7 +592,7 @@ As for the ranking for the second part of the challenge (the blindfolded part), 
 </table>
 </div>
 
-Team "Le Gruppetto" is officially the winner of the challenge! "The Rabbit and the Turtle" anyone? The fact that the second was blindfolded completely reversed the rankings and favored teams with robust methods whilst penalizing overfitters. Whatsmore "only" 39 teams took part in the second part (50 did in the first one); maybe some teams felt that their ranking wouldn't change, but the fact is that "Le Gruppetto" were 34th before being 1st. *It ain't over till the fat lady sings*. The following chart shows the best score per team for both parts of the challenge.
+Team "Le Gruppetto" is officially the winner of the challenge! The fact that the second part of the competition was blindfolded completely reversed the rankings and favored teams with robust methods whilst penalizing overfitters. Whatsmore, "only" 39 teams took part in the second part (50 did in the first one); maybe some teams felt that their ranking wouldn't change, but the fact is that "Le Gruppetto" were 34th before being 1st. *It isn't over till the fat lady sings*. The following chart shows the best score per team for both parts of the challenge.
 
 <div align="center">
 <figure>
@@ -616,7 +616,7 @@ Every team was asked to submit their code for the second submission. Mostly this
 - 3 teams used vanilla linear regression
 - 2 teams averaged the number of bikes in the surrounding stations
 - 2 teams used randomized decision trees (they did fairly well)
-- 2 teams used $$k$$ nearest neighbours
+- 2 teams used $k$ nearest neighbours
 - 1 team used [RMarkdown](http://rmarkdown.rstudio.com/)
 - 1 team used LASSO regression
 - 1 team used a CART
