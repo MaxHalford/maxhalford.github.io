@@ -263,6 +263,15 @@ table {
   margin-bottom: 1em !important;
 }
 
+table, th, td {
+  border: 0 !important;
+  overflow:auto !important;
+}
+
+.markdown-body table {
+  border-collapse: separate !important;
+}
+
 .utterances {
   margin-bottom: 30px !important;
 }
