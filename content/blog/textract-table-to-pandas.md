@@ -153,6 +153,6 @@ The first table is the one I'm interested in extracting.
 
 And there we go! You can now process the dataframe using whatever business logic applies to your problem. Hopefully this article might have saved you some previous minutes.
 
-Amazon Textract is very good if you're processing a lot of files that have the same template. Alas, at my job, there are many templates, and Textract doesn't work on each of them. I thus use a different kind of logic where I extract annotations through an OCR and reconstruct rows myself with a clustering algorithm. Another tool I have yet to look into is [`tabula-py`](https://tabula-py.readthedocs.io/en/latest/index.html).
+Amazon Textract is very good if you're processing a lot of files that have the same template. Alas, at my job, there are many templates, and Textract doesn't work on each of them. I thus use a different kind of logic where I extract annotations through an OCR and reconstruct rows myself with a clustering algorithm. I have yet to look into other table extraction tools such [`tabula-py`](https://tabula-py.readthedocs.io/en/latest/index.html) and [Camelot](https://camelot-py.readthedocs.io/en/master/).
 
 Stay safe!
