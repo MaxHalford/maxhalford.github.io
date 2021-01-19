@@ -1,0 +1,195 @@
+---
+layout: presentation
+title: An introduction to symbolic regression
+---
+
+<div align="center">
+<h1>An introduction to symbolic regression</h1>
+<h3>Max Halford - PhD student IRIT/IMT</h3>
+<h4>Toulouse Data Science Meetup - December 2017</h4>
+</div>
+
+.center[
+.left-column[![tds_logo](/assets/img/presentations/tds_logo.jpeg)]
+.right-column[![xgp_logo](/assets/img/presentations/xgp_logo.png)]
+]
+
+---
+
+layout: true
+
+# Symbolic regression
+
+---
+
+## Quick overview
+
+- The goal is to evolve "programs" with selection, mutation, and crossover
+- Selection keeps programs that perform well
+- Mutation changes a piece of the program
+- Crossover combines two programs
+
+---
+
+<img src="/assets/img/presentations/evolutionary_algorithms.png" width="120%">
+
+---
+
+## Example programs
+
+<img src="/assets/img/presentations/example_programs.png" width="100%">
+
+---
+
+## Kaggle Titanic top 1% 🚢
+
+2 years ago [scirpus](https://www.kaggle.com/scirpus) posted a [solution](https://www.kaggle.com/scirpus/genetic-programming-lb-0-88) to the [Kaggle Titanic competiton](https://www.kaggle.com/c/titanic)
+
+```python
+y_raw = ((np.minimum(((((0.058823499828577 + X['Sex']) - np.cos((X['Pclass'] / 2.0))) * 2.0)), ((0.885868))) * 2.0) +np.maximum(((X['SibSp'] - 2.409090042114258)), (-(np.minimum((X['Sex']), (np.sin(X['Parch']))) * X['Pclass']))) +(0.138462007045746 * ((np.minimum((X['Sex']), (((X['Parch'] / 2.0) / 2.0))) * X['Age']) - X['Cabin'])) +np.minimum(((np.sin((X['Parch'] * ((X['Fare'] - 0.720430016517639) * 2.0))) * 2.0)), ((X['SibSp'] / 2.0))) +np.maximum((np.minimum((-np.cos(X['Embarked'])), (0.138462007045746))), (np.sin(((X['Cabin'] - X['Fare']) * 2.0)))) +-np.minimum(((((X['Age'] * X['Parch']) * X['Embarked']) + X['Parch'])), (np.sin(X['Pclass']))) +np.minimum((X['Sex']), ((np.sin(-(X['Fare'] * np.cos((X['Fare'] * 1.630429983139038)))) / 2.0))) +np.minimum(((0.230145)), (np.sin(np.minimum((((67.0 / 2.0) * np.sin(X['Fare']))), (0.31830988618379069))))) +np.sin((np.sin(X['Cabin']) * (np.sin((12.6275)) * np.maximum((X['Age']), (X['Fare']))))) +np.sin(((np.minimum((X['Fare']), ((X['Cabin'] * X['Embarked']))) / 2.0) * -X['Fare'])) +np.minimum((((2.675679922103882 * X['SibSp']) * np.sin(((96) * np.sin(X['Cabin']))))), (X['Parch'])) +np.sin(np.sin((np.maximum((np.minimum((X['Age']), (X['Cabin']))), ((X['Fare'] * 0.31830988618379069))) * X['Cabin']))) +np.maximum((np.sin(((12.4148) * (X['Age'] / 2.0)))), (np.sin((-3.0 * X['Cabin'])))) +(np.minimum((np.sin((((np.sin(((X['Fare'] * 2.0) * 2.0)) * 2.0) * 2.0) * 2.0))), (X['SibSp'])) / 2.0) +((X['Sex'] - X['SibSp']) * (np.cos(((X['Embarked'] - 0.730768978595734) + X['Age'])) / 2.0)) +((np.sin(X['Cabin']) / 2.0) - (np.cos(np.minimum((X['Age']), (X['Embarked']))) * np.sin(X['Embarked']))) +np.minimum((0.31830988618379069), ((X['Sex'] * (2.212120056152344 * (0.720430016517639 - np.sin((X['Age'] * 2.0))))))) +(np.minimum((np.cos(X['Fare'])), (np.maximum((np.sin(X['Age'])), (X['Parch'])))) * np.cos((X['Fare'] / 2.0))) +np.sin((X['Parch'] * np.minimum(((X['Age'] - 1.5707963267948966)), ((np.cos((X['Pclass'] * 2.0)) / 2.0))))) +(X['Parch'] * (np.sin(((X['Fare'] * (0.623655974864960 * X['Age'])) * 2.0)) / 2.0)) +(0.31830988618379069 * np.cos(np.maximum(((0.602940976619720 * X['Fare'])), ((np.sin(0.720430016517639) * X['Age']))))) +(np.minimum(((X['SibSp'] / 2.0)), (np.sin(((X['Pclass'] - X['Fare']) * X['SibSp'])))) * X['SibSp']) +np.tanh((X['Sex'] * np.sin((5.199999809265137 * np.sin((X['Cabin'] * np.cos(X['Fare']))))))) +(np.minimum((X['Parch']), (X['Sex'])) * np.cos(np.maximum(((np.cos(X['Parch']) + X['Age'])), (3.1415926535897931)))) +(np.minimum((np.tanh(((X['Cabin'] / 2.0) + X['Parch']))), ((X['Sex'] + np.cos(X['Age'])))) / 2.0) +(np.sin((np.sin(X['Sex']) * (np.sin((X['Age'] * X['Pclass'])) * X['Pclass']))) / 2.0) +(X['Sex'] * (np.cos(((X['Sex'] + X['Fare']) * ((8.48635) * (63)))) / 2.0)) +np.minimum((X['Sex']), ((np.cos((X['Age'] * np.tanh(np.sin(np.cos(X['Fare']))))) / 2.0))) +(np.tanh(np.tanh(-np.cos((np.maximum((np.cos(X['Fare'])), (0.094339601695538)) * X['Age'])))) / 2.0) +(np.tanh(np.cos((np.cos(X['Age']) + (X['Age'] + np.minimum((X['Fare']), (X['Age'])))))) / 2.0) +(np.tanh(np.cos((X['Age'] * ((-2.0 + np.sin(X['SibSp'])) + X['Fare'])))) / 2.0) +(np.minimum((((281) - X['Fare'])), (np.sin((np.maximum(((176)), (X['Fare'])) * X['SibSp'])))) * 2.0) +np.sin(((np.maximum((X['Embarked']), (X['Age'])) * 2.0) * (((785) * 3.1415926535897931) * X['Age']))) +np.minimum((X['Sex']), (np.sin(-(np.minimum(((X['Cabin'] / 2.0)), (X['SibSp'])) * (X['Fare'] / 2.0))))) +np.sin(np.sin((X['Cabin'] * (X['Embarked'] + (np.tanh(-X['Age']) + X['Fare']))))) +(np.cos(np.cos(X['Fare'])) * (np.sin((X['Embarked'] - ((734) * X['Fare']))) / 2.0)) +((np.minimum((X['SibSp']), (np.cos(X['Fare']))) * np.cos(X['SibSp'])) * np.sin((X['Age'] / 2.0))) +(np.sin((np.sin((X['SibSp'] * np.cos((X['Fare'] * 2.0)))) + (X['Cabin'] * 2.0))) / 2.0) +(((X['Sex'] * X['SibSp']) * np.sin(np.sin(-(X['Fare'] * X['Cabin'])))) * 2.0) +(np.sin((X['SibSp'] * ((((5.428569793701172 + 67.0) * 2.0) / 2.0) * X['Age']))) / 2.0) +(X['Pclass'] * (np.sin(((X['Embarked'] * X['Cabin']) * (X['Age'] - (1.07241)))) / 2.0)) +(np.cos(((((-X['SibSp'] + X['Age']) + X['Parch']) * X['Embarked']) / 2.0)) / 2.0) +(0.31830988618379069 * np.sin(((X['Age'] * ((X['Embarked'] * np.sin(X['Fare'])) * 2.0)) * 2.0))) +((np.minimum(((X['Age'] * 0.058823499828577)), (X['Sex'])) - 0.63661977236758138) * np.tanh(np.sin(X['Pclass']))) +-np.minimum(((np.cos(((727) * ((X['Fare'] + X['Parch']) * 2.0))) / 2.0)), (X['Fare'])) +(np.minimum((np.cos(X['Fare'])), (X['SibSp'])) * np.minimum((np.sin(X['Parch'])), (np.cos((X['Embarked'] * 2.0))))) +(np.minimum((((X['Fare'] / 2.0) - 2.675679922103882)), (0.138462007045746)) * np.sin((1.5707963267948966 * X['Age']))) +np.minimum(((0.0821533)), (((np.sin(X['Fare']) + X['Embarked']) - np.cos((X['Age'] * (9.89287)))))))
+y_pred = 1 / (1 + np.exp(-y_raw))
+```
+
+0.88516 (top 1% as of today) on the public leaderboard 😵
+
+---
+
+## Types of nodes
+
+- Constants
+- Variables
+- Functions
+
+Huge search space because the shape of the model is included in the search space 🙊
+
+---
+
+## Algorithm (high-level) ➰
+
+```python
+programs = make_random_programs()
+
+for i in range(generations):
+    evaluate(programs)
+    new_programs = select(programs)
+    crossover(new_programs)
+    mutate(new_programs)
+    programs = new_programs
+```
+
+---
+
+## Mutation
+
+---
+
+## Crossover 💏
+
+---
+
+## Evaluation 💯
+
+---
+
+## Selection 
+
+---
+
+## Initialization
+
+---
+
+## Pros 😺
+
+- Flexible model
+- Built-in feature selection
+- Can optimise non-differentiable metrics
+- Useful for stacking
+- Makes you look cool 😎
+
+---
+
+## Cons 😿
+
+- Black box model
+- No mathematical foundation
+- Requires a lot of CPU power
+- Non-deterministic and volatile
+
+---
+
+layout: true
+
+.center[![xgp_logo](/assets/img/presentations/xgp_logo.png)]
+
+---
+
+## Enter XGP 🎉
+
+- Written in [Go](https://golang.org/) 
+- Optimization done with [gago](https://github.com/MaxHalford/gago)
+- SIMD operations thanks to [gonum](https://www.gonum.org/) ⚡
+- Readable code 📖
+- Very customizable (with sensible defaults!)
+- Command line interface (CLI) 💻
+- Python bindings (scikit-learn API) 🐍
+
+---
+
+## Command line interface (CLI) 💻
+
+```sh
+$ xgp fit train.csv
+```
+
+```sh
+$ xgp predict test.csv
+```
+
+---
+
+## Python package 🐍
+
+### Regression 📈
+
+```python
+model = xgp.XGPRegressor()
+
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+```
+
+---
+
+## Python package 🐍
+
+### Feature extraction 🔬
+
+```py
+model = xgp.XGPTransformer()
+
+model.fit(X_train, y_train)
+
+train_gp_features = model.predict(X_train)
+test_gp_features = model.predict(X_test)
+```
+
+---
+
+## Future work 🔮
+
+- Binary and multi-class classification
+- Boosting (promising)
+- Caching to handle large datasets
+- More bindings (R, Ruby, ...)
+- Extensive testing
+- Documentation and examples
+
+---
+
+layout: false
+class: center, middle
+
+# Thanks! ✌
+[github.com/MaxHalford](https://github.com/MaxHalford/)

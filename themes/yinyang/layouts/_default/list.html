@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ partial "head.html" . }}
+
+<body>
+  <article class="posts">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        {{ partial "header.html" . }}
+        <div id="posts-list">
+          {{ range (where site.RegularPages "Type" "in" site.Params.mainSections).GroupByDate "2006" -}}
+
+            {{ range .Pages }}
+            <div class="row posts-line">
+              <div class="posts-date col-sm-2 col-xs-5">
+                <time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}}</time>
+              </div>
+              <div class="posts-title col-sm-10 col-xs-7">
+                <div class="row">
+                  <div>
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                  </div>
+                  <!-- <div class="col-xs-3 col-sm-2 posts-categories">
+                    {{ range .Params.categories }}
+                    <div class="posts-category">
+                      <a href="/categories/{{ lower . }}/"><strong>{{ . }}</strong></a>
+                    </div>
+                    {{ end }}
+                  </div> -->
+                </div>
+              </div>
+            </div>
+            {{ end }}
+          {{ end }}
+        </div>
+
+        {{ partial "footer.html" . }}
+      </div>
+    </div>
+  </article>
+
+  {{ partial "scripts.html" . }}
+</body>
+
+</html>

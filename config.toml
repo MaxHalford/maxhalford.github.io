@@ -1,0 +1,23 @@
+baseURL = "https://maxhalford.github.io/"
+languageCode = "en-us"
+title = "Max Halford"
+theme = "yinyang"
+enableRobotsTXT = true
+pygmentsUseClasses = true
+
+[author]
+  email = "maxhalford25@gmail.com"
+  name = "Max Halford"
+
+[params]
+  headTitle = "Max Halford"
+  mainSections = ["blog"]
+  favicon = "/img/favicon.ico"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 0.5
