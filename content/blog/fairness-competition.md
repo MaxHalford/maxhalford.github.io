@@ -171,7 +171,7 @@ Sadly, it seems that no teams managed to really remove any bias whatsoever from 
 
 And yet, my gut feeling is that many teams have had the wrong focus. Having looked at each team's code, most people used very sophisticated neural networks based on transformer architectures. That's great, because I know for a fact that the latter are not part of the official curriculum in French schools as well, so it shows some form of motivation. However, I'm worried that students used a "toolbox" approach whereby they imported and trained a fancy model because it's the *goût du jour*.
 
-In my opinion, if a student is able to understand BERT and transformers, then surely she is capable to understand fair learning. The problem is that I think that they don't, and only managed to figure out the API provided by the library they found on GitHub and imported in their notebook. I fear that they simply didn't do any fair learning because the toolboxes they used didn't provide any fair learning capability. That's very worrying. It might also hint at a blindspot in the library ecosystem.
+In my opinion, if a student is able to understand BERT and transformers, then surely she is capable of understanding fair learning. The problem is that I believe that they don't understand these notions very well. Instead, they only manage to figure out the API provided by a library they found on GitHub and imported in their notebook. I fear that they simply didn't do any fair learning because the toolboxes they used didn't provide any fair learning capability. That's very worrying. It might also hint at a blindspot in the library ecosystem. I would love to be wrong about all this.
 
 Here is the ranking with respect to fairness for the top 10 competitors on the Kaggle private leaderboard:
 
@@ -192,7 +192,7 @@ Here is the ranking with respect to fairness for the top 10 competitors on the K
 
 Again, I'm quite disappointed with these standings from an effort point of view. While writing this blog post, I took 10 minutes to see the effect of replacing "he" by "she" and "his" by "her" on a plain and simple logistic regression. In my cross-validation, the macro disparate impact went from 5.11 and 3.85 and the macro F1 score remained simple. It would have been nice to see at least a couple of teams that produced some decent fairness results. Alas, I'm sorry to say, these models wouldn't be used. Regardless of their accuracy, the main objective of this competition was to reduce the disparate impact.
 
-With regards to the Macro F1 score that was used to establish the Kaggle leaderboard, here is a summary of the best solution with a breakdown by each job:
+With regards to the macro F1 score that was used to establish the Kaggle leaderboard, here is a summary of the best solution with a breakdown by job:
 
 ```
                    precision    recall  f1-score   support
