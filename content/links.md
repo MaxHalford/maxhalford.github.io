@@ -17,6 +17,7 @@ title: Links
 
 ## Talks
 
+- [Quelle est l’empreinte écologique du Big Data? - Toulouse Tech round table 2021](https://www.youtube.com/watch?v=8RubWlhwTjg&feature=youtu.be)
 - [A brief introduction to online machine learning - Hong Kong Machine Learning, 2020](/slides/hkml2020.pdf)
 - [Online machine learning with decision trees - Toulouse AOC workgroup, 2020](/slides/online-decision-trees.pdf)
 - [Our solution to the IDAO 2020 qualifiers - virtual seminar, 2020](/slides/idao-2020-qualifiers.pdf)

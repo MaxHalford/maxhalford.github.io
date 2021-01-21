@@ -135,21 +135,21 @@ One thing to notice is that a perfect macro disparate impact of 1 is only achiev
 
 ## What people did
 
-Once the competition was over, the students were instructed to send me their code. This was mostly to verify they hadn't cheated in any way. It also allowed me to inspect what they had done. Moreover, teams that didn't send their code were not eligible to the final ranking. Out of the 78 teams, only 29 sent me their code. Here are some statistics:
+Once the competition was over, the students were instructed to send me their code. This was mostly to verify they hadn't cheated in any way. It also allowed me to inspect what they had done. Moreover, teams that didn't send their code were not eligible to the final ranking. Out of the 78 teams, only 30 sent me their code. Here are some statistics:
 
 - Everyone used Python. That's somewhat interesting because during the past years there were still some teams that used R.
 - Apart from one team, everyone sent me one or more [Jupyter Notebooks](https://jupyter.org/). I wonder if they know about Jupyter Lab 😉
 - 14 used some flavor of [BERT](https://www.wikiwand.com/en/BERT_(language_model)).
-- 13 preprocessed the text in some way (lowercasing, stemming, stop words, etc.)
+- 14 preprocessed the text in some way (lowercasing, stemming, stop words, etc.)
 - Absolutely no team did any effort to make their model fairer with respect to both genders 😩
 - 2 did [cross-validation](https://www.wikiwand.com/en/Cross-validation_(statistics)). The rest did a simple train/test split, if that.
 - 8 used a [TF-IDF](https://www.wikiwand.com/en/Tf%E2%80%93idf) approach.
-- 15 really used [scikit-learn](https://scikit-learn.org/stable/). Other teams used scikit-learn only for metrics and train/test splitting.
+- 16 really used [scikit-learn](https://scikit-learn.org/stable/). Other teams used scikit-learn only for metrics and train/test splitting.
 - My estimate is that 17 teams made a real effort. From what I can tell, the 12 others just mindlessly imported libraries, figured out the API, and [called it a day](https://tenor.com/view/and-thats-it-guys-its-awrap-finished-lets-call-it-aday-happy-gif-14375900).
 - 10 used Hugging Face's [transformers](https://huggingface.co/transformers/) library.
 - 4 did data augmentation.
-- 7 did exploratory data analysis (EDA), although others might have done but didn't include it in what they showed me.
-- 11 used [NLTK](https://www.nltk.org/), which I find pretty cool considering how old it is.
+- 8 did exploratory data analysis (EDA), although others might have done but didn't include it in what they showed me.
+- 12 used [NLTK](https://www.nltk.org/), which I find pretty cool considering how old it is.
 - 2 attempted to [rebalance](https://github.com/scikit-learn-contrib/imbalanced-learn) the dataset.
 - 2 built their own model in [PyTorch](https://pytorch.org/).
 - 8 built their own odel with [Keras](https://keras.io/).
