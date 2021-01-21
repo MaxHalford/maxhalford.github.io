@@ -85,6 +85,10 @@ Fair learning is very exciting, and we thought it would be worthwhile to include
 
 What is fair? It's a very vague concept when you think about it for a bit. I'm not going to into a lot of detail as many things have already been written on the topic. For instance, see [this light article](https://blog.acolyer.org/2020/02/03/measure-mismeasure-fairness/) by Adrian Colyer (aka the morning paper).
 
+<p>
+  <img src="/img/blog/fairness-competition/def.jpg" width="80%">
+</p>
+
 We went with the notion of [disparate impact](https://www.wikiwand.com/en/Disparate_impact). Essentially, our motivation was for the students to make predictions that are not biased towards one gender in particular. For instance, if we tallied up all the "rapper" predictions, well we would consider a model to be fair if 50% of those predictions are for women and 50% are for men. We compute the disparate impact for each job and average them in order to obtain a so-called "macro disparate impact":
 
 $$
@@ -339,3 +343,5 @@ Nonetheless, I got some positive feedback from a significant number of students.
 For the participants, here are the [test labels](/files/fairness_competition/test_labels.csv) as well as the [final standings](/files/fairness_competition/standings.csv).
 
 Feel free to reach out and/or comment if you have any questions!
+
+Edit: after having presented this blog post to the students on Zoom, I realised that some teams had in fact tackled the fairness problem. I sincerely apologise for being so brash in saying that no team made any effort. I believe I mostly missed this because the fairness scores of the teams that sent me their solution didn't do that well in terms of fairness.
