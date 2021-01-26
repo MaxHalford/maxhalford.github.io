@@ -187,3 +187,4 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Archillect](https://archillect.com/) -- An AI that curates cool pictures, how awesome is that?
 - [Martin Kleppe](https://aem1k.com/)
 - [Zoomquilt](https://zoomquilt.org/)
+- [lossfunctions.tumblr.com](https://lossfunctions.tumblr.com/) -- Yes, that's a thing.
