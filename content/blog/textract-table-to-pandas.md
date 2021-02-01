@@ -86,10 +86,10 @@ def map_blocks(blocks, block_type):
     }
 
 blocks = response['Blocks']
-tables = get_block_mapping(blocks, 'TABLE')
-cells = get_block_mapping(blocks, 'CELL')
-words = get_block_mapping(blocks, 'WORD')
-selections = get_block_mapping(blocks, 'SELECTION_ELEMENT')
+tables = map_blocks(blocks, 'TABLE')
+cells = map_blocks(blocks, 'CELL')
+words = map_blocks(blocks, 'WORD')
+selections = map_blocks(blocks, 'SELECTION_ELEMENT')
 ```
 
 I then wrote a little function that yields the children IDs of a block.
