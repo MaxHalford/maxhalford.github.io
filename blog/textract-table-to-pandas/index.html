@@ -45,10 +45,10 @@ I wanted to write this short blog post to share a piece of code I use to convert
     <span class=p>}</span>
 
 <span class=n>blocks</span> <span class=o>=</span> <span class=n>response</span><span class=p>[</span><span class=s1>&#39;Blocks&#39;</span><span class=p>]</span>
-<span class=n>tables</span> <span class=o>=</span> <span class=n>get_block_mapping</span><span class=p>(</span><span class=n>blocks</span><span class=p>,</span> <span class=s1>&#39;TABLE&#39;</span><span class=p>)</span>
-<span class=n>cells</span> <span class=o>=</span> <span class=n>get_block_mapping</span><span class=p>(</span><span class=n>blocks</span><span class=p>,</span> <span class=s1>&#39;CELL&#39;</span><span class=p>)</span>
-<span class=n>words</span> <span class=o>=</span> <span class=n>get_block_mapping</span><span class=p>(</span><span class=n>blocks</span><span class=p>,</span> <span class=s1>&#39;WORD&#39;</span><span class=p>)</span>
-<span class=n>selections</span> <span class=o>=</span> <span class=n>get_block_mapping</span><span class=p>(</span><span class=n>blocks</span><span class=p>,</span> <span class=s1>&#39;SELECTION_ELEMENT&#39;</span><span class=p>)</span>
+<span class=n>tables</span> <span class=o>=</span> <span class=n>map_blocks</span><span class=p>(</span><span class=n>blocks</span><span class=p>,</span> <span class=s1>&#39;TABLE&#39;</span><span class=p>)</span>
+<span class=n>cells</span> <span class=o>=</span> <span class=n>map_blocks</span><span class=p>(</span><span class=n>blocks</span><span class=p>,</span> <span class=s1>&#39;CELL&#39;</span><span class=p>)</span>
+<span class=n>words</span> <span class=o>=</span> <span class=n>map_blocks</span><span class=p>(</span><span class=n>blocks</span><span class=p>,</span> <span class=s1>&#39;WORD&#39;</span><span class=p>)</span>
+<span class=n>selections</span> <span class=o>=</span> <span class=n>map_blocks</span><span class=p>(</span><span class=n>blocks</span><span class=p>,</span> <span class=s1>&#39;SELECTION_ELEMENT&#39;</span><span class=p>)</span>
 </code></pre></div><p>I then wrote a little function that yields the children IDs of a block.</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=k>def</span> <span class=nf>get_children_ids</span><span class=p>(</span><span class=n>block</span><span class=p>):</span>
     <span class=k>for</span> <span class=n>rels</span> <span class=ow>in</span> <span class=n>block</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=s1>&#39;Relationships&#39;</span><span class=p>,</span> <span class=p>[]):</span>
         <span class=k>if</span> <span class=n>rels</span><span class=p>[</span><span class=s1>&#39;Type&#39;</span><span class=p>]</span> <span class=o>==</span> <span class=s1>&#39;CHILD&#39;</span><span class=p>:</span>
