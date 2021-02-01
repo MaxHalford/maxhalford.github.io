@@ -16,7 +16,7 @@ The first step is to load the image, which can be done with [PIL](https://www.wi
 ```py
 from PIL import Image
 
-img = Image.open('example.jpg')
+im = Image.open('example.jpg')
 ```
 
 Amazon Textract expects the image to be encoded via the [Base64](https://www.wikiwand.com/en/Base64) encoding scheme. This is very easy to do in Python:
