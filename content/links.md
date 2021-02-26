@@ -17,6 +17,7 @@ title: Links
 
 ## Talks
 
+- [The challenges of online machine learning in production - Banco Itaú 2021](/slides/the-challenges-of-online-machine-learning-in-production.pdf)
 - [Quelle est l’empreinte écologique du Big Data? - Toulouse Tech round table 2021](https://www.youtube.com/watch?v=8RubWlhwTjg&feature=youtu.be)
 - [A brief introduction to online machine learning - Hong Kong Machine Learning, 2020](/slides/hkml2020.pdf)
 - [Online machine learning with decision trees - Toulouse AOC workgroup, 2020](/slides/online-decision-trees.pdf)
@@ -163,6 +164,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Cameras and Lenses - Bartosz Ciechanowski](https://ciechanow.ski/cameras-and-lenses/) -- 100% worth a read.
 - [Ditherpunk - Surma](https://surma.dev/things/ditherpunk/)
 - [Command-line Tools can be 235x Faster than your Hadoop Cluster - Adam Drake](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
+- [Teaching An Old Dog A New Trick - Chris Kamphuis](https://www.chriskamphuis.com/2019/03/06/teaching-an-old-dog-a-new-trick.html)
 
 ## Eye candy
 
