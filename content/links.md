@@ -17,6 +17,8 @@ title: Links
 
 ## Talks
 
+- [The challenges of online machine learning in production - Banco Itaú 2021](/slides/the-challenges-of-online-machine-learning-in-production.pdf)
+- [Quelle est l’empreinte écologique du Big Data? - Toulouse Tech round table 2021](https://www.youtube.com/watch?v=8RubWlhwTjg&feature=youtu.be)
 - [A brief introduction to online machine learning - Hong Kong Machine Learning, 2020](/slides/hkml2020.pdf)
 - [Online machine learning with decision trees - Toulouse AOC workgroup, 2020](/slides/online-decision-trees.pdf)
 - [Our solution to the IDAO 2020 qualifiers - virtual seminar, 2020](/slides/idao-2020-qualifiers.pdf)
@@ -98,8 +100,13 @@ This is a list of blogs I regularly scroll through.
 - [Nick Higham](https://nhigham.com/) -- A lot of well explained algebra.
 - [Calmcode](https://calmcode.io/) -- Not a blog per se, but a nice collection of short to the point tutorials about various tools.
 - [Chris Said](https://chris-said.io/)
+<<<<<<< HEAD
 - [Evan Miller](https://www.evanmiller.org/index.html)
 - [Eric Jang](http://evjang.com/)
+=======
+- [Andrey Akinshin](https://aakinshin.net/)
+- [Single Lunch](https://www.singlelunch.com/blog/)
+>>>>>>> dev
 
 ## Hall of fame
 
@@ -163,6 +170,10 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Unprojecting text with ellipses - Matt Zucker](https://mzucker.github.io/2016/10/11/unprojecting-text-with-ellipses.html) -- See also [this article on page dewarping](https://mzucker.github.io/2016/08/15/page-dewarping.html) by the same author.
 - [The Log: What every software engineer should know about real-time data's unifying abstraction - Jay Kreps](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying)
 - [Language models, classification and dbacl - Laird A. Breyer](http://dbacl.sourceforge.net/tutorial.html) -- machine learning on text with a UNIX philosophy.
+- [Cameras and Lenses - Bartosz Ciechanowski](https://ciechanow.ski/cameras-and-lenses/) -- 100% worth a read.
+- [Ditherpunk - Surma](https://surma.dev/things/ditherpunk/)
+- [Command-line Tools can be 235x Faster than your Hadoop Cluster - Adam Drake](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
+- [Teaching An Old Dog A New Trick - Chris Kamphuis](https://www.chriskamphuis.com/2019/03/06/teaching-an-old-dog-a-new-trick.html)
 
 ## Eye candy
 
@@ -186,3 +197,5 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Jack Sharp](https://www.jacksharp.co.uk/)
 - [Archillect](https://archillect.com/) -- An AI that curates cool pictures, how awesome is that?
 - [Martin Kleppe](https://aem1k.com/)
+- [Zoomquilt](https://zoomquilt.org/)
+- [lossfunctions.tumblr.com](https://lossfunctions.tumblr.com/) -- Yes, that's a thing.

@@ -4,6 +4,9 @@ toc = true
 title = "Focal loss implementation for LightGBM"
 +++
 
+**Edit -- 2021-01-26**
+
+I initially wrote this blog post using version 2.3.1 of LightGBM. I've now updated it to use version 3.1.1. There are a couple of subtle but important differences between version 2.x.y and 3.x.y. If you're using version 2.x.y, then I strongly recommend you to upgrade to version 3.x.y.
 ## Motivation
 
 If you're reading this blog post, then you're likely to be aware of [LightGBM](https://github.com/microsoft/LightGBM). The latter is a best of breed [gradient boosting](https://explained.ai/gradient-boosting/) library. As of 2020, it's still the go-to machine learning model for tabular data. It's also ubiquitous in competitive machine learning.
@@ -24,7 +27,7 @@ I'm first going to define a custom loss function that reimplements the default l
 Don't worry if it's not all clear you, because it certainly was confusing to me when I first started. I'll go through each step in detail throughout the rest of this notebook. However, first things first: let's pick a dataset to work with. I'll be using the [credit card frauds dataset](https://www.openml.org/d/1597). It's a binary classification dataset with around 30 features, 285k rows, and a highly imbalanced target -- it contains much more 0s than 1s. Here is some bash code which you can use to obtain the dataset:
 
 ```sh
-$ wget maxhalford.github.io/files/datasets/creditcardfraud.zip
+$ curl -O maxhalford.github.io/files/datasets/creditcardfraud.zip
 $ unzip creditcardfraud.zip
 ```
 
@@ -51,18 +54,19 @@ X_fit, X_val, y_fit, y_val = model_selection.train_test_split(
 X_train.head()
 ```
 
-|   Time |         V1 |        V2 |        V3 |        V4 |         V5 |        V6 |        V7 |         V8 |         V9 |       V10 |       V11 |        V12 |       V13 |        V14 |         V15 |       V16 |        V17 |       V18 |       V19 |       V20 |        V21 |        V22 |        V23 |        V24 |        V25 |       V26 |        V27 |        V28 |   Amount |
-|-------:|-----------:|----------:|----------:|----------:|-----------:|----------:|----------:|-----------:|-----------:|----------:|----------:|-----------:|----------:|-----------:|------------:|----------:|-----------:|----------:|----------:|----------:|-----------:|-----------:|-----------:|-----------:|-----------:|----------:|-----------:|-----------:|---------:|
-|  59741 | -1.64859   |  1.22813  |  1.37017  | -1.73554  | -0.0294547 | -0.484129 |  0.918645 | -0.43875   |  0.982144  | 1.24163   |  1.10562  |  0.0583674 | -0.659961 | -0.535813  |  0.0472013  |  0.664548 | -1.28096   |  0.184568 | -0.331603 |  0.384201 | -0.218076  | -0.203458  | -0.213015  |  0.0113721 | -0.304481  |  0.632063 | -0.262968  | -0.0998634 |    38.42 |
-|  45648 | -0.234775  | -0.493269 |  1.23673  | -2.33879  | -1.17673   |  0.885733 | -1.96098  | -2.36341   | -2.69477   | 0.360215  |  1.6155   |  0.447752  |  0.605692 |  0.169591  | -0.0736552  | -0.163459 |  0.562423  | -0.577032 | -1.63563  |  0.364679 | -1.49536   | -0.0830664 |  0.0746123 | -0.347329  |  0.5419    | -0.433294 |  0.0892932 |  0.212029  |    61.2  |
-|  31579 |  1.13463   | -0.77446  | -0.16339  | -0.533358 | -0.604555  | -0.244482 | -0.212682 |  0.0407824 | -1.13663   | 0.792009  |  0.961637 | -0.140033  | -1.25376  |  0.835103  |  0.458756   | -1.3715   |  0.0201648 |  0.796223 | -0.519459 | -0.396476 | -0.684454  | -1.85527   |  0.171997  | -0.387783  | -0.0629846 |  0.245118 | -0.0611777 |  0.0121796 |   110.95 |
-|  80455 |  0.0695137 |  1.01775  |  1.03312  |  1.38438  |  0.223233  | -0.310845 |  0.597287 | -0.127658  | -0.701533  | 0.0707389 | -0.857263 | -0.290899  |  0.289337 |  0.333125  |  1.64318    | -0.507737 | -0.0242082 |  0.37196  |  1.56145  |  0.14876  |  0.0970231 |  0.369957  | -0.219266  | -0.124941  | -0.0497488 | -0.112946 |  0.11444   |  0.0661008 |    10    |
-|  39302 | -0.199441  |  0.610092 | -0.114437 |  0.256565 |  2.29075   |  4.00848  | -0.12353  |  1.03837   | -0.0758464 | 0.0304526 | -0.75603  | -0.0451648 | -0.18018  | -0.0481675 | -0.00448576 | -0.541172 | -0.17495   |  0.355749 |  1.37528  |  0.292972 | -0.0197334 |  0.165463  | -0.080978  |  1.02066   | -0.30073   | -0.269595 |  0.481769  |  0.254114  |    22    |
+|  Time |        V1 |        V2 |        V3 |        V4 |         V5 |        V6 |        V7 |        V8 |         V9 |       V10 |       V11 |        V12 |       V13 |        V14 |         V15 |       V16 |        V17 |       V18 |       V19 |       V20 |        V21 |        V22 |       V23 |       V24 |        V25 |       V26 |        V27 |        V28 | Amount |
+| ----: | --------: | --------: | --------: | --------: | ---------: | --------: | --------: | --------: | ---------: | --------: | --------: | ---------: | --------: | ---------: | ----------: | --------: | ---------: | --------: | --------: | --------: | ---------: | ---------: | --------: | --------: | ---------: | --------: | ---------: | ---------: | -----: |
+| 59741 |  -1.64859 |   1.22813 |   1.37017 |  -1.73554 | -0.0294547 | -0.484129 |  0.918645 |  -0.43875 |   0.982144 |   1.24163 |   1.10562 |  0.0583674 | -0.659961 |  -0.535813 |   0.0472013 |  0.664548 |   -1.28096 |  0.184568 | -0.331603 |  0.384201 |  -0.218076 |  -0.203458 | -0.213015 | 0.0113721 |  -0.304481 |  0.632063 |  -0.262968 | -0.0998634 |  38.42 |
+| 45648 | -0.234775 | -0.493269 |   1.23673 |  -2.33879 |   -1.17673 |  0.885733 |  -1.96098 |  -2.36341 |   -2.69477 |  0.360215 |    1.6155 |   0.447752 |  0.605692 |   0.169591 |  -0.0736552 | -0.163459 |   0.562423 | -0.577032 |  -1.63563 |  0.364679 |   -1.49536 | -0.0830664 | 0.0746123 | -0.347329 |     0.5419 | -0.433294 |  0.0892932 |   0.212029 |   61.2 |
+| 31579 |   1.13463 |  -0.77446 |  -0.16339 | -0.533358 |  -0.604555 | -0.244482 | -0.212682 | 0.0407824 |   -1.13663 |  0.792009 |  0.961637 |  -0.140033 |  -1.25376 |   0.835103 |    0.458756 |   -1.3715 |  0.0201648 |  0.796223 | -0.519459 | -0.396476 |  -0.684454 |   -1.85527 |  0.171997 | -0.387783 | -0.0629846 |  0.245118 | -0.0611777 |  0.0121796 | 110.95 |
+| 80455 | 0.0695137 |   1.01775 |   1.03312 |   1.38438 |   0.223233 | -0.310845 |  0.597287 | -0.127658 |  -0.701533 | 0.0707389 | -0.857263 |  -0.290899 |  0.289337 |   0.333125 |     1.64318 | -0.507737 | -0.0242082 |   0.37196 |   1.56145 |   0.14876 |  0.0970231 |   0.369957 | -0.219266 | -0.124941 | -0.0497488 | -0.112946 |    0.11444 |  0.0661008 |     10 |
+| 39302 | -0.199441 |  0.610092 | -0.114437 |  0.256565 |    2.29075 |   4.00848 |  -0.12353 |   1.03837 | -0.0758464 | 0.0304526 |  -0.75603 | -0.0451648 |  -0.18018 | -0.0481675 | -0.00448576 | -0.541172 |   -0.17495 |  0.355749 |   1.37528 |  0.292972 | -0.0197334 |   0.165463 | -0.080978 |   1.02066 |   -0.30073 | -0.269595 |   0.481769 |   0.254114 |     22 |
 
-As is probably obvious, I'll be using LightGBM's Python package. Specifically, I'm running version 2.3.1 with Python 3.7.4. For the time being, I'll use the [generic training API](https://lightgbm.readthedocs.io/en/latest/Python-API.html#training-api), and not the [scikit-learn API](https://lightgbm.readthedocs.io/en/latest/Python-API.html#scikit-learn-api). That's because the former allows more low-level manipulation, whereas the latter is more high-level. Before implementing our custom logarithmic loss function, let's run LightGBM so that we have something to compare against:
+As is probably obvious, I'll be using LightGBM's Python package. Specifically, I'm running version <s>2.3.1</s> 3.1.1 with Python <s>3.7.4</s> 3.8.3. For the time being, I'll use the [generic training API](https://lightgbm.readthedocs.io/en/latest/Python-API.html#training-api), and not the [scikit-learn API](https://lightgbm.readthedocs.io/en/latest/Python-API.html#scikit-learn-api). That's because the former allows more low-level manipulation, whereas the latter is more high-level. Before implementing our custom logarithmic loss function, let's run LightGBM so that we have something to compare against:
 
 ```py
 import lightgbm
+from sklearn import metrics
 
 fit = lightgbm.Dataset(X_fit, y_fit)
 val = lightgbm.Dataset(X_val, y_val, reference=fit)
@@ -89,43 +93,48 @@ print(f"Test's logloss: {metrics.log_loss(y_test, y_pred):.5f}")
 
 ```
 Training until validation scores don't improve for 20 rounds
-[100]	fit's binary_logloss: 0.00191083	val's binary_logloss: 0.00358371
-[200]	fit's binary_logloss: 0.000825181	val's binary_logloss: 0.00286873
-[300]	fit's binary_logloss: 0.000403679	val's binary_logloss: 0.00262094
+[100]	fit's binary_logloss: 0.0018981	    val's binary_logloss: 0.0035569
+[200]	fit's binary_logloss: 0.00080822	val's binary_logloss: 0.00283644
+[300]	fit's binary_logloss: 0.000396519	val's binary_logloss: 0.00264941
 Early stopping, best iteration is:
-[355]	fit's binary_logloss: 0.000282887	val's binary_logloss: 0.00257033
+[352]	fit's binary_logloss: 0.000281286	val's binary_logloss: 0.00261413
 
-Test's ROC AUC: 0.97721
-Test's logloss: 0.00233
+Test's ROC AUC: 0.97772
+Test's logloss: 0.00237
 ```
 
 Our goal is now to write a custom loss function that will produce the exact same output as above. A custom loss function can be provided the `fobj` parameter, as specified in the [documentation of the `train` function](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.train.html). Note that "fobj" is short for "objective function", which is a synonym for "loss function". As indicated in the documentation, we need to provide a function that takes as inputs `(preds, train_data)` and returns as outputs `(grad, hess)`. This function will then be used internally by LightGBM, essentially overriding the C++ code that it used by default. Here goes:
 
 ```py
-import numpy as np
 from scipy import special
 
 def logloss_objective(preds, train_data):
     y = train_data.get_label()
     p = special.expit(preds)
-    grad = y - p
+    grad = p - y
     hess = p * (1 - p)
     return grad, hess
 ```
 
-The mathematics that are required in order to derive the gradient and the Hessian are not very involved, but they do require knowledge of the [chain rule](https://www.wikiwand.com/en/Chain_rule). I recommend checking out [this CrossValidated thread](https://stats.stackexchange.com/questions/231220/) as well as [this blog post](http://zpz.github.io/blog/gradient-boosting-tree-for-binary-classification/) for more information. One important thing to notice is that the `preds` array provided by LightGBM contains raw margin scores instead of probabilities. We have thus got to convert them to probabilities ourselves before evaluating the gradient and the Hessian by using a sigmoid transformation. So far, so good. The issue is that the same thing occurs in the metric function. We therefore have to define a custom metric function to accompany our custom objective function. This can be done via the `feval` parameter, which is short for "evaluation function". In our case, we can use scikit-learn's `metrics.log_loss` function:
+The mathematics that are required in order to derive the gradient and the Hessian are not very involved, but they do require knowledge of the [chain rule](https://www.wikiwand.com/en/Chain_rule). I recommend checking out [this CrossValidated thread](https://stats.stackexchange.com/questions/231220/) as well as [this blog post](http://zpz.github.io/blog/gradient-boosting-tree-for-binary-classification/) for more information. One important thing to notice is that the `preds` array provided by LightGBM contains raw margin scores instead of probabilities. We have thus got to convert them to probabilities ourselves before evaluating the gradient and the Hessian by using a sigmoid transformation. So far, so good. The issue is that the same thing occurs in the metric function. We therefore have to define a custom metric function to accompany our custom objective function. This can be done via the `feval` parameter, which is short for "evaluation function". In our case, we can use scikit-learn's [`metrics.log_loss` function](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html). However, the latter incurs a lot of overhead; it's much more efficient to implement it ourselves -- about 5 times faster in my experience:
 
 ```py
-from sklearn import metrics
+import numpy as np
 
 def logloss_metric(preds, train_data):
     y = train_data.get_label()
     p = special.expit(preds)
+
+    ll = np.empty_like(p)
+    pos = y == 1
+    ll[pos] = np.log(p[pos])
+    ll[~pos] = np.log(1 - p[~pos])
+
     is_higher_better = False
-    return 'logloss', metrics.log_loss(y, p), is_higher_better
+    return 'logloss', -ll.mean(), is_higher_better
 ```
 
-All of the guides I've read on custom loss functions for LightGBM stop at this point. However, if you set the `fobj` and `feval` parameters with the above functions, you'll see that you're not obtaining the same outputs as when using LightGBM's implementation. Here, I'll prove it:
+All of the guides I've read on custom loss functions for LightGBM stop at this point. However, if you set the `fobj` and `feval` parameters with the above functions, you'll see that you don't obtain the same outputs as when using LightGBM's implementation. Let me demonstrate:
 
 ```py
 model = lightgbm.train(
@@ -151,22 +160,22 @@ print(f"Test's logloss: {metrics.log_loss(y_test, y_pred):.5f}")
 
 ```
 Training until validation scores don't improve for 20 rounds
-[100]	fit's logloss: 0.203631	        val's logloss: 0.203803
-[200]	fit's logloss: 0.0710043        val's logloss: 0.0712822
-[300]	fit's logloss: 0.0263409        val's logloss: 0.0267795
-[400]	fit's logloss: 0.0103281        val's logloss: 0.011038
-[500]	fit's logloss: 0.00422448       val's logloss: 0.00539362
-[600]	fit's logloss: 0.00181789       val's logloss: 0.00339196
-[700]	fit's logloss: 0.000789874      val's logloss: 0.00273831
-[800]	fit's logloss: 0.00038473       val's logloss: 0.00256254
+[100]	fit's logloss: 0.203632	    val's logloss: 0.203803
+[200]	fit's logloss: 0.0709961	val's logloss: 0.0712959
+[300]	fit's logloss: 0.0263333	val's logloss: 0.0267926
+[400]	fit's logloss: 0.0103193	val's logloss: 0.0110446
+[500]	fit's logloss: 0.00419716	val's logloss: 0.00541233
+[600]	fit's logloss: 0.00181725	val's logloss: 0.00341563
+[700]	fit's logloss: 0.000777108	val's logloss: 0.00277328
+[800]	fit's logloss: 0.000378409	val's logloss: 0.00259164
 Early stopping, best iteration is:
-[833]	fit's logloss: 0.000311434	val's logloss: 0.00254163
+[874]	fit's logloss: 0.000237358	val's logloss: 0.00257534
 
-Test's ROC AUC: 0.97189
-Test's logloss: 0.00222
+Test's ROC AUC: 0.97701
+Test's logloss: 0.00227
 ```
 
-As you can see, the test scores are somewhat similar to the previous outputs, but they're not *exactly* the same. What's more, the model has taken many more iterations to converge. When you're implementing a fancy loss function with nothing to compare against, then it's virtually impossible to verify that your implementation is correct. In the above case, the scores are close, but that's not satisfactory.
+As you can see, the test scores are somewhat similar to the previous outputs, but they're not *exactly* the same. What's more, the model has taken around 500 more iterations to converge. When you're implementing a fancy loss function with nothing to compare against, then it's virtually impossible to verify that your implementation is correct. In the above case, the scores are close, but that's not satisfactory.
 
 I didn't manage myself to find the discrepancy by myself, so I opened a [GitHub issue](https://github.com/microsoft/LightGBM/issues/3312). shiyu1994 [kindly](https://github.com/microsoft/LightGBM/issues/3312#issuecomment-674955643) made me aware that the problem was that I didn't specify any initialization values for my model. Indeed, if you look at some [gradient boosting algorithm pseudo-code](https://www.wikiwand.com/en/Gradient_boosting#/Algorithm), you'll see that the model starts off with an initial estimate. From Wikipedia, the latter is defined mathematically as so:
 
@@ -245,7 +254,7 @@ Test's logloss: 0.00233
 
 I know, this is quite finicky, but it works perfectly! Maybe that future versions of LightGBM will make this process easier, but until now we're stuck with getting our hands dirty. As far as I know, most tutorials ignore the initialization score details because their authors are simply not aware of it.
 
-![](https://media.giphy.com/media/l0IukNXgBnxRXVjYA/giphy.gif)
+![i_know](https://media.giphy.com/media/l0IukNXgBnxRXVjYA/giphy.gif)
 
 For practicality, here is the full code that you can copy/paste into a notebook and execute:
 
@@ -257,6 +266,7 @@ import lightgbm
 import numpy as np
 import pandas as pd
 from scipy import special
+from sklearn import metrics
 from sklearn import model_selection
 
 def logloss_init_score(y):
@@ -579,7 +589,7 @@ As you see, `check_gradient` simply returns the norm of the difference between t
 Let's now generate some random ground truth values, as well as some random probabilities:
 
 ```py
-np.random.state(42)
+np.random.seed(42)
 y_true = np.random.uniform(0, 1, 100) > .5
 y_pred = np.random.uniform(0, 1, 100)
 ```
@@ -736,15 +746,14 @@ print(f"Test's logloss: {metrics.log_loss(y_test, y_pred):.5f}")
 
 ```
 Training until validation scores don't improve for 20 rounds
-[100]   fit's focal_loss: 0.00191792    val's focal_loss: 0.00359477
-[200]   fit's focal_loss: 0.00082206    val's focal_loss: 0.00287949
-[300]   fit's focal_loss: 0.000403044   val's focal_loss: 0.00262565
-[400]   fit's focal_loss: 0.000212066   val's focal_loss: 0.00258044
+[100]	fit's focal_loss: 0.00190475	val's focal_loss: 0.00356043
+[200]	fit's focal_loss: 0.000811846	val's focal_loss: 0.00285806
+[300]	fit's focal_loss: 0.000401933	val's focal_loss: 0.00267161
 Early stopping, best iteration is:
-[402]   fit's focal_loss: 0.000209408   val's focal_loss: 0.00258009
+[345]	fit's focal_loss: 0.000297174	val's focal_loss: 0.00263719
 
-Test's ROC AUC: 0.97978
-Test's logloss: 0.00234
+Test's ROC AUC: 0.97948
+Test's logloss: 0.00237
 ```
 
 ## Conclusion
