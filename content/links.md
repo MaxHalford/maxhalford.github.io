@@ -100,14 +100,10 @@ This is a list of blogs I regularly scroll through.
 - [Nick Higham](https://nhigham.com/) -- A lot of well explained algebra.
 - [Calmcode](https://calmcode.io/) -- Not a blog per se, but a nice collection of short to the point tutorials about various tools.
 - [Chris Said](https://chris-said.io/)
-<<<<<<< HEAD
 - [Evan Miller](https://www.evanmiller.org/index.html)
 - [Eric Jang](http://evjang.com/)
-=======
 - [Andrey Akinshin](https://aakinshin.net/)
 - [Single Lunch](https://www.singlelunch.com/blog/)
->>>>>>> dev
-
 ## Hall of fame
 
 The following is a hall of fame of papers, books, and blog posts that have a very high [signal to noise ratio](https://www.urbandictionary.com/define.php?term=signal%20to%20noise%20ratio) -- at least in my book. I highly recommend reading some of them when you get time.
