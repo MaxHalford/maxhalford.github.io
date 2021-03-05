@@ -166,7 +166,7 @@ $$\begin{equation}
 m\_{i+1} = S\_{i+1}(S\_i^{-1} m\_i + \beta x_i y_i)
 \end{equation}$$
 
-Note that $x\_i^\intercal x_i)^{-1}$ is the [outer product](https://www.wikiwand.com/en/Outer_product) of $x_i$ with itself. By now you might be thinking that I've produced these formulas from thin air, and you would be right. The steps for getting to these formulas are quite straightforward, assuming your calculus is not too rusty. However I won't be going into them in this blog post. If you want to go deeper into the maths, I recommend getting Christopher Bishop's and/or checking out [this video](https://www.youtube.com/watch?v=nrd4AnDLR3U&list=PLD0F06AA0D2E8FFBA&index=61). We can also obtain the predictive distribution:
+Note that $x\_i^\intercal x_i$ is the [outer product](https://www.wikiwand.com/en/Outer_product) of $x_i$ with itself. I'm using the convention where $x_i$ is a row and not a column. The outer product would be denoted as $x\_i x_i^\intercal$ if $x_i$ were instead a column. By now you might be thinking that I've produced these formulas from thin air, and you would be right. The steps for getting to these formulas are quite straightforward, assuming your calculus is not too rusty. However I won't be going into them in this blog post. If you want to go deeper into the maths, I recommend getting Christopher Bishop's and/or checking out [this video](https://www.youtube.com/watch?v=nrd4AnDLR3U&list=PLD0F06AA0D2E8FFBA&index=61). We can also obtain the predictive distribution:
 
 $$\begin{equation}
 \color{forestgreen} p(y_i) = \mathcal{N}(\mu_i, \sigma_i)
@@ -743,7 +743,7 @@ m\_{i+1} = \beta S_{i+1} x_i^\intercal y_i
 At a first glance, these formulas look just as heavy as before because they still necessitate a matrix inversion. The trick is that the equation for obtaining $S\_{i+1}$ has a particular structure that we can exploit. Indeed, it turns out that there is a wonderful formula to evaluate this equation without having to explicitely apply the inverse operation -- I love it when this happens. It's called the [Sherman–Morrison formula](https://www.wikiwand.com/en/Sherman%E2%80%93Morrison_formula). Here it is with Wikipedia's notation:
 
 $$\begin{equation}
-(A + uv^\intercal) = A^{-1} - \frac{A^{-1} uv^\intercal A^{-1}}{1 + v^\intercal A^{-1}u}
+(A + uv^\intercal)^{-1} = A^{-1} - \frac{A^{-1} uv^\intercal A^{-1}}{1 + v^\intercal A^{-1}u}
 \end{equation}$$
 
 In our case, we have:
