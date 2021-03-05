@@ -98,6 +98,8 @@ This is a list of blogs I regularly scroll through.
 - [Nick Higham](https://nhigham.com/) -- A lot of well explained algebra.
 - [Calmcode](https://calmcode.io/) -- Not a blog per se, but a nice collection of short to the point tutorials about various tools.
 - [Chris Said](https://chris-said.io/)
+- [Evan Miller](https://www.evanmiller.org/index.html)
+- [Eric Jang](http://evjang.com/)
 
 ## Hall of fame
 
@@ -156,7 +158,11 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Fitting Bayesian structural time series with the bsts R package - Steven L. Scott](http://www.unofficialgoogledatascience.com/2017/07/fitting-bayesian-structural-time-series.html)
 - [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.nature.com/articles/d41586-019-02918-5)
 - [Emerging Architectures for Modern Data Infrastructure - Matt Bornstein, Martin Casado, and Jennifer Li](https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/) -- Gives a good overview of the data analysis tooling landscape as of late 2020.
+- [What your data team is using: the analytics stack - Technically](https://technically.dev/) -- Another solid article to understand what an analytics stack looks like in 2021.
 - [Fred's ImageMagick Scripts](http://www.fmwconcepts.com/imagemagick/index.php)
+- [Unprojecting text with ellipses - Matt Zucker](https://mzucker.github.io/2016/10/11/unprojecting-text-with-ellipses.html) -- See also [this article on page dewarping](https://mzucker.github.io/2016/08/15/page-dewarping.html) by the same author.
+- [The Log: What every software engineer should know about real-time data's unifying abstraction - Jay Kreps](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying)
+- [Language models, classification and dbacl - Laird A. Breyer](http://dbacl.sourceforge.net/tutorial.html) -- machine learning on text with a UNIX philosophy.
 
 ## Eye candy
 
