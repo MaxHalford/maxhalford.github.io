@@ -162,7 +162,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Fitting Bayesian structural time series with the bsts R package - Steven L. Scott](http://www.unofficialgoogledatascience.com/2017/07/fitting-bayesian-structural-time-series.html)
 - [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.nature.com/articles/d41586-019-02918-5)
 - [Emerging Architectures for Modern Data Infrastructure - Matt Bornstein, Martin Casado, and Jennifer Li](https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/) -- Gives a good overview of the data analysis tooling landscape as of late 2020.
-- [What your data team is using: the analytics stack - Technically](https://technically.dev/) -- Another solid article to understand what an analytics stack looks like in 2021.
+- [What your data team is using: the analytics stack - Technically](https://technically.dev/posts/what-your-data-team-is-using) -- Another solid article to understand what an analytics stack looks like in 2021.
 - [Fred's ImageMagick Scripts](http://www.fmwconcepts.com/imagemagick/index.php)
 - [Unprojecting text with ellipses - Matt Zucker](https://mzucker.github.io/2016/10/11/unprojecting-text-with-ellipses.html) -- See also [this article on page dewarping](https://mzucker.github.io/2016/08/15/page-dewarping.html) by the same author.
 - [The Log: What every software engineer should know about real-time data's unifying abstraction - Jay Kreps](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying)
@@ -172,6 +172,9 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Command-line Tools can be 235x Faster than your Hadoop Cluster - Adam Drake](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
 - [Teaching An Old Dog A New Trick - Chris Kamphuis](https://www.chriskamphuis.com/2019/03/06/teaching-an-old-dog-a-new-trick.html)
 - [Git scraping, the five minute lightning talk - Simon Willison](https://simonwillison.net/2021/Mar/5/git-scraping/) -- I wish I had thought about this first!
+- [Optimal Peanut Butter and Banana Sandwiches - Ethan Rosenthal](https://www.ethanrosenthal.com/2020/08/25/optimal-peanut-butter-and-banana-sandwiches/)
+- [The Data Science Hierarchy of Needs - Monica Rogati](https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007)
+
 ## Eye candy
 
 - [Tyler Hobbs](https://tylerxhobbs.com/) -- The god of generative arts.
