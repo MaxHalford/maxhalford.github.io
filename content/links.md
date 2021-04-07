@@ -105,6 +105,8 @@ This is a list of blogs I regularly scroll through.
 - [Andrey Akinshin](https://aakinshin.net/)
 - [Single Lunch](https://www.singlelunch.com/blog/)
 - [Freakonometrics](https://freakonometrics.hypotheses.org/)
+- [Martin Daniel](http://www.martindaniel.co/)
+
 ## Hall of fame
 
 The following is a hall of fame of papers, books, and blog posts that have a very high [signal to noise ratio](https://www.urbandictionary.com/define.php?term=signal%20to%20noise%20ratio) -- at least in my book. I highly recommend reading some of them when you get time.
