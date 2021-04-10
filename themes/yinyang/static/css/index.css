@@ -104,8 +104,7 @@ body {
 
 .posts-line {
   margin: 16px 0;
-  padding-top: 9px;
-  padding-bottom: 9px;
+  padding-bottom: 15px;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
