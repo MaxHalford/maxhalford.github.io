@@ -6,7 +6,7 @@ toc = true
 
 ## Context
 
-This week at Alan I've been working on parsing [French medical prescriptions](https://www.wikiwand.com/fr/Ordonnance_(m%C3%A9decine)). There are three types of prescriptions: lenses, glasses, and pharmaceutical prescriptions. Different information needs to be extracted depending on the prescription type. Therefore, the first step is to classify the prescription. The prescriptions we receive are pictures taken by users with their phone. We run each image through an OCR to obtain a text transcription of the image. We can thus use the text transcription to classify the transcription.
+This week at Alan I've been working on parsing [French medical prescriptions](https://www.wikiwand.com/fr/Ordonnance_(m%C3%A9decine)). There are three types of prescriptions: lenses, glasses, and pharmaceutical prescriptions. Different information needs to be extracted depending on the prescription type. Therefore, the first step is to classify the prescription. The prescriptions we receive are pictures taken by users with their phone. We run each image through an OCR to obtain a text transcription of the image. We can thus use the text transcription to classify the prescription.
 
 I played around with writing some regex rules and reached a macro F1 score of 95%. Not bad, but not perfect. I wanted to reach 100% because it seemed to me like a simple classification task. That is, when I looked at some sample prescriptions, the type of the prescription was really obvious. I weighed the pros and cons of writing more complex regex patterns versus building a machine learning text classifier. I opted for the latter. I wrote a simple [scikit-learn pipeline](https://scikit-learn.org/stable/modules/compose.html) and tested it as so:
 
