@@ -4,6 +4,10 @@ title = "An overview of dataset time travel"
 toc = true
 +++
 
+## TLDR
+
+You're a data scientist. The engineers in your company overwrite data in the production database. You want to access overwritten data to train your models. How?
+
 ## I thought time travel only existed in the movies
 
 You're probably right, expect maybe for [this guy](https://www.wikiwand.com/en/Time_travel_claims_and_urban_legends#/Present-day_hipster_at_1941_bridge_opening).
