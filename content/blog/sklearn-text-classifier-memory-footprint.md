@@ -1,6 +1,6 @@
 +++
 date = "2021-04-11"
-title = "Reducing the size of a scikit-learn text classifier"
+title = "Reducing the memory footprint of a scikit-learn text classifier"
 toc = true
 +++
 
@@ -86,11 +86,11 @@ I'm confident enough to put this model into production. At Alan we like to keep 
 
 The model I trained weighs around 2.7 MB. That's over 8000 times [the amount of RAM](https://www.bbc.com/future/article/20190704-apollo-in-50-numbers-the-technology) in the computer system of the first Apollo shuttle that went to the Moon. Obviously I'm saying this with my tongue in my in cheek. And yet, I think it's important to be frugal and not waste the memory of our [Heroku dynos](https://www.heroku.com/dynos). Especially if I want to convince the engineering team to use more of my models.
 
-In a text classifier, the importance of each word follows a long-tail distribution. Most words are not important at all, which is the driving insight for [knowledge distillation](https://www.wikiwand.com/en/Knowledge_distillation). As we will see, this is very true for the above model. I decided to push the envelope and lighten the memory usage of the model, while preserving its accuracy. Anyway, enough with the (long) introduction, here goes.
+In a text classifier, the importance of each word follows a long-tail distribution. Most words are not important at all, which is the driving insight for [knowledge distillation](https://www.wikiwand.com/en/Knowledge_distillation). As we will see, this is very true for the above model. I decided to push the envelope and lighten the memory footprint of the model, while preserving its accuracy. Anyway, enough with the (long) introduction, here goes.
 
 ## Measuring the model's size
 
-From experience, I have a good idea of the model's memory usage layout. However, it's always good to confirm this by measuring the memory usage of each part of the model. I wrote a little utility to do this for any scikit-learn pipeline:
+From experience, I have a good idea of the model's memory footprint layout. However, it's always good to confirm this by measuring the memory footprint of each part of the model. I wrote a little utility to do this for any scikit-learn pipeline:
 
 ```py
 from humanize import naturalsize
@@ -133,9 +133,9 @@ logisticregression
 Total                        2.7 MB
 ```
 
-The above table shows the memory usage of each attribute of each step of the pipeline. I'm only looking at the attributes whose name ends with a `_` because that's the scikit-learn convention for attributes that have been created during the call to `fit`. In other words I'm ignoring hyperparameters that are provided during initialization, because their memory usage is typically insignificant.
+The above table shows the memory footprint of each attribute of each step of the pipeline. I'm only looking at the attributes whose name ends with a `_` because that's the scikit-learn convention for attributes that have been created during the call to `fit`. In other words I'm ignoring hyperparameters that are provided during initialization, because their memory footprint is typically insignificant.
 
-As we can see, most of the memory usage is taken by the logistic regression `coef_` attribute, which stores the $n \times k$ weights for each of the $n$ words and the $k$ classes. The second culprit is the count vectorizer's `vocabulary_` attribute, which assigns an index to each word. This allows determining the weight vector of each word because `coef_` is a matrix that is integer-indexed, not word-indexed.
+As we can see, most of the memory footprint is taken by the logistic regression `coef_` attribute, which stores the $n \times k$ weights for each of the $n$ words and the $k$ classes. The second culprit is the count vectorizer's `vocabulary_` attribute, which assigns an index to each word. This allows determining the weight vector of each word because `coef_` is a matrix that is integer-indexed, not word-indexed.
 
 ## Reducing the model's size
 
@@ -233,7 +233,7 @@ Recall is 93.42%
 
 The performance is (slightly) better! The intention of this pruning process was not to improve the model, but it did. That's the magic of regularization for you. Indeed, the pruning process we've applied boils down to [sparsity regularisation](https://www.wikiwand.com/en/Regularization_(mathematics)#/Regularizers_for_sparsity).
 
-Let's now see the memory usage of the pruned model.
+Let's now see the memory footprint of the pruned model.
 
 ```py
 for name, step in model.steps:
@@ -263,4 +263,4 @@ logisticregression
 Total                        5.0 kB
 ```
 
-We've reduced the model's memory consumption by a whopping factor of ~545. We've done this without impacting the memory's accuracy. It's a free win!
+We've reduced the model's memory consumption by a whopping factor of ~545. We've done this without impacting the memory's accuracy. It's a free win! Note that you could push the envelope even further by reducing the precision of the coefficient matrix to 32 bits instead of 64 bits, but the savings would be marginal.
