@@ -121,13 +121,13 @@ gauche
 <span class=p>))</span>
 </code></pre></div><pre><code>                precision    recall  f1-score   support
 
-contact_lenses    0.97628   0.96348   0.96984      1068
-       glasses    0.98752   0.98479   0.98616      2170
-      pharmacy    0.99061   0.99914   0.99486      2324
+contact_lenses      0.976     0.963     0.970      1068
+       glasses      0.988     0.985     0.986      2170
+      pharmacy      0.991     0.999     0.995      2324
 
-      accuracy                        0.98670      5562
-     macro avg    0.98481   0.98247   0.98362      5562
-  weighted avg    0.98666   0.98670   0.98666      5562
+      accuracy                          0.987      5562
+     macro avg      0.985     0.982     0.984      5562
+  weighted avg      0.987     0.987     0.987      5562
 </code></pre><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=k>print</span><span class=p>(</span><span class=n>f</span><span class=s1>&#39;Recall is {confident.sum() / len(confident):.2%}&#39;</span><span class=p>)</span>
 </code></pre></div><pre><code>Recall is 93.42%
 </code></pre><p>The performance is (slightly) better! The intention of this pruning process was not to improve the model, but it did. That&rsquo;s the magic of regularization for you. Indeed, the pruning process we&rsquo;ve applied boils down to <a href=https://www.wikiwand.com/en/Regularization_(mathematics)#/Regularizers_for_sparsity>sparsity regularisation</a>.</p><p>Let&rsquo;s now see the memory usage of the pruned model.</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=k>for</span> <span class=n>name</span><span class=p>,</span> <span class=n>step</span> <span class=ow>in</span> <span class=n>model</span><span class=o>.</span><span class=n>steps</span><span class=p>:</span>
