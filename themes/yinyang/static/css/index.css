@@ -1,11 +1,7 @@
 /* global */
 
 body {
-  font-family: "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial,
-    "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC",
-    "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei",
-    "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei,
-    "WenQuanYi Zen Hei Sharp", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   margin: 0 20px;
 }
 
@@ -34,9 +30,9 @@ h3 {
 /* overwrite github-markdown */
 
 .markdown-body {
-  font-family: "PT Serif";
+  font-family: "PT Serif", serif;
   line-height: 1.55;
-  font-size: 20px;
+  font-size: 19px;
 }
 
 .markdown-body li + li {
@@ -44,7 +40,9 @@ h3 {
 }
 
 .markdown-body h2 {
+  font-family: "PT Serif", serif;
   font-size: 1.3em;
+  font-weight: bold;
 }
 
 pre {
@@ -71,7 +69,7 @@ pre {
 }
 
 .signatures {
-  font-family: "Permanent Marker", Impact, Charcoal, sans-serif;
+  font-family: "Permanent Marker", cursive;
 }
 
 .signatures a {
