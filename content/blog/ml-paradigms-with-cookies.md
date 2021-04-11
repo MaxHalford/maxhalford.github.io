@@ -61,3 +61,6 @@ Talk about anomaly detection.
 ## Continual learning
 
 ## Meta learning
+
+
+## Confident learning
