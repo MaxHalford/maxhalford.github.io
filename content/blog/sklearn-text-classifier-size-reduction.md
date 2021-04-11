@@ -214,13 +214,13 @@ print(classification_report(
 ```
                 precision    recall  f1-score   support
 
-contact_lenses    0.97628   0.96348   0.96984      1068
-       glasses    0.98752   0.98479   0.98616      2170
-      pharmacy    0.99061   0.99914   0.99486      2324
+contact_lenses      0.976     0.963     0.970      1068
+       glasses      0.988     0.985     0.986      2170
+      pharmacy      0.991     0.999     0.995      2324
 
-      accuracy                        0.98670      5562
-     macro avg    0.98481   0.98247   0.98362      5562
-  weighted avg    0.98666   0.98670   0.98666      5562
+      accuracy                          0.987      5562
+     macro avg      0.985     0.982     0.984      5562
+  weighted avg      0.987     0.987     0.987      5562
 ```
 
 ```py
