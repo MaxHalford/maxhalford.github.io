@@ -133,9 +133,9 @@ logisticregression
 Total                        2.7 MB
 ```
 
-The above table shows the memory footprint of each attribute of each step of the pipeline. I'm only looking at the attributes whose name ends with a `_` because that's the scikit-learn convention for attributes that have been created during the call to `fit`. In other words I'm ignoring hyperparameters that are provided during initialization, because their memory footprint is typically insignificant.
+The above table shows the memory footprint of each attribute for each step of the pipeline. I'm only looking at the attributes whose name ends with a `_` because that's the scikit-learn convention for marking attributes that have been created during the `fit` call. In other words, I'm ignoring hyperparameters that are provided during initialization, because their memory footprint is insignificant.
 
-As we can see, most of the memory footprint is taken by the logistic regression `coef_` attribute, which stores the $n \times k$ weights for each of the $n$ words and the $k$ classes. The second culprit is the count vectorizer's `vocabulary_` attribute, which assigns an index to each word. This allows determining the weight vector of each word because `coef_` is a matrix that is integer-indexed, not word-indexed.
+As we can see, most of the memory footprint is taken up by the logistic regression `coef_` attribute. The latter is a matrix which stores the $n \times k$ weights for each of the $n$ words and the $k$ classes. The second culprit is the count vectorizer's `vocabulary_` attribute, which assigns an index to each word. This allows determining the weight vector of each word because `coef_` is integer-indexed instead of being word-indexed. We can now confidently move on and reduce the memory footprint of these two attributes.
 
 ## Reducing the model's size
 
