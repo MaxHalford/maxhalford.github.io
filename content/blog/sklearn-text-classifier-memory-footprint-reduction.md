@@ -144,11 +144,11 @@ In a logistic regression, the importance of a feature is proportional to the mag
 First, let's measure the importance of each word. We can compute the feature-wise $L^2$ norm to measure the magnitude of each word's weight vector.
 
 ```py
-from numpy import linalg as LA
+from numpy import np
 
 log_reg = model.steps[2][1]
 W = log_reg.coef_
-magnitudes = LA.norm(W, ord=2, axis=0)
+magnitudes = np.linalg.norm(W, ord=2, axis=0)
 ```
 
 Now let's list the most important words by sorting their associated weight vector magnitudes.
@@ -159,8 +159,13 @@ idx_to_word = {
     idx: word
     for word, idx in vectorizer.vocabulary_.items()
 }
+
 top = np.argsort(magnitudes)[::-1]
-meaningful_vocab = [idx_to_word[k] for k in top[:100]]
+
+meaningful_vocab = [
+    idx_to_word[k]
+    for k in top[:100]
+]
 ```
 
 Here are the 10 most important words:
