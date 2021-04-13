@@ -80,7 +80,7 @@ print(f'Recall is {confident.sum() / len(confident):.2%}')
 Recall is 90.24%
 ```
 
-Good enough! I checked some false positive cases and all of them were mislabeled. Indeed, the training data I'm using are manual annotations made by our operators. Once in a while they make a mistake, which is totally acceptable and simply something we have to deal with. However, learning with noisy labels is another story that I don't discuss in this blog post. I do however recommend [this research article](https://arxiv.org/pdf/1911.00068.pdf) if you're interested.
+Good enough! I checked some false positive cases and all of them were mislabeled. Indeed, the training data I'm using are manual annotations made by our operators. Once in a while they make a mistake, which is totally acceptable and simply something we have to deal with. However, learning with noisy labels is another story altogether, and I won't get into it in this blog post. I do however recommend [this research article](https://arxiv.org/pdf/1911.00068.pdf) if you're interested.
 
 I'm confident enough to put this model into production. At Alan we like to keep things simple. Our website is a [Flask](https://flask.palletsprojects.com/en/1.1.x/) app running on [Heroku](https://www.heroku.com/). We want to load this scikit-learn model in memory when the app boots up, and simply call it when a prescription has to be classified. If this pattern works for us, we might use it for other document classification tasks.
 
@@ -268,4 +268,4 @@ logisticregression
 Total                        5.0 kB
 ```
 
-We've reduced the model's memory consumption by a whopping factor of ~545. We've done this without impacting the memory's accuracy. It's a free win! Note that you could push the envelope even further by reducing the precision of the coefficient matrix to 32 bits instead of 64 bits, but the savings would be marginal.
+We've reduced the model's memory consumption by a whopping factor of ~545. We've done this without impacting the model's accuracy. It's a free win! Note that you could push the envelope even further by reducing the precision of the coefficient matrix to 32 bits instead of 64 bits, but the savings would be marginal.
