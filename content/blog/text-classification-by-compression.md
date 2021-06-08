@@ -19,9 +19,9 @@ To classify a document, proceed as so:
 2. Compress each of these concatenations and measure the size.
 3. Return the label for which the size increased the least.
 
-The idea is that if a document is similar to the text of a particular label, they will share patterns that will get exploited by the compression algorithm. Ideally, the size increase of compressing the training texts with the new text should be correlated with the similarity between the text and the training texts. The smaller the increase, the more likely the label should be assigned.
+The idea is that if a document is similar to the training texts associated with a particular label, they will share patterns that will get exploited by the compression algorithm. Ideally, the size increase of compressing the training texts with the new text should be correlated with the similarity between the text and the training texts. The smaller the increase, the more likely the label should be assigned.
 
-I think this is an elegant idea. It's not sophisticated, and I don't expect it to perform better than a plain and simple logistic regression. Moreover, it's expensive because the training texts of each label have to be recompressed for each test document. Still, I find the idea intriguing and decided to implement it in Python.
+I think this is an elegant idea. It's not sophisticated, and I don't expect it to perform better than a plain and simple logistic regression. Moreover, it's expensive because the training texts of each label have to be recompressed for each test document. Still, I found the idea intriguing and decided to implement it in Python.
 
 Here I'll use the [newsgroup20 dataset](http://qwone.com/~jason/20Newsgroups/) from scikit-learn. I'm using the same four categories they use in their [user guide](https://scikit-learn.org/stable/datasets/real_world.html#converting-text-to-vectors) to have something to compare against.
 
