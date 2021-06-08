@@ -176,6 +176,6 @@ talk.religion.misc      0.866     0.773     0.817       251
       weighted avg      0.897     0.897     0.896      1353
 ```
 
-The performance is surprisingly good! But this comes at a cost: it took 32 minutes to complete, which is ~1.4 seconds per document. Still, it's very interesting to see this kind of result for an algorithm that wasn't at all designed to classify documents.
+The performance is surprisingly good! But this comes at a cost: it took 32 minutes to complete, which is ~1.4 seconds per document. Still, it's very interesting to see this kind of result for an algorithm that wasn't at all designed to classify documents. Well, the `lzma` in fact implements the LZW algorithm that is mentioned in the *Artificial Intelligence: A Modern Approach* book, so it's less surprising that it does well!
 
 There's probably some fine-tuning that could be done to improve this kind of approach. However, it would most probably not be worth using such an approach because of the prohibitive computational cost. This should simply be seen as an interesting example of thinking outside the box. It also goes to show that statistical modelling and information theory are very much intertwined.
