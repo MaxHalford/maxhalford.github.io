@@ -176,6 +176,37 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Git scraping, the five minute lightning talk - Simon Willison](https://simonwillison.net/2021/Mar/5/git-scraping/) -- I wish I had thought about this first!
 - [Optimal Peanut Butter and Banana Sandwiches - Ethan Rosenthal](https://www.ethanrosenthal.com/2020/08/25/optimal-peanut-butter-and-banana-sandwiches/)
 - [The Data Science Hierarchy of Needs - Monica Rogati](https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007)
+- [Are Pop Lyrics Getting More Repetitive? - Colin Morris](https://pudding.cool/2017/05/song-repetition/)
+- [Tuesday Changes Everything - Jesper Juul](https://www.jesperjuul.net/ludologist/2010/06/08/tuesday-changes-everything-a-mathematical-puzzle/)
+
+## Tools
+
+- [benthos.dev](https://www.benthos.dev/)
+- [Herbie](https://herbie.uwplse.org/) -- Find and fix floating-point problems.
+- [Google Charts](https://developers.google.com/chart/)
+- [cortex.dev](https://www.cortex.dev/)
+- [Sejda](https://www.sejda.com/sign-pdf) -- Fill out and sign PDFs.
+- [latex2png](http://latex2png.com/)
+- [befunky](https://www.befunky.com/create/) -- Simple photo editor.
+- [temp-mail](https://temp-mail.org/en/)
+- [insect](https://insect.sh/) -- Scientific calculator.
+- [carbon](https://carbon.now.sh/?bg=rgba(255%2C255%2C255%2C1)&t=shades-of-purple&wt=none&l=python&ds=false&dsyoff=20px&dsblur=68px&wc=false&wa=true&pv=56px&ph=56px&ln=false&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=x%2520%253D%2520%257B%250A%2520%2520%2520%2520%27date%27%253A%2520dt.datetime(2019%252C%25204%252C%252022)%252C%250A%2520%2520%2520%2520%27price%27%253A%252042.95%252C%250A%2520%2520%2520%2520%27shop%27%253A%2520%27Ikea%27%250A%257D) -- Source code images.
+- [Adalo](https://www.adalo.com) -- No-code mobile app editor.
+- [git.io](https://git.io/) -- URL shortener.
+- [Connected Papers](https://www.connectedpapers.com/) -- Explore connected papers in a visual graph.
+- [Excalidraw](https://excalidraw.com/) -- I like using this to [create charts](https://blog.excalidraw.com/tell-your-story-with-charts/).
+- [Motionbox](https://motionbox.io/) -- Video editor.
+- [LanguageTool](https://languagetool.org/) -- Great for proofreading.
+- [drawdata.xyz](https://drawdata.xyz/)
+- [vo.codes](https://vo.codes/)
+- [matcha.io](https://www.mathcha.io/)
+- [colorbrewer2](https://colorbrewer2.org)
+- [RegExr](https://regexr.com/)
+- [Whimsical Flowcharts](https://whimsical.com/flowcharts)
+- [explainshell.com](https://explainshell.com/)
+- [labelstud.io](https://labelstud.io/)
+- [asciiflow](https://asciiflow.com/)
+- [Retool](https://retool.com/)
 
 ## Eye candy
 
@@ -201,3 +232,5 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Martin Kleppe](https://aem1k.com/)
 - [Zoomquilt](https://zoomquilt.org/)
 - [lossfunctions.tumblr.com](https://lossfunctions.tumblr.com/) -- Yes, that's a thing.
+- [Shirts of Peter Norvig](http://charlesbroskoski.com/_/view.php?id=shirts-of-peter-norvig)
+- [United Airlines ads by Cream Electric Art](https://www.creamelectricart.com/united-airlines/)
