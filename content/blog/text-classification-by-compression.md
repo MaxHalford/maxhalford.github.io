@@ -3,6 +3,8 @@ date = "2021-06-08"
 title = "Text classification by data compression"
 +++
 
+> Edit: I posted this [on Hackernews](https://maxhalford.github.io/blog/text-classification-by-compression/) and got some valuable feedback. Many brought up the fact that you should be able to reuse the internal state of the compressor instead of recompressing the training data each time a prediction is made. There's also some insightful references to data compression theory and its ties to statistical learning.
+
 Last night I felt like reading [*Artificial Intelligence: A Modern Approach*](http://aima.cs.berkeley.edu/). I stumbled on something fun in the natural language processing chapter. The section I was reading dealt with classifying text. The idea of the particular subsection I was reading was to classify documents by using a [compression algorithm](https://www.wikiwand.com/en/Data_compression). This is such a left field idea, and yet it does make sense when you think about it. To quote the book:
 
 > In effect, compression algorithms are creating a language model. The [LZW algorithm](https://www.wikiwand.com/en/Lempel%E2%80%93Ziv%E2%80%93Welch) in particular directly models a maximum-entropy probability distribution.
@@ -176,6 +178,6 @@ talk.religion.misc      0.866     0.773     0.817       251
       weighted avg      0.897     0.897     0.896      1353
 ```
 
-The performance is surprisingly good! But this comes at a cost: it took 32 minutes to complete, which is ~1.4 seconds per document. Still, it's very interesting to see this kind of result for an algorithm that wasn't at all designed to classify documents. Well, the `lzma` in fact implements the LZW algorithm that is mentioned in the *Artificial Intelligence: A Modern Approach* book, so it's less surprising that it does well!
+The performance is surprisingly good! But this comes at a cost: it took 32 minutes to complete, which is ~1.4 seconds per document. Still, it's very interesting to see this kind of result for an algorithm that wasn't at all designed to classify documents. Well, the `lzma` in fact implements the LZW algorithm that is mentioned in the *Artificial Intelligence: A Modern Approach* book, which might explain why it does so well!
 
 There's probably some fine-tuning that could be done to improve this kind of approach. However, it would most probably not be worth using such an approach because of the prohibitive computational cost. This should simply be seen as an interesting example of thinking outside the box. It also goes to show that statistical modelling and information theory are very much intertwined.
