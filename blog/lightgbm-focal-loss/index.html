@@ -1,10 +1,100 @@
-<!doctype html><html lang=en><head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-63302552-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-63302552-1')</script><script async defer data-website-id=6023252a-3a97-470f-b4ee-5082d242bb9a src=https://umami.pourtan.eu/umami.js></script><meta charset=utf-8><meta name=generator content="Hugo 0.83.1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Max Halford"><meta property="og:url" content="https://maxhalford.github.io/blog/lightgbm-focal-loss/"><link rel=canonical href=https://maxhalford.github.io/blog/lightgbm-focal-loss/><link rel=icon href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦔</text></svg>"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/maxhalford.github.io\/"},"articleSection":"blog","name":"Focal loss implementation for LightGBM","headline":"Focal loss implementation for LightGBM","description":"Edit \u0026ndash; 2021-01-26\nI initially wrote this blog post using version 2.3.1 of LightGBM. I\u0026rsquo;ve now updated it to use version 3.1.1. There are a couple of subtle but important differences between version 2.x.y and 3.x.y. If you\u0026rsquo;re using version 2.x.y, then I strongly recommend you to upgrade to version 3.x.y.\nMotivation If you\u0026rsquo;re reading this blog post, then you\u0026rsquo;re likely to be aware of LightGBM. The latter is a best of breed gradient boosting library.","inLanguage":"en-US","author":"Max Halford","creator":"Max Halford","publisher":"Max Halford","accountablePerson":"Max Halford","copyrightHolder":"Max Halford","copyrightYear":"2020","datePublished":"2020-09-20 00:00:00 \u002b0000 UTC","dateModified":"2020-09-20 00:00:00 \u002b0000 UTC","url":"https:\/\/maxhalford.github.io\/blog\/lightgbm-focal-loss\/","keywords":[]}</script><title>Focal loss implementation for LightGBM - Max Halford</title><meta property="og:title" content="Focal loss implementation for LightGBM - Max Halford"><meta property="og:type" content="article"><meta name=description content="Edit &ndash; 2021-01-26
+<!doctype html><html lang=en>
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-63302552-1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-63302552-1')</script>
+<script async defer data-website-id=6023252a-3a97-470f-b4ee-5082d242bb9a src=https://umami.pourtan.eu/umami.js></script>
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Max Halford">
+<meta property="og:url" content="https://maxhalford.github.io/blog/lightgbm-focal-loss/">
+<link rel=canonical href=https://maxhalford.github.io/blog/lightgbm-focal-loss/>
+<link rel=icon href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦔</text></svg>">
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/maxhalford.github.io\/"},"articleSection":"blog","name":"Focal loss implementation for LightGBM","headline":"Focal loss implementation for LightGBM","description":"Edit \u0026ndash; 2021-01-26\nI initially wrote this blog post using version 2.3.1 of LightGBM. I\u0026rsquo;ve now updated it to use version 3.1.1. There are a couple of subtle but important differences between version 2.x.y and 3.x.y. If you\u0026rsquo;re using version 2.x.y, then I strongly recommend you to upgrade to version 3.x.y.\nMotivation If you\u0026rsquo;re reading this blog post, then you\u0026rsquo;re likely to be aware of LightGBM. The latter is a best of breed gradient boosting library.","inLanguage":"en-US","author":"Max Halford","creator":"Max Halford","publisher":"Max Halford","accountablePerson":"Max Halford","copyrightHolder":"Max Halford","copyrightYear":"2020","datePublished":"2020-09-20 00:00:00 \u002b0000 UTC","dateModified":"2020-09-20 00:00:00 \u002b0000 UTC","url":"https:\/\/maxhalford.github.io\/blog\/lightgbm-focal-loss\/","keywords":[]}</script>
+<title>Focal loss implementation for LightGBM - Max Halford</title>
+<meta property="og:title" content="Focal loss implementation for LightGBM - Max Halford">
+<meta property="og:type" content="article">
+<meta name=description content="Edit &ndash; 2021-01-26
 I initially wrote this blog post using version 2.3.1 of LightGBM. I&rsquo;ve now updated it to use version 3.1.1. There are a couple of subtle but important differences between version 2.x.y and 3.x.y. If you&rsquo;re using version 2.x.y, then I strongly recommend you to upgrade to version 3.x.y.
-Motivation If you&rsquo;re reading this blog post, then you&rsquo;re likely to be aware of LightGBM. The latter is a best of breed gradient boosting library."><link rel=stylesheet href=/css/flexboxgrid-6.3.1.min.css><link rel=stylesheet href=/css/github-markdown.min.css><link rel=stylesheet href=/css/highlight/github.css><link rel=stylesheet href=/css/index.css><link rel=preconnect href=https://fonts.gstatic.com><link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Permanent+Marker&display=swap" rel=stylesheet><script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:!0,processEnvironments:!0,tags:'ams'},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}},window.addEventListener('load',a=>{document.querySelectorAll('mjx-container').forEach(function(a){a.parentElement.classList+='has-jax'})})</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script></head><body><article class=post id=article><div class="row center-xs" style=text-align:left><div class="col-xs-12 col-sm-10 col-md-7 col-lg-5"><div class=post-header><header><div class="signatures site-title"><a href=/>Max Halford</a></div></header><div class="row end-xs"><div><a class=header-link href=/>Blog</a>
+Motivation If you&rsquo;re reading this blog post, then you&rsquo;re likely to be aware of LightGBM. The latter is a best of breed gradient boosting library.">
+<link rel=stylesheet href=/css/flexboxgrid-6.3.1.min.css>
+<link rel=stylesheet href=/css/github-markdown.min.css>
+<link rel=stylesheet href=/css/highlight/github.css>
+<link rel=stylesheet href=/css/index.css>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Permanent+Marker&display=swap" rel=stylesheet>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:!0,processEnvironments:!0,tags:'ams'},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}},window.addEventListener('load',a=>{document.querySelectorAll('mjx-container').forEach(function(a){a.parentElement.classList+='has-jax'})})</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
+</head>
+<body>
+<article class=post id=article>
+<div class="row center-xs" style=text-align:left>
+<div class="col-xs-12 col-sm-10 col-md-7 col-lg-5">
+<div class=post-header>
+<header>
+<div class="signatures site-title">
+<a href=/>Max Halford</a>
+</div>
+</header>
+<div class="row end-xs">
+<div>
+<a class=header-link href=/>Blog</a>
 <a class=header-link href=/links/>Links</a>
-<a class=header-link href=/bio/>Bio</a></div></div><div class=header-line></div></div><header class=post-header><h1 class=post-title>Focal loss implementation for LightGBM</h1><div class="row post-desc"><div class=col-xs-12><time class=post-date datetime="2020-09-20 00:00:00 UTC">2020-09-20 · 24 minute read</time></div></div></header><div class="post-content markdown-body"><h2 id=toc>Table of contents</h2><nav id=TableOfContents><ul><li><a href=#motivation>Motivation</a></li><li><a href=#lightgbm-custom-loss-function-caveats>LightGBM custom loss function caveats</a></li><li><a href=#formulas-for-focal-loss>Formulas for focal loss</a><ul><li><a href=#first-order-derivative>First order derivative</a></li><li><a href=#second-order-derivative>Second order derivative</a></li><li><a href=#initialization-constant>Initialization constant</a></li><li><a href=#implementation>Implementation</a></li><li><a href=#numerical-checks>Numerical checks</a></li></ul></li><li><a href=#benchmarks>Benchmarks</a></li><li><a href=#conclusion>Conclusion</a></li></ul></nav><p><strong>Edit &ndash; 2021-01-26</strong></p><p>I initially wrote this blog post using version 2.3.1 of LightGBM. I&rsquo;ve now updated it to use version 3.1.1. There are a couple of subtle but important differences between version 2.x.y and 3.x.y. If you&rsquo;re using version 2.x.y, then I strongly recommend you to upgrade to version 3.x.y.</p><h2 id=motivation>Motivation</h2><p>If you&rsquo;re reading this blog post, then you&rsquo;re likely to be aware of <a href=https://github.com/microsoft/LightGBM>LightGBM</a>. The latter is a best of breed <a href=https://explained.ai/gradient-boosting/>gradient boosting</a> library. As of 2020, it&rsquo;s still the go-to machine learning model for tabular data. It&rsquo;s also ubiquitous in competitive machine learning.</p><p>One of LightGBM&rsquo;s nice features is that you can provide it with a custom loss function. Depending on what you&rsquo;re doing, this may have a big positive impact. For instance, it was a major part of every top solution to the recent <a href=https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/143070>M5 forecasting</a> competition on Kaggle. In this post, I want to do an in-depth presentation of how to implement the loss function described in <a href=https://arxiv.org/pdf/1708.02002.pdf><em>Focal Loss for Dense Object Detection</em></a>, which was written by members of the <a href=https://ai.facebook.com>FAIR</a> research group. Focal loss was initially proposed to resolve the imbalance issues that occur when training object detection models. However, it can and has been used for many imbalanced learning problems. Focal loss is just a loss function, and may thus be used in conjunction with any model that uses gradients, including neural networks and gradient boosting. If you implement it as part of a deep learning framework such as PyTorch, then you don&rsquo;t have to worry too much because the gradient will automatically be computed for you. See <a href=https://github.com/clcarwin/focal_loss_pytorch>here</a> for a PyTorch implementation of focal loss. However, LightGBM doesn&rsquo;t provide this functionality, thus requiring users to manually implement gradients.</p><p>There&rsquo;s quite a few &ldquo;guides&rdquo; on how to implement focal loss for LightGBM. See for instance <a href=https://github.com/jrzaurin/LightGBM-with-Focal-Loss>this</a> somewhat popular GitHub repository as well as <a href=https://towardsdatascience.com/lightgbm-with-the-focal-loss-for-imbalanced-datasets-9836a9ae00ca>this</a> Medium article. Alas, I&rsquo;m almost certain that each one of them is wrong because some important details are ignored. Trust me, even though they might work on a given dataset, they&rsquo;re most likely suboptimal. That&rsquo;s the thing about machine learning code: it might compile and work, but it&rsquo;s not necessarily correct and optimal. I&rsquo;ll go over the <a href=https://github.com/microsoft/LightGBM/issues/3312>pitfalls</a> that you&rsquo;re probably not aware of, and provide some concrete code examples. <strong>The goal of this blog post is thus to serve as a comprehensive recipe on how to implement any custom loss function whatsoever in LightGBM</strong>. Note that I&rsquo;ve picked focal loss as a case example because I want to use it for a <a href=https://kelvins.esa.int/spot-the-geo-satellites/home/>data science competition</a>.</p><h2 id=lightgbm-custom-loss-function-caveats>LightGBM custom loss function caveats</h2><p>I&rsquo;m first going to define a custom loss function that reimplements the default loss function that LightGBM uses for binary classification, which is the <a href=http://wiki.fast.ai/index.php/Log_Loss>logarithmic loss</a>. Doing so will allow me to verify that all the steps I&rsquo;m taking are correct. Indeed, I will have nothing to compare against when I implement focal loss. If I write a custom implementation of the logarithmic, then I&rsquo;ll be able to compare it with LightGBM&rsquo;s implementation. Starting with the logarithmic loss and building up to the focal loss seems like a more reasonable thing to do. I&rsquo;ve identified four steps that need to be taken in order to successfully implement a custom loss function for LightGBM:</p><ol><li>Write a custom loss function.</li><li>Write a custom metric because step 1 messes with the predicted outputs.</li><li>Define an initialization value for your training set and your validation set.</li><li>Add the initialization value to the test margins before converting them to probabilities.</li></ol><p>Don&rsquo;t worry if it&rsquo;s not all clear you, because it certainly was confusing to me when I first started. I&rsquo;ll go through each step in detail throughout the rest of this notebook. However, first things first: let&rsquo;s pick a dataset to work with. I&rsquo;ll be using the <a href=https://www.openml.org/d/1597>credit card frauds dataset</a>. It&rsquo;s a binary classification dataset with around 30 features, 285k rows, and a highly imbalanced target &ndash; it contains much more 0s than 1s. Here is some bash code which you can use to obtain the dataset:</p><div class=highlight><pre class=chroma><code class=language-sh data-lang=sh>$ curl -O maxhalford.github.io/files/datasets/creditcardfraud.zip
+<a class=header-link href=/bio/>Bio</a>
+</div>
+</div>
+<div class=header-line></div>
+</div>
+<header class=post-header>
+<h1 class=post-title>Focal loss implementation for LightGBM</h1>
+<div class="row post-desc">
+<div class=col-xs-12>
+<time class=post-date datetime="2020-09-20 00:00:00 UTC">
+2020-09-20 · 24 minute read
+</time>
+</div>
+</div>
+</header>
+<div class="post-content markdown-body">
+<h2 id=toc>Table of contents</h2>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#motivation>Motivation</a></li>
+<li><a href=#lightgbm-custom-loss-function-caveats>LightGBM custom loss function caveats</a></li>
+<li><a href=#formulas-for-focal-loss>Formulas for focal loss</a>
+<ul>
+<li><a href=#first-order-derivative>First order derivative</a></li>
+<li><a href=#second-order-derivative>Second order derivative</a></li>
+<li><a href=#initialization-constant>Initialization constant</a></li>
+<li><a href=#implementation>Implementation</a></li>
+<li><a href=#numerical-checks>Numerical checks</a></li>
+</ul>
+</li>
+<li><a href=#benchmarks>Benchmarks</a></li>
+<li><a href=#conclusion>Conclusion</a></li>
+</ul>
+</nav>
+<p><strong>Edit &ndash; 2021-01-26</strong></p>
+<p>I initially wrote this blog post using version 2.3.1 of LightGBM. I&rsquo;ve now updated it to use version 3.1.1. There are a couple of subtle but important differences between version 2.x.y and 3.x.y. If you&rsquo;re using version 2.x.y, then I strongly recommend you to upgrade to version 3.x.y.</p>
+<h2 id=motivation>Motivation</h2>
+<p>If you&rsquo;re reading this blog post, then you&rsquo;re likely to be aware of <a href=https://github.com/microsoft/LightGBM>LightGBM</a>. The latter is a best of breed <a href=https://explained.ai/gradient-boosting/>gradient boosting</a> library. As of 2020, it&rsquo;s still the go-to machine learning model for tabular data. It&rsquo;s also ubiquitous in competitive machine learning.</p>
+<p>One of LightGBM&rsquo;s nice features is that you can provide it with a custom loss function. Depending on what you&rsquo;re doing, this may have a big positive impact. For instance, it was a major part of every top solution to the recent <a href=https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/143070>M5 forecasting</a> competition on Kaggle. In this post, I want to do an in-depth presentation of how to implement the loss function described in <a href=https://arxiv.org/pdf/1708.02002.pdf><em>Focal Loss for Dense Object Detection</em></a>, which was written by members of the <a href=https://ai.facebook.com>FAIR</a> research group. Focal loss was initially proposed to resolve the imbalance issues that occur when training object detection models. However, it can and has been used for many imbalanced learning problems. Focal loss is just a loss function, and may thus be used in conjunction with any model that uses gradients, including neural networks and gradient boosting. If you implement it as part of a deep learning framework such as PyTorch, then you don&rsquo;t have to worry too much because the gradient will automatically be computed for you. See <a href=https://github.com/clcarwin/focal_loss_pytorch>here</a> for a PyTorch implementation of focal loss. However, LightGBM doesn&rsquo;t provide this functionality, thus requiring users to manually implement gradients.</p>
+<p>There&rsquo;s quite a few &ldquo;guides&rdquo; on how to implement focal loss for LightGBM. See for instance <a href=https://github.com/jrzaurin/LightGBM-with-Focal-Loss>this</a> somewhat popular GitHub repository as well as <a href=https://towardsdatascience.com/lightgbm-with-the-focal-loss-for-imbalanced-datasets-9836a9ae00ca>this</a> Medium article. Alas, I&rsquo;m almost certain that each one of them is wrong because some important details are ignored. Trust me, even though they might work on a given dataset, they&rsquo;re most likely suboptimal. That&rsquo;s the thing about machine learning code: it might compile and work, but it&rsquo;s not necessarily correct and optimal. I&rsquo;ll go over the <a href=https://github.com/microsoft/LightGBM/issues/3312>pitfalls</a> that you&rsquo;re probably not aware of, and provide some concrete code examples. <strong>The goal of this blog post is thus to serve as a comprehensive recipe on how to implement any custom loss function whatsoever in LightGBM</strong>. Note that I&rsquo;ve picked focal loss as a case example because I want to use it for a <a href=https://kelvins.esa.int/spot-the-geo-satellites/home/>data science competition</a>.</p>
+<h2 id=lightgbm-custom-loss-function-caveats>LightGBM custom loss function caveats</h2>
+<p>I&rsquo;m first going to define a custom loss function that reimplements the default loss function that LightGBM uses for binary classification, which is the <a href=http://wiki.fast.ai/index.php/Log_Loss>logarithmic loss</a>. Doing so will allow me to verify that all the steps I&rsquo;m taking are correct. Indeed, I will have nothing to compare against when I implement focal loss. If I write a custom implementation of the logarithmic, then I&rsquo;ll be able to compare it with LightGBM&rsquo;s implementation. Starting with the logarithmic loss and building up to the focal loss seems like a more reasonable thing to do. I&rsquo;ve identified four steps that need to be taken in order to successfully implement a custom loss function for LightGBM:</p>
+<ol>
+<li>Write a custom loss function.</li>
+<li>Write a custom metric because step 1 messes with the predicted outputs.</li>
+<li>Define an initialization value for your training set and your validation set.</li>
+<li>Add the initialization value to the test margins before converting them to probabilities.</li>
+</ol>
+<p>Don&rsquo;t worry if it&rsquo;s not all clear you, because it certainly was confusing to me when I first started. I&rsquo;ll go through each step in detail throughout the rest of this notebook. However, first things first: let&rsquo;s pick a dataset to work with. I&rsquo;ll be using the <a href=https://www.openml.org/d/1597>credit card frauds dataset</a>. It&rsquo;s a binary classification dataset with around 30 features, 285k rows, and a highly imbalanced target &ndash; it contains much more 0s than 1s. Here is some bash code which you can use to obtain the dataset:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh>$ curl -O maxhalford.github.io/files/datasets/creditcardfraud.zip
 $ unzip creditcardfraud.zip
-</code></pre></div><p>I&rsquo;m then going to use the following code to split the data into a training set and a test set. I&rsquo;m also going to split the training set into a &ldquo;fitting&rdquo; set that will be used for training the model, as well as a validation set which will be used for early stopping.</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>pandas</span> <span class=kn>as</span> <span class=nn>pd</span>
+</code></pre></div><p>I&rsquo;m then going to use the following code to split the data into a training set and a test set. I&rsquo;m also going to split the training set into a &ldquo;fitting&rdquo; set that will be used for training the model, as well as a validation set which will be used for early stopping.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>pandas</span> <span class=k>as</span> <span class=nn>pd</span>
 <span class=kn>from</span> <span class=nn>sklearn</span> <span class=kn>import</span> <span class=n>model_selection</span>
 
 <span class=n>df</span> <span class=o>=</span> <span class=n>pd</span><span class=o>.</span><span class=n>read_csv</span><span class=p>(</span><span class=s1>&#39;creditcard.csv&#39;</span><span class=p>)</span>
@@ -22,7 +112,206 @@ $ unzip creditcardfraud.zip
 <span class=p>)</span>
 
 <span class=n>X_train</span><span class=o>.</span><span class=n>head</span><span class=p>()</span>
-</code></pre></div><table><thead><tr><th style=text-align:right>Time</th><th style=text-align:right>V1</th><th style=text-align:right>V2</th><th style=text-align:right>V3</th><th style=text-align:right>V4</th><th style=text-align:right>V5</th><th style=text-align:right>V6</th><th style=text-align:right>V7</th><th style=text-align:right>V8</th><th style=text-align:right>V9</th><th style=text-align:right>V10</th><th style=text-align:right>V11</th><th style=text-align:right>V12</th><th style=text-align:right>V13</th><th style=text-align:right>V14</th><th style=text-align:right>V15</th><th style=text-align:right>V16</th><th style=text-align:right>V17</th><th style=text-align:right>V18</th><th style=text-align:right>V19</th><th style=text-align:right>V20</th><th style=text-align:right>V21</th><th style=text-align:right>V22</th><th style=text-align:right>V23</th><th style=text-align:right>V24</th><th style=text-align:right>V25</th><th style=text-align:right>V26</th><th style=text-align:right>V27</th><th style=text-align:right>V28</th><th style=text-align:right>Amount</th></tr></thead><tbody><tr><td style=text-align:right>59741</td><td style=text-align:right>-1.64859</td><td style=text-align:right>1.22813</td><td style=text-align:right>1.37017</td><td style=text-align:right>-1.73554</td><td style=text-align:right>-0.0294547</td><td style=text-align:right>-0.484129</td><td style=text-align:right>0.918645</td><td style=text-align:right>-0.43875</td><td style=text-align:right>0.982144</td><td style=text-align:right>1.24163</td><td style=text-align:right>1.10562</td><td style=text-align:right>0.0583674</td><td style=text-align:right>-0.659961</td><td style=text-align:right>-0.535813</td><td style=text-align:right>0.0472013</td><td style=text-align:right>0.664548</td><td style=text-align:right>-1.28096</td><td style=text-align:right>0.184568</td><td style=text-align:right>-0.331603</td><td style=text-align:right>0.384201</td><td style=text-align:right>-0.218076</td><td style=text-align:right>-0.203458</td><td style=text-align:right>-0.213015</td><td style=text-align:right>0.0113721</td><td style=text-align:right>-0.304481</td><td style=text-align:right>0.632063</td><td style=text-align:right>-0.262968</td><td style=text-align:right>-0.0998634</td><td style=text-align:right>38.42</td></tr><tr><td style=text-align:right>45648</td><td style=text-align:right>-0.234775</td><td style=text-align:right>-0.493269</td><td style=text-align:right>1.23673</td><td style=text-align:right>-2.33879</td><td style=text-align:right>-1.17673</td><td style=text-align:right>0.885733</td><td style=text-align:right>-1.96098</td><td style=text-align:right>-2.36341</td><td style=text-align:right>-2.69477</td><td style=text-align:right>0.360215</td><td style=text-align:right>1.6155</td><td style=text-align:right>0.447752</td><td style=text-align:right>0.605692</td><td style=text-align:right>0.169591</td><td style=text-align:right>-0.0736552</td><td style=text-align:right>-0.163459</td><td style=text-align:right>0.562423</td><td style=text-align:right>-0.577032</td><td style=text-align:right>-1.63563</td><td style=text-align:right>0.364679</td><td style=text-align:right>-1.49536</td><td style=text-align:right>-0.0830664</td><td style=text-align:right>0.0746123</td><td style=text-align:right>-0.347329</td><td style=text-align:right>0.5419</td><td style=text-align:right>-0.433294</td><td style=text-align:right>0.0892932</td><td style=text-align:right>0.212029</td><td style=text-align:right>61.2</td></tr><tr><td style=text-align:right>31579</td><td style=text-align:right>1.13463</td><td style=text-align:right>-0.77446</td><td style=text-align:right>-0.16339</td><td style=text-align:right>-0.533358</td><td style=text-align:right>-0.604555</td><td style=text-align:right>-0.244482</td><td style=text-align:right>-0.212682</td><td style=text-align:right>0.0407824</td><td style=text-align:right>-1.13663</td><td style=text-align:right>0.792009</td><td style=text-align:right>0.961637</td><td style=text-align:right>-0.140033</td><td style=text-align:right>-1.25376</td><td style=text-align:right>0.835103</td><td style=text-align:right>0.458756</td><td style=text-align:right>-1.3715</td><td style=text-align:right>0.0201648</td><td style=text-align:right>0.796223</td><td style=text-align:right>-0.519459</td><td style=text-align:right>-0.396476</td><td style=text-align:right>-0.684454</td><td style=text-align:right>-1.85527</td><td style=text-align:right>0.171997</td><td style=text-align:right>-0.387783</td><td style=text-align:right>-0.0629846</td><td style=text-align:right>0.245118</td><td style=text-align:right>-0.0611777</td><td style=text-align:right>0.0121796</td><td style=text-align:right>110.95</td></tr><tr><td style=text-align:right>80455</td><td style=text-align:right>0.0695137</td><td style=text-align:right>1.01775</td><td style=text-align:right>1.03312</td><td style=text-align:right>1.38438</td><td style=text-align:right>0.223233</td><td style=text-align:right>-0.310845</td><td style=text-align:right>0.597287</td><td style=text-align:right>-0.127658</td><td style=text-align:right>-0.701533</td><td style=text-align:right>0.0707389</td><td style=text-align:right>-0.857263</td><td style=text-align:right>-0.290899</td><td style=text-align:right>0.289337</td><td style=text-align:right>0.333125</td><td style=text-align:right>1.64318</td><td style=text-align:right>-0.507737</td><td style=text-align:right>-0.0242082</td><td style=text-align:right>0.37196</td><td style=text-align:right>1.56145</td><td style=text-align:right>0.14876</td><td style=text-align:right>0.0970231</td><td style=text-align:right>0.369957</td><td style=text-align:right>-0.219266</td><td style=text-align:right>-0.124941</td><td style=text-align:right>-0.0497488</td><td style=text-align:right>-0.112946</td><td style=text-align:right>0.11444</td><td style=text-align:right>0.0661008</td><td style=text-align:right>10</td></tr><tr><td style=text-align:right>39302</td><td style=text-align:right>-0.199441</td><td style=text-align:right>0.610092</td><td style=text-align:right>-0.114437</td><td style=text-align:right>0.256565</td><td style=text-align:right>2.29075</td><td style=text-align:right>4.00848</td><td style=text-align:right>-0.12353</td><td style=text-align:right>1.03837</td><td style=text-align:right>-0.0758464</td><td style=text-align:right>0.0304526</td><td style=text-align:right>-0.75603</td><td style=text-align:right>-0.0451648</td><td style=text-align:right>-0.18018</td><td style=text-align:right>-0.0481675</td><td style=text-align:right>-0.00448576</td><td style=text-align:right>-0.541172</td><td style=text-align:right>-0.17495</td><td style=text-align:right>0.355749</td><td style=text-align:right>1.37528</td><td style=text-align:right>0.292972</td><td style=text-align:right>-0.0197334</td><td style=text-align:right>0.165463</td><td style=text-align:right>-0.080978</td><td style=text-align:right>1.02066</td><td style=text-align:right>-0.30073</td><td style=text-align:right>-0.269595</td><td style=text-align:right>0.481769</td><td style=text-align:right>0.254114</td><td style=text-align:right>22</td></tr></tbody></table><p>As is probably obvious, I&rsquo;ll be using LightGBM&rsquo;s Python package. Specifically, I&rsquo;m running version <s>2.3.1</s> 3.1.1 with Python <s>3.7.4</s> 3.8.3. For the time being, I&rsquo;ll use the <a href=https://lightgbm.readthedocs.io/en/latest/Python-API.html#training-api>generic training API</a>, and not the <a href=https://lightgbm.readthedocs.io/en/latest/Python-API.html#scikit-learn-api>scikit-learn API</a>. That&rsquo;s because the former allows more low-level manipulation, whereas the latter is more high-level. Before implementing our custom logarithmic loss function, let&rsquo;s run LightGBM so that we have something to compare against:</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>lightgbm</span>
+</code></pre></div><table>
+<thead>
+<tr>
+<th style=text-align:right>Time</th>
+<th style=text-align:right>V1</th>
+<th style=text-align:right>V2</th>
+<th style=text-align:right>V3</th>
+<th style=text-align:right>V4</th>
+<th style=text-align:right>V5</th>
+<th style=text-align:right>V6</th>
+<th style=text-align:right>V7</th>
+<th style=text-align:right>V8</th>
+<th style=text-align:right>V9</th>
+<th style=text-align:right>V10</th>
+<th style=text-align:right>V11</th>
+<th style=text-align:right>V12</th>
+<th style=text-align:right>V13</th>
+<th style=text-align:right>V14</th>
+<th style=text-align:right>V15</th>
+<th style=text-align:right>V16</th>
+<th style=text-align:right>V17</th>
+<th style=text-align:right>V18</th>
+<th style=text-align:right>V19</th>
+<th style=text-align:right>V20</th>
+<th style=text-align:right>V21</th>
+<th style=text-align:right>V22</th>
+<th style=text-align:right>V23</th>
+<th style=text-align:right>V24</th>
+<th style=text-align:right>V25</th>
+<th style=text-align:right>V26</th>
+<th style=text-align:right>V27</th>
+<th style=text-align:right>V28</th>
+<th style=text-align:right>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:right>59741</td>
+<td style=text-align:right>-1.64859</td>
+<td style=text-align:right>1.22813</td>
+<td style=text-align:right>1.37017</td>
+<td style=text-align:right>-1.73554</td>
+<td style=text-align:right>-0.0294547</td>
+<td style=text-align:right>-0.484129</td>
+<td style=text-align:right>0.918645</td>
+<td style=text-align:right>-0.43875</td>
+<td style=text-align:right>0.982144</td>
+<td style=text-align:right>1.24163</td>
+<td style=text-align:right>1.10562</td>
+<td style=text-align:right>0.0583674</td>
+<td style=text-align:right>-0.659961</td>
+<td style=text-align:right>-0.535813</td>
+<td style=text-align:right>0.0472013</td>
+<td style=text-align:right>0.664548</td>
+<td style=text-align:right>-1.28096</td>
+<td style=text-align:right>0.184568</td>
+<td style=text-align:right>-0.331603</td>
+<td style=text-align:right>0.384201</td>
+<td style=text-align:right>-0.218076</td>
+<td style=text-align:right>-0.203458</td>
+<td style=text-align:right>-0.213015</td>
+<td style=text-align:right>0.0113721</td>
+<td style=text-align:right>-0.304481</td>
+<td style=text-align:right>0.632063</td>
+<td style=text-align:right>-0.262968</td>
+<td style=text-align:right>-0.0998634</td>
+<td style=text-align:right>38.42</td>
+</tr>
+<tr>
+<td style=text-align:right>45648</td>
+<td style=text-align:right>-0.234775</td>
+<td style=text-align:right>-0.493269</td>
+<td style=text-align:right>1.23673</td>
+<td style=text-align:right>-2.33879</td>
+<td style=text-align:right>-1.17673</td>
+<td style=text-align:right>0.885733</td>
+<td style=text-align:right>-1.96098</td>
+<td style=text-align:right>-2.36341</td>
+<td style=text-align:right>-2.69477</td>
+<td style=text-align:right>0.360215</td>
+<td style=text-align:right>1.6155</td>
+<td style=text-align:right>0.447752</td>
+<td style=text-align:right>0.605692</td>
+<td style=text-align:right>0.169591</td>
+<td style=text-align:right>-0.0736552</td>
+<td style=text-align:right>-0.163459</td>
+<td style=text-align:right>0.562423</td>
+<td style=text-align:right>-0.577032</td>
+<td style=text-align:right>-1.63563</td>
+<td style=text-align:right>0.364679</td>
+<td style=text-align:right>-1.49536</td>
+<td style=text-align:right>-0.0830664</td>
+<td style=text-align:right>0.0746123</td>
+<td style=text-align:right>-0.347329</td>
+<td style=text-align:right>0.5419</td>
+<td style=text-align:right>-0.433294</td>
+<td style=text-align:right>0.0892932</td>
+<td style=text-align:right>0.212029</td>
+<td style=text-align:right>61.2</td>
+</tr>
+<tr>
+<td style=text-align:right>31579</td>
+<td style=text-align:right>1.13463</td>
+<td style=text-align:right>-0.77446</td>
+<td style=text-align:right>-0.16339</td>
+<td style=text-align:right>-0.533358</td>
+<td style=text-align:right>-0.604555</td>
+<td style=text-align:right>-0.244482</td>
+<td style=text-align:right>-0.212682</td>
+<td style=text-align:right>0.0407824</td>
+<td style=text-align:right>-1.13663</td>
+<td style=text-align:right>0.792009</td>
+<td style=text-align:right>0.961637</td>
+<td style=text-align:right>-0.140033</td>
+<td style=text-align:right>-1.25376</td>
+<td style=text-align:right>0.835103</td>
+<td style=text-align:right>0.458756</td>
+<td style=text-align:right>-1.3715</td>
+<td style=text-align:right>0.0201648</td>
+<td style=text-align:right>0.796223</td>
+<td style=text-align:right>-0.519459</td>
+<td style=text-align:right>-0.396476</td>
+<td style=text-align:right>-0.684454</td>
+<td style=text-align:right>-1.85527</td>
+<td style=text-align:right>0.171997</td>
+<td style=text-align:right>-0.387783</td>
+<td style=text-align:right>-0.0629846</td>
+<td style=text-align:right>0.245118</td>
+<td style=text-align:right>-0.0611777</td>
+<td style=text-align:right>0.0121796</td>
+<td style=text-align:right>110.95</td>
+</tr>
+<tr>
+<td style=text-align:right>80455</td>
+<td style=text-align:right>0.0695137</td>
+<td style=text-align:right>1.01775</td>
+<td style=text-align:right>1.03312</td>
+<td style=text-align:right>1.38438</td>
+<td style=text-align:right>0.223233</td>
+<td style=text-align:right>-0.310845</td>
+<td style=text-align:right>0.597287</td>
+<td style=text-align:right>-0.127658</td>
+<td style=text-align:right>-0.701533</td>
+<td style=text-align:right>0.0707389</td>
+<td style=text-align:right>-0.857263</td>
+<td style=text-align:right>-0.290899</td>
+<td style=text-align:right>0.289337</td>
+<td style=text-align:right>0.333125</td>
+<td style=text-align:right>1.64318</td>
+<td style=text-align:right>-0.507737</td>
+<td style=text-align:right>-0.0242082</td>
+<td style=text-align:right>0.37196</td>
+<td style=text-align:right>1.56145</td>
+<td style=text-align:right>0.14876</td>
+<td style=text-align:right>0.0970231</td>
+<td style=text-align:right>0.369957</td>
+<td style=text-align:right>-0.219266</td>
+<td style=text-align:right>-0.124941</td>
+<td style=text-align:right>-0.0497488</td>
+<td style=text-align:right>-0.112946</td>
+<td style=text-align:right>0.11444</td>
+<td style=text-align:right>0.0661008</td>
+<td style=text-align:right>10</td>
+</tr>
+<tr>
+<td style=text-align:right>39302</td>
+<td style=text-align:right>-0.199441</td>
+<td style=text-align:right>0.610092</td>
+<td style=text-align:right>-0.114437</td>
+<td style=text-align:right>0.256565</td>
+<td style=text-align:right>2.29075</td>
+<td style=text-align:right>4.00848</td>
+<td style=text-align:right>-0.12353</td>
+<td style=text-align:right>1.03837</td>
+<td style=text-align:right>-0.0758464</td>
+<td style=text-align:right>0.0304526</td>
+<td style=text-align:right>-0.75603</td>
+<td style=text-align:right>-0.0451648</td>
+<td style=text-align:right>-0.18018</td>
+<td style=text-align:right>-0.0481675</td>
+<td style=text-align:right>-0.00448576</td>
+<td style=text-align:right>-0.541172</td>
+<td style=text-align:right>-0.17495</td>
+<td style=text-align:right>0.355749</td>
+<td style=text-align:right>1.37528</td>
+<td style=text-align:right>0.292972</td>
+<td style=text-align:right>-0.0197334</td>
+<td style=text-align:right>0.165463</td>
+<td style=text-align:right>-0.080978</td>
+<td style=text-align:right>1.02066</td>
+<td style=text-align:right>-0.30073</td>
+<td style=text-align:right>-0.269595</td>
+<td style=text-align:right>0.481769</td>
+<td style=text-align:right>0.254114</td>
+<td style=text-align:right>22</td>
+</tr>
+</tbody>
+</table>
+<p>As is probably obvious, I&rsquo;ll be using LightGBM&rsquo;s Python package. Specifically, I&rsquo;m running version <s>2.3.1</s> 3.1.1 with Python <s>3.7.4</s> 3.8.3. For the time being, I&rsquo;ll use the <a href=https://lightgbm.readthedocs.io/en/latest/Python-API.html#training-api>generic training API</a>, and not the <a href=https://lightgbm.readthedocs.io/en/latest/Python-API.html#scikit-learn-api>scikit-learn API</a>. That&rsquo;s because the former allows more low-level manipulation, whereas the latter is more high-level. Before implementing our custom logarithmic loss function, let&rsquo;s run LightGBM so that we have something to compare against:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>lightgbm</span>
 <span class=kn>from</span> <span class=nn>sklearn</span> <span class=kn>import</span> <span class=n>metrics</span>
 
 <span class=n>fit</span> <span class=o>=</span> <span class=n>lightgbm</span><span class=o>.</span><span class=n>Dataset</span><span class=p>(</span><span class=n>X_fit</span><span class=p>,</span> <span class=n>y_fit</span><span class=p>)</span>
@@ -43,9 +332,9 @@ $ unzip creditcardfraud.zip
 
 <span class=n>y_pred</span> <span class=o>=</span> <span class=n>model</span><span class=o>.</span><span class=n>predict</span><span class=p>(</span><span class=n>X_test</span><span class=p>)</span>
 
-<span class=k>print</span><span class=p>()</span>
-<span class=k>print</span><span class=p>(</span><span class=n>f</span><span class=s2>&#34;Test&#39;s ROC AUC: {metrics.roc_auc_score(y_test, y_pred):.5f}&#34;</span><span class=p>)</span>
-<span class=k>print</span><span class=p>(</span><span class=n>f</span><span class=s2>&#34;Test&#39;s logloss: {metrics.log_loss(y_test, y_pred):.5f}&#34;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>()</span>
+<span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s ROC AUC: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>roc_auc_score</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s logloss: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>log_loss</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
 </code></pre></div><pre><code>Training until validation scores don't improve for 20 rounds
 [100]	fit's binary_logloss: 0.0018981	    val's binary_logloss: 0.0035569
 [200]	fit's binary_logloss: 0.00080822	val's binary_logloss: 0.00283644
@@ -55,7 +344,8 @@ Early stopping, best iteration is:
 
 Test's ROC AUC: 0.97772
 Test's logloss: 0.00237
-</code></pre><p>Our goal is now to write a custom loss function that will produce the exact same output as above. A custom loss function can be provided the <code>fobj</code> parameter, as specified in the <a href=https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.train.html>documentation of the <code>train</code> function</a>. Note that &ldquo;fobj&rdquo; is short for &ldquo;objective function&rdquo;, which is a synonym for &ldquo;loss function&rdquo;. As indicated in the documentation, we need to provide a function that takes as inputs <code>(preds, train_data)</code> and returns as outputs <code>(grad, hess)</code>. This function will then be used internally by LightGBM, essentially overriding the C++ code that it used by default. Here goes:</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=kn>from</span> <span class=nn>scipy</span> <span class=kn>import</span> <span class=n>special</span>
+</code></pre><p>Our goal is now to write a custom loss function that will produce the exact same output as above. A custom loss function can be provided the <code>fobj</code> parameter, as specified in the <a href=https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.train.html>documentation of the <code>train</code> function</a>. Note that &ldquo;fobj&rdquo; is short for &ldquo;objective function&rdquo;, which is a synonym for &ldquo;loss function&rdquo;. As indicated in the documentation, we need to provide a function that takes as inputs <code>(preds, train_data)</code> and returns as outputs <code>(grad, hess)</code>. This function will then be used internally by LightGBM, essentially overriding the C++ code that it used by default. Here goes:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>from</span> <span class=nn>scipy</span> <span class=kn>import</span> <span class=n>special</span>
 
 <span class=k>def</span> <span class=nf>logloss_objective</span><span class=p>(</span><span class=n>preds</span><span class=p>,</span> <span class=n>train_data</span><span class=p>):</span>
     <span class=n>y</span> <span class=o>=</span> <span class=n>train_data</span><span class=o>.</span><span class=n>get_label</span><span class=p>()</span>
@@ -63,7 +353,8 @@ Test's logloss: 0.00237
     <span class=n>grad</span> <span class=o>=</span> <span class=n>p</span> <span class=o>-</span> <span class=n>y</span>
     <span class=n>hess</span> <span class=o>=</span> <span class=n>p</span> <span class=o>*</span> <span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>p</span><span class=p>)</span>
     <span class=k>return</span> <span class=n>grad</span><span class=p>,</span> <span class=n>hess</span>
-</code></pre></div><p>The mathematics that are required in order to derive the gradient and the Hessian are not very involved, but they do require knowledge of the <a href=https://www.wikiwand.com/en/Chain_rule>chain rule</a>. I recommend checking out <a href=https://stats.stackexchange.com/questions/231220/>this CrossValidated thread</a> as well as <a href=http://zpz.github.io/blog/gradient-boosting-tree-for-binary-classification/>this blog post</a> for more information. One important thing to notice is that the <code>preds</code> array provided by LightGBM contains raw margin scores instead of probabilities. We have thus got to convert them to probabilities ourselves before evaluating the gradient and the Hessian by using a sigmoid transformation. So far, so good. The issue is that the same thing occurs in the metric function. We therefore have to define a custom metric function to accompany our custom objective function. This can be done via the <code>feval</code> parameter, which is short for &ldquo;evaluation function&rdquo;. In our case, we can use scikit-learn&rsquo;s <a href=https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html><code>metrics.log_loss</code> function</a>. However, the latter incurs a lot of overhead; it&rsquo;s much more efficient to implement it ourselves &ndash; about 5 times faster in my experience:</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>numpy</span> <span class=kn>as</span> <span class=nn>np</span>
+</code></pre></div><p>The mathematics that are required in order to derive the gradient and the Hessian are not very involved, but they do require knowledge of the <a href=https://www.wikiwand.com/en/Chain_rule>chain rule</a>. I recommend checking out <a href=https://stats.stackexchange.com/questions/231220/>this CrossValidated thread</a> as well as <a href=http://zpz.github.io/blog/gradient-boosting-tree-for-binary-classification/>this blog post</a> for more information. One important thing to notice is that the <code>preds</code> array provided by LightGBM contains raw margin scores instead of probabilities. We have thus got to convert them to probabilities ourselves before evaluating the gradient and the Hessian by using a sigmoid transformation. So far, so good. The issue is that the same thing occurs in the metric function. We therefore have to define a custom metric function to accompany our custom objective function. This can be done via the <code>feval</code> parameter, which is short for &ldquo;evaluation function&rdquo;. In our case, we can use scikit-learn&rsquo;s <a href=https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html><code>metrics.log_loss</code> function</a>. However, the latter incurs a lot of overhead; it&rsquo;s much more efficient to implement it ourselves &ndash; about 5 times faster in my experience:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>numpy</span> <span class=k>as</span> <span class=nn>np</span>
 
 <span class=k>def</span> <span class=nf>logloss_metric</span><span class=p>(</span><span class=n>preds</span><span class=p>,</span> <span class=n>train_data</span><span class=p>):</span>
     <span class=n>y</span> <span class=o>=</span> <span class=n>train_data</span><span class=o>.</span><span class=n>get_label</span><span class=p>()</span>
@@ -74,9 +365,10 @@ Test's logloss: 0.00237
     <span class=n>ll</span><span class=p>[</span><span class=n>pos</span><span class=p>]</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>log</span><span class=p>(</span><span class=n>p</span><span class=p>[</span><span class=n>pos</span><span class=p>])</span>
     <span class=n>ll</span><span class=p>[</span><span class=o>~</span><span class=n>pos</span><span class=p>]</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>log</span><span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>p</span><span class=p>[</span><span class=o>~</span><span class=n>pos</span><span class=p>])</span>
 
-    <span class=n>is_higher_better</span> <span class=o>=</span> <span class=bp>False</span>
+    <span class=n>is_higher_better</span> <span class=o>=</span> <span class=kc>False</span>
     <span class=k>return</span> <span class=s1>&#39;logloss&#39;</span><span class=p>,</span> <span class=o>-</span><span class=n>ll</span><span class=o>.</span><span class=n>mean</span><span class=p>(),</span> <span class=n>is_higher_better</span>
-</code></pre></div><p>All of the guides I&rsquo;ve read on custom loss functions for LightGBM stop at this point. However, if you set the <code>fobj</code> and <code>feval</code> parameters with the above functions, you&rsquo;ll see that you don&rsquo;t obtain the same outputs as when using LightGBM&rsquo;s implementation. Let me demonstrate:</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=n>model</span> <span class=o>=</span> <span class=n>lightgbm</span><span class=o>.</span><span class=n>train</span><span class=p>(</span>
+</code></pre></div><p>All of the guides I&rsquo;ve read on custom loss functions for LightGBM stop at this point. However, if you set the <code>fobj</code> and <code>feval</code> parameters with the above functions, you&rsquo;ll see that you don&rsquo;t obtain the same outputs as when using LightGBM&rsquo;s implementation. Let me demonstrate:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=n>model</span> <span class=o>=</span> <span class=n>lightgbm</span><span class=o>.</span><span class=n>train</span><span class=p>(</span>
     <span class=n>params</span><span class=o>=</span><span class=p>{</span><span class=s1>&#39;learning_rate&#39;</span><span class=p>:</span> <span class=mf>0.01</span><span class=p>},</span>
     <span class=n>train_set</span><span class=o>=</span><span class=n>fit</span><span class=p>,</span>
     <span class=n>num_boost_round</span><span class=o>=</span><span class=mi>10000</span><span class=p>,</span>
@@ -92,9 +384,9 @@ Test's logloss: 0.00237
 <span class=c1># Notice how we use a sigmoid here to obtain probabilities</span>
 <span class=n>y_pred</span> <span class=o>=</span> <span class=n>special</span><span class=o>.</span><span class=n>expit</span><span class=p>(</span><span class=n>model</span><span class=o>.</span><span class=n>predict</span><span class=p>(</span><span class=n>X_test</span><span class=p>))</span>
 
-<span class=k>print</span><span class=p>()</span>
-<span class=k>print</span><span class=p>(</span><span class=n>f</span><span class=s2>&#34;Test&#39;s ROC AUC: {metrics.roc_auc_score(y_test, y_pred):.5f}&#34;</span><span class=p>)</span>
-<span class=k>print</span><span class=p>(</span><span class=n>f</span><span class=s2>&#34;Test&#39;s logloss: {metrics.log_loss(y_test, y_pred):.5f}&#34;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>()</span>
+<span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s ROC AUC: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>roc_auc_score</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s logloss: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>log_loss</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
 </code></pre></div><pre><code>Training until validation scores don't improve for 20 rounds
 [100]	fit's logloss: 0.203632	    val's logloss: 0.203803
 [200]	fit's logloss: 0.0709961	val's logloss: 0.0712959
@@ -109,11 +401,26 @@ Early stopping, best iteration is:
 
 Test's ROC AUC: 0.97701
 Test's logloss: 0.00227
-</code></pre><p>As you can see, the test scores are somewhat similar to the previous outputs, but they&rsquo;re not <em>exactly</em> the same. What&rsquo;s more, the model has taken around 500 more iterations to converge. When you&rsquo;re implementing a fancy loss function with nothing to compare against, then it&rsquo;s virtually impossible to verify that your implementation is correct. In the above case, the scores are close, but that&rsquo;s not satisfactory.</p><p>I didn&rsquo;t manage myself to find the discrepancy by myself, so I opened a <a href=https://github.com/microsoft/LightGBM/issues/3312>GitHub issue</a>. shiyu1994 <a href=https://github.com/microsoft/LightGBM/issues/3312#issuecomment-674955643>kindly</a> made me aware that the problem was that I didn&rsquo;t specify any initialization values for my model. Indeed, if you look at some <a href=https://www.wikiwand.com/en/Gradient_boosting#/Algorithm>gradient boosting algorithm pseudo-code</a>, you&rsquo;ll see that the model starts off with an initial estimate. From Wikipedia, the latter is defined mathematically as so:</p><p>$$\begin{equation}
+</code></pre><p>As you can see, the test scores are somewhat similar to the previous outputs, but they&rsquo;re not <em>exactly</em> the same. What&rsquo;s more, the model has taken around 500 more iterations to converge. When you&rsquo;re implementing a fancy loss function with nothing to compare against, then it&rsquo;s virtually impossible to verify that your implementation is correct. In the above case, the scores are close, but that&rsquo;s not satisfactory.</p>
+<p>I didn&rsquo;t manage myself to find the discrepancy by myself, so I opened a <a href=https://github.com/microsoft/LightGBM/issues/3312>GitHub issue</a>. shiyu1994 <a href=https://github.com/microsoft/LightGBM/issues/3312#issuecomment-674955643>kindly</a> made me aware that the problem was that I didn&rsquo;t specify any initialization values for my model. Indeed, if you look at some <a href=https://www.wikiwand.com/en/Gradient_boosting#/Algorithm>gradient boosting algorithm pseudo-code</a>, you&rsquo;ll see that the model starts off with an initial estimate. From Wikipedia, the latter is defined mathematically as so:</p>
+<p>$$\begin{equation}
 F_0(x) = \mathop{\mathrm{argmin}}\limits_{\zeta} \sum_{i=1}^n L(y_i, \zeta)
-\end{equation}$$</p><p>where</p><ul><li>$y$ is the array of ground truths,</li><li>$n$ is the number of ground truths,</li><li>$L$ is the loss function,</li><li>$\zeta$ is the initialization value we want to find.</li></ul><p>Note that I renamed $\gamma$ in the Wikipedia article on gradient boosting to $\zeta$ because I&rsquo;ll be using $\gamma$ in the focal loss definition later on. Essentially, $\zeta$ is the value used to initialise the gradient boosting algorithm. This is mainly done to speed up convergence. The trick is that the definition of $\zeta$ depends on the loss function. Therefore, we need to provide a value for $\zeta$ if we specify a custom loss function. By default, it seems that LightGBM defaults to $\zeta = 0$, which is sub-optimal. To be honest, I don&rsquo;t think that a lot of data scientists are aware of this fact, even seasoned Kagglers. It&rsquo;s not their fault, though. In my opinion, LightGBM should raise a warning when a custom loss function is used without a custom initialization value. But that&rsquo;s just me.</p><p>The optimal initialization value for logarithmic loss is computed in the <code>BoostFromScore</code> method of the <a href=https://github.com/microsoft/LightGBM/blob/e9fbd19d7cbaeaea1ca54a091b160868fc5c79ec/src/objective/binary_objective.hpp><code>binary_objective.hpp</code> file</a> within the LightGBM repository. You can also find it in the <code>get_init_raw_predictions</code> method of scikit-learn&rsquo;s <a href=https://github.com/scikit-learn/scikit-learn/blob/0fb307bf39bbdacd6ed713c00724f8f871d60370/sklearn/ensemble/_gb_losses.py#L563><code>BinomialDeviance</code> class</a>. It goes as follows:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>where</p>
+<ul>
+<li>$y$ is the array of ground truths,</li>
+<li>$n$ is the number of ground truths,</li>
+<li>$L$ is the loss function,</li>
+<li>$\zeta$ is the initialization value we want to find.</li>
+</ul>
+<p>Note that I renamed $\gamma$ in the Wikipedia article on gradient boosting to $\zeta$ because I&rsquo;ll be using $\gamma$ in the focal loss definition later on. Essentially, $\zeta$ is the value used to initialise the gradient boosting algorithm. This is mainly done to speed up convergence. The trick is that the definition of $\zeta$ depends on the loss function. Therefore, we need to provide a value for $\zeta$ if we specify a custom loss function. By default, it seems that LightGBM defaults to $\zeta = 0$, which is sub-optimal. To be honest, I don&rsquo;t think that a lot of data scientists are aware of this fact, even seasoned Kagglers. It&rsquo;s not their fault, though. In my opinion, LightGBM should raise a warning when a custom loss function is used without a custom initialization value. But that&rsquo;s just me.</p>
+<p>The optimal initialization value for logarithmic loss is computed in the <code>BoostFromScore</code> method of the <a href=https://github.com/microsoft/LightGBM/blob/e9fbd19d7cbaeaea1ca54a091b160868fc5c79ec/src/objective/binary_objective.hpp><code>binary_objective.hpp</code> file</a> within the LightGBM repository. You can also find it in the <code>get_init_raw_predictions</code> method of scikit-learn&rsquo;s <a href=https://github.com/scikit-learn/scikit-learn/blob/0fb307bf39bbdacd6ed713c00724f8f871d60370/sklearn/ensemble/_gb_losses.py#L563><code>BinomialDeviance</code> class</a>. It goes as follows:</p>
+<p>$$\begin{equation}
 \zeta = \log(\frac{\frac{1}{n}\sum_{i=1}^n y_i}{1 - \frac{1}{n}\sum_{i=1}^n y_i})
-\end{equation}$$</p><p>This should make sense intuitively, as $\frac{1}{n}\sum_{i=1}^n y_i$ is the average of the ground truths, which feels like the most reasonable default value to pick. The above formula is simply the <a href=https://www.wikiwand.com/en/Logit>log-odds</a> of $\frac{1}{n}\sum_{i=1}^n y_i$.</p><p>When using the generic Python interface of LightGBM, the initialization values can be specified by setting the <code>init_score</code> parameter of each dataset. Once the model is trained and available for making predictions, we also need to add the initialization score to the raw predictions before applying the sigmoid transformation.</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=k>def</span> <span class=nf>logloss_init_score</span><span class=p>(</span><span class=n>y</span><span class=p>):</span>
+\end{equation}$$</p>
+<p>This should make sense intuitively, as $\frac{1}{n}\sum_{i=1}^n y_i$ is the average of the ground truths, which feels like the most reasonable default value to pick. The above formula is simply the <a href=https://www.wikiwand.com/en/Logit>log-odds</a> of $\frac{1}{n}\sum_{i=1}^n y_i$.</p>
+<p>When using the generic Python interface of LightGBM, the initialization values can be specified by setting the <code>init_score</code> parameter of each dataset. Once the model is trained and available for making predictions, we also need to add the initialization score to the raw predictions before applying the sigmoid transformation.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=k>def</span> <span class=nf>logloss_init_score</span><span class=p>(</span><span class=n>y</span><span class=p>):</span>
     <span class=n>p</span> <span class=o>=</span> <span class=n>y</span><span class=o>.</span><span class=n>mean</span><span class=p>()</span>
     <span class=n>p</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>clip</span><span class=p>(</span><span class=n>p</span><span class=p>,</span> <span class=mf>1e-15</span><span class=p>,</span> <span class=mi>1</span> <span class=o>-</span> <span class=mf>1e-15</span><span class=p>)</span>  <span class=c1># never hurts</span>
     <span class=n>log_odds</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>log</span><span class=p>(</span><span class=n>p</span> <span class=o>/</span> <span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>p</span><span class=p>))</span>
@@ -145,9 +452,9 @@ F_0(x) = \mathop{\mathrm{argmin}}\limits_{\zeta} \sum_{i=1}^n L(y_i, \zeta)
 <span class=c1># Notice the change here</span>
 <span class=n>y_pred</span> <span class=o>=</span> <span class=n>special</span><span class=o>.</span><span class=n>expit</span><span class=p>(</span><span class=n>logloss_init_score</span><span class=p>(</span><span class=n>y_fit</span><span class=p>)</span> <span class=o>+</span> <span class=n>model</span><span class=o>.</span><span class=n>predict</span><span class=p>(</span><span class=n>X_test</span><span class=p>))</span>
 
-<span class=k>print</span><span class=p>()</span>
-<span class=k>print</span><span class=p>(</span><span class=n>f</span><span class=s2>&#34;Test&#39;s ROC AUC: {metrics.roc_auc_score(y_test, y_pred):.5f}&#34;</span><span class=p>)</span>
-<span class=k>print</span><span class=p>(</span><span class=n>f</span><span class=s2>&#34;Test&#39;s logloss: {metrics.log_loss(y_test, y_pred):.5f}&#34;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>()</span>
+<span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s ROC AUC: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>roc_auc_score</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s logloss: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>log_loss</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
 </code></pre></div><pre><code>Training until validation scores don't improve for 20 rounds
 [100]	fit's logloss: 0.00191083	val's logloss: 0.00358371
 [200]	fit's logloss: 0.000825181	val's logloss: 0.00286873
@@ -157,9 +464,14 @@ Early stopping, best iteration is:
 
 Test's ROC AUC: 0.97721
 Test's logloss: 0.00233
-</code></pre><p>I know, this is quite finicky, but it works perfectly! Maybe that future versions of LightGBM will make this process easier, but until now we&rsquo;re stuck with getting our hands dirty. As far as I know, most tutorials ignore the initialization score details because their authors are simply not aware of it.</p><p><img src=https://media.giphy.com/media/l0IukNXgBnxRXVjYA/giphy.gif alt=i_know></p><p>For practicality, here is the full code that you can copy/paste into a notebook and execute:</p><details><summary>Click to see the full code</summary><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>lightgbm</span>
-<span class=kn>import</span> <span class=nn>numpy</span> <span class=kn>as</span> <span class=nn>np</span>
-<span class=kn>import</span> <span class=nn>pandas</span> <span class=kn>as</span> <span class=nn>pd</span>
+</code></pre><p>I know, this is quite finicky, but it works perfectly! Maybe that future versions of LightGBM will make this process easier, but until now we&rsquo;re stuck with getting our hands dirty. As far as I know, most tutorials ignore the initialization score details because their authors are simply not aware of it.</p>
+<p><img src=https://media.giphy.com/media/l0IukNXgBnxRXVjYA/giphy.gif alt=i_know></p>
+<p>For practicality, here is the full code that you can copy/paste into a notebook and execute:</p>
+<details>
+<summary>Click to see the full code</summary>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>lightgbm</span>
+<span class=kn>import</span> <span class=nn>numpy</span> <span class=k>as</span> <span class=nn>np</span>
+<span class=kn>import</span> <span class=nn>pandas</span> <span class=k>as</span> <span class=nn>pd</span>
 <span class=kn>from</span> <span class=nn>scipy</span> <span class=kn>import</span> <span class=n>special</span>
 <span class=kn>from</span> <span class=nn>sklearn</span> <span class=kn>import</span> <span class=n>metrics</span>
 <span class=kn>from</span> <span class=nn>sklearn</span> <span class=kn>import</span> <span class=n>model_selection</span>
@@ -180,7 +492,7 @@ Test's logloss: 0.00233
 <span class=k>def</span> <span class=nf>logloss_metric</span><span class=p>(</span><span class=n>preds</span><span class=p>,</span> <span class=n>train_data</span><span class=p>):</span>
     <span class=n>y</span> <span class=o>=</span> <span class=n>train_data</span><span class=o>.</span><span class=n>get_label</span><span class=p>()</span>
     <span class=n>p</span> <span class=o>=</span> <span class=n>special</span><span class=o>.</span><span class=n>expit</span><span class=p>(</span><span class=n>preds</span><span class=p>)</span>
-    <span class=n>is_higher_better</span> <span class=o>=</span> <span class=bp>False</span>
+    <span class=n>is_higher_better</span> <span class=o>=</span> <span class=kc>False</span>
     <span class=k>return</span> <span class=s1>&#39;logloss&#39;</span><span class=p>,</span> <span class=n>metrics</span><span class=o>.</span><span class=n>log_loss</span><span class=p>(</span><span class=n>y</span><span class=p>,</span> <span class=n>p</span><span class=p>),</span> <span class=n>is_higher_better</span>
 
 <span class=n>df</span> <span class=o>=</span> <span class=n>pd</span><span class=o>.</span><span class=n>read_csv</span><span class=p>(</span><span class=s1>&#39;creditcard.csv&#39;</span><span class=p>)</span>
@@ -222,9 +534,9 @@ Test's logloss: 0.00233
 
 <span class=n>y_pred</span> <span class=o>=</span> <span class=n>special</span><span class=o>.</span><span class=n>expit</span><span class=p>(</span><span class=n>logloss_init_score</span><span class=p>(</span><span class=n>y_fit</span><span class=p>)</span> <span class=o>+</span> <span class=n>model</span><span class=o>.</span><span class=n>predict</span><span class=p>(</span><span class=n>X_test</span><span class=p>))</span>
 
-<span class=k>print</span><span class=p>()</span>
-<span class=k>print</span><span class=p>(</span><span class=n>f</span><span class=s2>&#34;Test&#39;s ROC AUC: {metrics.roc_auc_score(y_test, y_pred):.5f}&#34;</span><span class=p>)</span>
-<span class=k>print</span><span class=p>(</span><span class=n>f</span><span class=s2>&#34;Test&#39;s logloss: {metrics.log_loss(y_test, y_pred):.5f}&#34;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>()</span>
+<span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s ROC AUC: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>roc_auc_score</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s logloss: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>log_loss</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
 </code></pre></div><pre><code>Training until validation scores don't improve for 20 rounds
 [100]	fit's logloss: 0.00191083	val's logloss: 0.00358371
 [200]	fit's logloss: 0.000825181	val's logloss: 0.00286873
@@ -234,64 +546,125 @@ Early stopping, best iteration is:
 
 Test's ROC AUC: 0.97721
 Test's logloss: 0.00233
-</code></pre></details><p>Now that we know what steps to take, let&rsquo;s move on to the case of focal loss.</p><h2 id=formulas-for-focal-loss>Formulas for focal loss</h2><p>Let&rsquo;s start by going over some equations and briefly explain how focal loss works. The mathematical definition of focal loss is given by equation 5 of the <a href=https://arxiv.org/pdf/1708.02002.pdf>paper</a> I mentioned at the beginning of this post:</p><p>$$\begin{equation}
+</code></pre></details>
+<p>Now that we know what steps to take, let&rsquo;s move on to the case of focal loss.</p>
+<h2 id=formulas-for-focal-loss>Formulas for focal loss</h2>
+<p>Let&rsquo;s start by going over some equations and briefly explain how focal loss works. The mathematical definition of focal loss is given by equation 5 of the <a href=https://arxiv.org/pdf/1708.02002.pdf>paper</a> I mentioned at the beginning of this post:</p>
+<p>$$\begin{equation}
 FL(p_t) = -a_t (1 - p_t)^{\gamma} \log(p_t)
-\end{equation}$$</p><p>The variable $p_t$ is a function of the ground truth $y$ and a prediction $p$:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>The variable $p_t$ is a function of the ground truth $y$ and a prediction $p$:</p>
+<p>$$\begin{equation}
 p_t = \begin{cases}
-p & \text{if } y = 1 \\<br>1 - p & \text{otherwise}
+p & \text{if } y = 1 \\<br>
+1 - p & \text{otherwise}
 \end{cases}
-\end{equation}$$</p><p>Basically, $p_t$ is introduced to simplify notation. Note that $p$ is obtained by applying the sigmoid function to the raw margins $z$:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>Basically, $p_t$ is introduced to simplify notation. Note that $p$ is obtained by applying the sigmoid function to the raw margins $z$:</p>
+<p>$$\begin{equation}
 p = \frac{1}{1 + e^{-z}}
-\end{equation}$$</p><p>In fact, $z$ is denoted by $x$ in the paper&rsquo;s appendix, but I find that confusing. Additionally, the authors assume that $y \in \{-1, 1\}$ instead of $y \in \{0, 1\}$, which has its importance. Meanwhile, $\alpha_t$ is another parameter with the following definition:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>In fact, $z$ is denoted by $x$ in the paper&rsquo;s appendix, but I find that confusing. Additionally, the authors assume that $y \in \{-1, 1\}$ instead of $y \in \{0, 1\}$, which has its importance. Meanwhile, $\alpha_t$ is another parameter with the following definition:</p>
+<p>$$\begin{equation}
 \alpha_t = \begin{cases}
-\alpha \in [0, 1] & \text{if } y = 1 \\<br>1 - \alpha & \text{otherwise}
+\alpha \in [0, 1] & \text{if } y = 1 \\<br>
+1 - \alpha & \text{otherwise}
 \end{cases}
-\end{equation}$$</p><p>It&rsquo;s important to understand that $p_t$ and $\alpha_t$ are just artificial variables that are introduced to ease the notation. Indeed, the focal loss can rewritten in terms of $y$ and $p$ instead:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>It&rsquo;s important to understand that $p_t$ and $\alpha_t$ are just artificial variables that are introduced to ease the notation. Indeed, the focal loss can rewritten in terms of $y$ and $p$ instead:</p>
+<p>$$\begin{equation}
 FL(y, p) = -\frac{y + 1}{2} \times \alpha (1 - p)^\gamma \log(p) - \frac{1 - y}{2} \times (1 - a) p^\gamma \log(1 - p)
-\end{equation}$$</p><p>Note that the above equation assumes $y \in \{-1, 1\}$. If on the contrary $y \in \{0, 1\}$, then the following definition applies:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>Note that the above equation assumes $y \in \{-1, 1\}$. If on the contrary $y \in \{0, 1\}$, then the following definition applies:</p>
+<p>$$\begin{equation}
 FL(y, p) = -y \times \alpha (1 - p)^\gamma \log(p) - (1 - y) \times (1 - a) p^\gamma \log(1 - p)
-\end{equation}$$</p><h3 id=first-order-derivative>First order derivative</h3><p>The authors of the paper provide the derivative of focal loss with respect to the model&rsquo;s output $z$ in appendix B:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<h3 id=first-order-derivative>First order derivative</h3>
+<p>The authors of the paper provide the derivative of focal loss with respect to the model&rsquo;s output $z$ in appendix B:</p>
+<p>$$\begin{equation}
 \frac{\partial FL}{\partial z} = \alpha_t y (1 - p_t)^{\gamma} (\gamma p_t \log(p_t) + p_t - 1)
-\end{equation}$$</p><p>Alas, the authors do not provide the second order derivative, so we&rsquo;ll have to work it out ourselves. But first, in order to warm up, I&rsquo;ll go through the steps required to obtain the first order derivative. The latter can be obtained by applying the chain rule:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>Alas, the authors do not provide the second order derivative, so we&rsquo;ll have to work it out ourselves. But first, in order to warm up, I&rsquo;ll go through the steps required to obtain the first order derivative. The latter can be obtained by applying the chain rule:</p>
+<p>$$\begin{equation}
 \frac{\partial FL}{\partial z} = \frac{\partial FL}{\partial p_t} \times \frac{\partial p_t}{\partial p} \times \frac{\partial p}{\partial z}
-\end{equation}$$</p><p>The first part of the chain is the most complicated part, as it is the derivative of a product of three elements:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>The first part of the chain is the most complicated part, as it is the derivative of a product of three elements:</p>
+<p>$$\begin{equation}
 \begin{split}
 \frac{\partial FL}{\partial p_t}
-& = \alpha_t \gamma (1 - p_t)^{\gamma - 1} \log(p_t) - \frac{\alpha_t(1 - p_t)^{\gamma}}{p_t} \\<br>& = \alpha_t(1 - p_t)^{\gamma} (\frac{\gamma \log(p_t)}{1 - p_t} - \frac{1}{p_t}) \\<br>& = \alpha_t(1 - p_t)^{\gamma} (\frac{\gamma p_t \log(p_t) + p_t - 1)}{p_t(1 - p_t)})
+& = \alpha_t \gamma (1 - p_t)^{\gamma - 1} \log(p_t) - \frac{\alpha_t(1 - p_t)^{\gamma}}{p_t} \\<br>
+& = \alpha_t(1 - p_t)^{\gamma} (\frac{\gamma \log(p_t)}{1 - p_t} - \frac{1}{p_t}) \\<br>
+& = \alpha_t(1 - p_t)^{\gamma} (\frac{\gamma p_t \log(p_t) + p_t - 1)}{p_t(1 - p_t)})
 \end{split}
-\end{equation}$$</p><p>The second part of the chain is the derivative of $p_t$ with respect to $p$. The trick is to flatten out $p_t$ into a single formula:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>The second part of the chain is the derivative of $p_t$ with respect to $p$. The trick is to flatten out $p_t$ into a single formula:</p>
+<p>$$\begin{equation}
 p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
-\end{equation}$$</p><p>The derivative then boils down to:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>The derivative then boils down to:</p>
+<p>$$\begin{equation}
 \begin{split}
 \frac{\partial p_t}{\partial p}
-& = \frac{y + 1}{2} + \frac{y - 1}{2} \\<br>& = \frac{2y}{2} \\<br>& = y
+& = \frac{y + 1}{2} + \frac{y - 1}{2} \\<br>
+& = \frac{2y}{2} \\<br>
+& = y
 \end{split}
-\end{equation}$$</p><p>Finally, the last part of the chain is the well-known <a href=https://math.stackexchange.com/questions/78575/derivative-of-sigmoid-function-sigma-x-frac11e-x>gradient of the sigmoid function</a>, thus:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>Finally, the last part of the chain is the well-known <a href=https://math.stackexchange.com/questions/78575/derivative-of-sigmoid-function-sigma-x-frac11e-x>gradient of the sigmoid function</a>, thus:</p>
+<p>$$\begin{equation}
 \frac{\partial p}{\partial z} = p(1 - p)
-\end{equation}$$</p><p>As it happens, $p(1 - p)$ is equal to $p_t (1 - p_t)$. Therefore, some terms get cancelled out nicely once the chain parts are multiplied with each other:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>As it happens, $p(1 - p)$ is equal to $p_t (1 - p_t)$. Therefore, some terms get cancelled out nicely once the chain parts are multiplied with each other:</p>
+<p>$$\begin{equation}
 \begin{split}
 \frac{\partial FL}{\partial z}
-& = \alpha_t(1 - p_t)^{\gamma} (\frac{\gamma p_t \log(p_t) + p_t - 1)}{p_t(1 - p_t)}) \times y \times p_t (1 - p_t) \\<br>& = \alpha_t y (1 - p_t)^{\gamma} (\gamma p_t \log(p_t) + p_t - 1)
+& = \alpha_t(1 - p_t)^{\gamma} (\frac{\gamma p_t \log(p_t) + p_t - 1)}{p_t(1 - p_t)}) \times y \times p_t (1 - p_t) \\<br>
+& = \alpha_t y (1 - p_t)^{\gamma} (\gamma p_t \log(p_t) + p_t - 1)
 \end{split}
-\end{equation}$$</p><p>We know that this derivative is correct because the focal loss authors &ndash; who look like stand up guys &ndash; provide it in their paper. Additionally, it&rsquo;s easy to see that setting $a_t = 1$ and $\gamma = 0$ leads to the derivative of cross-entropy &ndash; which is also given in the paper. So far, so good.</p><h3 id=second-order-derivative>Second order derivative</h3><p>Now for the second order derivative, which can be obtained by differentiating the gradient we&rsquo;ve just obtained with respect to $z$:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>We know that this derivative is correct because the focal loss authors &ndash; who look like stand up guys &ndash; provide it in their paper. Additionally, it&rsquo;s easy to see that setting $a_t = 1$ and $\gamma = 0$ leads to the derivative of cross-entropy &ndash; which is also given in the paper. So far, so good.</p>
+<h3 id=second-order-derivative>Second order derivative</h3>
+<p>Now for the second order derivative, which can be obtained by differentiating the gradient we&rsquo;ve just obtained with respect to $z$:</p>
+<p>$$\begin{equation}
 \begin{split}
 \frac{\partial^2 FL}{\partial z^2}
-& = \frac{\partial}{\partial z} (\frac{\partial FL}{\partial z}) \\<br>& = \frac{\partial}{\partial p_t} (\frac{\partial FL}{\partial z}) \times \frac{\partial p_t}{\partial p} \times \frac{\partial p}{\partial z}
+& = \frac{\partial}{\partial z} (\frac{\partial FL}{\partial z}) \\<br>
+& = \frac{\partial}{\partial p_t} (\frac{\partial FL}{\partial z}) \times \frac{\partial p_t}{\partial p} \times \frac{\partial p}{\partial z}
 \end{split}
-\end{equation}$$</p><p>We&rsquo;ve already computed the last two parts of the chain, which are respectfully equal to $y$ and $p(1 - p)$. Therefore, we just have to compute the first part of chain&rsquo;s first derivative. In order to make things easier, let&rsquo;s use the following notation:</p><p>$$\begin{equation}\frac{\partial FL}{\partial z} = u \times v\end{equation}$$</p><p>$$\begin{equation}u = \alpha_t y (1 - p_t)^\gamma\end{equation}$$</p><p>$$\begin{equation}v = \gamma p_t \log(p_t) + p_t - 1\end{equation}$$</p><p>The derivatives of $u$ of $v$ with respect to $p_t$ are quite straightfoward:</p><p>$$\begin{equation}\frac{\partial u}{\partial p_t} = -\gamma \alpha_t y (1 - p_t)^{\gamma - 1} \end{equation}$$</p><p>$$\begin{equation}\frac{\partial v}{\partial p_t} = \gamma \log(p_t) + \gamma + 1\end{equation}$$</p><p>The second order derivative is thus:</p><p>$$\begin{equation}
+\end{equation}$$</p>
+<p>We&rsquo;ve already computed the last two parts of the chain, which are respectfully equal to $y$ and $p(1 - p)$. Therefore, we just have to compute the first part of chain&rsquo;s first derivative. In order to make things easier, let&rsquo;s use the following notation:</p>
+<p>$$\begin{equation}\frac{\partial FL}{\partial z} = u \times v\end{equation}$$</p>
+<p>$$\begin{equation}u = \alpha_t y (1 - p_t)^\gamma\end{equation}$$</p>
+<p>$$\begin{equation}v = \gamma p_t \log(p_t) + p_t - 1\end{equation}$$</p>
+<p>The derivatives of $u$ of $v$ with respect to $p_t$ are quite straightfoward:</p>
+<p>$$\begin{equation}\frac{\partial u}{\partial p_t} = -\gamma \alpha_t y (1 - p_t)^{\gamma - 1} \end{equation}$$</p>
+<p>$$\begin{equation}\frac{\partial v}{\partial p_t} = \gamma \log(p_t) + \gamma + 1\end{equation}$$</p>
+<p>The second order derivative is thus:</p>
+<p>$$\begin{equation}
 \frac{\partial^2 FL}{\partial z^2} = (\frac{\partial u}{\partial p_t} \times v + u \times \frac{\partial v}{\partial p_t}) \times \frac{\partial p_t}{\partial p} \times \frac{\partial p}{\partial z}
-\end{equation}$$</p><h3 id=initialization-constant>Initialization constant</h3><p>The optimal initialization constant can be derived by differentiating the loss function with respect to $p$. The goal is then to find the value for $p$ which sets the gradient to 0. I gave it a go with pen and paper, but didn&rsquo;t manage to solve it. I then remembered that most loss functions are convex, and are therefore easy to minimize numerically.</p><p>The following plot shows the behavior of focal loss with different sets of parameters. The ground truths are chosen arbitrarily, whilst the initialization value is represented on the $x$-axis. The loss is convex in every case. I therefore gave up on the mathematics and decided to use scipy&rsquo;s <code>optimize</code> module instead. Numeric optimization is slower than an analytical solution, but I have a hunch that the added cost is trivial.</p><div align=center><figure style=width:80%><img src=/img/blog/lightgbm-focal-loss/focal_loss.png></figure></div><h3 id=implementation>Implementation</h3><p>In terms of code, I&rsquo;m going to organize things a bit differently to the logistic loss case. As we saw in the previous section, there are quite a few functions to implement in order to use a custom loss function. Therefore, I think that it makes sense to organize them into a class. This also makes sense because the focal loss has parameters. By using a class, we only have to declare the parameters once, and can reuse them within each method. This avoids us having to add redundant parameters to the signature of each function.</p><div class=highlight><pre class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>numpy</span> <span class=kn>as</span> <span class=nn>np</span>
+\end{equation}$$</p>
+<h3 id=initialization-constant>Initialization constant</h3>
+<p>The optimal initialization constant can be derived by differentiating the loss function with respect to $p$. The goal is then to find the value for $p$ which sets the gradient to 0. I gave it a go with pen and paper, but didn&rsquo;t manage to solve it. I then remembered that most loss functions are convex, and are therefore easy to minimize numerically.</p>
+<p>The following plot shows the behavior of focal loss with different sets of parameters. The ground truths are chosen arbitrarily, whilst the initialization value is represented on the $x$-axis. The loss is convex in every case. I therefore gave up on the mathematics and decided to use scipy&rsquo;s <code>optimize</code> module instead. Numeric optimization is slower than an analytical solution, but I have a hunch that the added cost is trivial.</p>
+<div align=center>
+<figure style=width:80%>
+<img src=/img/blog/lightgbm-focal-loss/focal_loss.png>
+</figure>
+</div>
+<h3 id=implementation>Implementation</h3>
+<p>In terms of code, I&rsquo;m going to organize things a bit differently to the logistic loss case. As we saw in the previous section, there are quite a few functions to implement in order to use a custom loss function. Therefore, I think that it makes sense to organize them into a class. This also makes sense because the focal loss has parameters. By using a class, we only have to declare the parameters once, and can reuse them within each method. This avoids us having to add redundant parameters to the signature of each function.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>numpy</span> <span class=k>as</span> <span class=nn>np</span>
 <span class=kn>from</span> <span class=nn>scipy</span> <span class=kn>import</span> <span class=n>optimize</span>
 <span class=kn>from</span> <span class=nn>scipy</span> <span class=kn>import</span> <span class=n>special</span>
 
 <span class=k>class</span> <span class=nc>FocalLoss</span><span class=p>:</span>
 
-    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>gamma</span><span class=p>,</span> <span class=n>alpha</span><span class=o>=</span><span class=bp>None</span><span class=p>):</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>gamma</span><span class=p>,</span> <span class=n>alpha</span><span class=o>=</span><span class=kc>None</span><span class=p>):</span>
         <span class=bp>self</span><span class=o>.</span><span class=n>alpha</span> <span class=o>=</span> <span class=n>alpha</span>
         <span class=bp>self</span><span class=o>.</span><span class=n>gamma</span> <span class=o>=</span> <span class=n>gamma</span>
 
     <span class=k>def</span> <span class=nf>at</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>y</span><span class=p>):</span>
-        <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>alpha</span> <span class=ow>is</span> <span class=bp>None</span><span class=p>:</span>
+        <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>alpha</span> <span class=ow>is</span> <span class=kc>None</span><span class=p>:</span>
             <span class=k>return</span> <span class=n>np</span><span class=o>.</span><span class=n>ones_like</span><span class=p>(</span><span class=n>y</span><span class=p>)</span>
         <span class=k>return</span> <span class=n>np</span><span class=o>.</span><span class=n>where</span><span class=p>(</span><span class=n>y</span><span class=p>,</span> <span class=bp>self</span><span class=o>.</span><span class=n>alpha</span><span class=p>,</span> <span class=mi>1</span> <span class=o>-</span> <span class=bp>self</span><span class=o>.</span><span class=n>alpha</span><span class=p>)</span>
 
@@ -342,15 +715,27 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
     <span class=k>def</span> <span class=nf>lgb_eval</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>preds</span><span class=p>,</span> <span class=n>train_data</span><span class=p>):</span>
         <span class=n>y</span> <span class=o>=</span> <span class=n>train_data</span><span class=o>.</span><span class=n>get_label</span><span class=p>()</span>
         <span class=n>p</span> <span class=o>=</span> <span class=n>special</span><span class=o>.</span><span class=n>expit</span><span class=p>(</span><span class=n>preds</span><span class=p>)</span>
-        <span class=n>is_higher_better</span> <span class=o>=</span> <span class=bp>False</span>
+        <span class=n>is_higher_better</span> <span class=o>=</span> <span class=kc>False</span>
         <span class=k>return</span> <span class=s1>&#39;focal_loss&#39;</span><span class=p>,</span> <span class=bp>self</span><span class=p>(</span><span class=n>y</span><span class=p>,</span> <span class=n>p</span><span class=p>)</span><span class=o>.</span><span class=n>mean</span><span class=p>(),</span> <span class=n>is_higher_better</span>
-</code></pre></div><p>If you&rsquo;re in a hurry, then the above code is probably what you&rsquo;re looking for, and you can simply copy/paste it. Here is an overview:</p><ul><li>The focal loss itself is implemented in the <a href=https://www.geeksforgeeks.org/__call__-in-python/><code>__call__</code> method</a>.</li><li>The <code>init_score</code> method is responsible for providing the initial values. As you can see, it uses the <a href=https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize_scalar.html><code>minimize_scalar</code> function</a> from <code>scipy</code> in order to find the best value of <code>p</code> with respect to the provided set of parameters.</li><li>Note that if <code>alpha</code> is set to <code>None</code>, then it is essentially ignored. This allows reproducing the behavior of cross-entropy, which is in a sense a special case of focal loss.</li><li>The <code>lgb_obj</code> and <code>lgb_eval</code> methods can be used with LightGBM. I&rsquo;ll show how to do this in the <a href=#benchmarks>Benchmarks section</a>. You could easily implement similar methods for XGBoost and CatBoost.</li></ul><h3 id=numerical-checks>Numerical checks</h3><p>The <code>FocalLoss</code> implementation is hopefully correct. I say &ldquo;hopefully&rdquo; because I&rsquo;m human and I make mistakes. Therefore, I&rsquo;m going to write some numerical checks in order to put my mind at ease. We&rsquo;re doing analysis, therefore we can use the <a href=https://timvieira.github.io/blog/post/2017/04/21/how-to-test-gradient-implementations/>finite difference method</a> to check that our first and second order gradients are correct. It turns out that <code>scipy</code> has a <a href=https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.check_grad.html><code>check_grad</code> method</a>. However, I didn&rsquo;t manage to make it work with vectors as outputs. I thus wrote my own modest gradient checker:</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=k>def</span> <span class=nf>check_gradient</span><span class=p>(</span><span class=n>func</span><span class=p>,</span> <span class=n>grad</span><span class=p>,</span> <span class=n>values</span><span class=p>,</span> <span class=n>eps</span><span class=o>=</span><span class=mf>1e-8</span><span class=p>):</span>
+</code></pre></div><p>If you&rsquo;re in a hurry, then the above code is probably what you&rsquo;re looking for, and you can simply copy/paste it. Here is an overview:</p>
+<ul>
+<li>The focal loss itself is implemented in the <a href=https://www.geeksforgeeks.org/__call__-in-python/><code>__call__</code> method</a>.</li>
+<li>The <code>init_score</code> method is responsible for providing the initial values. As you can see, it uses the <a href=https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize_scalar.html><code>minimize_scalar</code> function</a> from <code>scipy</code> in order to find the best value of <code>p</code> with respect to the provided set of parameters.</li>
+<li>Note that if <code>alpha</code> is set to <code>None</code>, then it is essentially ignored. This allows reproducing the behavior of cross-entropy, which is in a sense a special case of focal loss.</li>
+<li>The <code>lgb_obj</code> and <code>lgb_eval</code> methods can be used with LightGBM. I&rsquo;ll show how to do this in the <a href=#benchmarks>Benchmarks section</a>. You could easily implement similar methods for XGBoost and CatBoost.</li>
+</ul>
+<h3 id=numerical-checks>Numerical checks</h3>
+<p>The <code>FocalLoss</code> implementation is hopefully correct. I say &ldquo;hopefully&rdquo; because I&rsquo;m human and I make mistakes. Therefore, I&rsquo;m going to write some numerical checks in order to put my mind at ease. We&rsquo;re doing analysis, therefore we can use the <a href=https://timvieira.github.io/blog/post/2017/04/21/how-to-test-gradient-implementations/>finite difference method</a> to check that our first and second order gradients are correct. It turns out that <code>scipy</code> has a <a href=https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.check_grad.html><code>check_grad</code> method</a>. However, I didn&rsquo;t manage to make it work with vectors as outputs. I thus wrote my own modest gradient checker:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=k>def</span> <span class=nf>check_gradient</span><span class=p>(</span><span class=n>func</span><span class=p>,</span> <span class=n>grad</span><span class=p>,</span> <span class=n>values</span><span class=p>,</span> <span class=n>eps</span><span class=o>=</span><span class=mf>1e-8</span><span class=p>):</span>
     <span class=n>approx</span> <span class=o>=</span> <span class=p>(</span><span class=n>func</span><span class=p>(</span><span class=n>values</span> <span class=o>+</span> <span class=n>eps</span><span class=p>)</span> <span class=o>-</span> <span class=n>func</span><span class=p>(</span><span class=n>values</span> <span class=o>-</span> <span class=n>eps</span><span class=p>))</span> <span class=o>/</span> <span class=p>(</span><span class=mi>2</span> <span class=o>*</span> <span class=n>eps</span><span class=p>)</span>
     <span class=k>return</span> <span class=n>np</span><span class=o>.</span><span class=n>linalg</span><span class=o>.</span><span class=n>norm</span><span class=p>(</span><span class=n>approx</span> <span class=o>-</span> <span class=n>grad</span><span class=p>(</span><span class=n>values</span><span class=p>))</span>
-</code></pre></div><p>As you see, <code>check_gradient</code> simply returns the norm of the difference between the output of <code>grad</code> (which is the gradient function we&rsquo;re checking) and <code>approx</code> (which is the gradient obtained via the finite difference method).</p><p>Let&rsquo;s now generate some random ground truth values, as well as some random probabilities:</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>seed</span><span class=p>(</span><span class=mi>42</span><span class=p>)</span>
-<span class=n>y_true</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>uniform</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>100</span><span class=p>)</span> <span class=o>&gt;</span> <span class=o>.</span><span class=mi>5</span>
+</code></pre></div><p>As you see, <code>check_gradient</code> simply returns the norm of the difference between the output of <code>grad</code> (which is the gradient function we&rsquo;re checking) and <code>approx</code> (which is the gradient obtained via the finite difference method).</p>
+<p>Let&rsquo;s now generate some random ground truth values, as well as some random probabilities:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>seed</span><span class=p>(</span><span class=mi>42</span><span class=p>)</span>
+<span class=n>y_true</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>uniform</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>100</span><span class=p>)</span> <span class=o>&gt;</span> <span class=mf>.5</span>
 <span class=n>y_pred</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>uniform</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>100</span><span class=p>)</span>
-</code></pre></div><p>We can now check that our gradient implementation is correct:</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=n>fl</span> <span class=o>=</span> <span class=n>FocalLoss</span><span class=p>(</span><span class=n>alpha</span><span class=o>=.</span><span class=mi>3</span><span class=p>,</span> <span class=n>gamma</span><span class=o>=</span><span class=mi>2</span><span class=p>)</span>
+</code></pre></div><p>We can now check that our gradient implementation is correct:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=n>fl</span> <span class=o>=</span> <span class=n>FocalLoss</span><span class=p>(</span><span class=n>alpha</span><span class=o>=</span><span class=mf>.3</span><span class=p>,</span> <span class=n>gamma</span><span class=o>=</span><span class=mi>2</span><span class=p>)</span>
 
 <span class=n>check_gradient</span><span class=p>(</span>
     <span class=n>func</span><span class=o>=</span><span class=k>lambda</span> <span class=n>x</span><span class=p>:</span> <span class=n>fl</span><span class=p>(</span><span class=n>y_true</span><span class=p>,</span> <span class=n>x</span><span class=p>),</span>
@@ -358,8 +743,10 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
     <span class=n>values</span><span class=o>=</span><span class=n>y_pred</span>
 <span class=p>)</span>
 </code></pre></div><pre><code>2.3954956968511336e-07
-</code></pre><p>Now you might be wondering why we divide the output of <code>grad</code>. The reason why is because <code>check_gradient</code> varies the values of <code>y_pred</code>. We would thus like to examine the gradient of the loss function with respect to <code>p_t</code> and not <code>z</code>. Therefore, we need to divide our gradient by $\frac{\partial p}{\partial z}$, which is equal to <code>p(1 - p)</code>.</p><p>Let&rsquo;s run these checks for different values of $\alpha$ and $\gamma$, and verify that the error is always reasonably low:</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=k>for</span> <span class=n>gamma</span> <span class=ow>in</span> <span class=p>[</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>]:</span>
-    <span class=k>for</span> <span class=n>alpha</span> <span class=ow>in</span> <span class=p>[</span><span class=o>.</span><span class=mi>1</span><span class=p>,</span> <span class=o>.</span><span class=mi>3</span><span class=p>,</span> <span class=o>.</span><span class=mi>5</span><span class=p>,</span> <span class=o>.</span><span class=mi>7</span><span class=p>,</span> <span class=o>.</span><span class=mi>9</span><span class=p>]:</span>
+</code></pre><p>Now you might be wondering why we divide the output of <code>grad</code>. The reason why is because <code>check_gradient</code> varies the values of <code>y_pred</code>. We would thus like to examine the gradient of the loss function with respect to <code>p_t</code> and not <code>z</code>. Therefore, we need to divide our gradient by $\frac{\partial p}{\partial z}$, which is equal to <code>p(1 - p)</code>.</p>
+<p>Let&rsquo;s run these checks for different values of $\alpha$ and $\gamma$, and verify that the error is always reasonably low:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=k>for</span> <span class=n>gamma</span> <span class=ow>in</span> <span class=p>[</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>]:</span>
+    <span class=k>for</span> <span class=n>alpha</span> <span class=ow>in</span> <span class=p>[</span><span class=mf>.1</span><span class=p>,</span> <span class=mf>.3</span><span class=p>,</span> <span class=mf>.5</span><span class=p>,</span> <span class=mf>.7</span><span class=p>,</span> <span class=mf>.9</span><span class=p>]:</span>
         <span class=n>fl</span> <span class=o>=</span> <span class=n>FocalLoss</span><span class=p>(</span><span class=n>alpha</span><span class=o>=</span><span class=n>alpha</span><span class=p>,</span> <span class=n>gamma</span><span class=o>=</span><span class=n>gamma</span><span class=p>)</span>
         <span class=n>diff</span> <span class=o>=</span> <span class=n>check_gradient</span><span class=p>(</span>
             <span class=n>func</span><span class=o>=</span><span class=k>lambda</span> <span class=n>x</span><span class=p>:</span> <span class=n>fl</span><span class=p>(</span><span class=n>y_true</span><span class=p>,</span> <span class=n>x</span><span class=p>),</span>
@@ -367,8 +754,9 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
             <span class=n>values</span><span class=o>=</span><span class=n>y_pred</span>
         <span class=p>)</span>
         <span class=k>assert</span> <span class=n>diff</span> <span class=o>&lt;</span> <span class=mf>1e-6</span>
-</code></pre></div><p>We can do the same thing for the second order derivative:</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=k>for</span> <span class=n>gamma</span> <span class=ow>in</span> <span class=p>[</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>]:</span>
-    <span class=k>for</span> <span class=n>alpha</span> <span class=ow>in</span> <span class=p>[</span><span class=o>.</span><span class=mi>1</span><span class=p>,</span> <span class=o>.</span><span class=mi>3</span><span class=p>,</span> <span class=o>.</span><span class=mi>5</span><span class=p>,</span> <span class=o>.</span><span class=mi>7</span><span class=p>,</span> <span class=o>.</span><span class=mi>9</span><span class=p>]:</span>
+</code></pre></div><p>We can do the same thing for the second order derivative:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=k>for</span> <span class=n>gamma</span> <span class=ow>in</span> <span class=p>[</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>]:</span>
+    <span class=k>for</span> <span class=n>alpha</span> <span class=ow>in</span> <span class=p>[</span><span class=mf>.1</span><span class=p>,</span> <span class=mf>.3</span><span class=p>,</span> <span class=mf>.5</span><span class=p>,</span> <span class=mf>.7</span><span class=p>,</span> <span class=mf>.9</span><span class=p>]:</span>
         <span class=n>fl</span> <span class=o>=</span> <span class=n>FocalLoss</span><span class=p>(</span><span class=n>alpha</span><span class=o>=</span><span class=n>alpha</span><span class=p>,</span> <span class=n>gamma</span><span class=o>=</span><span class=n>gamma</span><span class=p>)</span>
         <span class=n>diff</span> <span class=o>=</span> <span class=n>check_gradient</span><span class=p>(</span>
             <span class=n>func</span><span class=o>=</span><span class=k>lambda</span> <span class=n>x</span><span class=p>:</span> <span class=n>fl</span><span class=o>.</span><span class=n>grad</span><span class=p>(</span><span class=n>y_true</span><span class=p>,</span> <span class=n>x</span><span class=p>),</span>
@@ -376,8 +764,11 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
             <span class=n>values</span><span class=o>=</span><span class=n>y_pred</span>
         <span class=p>)</span>
         <span class=k>assert</span> <span class=n>diff</span> <span class=o>&lt;</span> <span class=mf>1e-6</span>
-</code></pre></div><p>Now, the last thing to check is that the initialization constant is correct. We can check this visually by plotting the value of the average focal loss for different initialization values. If our implementation is correct, then the initialization value should coincide with the minimum value of the focal loss. That seems to be the case on the following figure.</p><details><summary>Click to see the code</summary><div class=highlight><pre class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>matplotlib</span>
-<span class=kn>import</span> <span class=nn>matplotlib.pyplot</span> <span class=kn>as</span> <span class=nn>plt</span>
+</code></pre></div><p>Now, the last thing to check is that the initialization constant is correct. We can check this visually by plotting the value of the average focal loss for different initialization values. If our implementation is correct, then the initialization value should coincide with the minimum value of the focal loss. That seems to be the case on the following figure.</p>
+<details>
+<summary>Click to see the code</summary>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>matplotlib</span>
+<span class=kn>import</span> <span class=nn>matplotlib.pyplot</span> <span class=k>as</span> <span class=nn>plt</span>
 <span class=kn>from</span> <span class=nn>scipy</span> <span class=kn>import</span> <span class=n>special</span>
 
 <span class=n>fig</span><span class=p>,</span> <span class=n>ax</span> <span class=o>=</span> <span class=n>plt</span><span class=o>.</span><span class=n>subplots</span><span class=p>(</span><span class=n>figsize</span><span class=o>=</span><span class=p>(</span><span class=mi>10</span><span class=p>,</span> <span class=mi>7</span><span class=p>))</span>
@@ -386,7 +777,7 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
 <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>seed</span><span class=p>(</span><span class=mi>10</span><span class=p>)</span>
 <span class=n>y</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>randint</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=n>size</span><span class=o>=</span><span class=mi>500</span><span class=p>)</span>  <span class=c1># random 0s and 1s</span>
 
-<span class=k>for</span> <span class=n>alpha</span> <span class=ow>in</span> <span class=p>[</span><span class=o>.</span><span class=mi>1</span><span class=p>,</span> <span class=o>.</span><span class=mi>5</span><span class=p>,</span> <span class=o>.</span><span class=mi>9</span><span class=p>]:</span>
+<span class=k>for</span> <span class=n>alpha</span> <span class=ow>in</span> <span class=p>[</span><span class=mf>.1</span><span class=p>,</span> <span class=mf>.5</span><span class=p>,</span> <span class=mf>.9</span><span class=p>]:</span>
     <span class=k>for</span> <span class=n>gamma</span> <span class=ow>in</span> <span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=mi>3</span><span class=p>]:</span>
         <span class=n>fl</span> <span class=o>=</span> <span class=n>FocalLoss</span><span class=p>(</span><span class=n>alpha</span><span class=o>=</span><span class=n>alpha</span><span class=p>,</span> <span class=n>gamma</span><span class=o>=</span><span class=n>gamma</span><span class=p>)</span>
         <span class=n>ps</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>linspace</span><span class=p>(</span><span class=mf>5e-2</span><span class=p>,</span> <span class=mi>1</span> <span class=o>-</span> <span class=mf>5e-2</span><span class=p>,</span> <span class=mi>100</span><span class=p>)</span>
@@ -402,9 +793,19 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
 <span class=n>ax</span><span class=o>.</span><span class=n>set_xlabel</span><span class=p>(</span><span class=sa>r</span><span class=s1>&#39;$p$&#39;</span><span class=p>)</span>
 <span class=n>ax</span><span class=o>.</span><span class=n>set_ylabel</span><span class=p>(</span><span class=s1>&#39;Focal loss value&#39;</span><span class=p>)</span>
 <span class=n>fig</span><span class=o>.</span><span class=n>savefig</span><span class=p>(</span><span class=s1>&#39;focal_loss_min.png&#39;</span><span class=p>)</span>
-</code></pre></div></details><div align=center><figure style=width:80%><img src=/img/blog/lightgbm-focal-loss/focal_loss_min.png></figure></div><p>Note that all of the numeric checks we have just ran depend on the values of <code>y_true</code> and <code>y_pred</code>. If you&rsquo;re going to use this as part of software that&rsquo;s going to send people to Mars, then I would recommend being more thorough. Hey, this is just a blog post.</p><h2 id=benchmarks>Benchmarks</h2><p>We&rsquo;ve implemented focal loss along with its first and second order gradients, as well as the correct initialization value. We&rsquo;re also reasonably confident that our implementation is correct. Let&rsquo;s now see how this performs on the credit card frauds dataset. The whole point of this exercise is that, supposedly, focal loss works better than logarithmic loss on imbalanced datasets.</p><p>I played around with <code>alpha</code> and <code>gamma</code>, but didn&rsquo;t really manage to reach a test set ROC AUC score that was convincingly better than what I obtained with logarithmic loss &ndash; which was 0.97721. A mildly interesting fact is that setting <code>alpha=None</code> and <code>gamma=0</code> performs slightly better than when using logarithmic loss. The discrepancy is due to the initialization score. The following snippet shows how to go about using the <code>FocalLoss</code> with LightGBM:</p><div class=highlight><pre class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>lightgbm</span>
-<span class=kn>import</span> <span class=nn>numpy</span> <span class=kn>as</span> <span class=nn>np</span>
-<span class=kn>import</span> <span class=nn>pandas</span> <span class=kn>as</span> <span class=nn>pd</span>
+</code></pre></div></details>
+<div align=center>
+<figure style=width:80%>
+<img src=/img/blog/lightgbm-focal-loss/focal_loss_min.png>
+</figure>
+</div>
+<p>Note that all of the numeric checks we have just ran depend on the values of <code>y_true</code> and <code>y_pred</code>. If you&rsquo;re going to use this as part of software that&rsquo;s going to send people to Mars, then I would recommend being more thorough. Hey, this is just a blog post.</p>
+<h2 id=benchmarks>Benchmarks</h2>
+<p>We&rsquo;ve implemented focal loss along with its first and second order gradients, as well as the correct initialization value. We&rsquo;re also reasonably confident that our implementation is correct. Let&rsquo;s now see how this performs on the credit card frauds dataset. The whole point of this exercise is that, supposedly, focal loss works better than logarithmic loss on imbalanced datasets.</p>
+<p>I played around with <code>alpha</code> and <code>gamma</code>, but didn&rsquo;t really manage to reach a test set ROC AUC score that was convincingly better than what I obtained with logarithmic loss &ndash; which was 0.97721. A mildly interesting fact is that setting <code>alpha=None</code> and <code>gamma=0</code> performs slightly better than when using logarithmic loss. The discrepancy is due to the initialization score. The following snippet shows how to go about using the <code>FocalLoss</code> with LightGBM:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>lightgbm</span>
+<span class=kn>import</span> <span class=nn>numpy</span> <span class=k>as</span> <span class=nn>np</span>
+<span class=kn>import</span> <span class=nn>pandas</span> <span class=k>as</span> <span class=nn>pd</span>
 <span class=kn>from</span> <span class=nn>scipy</span> <span class=kn>import</span> <span class=n>optimize</span>
 <span class=kn>from</span> <span class=nn>scipy</span> <span class=kn>import</span> <span class=n>special</span>
 <span class=kn>from</span> <span class=nn>sklearn</span> <span class=kn>import</span> <span class=n>metrics</span>
@@ -414,7 +815,7 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
 <span class=n>X</span> <span class=o>=</span> <span class=n>df</span><span class=o>.</span><span class=n>drop</span><span class=p>(</span><span class=n>columns</span><span class=o>=</span><span class=s1>&#39;Class&#39;</span><span class=p>)</span>
 <span class=n>y</span> <span class=o>=</span> <span class=n>df</span><span class=p>[</span><span class=s1>&#39;Class&#39;</span><span class=p>]</span>
 
-<span class=n>fl</span> <span class=o>=</span> <span class=n>FocalLoss</span><span class=p>(</span><span class=n>alpha</span><span class=o>=</span><span class=bp>None</span><span class=p>,</span> <span class=n>gamma</span><span class=o>=</span><span class=mi>0</span><span class=p>)</span>
+<span class=n>fl</span> <span class=o>=</span> <span class=n>FocalLoss</span><span class=p>(</span><span class=n>alpha</span><span class=o>=</span><span class=kc>None</span><span class=p>,</span> <span class=n>gamma</span><span class=o>=</span><span class=mi>0</span><span class=p>)</span>
 
 <span class=n>X_train</span><span class=p>,</span> <span class=n>X_test</span><span class=p>,</span> <span class=n>y_train</span><span class=p>,</span> <span class=n>y_test</span> <span class=o>=</span> <span class=n>model_selection</span><span class=o>.</span><span class=n>train_test_split</span><span class=p>(</span>
     <span class=n>X</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span>
@@ -451,9 +852,9 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
 
 <span class=n>y_pred</span> <span class=o>=</span> <span class=n>special</span><span class=o>.</span><span class=n>expit</span><span class=p>(</span><span class=n>fl</span><span class=o>.</span><span class=n>init_score</span><span class=p>(</span><span class=n>y_fit</span><span class=p>)</span> <span class=o>+</span> <span class=n>model</span><span class=o>.</span><span class=n>predict</span><span class=p>(</span><span class=n>X_test</span><span class=p>))</span>
 
-<span class=k>print</span><span class=p>()</span>
-<span class=k>print</span><span class=p>(</span><span class=n>f</span><span class=s2>&#34;Test&#39;s ROC AUC: {metrics.roc_auc_score(y_test, y_pred):.5f}&#34;</span><span class=p>)</span>
-<span class=k>print</span><span class=p>(</span><span class=n>f</span><span class=s2>&#34;Test&#39;s logloss: {metrics.log_loss(y_test, y_pred):.5f}&#34;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>()</span>
+<span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s ROC AUC: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>roc_auc_score</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s logloss: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>log_loss</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
 </code></pre></div><pre><code>Training until validation scores don't improve for 20 rounds
 [100]	fit's focal_loss: 0.00190475	val's focal_loss: 0.00356043
 [200]	fit's focal_loss: 0.000811846	val's focal_loss: 0.00285806
@@ -463,4 +864,70 @@ Early stopping, best iteration is:
 
 Test's ROC AUC: 0.97948
 Test's logloss: 0.00237
-</code></pre><h2 id=conclusion>Conclusion</h2><p>I haven&rsquo;t bothered with a more thorough benchmarking session because this blog post is already quite long. However, I am confident that my implementation of focal loss is correct. I will thus be using it the next time a wild imbalanced problem appears in front of me. Hopefully it will help. On a more macro point of view, the thing to remember is that the steps I have detailed above can be applied to other loss functions. Feel free to leave a comment if you have any questions.</p></div><script type=text/javascript>var s=document.createElement('script');s.setAttribute('src','https://utteranc.es/client.js'),s.setAttribute('repo','MaxHalford/maxhalford.github.io'),s.setAttribute('issue-term','pathname'),s.setAttribute('crossorigin','anonymous'),s.setAttribute('async',null),s.setAttribute('theme','github-light'),document.body.appendChild(s)</script><div class=footer><div class=do-the-thing><div class=elevator><svg class="sweet-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" enable-background="new 0 0 100 100" height="100" width="100"><path d="M70 47.5H30c-1.4.0-2.5 1.1-2.5 2.5v40c0 1.4 1.1 2.5 2.5 2.5h40c1.4.0 2.5-1.1 2.5-2.5V50C72.5 48.6 71.4 47.5 70 47.5zm-22.5 40h-5v-25h5v25zm10 0h-5v-25h5v25zm10 0h-5V60c0-1.4-1.1-2.5-2.5-2.5H40c-1.4.0-2.5 1.1-2.5 2.5v27.5h-5v-35h35v35z"/><path d="M50 42.5c1.4.0 2.5-1.1 2.5-2.5V16l5.7 5.7c.5.5 1.1.7 1.8.7s1.3-.2 1.8-.7c1-1 1-2.6.0-3.5l-10-10c-1-1-2.6-1-3.5.0l-10 10c-1 1-1 2.6.0 3.5 1 1 2.6 1 3.5.0l5.7-5.7v24c0 1.4 1.1 2.5 2.5 2.5z"/></svg>Back to the top</div></div></div><script src=https://cdnjs.cloudflare.com/ajax/libs/elevator.js/1.0.0/elevator.min.js></script><script>var elementButton=document.querySelector('.elevator'),elevator=new Elevator({element:elementButton,mainAudio:'/music/elevator.mp3',endAudio:'/music/ding.mp3'})</script><style>.down-arrow{font-size:120px;margin-top:90px;margin-bottom:90px;text-shadow:0 -20px #0c1f31,0 0 #c33329;color:transparent;-webkit-transform:scaleY(.8);-moz-transform:scaleY(.8);transform:scaleY(.8)}.elevator{text-align:center;cursor:pointer;width:140px;margin:auto}.elevator:hover{opacity:.7}.elevator svg{width:40px;height:40px;display:block;margin:auto;margin-bottom:5px}</style><div class=site-footer><div class=site-footer-item><a href=https://github.com/MaxHalford><span class=inline-svg><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path fill="currentcolor" d="M8 0C3.58.0.0 3.582.0 8c0 3.535 2.292 6.533 5.47 7.59.4.075.547-.172.547-.385.0-.19-.007-.693-.01-1.36-2.226.483-2.695-1.073-2.695-1.073-.364-.924-.89-1.17-.89-1.17-.725-.496.056-.486.056-.486.803.056 1.225.824 1.225.824.714 1.223 1.873.87 2.33.665.072-.517.278-.87.507-1.07-1.777-.2-3.644-.888-3.644-3.953.0-.873.31-1.587.823-2.147-.09-.202-.36-1.015.07-2.117.0.0.67-.215 2.2.82.64-.178 1.32-.266 2-.27.68.004 1.36.092 2 .27 1.52-1.035 2.19-.82 2.19-.82.43 1.102.16 1.915.08 2.117.51.56.82 1.274.82 2.147.0 3.073-1.87 3.75-3.65 3.947.28.24.54.73.54 1.48.0 1.07-.01 1.93-.01 2.19.0.21.14.46.55.38C13.71 14.53 16 11.53 16 8c0-4.418-3.582-8-8-8"/></svg></span></a></div><div class=site-footer-item><a href=https://linkedin.com/in/maxhalford><span class=inline-svg><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path fill="currentcolor" d="M13.632 13.635h-2.37V9.922c0-.886-.018-2.025-1.234-2.025-1.235.0-1.424.964-1.424 1.96v3.778h-2.37V6H8.51v1.04h.03c.318-.6 1.092-1.233 2.247-1.233 2.4.0 2.845 1.58 2.845 3.637v4.188zM3.558 4.955c-.762.0-1.376-.617-1.376-1.377.0-.758.614-1.375 1.376-1.375.76.0 1.376.617 1.376 1.375.0.76-.617 1.377-1.376 1.377zm1.188 8.68H2.37V6h2.376v7.635zM14.816.0H1.18C.528.0.0.516.0 1.153v13.694C0 15.484.528 16 1.18 16h13.635c.652.0 1.185-.516 1.185-1.153V1.153C16 .516 15.467.0 14.815.0z" fill-rule="nonzero"/></svg></span></a></div><div class=site-footer-item><a href=https://twitter.com/halford_max><span class=inline-svg><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path fill="currentcolor" d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812.0-3.282 1.47-3.282 3.28.0.26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21.0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26.0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04.0 9.34-5 9.34-9.33.0-.14.0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"/></svg></span></a></div><div class=site-footer-item><a href=https://kaggle.com/maxhalford><span class=inline-svg><svg role="img" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg"><title>Kaggle icon</title><path fill="currentcolor" d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187.0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236.0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234.0.351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144.0.236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.358"/></svg></span></a></div><div class=site-footer-item><a href="https://scholar.google.com/citations?user=erRNNi0AAAAJ&hl=en"><span class=inline-svg><svg viewBox="0 0 1755 1755" xmlns="http://www.w3.org/2000/svg"><path fill="currentcolor" transform="translate(0 1610) scale(1 -1)" d="M896.76 1130.189c-27.618 30.838-59.618 46.19-95.802 46.19-40.952.0-72.382-14.738-94.288-44.15-21.906-29.322-32.864-64.848-32.864-106.584.0-35.548 5.998-71.738 18-108.64 11.958-36.886 31.524-69.814 58.954-98.838 27.334-29.096 59.144-43.616 95.284-43.616 40.288.0 71.76 13.502 94.332 40.492 22.476 26.954 33.756 60.98 33.756 101.962.0 34.904-5.954 71.454-17.906 109.664-11.894 38.262-31.752 72.784-59.466 103.52zm762.098 382.384c-64.358 64.424-141.86 96.57-232.572 96.57H329.144c-90.712.0-168.14-32.146-232.572-96.57-64.424-64.286-96.57-141.86-96.57-232.572V182.859c0-90.712 32.146-168.288 96.57-232.712 64.432-64.146 142-96.432 232.572-96.432h1097.142c90.712.0 168.214 32.286 232.572 96.57 64.432 64.432 96.644 141.86 96.644 232.572v1097.142c0 90.712-32.22 168.288-96.644 232.572zM1297.81 1154.159V762.033c0-18.154-14.856-33.016-33.016-33.016h-12.156c-18.162.0-33.016 14.856-33.016 33.016v392.126c0 16.12-2.34 29.578 20.188 32.41v52.172l-173.43-142.24c2.004-3.716 3.906-6.092 5.712-9.208 15.242-26.976 23.004-60.526 23.004-101.53.0-31.43-5.238-59.662-15.858-84.598-10.57-24.928-23.428-45.29-38.43-60.972-15.002-15.74-30.048-30.128-45.092-43.074-15.046-12.976-27.904-26.506-38.436-40.55-10.614-14-15.894-28.474-15.894-43.476.0-15.024 6.854-30.288 20.524-45.67 13.62-15.426 30.376-30.376 50.19-45.144 19.85-14.666 39.658-30.946 59.472-48.662 19.858-17.694 36.52-40.456 50.14-68.096 13.722-27.744 20.568-58.288 20.568-91.86.0-44.288-11.294-84.282-33.806-119.882-22.58-35.446-51.998-63.73-88.144-84.472-36.242-20.882-75-36.6-116.334-47.214-41.42-10.518-82.52-15.806-123.568-15.806-25.908.0-52.048 1.996-78.336 6.1-26.382 4.096-52.81 11.33-79.426 21.526-26.668 10.262-50.286 22.864-70.758 37.998-20.524 14.98-37.046 34.312-49.716 57.856-12.668 23.552-18.958 50.022-18.958 79.426.0 34.882 9.714 67.24 29.192 97.404 19.478 29.944 45.282 54.952 77.378 74.76 55.998 34.838 143.858 56.364 263.432 64.498-27.334 34.172-41.048 66.334-41.048 96.432.0 17.122 4.476 35.474 13.334 55.288-14.284-1.996-28.994-3.124-44.002-3.124-64.234.0-118.476 20.882-162.524 62.932-44.046 41.976-66.048 94.522-66.048 158.048.0 6.642.19 12.492.672 18.974H292.574l393.618 342.17h651.856l-60.24-47.024v-82.996c22.368-2.874 20.004-16.318 20.004-32.394zM900.382 544.929c-7.52 1.36-18.088 2.122-31.708 2.122-29.382.0-58.288-2.596-86.666-7.782-28.38-5.046-56.378-13.568-83.998-25.592-27.722-11.952-50.096-29.528-67.146-52.766-17.144-23.208-25.666-50.542-25.666-81.994.0-29.974 7.52-56.714 22.572-80.004 15.002-23.142 34.808-41.26 59.428-54.236 24.62-12.998 50.432-22.814 77.378-29.264 26.998-6.408 54.476-9.736 82.476-9.736 55.376.0 103.05 12.47 143.046 37.406 39.906 24.928 59.904 63.422 59.904 115.382.0 10.928-1.522 21.686-4.528 32.19-3.138 10.62-6.24 19.712-9.282 27.26-3.05 7.41-8.858 16.332-17.43 26.616-8.522 10.314-15.046 17.934-19.434 23.004-4.476 5.238-12.852 12.712-25.19 22.594-12.236 9.926-20.048 16.114-23.522 18.402-3.43 2.406-12.332 8.908-26.668 19.456-14.328 10.634-22.184 16.274-23.566 16.94z"/></svg></span></a></div><div class=site-footer-item><a href=/files/resume_max_halford.pdf><span class=inline-svg><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 392.533 392.533" style="enable-background:new 0 0 392.533 392.533"><g><g><path fill="currentcolor" d="M292.396 324.849H99.879c-6.012.0-10.925 4.848-10.925 10.925.0 6.012 4.849 10.925 10.925 10.925h192.582c6.012.0 10.925-4.849 10.925-10.925C303.321 329.697 298.473 324.849 292.396 324.849z"/></g></g><g><g><path fill="currentcolor" d="M292.396 277.01H99.879c-6.012.0-10.925 4.848-10.925 10.925.0 6.012 4.849 10.925 10.925 10.925h192.582c6.012.0 10.925-4.849 10.925-10.925C303.321 281.859 298.473 277.01 292.396 277.01z"/></g></g><g><g><path fill="currentcolor" d="M196.137 45.834c-25.859.0-46.998 21.075-46.998 46.998.0 25.859 21.139 46.933 46.998 46.933s46.998-21.075 46.998-46.998-21.139-46.933-46.998-46.933zm0 72.017c-13.77.0-25.083-11.313-25.083-25.083s11.248-25.083 25.083-25.083 25.083 11.313 25.083 25.083c0 13.769-11.313 25.083-25.083 25.083z"/></g></g><g><g><path fill="currentcolor" d="M258.521 163.362c-39.887-15.515-84.752-15.515-124.638.0-13.059 5.107-21.786 18.101-21.786 32.388v44.347c-.065 6.012 4.849 10.925 10.861 10.925h146.424c6.012.0 10.925-4.848 10.925-10.925V195.75C280.307 181.463 271.58 168.469 258.521 163.362zm0 65.874H133.883v-33.422c0-5.301 3.168-10.214 7.887-12.024 34.844-13.511 74.02-13.511 108.865.0 4.719 1.875 7.887 6.659 7.887 12.024v33.422z"/></g></g><g><g><path fill="currentcolor" d="M313.083.0H131.491c-8.404.0-16.291 3.232-22.238 9.18L57.018 61.414c-5.947 5.948-9.18 13.834-9.18 22.238v277.333c0 17.39 14.158 31.547 31.547 31.547h233.762c17.39.0 31.547-14.158 31.547-31.547V31.547C344.501 14.158 330.343.0 313.083.0zM112.032 37.236v27.022H85.01l27.022-27.022zm210.683 79.58h-40.598c-6.012.0-10.925 4.849-10.925 10.925.0 6.012 4.848 10.925 10.925 10.925h40.598v19.394h-14.869c-6.012.0-10.925 4.848-10.925 10.925.0 6.012 4.849 10.925 10.925 10.925h14.869v181.139c0 5.366-4.331 9.697-9.632 9.697H79.192c-5.301.0-9.632-4.331-9.632-9.632V86.044h53.398c6.012.0 10.925-4.848 10.925-10.925V21.721h179.2c5.301.0 9.632 4.331 9.632 9.632v85.463z"/></g></g><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg></span></a></div><div class=site-footer-item><a href=https://play.spotify.com/user/1166811350><span class=inline-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168"><path fill="currentcolor" d="m83.996.277C37.747.277.253 37.77.253 84.019c0 46.251 37.494 83.741 83.743 83.741 46.254.0 83.744-37.49 83.744-83.741.0-46.246-37.49-83.738-83.745-83.738l.001-.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809.64-5.609-1.12-6.249-3.93-.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-.001zm.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/></svg></span></a></div><div class=site-footer-item><a href=mailto:maxhalford25@gmail.com><span class=inline-svg><svg viewBox="0 0 15 20" xmlns="http://www.w3.org/2000/svg"><title>mail</title><path fill="currentcolor" d="M0 4v8c0 .55.45 1 1 1h12c.55.0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55.0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5-4-3 4-3v6z" fill="#000" fill-rule="evenodd"/></svg></span></a></div><div class=site-footer-item><a href=/index.xml><span class=inline-svg><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path fill="currentcolor" d="M12.8 16C12.8 8.978 7.022 3.2.0 3.2V0c8.777.0 16 7.223 16 16h-3.2zM2.194 11.61c1.21.0 2.195.985 2.195 2.196.0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017.0 13.806c0-1.21.983-2.195 2.194-2.195zM10.606 16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818.0 10.606 4.79 10.606 10.607z"/></svg></span></a></div></div></div></div></article><script></script></body></html>
+</code></pre><h2 id=conclusion>Conclusion</h2>
+<p>I haven&rsquo;t bothered with a more thorough benchmarking session because this blog post is already quite long. However, I am confident that my implementation of focal loss is correct. I will thus be using it the next time a wild imbalanced problem appears in front of me. Hopefully it will help. On a more macro point of view, the thing to remember is that the steps I have detailed above can be applied to other loss functions. Feel free to leave a comment if you have any questions.</p>
+</div>
+<script type=text/javascript>var s=document.createElement('script');s.setAttribute('src','https://utteranc.es/client.js'),s.setAttribute('repo','MaxHalford/maxhalford.github.io'),s.setAttribute('issue-term','pathname'),s.setAttribute('crossorigin','anonymous'),s.setAttribute('async',null),s.setAttribute('theme','github-light'),document.body.appendChild(s)</script>
+<div class=footer>
+<div class=do-the-thing>
+<div class=elevator><svg class="sweet-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" enable-background="new 0 0 100 100" height="100" width="100"><path d="M70 47.5H30c-1.4.0-2.5 1.1-2.5 2.5v40c0 1.4 1.1 2.5 2.5 2.5h40c1.4.0 2.5-1.1 2.5-2.5V50C72.5 48.6 71.4 47.5 70 47.5zm-22.5 40h-5v-25h5v25zm10 0h-5v-25h5v25zm10 0h-5V60c0-1.4-1.1-2.5-2.5-2.5H40c-1.4.0-2.5 1.1-2.5 2.5v27.5h-5v-35h35v35z"/><path d="M50 42.5c1.4.0 2.5-1.1 2.5-2.5V16l5.7 5.7c.5.5 1.1.7 1.8.7s1.3-.2 1.8-.7c1-1 1-2.6.0-3.5l-10-10c-1-1-2.6-1-3.5.0l-10 10c-1 1-1 2.6.0 3.5 1 1 2.6 1 3.5.0l5.7-5.7v24c0 1.4 1.1 2.5 2.5 2.5z"/></svg>
+Back to the top
+</div>
+</div>
+</div>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/elevator.js/1.0.0/elevator.min.js></script>
+<script>var elementButton=document.querySelector('.elevator'),elevator=new Elevator({element:elementButton,mainAudio:'/music/elevator.mp3',endAudio:'/music/ding.mp3'})</script>
+<style>.down-arrow{font-size:120px;margin-top:90px;margin-bottom:90px;text-shadow:0 -20px #0c1f31,0 0 #c33329;color:transparent;-webkit-transform:scaleY(.8);-moz-transform:scaleY(.8);transform:scaleY(.8)}.elevator{text-align:center;cursor:pointer;width:140px;margin:auto}.elevator:hover{opacity:.7}.elevator svg{width:40px;height:40px;display:block;margin:auto;margin-bottom:5px}</style>
+<div class=site-footer>
+<div class=site-footer-item>
+<a href=https://github.com/MaxHalford><span class=inline-svg><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path fill="currentcolor" d="M8 0C3.58.0.0 3.582.0 8c0 3.535 2.292 6.533 5.47 7.59.4.075.547-.172.547-.385.0-.19-.007-.693-.01-1.36-2.226.483-2.695-1.073-2.695-1.073-.364-.924-.89-1.17-.89-1.17-.725-.496.056-.486.056-.486.803.056 1.225.824 1.225.824.714 1.223 1.873.87 2.33.665.072-.517.278-.87.507-1.07-1.777-.2-3.644-.888-3.644-3.953.0-.873.31-1.587.823-2.147-.09-.202-.36-1.015.07-2.117.0.0.67-.215 2.2.82.64-.178 1.32-.266 2-.27.68.004 1.36.092 2 .27 1.52-1.035 2.19-.82 2.19-.82.43 1.102.16 1.915.08 2.117.51.56.82 1.274.82 2.147.0 3.073-1.87 3.75-3.65 3.947.28.24.54.73.54 1.48.0 1.07-.01 1.93-.01 2.19.0.21.14.46.55.38C13.71 14.53 16 11.53 16 8c0-4.418-3.582-8-8-8"/></svg>
+</span>
+</a>
+</div>
+<div class=site-footer-item>
+<a href=https://linkedin.com/in/maxhalford><span class=inline-svg><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path fill="currentcolor" d="M13.632 13.635h-2.37V9.922c0-.886-.018-2.025-1.234-2.025-1.235.0-1.424.964-1.424 1.96v3.778h-2.37V6H8.51v1.04h.03c.318-.6 1.092-1.233 2.247-1.233 2.4.0 2.845 1.58 2.845 3.637v4.188zM3.558 4.955c-.762.0-1.376-.617-1.376-1.377.0-.758.614-1.375 1.376-1.375.76.0 1.376.617 1.376 1.375.0.76-.617 1.377-1.376 1.377zm1.188 8.68H2.37V6h2.376v7.635zM14.816.0H1.18C.528.0.0.516.0 1.153v13.694C0 15.484.528 16 1.18 16h13.635c.652.0 1.185-.516 1.185-1.153V1.153C16 .516 15.467.0 14.815.0z" fill-rule="nonzero"/></svg>
+</span>
+</a>
+</div>
+<div class=site-footer-item>
+<a href=https://twitter.com/halford_max><span class=inline-svg><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path fill="currentcolor" d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812.0-3.282 1.47-3.282 3.28.0.26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21.0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26.0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04.0 9.34-5 9.34-9.33.0-.14.0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"/></svg>
+</span>
+</a>
+</div>
+<div class=site-footer-item>
+<a href=https://kaggle.com/maxhalford><span class=inline-svg><svg role="img" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg"><title>Kaggle icon</title><path fill="currentcolor" d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187.0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236.0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234.0.351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144.0.236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.358"/></svg>
+</span>
+</a>
+</div>
+<div class=site-footer-item>
+<a href="https://scholar.google.com/citations?user=erRNNi0AAAAJ&hl=en"><span class=inline-svg><svg viewBox="0 0 1755 1755" xmlns="http://www.w3.org/2000/svg"><path fill="currentcolor" transform="translate(0 1610) scale(1 -1)" d="M896.76 1130.189c-27.618 30.838-59.618 46.19-95.802 46.19-40.952.0-72.382-14.738-94.288-44.15-21.906-29.322-32.864-64.848-32.864-106.584.0-35.548 5.998-71.738 18-108.64 11.958-36.886 31.524-69.814 58.954-98.838 27.334-29.096 59.144-43.616 95.284-43.616 40.288.0 71.76 13.502 94.332 40.492 22.476 26.954 33.756 60.98 33.756 101.962.0 34.904-5.954 71.454-17.906 109.664-11.894 38.262-31.752 72.784-59.466 103.52zm762.098 382.384c-64.358 64.424-141.86 96.57-232.572 96.57H329.144c-90.712.0-168.14-32.146-232.572-96.57-64.424-64.286-96.57-141.86-96.57-232.572V182.859c0-90.712 32.146-168.288 96.57-232.712 64.432-64.146 142-96.432 232.572-96.432h1097.142c90.712.0 168.214 32.286 232.572 96.57 64.432 64.432 96.644 141.86 96.644 232.572v1097.142c0 90.712-32.22 168.288-96.644 232.572zM1297.81 1154.159V762.033c0-18.154-14.856-33.016-33.016-33.016h-12.156c-18.162.0-33.016 14.856-33.016 33.016v392.126c0 16.12-2.34 29.578 20.188 32.41v52.172l-173.43-142.24c2.004-3.716 3.906-6.092 5.712-9.208 15.242-26.976 23.004-60.526 23.004-101.53.0-31.43-5.238-59.662-15.858-84.598-10.57-24.928-23.428-45.29-38.43-60.972-15.002-15.74-30.048-30.128-45.092-43.074-15.046-12.976-27.904-26.506-38.436-40.55-10.614-14-15.894-28.474-15.894-43.476.0-15.024 6.854-30.288 20.524-45.67 13.62-15.426 30.376-30.376 50.19-45.144 19.85-14.666 39.658-30.946 59.472-48.662 19.858-17.694 36.52-40.456 50.14-68.096 13.722-27.744 20.568-58.288 20.568-91.86.0-44.288-11.294-84.282-33.806-119.882-22.58-35.446-51.998-63.73-88.144-84.472-36.242-20.882-75-36.6-116.334-47.214-41.42-10.518-82.52-15.806-123.568-15.806-25.908.0-52.048 1.996-78.336 6.1-26.382 4.096-52.81 11.33-79.426 21.526-26.668 10.262-50.286 22.864-70.758 37.998-20.524 14.98-37.046 34.312-49.716 57.856-12.668 23.552-18.958 50.022-18.958 79.426.0 34.882 9.714 67.24 29.192 97.404 19.478 29.944 45.282 54.952 77.378 74.76 55.998 34.838 143.858 56.364 263.432 64.498-27.334 34.172-41.048 66.334-41.048 96.432.0 17.122 4.476 35.474 13.334 55.288-14.284-1.996-28.994-3.124-44.002-3.124-64.234.0-118.476 20.882-162.524 62.932-44.046 41.976-66.048 94.522-66.048 158.048.0 6.642.19 12.492.672 18.974H292.574l393.618 342.17h651.856l-60.24-47.024v-82.996c22.368-2.874 20.004-16.318 20.004-32.394zM900.382 544.929c-7.52 1.36-18.088 2.122-31.708 2.122-29.382.0-58.288-2.596-86.666-7.782-28.38-5.046-56.378-13.568-83.998-25.592-27.722-11.952-50.096-29.528-67.146-52.766-17.144-23.208-25.666-50.542-25.666-81.994.0-29.974 7.52-56.714 22.572-80.004 15.002-23.142 34.808-41.26 59.428-54.236 24.62-12.998 50.432-22.814 77.378-29.264 26.998-6.408 54.476-9.736 82.476-9.736 55.376.0 103.05 12.47 143.046 37.406 39.906 24.928 59.904 63.422 59.904 115.382.0 10.928-1.522 21.686-4.528 32.19-3.138 10.62-6.24 19.712-9.282 27.26-3.05 7.41-8.858 16.332-17.43 26.616-8.522 10.314-15.046 17.934-19.434 23.004-4.476 5.238-12.852 12.712-25.19 22.594-12.236 9.926-20.048 16.114-23.522 18.402-3.43 2.406-12.332 8.908-26.668 19.456-14.328 10.634-22.184 16.274-23.566 16.94z"/></svg>
+</span>
+</a>
+</div>
+<div class=site-footer-item>
+<a href=/files/resume_max_halford.pdf><span class=inline-svg><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 392.533 392.533" style="enable-background:new 0 0 392.533 392.533"><g><g><path fill="currentcolor" d="M292.396 324.849H99.879c-6.012.0-10.925 4.848-10.925 10.925.0 6.012 4.849 10.925 10.925 10.925h192.582c6.012.0 10.925-4.849 10.925-10.925C303.321 329.697 298.473 324.849 292.396 324.849z"/></g></g><g><g><path fill="currentcolor" d="M292.396 277.01H99.879c-6.012.0-10.925 4.848-10.925 10.925.0 6.012 4.849 10.925 10.925 10.925h192.582c6.012.0 10.925-4.849 10.925-10.925C303.321 281.859 298.473 277.01 292.396 277.01z"/></g></g><g><g><path fill="currentcolor" d="M196.137 45.834c-25.859.0-46.998 21.075-46.998 46.998.0 25.859 21.139 46.933 46.998 46.933s46.998-21.075 46.998-46.998-21.139-46.933-46.998-46.933zm0 72.017c-13.77.0-25.083-11.313-25.083-25.083s11.248-25.083 25.083-25.083 25.083 11.313 25.083 25.083c0 13.769-11.313 25.083-25.083 25.083z"/></g></g><g><g><path fill="currentcolor" d="M258.521 163.362c-39.887-15.515-84.752-15.515-124.638.0-13.059 5.107-21.786 18.101-21.786 32.388v44.347c-.065 6.012 4.849 10.925 10.861 10.925h146.424c6.012.0 10.925-4.848 10.925-10.925V195.75C280.307 181.463 271.58 168.469 258.521 163.362zm0 65.874H133.883v-33.422c0-5.301 3.168-10.214 7.887-12.024 34.844-13.511 74.02-13.511 108.865.0 4.719 1.875 7.887 6.659 7.887 12.024v33.422z"/></g></g><g><g><path fill="currentcolor" d="M313.083.0H131.491c-8.404.0-16.291 3.232-22.238 9.18L57.018 61.414c-5.947 5.948-9.18 13.834-9.18 22.238v277.333c0 17.39 14.158 31.547 31.547 31.547h233.762c17.39.0 31.547-14.158 31.547-31.547V31.547C344.501 14.158 330.343.0 313.083.0zM112.032 37.236v27.022H85.01l27.022-27.022zm210.683 79.58h-40.598c-6.012.0-10.925 4.849-10.925 10.925.0 6.012 4.848 10.925 10.925 10.925h40.598v19.394h-14.869c-6.012.0-10.925 4.848-10.925 10.925.0 6.012 4.849 10.925 10.925 10.925h14.869v181.139c0 5.366-4.331 9.697-9.632 9.697H79.192c-5.301.0-9.632-4.331-9.632-9.632V86.044h53.398c6.012.0 10.925-4.848 10.925-10.925V21.721h179.2c5.301.0 9.632 4.331 9.632 9.632v85.463z"/></g></g><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
+</span>
+</a>
+</div>
+<div class=site-footer-item>
+<a href=https://play.spotify.com/user/1166811350><span class=inline-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168"><path fill="currentcolor" d="m83.996.277C37.747.277.253 37.77.253 84.019c0 46.251 37.494 83.741 83.743 83.741 46.254.0 83.744-37.49 83.744-83.741.0-46.246-37.49-83.738-83.745-83.738l.001-.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809.64-5.609-1.12-6.249-3.93-.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-.001zm.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/></svg>
+</span>
+</a>
+</div>
+<div class=site-footer-item>
+<a href=mailto:maxhalford25@gmail.com><span class=inline-svg><svg viewBox="0 0 15 20" xmlns="http://www.w3.org/2000/svg"><title>mail</title><path fill="currentcolor" d="M0 4v8c0 .55.45 1 1 1h12c.55.0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55.0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5-4-3 4-3v6z" fill="#000" fill-rule="evenodd"/></svg>
+</span>
+</a>
+</div>
+<div class=site-footer-item>
+<a href=/index.xml><span class=inline-svg><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path fill="currentcolor" d="M12.8 16C12.8 8.978 7.022 3.2.0 3.2V0c8.777.0 16 7.223 16 16h-3.2zM2.194 11.61c1.21.0 2.195.985 2.195 2.196.0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017.0 13.806c0-1.21.983-2.195 2.194-2.195zM10.606 16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818.0 10.606 4.79 10.606 10.607z"/></svg>
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<script></script>
+</body>
+</html>
