@@ -106,6 +106,9 @@ This is a list of blogs I regularly scroll through.
 - [Single Lunch](https://www.singlelunch.com/blog/)
 - [Freakonometrics](https://freakonometrics.hypotheses.org/)
 - [Martin Daniel](http://www.martindaniel.co/)
+- [Chris Kiehl](https://chriskiehl.com/)
+- [ithaka.im](http://ithaka.im/) -- A guy I met who travelled for 6 years with his wife on a bike, very inspiring.
+- [Muthukrishnan](https://muthu.co/) -- Has written some neat document processing stuff.
 
 ## Hall of fame
 
@@ -178,6 +181,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [The Data Science Hierarchy of Needs - Monica Rogati](https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007)
 - [Are Pop Lyrics Getting More Repetitive? - Colin Morris](https://pudding.cool/2017/05/song-repetition/)
 - [Tuesday Changes Everything - Jesper Juul](https://www.jesperjuul.net/ludologist/2010/06/08/tuesday-changes-everything-a-mathematical-puzzle/)
+- [Gently down the stream - Mitch Seymour](https://www.gentlydownthe.stream/)
 
 ## Tools
 
@@ -195,6 +199,8 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [git.io](https://git.io/) -- URL shortener.
 - [Connected Papers](https://www.connectedpapers.com/) -- Explore connected papers in a visual graph.
 - [Excalidraw](https://excalidraw.com/) -- I like using this to [create charts](https://blog.excalidraw.com/tell-your-story-with-charts/).
+- [asciiflow](https://asciiflow.com/)
+- [Whimsical Flowcharts](https://whimsical.com/flowcharts)
 - [Motionbox](https://motionbox.io/) -- Video editor.
 - [LanguageTool](https://languagetool.org/) -- Great for proofreading.
 - [drawdata.xyz](https://drawdata.xyz/)
@@ -202,10 +208,8 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [matcha.io](https://www.mathcha.io/)
 - [colorbrewer2](https://colorbrewer2.org)
 - [RegExr](https://regexr.com/)
-- [Whimsical Flowcharts](https://whimsical.com/flowcharts)
 - [explainshell.com](https://explainshell.com/)
 - [labelstud.io](https://labelstud.io/)
-- [asciiflow](https://asciiflow.com/)
 - [Retool](https://retool.com/)
 
 ## Eye candy
