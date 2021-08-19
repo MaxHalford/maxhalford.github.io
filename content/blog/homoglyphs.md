@@ -257,7 +257,6 @@ for group in homoglyph_groups:
 
 >>> homoglyphs('O')
 Ô Ó Ǒ Ò Ṍ Ṑ Ő Ȫ Ȍ Ȯ Ŏ Ö Ȱ Ố Ồ Õ Ō Ṓ Ổ
-
 ```
 
 What's interesting is that these characters actually look different, at least on my laptop. That's probably because some details have been smoothed out during the rasterisation phase due to the grid being too small. Increasing the grid size would remove some of these false positives, at the cost of a higher compute time. Then again, omitting these details might be desirable. It all depends on your definition of homoglyphs and your use case.
