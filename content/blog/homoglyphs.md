@@ -130,7 +130,7 @@ array([[ 36, 212,   0,   0,   0, 152,  92,   0,   0,   0],
        [  0,   0,   0,   0,   0,   0,   0,   0,   0,   0]], dtype=uint8)
 ```
 
-The starting point of each drawing is at the top-left. We could put some effort in and make it so that the drawings are centered. But that shouldn't impact the comparison, so there's no point doing it. We can see that the same pixels are "activated", but that they contain the same grayscale values. We can solve this by converting each grayscale representation to a bitmap of 0s and 1s. To each the comparison across many characters, I think it also makes sense to concatenate the bitmap into a string.
+The starting point of each drawing is at the top-left. We could put some effort in and make it so that the drawings are centered. But that shouldn't impact the comparison, so there's no point doing it. We can see that the same pixels are "activated" in each rendering. However, the grayscale values are different. We can coarse the images by converting them to bitmaps of 0s and 1s. To each the comparison across many characters, I think it also makes sense to concatenate the bitmap into a string.
 
 ```py
 def encode_char(char, typeface='Helvetica', size=10):
