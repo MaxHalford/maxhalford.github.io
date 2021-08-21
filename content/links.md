@@ -185,9 +185,8 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 
 ## Tools
 
-- [benthos.dev](https://www.benthos.dev/)
 - [Herbie](https://herbie.uwplse.org/) -- Find and fix floating-point problems.
-- [Google Charts](https://developers.google.com/chart/)
+- [Google Charts](https://developers.google.com/chart/) -- Underappreciated.
 - [cortex.dev](https://www.cortex.dev/)
 - [Sejda](https://www.sejda.com/sign-pdf) -- Fill out and sign PDFs.
 - [latex2png](http://latex2png.com/)
@@ -238,3 +237,4 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [lossfunctions.tumblr.com](https://lossfunctions.tumblr.com/) -- Yes, that's a thing.
 - [Shirts of Peter Norvig](http://charlesbroskoski.com/_/view.php?id=shirts-of-peter-norvig)
 - [United Airlines ads by Cream Electric Art](https://www.creamelectricart.com/united-airlines/)
+- [Miniature Calendar by Tatsuya Tanaka](https://miniature-calendar.com/) -- Broccolis that look like trees, stables that look like workout benches... I love it!
