@@ -182,6 +182,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Are Pop Lyrics Getting More Repetitive? - Colin Morris](https://pudding.cool/2017/05/song-repetition/)
 - [Tuesday Changes Everything - Jesper Juul](https://www.jesperjuul.net/ludologist/2010/06/08/tuesday-changes-everything-a-mathematical-puzzle/)
 - [Gently down the stream - Mitch Seymour](https://www.gentlydownthe.stream/)
+- [Les études statistiques sont-elles hors de contrôle? - David Louapre](https://scienceetonnante.com/2021/08/30/les-etudes-statistiques-sont-elles-hors-de-controle/)
 
 ## Tools
 
