@@ -2,7 +2,7 @@
 <head>
 <script async defer data-website-id=6023252a-3a97-470f-b4ee-5082d242bb9a src=https://umami.pourtan.eu/umami.js></script>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Max Halford">
@@ -200,7 +200,7 @@
     <span class=p>}</span>
     <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=n>tqdm</span><span class=p>(</span><span class=nb>range</span><span class=p>(</span><span class=mh>0x10ffff</span><span class=p>))</span>
 <span class=p>)</span>
-</code></pre></div><pre><code>100%|██████████| 1114111/1114111 [09:37&lt;00:00, 1929.22it/s]
+</code></pre></div><pre tabindex=0><code>100%|██████████| 1114111/1114111 [09:37&lt;00:00, 1929.22it/s]
 </code></pre><p>That&rsquo;s a lot of characters. It&rsquo;s more than the 143,859 characters in the latest Unicode standard. The <a href=https://unicode.org/faq/basic_q.html>Unicode FAQ</a> gives some pointers as to why this is the case. The answer is a bit complicated.</p>
 <p>Anyway, now that each character has been encoded, I can group the characters with the same encodings together. I&rsquo;m going to ignore the characters that render all black.</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=n>groups</span> <span class=o>=</span> <span class=p>(</span>
@@ -314,6 +314,9 @@ Back to the top
 </span>
 </a>
 </div>
+</div>
+<div style=margin-bottom:80px;display:flex;justify-content:center>
+<iframe src=https://github.com/sponsors/MaxHalford/button title="Sponsor MaxHalford" height=35 width=116 style=border:0></iframe>
 </div>
 </div>
 </div>

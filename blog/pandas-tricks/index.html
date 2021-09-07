@@ -2,7 +2,7 @@
 <head>
 <script async defer data-website-id=6023252a-3a97-470f-b4ee-5082d242bb9a src=https://umami.pourtan.eu/umami.js></script>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Max Halford">
@@ -389,11 +389,11 @@
 <p>In this case, you might want to <a href=https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.interpolate.html>interpolate</a> the missing values before feeding the data to a machine learning model. However, in order for your interpolation to be robust, you might want to verify that the maximum number of consecutive values isn&rsquo;t too large. You can calculate the latter as so:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=n>missing</span> <span class=o>=</span> <span class=n>temperature</span><span class=o>.</span><span class=n>isnull</span><span class=p>()</span>
 <span class=n>missing</span><span class=o>.</span><span class=n>groupby</span><span class=p>((</span><span class=o>~</span><span class=n>missing</span><span class=p>)</span><span class=o>.</span><span class=n>cumsum</span><span class=p>())</span><span class=o>.</span><span class=n>sum</span><span class=p>()</span><span class=o>.</span><span class=n>max</span><span class=p>()</span>
-</code></pre></div><pre><code>3
+</code></pre></div><pre tabindex=0><code>3
 </code></pre><p>Naturally, you can adapt this code to count consecutive values of arbitrary events. Indeed, the <code>missing</code> series definition could be replaced by a different condition altogether. For instance, we can determine the longest streak of rainy days like this:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=n>rainy</span> <span class=o>=</span> <span class=n>weather</span><span class=o>.</span><span class=n>eq</span><span class=p>(</span><span class=s1>&#39;rain&#39;</span><span class=p>)</span>
 <span class=n>rainy</span><span class=o>.</span><span class=n>groupby</span><span class=p>((</span><span class=o>~</span><span class=n>rainy</span><span class=p>)</span><span class=o>.</span><span class=n>cumsum</span><span class=p>())</span><span class=o>.</span><span class=n>sum</span><span class=p>()</span><span class=o>.</span><span class=n>max</span><span class=p>()</span>
-</code></pre></div><pre><code>2
+</code></pre></div><pre tabindex=0><code>2
 </code></pre><h2 id=target-encoding-for-time-series>Target encoding for time series</h2>
 <p>The one thing I do in every time series competition is <a href=http://contrib.scikit-learn.org/category_encoders/targetencoder.html>target encoding</a>. In short, the goal of target encoding is to replace a category by the average of the target values of the rows that belong to said category. Naturally, you&rsquo;re not limited to using an average. You can also use <a href=https://maxhalford.github.io/blog/target-encoding/>Bayesian target encoding</a> if some of your categories are rare.</p>
 <p>Target encoding is very important for time series data. It has been used in almost every top model on Kaggle time series competitions, such as <a href=https://www.kaggle.com/c/ashrae-energy-prediction>ASHRAE</a>, <a href=https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting>Recruit Restaurants</a>, and <a href=https://www.kaggle.com/c/web-traffic-time-series-forecasting>Wikipedia Web Traffic</a>. When you do target encoding on temporal data, you need to be wary of not leaking current and future information into the aggregate of each row. Basically, you need to shift the target values within each group backwards. Indeed, for any given moment, we want our aggregate to pertain to past data only. As an example, consider the following toy dataset:</p>
@@ -706,6 +706,9 @@ Back to the top
 </span>
 </a>
 </div>
+</div>
+<div style=margin-bottom:80px;display:flex;justify-content:center>
+<iframe src=https://github.com/sponsors/MaxHalford/button title="Sponsor MaxHalford" height=35 width=116 style=border:0></iframe>
 </div>
 </div>
 </div>

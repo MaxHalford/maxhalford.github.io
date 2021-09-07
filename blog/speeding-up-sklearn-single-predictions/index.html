@@ -2,7 +2,7 @@
 <head>
 <script async defer data-website-id=6023252a-3a97-470f-b4ee-5082d242bb9a src=https://umami.pourtan.eu/umami.js></script>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Max Halford">
@@ -65,7 +65,7 @@
 <span class=n>lin_reg</span> <span class=o>=</span> <span class=n>linear_model</span><span class=o>.</span><span class=n>LinearRegression</span><span class=p>()</span>
 <span class=n>lin_reg</span><span class=o>.</span><span class=n>fit</span><span class=p>(</span><span class=n>X</span><span class=p>,</span> <span class=n>y</span><span class=p>)</span>
 <span class=o>%</span><span class=n>timeit</span> <span class=n>lin_reg</span><span class=o>.</span><span class=n>predict</span><span class=p>(</span><span class=n>X</span><span class=p>[[</span><span class=mi>0</span><span class=p>]])[</span><span class=mi>0</span><span class=p>]</span>
-</code></pre></div><pre><code>44.4 µs ± 3.7 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</code></pre></div><pre tabindex=0><code>44.4 µs ± 3.7 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </code></pre><p>44.4 microseconds doesn&rsquo;t seem like a lot of time, but it turns out that we can do much better. The thing is that scikit-learn does a lot of checks every time you call <code>predict</code>. For example, it checks that you have provided a 2D numpy array, that the number of features is correct, that non of the values are missing, etc. In many cases these checks might be redundant because you might have already done them yourself as part of a validation step in your application. Therefore, we can write a &ldquo;barebones&rdquo; implementation which skips the details and gets down to the essential, which is evaluating the linear regression. In essence, a linear regression is just a sum of an intercept and a dot product between some weights and the input features. We can implement this ourselves. To do so, we&rsquo;ll define a <code>BarebonesLinearRegression</code> class with a <code>predict_single</code> method which takes as input a 1D array.</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>import</span> <span class=nn>numpy</span> <span class=k>as</span> <span class=nn>np</span>
 
@@ -77,7 +77,7 @@
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=n>bb_lin_reg</span> <span class=o>=</span> <span class=n>BarebonesLinearRegression</span><span class=p>()</span>
 <span class=n>bb_lin_reg</span><span class=o>.</span><span class=n>fit</span><span class=p>(</span><span class=n>X</span><span class=p>,</span> <span class=n>y</span><span class=p>)</span>
 <span class=o>%</span><span class=n>timeit</span> <span class=n>bb_lin_reg</span><span class=o>.</span><span class=n>predict_single</span><span class=p>(</span><span class=n>X</span><span class=p>[</span><span class=mi>0</span><span class=p>])</span>
-</code></pre></div><pre><code>1.38 µs ± 31.7 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+</code></pre></div><pre tabindex=0><code>1.38 µs ± 31.7 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 </code></pre><p>The barebones implementation is on average <strong>32 times faster that scikit-learn implementation</strong>. I&rsquo;ll let you be the judge of the significance of this result. To be fair, if you&rsquo;re using an API then most of the latency comes the HTTP protocol, so the benefit of this trick might be amortized. Still, I think it&rsquo;s a cool trick to know, and it has it&rsquo;s applications elsewhere. For instance, it was critical in my team&rsquo;s <a href=https://github.com/MaxHalford/idao-2020-qualifiers>winning solution</a> to the <a href=https://idao.world/results/>qualifiers of the 2020 edition of the IDAO</a>, where we needed to provide a model which had to make a bunch of predictions under a time limit.</p>
 <p>We can apply this trick to other models, such as scikit-learn&rsquo;s <a href=https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression><code>LogisticRegression</code></a>. Let&rsquo;s first evaluate the default implementation:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>from</span> <span class=nn>sklearn</span> <span class=kn>import</span> <span class=n>datasets</span>
@@ -88,7 +88,7 @@
 <span class=n>log_reg</span> <span class=o>=</span> <span class=n>linear_model</span><span class=o>.</span><span class=n>LogisticRegression</span><span class=p>()</span>
 <span class=n>log_reg</span><span class=o>.</span><span class=n>fit</span><span class=p>(</span><span class=n>X</span><span class=p>,</span> <span class=n>y</span><span class=p>)</span>
 <span class=o>%</span><span class=n>timeit</span> <span class=n>log_reg</span><span class=o>.</span><span class=n>predict_proba</span><span class=p>(</span><span class=n>X</span><span class=p>[[</span><span class=mi>0</span><span class=p>]])[</span><span class=mi>0</span><span class=p>]</span>
-</code></pre></div><pre><code>153 µs ± 1.31 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</code></pre></div><pre tabindex=0><code>153 µs ± 1.31 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </code></pre><p>We can implement a <code>predict_single</code> method with scipy&rsquo;s <a href=https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.softmax.html><code>softmax</code></a> function:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>from</span> <span class=nn>scipy</span> <span class=kn>import</span> <span class=n>special</span>
 
@@ -100,10 +100,10 @@
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=n>bb_log_reg</span> <span class=o>=</span> <span class=n>BarebonesLogisticRegression</span><span class=p>()</span>
 <span class=n>bb_log_reg</span><span class=o>.</span><span class=n>fit</span><span class=p>(</span><span class=n>X</span><span class=p>,</span> <span class=n>y</span><span class=p>)</span>
 <span class=o>%</span><span class=n>timeit</span> <span class=n>bb_log_reg</span><span class=o>.</span><span class=n>predict_proba_single</span><span class=p>(</span><span class=n>X</span><span class=p>[</span><span class=mi>0</span><span class=p>])</span>
-</code></pre></div><pre><code>71.3 µs ± 3.59 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</code></pre></div><pre tabindex=0><code>71.3 µs ± 3.59 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </code></pre><p>That&rsquo;s definitely a boost, but it&rsquo;s nothing to brag home about. We can check what&rsquo;s taking the most time with IPython&rsquo;s <a href=https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-prun><code>%prun</code></a> command:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=o>%</span><span class=n>prun</span> <span class=o>-</span><span class=n>l</span> <span class=mi>10</span> <span class=p>[</span><span class=n>bb_log_reg</span><span class=o>.</span><span class=n>predict_proba_single</span><span class=p>(</span><span class=n>X</span><span class=p>[</span><span class=mi>0</span><span class=p>])</span> <span class=k>for</span> <span class=n>_</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>100000</span><span class=p>)]</span>
-</code></pre></div><pre><code>        4400004 function calls in 4.414 seconds
+</code></pre></div><pre tabindex=0><code>        4400004 function calls in 4.414 seconds
 
 Ordered by: internal time
 List reduced from 34 to 10 due to restriction &lt;10&gt;
@@ -134,7 +134,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=n>bb_log_reg</span> <span class=o>=</span> <span class=n>BarebonesLogisticRegression</span><span class=p>()</span>
 <span class=n>bb_log_reg</span><span class=o>.</span><span class=n>fit</span><span class=p>(</span><span class=n>X</span><span class=p>,</span> <span class=n>y</span><span class=p>)</span>
 <span class=o>%</span><span class=n>timeit</span> <span class=n>bb_log_reg</span><span class=o>.</span><span class=n>predict_proba_single</span><span class=p>(</span><span class=n>X</span><span class=p>[</span><span class=mi>0</span><span class=p>])</span>
-</code></pre></div><pre><code>14.7 µs ± 682 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+</code></pre></div><pre tabindex=0><code>14.7 µs ± 682 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </code></pre><p>This is 4.8 faster than with <code>special.softmax</code>, and 10.4 times than scikit-learn&rsquo;s default implementation. Not bad!</p>
 <p>Linear and logistic regression might be simple methods, but according to a <a href=https://arxiv.org/abs/1912.09536>very recent survey paper</a> by a team at Microsoft they are two of the most used classes in scikit-learn, so they merit attention. Now how about scikit-learn <a href=https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html><code>StandardScaler</code></a>? It&rsquo;s a common preprocessing step before any linear model, and as such is likely to be used in conjunction with the two models above. As usual let&rsquo;s start off by measuring the performance of the default implementation:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>from</span> <span class=nn>sklearn</span> <span class=kn>import</span> <span class=n>preprocessing</span>
@@ -142,7 +142,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <span class=n>scaler</span> <span class=o>=</span> <span class=n>preprocessing</span><span class=o>.</span><span class=n>StandardScaler</span><span class=p>()</span>
 <span class=n>scaler</span><span class=o>.</span><span class=n>fit</span><span class=p>(</span><span class=n>X</span><span class=p>)</span>
 <span class=o>%</span><span class=n>timeit</span> <span class=n>scaler</span><span class=o>.</span><span class=n>transform</span><span class=p>(</span><span class=n>X</span><span class=p>[[</span><span class=mi>0</span><span class=p>]])[</span><span class=mi>0</span><span class=p>]</span>
-</code></pre></div><pre><code>43 µs ± 1.07 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</code></pre></div><pre tabindex=0><code>43 µs ± 1.07 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </code></pre><p>A standard scaling step requires nothing more than subtracting the column-wise mean and dividing by the column-wise standard deviation of the data, as so:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=k>class</span> <span class=nc>BarebonesStandardScaler</span><span class=p>(</span><span class=n>preprocessing</span><span class=o>.</span><span class=n>StandardScaler</span><span class=p>):</span>
 
@@ -152,7 +152,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=n>bb_scaler</span> <span class=o>=</span> <span class=n>BarebonesStandardScaler</span><span class=p>()</span>
 <span class=n>bb_scaler</span><span class=o>.</span><span class=n>fit</span><span class=p>(</span><span class=n>X</span><span class=p>)</span>
 <span class=o>%</span><span class=n>timeit</span> <span class=n>bb_scaler</span><span class=o>.</span><span class=n>transform_single</span><span class=p>(</span><span class=n>X</span><span class=p>[</span><span class=mi>0</span><span class=p>])</span>
-</code></pre></div><pre><code>1.7 µs ± 34.6 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+</code></pre></div><pre tabindex=0><code>1.7 µs ± 34.6 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 </code></pre><p>Now what if we want to use our custom <code>BarebonesStandardScaler</code> with <code>BarebonesLinearRegression</code> or <code>BarebonesLogisticRegression</code> at the same time? Well the canonical way to compose modeling steps in scikit-learn is through the <a href=https://scikit-learn.org/stable/modules/compose.html>use of pipelines</a>. We can implement a custom pipeline class, which inherits from scikit-learn&rsquo;s <a href=https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html><code>pipeline.Pipeline</code></a> and provides a <code>predict_single</code> function as well as a <code>predict_proba_single</code> function. Here goes:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>from</span> <span class=nn>sklearn</span> <span class=kn>import</span> <span class=n>pipeline</span>
 
@@ -171,12 +171,12 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=n>bb_pp</span> <span class=o>=</span> <span class=n>BarebonesPipeline</span><span class=p>([(</span><span class=s1>&#39;bb_scaler&#39;</span><span class=p>,</span> <span class=n>bb_scaler</span><span class=p>),</span> <span class=p>(</span><span class=s1>&#39;bb_lin_reg&#39;</span><span class=p>,</span> <span class=n>bb_lin_reg</span><span class=p>)])</span>
 <span class=n>bb_pp</span><span class=o>.</span><span class=n>fit</span><span class=p>(</span><span class=n>X</span><span class=p>,</span> <span class=n>y</span><span class=p>)</span>
 <span class=o>%</span><span class=n>timeit</span> <span class=n>bb_pp</span><span class=o>.</span><span class=n>predict_single</span><span class=p>(</span><span class=n>X</span><span class=p>[</span><span class=mi>0</span><span class=p>])</span>
-</code></pre></div><pre><code>3.96 µs ± 184 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+</code></pre></div><pre tabindex=0><code>3.96 µs ± 184 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </code></pre><p>Now let&rsquo;s compare that with the default implementation from scikit-learn:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=n>pp</span> <span class=o>=</span> <span class=n>pipeline</span><span class=o>.</span><span class=n>Pipeline</span><span class=p>([(</span><span class=s1>&#39;scaler&#39;</span><span class=p>,</span> <span class=n>scaler</span><span class=p>),</span> <span class=p>(</span><span class=s1>&#39;lin_reg&#39;</span><span class=p>,</span> <span class=n>lin_reg</span><span class=p>)])</span>
 <span class=n>pp</span><span class=o>.</span><span class=n>fit</span><span class=p>(</span><span class=n>X</span><span class=p>,</span> <span class=n>y</span><span class=p>)</span>
 <span class=o>%</span><span class=n>timeit</span> <span class=n>pp</span><span class=o>.</span><span class=n>predict</span><span class=p>(</span><span class=n>X</span><span class=p>[[</span><span class=mi>0</span><span class=p>]])[</span><span class=mi>0</span><span class=p>]</span>
-</code></pre></div><pre><code>97.6 µs ± 4.19 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</code></pre></div><pre tabindex=0><code>97.6 µs ± 4.19 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </code></pre><p>Our custom implementation is around 24.7 times faster. Finally, we can check that our implementation produces the correct outputs:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=k>for</span> <span class=n>xi</span> <span class=ow>in</span> <span class=n>X</span><span class=p>:</span>
     <span class=k>assert</span> <span class=n>pp</span><span class=o>.</span><span class=n>predict</span><span class=p>([</span><span class=n>xi</span><span class=p>])[</span><span class=mi>0</span><span class=p>]</span> <span class=o>==</span> <span class=n>bb_pp</span><span class=o>.</span><span class=n>predict_single</span><span class=p>(</span><span class=n>xi</span><span class=p>)</span>
@@ -239,6 +239,9 @@ Back to the top
 </span>
 </a>
 </div>
+</div>
+<div style=margin-bottom:80px;display:flex;justify-content:center>
+<iframe src=https://github.com/sponsors/MaxHalford/button title="Sponsor MaxHalford" height=35 width=116 style=border:0></iframe>
 </div>
 </div>
 </div>

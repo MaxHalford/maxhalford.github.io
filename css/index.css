@@ -121,10 +121,10 @@ body {
 }
 
 .site-footer {
-  margin-top: 50px;
-  margin-bottom: 80px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center !important;
   padding: 12px 0;
   border-width: 3px;
   border-style: solid none;
@@ -305,9 +305,7 @@ code.has-jax {
     margin-bottom: 10px;
   }
   .site-footer {
-    margin-bottom: 20px;
     margin-top: 20px;
-    justify-content: center !important;
   }
   .site-footer-item {
     margin-right: 8px;

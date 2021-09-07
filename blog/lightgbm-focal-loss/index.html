@@ -2,7 +2,7 @@
 <head>
 <script async defer data-website-id=6023252a-3a97-470f-b4ee-5082d242bb9a src=https://umami.pourtan.eu/umami.js></script>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Max Halford">
@@ -333,7 +333,7 @@ $ unzip creditcardfraud.zip
 <span class=nb>print</span><span class=p>()</span>
 <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s ROC AUC: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>roc_auc_score</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
 <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s logloss: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>log_loss</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
-</code></pre></div><pre><code>Training until validation scores don't improve for 20 rounds
+</code></pre></div><pre tabindex=0><code>Training until validation scores don't improve for 20 rounds
 [100]	fit's binary_logloss: 0.0018981	    val's binary_logloss: 0.0035569
 [200]	fit's binary_logloss: 0.00080822	val's binary_logloss: 0.00283644
 [300]	fit's binary_logloss: 0.000396519	val's binary_logloss: 0.00264941
@@ -385,7 +385,7 @@ Test's logloss: 0.00237
 <span class=nb>print</span><span class=p>()</span>
 <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s ROC AUC: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>roc_auc_score</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
 <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s logloss: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>log_loss</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
-</code></pre></div><pre><code>Training until validation scores don't improve for 20 rounds
+</code></pre></div><pre tabindex=0><code>Training until validation scores don't improve for 20 rounds
 [100]	fit's logloss: 0.203632	    val's logloss: 0.203803
 [200]	fit's logloss: 0.0709961	val's logloss: 0.0712959
 [300]	fit's logloss: 0.0263333	val's logloss: 0.0267926
@@ -453,7 +453,7 @@ F_0(x) = \mathop{\mathrm{argmin}}\limits_{\zeta} \sum_{i=1}^n L(y_i, \zeta)
 <span class=nb>print</span><span class=p>()</span>
 <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s ROC AUC: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>roc_auc_score</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
 <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s logloss: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>log_loss</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
-</code></pre></div><pre><code>Training until validation scores don't improve for 20 rounds
+</code></pre></div><pre tabindex=0><code>Training until validation scores don't improve for 20 rounds
 [100]	fit's logloss: 0.00191083	val's logloss: 0.00358371
 [200]	fit's logloss: 0.000825181	val's logloss: 0.00286873
 [300]	fit's logloss: 0.000403679	val's logloss: 0.00262094
@@ -535,7 +535,7 @@ Test's logloss: 0.00233
 <span class=nb>print</span><span class=p>()</span>
 <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s ROC AUC: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>roc_auc_score</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
 <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s logloss: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>log_loss</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
-</code></pre></div><pre><code>Training until validation scores don't improve for 20 rounds
+</code></pre></div><pre tabindex=0><code>Training until validation scores don't improve for 20 rounds
 [100]	fit's logloss: 0.00191083	val's logloss: 0.00358371
 [200]	fit's logloss: 0.000825181	val's logloss: 0.00286873
 [300]	fit's logloss: 0.000403679	val's logloss: 0.00262094
@@ -740,7 +740,7 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
     <span class=n>grad</span><span class=o>=</span><span class=k>lambda</span> <span class=n>x</span><span class=p>:</span> <span class=n>fl</span><span class=o>.</span><span class=n>grad</span><span class=p>(</span><span class=n>y_true</span><span class=p>,</span> <span class=n>x</span><span class=p>)</span> <span class=o>/</span> <span class=p>(</span><span class=n>x</span> <span class=o>*</span> <span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>x</span><span class=p>)),</span>
     <span class=n>values</span><span class=o>=</span><span class=n>y_pred</span>
 <span class=p>)</span>
-</code></pre></div><pre><code>2.3954956968511336e-07
+</code></pre></div><pre tabindex=0><code>2.3954956968511336e-07
 </code></pre><p>Now you might be wondering why we divide the output of <code>grad</code>. The reason why is because <code>check_gradient</code> varies the values of <code>y_pred</code>. We would thus like to examine the gradient of the loss function with respect to <code>p_t</code> and not <code>z</code>. Therefore, we need to divide our gradient by $\frac{\partial p}{\partial z}$, which is equal to <code>p(1 - p)</code>.</p>
 <p>Let&rsquo;s run these checks for different values of $\alpha$ and $\gamma$, and verify that the error is always reasonably low:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=k>for</span> <span class=n>gamma</span> <span class=ow>in</span> <span class=p>[</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>]:</span>
@@ -853,7 +853,7 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
 <span class=nb>print</span><span class=p>()</span>
 <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s ROC AUC: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>roc_auc_score</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
 <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Test&#39;s logloss: </span><span class=si>{</span><span class=n>metrics</span><span class=o>.</span><span class=n>log_loss</span><span class=p>(</span><span class=n>y_test</span><span class=p>,</span> <span class=n>y_pred</span><span class=p>)</span><span class=si>:</span><span class=s2>.5f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
-</code></pre></div><pre><code>Training until validation scores don't improve for 20 rounds
+</code></pre></div><pre tabindex=0><code>Training until validation scores don't improve for 20 rounds
 [100]	fit's focal_loss: 0.00190475	val's focal_loss: 0.00356043
 [200]	fit's focal_loss: 0.000811846	val's focal_loss: 0.00285806
 [300]	fit's focal_loss: 0.000401933	val's focal_loss: 0.00267161
@@ -922,6 +922,9 @@ Back to the top
 </span>
 </a>
 </div>
+</div>
+<div style=margin-bottom:80px;display:flex;justify-content:center>
+<iframe src=https://github.com/sponsors/MaxHalford/button title="Sponsor MaxHalford" height=35 width=116 style=border:0></iframe>
 </div>
 </div>
 </div>

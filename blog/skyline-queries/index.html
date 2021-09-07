@@ -2,7 +2,7 @@
 <head>
 <script async defer data-website-id=6023252a-3a97-470f-b4ee-5082d242bb9a src=https://umami.pourtan.eu/umami.js></script>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Max Halford">
@@ -268,7 +268,7 @@
 <span class=n>skyline</span> <span class=o>=</span> <span class=n>find_skyline_bnl</span><span class=p>(</span><span class=n>df</span><span class=o>=</span><span class=n>houses</span><span class=p>,</span> <span class=n>to_min</span><span class=o>=</span><span class=p>[</span><span class=s1>&#39;price&#39;</span><span class=p>],</span> <span class=n>to_max</span><span class=o>=</span><span class=p>[</span><span class=s1>&#39;size&#39;</span><span class=p>])</span>
 <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s1>&#39;Block nested loop took </span><span class=si>{</span><span class=n>time</span><span class=o>.</span><span class=n>time</span><span class=p>()</span> <span class=o>-</span> <span class=n>tic</span><span class=si>:</span><span class=s1>.3f</span><span class=si>}</span><span class=s1> seconds&#39;</span><span class=p>)</span>
 </code></pre></div><p>This outputs the following:</p>
-<pre><code>Brute-force took 10.658 seconds
+<pre tabindex=0><code>Brute-force took 10.658 seconds
 Block nested loop took 0.320 seconds
 </code></pre><p>In this case the block nested loop is over 30 times faster than the brute-force approach, which is great. Finally let&rsquo;s look at how the execution time of the block nested loop method evolves with the number of rows. I simply recorded the execution time for sizes between 10,000 and 100,000 with a step of 10,000. I repeated the results 10 times in order to compute an average and a standard deviation which can be displayed using <a href=https://seaborn.pydata.org>seaborn</a>.</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>seaborn</span> <span class=k>as</span> <span class=nn>sns</span>
@@ -348,6 +348,9 @@ Back to the top
 </span>
 </a>
 </div>
+</div>
+<div style=margin-bottom:80px;display:flex;justify-content:center>
+<iframe src=https://github.com/sponsors/MaxHalford/button title="Sponsor MaxHalford" height=35 width=116 style=border:0></iframe>
 </div>
 </div>
 </div>
