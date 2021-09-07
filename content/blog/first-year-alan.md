@@ -1,6 +1,6 @@
 +++
-date = "2021-01-06"
-title = "My time at Alan"
+date = "2021-10-26"
+title = "My first year at Alan"
 toc = true
 draft = true
 +++
