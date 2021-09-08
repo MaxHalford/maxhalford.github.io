@@ -116,7 +116,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 
 - [The Elements of Statistical Learning - Jerome H. Friedman, Robert Tibshirani, and Trevor Hastie](http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf)
 - [Machine Learning - Tom Mitchell](http://personal.disco.unimib.it/Vanneschi/McGrawHill_-_Machine_Learning_-Tom_Mitchell.pdf) -- I think this wonderful textbook is under-appreciated.
-- [Artificial Intelligence: A Modern Approach - Russel & Norvig](http://web.cecs.pdx.edu/~mperkows/CLASS_479/2017_ZZ_00/02__GOOD_Russel=Norvig=Artificial%20Intelligence%20A%20Modern%20Approach%20(3rd%20Edition).pdf)
+- [Artificial Intelligence: A Modern Approach - Russel & Norvig](http://aima.cs.berkeley.edu/)
 - [mlcourse.ai](https://mlcourse.ai/) -- Of all the introductions to machine learning, I think this is the one that strikes the best balance between theory and practice.
 - [Machine learning cheat sheets - Shervine Amidi](https://stanford.edu/~shervine/teaching/cs-229.html)
 - [Kalman and Bayesian Filters in Python - Roger Labbe](http://nbviewer.jupyter.org/github/rlabbe/Kalman-and-Bayesian-Filters-in-Python/blob/master/table_of_contents.ipynb) -- Kalman filters are notoriously hard to grok, this tutorial nicely builds up the steps to understanding them.
@@ -140,7 +140,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Kaggle contest on Observing Dark World - Cam Davidson-Pilon](https://nbviewer.jupyter.org/github/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Chapter5_LossFunctions/Ch5_LossFunctions_PyMC3.ipynb#Example:-Kaggle-contest-on-Observing-Dark-World) -- If you're not convinced about the power of Bayesian machine learning then read this and get your mind blown.
 - [A Concrete Introduction to Probability (using Python) - Peter Norvig](https://nbviewer.jupyter.org/url/norvig.com/ipython/Probability.ipynb) -- Extremely elegant Python coding.
 - [The Hungarian Maximum Likelihood Trick - Louis Abraham](https://louisabraham.github.io/notebooks/hungarian_trick.html)
-- [Machine Learning for Signal Processing - University of Illinois](https://courses.engr.illinois.edu/cs598ps/fa2018/material.html)
+- [Machine Learning for Signal Processing - University of Illinois](https://courses.engr.illinois.edu/cs598ps/fa2018/)
 - [Don't Call Yourself A Programmer, And Other Career Advice](https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/)
 - [Tidy Data - Hadley Wickham](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) -- If you like playing with data then you need to be aware of this one.
 - [Gaussian Process, not quite for dummies - Yuge Shi](https://yugeten.github.io/posts/2019/09/GP/) -- Gaussian processes are quite difficult to understand (at least, for me) but Yuge gives some great visual intuitions.
