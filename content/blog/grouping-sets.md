@@ -183,14 +183,14 @@ FROM groups
 
 | week | industry | group\_by | loss\_ratio |
 | :--- | :--- | :--- | :--- |
-| 2021-01-01 | 🏥 | week x industry | 0.800000 |
-| 2021-01-01 | 🏭 | week x industry | 1.400000 |
-| 2021-01-08 | 🏥 | week x industry | 0.772727 |
-| 2021-01-08 | 🏭 | week x industry | 1.500000 |
-| 2021-01-01 | NULL | week | 1.000000 |
-| 2021-01-08 | NULL | week | 0.966667 |
-| NULL | 🏥 | industry | 0.785714 |
-| NULL | 🏭 | industry | 1.444444 |
+| 2021-01-01 | 🏥 | week x industry | 0.80 |
+| 2021-01-01 | 🏭 | week x industry | 1.40 |
+| 2021-01-08 | 🏥 | week x industry | 0.77 |
+| 2021-01-08 | 🏭 | week x industry | 1.50 |
+| 2021-01-01 | NULL | week | 1.00 |
+| 2021-01-08 | NULL | week | 0.97 |
+| NULL | 🏥 | industry | 0.79 |
+| NULL | 🏭 | industry | 1.44 |
 
 This is nice, because now we can access a particular group as so:
 
