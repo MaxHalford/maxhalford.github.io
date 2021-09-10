@@ -14,8 +14,13 @@
 
             {{ range .Pages }}
             <div class="row posts-line">
+                {{ if isset .Params "medium" }}
+                <a class="posts-line-title" href={{ .Params.medium }}>{{ .Title }}</a>
+                <time class="posts-line-date" datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}} — Medium article</time>
+                {{ else }}
                 <a class="posts-line-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
                 <time class="posts-line-date" datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}}</time>
+                {{ end }}
             </div>
             <!-- <div class="row posts-line">
               <div class="posts-date col-sm-3 col-xs-5">
