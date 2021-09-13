@@ -109,6 +109,7 @@ This is a list of blogs I regularly scroll through.
 - [Chris Kiehl](https://chriskiehl.com/)
 - [ithaka.im](http://ithaka.im/) -- A guy I met who travelled for 6 years with his wife on a bike, very inspiring.
 - [Muthukrishnan](https://muthu.co/) -- Has written some neat document processing stuff.
+- [Björn Ottosson](https://bottosson.github.io/)
 
 ## Hall of fame
 
@@ -183,6 +184,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Tuesday Changes Everything - Jesper Juul](https://www.jesperjuul.net/ludologist/2010/06/08/tuesday-changes-everything-a-mathematical-puzzle/)
 - [Gently down the stream - Mitch Seymour](https://www.gentlydownthe.stream/)
 - [Les études statistiques sont-elles hors de contrôle? - David Louapre](https://scienceetonnante.com/2021/08/30/les-etudes-statistiques-sont-elles-hors-de-controle/)
+- [Visually stunning math concepts which are easy to explain - StackExchange](https://math.stackexchange.com/questions/733754/visually-stunning-math-concepts-which-are-easy-to-explain)
 
 ## Tools
 
