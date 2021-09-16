@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Links
+toc: true
 ---
 
 ## Papers
@@ -185,34 +186,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Gently down the stream - Mitch Seymour](https://www.gentlydownthe.stream/)
 - [Les études statistiques sont-elles hors de contrôle? - David Louapre](https://scienceetonnante.com/2021/08/30/les-etudes-statistiques-sont-elles-hors-de-controle/)
 - [Visually stunning math concepts which are easy to explain - StackExchange](https://math.stackexchange.com/questions/733754/visually-stunning-math-concepts-which-are-easy-to-explain)
-
-## Tools
-
-- [Herbie](https://herbie.uwplse.org/) -- Find and fix floating-point problems.
-- [Google Charts](https://developers.google.com/chart/) -- Underappreciated.
-- [cortex.dev](https://www.cortex.dev/)
-- [Sejda](https://www.sejda.com/sign-pdf) -- Fill out and sign PDFs.
-- [latex2png](http://latex2png.com/)
-- [befunky](https://www.befunky.com/create/) -- Simple photo editor.
-- [temp-mail](https://temp-mail.org/en/)
-- [insect](https://insect.sh/) -- Scientific calculator.
-- [carbon](https://carbon.now.sh/?bg=rgba(255%2C255%2C255%2C1)&t=shades-of-purple&wt=none&l=python&ds=false&dsyoff=20px&dsblur=68px&wc=false&wa=true&pv=56px&ph=56px&ln=false&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=x%2520%253D%2520%257B%250A%2520%2520%2520%2520%27date%27%253A%2520dt.datetime(2019%252C%25204%252C%252022)%252C%250A%2520%2520%2520%2520%27price%27%253A%252042.95%252C%250A%2520%2520%2520%2520%27shop%27%253A%2520%27Ikea%27%250A%257D) -- Source code images.
-- [Adalo](https://www.adalo.com) -- No-code mobile app editor.
-- [git.io](https://git.io/) -- URL shortener.
-- [Connected Papers](https://www.connectedpapers.com/) -- Explore connected papers in a visual graph.
-- [Excalidraw](https://excalidraw.com/) -- I like using this to [create charts](https://blog.excalidraw.com/tell-your-story-with-charts/).
-- [asciiflow](https://asciiflow.com/)
-- [Whimsical Flowcharts](https://whimsical.com/flowcharts)
-- [Motionbox](https://motionbox.io/) -- Video editor.
-- [LanguageTool](https://languagetool.org/) -- Great for proofreading.
-- [drawdata.xyz](https://drawdata.xyz/)
-- [vo.codes](https://vo.codes/)
-- [matcha.io](https://www.mathcha.io/)
-- [colorbrewer2](https://colorbrewer2.org)
-- [RegExr](https://regexr.com/)
-- [explainshell.com](https://explainshell.com/)
-- [labelstud.io](https://labelstud.io/)
-- [Retool](https://retool.com/)
+- [Introduction to Locality-Sensitive Hashing - Tyler Neylon](https://unboxresearch.com/articles/lsh_post1.html)
 
 ## Eye candy
 
