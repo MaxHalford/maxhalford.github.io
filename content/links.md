@@ -18,6 +18,7 @@ toc: true
 
 ## Talks
 
+- [Manipulating ephemeral data with git - Défi IA 2021](/slides/manipulating-ephemeral-data-with-git.pdf)
 - [The challenges of online machine learning in production - Itaú Unibanco Meetup 2021](/slides/the-challenges-of-online-machine-learning-in-production.pdf)
 - [Quelle est l’empreinte écologique du Big Data? - Toulouse Tech round table 2021](https://www.youtube.com/watch?v=8RubWlhwTjg&feature=youtu.be)
 - [A brief introduction to online machine learning - Hong Kong Machine Learning, 2020](/slides/hkml2020.pdf)
