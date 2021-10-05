@@ -418,7 +418,7 @@ Let's have a look at the result. I'm not going to write the `main` function, it'
 </figure>
 </div>
 
-The result from the Floyd-Steinberg seems more "appealing". The penguin has sharper features and his fur is more distinguishable. Also if you look at the penguin's face you might notice how evenly spread the dots are. I find it *oddly satisfying. There exist many more error diffusion algorithms that produce more or less similar images. For example some spread the quantization error to further pixels instead of just the adjacent ones.
+The result from the Floyd-Steinberg seems more "appealing". The penguin has sharper features and his fur is more distinguishable. Also if you look at the penguin's face you might notice how evenly spread the dots are. I find it oddly satisfying. There exist many more error diffusion algorithms that produce more or less similar images. For example some spread the quantization error to further pixels instead of just the adjacent ones.
 
 ## Conclusion
 
