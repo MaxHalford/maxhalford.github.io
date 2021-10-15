@@ -472,7 +472,7 @@
 2020-01-01 20:54:00 - trip #5 arrives after 240 seconds
 2020-01-01 20:55:00 - trip #6 departs
 2020-01-01 21:02:30 - trip #6 arrives after 450 seconds
-</code></pre><p>Now let&rsquo;s re-evaluate our model with delayed progressive cross-validation. There is very little we have to modify in the existing evaluation code. The biggest change is that we need to store the predictions while we wait for their associated ground truths to be available. We can release the prediciton from memory once the relevant ground truth arrives &ndash; i.e. a taxi arrives.</p>
+</code></pre><p>Now let&rsquo;s re-evaluate our model with delayed progressive cross-validation. There is very little we have to modify in the existing evaluation code. The biggest change is that we need to store the predictions while we wait for their associated ground truths to be available. We can release each prediction from memory once the relevant ground truth arrives &ndash; i.e. a taxi arrives.</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=kn>from</span> <span class=nn>sklearn</span> <span class=kn>import</span> <span class=n>linear_model</span>
 
 <span class=n>sgd</span> <span class=o>=</span> <span class=n>linear_model</span><span class=o>.</span><span class=n>SGDRegressor</span><span class=p>(</span>
