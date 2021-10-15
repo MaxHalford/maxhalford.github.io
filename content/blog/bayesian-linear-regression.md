@@ -1,6 +1,5 @@
 +++
 date = "2020-02-26"
-draft = false
 title = "Bayesian linear regression for practitioners"
 toc = true
 +++

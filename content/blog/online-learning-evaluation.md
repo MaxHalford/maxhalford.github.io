@@ -389,7 +389,7 @@ for date, i, xi, yi in simulate_qa(X_y, departure_dates):
 2020-01-01 21:02:30 - trip #6 arrives after 450 seconds
 ```
 
-Now let's re-evaluate our model with delayed progressive cross-validation. There is very little we have to modify in the existing evaluation code. The biggest change is that we need to store the predictions while we wait for their associated ground truths to be available. We can release the prediciton from memory once the relevant ground truth arrives -- i.e. a taxi arrives.
+Now let's re-evaluate our model with delayed progressive cross-validation. There is very little we have to modify in the existing evaluation code. The biggest change is that we need to store the predictions while we wait for their associated ground truths to be available. We can release each prediction from memory once the relevant ground truth arrives -- i.e. a taxi arrives.
 
 ```py
 from sklearn import linear_model
