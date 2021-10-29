@@ -1,5 +1,8 @@
 <div class="site-footer">
   <div class="site-footer-item">
+    <a href='{{ .Site.Params.staticPrefix }}{{ "index.xml" | relURL }}'>{{ partial "fontawesome.html" "rss" }}</a>
+  </div>
+  <div class="site-footer-item">
     <a href="https://github.com/MaxHalford">{{ partial "fontawesome.html" "github" }}</a>
   </div>
   <div class="site-footer-item">
@@ -28,9 +31,6 @@
   </div>
   <div class="site-footer-item">
     <a href="mailto:maxhalford25@gmail.com">{{ partial "fontawesome.html" "email" }}</a>
-  </div>
-  <div class="site-footer-item">
-    <a href='{{ .Site.Params.staticPrefix }}{{ "index.xml" | relURL }}'>{{ partial "fontawesome.html" "rss" }}</a>
   </div>
 </div>
 <div style="margin-bottom: 50px; display: flex; justify-content: center;">

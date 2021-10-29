@@ -125,6 +125,7 @@ body {
   margin-bottom: 20px;
   display: flex;
   justify-content: center !important;
+  flex-wrap: wrap;
   padding: 12px 0;
   border-width: 3px;
   border-style: solid none;
