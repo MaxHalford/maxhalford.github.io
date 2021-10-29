@@ -58,6 +58,7 @@ Naturally, it makes sense to want to automate documents which are both abundant 
 Deciding which documents to automate really depends on what is the end goal. Is it to increase the automation rate in order to increase the user experience? Or is it to reduce the total number of human working hours required per week?
 
 Obviously, the end goal is to automate the processing of all documents. But that's a bit of a utopia, which some stakeholders never seemed to understand 😅. Every so often, in order to prioritize my efforts, I took a step back to measure the volume and difficulty of the documents we were receiving. At the end of the day, I was mostly the one deciding what I wanted to work on. I had to draw a fine line between having impact quickly and doing deep work on difficult documents.
+
 ### Processing dental quotes
 
 I was first tasked with automating the processing of dental quotes. This turned out to be the north face: these are some of the most difficult kind of documents to process. I had never document processing before, so this was my first rodeo. Essentially, the information of a quote is contained in a table. The first goal is to recognise these tables. Once that's done it's pretty straightforward to write business logic to handle them.
@@ -76,6 +77,7 @@ I decided to get my hands dirty and implement my own logic to extract tables fro
 In the end I implemented my own algorithm. I formulated the problem as an [assignment](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linear_sum_assignment.html) problem between bounding boxes. I'll skip the details here, but I might elaborate in another blog post. Anyway, I eventually reached a point where the line segmentation algorithm was working in ~50% of cases. I had to do a bunch of *gambiarra* to get there, such as implementing my own [deskewing](https://muthu.co/deskewing-scanned-documents-using-horizontal-projections/) logic. Overall, I was quite disappointed by the lack of good open-source libraries in this area. Recently there's [LayoutParser](https://github.com/Layout-Parser/layout-parser) that arrived in town, but it's still a bit too experimental to my taste.
 
 I would say that this is the project where I was the least successful. It was really difficult as a first task. Looking back, I should have started with something simpler. That would have given me more time to think about the problem, rather than diving into a scrappy solution. I couldn't justify spending months on this problem without producing any results, especially as a newcomer. So I produced that worked for dental quotes in ~30% of cases. It's not bad, but I'm pretty sure that ~80% of quotes could be automated with some more work.
+
 ### Classifying documents
 
 I spent a lot of time in the existing codebase while working on dental quotes. I noticed that there was rudimentary logic to classify documents into categories -- quotes, invoices, prescriptions, etc. This logic was essentially a bunch of regex patterns. I assumed they worked fine because nobody challenged them. Still, I was curious about their performance. I build a training set of documents that were processed by our manual operators. Measuring the performance of this rule-based classification system revealed that it was not doing very well.
@@ -131,6 +133,7 @@ The last thing I did in this regard was to introduce a clear nomenclature. Setti
 - A `Point` is a `(float, float)` tuple.
 
 I felt like it was a perfect case of the [Rumplestilskin principle](https://alum.mit.edu/slice/rumpelstiltskin-principle). It may not seem like much, but once these concepts and relationships were introduced, the code flowed in a more natural way.
+
 ### Processing competitor contracts
 
 I spent most of my time processing health insurance documents. But Alan also has to process another kind of documents: health insurance contracts. These are usually PDF files which list the amount of money a health insurance company reimburses for a bunch of health guarantees. For instance, the contract might say that it reimburses up to 50 euros every time you go to the dentist.
@@ -140,11 +143,13 @@ There is no standard protocol to express health insurance guarantees. The Alan g
 Members of the Alan Sales team are responsible for translating a competitor health insurance contract into a list of Alan guarantees. This enables our Insurance team to determine if we are competitive, and what kind of pricing we should offer. This translation process can take well over an hour and is error-prone. It's rather important to do this well, because this information becomes legally binding, as it determines how much money we will reimburse.
 
 I worked on an automated contract translator during a 3 days hackathon. The project was rather successful -- I even won some [Alan socks](https://shop.alan.com/products/chaussettes-alan) 🧦! I have therefore been working for the past few months on industrialising this proof of concept. I don't feel like elaborating on the details in this article. In a nutshell, once a PDF contract was parsed into a list of guarantees, the goal was to map these competitor guarantees to Alan guarantees, which I framed as a variant of the [stable marriage problem](https://www.wikiwand.com/en/Stable_marriage_problem).
+
 ### Monitoring processing performance
 
 It's crucial to monitor the performance of any document processing system. As I said, document processing is not a deterministic process. I built some historical datasets to guide the development of documenting processing logic. This allowed me to measure performance in an offline manner. However, you also need some way to monitor how well you're doing in production. You can't just cross your fingers and run with your eyes closed. At Alan, we send a sample of the documents to manual processing, even though the bot managed to handle them. This allows to estimate the bot's overall performance.
 
 I had quite a lot of fun working on this monitoring aspect. It was crucial to get this right to convince stakeholders that it was actually working and worthwhile. By the end of my first year at Alan, I'm able to estimate how much money our document processing logic is saving us. Under the hood, I built some prepared data so that the business logic is versioned in our codebase, and not in the dashboard.
+
 ### Sharing knowledge
 
 Beyond shipping stuff, I very much enjoy sharing what I work on. I worked on arguably a rather niche topic. Document processing isn't everyone's cup to tea, and is definitely a topic with a researchy aspect to it. There's a rather high learning curve to climb before being able to have an impact. Reducing the [bus factor](https://www.wikiwand.com/en/Bus_factor) matters to me very much. Therefore I didn't want to become a bottleneck, and made a conscious effort to document what I was doing along the way. This happened through different mediums: writing a couple of blog posts, writing comprehensive code comments, doing internal presentations, and writing documentation in our Notion space.
@@ -157,9 +162,11 @@ Alan isa  really a great place to learn, especially when you're a junior. There 
 I had a fair bit of SQL at university. In fact, I taught SQL classes during my PhD. However, I've been using exclusively Python when doing data science. When I have to process data, my reflex is to write a Python script where the first line of code usually imports `pandas`. I naively assumed that most of the data processing pipelines at Alan would be written in Python.
 
 It turns out that the vast majority of data processing at Alan is done in SQL! Python is just used to import data from third-parties and dump into our warehouse. When I arrived, our warehouse was a PostgreSQL instance. We migrated Snowflake in early 2021. And boy oh boy is it powerful; to the point where, I'm not convinced we still need tools like Spark, Ray, Dask, and Vaex.
+
 ### Simple machine learning goes a long way
 
 We never did any deep learning. My bread and butter was scikit-learn's `LogisticRegression`. I was able to replace several rule-based systems with a scikit-learn pipeline. Of course, there are opportunities at Alan to use complex models to reach state-of-the-art performance, but that's not our mindset. The goal is to ship simple implementation that have an impact in a short amount of time.
+
 ### Stakeholders should consume datasets, not dashboards
 
 This is my own personal opinion. There were a few times where I was asked to build a dashboard for a stakeholder. I really thought this was silly. Instead of giving the stakeholder fish, I wanted to teach them how to fish. Instead of giving them a dashboard, I wanted to give them a dataset and ask them to build the dashboard themselves. I felt like this would 1) empower them by giving them the flexibility to edit the dashboard by themselves 2) save me some time and allow me to focus on the data processing.

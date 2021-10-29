@@ -112,6 +112,7 @@ This is a list of blogs I regularly scroll through.
 - [ithaka.im](http://ithaka.im/) -- A guy I met who travelled for 6 years with his wife on a bike, very inspiring.
 - [Muthukrishnan](https://muthu.co/) -- Has written some neat document processing stuff.
 - [Björn Ottosson](https://bottosson.github.io/)
+- [Guilherme Duarte Marmerola](https://gdmarmerola.github.io/)
 
 ## Hall of fame
 
