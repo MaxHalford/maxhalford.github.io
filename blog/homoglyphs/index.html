@@ -2,7 +2,7 @@
 <head>
 <script async defer data-website-id=6023252a-3a97-470f-b4ee-5082d242bb9a src=https://umami.pourtan.eu/umami.js></script>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.88.1">
+<meta name=generator content="Hugo 0.89.0">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Max Halford">
@@ -50,7 +50,7 @@
 <div class="row post-desc">
 <div class=col-xs-12>
 <time class=post-date datetime="2021-08-19 00:00:00 UTC">
-2021-08-19 · 11 minute read
+2021-08-19 · 2256 words
 </time>
 </div>
 </div>
@@ -224,7 +224,7 @@
 <span class=n>W</span> <span class=n>Ŵ</span> <span class=n>Ẁ</span> <span class=n>Ẃ</span> <span class=n>Ẅ</span> <span class=n>Ẇ</span>
 <span class=n>ώ</span> <span class=n>ώ</span>
 <span class=n>t</span> <span class=n>ẗ</span>
-<span class=n>Ⅵ</span> <span class=n>Ⅶ</span> <span class=n>Ⅷ</span>
+<span class=err>Ⅵ</span> <span class=err>Ⅶ</span> <span class=err>Ⅷ</span>
 <span class=n>Ơ</span> <span class=n>Ớ</span> <span class=n>Ờ</span> <span class=n>Ỡ</span>
 <span class=n>ḷ</span> <span class=n>ḹ</span> <span class=n>Ị</span>
 </code></pre></div><p>So what if we want to determine the homoglyphs for a given character? We can do that by creating a <code>dict</code> that maps each character to its homoglyphs.</p>
@@ -236,7 +236,7 @@
     <span class=k>for</span> <span class=n>a</span><span class=p>,</span> <span class=n>b</span> <span class=ow>in</span> <span class=n>permutations</span><span class=p>(</span><span class=n>group</span><span class=p>,</span> <span class=mi>2</span><span class=p>):</span>
         <span class=n>homoglyphs</span><span class=p>[</span><span class=n>a</span><span class=p>]</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=n>b</span><span class=p>)</span>
 </code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=o>&gt;&gt;&gt;</span> <span class=n>homoglyphs</span><span class=p>(</span><span class=s1>&#39;D&#39;</span><span class=p>)</span>
-<span class=n>Ⅾ</span> <span class=n>Ḋ</span> <span class=n>Ď</span>
+<span class=err>Ⅾ</span> <span class=n>Ḋ</span> <span class=n>Ď</span>
 
 <span class=o>&gt;&gt;&gt;</span> <span class=n>homoglyphs</span><span class=p>(</span><span class=s1>&#39;H&#39;</span><span class=p>)</span>
 <span class=n>Ḣ</span> <span class=n>Н</span> <span class=n>Ḧ</span>

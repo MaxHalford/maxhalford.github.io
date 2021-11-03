@@ -2,7 +2,7 @@
 <head>
 <script async defer data-website-id=6023252a-3a97-470f-b4ee-5082d242bb9a src=https://umami.pourtan.eu/umami.js></script>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.88.1">
+<meta name=generator content="Hugo 0.89.0">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Max Halford">
@@ -49,7 +49,7 @@ Alan is a special company. It has a unique culture that is starting to become fa
 <div class="row post-desc">
 <div class=col-xs-12>
 <time class=post-date datetime="2021-10-26 00:00:00 UTC">
-2021-10-26 · 20 minute read
+2021-10-26 · 4087 words
 </time>
 </div>
 </div>
@@ -62,7 +62,7 @@ Alan is a special company. It has a unique culture that is starting to become fa
 <li><a href=#what-i-mostly-did>What I (mostly) did</a>
 <ul>
 <li><a href=#becoming-the-document-processing-guy>Becoming the &ldquo;document processing guy&rdquo;</a></li>
-<li><a href=#automated-document-processing-is-a-fickle-bi>Automated document processing is a fickle bi***</a></li>
+<li><a href=#automated-document-processing-is-non-trivial>Automated document processing is non-trivial***</a></li>
 <li><a href=#processing-dental-quotes>Processing dental quotes</a></li>
 <li><a href=#classifying-documents>Classifying documents</a></li>
 <li><a href=#processing-invoices-and-prescriptions>Processing invoices (and prescriptions)</a></li>
@@ -91,7 +91,7 @@ Alan is a special company. It has a unique culture that is starting to become fa
 <p>Being a health insurance company, Alan has to process tens of thousands of health insurance documents every week. Our users send us thousands of documents every day: quotes, invoices, justifications, contracts, prescriptions, etc. Most of these documents are processed manually. This costs a five digit figure every week, and is by far the highest operational cost. The cost scales linearly with the size of the memberbase. And obviously Alan is relatively small right now, with roughly 200k members.</p>
 <p>After a year, with the current memberbase, I estimate that I&rsquo;m saving Alan an extra ~3000 euros per week. >30% of documents are now being processed fully automatically, versus 15% when I arrived. I know this because I built a dashboard to track our costs, and estimate the time &ndash; and thus euros &ndash; saved by our automated document processing initiatives.</p>
 <p>It&rsquo;s definitely motivating to work on a concrete project with a tangible performance measure. I knew very quickly if the code I pushed into production had an impact or not. Sometimes it could be demolarising when the overall automation rate dropped from one week to the other. But overall things went well and I&rsquo;m satisfied with the impact I had.</p>
-<h3 id=automated-document-processing-is-a-fickle-bi>Automated document processing is a fickle bi***</h3>
+<h3 id=automated-document-processing-is-non-trivial>Automated document processing is non-trivial***</h3>
 <p>The goal of document processing is to extract structured information from files uploaded by users. This is usually done by manual operators &ndash; i.e. human beings. The goal of automated document processing is to translate an operator&rsquo;s human logic into code. Easier said than done 🙃</p>
 <p>At Alan this is really straightforward in terms of code structure. The input I&rsquo;m given is a bunch of bytes. The expected output is a Python <a href=https://docs.python.org/3/library/dataclasses.html><code>dataclass</code></a>. This output is then consumed by engineers to determine how much a user should be reimbursed. My scope was thus to write the logic to go from a document to structured information. I rarely had to handle the communication with the web/mobile app and the database.</p>
 <p>Although it is straightforward to explain, automated document processing is extremely fickle to implement. If you&rsquo;re lucky, you&rsquo;re dealing with standard documents that always follow the same template. You can write some deterministic logic if that&rsquo;s the case. It either works or it doesn&rsquo;t.</p>

@@ -2,7 +2,7 @@
 <head>
 <script async defer data-website-id=6023252a-3a97-470f-b4ee-5082d242bb9a src=https://umami.pourtan.eu/umami.js></script>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.88.1">
+<meta name=generator content="Hugo 0.89.0">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Max Halford">
@@ -50,7 +50,7 @@ Motivation If you&rsquo;re reading this blog post, then you&rsquo;re likely to b
 <div class="row post-desc">
 <div class=col-xs-12>
 <time class=post-date datetime="2020-09-20 00:00:00 UTC">
-2020-09-20 · 24 minute read
+2020-09-20 · 4949 words
 </time>
 </div>
 </div>
@@ -554,7 +554,7 @@ FL(p_t) = -a_t (1 - p_t)^{\gamma} \log(p_t)
 <p>The variable $p_t$ is a function of the ground truth $y$ and a prediction $p$:</p>
 <p>$$\begin{equation}
 p_t = \begin{cases}
-p & \text{if } y = 1 \\<br>
+p & \text{if } y = 1 \\
 1 - p & \text{otherwise}
 \end{cases}
 \end{equation}$$</p>
@@ -565,7 +565,7 @@ p = \frac{1}{1 + e^{-z}}
 <p>In fact, $z$ is denoted by $x$ in the paper&rsquo;s appendix, but I find that confusing. Additionally, the authors assume that $y \in \{-1, 1\}$ instead of $y \in \{0, 1\}$, which has its importance. Meanwhile, $\alpha_t$ is another parameter with the following definition:</p>
 <p>$$\begin{equation}
 \alpha_t = \begin{cases}
-\alpha \in [0, 1] & \text{if } y = 1 \\<br>
+\alpha \in [0, 1] & \text{if } y = 1 \\
 1 - \alpha & \text{otherwise}
 \end{cases}
 \end{equation}$$</p>
@@ -590,8 +590,8 @@ FL(y, p) = -y \times \alpha (1 - p)^\gamma \log(p) - (1 - y) \times (1 - a) p^\g
 <p>$$\begin{equation}
 \begin{split}
 \frac{\partial FL}{\partial p_t}
-& = \alpha_t \gamma (1 - p_t)^{\gamma - 1} \log(p_t) - \frac{\alpha_t(1 - p_t)^{\gamma}}{p_t} \\<br>
-& = \alpha_t(1 - p_t)^{\gamma} (\frac{\gamma \log(p_t)}{1 - p_t} - \frac{1}{p_t}) \\<br>
+& = \alpha_t \gamma (1 - p_t)^{\gamma - 1} \log(p_t) - \frac{\alpha_t(1 - p_t)^{\gamma}}{p_t} \\
+& = \alpha_t(1 - p_t)^{\gamma} (\frac{\gamma \log(p_t)}{1 - p_t} - \frac{1}{p_t}) \\
 & = \alpha_t(1 - p_t)^{\gamma} (\frac{\gamma p_t \log(p_t) + p_t - 1)}{p_t(1 - p_t)})
 \end{split}
 \end{equation}$$</p>
@@ -603,8 +603,8 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
 <p>$$\begin{equation}
 \begin{split}
 \frac{\partial p_t}{\partial p}
-& = \frac{y + 1}{2} + \frac{y - 1}{2} \\<br>
-& = \frac{2y}{2} \\<br>
+& = \frac{y + 1}{2} + \frac{y - 1}{2} \\
+& = \frac{2y}{2} \\
 & = y
 \end{split}
 \end{equation}$$</p>
@@ -616,7 +616,7 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
 <p>$$\begin{equation}
 \begin{split}
 \frac{\partial FL}{\partial z}
-& = \alpha_t(1 - p_t)^{\gamma} (\frac{\gamma p_t \log(p_t) + p_t - 1)}{p_t(1 - p_t)}) \times y \times p_t (1 - p_t) \\<br>
+& = \alpha_t(1 - p_t)^{\gamma} (\frac{\gamma p_t \log(p_t) + p_t - 1)}{p_t(1 - p_t)}) \times y \times p_t (1 - p_t) \\
 & = \alpha_t y (1 - p_t)^{\gamma} (\gamma p_t \log(p_t) + p_t - 1)
 \end{split}
 \end{equation}$$</p>
@@ -626,7 +626,7 @@ p_t = \frac{p(y + 1)}{2} + \frac{(1 - p)(1 - y)}{2}
 <p>$$\begin{equation}
 \begin{split}
 \frac{\partial^2 FL}{\partial z^2}
-& = \frac{\partial}{\partial z} (\frac{\partial FL}{\partial z}) \\<br>
+& = \frac{\partial}{\partial z} (\frac{\partial FL}{\partial z}) \\
 & = \frac{\partial}{\partial p_t} (\frac{\partial FL}{\partial z}) \times \frac{\partial p_t}{\partial p} \times \frac{\partial p}{\partial z}
 \end{split}
 \end{equation}$$</p>

@@ -2,7 +2,7 @@
 <head>
 <script async defer data-website-id=6023252a-3a97-470f-b4ee-5082d242bb9a src=https://umami.pourtan.eu/umami.js></script>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.88.1">
+<meta name=generator content="Hugo 0.89.0">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Max Halford">
@@ -48,7 +48,7 @@
 <div class="row post-desc">
 <div class=col-xs-12>
 <time class=post-date datetime="2016-03-25 00:00:00 UTC">
-2016-03-25 · 5 minute read
+2016-03-25 · 923 words
 </time>
 </div>
 </div>
@@ -112,8 +112,8 @@
 <p><img src=/img/blog/recursive-polygons/proportion.png alt=proportion></p>
 <p>More formally the goal is join each point $p_i$ to a new point in between $p_{i+1}$ and $p_{i+2}$. At each step $i$ we append to the polygon a point such that</p>
 <p>$$
-x = r \times (x_{i+2} - x_{i+1}) \<br>
-y = r \times (y_{i+2} - y_{i+1}) \<br>
+x = r \times (x_{i+2} - x_{i+1}) \
+y = r \times (y_{i+2} - y_{i+1}) \
 0 &lt; r &lt; 1
 $$</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=kd>function</span> <span class=nx>drawPolygon</span><span class=p>(</span><span class=nx>ctx</span><span class=p>,</span> <span class=nx>polygon</span><span class=p>)</span> <span class=p>{</span>
