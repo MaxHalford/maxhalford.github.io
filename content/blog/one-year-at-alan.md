@@ -22,7 +22,7 @@ After a year, with the current memberbase, I estimate that I'm saving Alan an ex
 
 It's definitely motivating to work on a concrete project with a tangible performance measure. I knew very quickly if the code I pushed into production had an impact or not. Sometimes it could be demolarising when the overall automation rate dropped from one week to the other. But overall things went well and I'm satisfied with the impact I had.
 
-### Automated document processing is a fickle bi***
+### Automated document processing is non-trivial***
 
 The goal of document processing is to extract structured information from files uploaded by users. This is usually done by manual operators -- i.e. human beings. The goal of automated document processing is to translate an operator's human logic into code. Easier said than done 🙃
 

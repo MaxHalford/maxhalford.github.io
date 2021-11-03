@@ -189,6 +189,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Les études statistiques sont-elles hors de contrôle? - David Louapre](https://scienceetonnante.com/2021/08/30/les-etudes-statistiques-sont-elles-hors-de-controle/)
 - [Visually stunning math concepts which are easy to explain - StackExchange](https://math.stackexchange.com/questions/733754/visually-stunning-math-concepts-which-are-easy-to-explain)
 - [Introduction to Locality-Sensitive Hashing - Tyler Neylon](https://unboxresearch.com/articles/lsh_post1.html)
+- [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
 
 ## Eye candy
 
