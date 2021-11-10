@@ -113,6 +113,8 @@ This is a list of blogs I regularly scroll through.
 - [Muthukrishnan](https://muthu.co/) -- Has written some neat document processing stuff.
 - [Björn Ottosson](https://bottosson.github.io/)
 - [Guilherme Duarte Marmerola](https://gdmarmerola.github.io/)
+- [Cal Paterson](https://calpaterson.com/)
+- [Claire Carroll](https://clrcrl.com/)
 
 ## Hall of fame
 

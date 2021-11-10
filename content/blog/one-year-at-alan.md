@@ -22,7 +22,7 @@ After a year, with the current memberbase, I estimate that I'm saving Alan an ex
 
 It's definitely motivating to work on a concrete project with a tangible performance measure. I knew very quickly if the code I pushed into production had an impact or not. Sometimes it could be demolarising when the overall automation rate dropped from one week to the other. But overall things went well and I'm satisfied with the impact I had.
 
-### Automated document processing is non-trivial***
+### Automated document processing is non-trivial
 
 The goal of document processing is to extract structured information from files uploaded by users. This is usually done by manual operators -- i.e. human beings. The goal of automated document processing is to translate an operator's human logic into code. Easier said than done 🙃
 
@@ -109,9 +109,11 @@ It doesn't matter where the information is in the document. Therefore, this info
 
 The way I framed it, each extractor first generates a list of candidates. For example, there might be more than one date in an invoice, so listing them all in the first place is necessary. There's then another piece of logic to determine the most relevant candidate. In the case of osteopathy invoices, the rule was that the cost is always a round number between 35 and 90 euros. For dates, taking the most recent date usually worked. Naturally, making these decisions with a supervised learning algorithm is preferable. But I first started with a rule-based system to ship something quickly.
 
+A big challenge was dealing with character recognition mistakes. Modern OCRs usually possess a character correction layer. The latter is biased in that it only works well on the corpuses it has been trained on. The commercial OCRs I used did not do well at recognising dates, currency amounts, and identifiers from the French health system. I spent a decent amount of time at implementing my own character correction algorithms, following Peter Norvig's seminal [post](https://norvig.com/spell-correct.html) on the topic. I would first generate a list of tokens that looked like a date, allowing for mistakes. I would then generate candidates by replacing/removing/adding characters and only keep those that actually looked like valid dates. These filtered candidates would then go through the candidate selection system I described in the previous paragraph.
+
 Processing invoices was really fun. I got a long way by formalising it as an [entity recognition](https://www.wikiwand.com/en/Named-entity_recognition) problem. Indeed, instead of writing a bunch of regex rules, I focused on separating the candidate generation logic from the candidate selection logic. This allowed me to reuse pieces of logic across different types of invoices. I was also able to reuse some logic across document categories. For instance, I reused the date parser I developped when working on invoices for pharmacy prescriptions. There's [this](http://cidrdb.org/cidr2020/papers/p31-sheng-cidr20.pdf) paper from Google which is very resemblant to what I did at Alan, albeit at a smaller scale. I also summarised my work on invoices in [this](https://medium.com/alan/automated-document-processing-at-alan-918308234390) article.
 
-It's apparent to me now that there is still a lot of work to be done in this field. Extracting information from documents is a difficult task because a lot of logic is specific to a particular task a company may have. It is therefore difficult to develop generic models that work out of the box. Models have to be fine-tuned. It feels to me like there are some important building blocks that are missing from the open-source landscape. I have many ideas of things that I would like to work on!
+It's apparent to me now that there is still a lot of work to be done in this field. Extracting information from documents is a difficult task because a lot of logic is specific to a particular task a company may have. It is therefore difficult to develop generic models that work out of the box. Models have to be fine-tuned. Datasets are messy. It feels to me like there are some important building blocks that are missing from the open-source landscape. There are many topics I would like to work on in the future, in particular those related to character recognition mistakes.
 
 ### Refactoring code
 

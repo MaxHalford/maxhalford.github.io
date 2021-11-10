@@ -15,7 +15,14 @@ a:hover {
 }
 
 .markdown-body a {
-  color: #01579b;
+  color: #333;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+  text-decoration-thickness: 0.06em;
+}
+
+.markdown-body a:hover {
+  color: royalblue;
 }
 
 .post-ads {
