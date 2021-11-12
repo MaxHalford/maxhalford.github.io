@@ -49,7 +49,7 @@ There are many tools in the wild to perform web scraping.">
 <div class="row post-desc">
 <div class=col-xs-12>
 <time class=post-date datetime="2021-11-11 00:00:00 UTC">
-2021-11-11 · 1290 words
+2021-11-11 · 1307 words
 </time>
 </div>
 </div>
@@ -98,8 +98,8 @@ Warlock 9
 Paladin 7
  Shaman 6
 </code></pre><p>The fact that hunters are the most common class doesn&rsquo;t surprise me. It&rsquo;s probably easier to achieve with them because they&rsquo;re a ranged class and have a pet that can hold aggro. But isn&rsquo;t that also the case for warlocks? Anyway, that discussion isn&rsquo;t the topic of this blog post 😅</p>
-<p>The above parsing logic is procedural because we indicate how to access the class names. They&rsquo;re part of a URL, which is in a <code>src</code> attribute, the latter which belongs to an <code>&lt;img></code> tag, who&rsquo;s parent is a <code>&lt;td></code> that has a <code>'column-3'</code> CSS class. All that sounds very specific. The issue is if the web page would come to evolve, be in terms of layout or in terms of style, then the parsing logic would break. For instance, maybe the CSS class name will change.</p>
-<p>Of course, it&rsquo;s completely overkill to have the evolution of a webpage in mind when writing some parsing logic. Especially for such a toy use case. It works right, and sometimes that&rsquo;s all that matters. However, for some situations, being robust to page changes is a must-have. For instance, in the world of e-commerce, it&rsquo;s quite usual for a company to scrape data from a competitor to inform a pricing strategy. Therefore, some e-commerce companies voluntarily change their page layouts and styles on a regular basis to throw off web scrapers.</p>
+<p>The above parsing logic is procedural because we indicate how to access the class names. They&rsquo;re part of a URL, which is in a <code>src</code> attribute, the latter which belongs to an <code>&lt;img></code> tag, who&rsquo;s parent is a <code>&lt;td></code> that has a <code>'column-3'</code> CSS class. All that sounds very specific. The issue is if the web page would come to evolve, be it in terms of layout or in terms of style, then the parsing logic would break. For instance, maybe the CSS class name will change.</p>
+<p>Of course, it&rsquo;s completely overkill to have the evolution of a webpage in mind when writing some parsing logic. Especially for such a toy use case. It works as intended, and sometimes that&rsquo;s all that matters. However, for some situations, being robust to page changes is a must-have. For instance, in the world of e-commerce, it&rsquo;s quite usual for a company to scrape data from a competitor to inform a pricing strategy. Therefore, some e-commerce companies voluntarily change their page layouts and styles on a regular basis to throw off web scrapers.</p>
 <h2 id=declarative-scraping>Declarative scraping</h2>
 <p>As I said above, another to do web scraping is to write the parsing logic in a declarative fashion. Instead of indicating where the information is, we can use an example, and attempt to generalize from it. Let&rsquo;s take another look at the URL I provided above:</p>
 <pre tabindex=0><code>https://classichc.net/wp-content/uploads/2020/08/Rogue-64x64.png
@@ -137,9 +137,9 @@ Warrior 15
 Warlock 9
 Paladin 7
  Shaman 6
-</code></pre><p>The results are strictly the same. However, this logic makes no assumption on the location of the <code>src</code> attributes we&rsquo;re interested in. We just provide an example, and generalize from it. This logic should still hold if the layout of the table were to change. Naturally, the logic is not invulnerable. We&rsquo;re still making an assumption on the structure of the <code>src</code> which contains the class name.</p>
-<p>I think this is a powerful way to do web scraping. It simply makes the scraper more robust to page changes. In fact, the idea of using a declarative approach rather than a procedural one goes beyond the world of web scraping. It&rsquo;s the main reason why the SQL language has been going on strong for decades: it allows users to indicate <em>what</em> they want, and not <em>how</em> to get there. A declarative language creates a layer of abstraction that allows the client to ignore the physical details of the data they&rsquo;re working with.</p>
-<p>Of course, the declarative vs. procedural debate is a well-known one. I just haven&rsquo;t seen the declarative approach being used much for scraping/parsing. Here are a few projects I found:</p>
+</code></pre><p>The results are strictly the same. However, this logic makes no assumption on the location of the <code>src</code> attributes we&rsquo;re interested in. We just provide an example, and generalize from it. This logic should still hold if the layout of the table were to change. Naturally, the logic is not invulnerable. We&rsquo;re still making an assumption on the structure of the <code>src</code> which contains the class name. But you get the idea.</p>
+<p>I think this is a powerful way to do web scraping. It makes the scraper more robust to page changes. In fact, the idea of using a declarative approach rather than a procedural one goes beyond the world of web scraping. It&rsquo;s the main reason why the SQL language has been going on strong for decades: it allows users to indicate <em>what</em> they want, and not <em>how</em> to get there. The nitty gritty details are handled by the system. A declarative language thus creates a layer of abstraction that allows the client to ignore the physical details of the data they&rsquo;re working with.</p>
+<p>Of course, the declarative vs. procedural debate is a well-known one. I just haven&rsquo;t seen the declarative approach being used much for scraping/parsing. Here are a few projects I did find:</p>
 <ul>
 <li><a href=https://github.com/alirezamika/autoscraper>autoscraper</a>, which is very similar to what I&rsquo;ve discussed in this article.</li>
 <li><a href=https://github.com/pemistahl/grex>grex</a>, which infers a regex pattern from examples. It&rsquo;s based on the theory of <a href=https://www.wikiwand.com/en/Deterministic_finite_automaton>deterministic finite automata</a> learning (DFAL).</li>
