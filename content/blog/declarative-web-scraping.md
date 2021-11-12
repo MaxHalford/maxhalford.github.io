@@ -68,9 +68,9 @@ Paladin 7
 
 The fact that hunters are the most common class doesn't surprise me. It's probably easier to achieve with them because they're a ranged class and have a pet that can hold aggro. But isn't that also the case for warlocks? Anyway, that discussion isn't the topic of this blog post 😅
 
-The above parsing logic is procedural because we indicate how to access the class names. They're part of a URL, which is in a `src` attribute, the latter which belongs to an `<img>` tag, who's parent is a `<td>` that has a `'column-3'` CSS class. All that sounds very specific. The issue is if the web page would come to evolve, be in terms of layout or in terms of style, then the parsing logic would break. For instance, maybe the CSS class name will change.
+The above parsing logic is procedural because we indicate how to access the class names. They're part of a URL, which is in a `src` attribute, the latter which belongs to an `<img>` tag, who's parent is a `<td>` that has a `'column-3'` CSS class. All that sounds very specific. The issue is if the web page would come to evolve, be it in terms of layout or in terms of style, then the parsing logic would break. For instance, maybe the CSS class name will change.
 
-Of course, it's completely overkill to have the evolution of a webpage in mind when writing some parsing logic. Especially for such a toy use case. It works right, and sometimes that's all that matters. However, for some situations, being robust to page changes is a must-have. For instance, in the world of e-commerce, it's quite usual for a company to scrape data from a competitor to inform a pricing strategy. Therefore, some e-commerce companies voluntarily change their page layouts and styles on a regular basis to throw off web scrapers.
+Of course, it's completely overkill to have the evolution of a webpage in mind when writing some parsing logic. Especially for such a toy use case. It works as intended, and sometimes that's all that matters. However, for some situations, being robust to page changes is a must-have. For instance, in the world of e-commerce, it's quite usual for a company to scrape data from a competitor to inform a pricing strategy. Therefore, some e-commerce companies voluntarily change their page layouts and styles on a regular basis to throw off web scrapers.
 
 ## Declarative scraping
 
@@ -135,11 +135,11 @@ Paladin 7
  Shaman 6
 ```
 
-The results are strictly the same. However, this logic makes no assumption on the location of the `src` attributes we're interested in. We just provide an example, and generalize from it. This logic should still hold if the layout of the table were to change. Naturally, the logic is not invulnerable. We're still making an assumption on the structure of the `src` which contains the class name.
+The results are strictly the same. However, this logic makes no assumption on the location of the `src` attributes we're interested in. We just provide an example, and generalize from it. This logic should still hold if the layout of the table were to change. Naturally, the logic is not invulnerable. We're still making an assumption on the structure of the `src` which contains the class name. But you get the idea.
 
-I think this is a powerful way to do web scraping. It simply makes the scraper more robust to page changes. In fact, the idea of using a declarative approach rather than a procedural one goes beyond the world of web scraping. It's the main reason why the SQL language has been going on strong for decades: it allows users to indicate *what* they want, and not *how* to get there. A declarative language creates a layer of abstraction that allows the client to ignore the physical details of the data they're working with.
+I think this is a powerful way to do web scraping. It makes the scraper more robust to page changes. In fact, the idea of using a declarative approach rather than a procedural one goes beyond the world of web scraping. It's the main reason why the SQL language has been going on strong for decades: it allows users to indicate *what* they want, and not *how* to get there. The nitty gritty details are handled by the system. A declarative language thus creates a layer of abstraction that allows the client to ignore the physical details of the data they're working with.
 
-Of course, the declarative vs. procedural debate is a well-known one. I just haven't seen the declarative approach being used much for scraping/parsing. Here are a few projects I found:
+Of course, the declarative vs. procedural debate is a well-known one. I just haven't seen the declarative approach being used much for scraping/parsing. Here are a few projects I did find:
 
 - [autoscraper](https://github.com/alirezamika/autoscraper), which is very similar to what I've discussed in this article.
 - [grex](https://github.com/pemistahl/grex), which infers a regex pattern from examples. It's based on the theory of [deterministic finite automata](https://www.wikiwand.com/en/Deterministic_finite_automaton) learning (DFAL).
