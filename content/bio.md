@@ -2,7 +2,7 @@
 title = "Bio"
 +++
 
-Hello ツ
+Hello ✌️
 
 I'm a full stack data scientist working at [Alan](https://alan.com/). I'm half British 🇬🇧 and half Belgian 🇧🇪. I went to university in Toulouse, France 🇫🇷. My academic 🎓 background is a mix of maths 🧮, economics 💸, and computer science 🖥️. I got hooked into data science in 2014 after watching [Moneyball](https://www.wikiwand.com/en/Moneyball_(film)) ⚾ and reading [The Signal and the Noise](https://www.wikiwand.com/en/The_Signal_and_the_Noise) 📖. My [PhD topic](/blog/phd-about) had to do with database query optimisation and machine learning 🤖. I strive to be more of a Swiss Army knife 🇨🇭 than a one-trick pony 🐴. I like to build an interest in different topics, although I do have an area of mild expertise, which is [online machine learning](https://www.wikiwand.com/en/Online_machine_learning).
 
