@@ -5,7 +5,7 @@ title = "Web scraping, upside down"
 
 ## Motivation
 
-Web scraping is the act of extracting information from web pages. A web page is essentially an amalgamation of HTML tags. Usually, we're looking for a particular piece of information on a given web page. This may be done by fetching the HTML content of the page in question, and then running some HTML parsing logic. It's quite straightforward.
+Web scraping is the art of extracting information from web pages. A web page is essentially an amalgamation of HTML tags. Usually, we're looking for a particular piece of information on a given web page. This may be done by fetching the HTML content of the page in question, and then running some HTML parsing logic. It's quite straightforward.
 
 There are many tools in the wild to perform web scraping. For instance, in Python, you may use [requests](https://docs.python-requests.org/en/latest/) in combination with [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/). You can also automate some of the more mundane aspects of scraping by using [Scrapy](https://scrapy.org/).
 
