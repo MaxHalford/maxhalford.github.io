@@ -145,4 +145,4 @@ Of course, the declarative vs. procedural debate is a well-known one. I just hav
 - [grex](https://github.com/pemistahl/grex), which infers a regex pattern from examples. It's based on the theory of [deterministic finite automata](https://www.wikiwand.com/en/Deterministic_finite_automaton) learning (DFAL).
 - [dateinfer](https://github.com/jeffreystarr/dateinfer), which infers a date pattern from examples.
 
-Thanks for reading the article, I hope you enjoyed it.
+Thanks for reading the article, I hope you enjoyed it ツ
