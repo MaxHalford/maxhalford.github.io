@@ -18,6 +18,7 @@ toc: true
 
 ## Talks
 
+- [Real-time machine learning: the next frontier? - LVMH](/slides/real-time-machine-learning-the-next-frontier-lvmh.pdf)
 - [Manipulating ephemeral data with git - Défi IA 2021](/slides/manipulating-ephemeral-data-with-git.pdf)
 - [The challenges of online machine learning in production - Itaú Unibanco Meetup 2021](/slides/the-challenges-of-online-machine-learning-in-production.pdf)
 - [Quelle est l’empreinte écologique du Big Data? - Toulouse Tech round table 2021](https://www.youtube.com/watch?v=8RubWlhwTjg&feature=youtu.be)
@@ -192,6 +193,7 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Visually stunning math concepts which are easy to explain - StackExchange](https://math.stackexchange.com/questions/733754/visually-stunning-math-concepts-which-are-easy-to-explain)
 - [Introduction to Locality-Sensitive Hashing - Tyler Neylon](https://unboxresearch.com/articles/lsh_post1.html)
 - [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
+- [How to Build an Economic Model in Your Spare Time - Hal R. Varian](https://fermatslibrary.com/p/e2e6484d#email-newsletter) -- The academic wisdom in this article goes beyond the world of economics.
 
 ## Eye candy
 
