@@ -225,6 +225,6 @@ with plt.xkcd():
 
 ![perfplot](/img/blog/weighted-sampling-without-replacement/perfplot.svg)
 
-This is a nice example of the trade-off which using numpy involves. The takeaway is that numpy isn't always better. It always depends on how much data is involved.
+This is a nice example of the trade-off when using numpy. The takeaway is that numpy isn't always better. It always depends on how much data is involved.
 
 So there you go. I hope this post was useful to you. I'm going back to enjoying X-mas.
