@@ -1,5 +1,5 @@
 +++
-date = "2021-12-28"
+date = "2022-01-10"
 title = "The online machine learning predict/fit switcheroo"
 toc = true
 +++
@@ -108,11 +108,11 @@ If you're running an online model in production, then you'll want to store the f
 
 What I call state is the information that was available when the model was asked to make a prediction. Having state implies you need some sort of database to store it while you wait for the ground truth to arrive. In some use cases where the delay is very short, such as CTR prediction, then you might get away by storing the state in memory because you don't have to wait for long. But in many cases you'll want some proper storage. What's more, storing this information gives you the ability to re-run the model *a posteriori*.
 
-Indeed, if you store the data correctly -- the features, the true label, and their respective arrival times -- then you can perform [delayed progressive validation](http://localhost:1313/blog/online-learning-evaluation/#delayed-progressive-validation). Which is very cool, because then you'll be doing an offline evaluation of your model as if it were in a production setting. The dream!
+Indeed, if you store the data correctly -- the features, the true label, and their respective arrival times -- then you can perform [delayed progressive validation](/blog/online-learning-evaluation/#delayed-progressive-validation). Which is very cool, because then you'll be doing an offline evaluation of your model as if it were in a production setting. The dream!
 
 ## What about unsupervised models?
 
-Some models don't need labels to learn. For instance, take anomaly detection. Like any other estimator, an anomaly detector learns and make predictions. So how is it different to any other unsupervised estimator, such as PCA or standard scaling? The answer depends on whether the model should learn from the features before making a prediction.
+Some models don't need labels to learn. For instance, take anomaly detection. Like any other estimator, an anomaly detector learns and makes predictions. So how is it different to any other unsupervised estimator, such as PCA or standard scaling? The answer depends on whether the model should learn from the features before making a prediction.
 
 Generally speaking, it makes sense to first make a prediction, and then update the model. This is very much true for anomaly detection. An anomaly detector does not need a label to learn, and is therefore unsupervised. However, you first may want to predict an anomaly score for a sample before learning from it. Indeed, if you deem that the sample is an anomaly because the anomaly score is high, then you might not want to corrupt the model by learning from the sample.
 
@@ -142,6 +142,6 @@ I tend to think that the model updating should happen in the `learn_one` phase. 
 
 ## A note on reinforcement learning
 
-*Disclaimer: I haven't spent much time studying reinforcement learning. But I understand the underlying principles, and I have also a couple of friends doing their PhDs on the subject.*
+*Disclaimer: I haven't spent much time studying reinforcement learning. But I understand the underlying principles, and I also have a couple of friends doing their PhDs on the subject.*
 
 Reinforcement learning is a field where this predict/fit scenario applies very much. You could argue that reinforcement learning is a case of online learning. At the very least, there are connections between both fields. For instance, it seems to me that [experience replay](https://datascience.stackexchange.com/questions/20535/what-is-experience-replay-and-what-are-its-benefits) in reinforcement learning could and should be more popular in online learning.

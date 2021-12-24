@@ -18,6 +18,7 @@ toc: true
 
 ## Talks
 
+- [Real-time machine learning: the next frontier? - The Applied AI Community](https://www.youtube.com/watch?v=pxs-ghWvr0M)
 - [Real-time machine learning: the next frontier? - LVMH](/slides/real-time-machine-learning-the-next-frontier-lvmh.pdf)
 - [Manipulating ephemeral data with git - Défi IA 2021](/slides/manipulating-ephemeral-data-with-git.pdf)
 - [The challenges of online machine learning in production - Itaú Unibanco Meetup 2021](/slides/the-challenges-of-online-machine-learning-in-production.pdf)
@@ -39,6 +40,8 @@ toc: true
 ## Datasets
 
 - [OpenBikes 2016 challenge](https://www.dropbox.com/s/ic8m0b3mf5wxk4r/challenge.zip?dl=0)
+- [The Pushshift Reddit Dataset](https://arxiv.org/pdf/2001.08435.pdf)
+- [Coveo Data Challenge - In-session prediction for purchase intent and recommendations](https://sigir-ecom.github.io/data-task.html)
 
 ## Blogroll
 
