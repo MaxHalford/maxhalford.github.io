@@ -1,5 +1,5 @@
 +++
-date = "2022-01-10"
+date = "2022-01-06"
 title = "The online machine learning predict/fit switcheroo"
 toc = true
 +++

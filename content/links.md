@@ -119,10 +119,11 @@ This is a list of blogs I regularly scroll through.
 - [Guilherme Duarte Marmerola](https://gdmarmerola.github.io/)
 - [Cal Paterson](https://calpaterson.com/)
 - [Claire Carroll](https://clrcrl.com/)
+- [Luke Metz](http://lukemetz.com/blog/)
 
 ## Hall of fame
 
-The following is a hall of fame of papers, books, and blog posts that have a very high [signal to noise ratio](https://www.urbandictionary.com/define.php?term=signal%20to%20noise%20ratio) -- at least in my book. I highly recommend reading some of them when you get time.
+The following is a hall of fame of papers, books, and blog posts that left me with a strong impression, both in terms of content and quality.
 
 - [The Elements of Statistical Learning - Jerome H. Friedman, Robert Tibshirani, and Trevor Hastie](http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf)
 - [Machine Learning - Tom Mitchell](http://personal.disco.unimib.it/Vanneschi/McGrawHill_-_Machine_Learning_-Tom_Mitchell.pdf) -- I think this wonderful textbook is under-appreciated.
@@ -197,6 +198,8 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Introduction to Locality-Sensitive Hashing - Tyler Neylon](https://unboxresearch.com/articles/lsh_post1.html)
 - [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
 - [How to Build an Economic Model in Your Spare Time - Hal R. Varian](https://fermatslibrary.com/p/e2e6484d#email-newsletter) -- The academic wisdom in this article goes beyond the world of economics.
+- [My Writings - Leslie Lamport](https://lamport.azurewebsites.net/pubs/pubs.html)
+- [Modeling marketing attribution - Claire Carroll](https://blog.getdbt.com/modeling-marketing-attribution/) -- I worked on this problem for a short time at Alan. I definitely would have done a better job if I had read this article first.
 
 ## Eye candy
 
@@ -225,3 +228,20 @@ The following is a hall of fame of papers, books, and blog posts that have a ver
 - [Shirts of Peter Norvig](http://charlesbroskoski.com/_/view.php?id=shirts-of-peter-norvig)
 - [United Airlines ads by Cream Electric Art](https://www.creamelectricart.com/united-airlines/)
 - [Miniature Calendar by Tatsuya Tanaka](https://miniature-calendar.com/) -- Broccolis that look like trees, staples that look like workout benches... I love it!
+
+## Tools
+
+Some tools I find worthy of interest -- but which I haven't necessarily tried out.
+
+- [Datasette](https://datasette.io/) -- one of the nicer ways to publish public datasets.
+- [Glitch](https://glitch.com/) -- build a website with a remote setup.
+- [MagicSheets](https://www.magicsheets.io/) -- machine learning in a spreadsheet.
+
+## Cool
+
+- [WindowSwap](https://www.window-swap.com/)
+- [Radio Garden](http://radio.garden/visit/paris/B7DS4V1m)
+- [Every Noise at Once](https://everynoise.com/)
+- [Starlink Satellites Tracker](https://findstarlink.com/)
+- [Based Cooking](https://based.cooking/)
+- [ReadComicOnline](https://readcomiconline.li/) -- I recommend [these](https://www.bedetheque.com/indispensables.html) French comics.
