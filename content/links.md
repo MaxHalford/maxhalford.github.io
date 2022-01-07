@@ -119,7 +119,8 @@ This is a list of blogs I regularly scroll through.
 - [Guilherme Duarte Marmerola](https://gdmarmerola.github.io/)
 - [Cal Paterson](https://calpaterson.com/)
 - [Claire Carroll](https://clrcrl.com/)
-- [Luke Metz](http://lukemetz.com/blog/)
+- [Luke Metz](http://lukemetz.com/blog/) -- Luke is working on the niche topic of meta-learning at Google. He also happens a very kind person.
+- [Practical Recommendations](https://practicalrecs.com/) -- a blog about recommender systems.
 
 ## Hall of fame
 
@@ -228,6 +229,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [Shirts of Peter Norvig](http://charlesbroskoski.com/_/view.php?id=shirts-of-peter-norvig)
 - [United Airlines ads by Cream Electric Art](https://www.creamelectricart.com/united-airlines/)
 - [Miniature Calendar by Tatsuya Tanaka](https://miniature-calendar.com/) -- Broccolis that look like trees, staples that look like workout benches... I love it!
+- [sandspiel](https://sandspiel.club/)
 
 ## Tools
 
