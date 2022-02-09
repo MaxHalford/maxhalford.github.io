@@ -18,11 +18,12 @@ toc: true
 
 ## Talks
 
-- [Real-time machine learning: the next frontier? - The Applied AI Community](https://www.youtube.com/watch?v=pxs-ghWvr0M)
-- [Real-time machine learning: the next frontier? - LVMH](/slides/real-time-machine-learning-the-next-frontier-lvmh.pdf)
-- [Manipulating ephemeral data with git - Défi IA 2021](/slides/manipulating-ephemeral-data-with-git.pdf)
-- [The challenges of online machine learning in production - Itaú Unibanco Meetup 2021](/slides/the-challenges-of-online-machine-learning-in-production.pdf)
-- [Quelle est l’empreinte écologique du Big Data? - Toulouse Tech round table 2021](https://www.youtube.com/watch?v=8RubWlhwTjg&feature=youtu.be)
+- [Online machine learning in practice - PyData PDX, 2022](/slides/online-ml-in-practice-pydata-pdx.pdf)
+- [Real-time machine learning: the next frontier? - The Applied AI Community, 2021](https://www.youtube.com/watch?v=pxs-ghWvr0M)
+- [Real-time machine learning: the next frontier? - LVMH, 2021](/slides/real-time-machine-learning-the-next-frontier-lvmh.pdf)
+- [Manipulating ephemeral data with git - Défi IA, 2021](/slides/manipulating-ephemeral-data-with-git.pdf)
+- [The challenges of online machine learning in production - Itaú Unibanco Meetup, 2021](/slides/the-challenges-of-online-machine-learning-in-production.pdf)
+- [Quelle est l’empreinte écologique du Big Data? - Toulouse Tech round table, 2021](https://www.youtube.com/watch?v=8RubWlhwTjg&feature=youtu.be)
 - [A brief introduction to online machine learning - Hong Kong Machine Learning, 2020](/slides/hkml2020.pdf)
 - [Online machine learning with decision trees - Toulouse AOC workgroup, 2020](/slides/online-decision-trees.pdf)
 - [Our solution to the IDAO 2020 qualifiers - virtual seminar, 2020](/slides/idao-2020-qualifiers.pdf)
@@ -37,11 +38,11 @@ toc: true
 - [Challenge Big Data - Toulouse, 2017](https://www.youtube.com/watch?v=oQd1h-8Srf4&feature=youtu.be)
 - [Forecasting bicycle-sharing usage - Toulouse Data Science, 2016](https://www.youtube.com/watch?v=vQGdzKkyPP0)
 
-## Datasets
+## Data sources
 
-- [OpenBikes 2016 challenge](https://www.dropbox.com/s/ic8m0b3mf5wxk4r/challenge.zip?dl=0)
-- [The Pushshift Reddit Dataset](https://arxiv.org/pdf/2001.08435.pdf)
-- [Coveo Data Challenge - In-session prediction for purchase intent and recommendations](https://sigir-ecom.github.io/data-task.html)
+I think it's important to debate and make decisions based on facts. For this we need reliable sources of data, whether it be to inform ourselves or to build models.
+
+- [Worldometer](https://www.worldometers.info/)
 
 ## Blogroll
 
@@ -201,6 +202,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [How to Build an Economic Model in Your Spare Time - Hal R. Varian](https://fermatslibrary.com/p/e2e6484d#email-newsletter) -- The academic wisdom in this article goes beyond the world of economics.
 - [My Writings - Leslie Lamport](https://lamport.azurewebsites.net/pubs/pubs.html)
 - [Modeling marketing attribution - Claire Carroll](https://blog.getdbt.com/modeling-marketing-attribution/) -- I worked on this problem for a short time at Alan. I definitely would have done a better job if I had read this article first.
+- [Doing Named Entity Recognition? Don't optimize for F1 - Christopher Manning](https://nlpers.blogspot.com/2006/08/doing-named-entity-recognition-dont.html) -- A rather niche topic, but well explained.
 
 ## Eye candy
 
