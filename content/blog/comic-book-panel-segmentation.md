@@ -1,5 +1,5 @@
 +++
-date = "2022-03-06"
+date = "2022-03-05"
 title = "Comic book panel segmentation"
 toc = true
 +++
