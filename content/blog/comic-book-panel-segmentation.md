@@ -8,7 +8,7 @@ I've recently been reading some comic books I used to devour as a kid. Especiall
 
 It's not easy to get my hands on many of them. Luckily enough I found a website called [ReadComicOnline](https://readcomiconline.li/) which is delightfully profuse. It gives access to comics for free under the murky "fair use" copyright doctrine. I'm very doubtful about the legality of the website, but I'm still using it for lack of a better option.
 
-I usually read these comics on my laptop. Reading them on my phone is not very convenient. I have to zoom in and move too many times to go from one panel to the next. I was thinking it might be easier if I could tap the screen to from one panel to the next. That seems possible if the panels were cut up in pieces. It occurred to me that cutting up comic strip panels boils down to an image segmentation task.
+I usually read these comics on my laptop. Reading them on my phone is not very convenient. I have to zoom in and move too many times to go from one panel to the next. I was thinking it might be easier if I could tap the screen to go from one panel to the next. That seems possible if the panels were cut up in pieces. It occurred to me that cutting up comic strip panels boils down to an image segmentation task.
 
 I decided to have a go and write some Python code to segment a comic strip page. I thought it would be nice to document the steps I took. In particular, I made heavy use of [scikit-image](https://scikit-image.org/); so you could say this blog post is a tutorial on doing image segmentation with scikit-image.
 
