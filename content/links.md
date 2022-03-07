@@ -72,10 +72,10 @@ This is a list of blogs I regularly scroll through.
 - [inFERENce](https://www.inference.vc/)
 - [Hyndsight](https://robjhyndman.com/hyndsight/) -- Rob Hyndman is a time series specialist.
 - [While My MCMC Gently Samples](https://twiecki.io/)
-- [Ines Montani](https://ines.io/) -- By one of the founders of [spaCy](https://spacy.io/).
+- [Ines Montani](https://ines.io/) -- by one of the founders of [spaCy](https://spacy.io/).
 - [Stephen Smerity](https://smerity.com/articles/articles.html)
 - [Peter Norvig](http://norvig.com/)
-- [IT Best Kept Secret Is Optimization](https://www.ibm.com/developerworks/community/blogs/jfp/?lang=en) -- By Jean-Francois Puget, aka [CPMP](https://www.kaggle.com/cpmpml).
+- [IT Best Kept Secret Is Optimization](https://www.ibm.com/developerworks/community/blogs/jfp/?lang=en) -- by Jean-Francois Puget, aka [CPMP](https://www.kaggle.com/cpmpml).
 - [explained.ai](https://explained.ai/)
 - [Better Explained](https://betterexplained.com/)
 - [Genetic Argonaut](https://geneticargonaut.blogspot.com/)
@@ -88,24 +88,24 @@ This is a list of blogs I regularly scroll through.
 - [Probably Overthinking It](https://www.allendowney.com/blog/)
 - [Simply Statistics](https://simplystatistics.org/)
 - [Practically Predictable](http://practicallypredictable.com/)
-- [koaning](http://koaning.io/) -- By Vincent Warmerdam, who made [calmcode](https://calmcode.io/).
+- [koaning](http://koaning.io/) -- by Vincent Warmerdam, who made [calmcode](https://calmcode.io/).
 - [blogarithms](https://blogarithms.github.io/)
 - [Possibly Wrong](https://possiblywrong.wordpress.com/)
 - [FastML](http://fastml.com/)
 - [Parameter-free Learning and Optimization Algorithms](https://parameterfree.com/)
-- [Todd W. Schneider](https://toddwschneider.com/) -- This guy is really good at exploratory data analysis.
-- [Yann Thaddée](https://espadrine.github.io/blog/) -- Not directly related to data science but interesting nonetheless.
+- [Todd W. Schneider](https://toddwschneider.com/) -- this guy is really good at exploratory data analysis.
+- [Yann Thaddée](https://espadrine.github.io/blog/) -- not directly related to data science but interesting nonetheless.
 - [Colins Blog](https://www.solipsys.co.uk/new/ColinsBlog.html)
-- [Fabien Sanglard](https://fabiensanglard.net) -- Nothing to do with data science, but such good taste!
-- [The Glowing Python](https://glowingpython.blogspot.com/) -- By the creator of [MiniSom](https://github.com/JustGlowing/minisom), which is worth checking out too.
+- [Fabien Sanglard](https://fabiensanglard.net) -- nothing to do with data science, but such good taste!
+- [The Glowing Python](https://glowingpython.blogspot.com/) -- by the creator of [MiniSom](https://github.com/JustGlowing/minisom), which is worth checking out too.
 - [Matt Hancock](https://notmatthancock.github.io/notes/)
-- [Francis Bach](https://francisbach.com/) -- Someone with an h-index of 80+ who takes the time to blog is worth reading.
+- [Francis Bach](https://francisbach.com/) -- someone with an h-index of 80+ who takes the time to blog is worth reading.
 - [Gwern Branwen](https://www.gwern.net/index) -- Cool in a weird way.
 - [Libres pensées d'un mathématicien ordinaire](http://djalil.chafai.net/blog/)
 - [Count Bayesie](https://www.countbayesie.com/)
 - [Jim Savage](https://khakieconomics.github.io/)
-- [Nick Higham](https://nhigham.com/) -- A lot of well explained algebra.
-- [Calmcode](https://calmcode.io/) -- Not a blog per se, but a nice collection of short to the point tutorials about various tools.
+- [Nick Higham](https://nhigham.com/) -- a lot of well explained algebra.
+- [Calmcode](https://calmcode.io/) -- not a blog per se, but a nice collection of short to the point tutorials about various tools.
 - [Chris Said](https://chris-said.io/)
 - [Evan Miller](https://www.evanmiller.org/index.html)
 - [Eric Jang](http://evjang.com/)
@@ -114,14 +114,15 @@ This is a list of blogs I regularly scroll through.
 - [Freakonometrics](https://freakonometrics.hypotheses.org/)
 - [Martin Daniel](http://www.martindaniel.co/)
 - [Chris Kiehl](https://chriskiehl.com/)
-- [ithaka.im](http://ithaka.im/) -- A guy I met who travelled for 6 years with his wife on a bike, very inspiring.
-- [Muthukrishnan](https://muthu.co/) -- Has written some neat document processing stuff.
+- [ithaka.im](http://ithaka.im/) -- a guy I met who travelled for 6 years with his wife on a bike, very inspiring.
+- [Muthukrishnan](https://muthu.co/) -- has written some neat document processing stuff.
 - [Björn Ottosson](https://bottosson.github.io/)
 - [Guilherme Duarte Marmerola](https://gdmarmerola.github.io/)
 - [Cal Paterson](https://calpaterson.com/)
 - [Claire Carroll](https://clrcrl.com/)
 - [Luke Metz](http://lukemetz.com/blog/) -- Luke is working on the niche topic of meta-learning at Google. He also happens a very kind person.
 - [Practical Recommendations](https://practicalrecs.com/) -- a blog about recommender systems.
+- [Robin Linacre](https://www.robinlinacre.com/) -- some good stuff related to record linkage.
 
 ## Hall of fame
 
