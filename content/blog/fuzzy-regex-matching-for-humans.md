@@ -5,9 +5,9 @@ title = "Fuzzy regex matching for humans"
 
 ## Fuzzy string matching in a nutshell
 
-Say we're looking for a pattern in a blob of text. If you know the text has no typos, then determining whether or not it contains a pattern is trivial. In Python you can use the `in` function. You can also write a regex pattern with the `re` module from the standard library. But what about if the text contains typos? For instance, this might be the case with user inputs on a website, or with OCR outputs. This is a much harder problem.
+Say we're looking for a pattern in a blob of text. If you know the text has no typos, then determining whether it contains a pattern is trivial. In Python you can use the `in` function. You can also write a regex pattern with the `re` module from the standard library. But what about if the text contains typos? For instance, this might be the case with user inputs on a website, or with OCR outputs. This is a much harder problem.
 
-[Fuzzy string matching](https://www.wikiwand.com/en/Approximate_string_matching) is a cool technique to find patterns in noisy text. In Python there used to be an ubiquitous library called [`fuzzywuzzy`](https://github.com/seatgeek/fuzzywuzzy). It got renamed to [`thefuzz`](https://github.com/seatgeek/thefuzz/blob/master/thefuzz). Then [`RapidFuzz`](https://github.com/maxbachmann/RapidFuzz) became the latest kid on the block. Here's an example using the latter:
+[Fuzzy string matching](https://www.wikiwand.com/en/Approximate_string_matching) is a cool technique to find patterns in noisy text. In Python there used to be a ubiquitous library called [`fuzzywuzzy`](https://github.com/seatgeek/fuzzywuzzy). It got renamed to [`thefuzz`](https://github.com/seatgeek/thefuzz/blob/master/thefuzz). Then [`RapidFuzz`](https://github.com/maxbachmann/RapidFuzz) became the latest kid on the block. Here's an example using the latter:
 
 ```py
 from rapidfuzz import fuzz
@@ -94,9 +94,9 @@ These locations are relative to the text that was searched.
 
 ## Human friendly interface
 
-That's all and well, but I find this interface too raw to work with. I would like some kind of information which tells me which characters got deleted, inserted, and substituted. I know I can deduce this from the `fuzzy_changes` attribute, but there's still some lifting to do. In particular, it gets a bit tricky when you have to handle deletions and insertions which mess with the indexing. I'll spare you the details.
+That's all and well, but I find this interface too raw to work with. I would like some kind of information which tells me which characters got deleted, inserted, and substituted. I know I can deduce this from the `fuzzy_changes` attribute, but there's still some lifting to do. In particular, it gets a bit tricky when you have to handle deletions and insertions, which mess with the indexing. I'll spare you the details.
 
-As I mentioned at the end of [my last post](/blog/ocr-spelling-correction-is-hard/), I'm working on a piece of software for doing OCR postprocessing. It's called [orc](https://github.com/MaxHalford/orc). As of now I have only scratched the surface of what I want to do. However, I did implement a friendlier interface to fuzzy regex matching. Here's an example:
+As I mentioned at the end of [my last post](/blog/ocr-spelling-correction-is-hard/), I'm working on a piece of software for doing OCR post-processing. It's called [orc](https://github.com/MaxHalford/orc). As of now, I have only scratched the surface of what I want to do. However, I did implement a friendlier interface to fuzzy regex matching. Here's an example:
 
 ```py
 import orc
