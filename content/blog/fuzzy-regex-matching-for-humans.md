@@ -18,11 +18,11 @@ fuzz.ratio("I had a sandwich", "I had a sand witch")
 96.2962962962963
 ```
 
-These libraries are often used to determine string similarity. This can be very useful for higher level tasks, such as record linkage, which I wrote about in [a previous post](/blog/transitive-duplicates/) For instance, fuzzy string matching is the cornerstone of the [Splink](https://github.com/moj-analytical-services/splink) project from the British Ministry of Justice. Also, I fondly remember doing fuzzy string matching at HelloFresh to find duplicate accounts by comparing postal addresses, names, email addresses, etc.
+These libraries are often used to determine string similarity. This can be very useful for higher level tasks, such as record linkage, which I wrote about in [a previous post](/blog/transitive-duplicates/). For instance, fuzzy string matching is the cornerstone of the [Splink](https://github.com/moj-analytical-services/splink) project from the British Ministry of Justice. Also, I fondly remember doing fuzzy string matching at HelloFresh to find duplicate accounts by comparing postal addresses, names, email addresses, etc.
 
-But fuzzy string matching isn't supposed to be just about measuring similarities between strings. It also allows searching for a pattern in a blob of noisy text. Sadly, popular fuzzy matching libraries don't seem to focus on this aspect. They only allow to measure string similarities.
+But fuzzy string matching isn't just about measuring similarities between strings. It also allows locating a pattern in a blob of noisy text. Sadly, popular fuzzy matching libraries don't seem to focus on this aspect. They only allow to measure string similarities.
 
-I've [been doing](/blog/ocr-spelling-correction-is-hard/) a bunch of OCR postprocessing in the past year. For this task, it's very useful to be able to do fuzzy string matching. Indeed, I have this idea of a supervised system for extracting entities -- such as dates and currency amounts -- from noisy OCR outputs. But for that I have to find actually locate search patterns in noisy text, and not just calculate their similarity scores with a bunch of text.
+I've [been doing](/blog/ocr-spelling-correction-is-hard/) a bunch of OCR postprocessing in the past year. For this task, it's very useful to be able to do fuzzy string matching. Indeed, I have this idea of a supervised system for extracting entities -- such as dates and currency amounts -- from noisy OCR outputs. But for that I have to actually locate search patterns in noisy text, and not just calculate their similarity scores against a bunch of text.
 
 ## The `regex` Python library
 
@@ -94,7 +94,7 @@ These locations are relative to the text that was searched.
 
 ## Human friendly interface
 
-That's all and well, but I find this interface too raw to work with. I would like some kind of information which tells me which characters got deleted, inserted, and substituted. I know I can deduce this from the `fuzzy_changes` attribute, but there's still some lifting to do. In particular, it gets a bit tricky when you have to handle deletions and insertions, which mess with the indexing. I'll spare you the details.
+That's all and well, but I find this interface too raw to work with. I would like some kind of representation which tells me which characters got deleted, inserted, and substituted. I know I can deduce this from the `fuzzy_changes` attribute, but there's still some lifting to do. In particular, it gets a bit tricky when you have to handle deletions and insertions, which mess with the indexing. I'll spare you the details.
 
 As I mentioned at the end of [my last post](/blog/ocr-spelling-correction-is-hard/), I'm working on a piece of software for doing OCR post-processing. It's called [orc](https://github.com/MaxHalford/orc). As of now, I have only scratched the surface of what I want to do. However, I did implement a friendlier interface to fuzzy regex matching. Here's an example:
 
@@ -146,6 +146,16 @@ near_match.edits.do(match.group())
 2020-02-05
 ```
 
-I think this is much more fun to work with. It's going to allow me to do a bunch of things. For instance, once I've compiled a list of edits for many search patterns, I'll be able to build a confusion matrix which tells me how likely it is for two characters to be confused with each other.
+I also wrote the logic to invert a bunch of edits. Meaning that you can build edits that go from `B` to `A` if you have the edits that allow going from `A` to `B`. I did this by overloading Python's `__neg__` method, which allows doing the following:
 
-The orc project is likely to change. But you can always check out the code I used for this blog post in [this commit](https://github.com/MaxHalford/orc/tree/a717544919fcb4d0e1408959c988dbab5b7afd8b).
+```py
+(-near_match.edits).do('2020-02-05')
+```
+
+```
+2021-2-04
+```
+
+I think this API is much more fun to work with. It's going to allow me to do a bunch of things. For instance, once I've compiled a list of edits for many search patterns, I'll be able to build a confusion matrix which tells me how likely it is for two characters to be confused with each other.
+
+The orc project is likely to change. But you can always check out the code I used for this blog post in [this commit](https://github.com/MaxHalford/orc/commit/5d8ea845ca4825e581c457accdf66d59edfbb1f1). In particular, you can check out [this notebook](https://github.com/MaxHalford/orc/blob/5d8ea845ca4825e581c457accdf66d59edfbb1f1/wikipedia.ipynb) which unit tests the fuzzy matching logic against the [Wikipedia common misspellings dataset](https://en.wikipedia.org/wiki/Wikipedia:Lists_of_common_misspellings).
