@@ -1,6 +1,7 @@
 +++
 date = "2022-04-02"
-title = "Fuzzy regex matching for humans"
+title = "Fuzzy regex matching in Python"
+toc = true
 +++
 
 ## Fuzzy string matching in a nutshell
@@ -123,7 +124,7 @@ print(near_match)
 2020-02-05
 ```
 
-The `near_match` object is built from the fuzzy regex match. It has a pretty `__repr__` method, which is what you see above. It stores a straightforward list of edits:
+The `near_match` object is built from the fuzzy regex match. It has a pretty `__repr__` method, which is the output you see above. It stores a straightforward list of edits:
 
 ```py
 for edit in near_match.edits:
