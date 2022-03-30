@@ -87,15 +87,15 @@ df['x_1'] = df['x_1'].map(df.groupby('x_1')['y'].mean())
 
 | $x_0$ | $x_1$ | $y$ |
 |-------|-------|-----|
-| 0.8 | 0.444 | 1 |
-| 0.8 | 0.444 | 1 |
-| 0.8 | 0.444 | 1 |
-| 0.8 | 0.444 | 1 |
-| 0.8 | 0.444 | 0 |
-| 0.2 | 0.444 | 1 |
-| 0.2 | 0.444 | 0 |
-| 0.2 | 0.444 | 0 |
-| 0.2 | 0.444 | 0 |
+| 0.8 | 0.555 | 1 |
+| 0.8 | 0.555 | 1 |
+| 0.8 | 0.555 | 1 |
+| 0.8 | 0.555 | 1 |
+| 0.8 | 0.555 | 0 |
+| 0.2 | 0.555 | 1 |
+| 0.2 | 0.555 | 0 |
+| 0.2 | 0.555 | 0 |
+| 0.2 | 0.555 | 0 |
 | 0.2 | 0 | 0 |
 
 Target encoding is good because it picks up values that can explain the target. In this silly example value $a$ of variable $x_0$ has an average target value of $0.8$. This can greatly help the machine learning classifications algorithms used downstream.
