@@ -38,12 +38,6 @@ toc: true
 - [Challenge Big Data - Toulouse, 2017](https://www.youtube.com/watch?v=oQd1h-8Srf4&feature=youtu.be)
 - [Forecasting bicycle-sharing usage - Toulouse Data Science, 2016](https://www.youtube.com/watch?v=vQGdzKkyPP0)
 
-## Data sources
-
-I think it's important to debate and make decisions based on facts. For this we need reliable sources of data, whether it be to inform ourselves or to build models.
-
-- [Worldometer](https://www.worldometers.info/)
-
 ## Blogroll
 
 This is a list of blogs I regularly scroll through.
@@ -241,6 +235,7 @@ Some tools I find worthy of interest -- but which I haven't necessarily tried ou
 - [Datasette](https://datasette.io/) -- one of the nicer ways to publish public datasets.
 - [Glitch](https://glitch.com/) -- build a website with a remote setup.
 - [MagicSheets](https://www.magicsheets.io/) -- machine learning in a spreadsheet.
+- [Evan's Awesome A/B Tools](https://www.evanmiller.org/ab-testing/)
 
 ## Cool
 

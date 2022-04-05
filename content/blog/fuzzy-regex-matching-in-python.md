@@ -1,5 +1,5 @@
 +++
-date = "2022-04-02"
+date = "2022-04-04"
 title = "Fuzzy regex matching in Python"
 toc = true
 +++
