@@ -118,6 +118,7 @@ This is a list of blogs I regularly scroll through.
 - [Luke Metz](http://lukemetz.com/blog/) -- Luke is working on the niche topic of meta-learning at Google. He also happens a very kind person.
 - [Practical Recommendations](https://practicalrecs.com/) -- a blog about recommender systems.
 - [Robin Linacre](https://www.robinlinacre.com/) -- some good stuff related to record linkage.
+- [Neal Lathia](https://nlathia.github.io/) -- machine learning in production stuff.
 
 ## Hall of fame
 
@@ -231,12 +232,14 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 
 ## Tools
 
-Some tools I find worthy of interest -- but which I haven't necessarily tried out.
+Some tools I find interesting.
 
 - [Datasette](https://datasette.io/) -- one of the nicer ways to publish public datasets.
 - [Glitch](https://glitch.com/) -- build a website with a remote setup.
 - [MagicSheets](https://www.magicsheets.io/) -- machine learning in a spreadsheet.
 - [Evan's Awesome A/B Tools](https://www.evanmiller.org/ab-testing/)
+- [Simplescraper](https://simplescraper.io/docs/)
+- [Airbyte](https://airbyte.com/) -- rarely have I had such a good user experience. In roughly an hour I managed to periodically send data from Postgres to BigQuery, totally from scratch.
 
 ## Cool
 
