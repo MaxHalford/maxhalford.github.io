@@ -18,7 +18,7 @@ toc: true
 
 ## Talks
 
-- [Online machine learning with River - GAIA, 2022](/slides/river-gaia-2022.pdf)
+- Online machine learning with River - GAIA, 2022 ([slides](/slides/river-gaia-2022.pdf), [recording](https://www.youtube.com/watch?v=nzFTmJnIakk&list=PLIU25-FciwNaz5PqWPiHmPCMOFYoEsJ8c&index=5))
 - [Online machine learning in practice - PyData PDX, 2022](/slides/online-ml-in-practice-pydata-pdx.pdf)
 - [Real-time machine learning: the next frontier? - The Applied AI Community, 2021](https://www.youtube.com/watch?v=pxs-ghWvr0M)
 - [Real-time machine learning: the next frontier? - LVMH, 2021](/slides/real-time-machine-learning-the-next-frontier-lvmh.pdf)

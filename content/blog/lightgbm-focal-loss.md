@@ -17,7 +17,7 @@ There's quite a few "guides" on how to implement focal loss for LightGBM. See fo
 
 ## LightGBM custom loss function caveats
 
-I'm first going to define a custom loss function that reimplements the default loss function that LightGBM uses for binary classification, which is the [logarithmic loss](http://wiki.fast.ai/index.php/Log_Loss). Doing so will allow me to verify that all the steps I'm taking are correct. Indeed, I will have nothing to compare against when I implement focal loss. If I write a custom implementation of the logarithmic, then I'll be able to compare it with LightGBM's implementation. Starting with the logarithmic loss and building up to the focal loss seems like a more reasonable thing to do. I've identified four steps that need to be taken in order to successfully implement a custom loss function for LightGBM:
+I'm first going to define a custom loss function that reimplements the default loss function that LightGBM uses for binary classification, which is the [logistic loss](http://wiki.fast.ai/index.php/Log_Loss). Doing so will allow me to verify that all the steps I'm taking are correct. Indeed, I will have nothing to compare against when I implement focal loss. If I write a custom implementation of the logarithmic, then I'll be able to compare it with LightGBM's implementation. Starting with the logistic loss and building up to the focal loss seems like a more reasonable thing to do. I've identified four steps that need to be taken in order to successfully implement a custom loss function for LightGBM:
 
 1. Write a custom loss function.
 2. Write a custom metric because step 1 messes with the predicted outputs.
@@ -62,7 +62,7 @@ X_train.head()
 | 80455 | 0.0695137 |   1.01775 |   1.03312 |   1.38438 |   0.223233 | -0.310845 |  0.597287 | -0.127658 |  -0.701533 | 0.0707389 | -0.857263 |  -0.290899 |  0.289337 |   0.333125 |     1.64318 | -0.507737 | -0.0242082 |   0.37196 |   1.56145 |   0.14876 |  0.0970231 |   0.369957 | -0.219266 | -0.124941 | -0.0497488 | -0.112946 |    0.11444 |  0.0661008 |     10 |
 | 39302 | -0.199441 |  0.610092 | -0.114437 |  0.256565 |    2.29075 |   4.00848 |  -0.12353 |   1.03837 | -0.0758464 | 0.0304526 |  -0.75603 | -0.0451648 |  -0.18018 | -0.0481675 | -0.00448576 | -0.541172 |   -0.17495 |  0.355749 |   1.37528 |  0.292972 | -0.0197334 |   0.165463 | -0.080978 |   1.02066 |   -0.30073 | -0.269595 |   0.481769 |   0.254114 |     22 |
 
-As is probably obvious, I'll be using LightGBM's Python package. Specifically, I'm running version <s>2.3.1</s> 3.1.1 with Python <s>3.7.4</s> 3.8.3. For the time being, I'll use the [generic training API](https://lightgbm.readthedocs.io/en/latest/Python-API.html#training-api), and not the [scikit-learn API](https://lightgbm.readthedocs.io/en/latest/Python-API.html#scikit-learn-api). That's because the former allows more low-level manipulation, whereas the latter is more high-level. Before implementing our custom logarithmic loss function, let's run LightGBM so that we have something to compare against:
+As is probably obvious, I'll be using LightGBM's Python package. Specifically, I'm running version <s>2.3.1</s> 3.1.1 with Python <s>3.7.4</s> 3.8.3. For the time being, I'll use the [generic training API](https://lightgbm.readthedocs.io/en/latest/Python-API.html#training-api), and not the [scikit-learn API](https://lightgbm.readthedocs.io/en/latest/Python-API.html#scikit-learn-api). That's because the former allows more low-level manipulation, whereas the latter is more high-level. Before implementing our custom logistic loss function, let's run LightGBM so that we have something to compare against:
 
 ```py
 import lightgbm
@@ -192,7 +192,7 @@ where
 
 Note that I renamed $\gamma$ in the Wikipedia article on gradient boosting to $\zeta$ because I'll be using $\gamma$ in the focal loss definition later on. Essentially, $\zeta$ is the value used to initialise the gradient boosting algorithm. This is mainly done to speed up convergence. The trick is that the definition of $\zeta$ depends on the loss function. Therefore, we need to provide a value for $\zeta$ if we specify a custom loss function. By default, it seems that LightGBM defaults to $\zeta = 0$, which is sub-optimal. To be honest, I don't think that a lot of data scientists are aware of this fact, even seasoned Kagglers. It's not their fault, though. In my opinion, LightGBM should raise a warning when a custom loss function is used without a custom initialization value. But that's just me.
 
-The optimal initialization value for logarithmic loss is computed in the `BoostFromScore` method of the [`binary_objective.hpp` file](https://github.com/microsoft/LightGBM/blob/e9fbd19d7cbaeaea1ca54a091b160868fc5c79ec/src/objective/binary_objective.hpp) within the LightGBM repository. You can also find it in the `get_init_raw_predictions` method of scikit-learn's [`BinomialDeviance` class](https://github.com/scikit-learn/scikit-learn/blob/0fb307bf39bbdacd6ed713c00724f8f871d60370/sklearn/ensemble/_gb_losses.py#L563). It goes as follows:
+The optimal initialization value for logistic loss is computed in the `BoostFromScore` method of the [`binary_objective.hpp` file](https://github.com/microsoft/LightGBM/blob/e9fbd19d7cbaeaea1ca54a091b160868fc5c79ec/src/objective/binary_objective.hpp) within the LightGBM repository. You can also find it in the `get_init_raw_predictions` method of scikit-learn's [`BinomialDeviance` class](https://github.com/scikit-learn/scikit-learn/blob/0fb307bf39bbdacd6ed713c00724f8f871d60370/sklearn/ensemble/_gb_losses.py#L563). It goes as follows:
 
 $$\begin{equation}
 \zeta = \log(\frac{\frac{1}{n}\sum_{i=1}^n y_i}{1 - \frac{1}{n}\sum_{i=1}^n y_i})
@@ -685,9 +685,9 @@ Note that all of the numeric checks we have just ran depend on the values of `y_
 
 ## Benchmarks
 
-We've implemented focal loss along with its first and second order gradients, as well as the correct initialization value. We're also reasonably confident that our implementation is correct. Let's now see how this performs on the credit card frauds dataset. The whole point of this exercise is that, supposedly, focal loss works better than logarithmic loss on imbalanced datasets.
+We've implemented focal loss along with its first and second order gradients, as well as the correct initialization value. We're also reasonably confident that our implementation is correct. Let's now see how this performs on the credit card frauds dataset. The whole point of this exercise is that, supposedly, focal loss works better than logistic loss on imbalanced datasets.
 
-I played around with `alpha` and `gamma`, but didn't really manage to reach a test set ROC AUC score that was convincingly better than what I obtained with logarithmic loss -- which was 0.97721. A mildly interesting fact is that setting `alpha=None` and `gamma=0` performs slightly better than when using logarithmic loss. The discrepancy is due to the initialization score. The following snippet shows how to go about using the `FocalLoss` with LightGBM:
+I played around with `alpha` and `gamma`, but didn't really manage to reach a test set ROC AUC score that was convincingly better than what I obtained with logistic loss -- which was 0.97721. A mildly interesting fact is that setting `alpha=None` and `gamma=0` performs slightly better than when using logistic loss. The discrepancy is due to the initialization score. The following snippet shows how to go about using the `FocalLoss` with LightGBM:
 
 ```py
 import lightgbm
