@@ -316,7 +316,7 @@ Here is a subset of the result, using `restaurants.loc[33:38]`:
   </tbody>
 </table>
 
-Note that finding the duplicates took around 8 seconds. Even though the dataset only contains 864 rows, a total of ${864 \choose 2} = 372,816$ comparisons have to be made in order to be exhaustive. However, as I mentioned there are two tricks I implemented which you can use. First, if you know that the number of times an instance can be duplicated, then you can tell the algorithm to stop searching once it has found said number of copies. In the restaurants example, it turns out that every duplicated restaurant is only duplicated once. In other word, each partition of duplicates is necessarily composed of just two elements. We can thus set the `max_size` parameter to 2 and hopefully shave off some time:
+Note that finding the duplicates took around 8 seconds. Even though the dataset only contains 864 rows, a total of ${864 \choose 2} = 372,816$ comparisons have to be made in order to be exhaustive. However, as I mentioned there are two tricks I implemented which you can use. First, if you know in advance the number of times an instance can be duplicated, then you can tell the algorithm to stop searching once it has found said number of copies. In the restaurants example, it turns out that every duplicated restaurant is only duplicated once. In other word, each partition of duplicates is necessarily composed of just two elements. We can thus set the `max_size` parameter to 2 and hopefully shave off some time:
 
 ```python
 restaurants['real_id'] = find_partitions(
