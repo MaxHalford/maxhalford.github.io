@@ -240,6 +240,7 @@ Some tools I find interesting.
 - [Evan's Awesome A/B Tools](https://www.evanmiller.org/ab-testing/)
 - [Simplescraper](https://simplescraper.io/docs/)
 - [Airbyte](https://airbyte.com/) -- rarely have I had such a good user experience. In roughly an hour I managed to periodically send data from Postgres to BigQuery, totally from scratch.
+- [Glitch](https://glitch.com/)
 
 ## Cool
 
