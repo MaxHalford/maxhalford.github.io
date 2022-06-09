@@ -333,6 +333,9 @@ code.has-jax {
   .markdown-body {
     font-size: 17px;
   }
+  figure {
+    margin: 0 !important;
+  }
   .post-content p {
     text-align: left !important;
   }

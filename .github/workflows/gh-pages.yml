@@ -3,7 +3,7 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - dev  # Set a branch to deploy
+      - dev # Set a branch to deploy
 
 jobs:
   deploy:
@@ -17,7 +17,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: 'latest'
+          hugo-version: "latest"
 
       - name: Build
         run: hugo --minify

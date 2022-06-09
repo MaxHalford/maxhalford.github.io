@@ -38,8 +38,8 @@ I thought it would be interesting to write a script that searches for all possib
 
 - **Typeface** — that's what most people usually mean when they say font. It's the name of a style, such as Helvetica, Times New Roman, or Comic Sans. I've also seen these being called "font families".
 
-<div align="center" >
-<figure style="width: 50%;">
+<div align="center" style="margin: 0 10%">
+<figure>
     <img src="/img/blog/character-similarity-ocr-correction/miller-specimen.png">
     <figcaption>The Miller typeface — specimens such as above are commonly used to display typefaces.</figcaption>
 </figure>
@@ -47,8 +47,8 @@ I thought it would be interesting to write a script that searches for all possib
 
 - **Font** — it's the materialization of a typeface. A font is essentially a (typeface, weight, size) triplet. For instance, one could say "I'm using Helvetica (font) bold (weight) 12pt (size) as my font".
 
-<div align="center" >
-<figure style="width: 70%;">
+<div align="center" style="padding: 0 5%" >
+<figure>
     <img style="padding: 5%" src="/img/blog/character-similarity-ocr-correction/miller-fonts.png">
     <figcaption>Each variation of the Miller typeface is a distinct font.</figcaption>
 </figure>

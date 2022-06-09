@@ -16,49 +16,56 @@ We definitely want to do this again. We're thinking of organising it in a more o
 Here are some pictures to wrap up 💫
 
 <div align="center">
-<figure style="width: 90%;">
+<figure>
     <img src="/img/blog/first-river-meetup/group.jpg">
     <figcaption>This is a picture of all of us after playing frisbee for the umpteenth time 🥏</figcaption>
 </figure>
 </div>
 
 <div align="center">
-<figure style="width: 90%;">
+<figure>
     <img src="/img/blog/first-river-meetup/soux.jpg">
     <figcaption>This is a view from the top of my favorite beach, the <i>Plage des Soux</i>.</figcaption>
 </figure>
 </div>
 
 <div align="center">
-<figure style="width: 90%;">
+<figure>
     <img src="/img/blog/first-river-meetup/saulo_and_i.jpg">
     <figcaption>This is Saulo and I in front of the <i>Plage des Vieilles</i>.</figcaption>
 </figure>
 </div>
 
 <div align="center">
-<figure style="width: 90%;">
+<figure>
+    <img src="/img/blog/first-river-meetup/group2.jpg">
+    <figcaption>Another group picture with the <i>Plage des Vieilles</i> in the background.</figcaption>
+</figure>
+</div>
+
+<div align="center">
+<figure>
     <img src="/img/blog/first-river-meetup/raphy_and_antoine.jpg">
     <figcaption>This is Antoine and <a href="https://github.com/raphaelsty">Raphaël</a>. Raphy is finishing a PhD in NLP, he contributed the LDA and Naive Bayes algorithms to River. Antoine is a friend of his who acted as our DJ for the whole week 🎶</figcaption>
 </figure>
 </div>
 
 <div align="center">
-<figure style="width: 90%;">
+<figure>
     <img src="/img/blog/first-river-meetup/geoffrey.jpg">
     <figcaption>This is <a href="https://github.com/gbolmier">Geoffrey</a>. He is working at Volvo Cars, and before that did a stint with the scikit-learn team in New-York. He worked on River's factorization machine and knows his way around the Python tooling ecosystem.</figcaption>
 </figure>
 </div>
 
 <div align="center">
-<figure style="width: 90%;">
+<figure>
     <img src="/img/blog/first-river-meetup/robin.jpg">
     <figcaption>Here we have <a href="https://github.com/VaysseRobin">Robin</a>. He is finishing a PhD in speech recognition. He wrote our first recsys model. But more than, he made us delicious deserts all week long 🤤</figcaption>
 </figure>
 </div>
 
 <div align="center">
-<figure style="width: 90%;">
+<figure>
     <img src="/img/blog/first-river-meetup/adil.jpg">
     <figcaption>This is <a href="https://github.com/AdilZouitine">Adil</a>. He worked River's popular <code>stats</code> module, as well as helped me on the time series models. He also made us laugh and smile all week 😊</figcaption>
 </figure>
