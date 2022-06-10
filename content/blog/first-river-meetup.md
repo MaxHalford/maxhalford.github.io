@@ -72,3 +72,10 @@ Here are some pictures to wrap up 💫
     <figcaption>This is <a href="https://github.com/AdilZouitine">Adil</a>. He worked on River's popular <code>stats</code> module, as well as helped me on the time series models. He also made us laugh and smile all week 😊</figcaption>
 </figure>
 </div>
+
+<div align="center">
+<figure>
+    <img src="/img/blog/first-river-meetup/river_logo.svg">
+    <figcaption>Last but not least, we designed a new logo to mark the occasion!</figcaption>
+</figure>
+</div>
