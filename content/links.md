@@ -241,6 +241,7 @@ Some tools I find interesting.
 - [Simplescraper](https://simplescraper.io/docs/)
 - [Airbyte](https://airbyte.com/) -- rarely have I had such a good user experience. In roughly an hour I managed to periodically send data from Postgres to BigQuery, totally from scratch.
 - [Glitch](https://glitch.com/)
+- [Backlink Checker](https://ahrefs.com/backlink-checker) -- can be useful for building features from URLs!
 
 ## Cool
 
