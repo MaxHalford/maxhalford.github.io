@@ -3,7 +3,7 @@ date = "2022-06-09"
 title = "First IRL meetup with the River developers"
 +++
 
-[River](https://github.com/online-ml/river/) is a Python software for doing online machine learning. It's the result of a merger in early 2020 between [creme](https://github.com/online-ml/river) and [scikit-multiflow](https://github.com/scikit-multiflow/scikit-multiflow). [Saulo Mastelini](https://github.com/smastelini), [Jacob Montiel](https://github.com/jacobmontiel), and myself are the three core developers. But there are many more people who contribute here and there!
+[River](https://github.com/online-ml/river/) is a Python software for doing online machine learning. It's the result of a merger in early 2020 between [creme](https://github.com/online-ml/river) and [scikit-multiflow](https://github.com/scikit-multiflow/scikit-multiflow). [Saulo Mastelini](https://smastelini.github.io/), [Jacob Montiel](https://jacobmontiel.github.io/), and myself are the three core developers. But there are many more people who contribute here and there!
 
 This week Saulo Mastelini and I got to meet in person. This is worth mentioning because Saulo is originally from Brazil, whereas I'm based in Europe. We connected and I'm glad to think of him as a good friend from now on. Of course we were not alone: some friends of mine from university also joined the fun. These are people who initially contributed to creme, back in what we already call the old days! Each one of them has their own areas of expertise, and contributed to various parts of the codebase.
 
@@ -62,14 +62,14 @@ Here are some pictures to wrap up 💫
 <div align="center">
 <figure>
     <img src="/img/blog/first-river-meetup/robin.jpg">
-    <figcaption>Here we have <a href="https://github.com/VaysseRobin">Robin</a>. He is finishing a PhD in speech recognition. He wrote our first recsys model. But more than, he made us delicious deserts all week long 🤤</figcaption>
+    <figcaption>Here we have <a href="https://www.irit.fr/~Robin.Vaysse/">Robin</a>. He is finishing a PhD in speech recognition. He wrote our first recsys model. But more than, he made us delicious deserts all week long 🤤</figcaption>
 </figure>
 </div>
 
 <div align="center">
 <figure>
     <img src="/img/blog/first-river-meetup/adil.jpg">
-    <figcaption>This is <a href="https://github.com/AdilZouitine">Adil</a>. He worked on River's popular <code>stats</code> module, as well as helped me on the time series models. He also made us laugh and smile all week 😊</figcaption>
+    <figcaption>This is <a href="https://boring-guy.sh/">Adil</a>. He worked on River's popular <code>stats</code> module, as well as helped me on the time series models. He also made us laugh and smile all week 😊</figcaption>
 </figure>
 </div>
 

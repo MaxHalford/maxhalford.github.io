@@ -1,6 +1,5 @@
 +++
 date = "2019-02-03"
-draft = false
 title = "Morellet crosses with JavaScript"
 +++
 
