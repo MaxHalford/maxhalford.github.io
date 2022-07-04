@@ -119,6 +119,7 @@ This is a list of blogs I regularly scroll through.
 - [Practical Recommendations](https://practicalrecs.com/) -- a blog about recommender systems.
 - [Robin Linacre](https://www.robinlinacre.com/) -- some good stuff related to record linkage.
 - [Neal Lathia](https://nlathia.github.io/) -- machine learning in production stuff.
+- [John D. Cook](https://www.johndcook.com/blog/)
 
 ## Hall of fame
 
