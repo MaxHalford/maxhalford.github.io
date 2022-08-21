@@ -248,7 +248,7 @@ for i, (xi, yi) in enumerate(zip(X, y)):
 print(metrics.mean_absolute_error(y, y_pred))
 ```
 
-This produces a mean absolute error of around `3.784`. To get an idea of how good or bad this is, we'll train an instance of scikit-learn's [`SGDRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDRegressor.html) in the same manner and use it's performance as a reference.
+This produces a mean absolute error of around `3.784`. To get an idea of how good or bad this is, we'll train an instance of scikit-learn's [`SGDRegressor`](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDRegressor.html) in the same manner and use its performance as a reference.
 
 ```python
 from sklearn import exceptions

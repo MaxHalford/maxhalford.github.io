@@ -177,7 +177,6 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [A Machine Learning Primer - Mihail Eric](https://www.confetti.ai/assets/ml-primer/ml_primer.pdf) -- A good read for beginners in machine learning algorithms.
 - [Fitting Bayesian structural time series with the bsts R package - Steven L. Scott](http://www.unofficialgoogledatascience.com/2017/07/fitting-bayesian-structural-time-series.html)
 - [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.nature.com/articles/d41586-019-02918-5)
-- [Emerging Architectures for Modern Data Infrastructure - Matt Bornstein, Martin Casado, and Jennifer Li](https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/) -- Gives a good overview of the data analysis tooling landscape as of late 2020.
 - [What your data team is using: the analytics stack - Technically](https://technically.dev/posts/what-your-data-team-is-using) -- Another solid article to understand what an analytics stack looks like in 2021.
 - [Fred's ImageMagick Scripts](http://www.fmwconcepts.com/imagemagick/index.php)
 - [Unprojecting text with ellipses - Matt Zucker](https://mzucker.github.io/2016/10/11/unprojecting-text-with-ellipses.html) -- See also [this article on page dewarping](https://mzucker.github.io/2016/08/15/page-dewarping.html) by the same author.
@@ -230,6 +229,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [United Airlines ads by Cream Electric Art](https://www.creamelectricart.com/united-airlines/)
 - [Miniature Calendar by Tatsuya Tanaka](https://miniature-calendar.com/) -- Broccolis that look like trees, staples that look like workout benches... I love it!
 - [sandspiel](https://sandspiel.club/)
+- [Jorge Jacinto](http://www.jorgejacinto.com/)
 
 ## Tools
 
