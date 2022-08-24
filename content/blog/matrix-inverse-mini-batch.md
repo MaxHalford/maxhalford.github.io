@@ -200,7 +200,7 @@ plt.savefig('speed-up.svg', bbox_inches='tight')
 <div align="center">
 <figure >
     <img src="/img/blog/matrix-inverse-mini-batch/speed-up.svg" style="box-shadow: none;">
-    <figcaption><i>Speed-up summary. A <span style="color: indianred;">red</span> value means the mini-batch version is faster, whereas <span style="color: greenyellow;">green</span> value means the streaming version is the fastest approach.</i></figcaption>
+    <figcaption><i>Speed-up summary. A <span style="color: indianred;">red</span> value means the mini-batch version is faster, whereas a <span style="color: greenyellow;">green</span> value means the streaming version is preferable.</i></figcaption>
 </figure>
 </div>
 
