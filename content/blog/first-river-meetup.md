@@ -69,7 +69,7 @@ Here are some pictures to wrap up 💫
 <div align="center">
 <figure>
     <img src="/img/blog/first-river-meetup/adil.jpg">
-    <figcaption>This is <a href="https://boring-guy.sh/">Adil</a>. He worked on River's popular <code>stats</code> module, as well as helped me on the time series models. He also made us laugh and smile all week 😊</figcaption>
+    <figcaption>This is <a href="https://boring-guy.sh/">Adil</a>. He's pursuing a PhD in reinforcement learning. He worked on River's popular <code>stats</code> module, as well as helped me on the time series models. He also made us laugh and smile all week 😊</figcaption>
 </figure>
 </div>
 
