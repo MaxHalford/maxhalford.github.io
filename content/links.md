@@ -120,6 +120,8 @@ This is a list of blogs I regularly scroll through.
 - [Robin Linacre](https://www.robinlinacre.com/) -- some good stuff related to record linkage.
 - [Neal Lathia](https://nlathia.github.io/) -- machine learning in production stuff.
 - [John D. Cook](https://www.johndcook.com/blog/)
+- [Brandon Roberts](https://bxroberts.org/)
+- [Allen Downey](https://www.allendowney.com/blog/)
 
 ## Hall of fame
 
@@ -243,6 +245,7 @@ Some tools I find interesting.
 - [Airbyte](https://airbyte.com/) -- rarely have I had such a good user experience. In roughly an hour I managed to periodically send data from Postgres to BigQuery, totally from scratch.
 - [Glitch](https://glitch.com/)
 - [Backlink Checker](https://ahrefs.com/backlink-checker) -- can be useful for building features from URLs!
+- [Cycle](https://cycle.io/) -- looks like a no-fuss solution for hosting apps, and it has a permissive free-tier!
 
 ## Cool
 

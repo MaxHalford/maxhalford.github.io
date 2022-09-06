@@ -1,13 +1,12 @@
 +++
-date = "2022-08-11"
+date = "2022-09-06"
 title = "NLP at Carbonfact: how would you do it?"
 toc = true
-draft = true
 +++
 
 ## The task
 
-I work at a company called [Carbonfact](https://www.carbonfact.com/). Our core value proposal is computing the [carbon footprint](https://www.wikiwand.com/en/Carbon_footprint) of clothing items, expressed in [carbon dioxide equivalent](https://www.wikiwand.com/en/Carbon_Dioxide_Equivalent) -- $kgCO^2e$ in short. For instance, we started by measuring the footprint of shoes -- no pun intended. We do these measurements with [life cycle analysis (LCA)](https://www.wikiwand.com/en/Life-cycle_assessment) software we built ourselves. We use these analyses to fuel higher-level tasks for our clients, such as [carbon accounting](https://www.wikiwand.com/en/Carbon_accounting) and [sustainable procurement](https://www.wikiwand.com/en/Sustainable_procurement).
+I work at a company called [Carbonfact](https://www.carbonfact.com/). Our core value proposal is computing the [carbon footprint](https://www.wikiwand.com/en/Carbon_footprint) of clothing items, expressed in [carbon dioxide equivalent](https://www.wikiwand.com/en/Carbon_Dioxide_Equivalent) -- $kgCO_2e$ in short. For instance, we started by measuring the footprint of shoes -- no pun intended. We do these measurements with [life cycle analysis (LCA)](https://www.wikiwand.com/en/Life-cycle_assessment) software we built ourselves. We use these analyses to fuel higher-level tasks for our clients, such as [carbon accounting](https://www.wikiwand.com/en/Carbon_accounting) and [sustainable procurement](https://www.wikiwand.com/en/Sustainable_procurement).
 
 A life cycle analysis is essentially a recipe, the output of which is a carbon footprint assessment. Like any recipe, an LCA necessitates ingredients. In a [cradle-to-gate](https://www.wikiwand.com/en/Life-cycle_assessment#/Cradle-to-gate) scenario, this includes everything that is needed to make the product: the materials, the mass, the manufacturing methods, the transport between factories, etc. In our experience, the biggest impact on a product's footprint come from the materials which it is made of.
 
@@ -23,11 +22,7 @@ In this article, I want to focus on an NLP task I recently performed. I had to t
 top body: 100% polyester lace: 88% nylon 12% spandex, string: 88% nylon 12% spandex
 92% polyester, 8% spandex
 95% rayon 5% spandex
-87% nylon 13% spandex
-95% rayon 5% spandex
-87% nylon 13% spandex
 lace 87% nylon 13% spandex; mesh: 95% nylon 5% spandex
-92% nylon 8% spandex
 body & panty: 85% nylon 15% spandex
 86%polyamide,14%elastane
 ```
@@ -67,7 +62,7 @@ Here, `lace` and `mesh` are component names. Indeed, clothing items are made of 
 
 ## The data
 
-There are 4662 (input, output) pairs, all of which can be found in these two datasets:
+There are 600 (input, output) pairs, all of which can be found in these two datasets:
 
 <div><a href="/files/datasets/nlp-carbonfact/inputs.txt"><b>inputs.txt</b></a></div>
 <div><a href="/files/datasets/nlp-carbonfact/outputs.json"><b>outputs.json</b></a></div>
@@ -79,7 +74,7 @@ When faced with this kind of task, it's difficult to decide between:
 1. Spending time working on a generic machine learning based solution.
 2. Spending less time writing a scrappy rule-based solution.
 
-I opted with the latter for the sake of saving of time in the short-term. The solution I wrote is not generic, as it is only guaranteed to work for the dataset linked above. Also, if our client adds more data to their catalog, it's likely that I'll have to dive back into the code to handle new cases. However, this option is risk-free, and has the merit of being easy to debug. Here is the Python code:
+I opted with the latter for the sake of saving time in the short-term. The solution I wrote is not generic, as it is only guaranteed to work for the dataset linked above. Also, if our client adds more data to their catalog, it's likely that I'll have to dive back into the code to handle new cases. However, this option is risk-free, and has the merit of being easy to debug. Here is the Python code:
 
 <details>
   <summary>Click to see the code</summary>
@@ -262,7 +257,7 @@ The core parsing logic happens in `split_composition_into_component_materials`. 
 
 There's a second function called `normalize_composition_format` which cleans each piece of text. For instance, in some texts, the component names end with a `-` rather than a `:`. Sometimes a `;` might be used to separate components. There are also a whole bunch of typos, such as `polyeseter -> polyester` -- in fact, I found 10 different spellings for polyester. There's also some more esoteric corrections to make like `cotton algodón coton -> cotton`.
 
-The details are not very interesting. I guess what's more important is the process it took to build this normalization function. Essentially, I looped through the inputs, tried to parse them, and stopped each time something went wrong. Then I diagnosed the error, edited the code to accommodate the new case, and moved on. Rinse and repeat. It's essentially a boring feedback loop with myself.
+The details are not very interesting. I guess what's more important is the process it took to build this normalization function. Essentially, I looped through the inputs, tried to parse them, and stopped each time something went wrong -- i.e. when my Python script raised an exception. Then I diagnosed the error, edited the code to accommodate the new case, and moved on. Rinse and repeat. It's essentially a boring feedback loop with myself.
 
 ## Room for improvement
 
@@ -274,4 +269,4 @@ I haven't yet reached the point where I feel overwhelmed and in need of setting 
 
 I have written bespoke parsing functions for several catalogs I've had to work on. In each case, the parsing logic is rule-based, just like the piece of code above. The nice thing is that this generates a whole bunch of `input -> output` labeled data from different sources. That way I won't have to start from scratch the day I decide to begin a machine learning based solution. [This](https://www.cidrdb.org/cidr2020/papers/p31-sheng-cidr20.pdf) paper describes a similar situation, wherein a team at Google moved from a rule-based setup to a "Software 2.0" solution for an email information extraction task.
 
-I'm very curious to understand how would others do it. I imagine that this kind of problem is faced by many practitioners. I can't be the only one hesitating between sticking to my rules and moving on to a machine learning system. Feel free to reach out and/or comment below if you want to share your experience!
+I'm very curious to understand how would others do it. I imagine that this kind of problem is faced by many practitioners. I can't be the only one hesitating between sticking to my rules and moving on to a machine learning system. Feel free to reach out and/or leave a comment below if you want to share your experience!
