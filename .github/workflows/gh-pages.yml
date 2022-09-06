@@ -3,11 +3,11 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - dev # Set a branch to deploy
+      - dev
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
