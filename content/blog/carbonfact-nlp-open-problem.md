@@ -165,6 +165,7 @@ def normalize_composition_format(text):
     text = text.replace("elastanee", "elastane")
     text = text.replace(" poly ", " polyester ")
     text = text.replace("cotton algodón coton", "cotton")
+    text = text.replace("poliamide", "polyamide")
     text = text.replace("recycle polyamide", "recycled polyamide")
     text = text.replace("polyester poliéster", "polyester")
     text = text.replace("polystester", "polyester")
