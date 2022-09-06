@@ -272,4 +272,4 @@ I have written bespoke parsing functions for several catalogs I've had to work o
 
 I'm very curious to understand how would others do it. I imagine this kind of problem is faced by many practitioners. I can't be the only one hesitating between sticking to my rules, and moving on to a machine learning system. Feel free to reach out and/or leave a comment below if you want to share your experience! Note that I'm very interested in the underlying thought process and the user experience that is involved, more so than the solution in itself.
 
-Dear reader, how would **you** do it?
+Dear reader, how would you do it?
