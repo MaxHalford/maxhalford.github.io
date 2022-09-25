@@ -179,6 +179,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [A Machine Learning Primer - Mihail Eric](https://www.confetti.ai/assets/ml-primer/ml_primer.pdf) -- A good read for beginners in machine learning algorithms.
 - [Fitting Bayesian structural time series with the bsts R package - Steven L. Scott](http://www.unofficialgoogledatascience.com/2017/07/fitting-bayesian-structural-time-series.html)
 - [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.nature.com/articles/d41586-019-02918-5)
+- [Emerging Architectures for Modern Data Infrastructure](https://future.com/emerging-architectures-modern-data-infrastructure/)
 - [What your data team is using: the analytics stack - Technically](https://technically.dev/posts/what-your-data-team-is-using) -- Another solid article to understand what an analytics stack looks like in 2021.
 - [Fred's ImageMagick Scripts](http://www.fmwconcepts.com/imagemagick/index.php)
 - [Unprojecting text with ellipses - Matt Zucker](https://mzucker.github.io/2016/10/11/unprojecting-text-with-ellipses.html) -- See also [this article on page dewarping](https://mzucker.github.io/2016/08/15/page-dewarping.html) by the same author.
@@ -246,6 +247,7 @@ Some tools I find interesting.
 - [Glitch](https://glitch.com/)
 - [Backlink Checker](https://ahrefs.com/backlink-checker) -- can be useful for building features from URLs!
 - [Cycle](https://cycle.io/) -- looks like a no-fuss solution for hosting apps, and it has a permissive free-tier!
+- [Facets](https://pair-code.github.io/facets/) -- maybe the best tool I've seen for interactively exploring a dataset.
 
 ## Cool
 
@@ -255,3 +257,4 @@ Some tools I find interesting.
 - [Starlink Satellites Tracker](https://findstarlink.com/)
 - [Based Cooking](https://based.cooking/)
 - [ReadComicOnline](https://readcomiconline.li/) -- I recommend [these](https://www.bedetheque.com/indispensables.html) French comics.
+- [Looria](https://looria.com/reddit/overview) -- especially for [cycling](https://looria.com/reddit/cycling/products) and [camping gear](https://looria.com/reddit/campinggear/products)

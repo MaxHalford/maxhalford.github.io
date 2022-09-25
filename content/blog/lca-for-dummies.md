@@ -67,7 +67,7 @@ There's at a lot of definitions. Here are the ones I deem most important. See [h
 
 <div align="center">
 <figure >
-    <img src="/img/blog/lca-for-hackers/coffee-cup.png">
+    <img src="/img/blog/lca-for-dummies/coffee-cup.png">
     <figcaption><a href="https://www.youtube.com/watch?v=uXj3M9Z4B4g&t=2000s">Source</a></figcaption>
 </figure>
 </div>
@@ -78,7 +78,7 @@ There's at a lot of definitions. Here are the ones I deem most important. See [h
 
 <div align="center">
 <figure >
-    <img src="/img/blog/lca-for-hackers/skin-moisturiser-system-boundaries.png">
+    <img src="/img/blog/lca-for-dummies/skin-moisturiser-system-boundaries.png">
     <figcaption><a href="https://static1.squarespace.com/static/5e66303d2a35d86b999ddf82/t/5ed4fd309aade1279552f980/1591016771984/LCA+Guide">Source</a></figcaption>
 </figure>
 </div>
@@ -104,7 +104,7 @@ Example of corn ethanol. If you grow it, you're not growing other stuff, so othe
 
 <div align="center">
 <figure >
-    <img src="/img/blog/lca-for-hackers/Example_Life_Cycle_Assessment_Stages_diagram.png">
+    <img src="/img/blog/lca-for-dummies/Example_Life_Cycle_Assessment_Stages_diagram.png">
     <figcaption><a href="https://www.wikiwand.com/en/Life-cycle_assessment#/Definition,_synonyms,_goals,_and_purpose">Source</a></figcaption>
 </figure>
 </div>
