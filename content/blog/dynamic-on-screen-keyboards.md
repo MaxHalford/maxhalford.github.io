@@ -215,7 +215,7 @@ Now let's assume we have some method to determine the most likely next keys foll
 
 ### Ordering keys around the previous keypress
 
-We know the distance of each key with respect to the last keypress, so we can use said distance to determine the order. The only thing to clarify is the handling of keys that have the same distance. For this I cooked up a heuristic, which is that keys closest to the keyboard's center should be prioritized. The reasoning is that you want keypresses to occur away from the edges and corners, because those spots have less keys available around them.
+We know the distance of each key with respect to the last keypress, so we can use said distance to determine the order. The only thing to clarify is the handling of keys that have the same distance. I cooked up a heuristic: keys closest to the keyboard's center should be used in priority. The reasoning is that you want keypresses to occur away from the edges and corners, because those spots have less keys available around them.
 
 The following interactive grid shows what this ordering algorithm looks like. The adjacent keys to the last keypress are prioritized. The distance to the center is used as a tiebreaker. Note that for a keyboard with an uneven number of columns and/or rows, the column and/or row numbers should be used as extra tiebreakers.
 
@@ -580,7 +580,9 @@ I suggest trying out the keyboard for yourself. For example, you can see that it
 
 ## Refining the probability model
 
-One of the first things I noticed with this dynamic keyboard is that if I press `e`, the next suggested character is an empty space. I checked, and this is statistically correct. But it doesn't make sense to suggest an empty space as the second character of a movie title -- or any English sentence for that matter. Therefore, I tried out using a more granular probability model. I baked in the position of the next character. This essentially boils down to performing more counting and storing more values.
+One of the first things I noticed with this dynamic keyboard is that if I press `e`, the next suggested character is an empty space. I checked, and this is statistically correct. But it doesn't make sense to suggest an empty space as the second character of a movie title -- or any English sentence for that matter.
+
+To alleviate this corner case, I tried out using a more granular probability model. I baked in the position of the next character. This essentially boils down to performing more counting and storing more values.
 
 $$P(c_i \mid c_{i-1}) = \frac{\sum_{w \in W}\sum_{j = 1}^{|w|} \mathbb{1}(i = j, w_{j-1} = c_{i-1}, w_j = c_i)}{\sum_{w \in W}\sum_{j = 1}^{|w|} \mathbb{1}(i = j, w_{j-1} = c_{i-1})}$$
 
@@ -735,7 +737,7 @@ dynamic      25     14    2    16    22    31    127
 memorized    23     12    2    15    21    29     85
 ```
 
-The dynamic keyboard is faster than the regular keyboard in 99% of cases. The more sophisticated dynamic keyboard -- which is named `memorized` above -- is faster than the dynamic one in 70% of cases. I actually expected the more granular probability model to be consistently better, but it wasn't. And yet, my gut feeling is that there is still some room for improvement. After all, the goal here is not to build a probability model that generalizes, but one that memorizes the list of titles.
+The dynamic keyboard is faster than the regular keyboard in 99% of cases. The more sophisticated dynamic keyboard -- which is named `memorized` above -- is faster than the dynamic one in 70% of cases. I actually expected the more granular probability model to be consistently better, but it wasn't. And yet, my gut feeling is that there is still room for improvement. After all, the goal here is not to build a probability model that generalizes, but one that memorizes the list of titles.
 
 However, one thing to take into account is the probability model's memory usage. The first version I implemented is simple, and yet is elegant in that it only requires building a list of next characters for every character. The second model requires one entry for each character and each position. Any more sophisticated model would take up more space, which may be burdensome.
 
