@@ -8,7 +8,9 @@ toc = true
 
 I've recently been spending time at my brother's place. We usually eat in front of TV. I've thus found myself typing stuff on the Netflix/Amazon/Plex TV apps. The typing happens through a remote controller, which is slower than typing with ones fingers. However, the TV apps usually suggest the correct show/movie after five or six keystrokes, so it's not that bad.
 
-Typing stuff via an on-screen TV keyboard with a remote controller isn't something one does very often. It's likely pointless to try optimizing this process. And yet, I felt compelled to explore more efficient keyboard layouts. In particular, I immediatly wondered why these keyboards didn't reorganise their layout dynamically based on the current input. I did some research, and stumbled on [this](https://ediblecode.com/blog/tv-keyboards/) article comparing different TV keyboards back in 2017. The article mentions a Samsung TV that suggests the four most likely next characters:
+Typing stuff via an on-screen TV keyboard with a remote controller isn't something one does very often. It's likely pointless to try optimizing this process. And yet, I felt compelled to explore more efficient keyboard layouts.
+
+In particular, I immediatly wondered why these keyboards didn't reorganise their layout dynamically based on the current input. I did some research, and stumbled on [this](https://ediblecode.com/blog/tv-keyboards/) article comparing different TV keyboards back in 2017. The article mentions a Samsung TV that suggests the four most likely next characters:
 
 <div align="center">
 <figure >
@@ -154,7 +156,7 @@ I decided to work on a more general prototype, and to implement my own algorithm
 
 This keyboard lacks realism in that you can point-and-click on it, as opposed to navigating with directional arrows. I'm also only considering the Latin alphabet and numbers. I'd also like to mention I'm going to ignore torus keyboards which wrap-around the edges, because they don't seem common. Anyway, this keyboard has the merit of being interactive, and it can be used to measure the travel distance of an input.
 
-What I call travel distance is the amount of ⬆️⬇️⬅️➡️ movements that are necessary to input a sentence. Note that the first position is always the top-left corner. My goal in this article is to design a dynamic keyboard which minimizes this distance. I'll be benchmarking it against a static keyboard with a list of Netflix titles, which I found [here](https://raw.githubusercontent.com/andrewhood125/netflix-search-cli/master/movieList.txt).
+What I call travel distance is the amount of necessary ⬆️⬇️⬅️➡️ movements to input a sentence. Note that the first position is always the top-left corner. My goal in this article is to design a dynamic keyboard which minimizes this distance. I'll be benchmarking it against a static keyboard with a list of Netflix titles, which I found [here](https://raw.githubusercontent.com/andrewhood125/netflix-search-cli/master/movieList.txt).
 
 *Note: the source code for each keyboard is embedded into this page's source code.*
 
@@ -164,7 +166,7 @@ What I call travel distance is the amount of ⬆️⬇️⬅️➡️ movements 
 
 The basic idea is that when you press a key, you want the keyboard to be layed out in such a manner that the next likely characters are close by. A static keyboard organised in alphabetical order is not optimal in that sense. It doesn't take into account the frequency of juxtaposed characters. Other static keyboards take this into account, such as the QWERTY and AZERTY layouts. However, the latter were designed for physical keyboards, where the layout can't change dynamically. We can do whatever we want with a virtual keyboard.
 
-For an on-screen TV keyboard, it makes sense to measure the distance between keys with a [taxicab geometry](https://www.wikiwand.com/en/Taxicab_geometry). Indeed, one can only go ⬆️⬇️⬅️➡️ with a remote controller. The following interactive grid indicates a key's distance with respect to the last key that was pressed.
+For an on-screen TV keyboard, it makes sense to measure the distance between keys with a [taxicab geometry](https://www.wikiwand.com/en/Taxicab_geometry). Indeed, one can only go ⬆️⬇️⬅️➡️ with a remote controller. The following grid is interactive, and indicates a key's distance with respect to the last key that was pressed:
 
 </br>
 {{< rawhtml >}}
@@ -380,7 +382,7 @@ print(json.dumps(
 }
 ```
 
-We also to need to list the most common characters for the first keypress. This is more straightforward.
+We also need to list the most common characters for the first keypress. This is rather straightforward.
 
 <details>
   <summary>Click to see the code</summary>
@@ -402,7 +404,7 @@ tsbacmdhfprlwngiekjovu31yqz2x456897
 
 ### Piecing it together
 
-Now we know how to order keys following a keypress. We also have a baisc model to determine what keys are likely to be pressed next. We can implement a dynamic keyboard by putting these two building blocks together.
+Now we know how to order keys following a keypress. We also have a basic model to determine what keys are likely to be pressed next. We can implement a dynamic keyboard by putting these two building blocks together.
 
 </br>
 {{< rawhtml >}}
@@ -572,13 +574,13 @@ The keys are first layed out according to the likelihood of a character appearin
 
 I suggest trying out the keyboard for yourself. For example, you can see that it reduces the distance for the three predefined titles by a non-negligible amount:
 
-- The Last Dance goes from 64 to 12 (x5.3)
-- House of Cards goes from 73 to 16 (x4.5)
-- Peaky Blinders goes from 57 to 17 (x3.4)
+- The Last Dance goes from 64 to 14 (x4.6)
+- House of Cards goes from 73 to 17 (x4.3)
+- Peaky Blinders goes from 57 to 18 (x3.2)
 
 ## Refining the probability model
 
-One of the first things I noticed with this dynamic keyboard is that if I press `e`, the next suggested character is an empty space. I checked, and this is statistically correct. But it doesn't make sense to suggest an empty space as the second character of a title. Therefore I tried out using a more granular probability model. I baked in the position of the next character. This essentially boils down to performing more counting and storing more values.
+One of the first things I noticed with this dynamic keyboard is that if I press `e`, the next suggested character is an empty space. I checked, and this is statistically correct. But it doesn't make sense to suggest an empty space as the second character of a movie title -- or any English sentence for that matter. Therefore, I tried out using a more granular probability model. I baked in the position of the next character. This essentially boils down to performing more counting and storing more values.
 
 $$P(c_i \mid c_{i-1}) = \frac{\sum_{w \in W}\sum_{j = 1}^{|w|} \mathbb{1}(i = j, w_{j-1} = c_{i-1}, w_j = c_i)}{\sum_{w \in W}\sum_{j = 1}^{|w|} \mathbb{1}(i = j, w_{j-1} = c_{i-1})}$$
 
