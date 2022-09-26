@@ -4,6 +4,8 @@ title = "Dynamic on-screen TV keyboards"
 toc = true
 +++
 
+*This article has some interactive keyboards, therefore I recommend reading it from your computer rather than your phone.*
+
 ## On-screen TV keyboards
 
 I've recently been spending time at my brother's place. We usually eat in front of TV. I've thus found myself typing stuff on the Netflix/Amazon/Plex TV apps. The typing happens through a remote controller, which is slower than typing with ones fingers. However, the TV apps usually suggest the correct show/movie after five or six keystrokes, so it's not that bad.
