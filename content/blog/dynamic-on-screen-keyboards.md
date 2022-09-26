@@ -1,5 +1,5 @@
 +++
-date = "2022-09-26"
+date = "2022-09-25"
 title = "Dynamic on-screen TV keyboards"
 toc = true
 +++
