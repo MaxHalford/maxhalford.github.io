@@ -233,6 +233,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [Miniature Calendar by Tatsuya Tanaka](https://miniature-calendar.com/) -- Broccolis that look like trees, staples that look like workout benches... I love it!
 - [sandspiel](https://sandspiel.club/)
 - [Jorge Jacinto](http://www.jorgejacinto.com/)
+- [WaveFunctionCollapse](https://github.com/mxgmn/WaveFunctionCollapse)
 
 ## Tools
 
@@ -248,6 +249,7 @@ Some tools I find interesting.
 - [Backlink Checker](https://ahrefs.com/backlink-checker) -- can be useful for building features from URLs!
 - [Cycle](https://cycle.io/) -- looks like a no-fuss solution for hosting apps, and it has a permissive free-tier!
 - [Facets](https://pair-code.github.io/facets/) -- maybe the best tool I've seen for interactively exploring a dataset.
+- [PlanetScale](https://planetscale.com/) -- seems like a good option for hosting a relational DB (for free).
 
 ## Cool
 
