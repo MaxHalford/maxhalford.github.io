@@ -8,7 +8,7 @@ toc = true
 
 You'll have heard of GPT-3 if you haven't been hiding under a rock. I've recently been impressed by Nat Friedman [teaching](https://twitter.com/natfriedman/status/1575631194032549888) GPT-3 to use a browser, and SeekWell [generating](https://blog.seekwell.io/gpt3) SQL queries from free-text. I think the most exciting usecases are yet to come. But GPT-3 has a good chance of changing the way we approach mundane tasks at work.
 
-I wrote an [article](/blog/carbonfact-nlp-open-problem) a couple of months ago about a boring task I have to do at work. I got a few interesting suggestions by email. I've slowly become convinced that GPT-3 might be the perfect tool for the job. It's cold and miserable where I am, so I thought it would be opportune to take GPT-3 for a spin 🧙
+I wrote an [article](/blog/carbonfact-nlp-open-problem) a couple of months ago about a boring task I have to do at work. I got a few interesting suggestions by email. Raphaël suggested a [question-answering](https://huggingface.co/tasks/question-answering) model [here](https://raphaelsty.github.io/blog/qa/). I've slowly become convinced that GPT-3 might be the perfect tool for the job. It's cold and miserable where I am, so I thought it would be opportune to take GPT-3 for a spin 🧙
 
 This thing I have to do at work is convert human inputs like this:
 
