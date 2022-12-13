@@ -66,8 +66,37 @@ pre {
 
 /* header */
 
+.header {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.header-parts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-links {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+}
+
+.header-link {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.post-header {
+    margin-bottom: 30px;
+}
+
 .site-title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-top: 32px;
 }
 
@@ -85,20 +114,6 @@ pre {
 
 body {
   color: #333;
-}
-
-.header-line {
-  width: 100%;
-  border-width: 3px;
-  border-color: #333;
-  border-style: solid none none none;
-  margin: 18px 0;
-}
-
-.header-link {
-  font-weight: 600;
-  font-size: 20px;
-  margin-right: 12px;
 }
 
 /* posts list */
@@ -121,10 +136,29 @@ body {
   font-size: 1.3rem;
 }
 
+.posts-line-subtitle {
+    padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 .posts-line-date {
   color: gray;
   font-size: 1rem;
-  padding-top: 3px;
+  padding-top: 4px;
+}
+
+.posts-line-tag {
+    color: gray;
+    border: solid;
+    border-color: #eaecef;
+    border-width: 2px;
+    border-radius: 8px;
+    padding: 2px 5px;
+    margin-top: 1px;
+    font-size: 0.9rem;
+    font-family: "SFMono-Regular","Consolas","Liberation Mono","Menlo","Courier",monospace;
 }
 
 .site-footer {
@@ -134,9 +168,9 @@ body {
   justify-content: center !important;
   flex-wrap: wrap;
   padding: 12px 0;
-  border-width: 3px;
+  border-width: 1px;
   border-style: solid none;
-  border-color: #333;
+  border-color: #eaecef;
 }
 
 /* post */
@@ -151,10 +185,6 @@ body {
   text-align: center;
 }
 
-.post-header {
-  margin-bottom: 30px;
-}
-
 .post-title {
   font-size: 2rem;
   font-weight: 800;
@@ -165,16 +195,15 @@ body {
   font-family: "Helvetica Neue";
 }
 
-.post-category {
-  display: inline;
-  font-weight: 900;
-  padding: 2px;
-  border: #333 2px solid;
+.post-desc-items {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
 }
 
 .post-date {
-  font-weight: 800;
   color: gray;
+  margin-top: 4px;
 }
 
 .post-author {
@@ -190,16 +219,16 @@ body {
   margin-bottom: 1em;
 }
 
-.releated-content {
-  border-width: 3px;
-  border-style: solid;
+.related-content {
+  border-width: 2px;
+  border-style: dashed;
   border-color: #333;
-  padding: 0 10px;
+  padding: 0 15px;
   margin-bottom: 50px;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
-.releated-content li {
+.related-content li {
   margin: 5px 0;
 }
 
@@ -227,7 +256,7 @@ body {
 
 details {
   margin-bottom: 16px;
-  border-color: #e6ebf1;
+  border-color: #eaecef;
   border-width: 3px;
   border-radius: 5px;
   border-style: solid;
@@ -326,6 +355,7 @@ code.has-jax {
   }
   .post-header {
     margin-bottom: 10px;
+    justify-content: center;
   }
   pre {
     font-size: 14px !important;
@@ -339,4 +369,7 @@ code.has-jax {
   .post-content p {
     text-align: left !important;
   }
+  .posts-line-tag {
+    visibility: hidden;
+}
 }
