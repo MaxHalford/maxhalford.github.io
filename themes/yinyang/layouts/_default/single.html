@@ -92,6 +92,7 @@
             cursor: pointer;
             width: 140px;
             margin: auto;
+            margin-bottom: 20px;
         }
 
         .elevator:hover {
@@ -113,7 +114,9 @@
         {{ partial "related.html" . }}
         {{ end }}
 
+        {{ if not (in site.Params.mainSections .Type) }}
         {{ partial "footer.html" . }}
+        {{ end }}
       </div>
     </div>
   </article>
