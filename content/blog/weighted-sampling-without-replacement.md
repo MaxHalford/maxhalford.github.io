@@ -1,6 +1,7 @@
 +++
 date = "2021-12-24"
 title = "Weighted sampling without replacement in pure Python"
+tags = ['python']
 +++
 
 I'm working on a problem where I need to sample `k` items from a list without replacement. The sampling has to be weighted. In Python, `numpy` has `random.choice` method which allows doing this:

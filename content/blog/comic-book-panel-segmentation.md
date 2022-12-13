@@ -2,6 +2,7 @@
 date = "2022-03-05"
 title = "Comic book panel segmentation"
 toc = true
+tags = ['image-processing']
 +++
 
 I've recently been reading some comic books I used to devour as a kid. Especially those from the golden era of francophone comics: Thorgal, Lanfeust, XIII, Tintin, Largo Winch, Blacksad, Aldebaran, etc.

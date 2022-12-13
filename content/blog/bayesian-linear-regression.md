@@ -2,6 +2,7 @@
 date = "2020-02-26"
 title = "Bayesian linear regression for practitioners"
 toc = true
+tags = ['machine-learning']
 +++
 
 ## Motivation

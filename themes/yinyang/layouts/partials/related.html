@@ -1,8 +1,8 @@
-{{ $related := (where site.RegularPages "Type" "in" site.Params.mainSections).Related . | first 3 }}
+{{ $related := (where site.RegularPages "Type" "in" site.Params.mainSections).Related . | shuffle | first 3 }}
 {{ with $related }}
-<div class="releated-content">
-  <h3>Related Posts</h3>
-  <ul>
+<div class="related-content">
+  <h3 style="margin-top: 10px !important; margin-bottom: 10px !important">Related posts</h3>
+  <ul style="margin-top: 0;">
     {{ range . }}
     <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
     {{ end }}

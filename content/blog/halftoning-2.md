@@ -2,6 +2,7 @@
 date = "2017-03-20"
 draft = false
 title = "Halftoning with Go - Part 2"
+tags = ['image-processing']
 +++
 
 The next stop on my travel through the world of halftoning will be the implementation of *Weighted Voronoi Stippling* as described in [Adrian Secord](https://cs.nyu.edu/~ajsecord/)'s 2002 [paper](http://www.mrl.nyu.edu/~ajsecord/npar2002/npar2002_ajsecord_preprint.pdf). This method is more involved than the ones I detailed in my [previous blog post](/blog/halftoning-1), however the results are quite interesting. Again, I did the implementation in Go.

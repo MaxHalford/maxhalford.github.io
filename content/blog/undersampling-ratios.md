@@ -2,6 +2,7 @@
 date = "2019-12-17"
 draft = false
 title = "Under-sampling a dataset with desired ratios"
+tags = ['machine-learning']
 +++
 
 ## Introduction

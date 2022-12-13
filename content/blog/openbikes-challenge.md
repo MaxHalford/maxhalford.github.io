@@ -2,6 +2,7 @@
 date = "2017-01-26"
 draft = false
 title = "A short introduction and conclusion to the OpenBikes 2016 Challenge"
+tags = ['kaggle']
 +++
 
 During my undergraduate internship in 2015 I started a side project called OpenBikes. The idea was to visualize and analyze bike sharing over multiple cities. [Axel Bellec](http://axelbellec.fr/) joined me and in 2016 we [won a national open data competition](http://www.opendatafrance.net/2016/02/05/le-prix-open-data-toulouse-metropole-remis-a-openbikes). Since then we haven't pursued anything major, instead we use OpenBikes to try out technologies and to apply concepts we learn at university and online.

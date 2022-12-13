@@ -2,6 +2,7 @@
 date = "2015-07-14"
 draft = false
 title = "Setting up a droplet to host a Flask app"
+tags = ['web-dev']
 +++
 
 After having worked for some weeks on the [OpenBikes website](http://openbikes.co), it was time to put it online. [Digital Ocean](https://www.digitalocean.com/) seemed to provide a good service and so I decided to give it a spin. Their documentation is quite good but it doesn't cover exactly everything for setting up Flask. In this post I simply want to record every single step I took.

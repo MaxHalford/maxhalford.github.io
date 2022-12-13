@@ -2,6 +2,7 @@
 date = "2015-09-10"
 draft = false
 title = "The Naïve Bayes classifier"
+tags = ['machine-learning']
 +++
 
 The objective of a classifier is to decide to which *class* (also called *label*) to assign an observation based on observed data. In *supervised learning*, this is done by taking into account previous classifications. In other words if we *know* that certain observations are classified in a certain way, the goal is to determine the class of a new observation. The first group of observations on which the classifier is built is called the *training set*.

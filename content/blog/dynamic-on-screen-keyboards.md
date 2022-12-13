@@ -2,6 +2,7 @@
 date = "2022-09-25"
 title = "Dynamic on-screen TV keyboards"
 toc = true
+tags = ['ux']
 +++
 
 *This article has some interactive keyboards, therefore I recommend reading it from your computer rather than your phone.*
@@ -146,7 +147,7 @@ I decided to work on a more general prototype, and to implement my own algorithm
   border: 1px solid;
   width: 36px;
   height: 36px;
-  font-size: 21px;
+  font-size: 19px;
   text-align: center;
   margin-top: -1px;
   margin-left: -1px;

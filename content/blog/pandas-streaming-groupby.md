@@ -2,6 +2,7 @@
 date = "2018-12-05"
 draft = false
 title = "Streaming groupbys in pandas for big datasets"
+tags = ['online-machine-learning']
 +++
 
 If you've done a bit of Kaggling, then you've probably been typing a fair share of `df.groupby(some_col)`. That is, if you're using Python. If you're handling tabular data, then a lot of your features will revolve around computing *aggregate statistics*. This is very true for the ongoing [PLAsTiCC Astronomical Classification challenge](https://www.kaggle.com/c/PLAsTiCC-2018). The goal of the competition is to classify objects in the sky into one of 14 groups. The bulk of the available data is a set of so-called *light curve*. A light curve is a sequence of brightness measures observations along time. Each light curve is filtered at different passbands. The idea is that there is one light curve per passband and per object and that the shape of each light curve should tell us what kind of object we're looking at. Yada yada.

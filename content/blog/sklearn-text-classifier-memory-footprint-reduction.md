@@ -2,6 +2,7 @@
 date = "2021-04-11"
 title = "Reducing the memory footprint of a scikit-learn text classifier"
 toc = true
+tags = ['machine-learning', 'text-processing']
 +++
 
 ## Context

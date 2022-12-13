@@ -2,6 +2,7 @@
 date = "2017-07-24"
 draft = false
 title = "Unknown pleasures with JavaScript"
+tags = ['generative-art']
 +++
 
 No this blog post is not about how nice JavaScript can be, instead it's just another one of my attempts at reproducing modern art with [procedural generation](https://www.wikiwand.com/en/Procedural_generation) and the [HTML5 `<canvas>` element](https://www.w3schools.com/html/html5_canvas.asp). This time I randomly generated images resembling the cover of the album by Joy Division called "Unknown Pleasures".

@@ -2,6 +2,7 @@
 date = "2020-03-31"
 draft = false
 title = "Speeding up scikit-learn for single predictions"
+tags = ['machine-learning']
 +++
 
 It is now common practice to train machine learning models offline before putting them behind an API endpoint to serve predictions. Specifically, we want an API route which can make a prediction for a single row/instance/sample/data point/individual ([call it what you want](https://www.youtube.com/watch?v=1prhCWO_518)). Nowadays, we have great tools to do this that care of the nitty-gritty details, such as [Cortex](https://github.com/cortexlabs/cortex), [MLFlow](https://www.mlflow.org/docs/latest/models.html), [Kubeflow](https://www.kubeflow.org/docs/components/serving/), and [Clipper](https://github.com/ucbrise/clipper). There are also paid services that hold your hand a bit more, such as [DataRobot](https://www.datarobot.com/), [H2O](https://www.h2o.ai/), and [Cubonacci](https://www.cubonacci.com/). One could argue that deploying machine learning models has never been easier.

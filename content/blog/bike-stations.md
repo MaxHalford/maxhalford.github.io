@@ -2,6 +2,7 @@
 date = "2015-06-03"
 draft = false
 title = "Visualizing bike stations live data"
+tags = ['data-viz']
 +++
 
 Recently some friends and I decided to launch [openbikes.co](http://openbikes.co/), a website for visualizing (and later on analyzing) urban bike traffic. We have a lot of ideas that we will progressively implement. Anyway, the point is that all of it started with me fiddling about with the *JCDecaux* API and the *leaflet.js* library and I would like to share it with you. Shall we?

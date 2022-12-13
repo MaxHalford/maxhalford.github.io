@@ -2,6 +2,7 @@
 date = "2020-08-17"
 title = "A few intermediate pandas tricks"
 toc = true
+tags = ['data-eng']
 +++
 
 I want to use this post to share some `pandas` snippets that I find useful. I use them from time to time, in particular when I'm doing [time series competitions](https://www.kaggle.com/search?q=time+series+in%3Acompetitions) on platforms such as Kaggle. Like any data scientist, I perform similar data processing steps on different datasets. Usually, I put repetitive patterns in [`xam`](https://github.com/MaxHalford/xam), which is my personal data science toolbox. However, I think that the following snippets are too small and too specific for being added into a library.

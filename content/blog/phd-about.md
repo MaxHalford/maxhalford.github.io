@@ -2,6 +2,7 @@
 date = "2021-01-06"
 title = "What my PhD was about"
 toc = true
+tags = ['job-log']
 +++
 
 I defended my PhD thesis on the 12th of October 2020, exactly 3 years and 11 days after having started it. The title of my PhD is *Machine learning for query selectivity estimation in relational databases*. I thought it would be worthwhile to summarise what I did. Note sure anyone will read this, but at least I'll be able to remember what I did when I grow old and senile.

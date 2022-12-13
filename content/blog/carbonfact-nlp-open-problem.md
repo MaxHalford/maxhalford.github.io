@@ -2,6 +2,7 @@
 date = "2022-09-06"
 title = "NLP at Carbonfact: how would you do it?"
 toc = true
+tags = ['text-processing']
 +++
 
 ## The task

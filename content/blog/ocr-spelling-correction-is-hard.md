@@ -1,6 +1,7 @@
 +++
 date = "2022-03-06"
 title = "OCR spelling correction is hard"
+tags = ['text-processing']
 +++
 
 I recently saw [SymSpell](https://news.ycombinator.com/item?id=30576435) pop up on Hackernews. It claims to be a million times faster than [Peter Norvig's spelling corrector](https://norvig.com/spell-correct.html). I think it's great that there's a fast open source solution for spelling correction. But in my experience, the most challenging aspect of spelling correction is not necessarily speed.

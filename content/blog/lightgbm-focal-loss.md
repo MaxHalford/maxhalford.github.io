@@ -2,6 +2,7 @@
 date = "2020-09-20"
 toc = true
 title = "Focal loss implementation for LightGBM"
+tags = ['machine-learning']
 +++
 
 **Edit -- 2021-01-26**

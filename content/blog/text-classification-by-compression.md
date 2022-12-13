@@ -1,6 +1,7 @@
 +++
 date = "2021-06-08"
 title = "Text classification by data compression"
+tags = ['machine-learning', 'text-processing']
 +++
 
 > Edit: I posted this [on Hackernews](https://news.ycombinator.com/item?id=27440093) and got some valuable feedback. Many brought up the fact that you should be able to reuse the internal state of the compressor instead of recompressing the training data each time a prediction is made. There's also some insightful references to data compression theory and its ties to statistical learning.

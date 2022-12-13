@@ -2,6 +2,7 @@
 date = "2016-11-27"
 draft = false
 title = "Halftoning with Go - Part 1"
+tags = ['image-processing']
 +++
 
 Recently I stumbled upon [this webpage](http://www.cgl.uwaterloo.ca/csk/projects/tsp/) which shows how to use a TSP solver as a [*halftoning*](https://www.wikiwand.com/en/Halftone) technique. I began to read about related concepts like [*dithering*](https://www.wikiwand.com/en/Dither) and [*stippling*](https://www.wikiwand.com/en/Stippling). I don't have any background in photography but I can appreciate the visual appeal of these techniques. As I understand it these techniques were first invented to save ink for printing. However nowadays printing has become cheaper and the modern use of these technique is mostly aesthetic, at least for images.

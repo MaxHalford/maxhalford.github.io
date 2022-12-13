@@ -2,6 +2,7 @@
 date = "2015-08-02"
 draft = false
 title = "An introduction to genetic algorithms"
+tags = ['machine-learning']
 +++
 
 The goal of genetic algorithms (GAs) is to solve problems whose solutions are not easily found (ie. NP problems, nonlinear optimization, etc.). For example, finding the shortest path from A to B in a directed graph is easily done with *Djikstra's algorithm*, it can be solved in polynomial time. However the time to find the smallest path that joins all points on a non-directed graph, also known as the [Travelling Salesman Problem](http://www.wikiwand.com/en/Travelling_salesman_problem) (TSP) increases exponentially as the number of points increases. More generally, GAs are useful for problems where an analytical approach is complicated or even impossible. By giving up on perfection they manage to find a good approximation of the optimal solution.

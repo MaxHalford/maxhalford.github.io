@@ -2,6 +2,7 @@
 date = "2019-09-16"
 draft = false
 title = "Finding fuzzy duplicates with pandas"
+tags = ['data-eng']
 +++
 
 Duplicate detection is the task of finding two or more instances in a dataset that are in fact identical. As an example, take the following toy dataset:

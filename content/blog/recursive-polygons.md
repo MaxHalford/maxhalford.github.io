@@ -2,6 +2,7 @@
 date = "2016-03-25"
 draft = false
 title = "Recursive polygons with JavaScript"
+tags = ['generative-art']
 +++
 
 I like modern art, I enjoy looking at the stuff that was made at the beginning of the 20th century and thinking how it is still shaping today's style. I'm not an expert, it's just a hobby of mine. I especially like the [Centre Pompidou](https://www.centrepompidou.fr/) in Paris, it's got loads of fascinating stuff. While I was going through the galleries it struck me that some of the paintings were very geometrical. In fact they were so geometrical that a machine could have produced them! I'm not talking about artificial intelligence but rather a set of rules that could be given to a programming language. Through a series of blog posts I would like to try to emulate some works with my computer. I realize it's a waste of time but it's a good opportunity for me to learn some more JavaScript and refreshen my geometry. I also want to insist on making these drawings random, not deterministic.

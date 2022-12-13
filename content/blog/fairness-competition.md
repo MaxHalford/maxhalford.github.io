@@ -2,6 +2,7 @@
 date = "2021-01-21"
 title = "Organising a Kaggle InClass competition with a fairness metric"
 toc = true
+tags = ['kaggle']
 +++
 
 ## Some context

@@ -2,6 +2,7 @@
 date = "2020-06-07"
 title = "The correct way to evaluate online machine learning models"
 toc = true
+tags = ['online-machine-learning']
 +++
 
 ## Motivation

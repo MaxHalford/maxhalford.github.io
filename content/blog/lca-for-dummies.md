@@ -3,6 +3,7 @@ date = "2023-01-01"
 title = "Life Cycle Analysis for dummies"
 toc = true
 draft = true
+tags = ['sustainability']
 +++
 
 ## Introduction

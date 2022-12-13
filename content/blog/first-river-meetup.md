@@ -1,6 +1,7 @@
 +++
 date = "2022-06-09"
 title = "First IRL meetup with the River developers"
+tags = ['online-machine-learning']
 +++
 
 [River](https://github.com/online-ml/river/) is a Python software for doing online machine learning. It's the result of a merger in early 2020 between [creme](https://github.com/online-ml/river) and [scikit-multiflow](https://github.com/scikit-multiflow/scikit-multiflow). [Saulo Mastelini](https://smastelini.github.io/), [Jacob Montiel](https://jacobmontiel.github.io/), and myself are the three core developers. But there are many more people who contribute here and there!

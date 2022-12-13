@@ -2,6 +2,7 @@
 date = "2022-01-06"
 title = "The online machine learning predict/fit switcheroo"
 toc = true
+tags = ['online-machine-learning']
 +++
 
 ## Why I'm writing this

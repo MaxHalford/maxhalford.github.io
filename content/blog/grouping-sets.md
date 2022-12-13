@@ -2,6 +2,7 @@
 date = "2021-09-10"
 title = "Dashboards and GROUPING SETS"
 toc = true
+tags = ['data-eng']
 +++
 
 ## Motivation

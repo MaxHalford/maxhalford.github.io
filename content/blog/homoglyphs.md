@@ -2,6 +2,7 @@
 date = "2021-08-19"
 title = "Homoglyphs: different characters that look identical"
 toc = true
+tags = ['text-processing']
 +++
 
 ## A wild homoglyph appears

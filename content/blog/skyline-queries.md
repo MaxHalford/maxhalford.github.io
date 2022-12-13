@@ -2,6 +2,7 @@
 date = "2019-05-21"
 draft = false
 title = "Skyline queries in Python"
+tags = ['data-eng']
 +++
 
 Imagine that you're looking to buy a home. If you have an analytical mind then you might want to tackle this with a quantitative. Let's suppose that you have a list of potential homes, and each home has some attributes that can help you compare them. As an example, we'll consider three attributes:

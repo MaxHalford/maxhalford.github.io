@@ -2,6 +2,7 @@
 date = "2017-03-04"
 draft = false
 title = "Grid paintings à la Mondrian with JavaScript"
+tags = ['generative-art']
 +++
 
 I was at a laundrette today and had just finished my book so I had some time to kill. Naturally I devised an algorithm for generating drawings that would resemble the [grid-like paintings](https://www.google.co.uk/search?q=piet+mondrian+grid+painting) that [Piet Mondrian](https://en.wikipedia.org/wiki/Piet_Mondrian) made famous. With the benefit of hindsight I guess I could indulge in saner activities while waiting for my laundry to dry!

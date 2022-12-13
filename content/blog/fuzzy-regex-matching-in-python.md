@@ -2,6 +2,7 @@
 date = "2022-04-04"
 title = "Fuzzy regex matching in Python"
 toc = true
+tags = ['text-processing']
 +++
 
 ## Fuzzy string matching in a nutshell

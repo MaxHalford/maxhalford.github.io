@@ -1,6 +1,7 @@
 +++
 date = "2020-11-17"
 title = "Computing cross-correlations in SQL"
+tags = ['data-eng']
 +++
 
 ## Introduction

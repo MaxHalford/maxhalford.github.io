@@ -1,6 +1,7 @@
 +++
 date = "2022-08-24"
 title = "Matrix inverse mini-batch updates"
+tags = ['online-machine-learning']
 +++
 
 The inverse covariance matrix, also called [precision matrix](https://www.wikiwand.com/en/Precision_matrix), is useful in many places across the field of statistics. For instance, in machine learning, it is used for [Bayesian regression](/blog/bayesian-linear-regression) and [mixture modelling](https://scikit-learn.org/stable/modules/mixture.html#gmm).

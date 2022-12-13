@@ -2,6 +2,7 @@
 date = "2021-10-26"
 title = "One year at Alan"
 toc = true
+tags = ['job-log']
 +++
 
 ## Context

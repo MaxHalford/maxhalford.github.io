@@ -2,6 +2,7 @@
 date = "2022-11-20"
 title = "Parsing garment descriptions with GPT-3"
 toc = true
+tags = ['text-processing']
 +++
 
 ## The task
@@ -88,11 +89,13 @@ Path('training_data.jsonl').write_text(jsonl)
 A good thing to check here is the lengths of the inputs and outputs. Indeed, the OpenAI models have a limit on the number of tokens they can process at a time. A token is an abstract concept, but it's roughly equivalent to 4 characters [according](https://beta.openai.com/tokenizer) to their docs. Let's check.
 
 ```py
->>> max(len(json.dumps(out)) for out in outputs) // 4
-95
-
+>>> # Largest number of tokens in the inputs
 >>> max(map(len, inputs)) // 4
 38
+
+>>> # Largest number of tokens in the outputs
+>>> max(len(json.dumps(out)) for out in outputs) // 4
+95
 ```
 
 OpenAI's smallest model, Ada, supports up to 2048 tokens. We make the cut by far.

@@ -235,22 +235,6 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [Jorge Jacinto](http://www.jorgejacinto.com/)
 - [WaveFunctionCollapse](https://github.com/mxgmn/WaveFunctionCollapse)
 
-## Tools
-
-Some tools I find interesting.
-
-- [Datasette](https://datasette.io/) -- one of the nicer ways to publish public datasets.
-- [Glitch](https://glitch.com/) -- build a website with a remote setup.
-- [MagicSheets](https://www.magicsheets.io/) -- machine learning in a spreadsheet.
-- [Evan's Awesome A/B Tools](https://www.evanmiller.org/ab-testing/)
-- [Simplescraper](https://simplescraper.io/docs/)
-- [Airbyte](https://airbyte.com/) -- rarely have I had such a good user experience. In roughly an hour I managed to periodically send data from Postgres to BigQuery, totally from scratch.
-- [Glitch](https://glitch.com/)
-- [Backlink Checker](https://ahrefs.com/backlink-checker) -- can be useful for building features from URLs!
-- [Cycle](https://cycle.io/) -- looks like a no-fuss solution for hosting apps, and it has a permissive free-tier!
-- [Facets](https://pair-code.github.io/facets/) -- maybe the best tool I've seen for interactively exploring a dataset.
-- [PlanetScale](https://planetscale.com/) -- seems like a good option for hosting a relational DB (for free).
-
 ## Cool
 
 - [WindowSwap](https://www.window-swap.com/)
