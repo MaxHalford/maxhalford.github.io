@@ -213,7 +213,7 @@ body {
 }
 
 .post-content {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .post-content p {
@@ -225,8 +225,8 @@ body {
   border-style: dashed;
   border-color: #333;
   padding: 0 15px;
-  margin-bottom: 50px;
-  margin-top: 50px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .related-content li {
@@ -333,6 +333,9 @@ code.has-jax {
 /* Mobile */
 
 @media screen and (max-width: 600px) {
+  .header {
+    justify-content: center;
+  }
   .signatures {
     text-align: center;
   }
@@ -372,5 +375,5 @@ code.has-jax {
   }
   .posts-line-tag {
     visibility: hidden;
-}
+  }
 }
