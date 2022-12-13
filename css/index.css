@@ -171,6 +171,7 @@ body {
   border-width: 1px;
   border-style: solid none;
   border-color: #eaecef;
+  border-bottom: 0;
 }
 
 /* post */
