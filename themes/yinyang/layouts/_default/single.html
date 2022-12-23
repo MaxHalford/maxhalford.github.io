@@ -39,7 +39,7 @@
         </div>
 
         <!-- We only want to activate the comments section in production -->
-        {{ if (eq hugo.Environment "development") }}
+        {{ if not (eq hugo.Environment "development") }}
           {{ if in site.Params.mainSections .Type }}
           <script type="text/javascript">
             var s = document.createElement('script');
