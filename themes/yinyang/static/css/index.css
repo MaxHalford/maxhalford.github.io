@@ -374,6 +374,6 @@ code.has-jax {
     text-align: left !important;
   }
   .posts-line-tag {
-    visibility: hidden;
+    display: none;
   }
 }

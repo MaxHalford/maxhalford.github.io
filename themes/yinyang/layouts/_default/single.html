@@ -39,7 +39,8 @@
         </div>
 
         <!-- We only want to activate the comments section in production -->
-        {{ if not (eq hugo.Environment "development") }}
+        {{ if (eq hugo.Environment "development") }}
+          {{ if in site.Params.mainSections .Type }}
           <script type="text/javascript">
             var s = document.createElement('script');
             s.setAttribute( 'src', 'https://utteranc.es/client.js' );
@@ -50,6 +51,7 @@
             s.setAttribute( 'theme', 'github-light' );
             document.body.appendChild( s );
           </script>
+          {{ end }}
         {{ end }}
 
         {{ if in site.Params.mainSections .Type }}
