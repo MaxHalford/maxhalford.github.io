@@ -5,8 +5,12 @@ toc = true
 tags = ['online-machine-learning']
 +++
 
-<div align="center">{{< tweet josh_wills 1585280138924564481 >}}</div>
-<br>
+<div align="center">
+<figure >
+    <img src="/img/blog/future-of-river/tweet.png" style="box-shadow: none;">
+    <figcaption><a href="https://twitter.com/josh_wills/status/1585328751646109696">Source</a></figcaption>
+</figure>
+</div>
 
 When I see tweets like this one, I'm both happy because people are aware of [River](https://riverml.xyz/), but also irked because it's really difficult to make production-grade open source software.
 
