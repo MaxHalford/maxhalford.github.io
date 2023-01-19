@@ -77,7 +77,7 @@ At this point I had four separate files. I joined them via the `date` column the
 | 2022-01-04 |          16.563 |         0 |          1 |        9.25   |
 | 2022-01-05 |          17.098 |         0 |          1 |        5.7    |
 
-The code I used to build this dataset is available [here](https://gist.github.com/MaxHalford/46fdc757a0668c02ca1e49f4fd9f4723).
+The code I used to build this dataset is available [here](https://gist.github.com/MaxHalford/d4e78fa4c86d977874aedb1528fc92c1#file-dataset-ipynb).
 
 ## Visual inspection 🧑‍🎨
 
@@ -111,7 +111,7 @@ I checked. I looked at periods of time with nobody at home, as well as at least 
 
 ## Regression analysis 🧑‍🔬
 
-*PS: I was very inspired by Martin Daniel's [article](http://www.martindaniel.co/roof/index.html) about the energy efficiency of his new roof.*
+*PS: I was very inspired by Martin Daniel's [article](http://www.martindaniel.co/roof/index.html) about the energy savings of his new roof.*
 
 It's quite clear that the outside temperature is the biggest cause of energy usage in the flat. It also seems that guests consume more energy than hosts. I decided to confirm this by running a [regression analysis](https://www.wikiwand.com/en/Regression_analysis). The point being that you can't consider the effect of all variables with a chart, and that a model is needed to go deeper.
 
@@ -140,6 +140,8 @@ heating_degree_days    0.0405     0.001    27.288     0.000
 ```
 
 I ran a vanilla linear regression with [statsmodel](https://www.statsmodels.org/stable/index.html). The [adjusted $R^2$](https://www.wikiwand.com/en/Coefficient_of_determination#Adjusted_R2) is 0.843, which is good enough to interpret the model. Moreover, all the regression coefficients appear to be significant. An interesting observation is that using the `temperature` variable instead of `heating_degree_days` leads to an ajusted $R^2$ of 0.578, which is significantly worse.
+
+Positive coefficients linear regression are indicative of a variable being positively correlated with the target. In this case, the number of people, the fact that those people are guests, and the number of heating degree days are all positively correlated with the amount of kWh. Meanwhile, the weekend indicator is negatively correlated with the latter.
 
 As a [reminder](https://environmentalcomputing.net/statistics/linear-models/linear-regression/interpret-lm-coeffs/), the interpretation of these coefficients is that if you hold everything else in the model constant, and add 1 to `n_people`, then the estimated `kilowatt-hour` will decrease by 2.46. Note that the coefficient depends on the units in which altitude is measured. Indeed, the `heating_degree_days` variable oscillates around 250 in Winter, which is why the `heating_degree_days` coefficient feels low. One way to interpret the `heating_degree_days` coefficient is that the temperature drops by 1°C, the necessary energy goes up by `24 * 0.0405 = 0.972` kWh.
 
