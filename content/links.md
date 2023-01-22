@@ -122,6 +122,7 @@ This is a list of blogs I regularly scroll through.
 - [John D. Cook](https://www.johndcook.com/blog/)
 - [Brandon Roberts](https://bxroberts.org/)
 - [Allen Downey](https://www.allendowney.com/blog/)
+- [Christophe Blefari](https://www.blef.fr/)
 
 ## Hall of fame
 
@@ -203,6 +204,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [My Writings - Leslie Lamport](https://lamport.azurewebsites.net/pubs/pubs.html)
 - [Modeling marketing attribution - Claire Carroll](https://blog.getdbt.com/modeling-marketing-attribution/) -- I worked on this problem for a short time at Alan. I definitely would have done a better job if I had read this article first.
 - [Doing Named Entity Recognition? Don't optimize for F1 - Christopher Manning](https://nlpers.blogspot.com/2006/08/doing-named-entity-recognition-dont.html) -- A rather niche topic, but well explained.
+- [Why the super rich are inevitable](https://pudding.cool/2022/12/yard-sale) -- Really cool dataviz.
 
 ## Eye candy
 
