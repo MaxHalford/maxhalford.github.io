@@ -123,6 +123,7 @@ This is a list of blogs I regularly scroll through.
 - [Brandon Roberts](https://bxroberts.org/)
 - [Allen Downey](https://www.allendowney.com/blog/)
 - [Christophe Blefari](https://www.blef.fr/)
+- [Scott Rome](https://srome.github.io/)
 
 ## Hall of fame
 
