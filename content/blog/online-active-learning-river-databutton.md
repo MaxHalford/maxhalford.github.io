@@ -4,9 +4,11 @@ title = "Online active learning in 80 lines of Python"
 tags = ['online-machine-learning']
 +++
 
-[Active learning](https://www.wikiwand.com/en/Active_learning_(machine_learning)) is a way to get humans to label data efficiently. A good active learning strategy minimizes the number of necessary labels, while maximizing a model's performance. This usually works by focusing on samples where the model is unsure of its prediction. In a batch setting, the model is periodically retrained to account for freshly obtained labels.
+[Active learning](https://www.wikiwand.com/en/Active_learning_(machine_learning)) is a way to get humans to label data efficiently. A good active learning strategy minimizes the number of necessary labels, while maximizing a model's performance. This usually works by focusing on samples where the model is unsure of its prediction.
 
-In an online situation, active learning can also be used to accelerate training. The idea of [online active learning](http://people.csail.mit.edu/cmontel/mk_olc_cvpr07.pdf) is to loop through every sample in a dataset, make a prediction, and then decide whether the model should be updated or not. Therefore, given a labeled dataset, online active learning provides a way to trade between model accuracy and training speed.
+In a batch setting, the model is periodically retrained to learn from the freshly labeled samples. However, the training time is usually too prohibitive for this to happen each time a new label is provided. This isn't the case with online models, because they are able to learn one sample at a time. Active and online learning naturally fit together.
+
+In an online setting, active learning can also be used to accelerate training. The idea of [online active learning](http://people.csail.mit.edu/cmontel/mk_olc_cvpr07.pdf) is to loop through every sample in a dataset, make a prediction, and then decide whether the model should be updated or not. Therefore, given a labeled dataset, online active learning provides a way to trade between model accuracy and training speed.
 
 I recently implemented a basic version of online active learning in [River](https://riverml.xyz) -- see the [pull request](https://github.com/online-ml/river/pull/1162). I decided to build a quick spam classifier demo with [Streamlit](https://streamlit.io/) to showcase this. The demo should be available at [this](https://next.databutton.com/v/13lkg6b6) link.
 
