@@ -377,3 +377,7 @@ code.has-jax {
     display: none;
   }
 }
+
+.markdown-body hr {
+    height: .05em;
+}
