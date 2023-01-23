@@ -124,6 +124,8 @@ This is a list of blogs I regularly scroll through.
 - [Allen Downey](https://www.allendowney.com/blog/)
 - [Christophe Blefari](https://www.blef.fr/)
 - [Scott Rome](https://srome.github.io/)
+- [Eugene Yan](https://eugeneyan.com/writing/)
+- [Lj Miranda](https://ljvmiranda921.github.io/notebook/)
 
 ## Hall of fame
 
