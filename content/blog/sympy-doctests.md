@@ -1,5 +1,5 @@
 +++
-date = "2023-02-14"
+date = "2023-02-15"
 title = "Using SymPy in Python doctests"
 tags = ['python']
 +++

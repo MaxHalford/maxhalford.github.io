@@ -144,4 +144,11 @@ Also called life-cycle impact assessment (LCIA).
 
 - [A Review of Approaches to Treat Uncertainty in LCA](https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=3524&context=iemssconference) by Heijungsa and Huijbregts with accompanying [slides](http://formations.cirad.fr/analyse-cycle-de-vie/pdf/Heijungs_2.pdf)
 
-## Example: a vegetarian pizza
+## Example: pizzas
+
+## Case studies
+
+### Coffee
+
+- https://theconversation.com/heres-how-your-cup-of-coffee-contributes-to-climate-change-196648
+- https://onlinelibrary.wiley.com/doi/full/10.1111/jiec.12487

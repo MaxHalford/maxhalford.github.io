@@ -2,7 +2,7 @@
 date = "2023-01-17"
 title = "Are Airbnb guests less energy efficient than their host?"
 toc = true
-tags = ['sustainability']
+tags = ['sustainability', 'data-science']
 +++
 
 ## TLDR

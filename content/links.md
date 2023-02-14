@@ -207,7 +207,17 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [My Writings - Leslie Lamport](https://lamport.azurewebsites.net/pubs/pubs.html)
 - [Modeling marketing attribution - Claire Carroll](https://blog.getdbt.com/modeling-marketing-attribution/) -- I worked on this problem for a short time at Alan. I definitely would have done a better job if I had read this article first.
 - [Doing Named Entity Recognition? Don't optimize for F1 - Christopher Manning](https://nlpers.blogspot.com/2006/08/doing-named-entity-recognition-dont.html) -- A rather niche topic, but well explained.
-- [Why the super rich are inevitable](https://pudding.cool/2022/12/yard-sale) -- Really cool dataviz.
+- [Why the super rich are inevitable - The Pudding](https://pudding.cool/2022/12/yard-sale) -- Really cool dataviz.
+- [Visual design rules you can safely follow every time - Anthony Hobday](https://anthonyhobday.com/sideprojects/saferules/) -- good follow-up to [Web Design in 4 minutes](https://jgthms.com/web-design-in-4-minutes/) by Jeremy Thomas
+
+## Inspiring data analysis
+
+- [Bayesian Rock Climbing Rankings - Ethan Rosenthal](https://www.ethanrosenthal.com/2022/04/15/bayesian-rock-climbing/)
+- [Is Seattle Really Seeing an Uptick In Cycling? - Jake VanderPlas](https://jakevdp.github.io/blog/2014/06/10/is-seattle-really-seeing-an-uptick-in-cycling/)
+- [How we changed our roof and cut 1.5 tons of CO2e - Martin Daniel](http://www.martindaniel.co/roof/index.html)
+- [WWW: Who Will Win? - Peter Norvig](https://github.com/norvig/pytudes/blob/main/ipynb/WWW.ipynb)
+- [State of dataviz: top insights - Henri Battiste](https://observablehq.com/blog/state-of-dataviz-2021) -- I like this one because of how pretty the charts are 🦋
+- [Wealth shown to scale - Matt Korostoff](https://mkorostoff.github.io/1-pixel-wealth/)
 
 ## Eye candy
 
