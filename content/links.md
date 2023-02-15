@@ -218,6 +218,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [WWW: Who Will Win? - Peter Norvig](https://github.com/norvig/pytudes/blob/main/ipynb/WWW.ipynb)
 - [State of dataviz: top insights - Henri Battiste](https://observablehq.com/blog/state-of-dataviz-2021) -- I like this one because of how pretty the charts are 🦋
 - [Wealth shown to scale - Matt Korostoff](https://mkorostoff.github.io/1-pixel-wealth/)
+- [Are Pop Lyrics Getting More Repetitive? - Colin Morris](https://pudding.cool/2017/05/song-repetition/)
 
 ## Eye candy
 
