@@ -4,9 +4,9 @@ title = "Using SymPy in Python doctests"
 tags = ['python']
 +++
 
-If a program compiles and runs without errors, that doesn't mean it's correct. I find this to be especially true when working with statistical software, both as a developer and as a user. Small but nasty bugs creep up on me every week. I keep sane in the membrane by writing many unit tests 🐛🔨
+A program which compiles and runs without errors isn't necessarily correct. I find this to be especially true for statistical software, both as a developer and as a user. Small but nasty bugs creep up on me every week. I keep sane in the membrane by writing many unit tests 🐛🔨
 
-I make heavy use of [doctests](https://docs.python.org/3/library/doctest.html). These are unit tests which you write as Python [docstrings](https://realpython.com/documenting-python-code/#documenting-your-python-code-base-using-docstrings). They're really handy because they kill two birds with one stone: the unit tests you write also acts as documentation for the function you're testing.
+I make heavy use of [doctests](https://docs.python.org/3/library/doctest.html). These are unit tests which you write as Python [docstrings](https://realpython.com/documenting-python-code/#documenting-your-python-code-base-using-docstrings). They're really handy because they kill two birds with one stone: the unit tests you write for a function also act as documentation.
 
 A nice trick I've found is to use [SymPy](https://www.sympy.org/en/index.html) to test mathematical formulas. As you know, Python is a dynamic language. This allows functions to consume different types of inputs. The typical example are [NumPy](https://numpy.org/) routines, which work with numbers, lists, arrays, series, or a mix of these:
 
@@ -46,11 +46,11 @@ test_add.py .                                         [100%]
 ================ 1 passed in 0.58s =========================
 ```
 
-As I was saying, I like using SymPy to test mathematical functions. If a function uses mathematical operators, then there are good chances you can feed it with SymPy variables as well as numbers and arrays.
+As I was saying, I like using SymPy to test mathematical functions. If a function uses mathematical operators, then there is a good chance you can feed it with SymPy variables as well as numbers and arrays.
 
 I'll provide an example. A year ago, I added an online version of [ARIMA](https://www.wikiwand.com/en/Autoregressive_integrated_moving_average) to [River](https://riverml.xyz/0.14.0/). ARIMA is a time series forecasting model. Like other forecasting models, it assumes the time series is stationary. If it isn't, [differencing](https://www.wikiwand.com/en/Autoregressive_integrated_moving_average#Differencing) has to be applied.
 
-The idea behind differencing is quite intuitive, but the implementation is easy to get wrong. I've included below the `Differencer` class which is currently used in River.
+The idea behind differencing is quite intuitive, but the implementation is easy to get wrong. I've included down below the `Differencer` class which is currently used in River.
 
 <details>
   <summary>Click to see the <code>Differencer</code> class</summary>
@@ -161,7 +161,7 @@ Here are some usage examples:
 
 ```
 
-How do we know these doctests are correct? We could check with pen and paper. But that's not fully satisfying because we'd only be testing a limited range of possible inputs. Moreover, the above doctests don't really give any insights as to how the algorithm works, which is one of the selling points of doctests.
+How do we know these doctests are correct? We could check with pen and paper. But that's not fully satisfying because we'd only be testing a limited range of inputs. Moreover, the above doctests don't really give any insight as to how the algorithm works, which is one of the selling points of doctests.
 
 Let's write these unit tests with SymPy. The way it works is by defining symbols. I'll start with a $p$ symbol, which stands for the value which we want to differentiate.
 
@@ -173,10 +173,10 @@ p
 
 ```
 
-Differentiating a value involves subtracting and adding past values $Y$ to the current value $p$. The last observed value is $Y_t$, while the penultimate one is $Y_{t-1}$. This goes all the way back to $Y_0$, which is the first value in the time series. To implement this variable which supports indexing, I made a little `Yt` class with SymPy:
+Differentiating a value involves subtracting and adding past values $Y$ to the current value $p$. The last observed value is $Y_t$, while the penultimate one is $Y_{t-1}$. This goes all the way back to $Y_0$, which is the first value in the time series. To implement this variable which supports indexing, I made a little `IndexedSymbol` class with SymPy:
 
 ```py
-class Yt(sympy.IndexedBase):
+class IndexedSymbol(sympy.IndexedBase):
     t = sympy.symbols("t", cls=sympy.Idx)
 
     def __getitem__(self, idx):
@@ -186,7 +186,7 @@ class Yt(sympy.IndexedBase):
 This variable can be accessed at any time `t` thanks to the `__getitem__` implementation:
 
 ```py
->>> Y = Yt('Y')
+>>> Y = IndexedSymbol('Y')
 >>> Y
 Y
 
@@ -198,7 +198,7 @@ Y[t - 2]
 
 ```
 
-Now we have everything we need to write pretty unit tests. The first case is a differencer which does nothing. Here I'll use [backshift notation](https://www.wikiwand.com/en/Lag_operator) to describe lag operations. I'll actually reproduce the [examples](https://otexts.com/fpp2/backshift.html) given in Rob J. Hyndman and George Athanasopoulos in their [*Forecasting: Principles and Practice*](https://otexts.com/fpp2/) textbook.
+Now we have everything we need to write pretty unit tests. The first case is a differencer which does nothing. Here I'll use [backshift notation](https://www.wikiwand.com/en/Lag_operator) to describe lag operations. I'll actually reproduce the [examples](https://otexts.com/fpp2/backshift.html) Rob J. Hyndman and George Athanasopoulos provide in their [*Forecasting: Principles and Practice*](https://otexts.com/fpp2/) textbook.
 
 $$(1 - B)^0 = 1$$
 
@@ -238,4 +238,4 @@ p - Y[t - 11] + Y[t - 12] - Y[t]
 
 ```
 
-This is cool because we can tell the output is correct, regardless of the actual values `Y` contains. If you test with numbers, then there is a chance the output is correct due to chance. In other words, your implementation might be correct for the values you test it with, but not for all possible values. Testing with SymPy variables takes this uncertainty away.
+This is cool because we can tell the output is correct, regardless of the actual values `Y` contains. If you test using numbers, then there is a chance the output is correct due to luck. In other words, your implementation might be correct for the values you test it with, but not for all possible values. Testing with SymPy variables takes this uncertainty away.
