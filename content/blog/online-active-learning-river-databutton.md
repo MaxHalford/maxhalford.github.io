@@ -93,18 +93,18 @@ st.markdown(x)
 choices = st.columns(2)
 with choices[0]:
     if st.button("Ham ✅"):
-        model.learn_one(x, True)
-        labels[i] = True
-        predictions[i] = y_pred
-        metric.update(y, y_pred)
-with choices[1]:
-    if st.button("Spam ❌"):
         model.learn_one(x, False)
         labels[i] = False
         predictions[i] = y_pred
         metric.update(y, y_pred)
-st.markdown(f"*Prediction: {'ham ✅' if y_pred else 'spam ❌'}*")
-st.markdown(f"*Truth: {'ham ✅' if y else 'spam ❌'}*")
+with choices[1]:
+    if st.button("Spam ❌"):
+        model.learn_one(x, True)
+        labels[i] = True
+        predictions[i] = y_pred
+        metric.update(y, y_pred)
+st.markdown(f"*Prediction: {'spam ❌' if y_pred else 'ham ✅'}*")
+st.markdown(f"*Truth: {'spam ❌' if y else 'ham ✅'}*")
 
 st.markdown("""---""")
 columns = st.columns(3)
@@ -232,14 +232,14 @@ Here we're classifying spams in text messages, so we just need to display the co
 choices = st.columns(2)
 with choices[0]:
     if st.button("Ham ✅"):
-        model.learn_one(x, True)
-        labels[i] = True
+        model.learn_one(x, False)
+        labels[i] = False
         predictions[i] = y_pred
         metric.update(y, y_pred)
 with choices[1]:
     if st.button("Spam ❌"):
-        model.learn_one(x, False)
-        labels[i] = False
+        model.learn_one(x, True)
+        labels[i] = True
         predictions[i] = y_pred
         metric.update(y, y_pred)
 ```
