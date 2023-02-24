@@ -1,10 +1,10 @@
 +++
 date = "2023-04-19"
-title = "You should have a dates table"
+title = "You should make a dates table"
 tags = ['data-eng', 'sql']
 +++
 
-I work at a company measuring the environmental footprint of clothing items. Like many modern startups, my company is quite data driven. We have internal metrics to track our operational performance. We also build dashboards for our customers. A large part of our business boils down to data integration, and so we run anomaly detection jobs. All the heavy lifting is done in SQL, with a internal tool that looks like dbt.
+I work at a company that measures the environmental footprint of clothes. Like many modern startups, my company is quite data driven. We have internal metrics to track our operational performance. We also build dashboards for our customers. A large part of our business boils down to data integration, and so we run many anomaly detection jobs. All the heavy lifting is done in SQL, with an internal tool that looks like dbt.
 
 Like many analytics workloads, I often find myself working with dates. I recently found a nice pattern, which is to create a `dates` table:
 
@@ -23,7 +23,7 @@ LIMIT 5
 | 2023-02-18 | 2023-02-19 | false | true |
 | 2023-02-17 | 2023-02-19 | false | true |
 
-Right now, this table is really basic. But it allows me to write very readable queries. For instance, here is a query to find products that are not complete, and have at least one purchase order issued last week. It's using BigQuery syntax.
+Right now, this table is quite basic. But it's improved the readability of some of my queries. For instance, here's some BigQuery SQL to find incomplete products which have at least one purchase order issued last week.
 
 ```sql
 SELECT
@@ -43,7 +43,7 @@ By the way, here is the BigQuery SQL I wrote to generate my `dates` table:
 ```sql
 SELECT
     *,
-    DENSE_RANK() OVER (ORDER BY week DESC) = 1 AS is_this_week ,
+    DENSE_RANK() OVER (ORDER BY week DESC) = 1 AS is_this_week,
     DENSE_RANK() OVER (ORDER BY week DESC) = 2 AS is_last_week
 FROM (
     SELECT
