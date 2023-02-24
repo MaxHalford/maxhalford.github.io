@@ -15,7 +15,7 @@ Depending on what assumptions you make, you will get different results if you do
 
 When I worked in a health insurance startup, we had a dashboard telling us how many members we covered. There were a ton of rules needed to determine whether a member was "active" or not. We often nit-picked over obscure definitions. We edited the SQL from time to time, which changed the figures in the dashboard. This was usually followed by a Slack message from a manager asking for explanations.
 
-Here's my opinion: **it doesn't really matter if your metric is correct. Most of the time, what you really care about is the evolution of your metric**. Naturally, a metric should be roughly correct, if not nobody would trust it. But [false precision](https://www.wikiwand.com/en/False_precision) doesn't matter.
+Hot take: **it doesn't really matter if your metric is correct. Most of the time, what you really care about is the evolution of your metric**. Naturally, a metric should be roughly correct, if not nobody would trust it. But [false precision](https://www.wikiwand.com/en/False_precision) doesn't matter.
 
 Even if your carbon footprint methodology has gaps, knowing Shoe A emits 8kgCO2e while Shoe B emits 22kgCO2e is informative. The fact we grew from 1B to 8B humans in roughly 220 years is informative. It doesn't matter knowing exactly how many active subscriptions you have, what matters is how that number is evolving.
 

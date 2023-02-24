@@ -2,7 +2,7 @@
 date = "2019-05-06"
 draft = false
 title = "SQL subquery enumeration"
-tags = ['data-eng']
+tags = ['sql']
 +++
 
 I recently stumbled on a rather fun problem during my PhD. I wanted to generate all possible subqueries from a given SQL query. In this case an example is easily worth a 1000 thousand words. Take the following SQL query:
