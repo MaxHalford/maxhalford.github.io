@@ -1,5 +1,5 @@
 +++
-date = "2023-03-15"
+date = "2023-04-19"
 title = "Metric correctness doesn't matter, consistency does"
 tags = ['data-science']
 +++
@@ -11,7 +11,7 @@ I would argue almost all metrics we look at are incorrect. For instance, I work 
 <div align="center">{{< tweet noahqk 1620150260877389824 >}}</div>
 </br>
 
-Depending on what assumptions you make, you will get different results if you do a [life cycle assessment](https://www.wikiwand.com/en/Life-cycle_assessment), which is the *de facto* method for assessing environmental impacts. Some people can go all day about how to measure the impact of packaging, even though it only represents a small portion of the footprint for most manufactured products.
+Depending on what assumptions you make, you will get different results if you do a [life cycle assessment](https://www.wikiwand.com/en/Life-cycle_assessment), which is the *de facto* method for assessing environmental impacts. Some people can go on all day about how to measure the impact of packaging, even though it only represents a small portion of the footprint for most manufactured products.
 
 When I worked in a health insurance startup, we had a dashboard telling us how many members we covered. There were a ton of rules needed to determine whether a member was "active" or not. We often nit-picked over obscure definitions. We edited the SQL from time to time, which changed the figures in the dashboard. This was usually followed by a Slack message from a manager asking for explanations.
 
