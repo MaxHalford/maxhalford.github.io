@@ -125,7 +125,7 @@ Date
 2021-12-27    3.941333
 ```
 
-☝️ *This usage of `WITH PARTITION` essentially boils down to a window function. This could be implemented as such, which would avoid the headache of thinking in terms of recursion. For instance, PostgreSQL supports [user-defined aggregates](https://www.postgresql.org/docs/current/xaggr.html), which can be applied over a window. However, the `WITH PARTITION` syntax has better support across databases.*
+☝️ *This usage of `WITH RECURSIVE` essentially boils down to a window function. This could be implemented as such, which would avoid the headache of thinking in terms of recursion. For instance, PostgreSQL supports [user-defined aggregates](https://www.postgresql.org/docs/current/xaggr.html), which can be applied over a window. However, the `WITH RECURSIVE` syntax has better support across databases.*
 
 ## Running covariance
 
