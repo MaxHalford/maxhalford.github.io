@@ -2,7 +2,7 @@
 date = "2022-06-28"
 title = "A rant against dbt ref"
 toc = true
-tags = ['data-eng', 'sql']
+tags = ['data-eng', 'sql', 'rant']
 +++
 
 ## Disclaimer

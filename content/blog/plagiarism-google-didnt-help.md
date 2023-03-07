@@ -1,6 +1,7 @@
 +++
 date = "2020-04-17"
 title = "I got plagiarized and Google didn't help"
+tags = ['rant']
 +++
 
 One of my most popular articles is [the one on target encoding](/blog/target-encoding). It gets a fair amount of mentions on Kaggle discussions and I see it pop up from time to time in other contexts. It also brings me around 2500 unique monthly viewers. That's quite a chunk of people for an unambitious blogger like me. Up to a few months ago, my article was on the first page of Google when you typed in searches such as "*target encoding python*" and "*bayesian target encoding*". This was purely organic and it felt nice to have a relevant article, even though that's not the main reason why I blog.
