@@ -5,6 +5,8 @@ toc = true
 tags = ['online-machine-learning', 'sql']
 +++
 
+*Edit: this post [generated](https://news.ycombinator.com/item?id=35054786) a few insightful comments on Hacker News. I've also put the code in a [notebook](https://gist.github.com/MaxHalford/823c4e7f9216607dc853724ec74ec692) for ease of use.*
+
 ## Introduction
 
 Modern MLOps is complex because it involves too many components. You need a message bus, a stream processing engine, an API, a model store, a feature store, a monitoring service, etc. Sadly, containerisation software and the unbundling trend have encouraged an appetite for complexity. I believe MLOps shouldn't be this complex. For instance, MLOps can be made simpler by [bundling the logic into your database](https://www.ethanrosenthal.com/2022/05/10/database-bundling/).
