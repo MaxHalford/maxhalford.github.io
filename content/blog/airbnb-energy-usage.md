@@ -111,7 +111,7 @@ I checked. I looked at periods of time with nobody at home, as well as at least 
 
 ## Regression analysis 🧑‍🔬
 
-*PS: I was very inspired by Martin Daniel's [article](http://www.martindaniel.co/roof/index.html) about the energy savings of his new roof.*
+*PS: I was very inspired by Martin Daniel's [article](http://www.martindaniel.co/roof/index.html) about the energy savings of his new roof. Also, the procedure I used is similar to [what is done on degreedays.net](https://www.degreedays.net/calculate-energy-savings), which I discovered after writing this post.*
 
 It's quite clear that the outside temperature is the biggest cause of energy usage in the flat. It also seems that guests consume more energy than hosts. I decided to confirm this by running a [regression analysis](https://www.wikiwand.com/en/Regression_analysis). The point being that you can't consider the effect of all variables with a chart, and that a model is needed to go deeper.
 
