@@ -219,6 +219,13 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [State of dataviz: top insights - Henri Battiste](https://observablehq.com/blog/state-of-dataviz-2021) -- I like this one because of how pretty the charts are 🦋
 - [Wealth shown to scale - Matt Korostoff](https://mkorostoff.github.io/1-pixel-wealth/)
 - [Are Pop Lyrics Getting More Repetitive? - Colin Morris](https://pudding.cool/2017/05/song-repetition/)
+- [Tracking the Fake GitHub Star Black Market - Fraser Marlow, Yuhan Luo, Alana Glassco](https://dagster.io/blog/fake-stars)
+
+## Data sources
+
+- [API Rank](https://apirank.dev/)
+- [bigquery-public-data](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=new_york&t=citibike_trips&page=table&project=orc-orc&ws=!1m4!1m3!3m2!1sbigquery-public-data!2samerica_health_rankings)
+- [fh-bigquery](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=new_york&t=citibike_trips&page=table&project=orc-orc&ws=!1m4!1m3!3m2!1sfh-bigquery!2sbbqtoronto)
 
 ## Eye candy
 
@@ -250,6 +257,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [sandspiel](https://sandspiel.club/)
 - [Jorge Jacinto](http://www.jorgejacinto.com/)
 - [WaveFunctionCollapse](https://github.com/mxgmn/WaveFunctionCollapse)
+- [Owen D. Pomery](https://owenpomery.com/cabin)
 
 ## Cool
 
