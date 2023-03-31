@@ -224,6 +224,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 ## Data sources
 
 - [API Rank](https://apirank.dev/)
+- [Finding Undocumented APIs](https://inspectelement.org/apis.html)
 - [bigquery-public-data](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=new_york&t=citibike_trips&page=table&project=orc-orc&ws=!1m4!1m3!3m2!1sbigquery-public-data!2samerica_health_rankings)
 - [fh-bigquery](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=new_york&t=citibike_trips&page=table&project=orc-orc&ws=!1m4!1m3!3m2!1sfh-bigquery!2sbbqtoronto)
 
@@ -258,6 +259,8 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [Jorge Jacinto](http://www.jorgejacinto.com/)
 - [WaveFunctionCollapse](https://github.com/mxgmn/WaveFunctionCollapse)
 - [Owen D. Pomery](https://owenpomery.com/cabin)
+- [einsteigenbitte.eu] -- I love "weird" websites like Claire Glanois'
+- [19th Century French Artists Predicted The World Of The Future In This Series Of Postcards](https://singularityhub.com/2012/10/15/19th-century-french-artists-predicted-the-world-of-the-future-in-this-series-of-postcards/)
 
 ## Cool
 
