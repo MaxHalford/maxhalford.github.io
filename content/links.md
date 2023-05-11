@@ -259,8 +259,11 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [Jorge Jacinto](http://www.jorgejacinto.com/)
 - [WaveFunctionCollapse](https://github.com/mxgmn/WaveFunctionCollapse)
 - [Owen D. Pomery](https://owenpomery.com/cabin)
-- [einsteigenbitte.eu] -- I love "weird" websites like Claire Glanois'
+- [einsteigenbitte.eu](einsteigenbitte.eu) -- I love "weird" websites like Claire Glanois'
 - [19th Century French Artists Predicted The World Of The Future In This Series Of Postcards](https://singularityhub.com/2012/10/15/19th-century-french-artists-predicted-the-world-of-the-future-in-this-series-of-postcards/)
+- [Blog maps](https://tomcritchlow.com/2023/04/03/blog-maps/)
+- [Decktwo](https://www.instagram.com/deck_two/)
+- [eycndy.com](https://eycndy.com/)
 
 ## Cool
 
@@ -271,3 +274,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [Based Cooking](https://based.cooking/)
 - [ReadComicOnline](https://readcomiconline.li/) -- I recommend [these](https://www.bedetheque.com/indispensables.html) French comics.
 - [Looria](https://looria.com/reddit/overview) -- especially for [cycling](https://looria.com/reddit/cycling/products) and [camping gear](https://looria.com/reddit/campinggear/products)
+- [Same Energy](https://same.energy)
+- [BOOOOOOM](https://www.booooooom.com/)
+- [indieblog.page](https://indieblog.page/)
+- [Cloudhiker](https://cloudhiker.net/)
