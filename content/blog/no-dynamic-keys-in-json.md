@@ -66,7 +66,9 @@ WITH example AS (
 )
 
 SELECT JSON_VALUE(part, '$.value') AS value
-FROM example, UNNEST(JSON_EXTRACT_ARRAY(payload, '$')) AS part
+FROM
+    example,
+    UNNEST(JSON_EXTRACT_ARRAY(payload, '$')) AS part
 WHERE JSON_VALUE(part, '$.key') = key
 ```
 
