@@ -26,8 +26,7 @@ WITH example AS (
         JSON '{"foo": "bar"}' AS payload
 )
 
-SELECT
-    JSON_VALUE(payload, CONCAT('$.', key))
+SELECT JSON_VALUE(payload, CONCAT('$.', key))
 FROM example
 ```
 
