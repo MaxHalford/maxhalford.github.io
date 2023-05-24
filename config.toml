@@ -14,7 +14,7 @@ pygmentsUseClasses = true
   mainSections = ["blog"]
   favicon = "/img/favicon.ico"
   images = ["/img/beach.jpg"]
-  description = "Max Halford's personal website"
+  description = "Chez Max Halford"
 
 [markup.goldmark.renderer]
   unsafe = true
