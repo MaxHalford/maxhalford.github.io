@@ -13,6 +13,8 @@ pygmentsUseClasses = true
   headTitle = "Max Halford 🦔"
   mainSections = ["blog"]
   favicon = "/img/favicon.ico"
+  images = ["/img/beach.jpg"]
+  description = "Max Halford's personal website"
 
 [markup.goldmark.renderer]
   unsafe = true
