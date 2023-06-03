@@ -126,6 +126,7 @@ This is a list of blogs I regularly scroll through.
 - [Scott Rome](https://srome.github.io/)
 - [Eugene Yan](https://eugeneyan.com/writing/)
 - [Lj Miranda](https://ljvmiranda921.github.io/notebook/)
+- [death and gravity](https://death.andgravity.com/) -- great advanced Python resource.
 
 ## Hall of fame
 

@@ -5,9 +5,8 @@ title = "Focal loss implementation for LightGBM"
 tags = ['machine-learning']
 +++
 
-**Edit -- 2021-01-26**
+**Edit (2021-01-26)** -- *I initially wrote this blog post using version 2.3.1 of LightGBM. I've now updated it to use version 3.1.1. There are a couple of subtle but important differences between version 2.x.y and 3.x.y. If you're using version 2.x.y, then I strongly recommend you to upgrade to version 3.x.y.*
 
-I initially wrote this blog post using version 2.3.1 of LightGBM. I've now updated it to use version 3.1.1. There are a couple of subtle but important differences between version 2.x.y and 3.x.y. If you're using version 2.x.y, then I strongly recommend you to upgrade to version 3.x.y.
 ## Motivation
 
 If you're reading this blog post, then you're likely to be aware of [LightGBM](https://github.com/microsoft/LightGBM). The latter is a best of breed [gradient boosting](https://explained.ai/gradient-boosting/) library. As of 2020, it's still the go-to machine learning model for tabular data. It's also ubiquitous in competitive machine learning.

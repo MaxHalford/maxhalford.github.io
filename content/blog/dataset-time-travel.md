@@ -35,7 +35,7 @@ I did this internship over 3 years ago. Facing this kind of issue was a great op
 
 ## Storing events
 
-*Edit: I'm aligned with [this](https://www.youtube.com/watch?v=fU9hR3kiOK0) great talk from Martin Kleppmann.*
+**Edit** -- *I'm aligned with [this](https://www.youtube.com/watch?v=fU9hR3kiOK0) great talk from Martin Kleppmann.*
 
 A first way to proceed is to store events instead of state. I'll explain with an example. Let's say we're interested in a user's delivery address. We might have a `user` relation which records, among other things, the address of each user:
 

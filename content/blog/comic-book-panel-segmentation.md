@@ -5,6 +5,10 @@ toc = true
 tags = ['image-processing']
 +++
 
+**Edit (2023-05-26)** -- *I've learnt about the [Kumiko project](https://github.com/njean42/kumiko), which is exactly devoted to slicing comic book panels. There's even a live [tool](https://kumiko.njean.me/demo). I discovered it thanks to being pinged on [this](https://github.com/njean42/kumiko/issues/12) issue.*
+
+## Motivation
+
 I've recently been reading some comic books I used to devour as a kid. Especially those from the golden era of francophone comics: Thorgal, Lanfeust, XIII, Tintin, Largo Winch, Blacksad, Aldebaran, etc.
 
 It's not easy to get my hands on many of them. Luckily enough I found a website called [ReadComicOnline](https://readcomiconline.li/) which is delightfully profuse. It gives access to comics for free under the murky "fair use" copyright doctrine. I'm very doubtful about the legality of the website, but I'm still using it for lack of a better option.

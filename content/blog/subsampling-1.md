@@ -5,7 +5,7 @@ title = "Subsampling a training set to match a test set - Part 1"
 tags = ['machine-learning']
 +++
 
-*Edit: it's 2022 and I still haven't written a part 2. That's because I believe this problem is easily solved with [adversarial validation](https://www.kaggle.com/carlmcbrideellis/what-is-adversarial-validation)*.
+**Edit** -- *it's 2022 and I still haven't written a part 2. That's because I believe this problem is easily solved with [adversarial validation](https://www.kaggle.com/carlmcbrideellis/what-is-adversarial-validation)*.
 
 Some friends and I recently qualified for the final of the 2017 edition of the [Data Science Game](http://www.datasciencegame.com) competition. The first part was a Kaggle competition with data provided by Deezer. The problem was a binary classification task where one had to predict if a user was going to listen to a song that was proposed to him. Like many teams we extracted clever features and trained an XGBoost classifier, classic. However, the one special thing we did was to subsample our training set so that it was more representative of the test set.
 

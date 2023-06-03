@@ -5,7 +5,7 @@ toc = true
 tags = ['online-machine-learning', 'sql']
 +++
 
-*Edit: this post [generated](https://news.ycombinator.com/item?id=35054786) a few insightful comments on Hacker News. I've also put the code in a [notebook](https://gist.github.com/MaxHalford/823c4e7f9216607dc853724ec74ec692) for ease of use.*
+**Edit** -- *this post [generated](https://news.ycombinator.com/item?id=35054786) a few insightful comments on Hacker News. I've also put the code in a [notebook](https://gist.github.com/MaxHalford/823c4e7f9216607dc853724ec74ec692) for ease of use.*
 
 ## Introduction
 

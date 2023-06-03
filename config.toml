@@ -10,11 +10,11 @@ pygmentsUseClasses = true
   name = "Max Halford"
 
 [params]
-  headTitle = "Max Halford 🦔"
+  headTitle = "Max Halford ツ"
   mainSections = ["blog"]
   favicon = "/img/favicon.ico"
   images = ["/img/beach.jpg"]
-  description = "Chez Max Halford"
+  description = "Max Halford's blog ツ"
 
 [markup.goldmark.renderer]
   unsafe = true
