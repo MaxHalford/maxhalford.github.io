@@ -3,6 +3,7 @@ date = "2023-06-03"
 title = "Graph components with DuckDB"
 toc = true
 tags = ['data-science', 'sql']
+images = ["/img/blog/graph-components-duckdb/cover.png"]
 +++
 
 ## Introduction
