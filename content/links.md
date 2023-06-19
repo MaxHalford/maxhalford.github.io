@@ -127,6 +127,8 @@ This is a list of blogs I regularly scroll through.
 - [Eugene Yan](https://eugeneyan.com/writing/)
 - [Lj Miranda](https://ljvmiranda921.github.io/notebook/)
 - [death and gravity](https://death.andgravity.com/) -- great advanced Python resource.
+- [The Shape of Data](https://shapeofdata.wordpress.com/)
+- [IDEA](https://idea-instructions.com/)
 
 ## Hall of fame
 
@@ -177,7 +179,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [MIT 6.867 machine learning course notes - Tommi Jaakola](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-867-machine-learning-fall-2006/lecture-notes/) -- For people who enjoy concise mathematical notation.
 - [A Recipe for Training Neural Networks - Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
 - [The Bitter Lesson - Richard Sutton](http://incompleteideas.net/IncIdeas/BitterLesson.html)
-- [The Best Medium-Hard Data Analyst SQL Interview Questions](https://quip.com/2gwZArKuWk7W) -- There are some great interactive SQL tutorials out there, such as [SQLBolt](https://sqlbolt.com/) and [Select Star SQL](https://selectstarsql.com/), but this one takes the cake due to its complexity.
+- [The Best Medium-Hard Data Analyst SQL Interview Questions](https://quip.com/2gwZArKuWk7W) -- There are some great interactive SQL tutorials out there, such as [SQLBolt](https://sqlbolt.com/) and [Select Star SQL](https://selectstarsql.com/), but this one takes the cake due to its complexity. [The Ultimate SQL guide](https://count.co/canvas/pB7iGb4yyi2) is a comprehensive guide made with Count.
 - [Rules of Programming - Rob Pike](http://users.ece.utexas.edu/~adnan/pike.html)
 - [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
 - [Understanding Matrix capsules with EM Routing - Jonathan Hui](https://jhui.github.io/2017/11/14/Matrix-Capsules-with-EM-routing-Capsule-Network/)
@@ -246,7 +248,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [Syd Mead](https://www.iamag.co/the-art-of-syd-mead/) (who worked on Blade Runner)
 - [Michael Fogleman's blog](https://www.michaelfogleman.com/)
 - [World of Warcraft art by Dreamwalker](https://imgur.com/user/imadreamwalker/posts)
-- [*Hors-sol* de AKOREACRO](https://www.artcena.fr/artcena-tv/hors-sol-de-akoreacro)
+- [_Hors-sol_ de AKOREACRO](https://www.artcena.fr/artcena-tv/hors-sol-de-akoreacro)
 - [Erica Anderson](https://ericaofanderson.com/)
 - [Jack Sharp](https://www.jacksharp.co.uk/)
 - [Archillect](https://archillect.com/) -- An AI that curates cool pictures, how awesome is that?

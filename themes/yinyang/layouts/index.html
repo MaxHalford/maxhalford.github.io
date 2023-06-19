@@ -14,40 +14,31 @@
 
             {{ range .Pages }}
             <div class="row posts-line">
+
                 {{ if isset .Params "medium" }}
-                    <a class="posts-line-title" href={{ .Params.medium }}>{{ .Title }}</a>
-                    <div class="posts-line-subtitle">
-                        <time class="posts-line-date" datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}} • Medium article</time>
-                        {{ if isset .Params "tags" }}
-                            {{ range $tag := .Params.tags }}
-                                <span class="posts-line-tag">{{ $tag }}</span>
-                            {{ end }}
-                        {{ end }}
-                    </div>
+                <a class="posts-line-title" href={{ .Params.medium }}>{{ .Title }}</a>
+                {{ else if isset .Params "carbonfact" }}
+                <a class="posts-line-title" href={{ .Params.carbonfact }}>{{ .Title }}</a>
                 {{ else }}
-                    <a class="posts-line-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
-                    <div class="posts-line-subtitle">
-                        <time class="posts-line-date" datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}}</time>
-                        {{ if isset .Params "tags" }}
-                            {{ range $tag := .Params.tags }}
-                                <span class="posts-line-tag">{{ $tag }}</span>
-                            {{ end }}
-                        {{ end }}
-                    </div>
+                <a class="posts-line-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
                 {{ end }}
-            </div>
-            <!-- <div class="row posts-line">
-              <div class="posts-date col-sm-3 col-xs-5">
-                <time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}}</time>
-              </div>
-              <div class="posts-title col-sm-9 col-xs-7">
-                <div class="row">
-                  <div>
-                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                  </div>
+
+                <div class="posts-line-subtitle">
+                    <time class="posts-line-date" datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}}</time>
+
+                    {{ if isset .Params "medium" }}
+                    <span class="posts-line-source"><i>Medium article</i></span>
+                    {{ else if isset .Params "carbonfact" }}
+                    <span class="posts-line-source"><i>Carbonfact blog</i></span>
+                    {{ end }}
+
+                    {{ if isset .Params "tags" }}
+                        {{ range $tag := .Params.tags }}
+                            <span class="posts-line-tag">{{ $tag }}</span>
+                        {{ end }}
+                    {{ end }}
                 </div>
-              </div>
-            </div> -->
+            </div>
             {{ end }}
           {{ end }}
         </div>

@@ -147,6 +147,19 @@ body {
   color: gray;
   font-size: 1rem;
   padding-top: 4px;
+  font-family: "SFMono-Regular","Consolas","Liberation Mono","Menlo","Courier",monospace;
+}
+
+.posts-line-source {
+    color: gray;
+    border: dotted;
+    border-color: #eaecef;
+    border-width: 2px;
+    border-radius: 8px;
+    padding: 2px 5px;
+    margin-top: 1px;
+    font-size: 0.9rem;
+    font-family: "SFMono-Regular","Consolas","Liberation Mono","Menlo","Courier",monospace;
 }
 
 .posts-line-tag {
