@@ -2,6 +2,7 @@
 date = "2023-06-25"
 title = "Measuring the carbon footprint of pizzas"
 tags = ['sustainability', 'python']
+images = ["/img/blog/carbon-footprint-pizzas/cover.png"]
 +++
 
 Making environmentally friendly decisions can only be done with the right information. At Carbonfact, we've realized a big challenge is the lack of information about industrial processes. We tackle that slowly but surely by gathering data from various sources, and making it available to our customers.
