@@ -212,6 +212,7 @@ The following is a hall of fame of papers, books, and blog posts that left me wi
 - [Doing Named Entity Recognition? Don't optimize for F1 - Christopher Manning](https://nlpers.blogspot.com/2006/08/doing-named-entity-recognition-dont.html) -- A rather niche topic, but well explained.
 - [Why the super rich are inevitable - The Pudding](https://pudding.cool/2022/12/yard-sale) -- Really cool dataviz.
 - [Visual design rules you can safely follow every time - Anthony Hobday](https://anthonyhobday.com/sideprojects/saferules/) -- good follow-up to [Web Design in 4 minutes](https://jgthms.com/web-design-in-4-minutes/) by Jeremy Thomas
+- [Common Bugs in Writing](https://www.cs.columbia.edu/~hgs/etc/writing-bugs.html)
 
 ## Inspiring data analysis
 

@@ -150,6 +150,10 @@ body {
   font-family: "SFMono-Regular","Consolas","Liberation Mono","Menlo","Courier",monospace;
 }
 
+.post-date {
+    font-family: "SFMono-Regular","Consolas","Liberation Mono","Menlo","Courier",monospace;
+}
+
 .posts-line-source {
     color: gray;
     border: dotted;
