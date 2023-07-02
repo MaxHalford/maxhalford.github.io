@@ -150,19 +150,12 @@ body {
   font-family: "SFMono-Regular","Consolas","Liberation Mono","Menlo","Courier",monospace;
 }
 
-.post-date {
-    font-family: "SFMono-Regular","Consolas","Liberation Mono","Menlo","Courier",monospace;
-}
+.posts-line-emoji {
+    font-size: 1rem;
+    padding-top: 3px;
+  }
 
-.posts-line-source {
-    color: gray;
-    border: dotted;
-    border-color: #eaecef;
-    border-width: 2px;
-    border-radius: 8px;
-    padding: 2px 5px;
-    margin-top: 1px;
-    font-size: 0.9rem;
+.post-date {
     font-family: "SFMono-Regular","Consolas","Liberation Mono","Menlo","Courier",monospace;
 }
 
