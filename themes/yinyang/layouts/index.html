@@ -16,22 +16,33 @@
             <div class="row posts-line">
 
                 {{ if isset .Params "medium" }}
-                <a class="posts-line-title" href={{ .Params.medium }}>{{ .Title }}</a>
+                    <a class="posts-line-title" href="{{ .Params.medium }}">{{ .Title }}</a>
                 {{ else if isset .Params "carbonfact" }}
-                <a class="posts-line-title" href={{ .Params.carbonfact }}>{{ .Title }}</a>
+                    <a class="posts-line-title" href="{{ .Params.carbonfact }}">{{ .Title }}</a>
+                {{ else if isset .Params "recording" }}
+                    <a class="posts-line-title" href="{{ .Params.recording }}">{{ .Title }}</a>
+                {{ else if isset .Params "slides" }}
+                    <a class="posts-line-title" href="{{ .Params.slides }}">{{ .Title }}</a>
                 {{ else }}
-                <a class="posts-line-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    <a class="posts-line-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
                 {{ end }}
 
                 <div class="posts-line-subtitle">
-                    <time class="posts-line-date" datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}}</time>
 
                     {{ if isset .Params "medium" }}
-                    <span class="posts-line-source"><i>Medium article</i></span>
+                        <span class="posts-line-emoji">📝</span>
                     {{ else if isset .Params "carbonfact" }}
-                    <span class="posts-line-source"><i>Carbonfact blog</i></span>
+                        <span class="posts-line-emoji">📝</span>
+                    {{ else if isset .Params "recording" }}
+                        <span class="posts-line-emoji">🎥</span>
+                    {{ else if isset .Params "slides" }}
+                        <span class="posts-line-emoji">🎞️</span>
+                    {{ else }}
+                        <span class="posts-line-emoji">📝</span>
                     {{ end }}
 
+
+                    <time class="posts-line-date" datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}}</time>
                     {{ if isset .Params "tags" }}
                         {{ range $tag := .Params.tags }}
                             <span class="posts-line-tag">{{ $tag }}</span>

@@ -1,47 +1,9 @@
 ---
 layout: default
 title: Links
-toc: true
 ---
 
-## Papers
-
-- PhD - Statistical learning for selectivity estimation in relational databases ([manuscript](/files/PhD_manuscript.pdf), [slides](/files/PhD_presentation.pdf))
-- [Selectivity correction with online machine learning - BDA 2020](https://arxiv.org/abs/2009.09884)
-- [Selectivity Estimation with Attribute Value Dependencies using Linked Bayesian Networks - TLDKS 2020](https://arxiv.org/abs/2009.09883)
-- [An Approach Based on Bayesian Networks for Query Selectivity Estimation - DASFAA, 2019](https://arxiv.org/abs/1907.06295)
-- [Entropic Variable Projection for Explainability and Intepretability - 2018](https://arxiv.org/abs/1810.07924)
-- Master 2 year internship at [HelloFresh](https://www.hellofresh.com/) ([report](/files/M2_report.pdf), [slides](/files/M2_slides.pdf))
-- Master 1 year internship at [Privateaser](https://www.privateaser.com/) ([report](/files/M1_report.pdf), [slides](/files/M1_slides.pdf))
-- Undergraduate internship at [INSA Toulouse](http://www.insa-toulouse.fr/fr/index.html) ([report](/files/L3_report.pdf), [slides](/files/L3_slides.pdf))
-- [Detailed solutions to the first 30 Project Euler problems](/files/project_euler_solutions.pdf)
-
-## Talks
-
-- Online machine learning with River - GAIA, 2022 ([slides](/slides/river-gaia-2022.pdf), [recording](https://www.youtube.com/watch?v=nzFTmJnIakk&list=PLIU25-FciwNaz5PqWPiHmPCMOFYoEsJ8c&index=5))
-- [Online machine learning in practice - PyData PDX, 2022](/slides/online-ml-in-practice-pydata-pdx.pdf)
-- [Real-time machine learning: the next frontier? - The Applied AI Community, 2021](https://www.youtube.com/watch?v=pxs-ghWvr0M)
-- [Real-time machine learning: the next frontier? - LVMH, 2021](/slides/real-time-machine-learning-the-next-frontier-lvmh.pdf)
-- [Manipulating ephemeral data with git - Défi IA, 2021](/slides/manipulating-ephemeral-data-with-git.pdf)
-- [The challenges of online machine learning in production - Itaú Unibanco Meetup, 2021](/slides/the-challenges-of-online-machine-learning-in-production.pdf)
-- [Quelle est l’empreinte écologique du Big Data? - Toulouse Tech round table, 2021](https://www.youtube.com/watch?v=8RubWlhwTjg&feature=youtu.be)
-- [A brief introduction to online machine learning - Hong Kong Machine Learning, 2020](/slides/hkml2020.pdf)
-- [Online machine learning with decision trees - Toulouse AOC workgroup, 2020](/slides/online-decision-trees.pdf)
-- [Our solution to the IDAO 2020 qualifiers - virtual seminar, 2020](/slides/idao-2020-qualifiers.pdf)
-- [Global explanation of machine learning with sensitivity analysis - MASCOT-NUM, Paris, 2020](/slides/gdr-mascotnum-2020.pdf)
-- [The benefits of online learning - Quantmetry, Paris, 2019](/slides/the-benefits-of-online-learning)
-- [The benefits of online learning - Element AI, London, 2019](/slides/the-benefits-of-online-learning)
-- [The benefits of online learning - Airbus BizLab, Toulouse, 2019](/slides/the-benefits-of-online-learning)
-- [An approach based on Bayesian networks for query selectivity estimation - DASFAA, 2019](/slides/dasfaa-2019.pdf)
-- [Machine learning incrémental: des concepts à la pratique - Toulouse Data Science, 2019](/slides/creme-tds)
-- [Online machine learning with creme - PyData, Amsterdam, 2019](/slides/creme-pydata)
-- [Docker for data science - HelloFresh, Berlin, 2017](/slides/docker-data-science.pdf)
-- [Challenge Big Data - Toulouse, 2017](https://www.youtube.com/watch?v=oQd1h-8Srf4&feature=youtu.be)
-- [Forecasting bicycle-sharing usage - Toulouse Data Science, 2016](https://www.youtube.com/watch?v=vQGdzKkyPP0)
-
-## Blogroll
-
-This is a list of blogs I regularly scroll through.
+## Smart people
 
 - [Tim Salimans on Data Analysis](http://timsalimans.com/)
 - [Randal Olson](http://www.randalolson.com/blog/)
@@ -130,9 +92,7 @@ This is a list of blogs I regularly scroll through.
 - [The Shape of Data](https://shapeofdata.wordpress.com/)
 - [IDEA](https://idea-instructions.com/)
 
-## Hall of fame
-
-The following is a hall of fame of papers, books, and blog posts that left me with a strong impression, both in terms of content and quality.
+## Must reads
 
 - [The Elements of Statistical Learning - Jerome H. Friedman, Robert Tibshirani, and Trevor Hastie](http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf)
 - [Machine Learning - Tom Mitchell](http://personal.disco.unimib.it/Vanneschi/McGrawHill_-_Machine_Learning_-Tom_Mitchell.pdf) -- I think this wonderful textbook is under-appreciated.
