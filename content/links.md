@@ -173,6 +173,7 @@ title: Links
 - [Why the super rich are inevitable - The Pudding](https://pudding.cool/2022/12/yard-sale) -- Really cool dataviz.
 - [Visual design rules you can safely follow every time - Anthony Hobday](https://anthonyhobday.com/sideprojects/saferules/) -- good follow-up to [Web Design in 4 minutes](https://jgthms.com/web-design-in-4-minutes/) by Jeremy Thomas
 - [Common Bugs in Writing](https://www.cs.columbia.edu/~hgs/etc/writing-bugs.html)
+- [Fast - Patrick Collison](https://patrickcollison.com/fast)
 
 ## Inspiring data analysis
 
