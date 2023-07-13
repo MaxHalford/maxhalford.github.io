@@ -386,6 +386,9 @@ code.has-jax {
   .posts-line-tag {
     display: none;
   }
+  .posts-line-emoji {
+    display: none;
+  }
 }
 
 .markdown-body hr {
