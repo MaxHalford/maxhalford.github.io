@@ -192,6 +192,7 @@ title: Links
 - [Finding Undocumented APIs](https://inspectelement.org/apis.html)
 - [bigquery-public-data](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=new_york&t=citibike_trips&page=table&project=orc-orc&ws=!1m4!1m3!3m2!1sbigquery-public-data!2samerica_health_rankings)
 - [fh-bigquery](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=new_york&t=citibike_trips&page=table&project=orc-orc&ws=!1m4!1m3!3m2!1sfh-bigquery!2sbbqtoronto)
+- [Wikidata Query Service](https://query.wikidata.org/#%23Map%20of%20hospitals%0A%23added%202017-08%0A%23defaultView%3AMap%0ASELECT%20DISTINCT%20%2a%20WHERE%20%7B%0A%20%20%3Fitem%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ16917%3B%0A%20%20%20%20%20%20%20%20wdt%3AP625%20%3Fgeo%20.%0A%7D)
 
 ## Eye candy
 
