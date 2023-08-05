@@ -91,6 +91,7 @@ title: Links
 - [death and gravity](https://death.andgravity.com/) -- great advanced Python resource.
 - [The Shape of Data](https://shapeofdata.wordpress.com/)
 - [IDEA](https://idea-instructions.com/)
+- [Shaded relief](http://www.shadedrelief.com/)
 
 ## Must reads
 
@@ -174,6 +175,7 @@ title: Links
 - [Visual design rules you can safely follow every time - Anthony Hobday](https://anthonyhobday.com/sideprojects/saferules/) -- good follow-up to [Web Design in 4 minutes](https://jgthms.com/web-design-in-4-minutes/) by Jeremy Thomas
 - [Common Bugs in Writing](https://www.cs.columbia.edu/~hgs/etc/writing-bugs.html)
 - [Fast - Patrick Collison](https://patrickcollison.com/fast)
+- [Beautiful Polished Rocks - Steve Jobs](https://vimeo.com/842437838) -- the best metaphor for product design I've ever heard.
 
 ## Inspiring data analysis
 

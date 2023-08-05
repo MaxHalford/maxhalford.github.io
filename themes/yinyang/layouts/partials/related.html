@@ -4,7 +4,19 @@
   <h3 style="margin-top: 10px !important; margin-bottom: 10px !important">Related posts</h3>
   <ul style="margin-top: 0;">
     {{ range . }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+
+    {{ if isset .Params "medium" }}
+        <li><a href="{{ .Params.medium }}">{{ .Title }}</a></li>
+    {{ else if isset .Params "carbonfact" }}
+        <li><a href="{{ .Params.carbonfact }}">{{ .Title }}</a></li>
+    {{ else if isset .Params "recording" }}
+        <li><a href="{{ .Params.recording }}">{{ .Title }}</a></li>
+    {{ else if isset .Params "slides" }}
+        <li><a href="{{ .Params.slides }}">{{ .Title }}</a></li>
+    {{ else }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+
     {{ end }}
   </ul>
 </div>
