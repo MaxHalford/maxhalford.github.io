@@ -1,5 +1,5 @@
 +++
-date = "2023-08-02"
+date = "2023-08-09"
 title = 'Answering "Why did the KPI change?" using decomposition'
 tags = ['data-science']
 toc = true
@@ -8,13 +8,13 @@ draft = true
 
 ## Motivation
 
-Say you're a data analyst at a company. You've built a dashboard with several KPIs. You're happy because it took you a couple days of hard work. You even went the extra mile of writing unit tests. You share the dashboard on Slack with the relevant stakeholders, call it a day, and go grab a beer.
+Say you're a data analyst at a company. You've built a dashboard with several KPIs. You're happy because it took you a couple of days of hard work. You even went the extra mile of writing unit tests. You share the dashboard on Slack with the relevant stakeholders, call it a day, and go grab a beer.
 
-A couple weeks later, a stakeholder pings you on Slack, asking why some KPI changed. You open the dashboard, look at said KPI, and see that it has indeed changed. You don't know why, so you open the underlying SQL file. You check the intermediate tables, and get a rough sense of what changed. It takes you 20 minutes and breaks your flow. You summarize your findings to the stakeholder. The stakeholder is somewhat satisfied, but not entirely convinced. You go back to your work, knowing this isn't the last time you'll have this conversation.
+A couple of weeks later, a stakeholder pings you on Slack, asking why some KPI changed. You open the dashboard, look at said KPI, and see that it has indeed changed. You don't know why, so you open the underlying SQL file. You check the intermediate tables, and get a rough sense of what changed. It takes you 20 minutes and breaks your flow. You summarize your findings to the stakeholder. The stakeholder is somewhat satisfied, but not entirely convinced. You go back to your work, knowing this isn't the last time you'll have this conversation.
 
 Sounds familiar? This is a common scenario for data analysts. It's also a terrible one. Understanding why a metric has changed is a fundamental part of a data analyst's job. It should be automatic. In this post, I'll show you how to decompose a KPI to explain its why it changed. I'll use a toy problem to illustrate the technique, but it's applicable to any KPI.
 
-I'm very lucky to be working with [Martin Daniel](https://www.martindaniel.co/) here at Carbonfact. He's an experienced data scientist turned head of product, who worked at Airbnb for many years. There he learnt decomposition techniques, which he then passed on to me. This blog post is somewhat the continuation of an Observable [notebook](https://observablehq.com/@martinda/decomposing-metrics) he wrote.
+I'm very lucky to be working with [Martin Daniel](https://www.martindaniel.co/) here at Carbonfact. He's an experienced data scientist turned head of product, who worked at Airbnb for many years. There he mastered decomposition techniques, which he then passed on to me. This blog post is somewhat the continuation of an Observable [notebook](https://observablehq.com/@martinda/decomposing-metrics) he wrote.
 
 ## Decomposing a sum
 
@@ -121,7 +121,7 @@ Or as the product of two numbers: the number of claims and the average amount pe
 
 $$KPI = n \times \hat{x}$$
 
-I agree this is quite obvious. But this is where it gets interesting. What we can do is study the evolution of $n$ and $\hat{x}$.
+You might say this is quite obvious. But this is where it gets interesting. What we can do is study the evolution of $n$ and $\hat{x}$.
 
 The intuition to have is geometric. The KPI can be represented as a rectangle because it is a product. The area of the rectangle is the KPI. The height of the rectangle is the average amount per claim. The width of the rectangle is the number of claims. The evolution of the KPI can be explained by the evolution of the height and the width of the rectangle.
 
@@ -221,7 +221,7 @@ From what I can tell, the first decomposition is called right/left decomposition
 
 ### Conjugate decomposition
 
-As you might have understood, there are different ways to decompose a KPI. One way is to say that the KPI change comes from:
+As you might have grasped by now, there are different ways to decompose a KPI. One way is to say that the KPI change comes from:
 
 - <span style="color: orange;">A: The old customers, who pay the old price</span>
 - <span style="color: royalblue;">B: The old customers, who pay the new price difference</span>
@@ -242,9 +242,9 @@ $$\textcolor{purple}{KPI_{t+1}} = \textcolor{orange}{KPI_t} + \textcolor{royalbl
 
 I guess this decomposition makes sense. It's slightly more complex, but it gives more stones to grind for stakeholders who wish to dissect the KPI. I believe this variant is called conjugate decomposition. Again, the names I'm using are gleaned from what Martin Daniel shared with me from his days at Airbnb.
 
-### Using the right dimension
+### Using the appropriate dimension
 
-The decomposition is important. But the dimension you use to decompose the KPI is equally as important. Up until here, we simply bucketed claims according to their type. We can do something smarter, due to the fact each claim can be attribute to a single person. For any given year, we know whether a claim comes from an existing customer, a new customer, or a returning customer -- one who was already with us but didn't show up for a year.
+The decomposition method is important. But the dimension you use to decompose the KPI is equally important. Up until here, we simply bucketed claims according to their type. We can do something smarter, due to the fact each claim can be attributed to a single person. For any given year, we know whether a claim comes from an existing customer, a new customer, or a returning customer -- one who was already with us but didn't show up for a year.
 
 The customers in the dummy dataset used above make claims each year. I edited the dataset generation script to make new customers appear every year, while existing customers have a 30% of not making any claims at all for a given year. I also increased the span to a period of four years. For the sake of simplicity, I've reduced the number of claim types to two: dentist and psychiatrist.
 
@@ -373,19 +373,19 @@ decomp[['year', 'status', 'claim_type', 'sum', 'inner', 'mix']]
 | 2024 | RETURNING | Dentist      |   $96.26 | -$274.84 | -$385.04 |
 | 2024 | RETURNING | Psychiatrist |  $166.10 |    $0.00 |  $166.10 |
 
-It's worth taking some time to understand this table. It gives a good idea of the potential of a decomposition framework, even though the underlying KPI is just a simple sum. First of all, we are able to attribute growth to existing, new, and returning customers. But more than that, we are able to tell how the growth from each customer source has evolved.
+It's worth taking some time to understand this table. It gives a good idea of the potential of a decomposition framework, even though the underlying KPI is just a simple sum. Mainly, we are able to attribute growth to existing, new, and returning customers. But more than that, we are able to tell how the growth from each customer source has evolved.
 
 For instance, dentist claims for existing customers grew from \\\$95.21 in 2022 to \\\$740.41 in 2023. That's a \\\$645.20 increase, which is decomposed into two parts. \\\$52.87 is due to the increase of the average dentist claim price. The bulk of the growth, \\\$592.32, is due to people going to the dentist more often.
 
 What I love about this framework is that it produces concrete figures. We could have plotted the average dentist claim price alongside the number of dentist claims per year. We would have seen that the average price went up, and that the number of claims went up. But we wouldn't have been able to tell how much of the growth was due to the increase in average price, and how much was due to the increase in number of claims.
 
-I'll leave it at that for decomposing a sum. Let's move on to decomposing a ratio, which is a tad more complex.
+I'll leave it at that for decomposing a sum. Let's move on to decomposing a ratio, which is more complex.
 
 ## Decomposing a ratio
 
 ### Intuition
 
-Averages are another type of KPI that can be decomposed. Let's say we want to calculate the average claim amount per claim. We can do this by dividing the total amount by the number of claims.
+Ratios are another type of KPI that can be decomposed. Let's say we want to calculate the average claim amount per claim. We can do this by dividing the total amount by the number of claims.
 
 | year | average |    diff |
 | ---: | ------: | ------: |
@@ -394,7 +394,7 @@ Averages are another type of KPI that can be decomposed. Let's say we want to ca
 | 2023 | $173.04 |  $60.36 |
 | 2024 | $122.92 | -$50.12 |
 
-Our wish is to distinguish between the change in the average amount by type of claim, as well as the evolution in volume of said claim types. For instance, the average amount might have gone down because there are more cheaper types of claims, or because the average amount per claim decreased.
+Our wish is to distinguish between the change in the average amount by type of claim, as well as the evolution in volume of said claim types. For instance, the average amount might have gone down because there are more claims on the cheap side, or because the average amount per claim decreased.
 
 The average, of course, is just a ratio between the total amount, and the number of claims.
 
@@ -411,28 +411,207 @@ In other words, in order to understand why the average fluctuated, we have to st
 
 Don't be alarmed: we are still looking to decompose the KPI in terms of volume change and average change. But the volume change is now expressed in terms of share of the total, and the average change is expressed in terms of average per group.
 
-It's a bit of a mindfuck because the KPI is an average. Both quantities are not independent, because they share $n_j$. Decomposing a sum is simpler due to its [associative property](https://www.wikiwand.com/en/Associative), which an average doesn't possess. Bear with me 🐻
+It's a bit of a mindfuck because the KPI is an average. Both quantities are not independent, because they share $n_j$. Decomposing a sum is simpler due to its [associative property](https://www.wikiwand.com/en/Associative), which an average doesn't possess. From my experience, it's better to first look at some equations, and then at some visuals. Please bear with me 🐻
 
-What is the geometrical interpretation?
+First, let's define $KPI_t$ as the value of the KPI -- i.e. the ratio -- at time $t$. The following identity is a simplified version of the last equation, stating that $KPI_t$ is the sum of the product of shares $s_j(t)$ and ratios $r_j(t)$:
+
+$$KPI_t = \sum_{j=1}^m s_j(t) \times r_j(t)$$
+
+We are interested in studying the evolution of the KPI between $t$ and $t+1$:
+
+$$KPI_{t+1} - KPI_t = \sum_{j=1}^m s_j(t+1) \times r_j(t+1) - \sum_{j=1}^m s_j(t) \times r_j(t)$$
+
+The terms in each sum can be regrouped into a single sum:
+
+$$KPI_{t+1} - KPI_t = \sum_{j=1}^m [s_j(t+1) \times r_j(t+1) - s_j(t) \times r_j(t)]$$
+
+The expression in the sum can be split into two parts. The first part is the change due to the $r_j$ values, while the second part is the change due to the $s_j$ values:
+
+$$
+\begin{align*}
+    KPI_{t+1} - KPI_{t} &= \sum_{j=1}^m [s_j(t+1) \times r_j(t+1) - s_j(t+1) \times r_j(t) + s_j(t+1) \times r_j(t) - s_j(t) \times r_j(t)] \\\\
+    &= \sum_{j=1}^m s_j(t+1) \times (r_j(t+1) - r_j(t)) + \sum_{j=1}^m (s_j(t+1) - s_j(t)) \times r_j(t)
+\end{align*}
+$$
+
+The average value $KPI_t$ can be thought of as a weighted average of the $r_j(t)$ values, with the weights being $s_j(t)$. Given that, if the weights $s_j(t)$ change to $s_j(t+1)$, the weighted average will move towards $r_j(t+1)$ but will be anchored by the initial value $KPI_t$. Therefore, we can replace $r_j(t)$ in the second term with $KPI_t$:
+
+$$KPI_{t+1} - KPI_{t} = \sum_{j=1}^m s_j(t+1) \times (r_j(t+1) - r_j(t)) + \sum_{j=1}^m (s_j(t+1) - s_j(t)) \times (r_j(t+1) - KPI_t)$$
+
+There we have it. We've expressed $KPI_{t+1}$ -- the KPI change -- as the sum of:
+
+1. The initial KPI value $KPI_{t}$
+2. The inner effect: the change in the average value of each group
+3. The mix effect: the change in the share of each group
+
+I sought out a geometrical interpretation of this decomposition. I found one, sort of, but it's not as easy to grasp as the one for the sum. Here are some dummy figures to help us visualize the decomposition:
+
+| Year                                      | Group                                  | Denominator                               | Share                                    | Ratio                                     | Share x ratio                             | Group sum                                 |
+| ----------------------------------------- | -------------------------------------- | ----------------------------------------- | ---------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| <span style="color:royalblue">2021</span> | <span style="color:royalblue">A</span> | <span style="color:royalblue">1000</span> | <span style="color:royalblue">33%</span> | <span style="color:royalblue">15%</span>  | <span style="color:royalblue">5%</span>   | <span style="color:royalblue">10%</span>  |
+| <span style="color:royalblue">2021</span> | <span style="color:royalblue">B</span> | <span style="color:royalblue">2000</span> | <span style="color:royalblue">67%</span> | <span style="color:royalblue">7.5%</span> | <span style="color:royalblue">5%</span>   |                                           |
+| <span style="color:indianred">2022</span> | <span style="color:indianred">A</span> | <span style="color:indianred">800</span>  | <span style="color:indianred">40%</span> | <span style="color:indianred">11%</span>  | <span style="color:indianred">4.4%</span> | <span style="color:indianred">6.8%</span> |
+| <span style="color:indianred">2022</span> | <span style="color:indianred">B</span> | <span style="color:indianred">1200</span> | <span style="color:indianred">60%</span> | <span style="color:indianred">4%</span>   | <span style="color:indianred">2.4%</span> |                                           |
+
+In terms of visualization, my idea was to leverage the fact a mean within a group can be expressed as the product between the share the group represents, times the ratio within said group. Thus, the product can be visualized as a vector sum. Here is a visualization of this table:
+
+<div align="center" >
+<figure>
+    <img style="box-shadow: none;" src="/img/blog/kpi-evolution-decomposition/ratio-viz.png">
+</figure>
+</div>
+
+This is then how I visualize the decomposition:
+
+<div align="center" >
+<figure>
+    <img style="box-shadow: none;" src="/img/blog/kpi-evolution-decomposition/ratio-left-right.png">
+</figure>
+</div>
+
+And here is the tabular breakdown of this decomposition:
+
+| Group                               | Inner                                                                                                                                                                             | Mix                                                                                                                                                                                                                             | Total  |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| <span style="color:purple">A</span> | <span style="color:indianred">40%</span> $\times$ (<span style="color:indianred">11%</span> - <span style="color:royalblue">15%</span>) = <span style="color:purple">-1.6%</span> | (<span style="color:indianred">40%</span> - <span style="color:royalblue">33%</span>) $\times$ (<span style="color:royalblue">15%</span> - <span style="color:royalblue">10%</span>) = <span style="color:purple">0.33%</span>  | -1.27% |
+| <span style="color:orange">B</span> | <span style="color:indianred">60%</span> $\times$ (<span style="color:indianred">4%</span> - <span style="color:royalblue">7.5%</span>) = <span style="color:orange">-2.1%</span> | (<span style="color:indianred">60%</span> - <span style="color:royalblue">67%</span>) $\times$ (<span style="color:royalblue">7.5%</span> - <span style="color:royalblue">10%</span>) = <span style="color:orange">0.17%</span> | -1.93% |
+| Total                               | -3.7%                                                                                                                                                                             | 0.5%                                                                                                                                                                                                                            | -3.2%  |
+
+The math is not easy to follow, nor is the geometrical interpretation. But the intuition is straightforward: the change in the KPI is the sum of the change in the average value of each group, and the change in the share of each group. It's just a tad more complicated because the KPI is a ratio, not a sum.
+
+I've also written a little Python script to prove the formulas work from a numerical point of view.
+
+<details>
+  <summary>Numeric verification script</summary>
+
+```py
+# denominators
+D = [
+    [1000, 2000],
+    [800, 1200]
+]
+# shares
+S = [
+    [dj / sum(d) for j, dj in enumerate(d)]
+    for i, d in enumerate(D)
+]
+# numerators
+N = [
+    [150, 150],
+    [88, 48]
+]
+# ratios
+R = [
+    [ni / di for ni, di in zip(n, d)]
+    for n, d in zip(N, D)
+]
+# shares x ratios
+SR = [
+    [ri * si for ri, si in zip(r, s)]
+    for r, s in zip(R, S)
+]
+# global means
+M = list(map(sum, SR))
+# KPIs
+KPI = [
+    sum(ri * si for ri, si in zip(r, s))
+    for r, s in zip(R, S)
+]
+# decomposed KPI
+inner = sum(S[1][i] * (R[1][i] - R[0][i]) for i in range(2))
+mix = sum((S[1][i] - S[0][i]) * (R[0][i] - KPI[0]) for i in range(2))
+KPI[1] == KPI[0] + inner + mix
+```
+
+</details>
 
 ### Implementation
 
-https://docs.google.com/spreadsheets/d/1-hYJesNCMlCyANPOPeLijg1sCfv-6nREPtkHtTVEwd4/edit#gid=0
+Let's get back to our health insurance toy problem. Recall that we're looking to explain the evolution of the yearly average claim amount:
 
-## Decomposing a funnel
+```py
+averages = claims_df.groupby('year')['amount'].mean()
+averages = pd.DataFrame({
+    'average': averages,
+    'diff': averages - averages.shift()
+})
+```
 
-### Forget CTR funnels: the Kaya identity
+| year | average |    diff |
+| ---: | ------: | ------: |
+| 2021 | $145.80 |         |
+| 2022 | $112.67 | -$33.13 |
+| 2023 | $173.04 |  $60.36 |
+| 2024 | $122.92 | -$50.12 |
 
-https://www.wikiwand.com/en/Kaya_identity
+We're studying a ratio. The first thing to do is determine the numerator and the denominator of this ratio. In this example, the numerator is the total amount of claims, and the denominator is the number of claims:
 
-### Intuition
+```py
+metric = 'amount'
+period = 'year'
+dimension = 'claim_type'
 
-### Implementation
+decomp = (
+    claims_df
+    .groupby([period, dimension], dropna=True)
+    [metric].agg(['sum', 'count'])
+    .reset_index()
+    .sort_values(period)
+)
+```
 
-TODO
+| year | claim_type   |      sum | count |
+| ---: | :----------- | -------: | ----: |
+| 2021 | Dentist      |  $614.36 |     5 |
+| 2021 | Psychiatrist |  $697.92 |     4 |
+| 2022 | Dentist      |  $393.50 |     4 |
+| 2022 | Psychiatrist |  $282.56 |     2 |
+| 2023 | Dentist      | $2967.30 |    20 |
 
-https://docs.google.com/spreadsheets/d/1YNg1DgOViTSr7055w9ImUGaYPHfMJEHHBoqgfvbfeow/edit#gid=596672864
-https://journals.sagepub.com/doi/pdf/10.1177/1536867X1701700213
+```py
+decomp['mean'] = decomp.eval('sum / count')
+decomp['share'] = decomp['count'] / decomp.groupby('year')['count'].transform('sum')
+decomp['global_mean'] = (
+    decomp.groupby('year')['sum'].transform('sum') /
+    decomp.groupby('year')['count'].transform('sum')
+)
+decomp['mean_lag'] = decomp.groupby(dimension)['mean'].shift(1)
+decomp['share_lag'] = decomp.groupby(dimension)['share'].shift(1)
+decomp['global_mean_lag'] = decomp.groupby(dimension)['global_mean'].shift(1)
+decomp['inner'] = decomp.eval('share * (mean - mean_lag)')
+decomp['mix'] = decomp.eval('(share - share_lag) * (mean_lag - global_mean_lag)')
+decomp
+```
+
+| year | claim_type   |   inner |    mix |
+| ---: | :----------- | ------: | -----: |
+| 2021 | Dentist      |         |        |
+| 2021 | Psychiatrist |         |        |
+| 2022 | Dentist      | -$16.33 | -$2.54 |
+| 2022 | Psychiatrist | -$11.06 | -$3.18 |
+| 2023 | Dentist      |  $33.32 |  $0.00 |
+| 2023 | Psychiatrist |  $27.04 |  $0.00 |
+| 2024 | Dentist      | -$25.34 |  $4.11 |
+| 2024 | Psychiatrist | -$37.12 |  $8.22 |
+
+In 2023, the fact the mix effect is nil for both dentist and psychiatrist claims means the distribution of claim types remained unchanged. Then, in 2024, the mix effect is positive for dentist claims and psychiatrist claims because the balance shifted towards psychiatrist claims. The latter are more expensive than dentist claims, so the mix effect is positive. However, the inner effect in 2024 is negative for both claim types because the average claim amount decreased for both claim types.
+
+Here's how to verify these contribution amounts sum up correctly:
+
+```py
+(
+    decomp
+    .groupby('year')
+    .apply(lambda x: (x.inner + x.mix).sum())
+)
+```
+
+| year |     sum |
+| ---: | ------: |
+| 2021 |   $0.00 |
+| 2022 | -$33.13 |
+| 2023 |  $60.36 |
+| 2024 | -$50.12 |
 
 ## Going further
 
@@ -444,13 +623,15 @@ All the grouping we've done assumes the [MECE principle](https://www.wikiwand.co
 
 **Decomposition methods in economics**
 
-In the field of economics, there is a bunch of litterature on the topic of _decomposition methods_. For instance, [these](https://scholar.harvard.edu/files/melitz/files/melitz_et_al-2015-the_rand_journal_of_economics.pdf) [papers](https://www.mof.go.jp/english/pri/publication/pp_review/fy2017/ppr13_03_03.pdf) decompose productivity growth, by allocating growth to new companies, exiting companies, and existing companies.
+In the field of economics, there is a bunch of literature on the topic of _decomposition methods_. For instance, [these](https://scholar.harvard.edu/files/melitz/files/melitz_et_al-2015-the_rand_journal_of_economics.pdf) [papers](https://www.mof.go.jp/english/pri/publication/pp_review/fy2017/ppr13_03_03.pdf) decompose productivity growth, by allocating growth to new companies, exiting companies, and existing companies.
 
-[Kitagawa-Blinder-Oaxaca](https://www.wikiwand.com/en/Blinder%E2%80%93Oaxaca_decomposition) decomposition TODO
+I also stumbled upon the [Kitagawa-Blinder-Oaxaca](https://www.wikiwand.com/en/Blinder%E2%80%93Oaxaca_decomposition) decomposition. This seems like a way to explain the difference of a value between two groups, when the value can be modelled as a linear regression. This is powerful: if you don't know the formula behind a KPI, but can fit it with a regression model, then you can decompose it using this method.
 
-**Growth models**
+**Automatic differentiation**
 
-TODO: talk about growth models?
+To me, the best KPIs are sums and ratios, because they're easy to explain and debug. But what to do when the KPI is a more complex function? Something I've been thinking in the back in my mind is to formulate a KPI as a function, and differentiate it with respect to quantities of interest.
+
+For instance, if I'm studying the number of views of a YouTube video, I could differentiate the number of views with respect to the number of likes, and see how much the number of views would change if the number of likes increased. I'd like to do this with an autodiff framework like [micrograd](https://github.com/karpathy/micrograd).
 
 **Metric trees**
 
@@ -462,10 +643,10 @@ In short, it's not enough to implement a KPI. You have to surface the intermedia
 
 An instance of metric trees I've been impressed with is [Count](https://count.co/), which is Figma like tool for data analysis. They allow you to build a [visual metric tree](https://count.co/canvas/gLZEtEmsube). You can then copy/paste the tree, allowing you to get a side-by-side comparison. Maybe this visual approach is even better than decomposition formulas.
 
-**Automatic differentation**
+**Semantic layer**
 
-Another avenue I'm curious about is automatic differentiation. TODO https://github.com/karpathy/micrograd
+The semantic layer is a [hot topic](https://www.getdbt.com/blog/introducing-new-look-dbt-semantic-layer/) in the BI world. It's the idea that you can build a layer of abstraction on top of your data warehouse, which allows you to define (reusable) metrics in a declarative fashion. Christophe Blefari, who is good at following trends, gives a good overview of it [here](https://www.blef.fr/metrics-store/). I mention it because I believe adding decomposition methods to the semantic layer could be very impactful.
 
-**Making an opensource library**
+**Making an open source library**
 
 As you might have noticed, I didn't implement every variant of the decomposition formulas. For instance, I didn't implement the right/left and conjugate variants for ratio decomposition. There might be value in implementing all these variants into a nice library. Nowadays, I'm not sure what's best between writing a Python package or a dbt extension. Anyway, if you're interested, let me know!
