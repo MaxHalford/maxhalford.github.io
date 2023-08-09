@@ -46,7 +46,7 @@ h3 {
   margin-top: 0;
 }
 
-.markdown-body h2 {
+.markdown-body h2, h3 {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 1.3em;
   font-weight: bold;
