@@ -3,7 +3,6 @@ date = "2023-08-09"
 title = 'Answering "Why did the KPI change?" using decomposition'
 tags = ['data-science']
 toc = true
-draft = true
 +++
 
 ## Motivation
