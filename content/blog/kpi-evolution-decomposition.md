@@ -652,6 +652,8 @@ An instance of metric trees I've been impressed with is [Count](https://count.co
 
 A cool thing you can do is decompose funnel metrics. For instance, if you're studying the number of views of a YouTube video, you can decompose it into the number of impressions, the click-through rate, and the watch time. This is a good way to understand what drives the number of views. It would be great to see baked in to something like Motif's [sequence analytics](https://motifanalytics.medium.com/introducing-sequence-analytics-93eadd921440).
 
+I was going to tackle this in my post. But it's a bit too chunky, so I'll leave it for another time.
+
 **Semantic layer**
 
 The semantic layer is a [hot topic](https://www.getdbt.com/blog/introducing-new-look-dbt-semantic-layer/) in the BI world. It's the idea that you can build a layer of abstraction on top of your data warehouse, which allows you to define (reusable) metrics in a declarative fashion. Christophe Blefari, who is good at following trends, gives a good overview of it [here](https://www.blef.fr/metrics-store/). I mention it because I believe adding decomposition methods to the semantic layer could be very impactful.
