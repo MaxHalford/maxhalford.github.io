@@ -435,7 +435,12 @@ $$
 
 The average value $KPI_t$ can be thought of as a weighted average of the $r_j(t)$ values, with the weights being $s_j(t)$. Given that, if the weights $s_j(t)$ change to $s_j(t+1)$, the weighted average will move towards $r_j(t+1)$ but will be anchored by the initial value $KPI_t$. Therefore, we can replace $r_j(t)$ in the second term with $KPI_t$:
 
-$$KPI_{t+1} - KPI_{t} = \sum_{j=1}^m s_j(t+1) \times (r_j(t+1) - r_j(t)) + \sum_{j=1}^m (s_j(t+1) - s_j(t)) \times (r_j(t+1) - KPI_t)$$
+$$
+\begin{align*}
+    KPI_{t+1} - KPI_{t} &= \sum_{j=1}^m s_j(t+1) \times (r_j(t+1) - r_j(t)) \\\\
+    &+ \sum_{j=1}^m (s_j(t+1) - s_j(t)) \times (r_j(t+1) - KPI_t)
+\end{align*}
+$$
 
 There we have it. We've expressed $KPI_{t+1}$ -- the KPI change -- as the sum of:
 
