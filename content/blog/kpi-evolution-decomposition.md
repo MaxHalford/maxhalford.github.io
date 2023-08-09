@@ -2,6 +2,7 @@
 date = "2023-08-09"
 title = 'Answering "Why did the KPI change?" using decomposition'
 tags = ['data-science']
+images = ["/img/blog/kpi-evolution-decomposition/sum-conjugate.png"]
 toc = true
 +++
 
