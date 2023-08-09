@@ -351,7 +351,6 @@ decomp['mean_lag'] = decomp.groupby(dimensions)['mean'].shift(1).fillna(0)
 decomp['count_lag'] = decomp.groupby(dimensions)['count'].shift(1).fillna(0)
 decomp['inner'] = decomp.eval('(mean - mean_lag) * count_lag')
 decomp['mix'] = decomp.eval('(count - count_lag) * mean')
-decomp[['year', 'status', 'claim_type', 'sum', 'inner', 'mix']]
 ```
 
 | year | status    | claim_type   |      sum |    inner |      mix |
@@ -417,7 +416,7 @@ First, let's define $KPI_t$ as the value of the KPI -- i.e. the ratio -- at time
 
 $$KPI_t = \sum_{j=1}^m s_j(t) \times r_j(t)$$
 
-We are interested in studying the evolution of the KPI between $t$ and $t+1$:
+I've simply introduced $s_j(t) = \frac{n_j}{n}$ and $r_j(t) = \frac{1}{n_j} \sum_{i=1}^{n_j} x_{ji}$ for the sake of simplicity. We are interested in studying the evolution of the KPI between $t$ and $t+1$:
 
 $$KPI_{t+1} - KPI_t = \sum_{j=1}^m s_j(t+1) \times r_j(t+1) - \sum_{j=1}^m s_j(t) \times r_j(t)$$
 
@@ -574,18 +573,20 @@ decomp = (
 | 2023 | Dentist      | $2967.30 |    20 |
 
 ```py
-decomp['mean'] = decomp.eval('sum / count')
-decomp['share'] = decomp['count'] / decomp.groupby('year')['count'].transform('sum')
-decomp['global_mean'] = (
+decomp['ratio'] = decomp.eval('sum / count')
+decomp['share'] = (
+    decomp['count'] /
+    decomp.groupby('year')['count'].transform('sum')
+)
+decomp['global_ratio'] = (
     decomp.groupby('year')['sum'].transform('sum') /
     decomp.groupby('year')['count'].transform('sum')
 )
-decomp['mean_lag'] = decomp.groupby(dimension)['mean'].shift(1)
+decomp['ratio_lag'] = decomp.groupby(dimension)['ratio'].shift(1)
 decomp['share_lag'] = decomp.groupby(dimension)['share'].shift(1)
-decomp['global_mean_lag'] = decomp.groupby(dimension)['global_mean'].shift(1)
-decomp['inner'] = decomp.eval('share * (mean - mean_lag)')
-decomp['mix'] = decomp.eval('(share - share_lag) * (mean_lag - global_mean_lag)')
-decomp
+decomp['global_ratio_lag'] = decomp.groupby(dimension)['global_ratio'].shift(1)
+decomp['inner'] = decomp.eval('share * (ratio - ratio_lag)')
+decomp['mix'] = decomp.eval('(share - share_lag) * (ratio_lag - global_ratio_lag)')
 ```
 
 | year | claim_type   |   inner |    mix |
