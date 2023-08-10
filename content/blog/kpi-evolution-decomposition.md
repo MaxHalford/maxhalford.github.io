@@ -246,7 +246,7 @@ I guess this decomposition makes sense. It's slightly more complex, but it gives
 
 The decomposition method is important. But the dimension you use to decompose the KPI is equally important. Up until here, we simply bucketed claims according to their type. We can do something smarter, due to the fact each claim can be attributed to a single person. For any given year, we know whether a claim comes from an existing customer, a new customer, or a returning customer -- one who was already with us but didn't show up for a year.
 
-The customers in the dummy dataset used above make claims each year. I edited the dataset generation script to make new customers appear every year, while existing customers have a 30% of not making any claims at all for a given year. I also increased the span to a period of four years. For the sake of simplicity, I've reduced the number of claim types to two: dentist and psychiatrist.
+The customers in the dummy dataset used above make claims each year. I edited the dataset generation script to make new customers appear every year, while existing customers have a 30% chance of not making any claims at all for a given year. I also increased the span to a period of four years. For the sake of simplicity, I've reduced the number of claim types to two: dentist and psychiatrist.
 
 <details>
   <summary>New dataset generation script</summary>
