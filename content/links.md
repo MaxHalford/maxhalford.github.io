@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Links
+toc: true
 ---
 
 ## Smart people
