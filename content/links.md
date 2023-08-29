@@ -32,37 +32,33 @@ title: Links
 - [Ines Montani](https://ines.io/) -- by one of the founders of [spaCy](https://spacy.io/).
 - [Stephen Smerity](https://smerity.com/articles/articles.html)
 - [Peter Norvig](http://norvig.com/)
-- [IT Best Kept Secret Is Optimization](https://www.ibm.com/developerworks/community/blogs/jfp/?lang=en) -- by Jean-Francois Puget, aka [CPMP](https://www.kaggle.com/cpmpml).
+- [IT Best Kept Secret Is Optimization](https://www.ibm.com/developerworks/community/blogs/jfp/?lang=en) -- By Jean-Francois Puget, aka [CPMP](https://www.kaggle.com/cpmpml).
 - [explained.ai](https://explained.ai/)
 - [Better Explained](https://betterexplained.com/)
 - [Genetic Argonaut](https://geneticargonaut.blogspot.com/)
 - [pandas blog](https://pandas-dev.github.io/pandas-blog/)
 - [Towards Data Science](https://towardsdatascience.com/)
-- [Linear Digressions](https://lineardigressions.com/) -- data science podcasts.
-- [Not so standard deviations](http://nssdeviations.com/) -- more podcasts.
-- [Talking Machines](http://www.thetalkingmachines.com/episodes) -- even more podcasts.
-- [Practical AI](https://changelog.com/practicalai) -- here be podcasts.
 - [Probably Overthinking It](https://www.allendowney.com/blog/)
 - [Simply Statistics](https://simplystatistics.org/)
 - [Practically Predictable](http://practicallypredictable.com/)
-- [koaning](http://koaning.io/) -- by Vincent Warmerdam, who made [calmcode](https://calmcode.io/).
+- [koaning](http://koaning.io/) -- by Vincent Warmerdam, who made [calmcode](https://calmcode.io/)
 - [blogarithms](https://blogarithms.github.io/)
 - [Possibly Wrong](https://possiblywrong.wordpress.com/)
 - [FastML](http://fastml.com/)
 - [Parameter-free Learning and Optimization Algorithms](https://parameterfree.com/)
-- [Todd W. Schneider](https://toddwschneider.com/) -- this guy is really good at exploratory data analysis.
-- [Yann Thaddée](https://espadrine.github.io/blog/) -- not directly related to data science but interesting nonetheless.
+- [Todd W. Schneider](https://toddwschneider.com/) -- This guy is really good at exploratory data analysis.
+- [Yann Thaddée](https://espadrine.github.io/blog/) -- Not directly related to data science but interesting nonetheless.
 - [Colins Blog](https://www.solipsys.co.uk/new/ColinsBlog.html)
 - [Fabien Sanglard](https://fabiensanglard.net) -- nothing to do with data science, but such good taste!
-- [The Glowing Python](https://glowingpython.blogspot.com/) -- by the creator of [MiniSom](https://github.com/JustGlowing/minisom), which is worth checking out too.
+- [The Glowing Python](https://glowingpython.blogspot.com/) -- By the creator of [MiniSom](https://github.com/JustGlowing/minisom), which is worth checking out too.
 - [Matt Hancock](https://notmatthancock.github.io/notes/)
-- [Francis Bach](https://francisbach.com/) -- someone with an h-index of 80+ who takes the time to blog is worth reading.
+- [Francis Bach](https://francisbach.com/) -- Someone with an h-index of 80+ who takes the time to blog is worth reading.
 - [Gwern Branwen](https://www.gwern.net/index) -- Cool in a weird way.
 - [Libres pensées d'un mathématicien ordinaire](http://djalil.chafai.net/blog/)
 - [Count Bayesie](https://www.countbayesie.com/)
 - [Jim Savage](https://khakieconomics.github.io/)
-- [Nick Higham](https://nhigham.com/) -- a lot of well explained algebra.
-- [Calmcode](https://calmcode.io/) -- not a blog per se, but a nice collection of short to the point tutorials about various tools.
+- [Nick Higham](https://nhigham.com/) -- A lot of well explained algebra.
+- [Calmcode](https://calmcode.io/) -- Not a blog per se, but a nice collection of short to the point tutorials about various tools.
 - [Chris Said](https://chris-said.io/)
 - [Evan Miller](https://www.evanmiller.org/index.html)
 - [Eric Jang](http://evjang.com/)
@@ -71,16 +67,16 @@ title: Links
 - [Freakonometrics](https://freakonometrics.hypotheses.org/)
 - [Martin Daniel](http://www.martindaniel.co/)
 - [Chris Kiehl](https://chriskiehl.com/)
-- [ithaka.im](http://ithaka.im/) -- a guy I met who travelled for 6 years with his wife on a bike, very inspiring.
-- [Muthukrishnan](https://muthu.co/) -- has written some neat document processing stuff.
+- [ithaka.im](http://ithaka.im/) -- A guy I met who travelled for 6 years with his wife on a bike, very inspiring.
+- [Muthukrishnan](https://muthu.co/) -- Has written some neat document processing stuff.
 - [Björn Ottosson](https://bottosson.github.io/)
 - [Guilherme Duarte Marmerola](https://gdmarmerola.github.io/)
 - [Cal Paterson](https://calpaterson.com/)
 - [Claire Carroll](https://clrcrl.com/)
-- [Luke Metz](http://lukemetz.com/blog/) -- Luke is working on the niche topic of meta-learning at Google. He also happens a very kind person.
-- [Practical Recommendations](https://practicalrecs.com/) -- a blog about recommender systems.
-- [Robin Linacre](https://www.robinlinacre.com/) -- some good stuff related to record linkage.
-- [Neal Lathia](https://nlathia.github.io/) -- machine learning in production stuff.
+- [Luke Metz](http://lukemetz.com/blog/) -- Luke is working on the niche topic of meta-learning at Google. He also happens to a very kind person.
+- [Practical Recommendations](https://practicalrecs.com/) -- A blog about recommender systems.
+- [Robin Linacre](https://www.robinlinacre.com/) -- Some good stuff related to record linkage.
+- [Neal Lathia](https://nlathia.github.io/) -- Machine learning in production stuff.
 - [John D. Cook](https://www.johndcook.com/blog/)
 - [Brandon Roberts](https://bxroberts.org/)
 - [Allen Downey](https://www.allendowney.com/blog/)
@@ -88,12 +84,13 @@ title: Links
 - [Scott Rome](https://srome.github.io/)
 - [Eugene Yan](https://eugeneyan.com/writing/)
 - [Lj Miranda](https://ljvmiranda921.github.io/notebook/)
-- [death and gravity](https://death.andgravity.com/) -- great advanced Python resource.
+- [death and gravity](https://death.andgravity.com/) -- Great advanced Python resource.
 - [The Shape of Data](https://shapeofdata.wordpress.com/)
 - [IDEA](https://idea-instructions.com/)
 - [Shaded relief](http://www.shadedrelief.com/)
+- [Leslie Lamport](https://lamport.azurewebsites.net/pubs/pubs.html)
 
-## Must reads
+## Data science
 
 - [The Elements of Statistical Learning - Jerome H. Friedman, Robert Tibshirani, and Trevor Hastie](http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf)
 - [Machine Learning - Tom Mitchell](http://personal.disco.unimib.it/Vanneschi/McGrawHill_-_Machine_Learning_-Tom_Mitchell.pdf) -- I think this wonderful textbook is under-appreciated.
@@ -106,7 +103,6 @@ title: Links
 - [Graphical Models in a Nutshell - Koller et al.](https://ai.stanford.edu/~koller/Papers/Koller+al:SRL07.pdf)
 - [Rules of Machine Learning: Best Practices for ML Engineering - Martin Zinkevich](https://developers.google.com/machine-learning/guides/rules-of-ml/) -- You should read this once a year.
 - [A Few Useful Things to Know about Machine Learning - Pedro Domingos](https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf) -- This short paper summarizes basic truths in machine learning.
-- [Choose Boring Technology - Dan McKinley](http://mcfunley.com/choose-boring-technology)
 - [How to Write a Spelling Corrector - Peter Norvig](https://norvig.com/spell-correct.html) -- Magic in 36 lines of code.
 - [MCMC sampling for dummies - Thomas Wiecki](http://twiecki.github.io/blog/2015/11/10/mcmc-sampling/)
 - [Your Easy Guide to Latent Dirichlet Allocation](https://medium.com/@lettier/how-does-lda-work-ill-explain-using-emoji-108abf40fa7d)
@@ -114,68 +110,68 @@ title: Links
 - [An overview of gradient descent optimization algorithms - Sebastian Ruder](http://ruder.io/optimizing-gradient-descent/)
 - [How to explain gradient boosting - Terence Parr and Jeremy Howard](https://explained.ai/gradient-boosting/index.html) -- A very good introduction to vanilla gradient boosting with step by step examples.
 - [Why Does XGBoost Win "Every" Machine Learning Competition? - Didrik Nielsen](https://brage.bibsys.no/xmlui/bitstream/handle/11250/2433761/16128_FULLTEXT.pdf) -- This Master's thesis goes into some of the details of XGBoost without being too bloated.
-- [Good sleep, good learning, good life - Piotr Wozniak](https://web.archive.org/web/20181017190008/https://www.supermemo.com/en/articles/sleep) -- Extremely long and nothing to do with data science, but a very thorough essay nonetheless on how to properly sleep.
-- [Make for data scientists - Paul Butler](https://paulbutler.org/2012/make-for-data-scientists/) -- I believe Makefiles are yet to be rediscovered for managing data science pipelines.
-- [Statistical tests, P values, confidence intervals, and power: a guide to misinterpretations](https://fermatslibrary.com/s/statistical-tests-p-values-confidence-intervals-and-power-a-guide-to-misinterpretations) -- Just read it.
+- [Statistical tests, P values, confidence intervals, and power: a guide to misinterpretations](https://fermatslibrary.com/s/statistical-tests-p-values-confidence-intervals-and-power-a-guide-to-misinterpretations)
 - [The Cramér-Rao Lower Bound on Variance: Adam and Eve’s "Uncertainty Principle" - Michael Powers](https://web.archive.org/web/20100613220918/http://astro.temple.edu/~powersmr/vol7no3.pdf)
-- [Kaggle contest on Observing Dark World - Cam Davidson-Pilon](https://nbviewer.jupyter.org/github/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Chapter5_LossFunctions/Ch5_LossFunctions_PyMC3.ipynb#Example:-Kaggle-contest-on-Observing-Dark-World) -- If you're not convinced about the power of Bayesian machine learning then read this and get your mind blown.
 - [A Concrete Introduction to Probability (using Python) - Peter Norvig](https://nbviewer.jupyter.org/url/norvig.com/ipython/Probability.ipynb) -- Extremely elegant Python coding.
 - [The Hungarian Maximum Likelihood Trick - Louis Abraham](https://louisabraham.github.io/notebooks/hungarian_trick.html)
 - [Machine Learning for Signal Processing - University of Illinois](https://courses.engr.illinois.edu/cs598ps/fa2018/)
-- [Don't Call Yourself A Programmer, And Other Career Advice](https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/)
-- [Tidy Data - Hadley Wickham](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) -- If you like playing with data then you need to be aware of this one.
 - [Gaussian Process, not quite for dummies - Yuge Shi](https://yugeten.github.io/posts/2019/09/GP/) -- Gaussian processes are quite difficult to understand (at least, for me) but Yuge gives some great visual intuitions.
-- [Continuous Delivery for Machine Learning - Martin Fowler](https://martinfowler.com/articles/cd4ml.html)
-- [Memos - Sriram Krishnan](https://sriramk.com/memos)
 - [Frequentism and Bayesianism: A Python-driven Primer - Jake VanderPlas](https://arxiv.org/pdf/1411.5018.pdf)
-- [A Few Useful Things To Know About Machine Learning - Pedro Domingos](https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf)
-- [Multiworld Testing Decision Service: A System for Experimentation, Learning, And Decision-Making](https://arxiv.org/pdf/1606.03966.pdf)
-- [Machine Learning: The High-Interest Credit Card of Technical Debt - Google](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43146.pdf)
 - [Variational Inference: A Review for Statisticians - David Blei and his flock](https://arxiv.org/pdf/1601.00670.pdf)
 - [The Performance of Decision Tree Evaluation Strategies - Andrew Tulloch](http://tullo.ch/articles/decision-tree-evaluation/)
-- [Hidden Technical Debt in Machine Learning Systems - Google](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)
-- [Distill: Why do we need Flask, Celery, and Redis? (with McDonalds in Between) - Lj Miranda](https://ljvmiranda921.github.io/notebook/2019/11/08/flask-redis-celery-mcdo/) -- A good example of the difference between abstract ideas and implementation details.
-- [Darts, Dice, and Coins: Sampling from a Discrete Distribution - Keith Schwarz](https://www.keithschwarz.com/darts-dice-coins/)
 - [Simplifying Graph Convolutional Networks - Felix Wu et al.](https://arxiv.org/pdf/1902.07153.pdf) -- A nice example of putting the horse before the cart.
 - [MIT 6.867 machine learning course notes - Tommi Jaakola](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-867-machine-learning-fall-2006/lecture-notes/) -- For people who enjoy concise mathematical notation.
 - [A Recipe for Training Neural Networks - Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
 - [The Bitter Lesson - Richard Sutton](http://incompleteideas.net/IncIdeas/BitterLesson.html)
-- [The Best Medium-Hard Data Analyst SQL Interview Questions](https://quip.com/2gwZArKuWk7W) -- There are some great interactive SQL tutorials out there, such as [SQLBolt](https://sqlbolt.com/) and [Select Star SQL](https://selectstarsql.com/), but this one takes the cake due to its complexity. [The Ultimate SQL guide](https://count.co/canvas/pB7iGb4yyi2) is a comprehensive guide made with Count.
-- [Rules of Programming - Rob Pike](http://users.ece.utexas.edu/~adnan/pike.html)
-- [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
-- [Understanding Matrix capsules with EM Routing - Jonathan Hui](https://jhui.github.io/2017/11/14/Matrix-Capsules-with-EM-routing-Capsule-Network/)
-- [A Machine Learning Primer - Mihail Eric](https://www.confetti.ai/assets/ml-primer/ml_primer.pdf) -- A good read for beginners in machine learning algorithms.
-- [Fitting Bayesian structural time series with the bsts R package - Steven L. Scott](http://www.unofficialgoogledatascience.com/2017/07/fitting-bayesian-structural-time-series.html)
-- [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.nature.com/articles/d41586-019-02918-5)
-- [Emerging Architectures for Modern Data Infrastructure](https://future.com/emerging-architectures-modern-data-infrastructure/)
-- [What your data team is using: the analytics stack - Technically](https://technically.dev/posts/what-your-data-team-is-using) -- Another solid article to understand what an analytics stack looks like in 2021.
-- [Fred's ImageMagick Scripts](http://www.fmwconcepts.com/imagemagick/index.php)
-- [Unprojecting text with ellipses - Matt Zucker](https://mzucker.github.io/2016/10/11/unprojecting-text-with-ellipses.html) -- See also [this article on page dewarping](https://mzucker.github.io/2016/08/15/page-dewarping.html) by the same author.
-- [The Log: What every software engineer should know about real-time data's unifying abstraction - Jay Kreps](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying)
-- [Language models, classification and dbacl - Laird A. Breyer](http://dbacl.sourceforge.net/tutorial.html) -- machine learning on text with a UNIX philosophy.
-- [Cameras and Lenses - Bartosz Ciechanowski](https://ciechanow.ski/cameras-and-lenses/) -- 100% worth a read.
-- [Ditherpunk - Surma](https://surma.dev/things/ditherpunk/)
-- [Command-line Tools can be 235x Faster than your Hadoop Cluster - Adam Drake](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
-- [Teaching An Old Dog A New Trick - Chris Kamphuis](https://www.chriskamphuis.com/2019/03/06/teaching-an-old-dog-a-new-trick.html)
-- [Git scraping, the five minute lightning talk - Simon Willison](https://simonwillison.net/2021/Mar/5/git-scraping/) -- I wish I had thought about this first!
-- [Optimal Peanut Butter and Banana Sandwiches - Ethan Rosenthal](https://www.ethanrosenthal.com/2020/08/25/optimal-peanut-butter-and-banana-sandwiches/)
-- [The Data Science Hierarchy of Needs - Monica Rogati](https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007)
-- [Are Pop Lyrics Getting More Repetitive? - Colin Morris](https://pudding.cool/2017/05/song-repetition/)
-- [Tuesday Changes Everything - Jesper Juul](https://www.jesperjuul.net/ludologist/2010/06/08/tuesday-changes-everything-a-mathematical-puzzle/)
-- [Gently down the stream - Mitch Seymour](https://www.gentlydownthe.stream/)
-- [Les études statistiques sont-elles hors de contrôle? - David Louapre](https://scienceetonnante.com/2021/08/30/les-etudes-statistiques-sont-elles-hors-de-controle/)
-- [Visually stunning math concepts which are easy to explain - StackExchange](https://math.stackexchange.com/questions/733754/visually-stunning-math-concepts-which-are-easy-to-explain)
 - [Introduction to Locality-Sensitive Hashing - Tyler Neylon](https://unboxresearch.com/articles/lsh_post1.html)
 - [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
-- [How to Build an Economic Model in Your Spare Time - Hal R. Varian](https://fermatslibrary.com/p/e2e6484d#email-newsletter) -- The academic wisdom in this article goes beyond the world of economics.
-- [My Writings - Leslie Lamport](https://lamport.azurewebsites.net/pubs/pubs.html)
+- [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
+- [A Machine Learning Primer - Mihail Eric](https://www.confetti.ai/assets/ml-primer/ml_primer.pdf) -- A good read for beginners in machine learning algorithms.
+- [Fitting Bayesian structural time series with the bsts R package - Steven L. Scott](http://www.unofficialgoogledatascience.com/2017/07/fitting-bayesian-structural-time-series.html)
+
+## Data science
+
+- [Make for data scientists - Paul Butler](https://paulbutler.org/2012/make-for-data-scientists/)
+- [Tidy Data - Hadley Wickham](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) -- You need to be aware of this framework if you want to be serious about analysing tabular data.
 - [Modeling marketing attribution - Claire Carroll](https://blog.getdbt.com/modeling-marketing-attribution/) -- I worked on this problem for a short time at Alan. I definitely would have done a better job if I had read this article first.
+- [Darts, Dice, and Coins: Sampling from a Discrete Distribution - Keith Schwarz](https://www.keithschwarz.com/darts-dice-coins/)
+- [Unprojecting text with ellipses - Matt Zucker](https://mzucker.github.io/2016/10/11/unprojecting-text-with-ellipses.html) -- See also [this article on page dewarping](https://mzucker.github.io/2016/08/15/page-dewarping.html) by the same author.
+- [Language models, classification and dbacl - Laird A. Breyer](http://dbacl.sourceforge.net/tutorial.html) -- Machine learning on text with a UNIX philosophy.
+- [Teaching An Old Dog A New Trick - Chris Kamphuis](https://www.chriskamphuis.com/2019/03/06/teaching-an-old-dog-a-new-trick.html)
+- [Optimal Peanut Butter and Banana Sandwiches - Ethan Rosenthal](https://www.ethanrosenthal.com/2020/08/25/optimal-peanut-butter-and-banana-sandwiches/)
+- [The Data Science Hierarchy of Needs - Monica Rogati](https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007)
+- [Tuesday Changes Everything - Jesper Juul](https://www.jesperjuul.net/ludologist/2010/06/08/tuesday-changes-everything-a-mathematical-puzzle/)
 - [Doing Named Entity Recognition? Don't optimize for F1 - Christopher Manning](https://nlpers.blogspot.com/2006/08/doing-named-entity-recognition-dont.html) -- A rather niche topic, but well explained.
-- [Why the super rich are inevitable - The Pudding](https://pudding.cool/2022/12/yard-sale) -- Really cool dataviz.
-- [Visual design rules you can safely follow every time - Anthony Hobday](https://anthonyhobday.com/sideprojects/saferules/) -- good follow-up to [Web Design in 4 minutes](https://jgthms.com/web-design-in-4-minutes/) by Jeremy Thomas
+
+## Data engineering
+
+- [Emerging Architectures for Modern Data Infrastructure](https://future.com/emerging-architectures-modern-data-infrastructure/)
+- [What your data team is using: the analytics stack - Technically](https://technically.dev/posts/what-your-data-team-is-using) -- Another solid article to understand what an analytics stack looks like in 2021.
+- [Multiworld Testing Decision Service: A System for Experimentation, Learning, And Decision-Making](https://arxiv.org/pdf/1606.03966.pdf)
+- [Machine Learning: The High-Interest Credit Card of Technical Debt - Google](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43146.pdf)
+- [Continuous Delivery for Machine Learning - Martin Fowler](https://martinfowler.com/articles/cd4ml.html)
+- [Hidden Technical Debt in Machine Learning Systems - Google](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)
+- [The Log: What every software engineer should know about real-time data's unifying abstraction - Jay Kreps](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying)
+- [Command-line Tools can be 235x Faster than your Hadoop Cluster - Adam Drake](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
+- [Git scraping, the five minute lightning talk - Simon Willison](https://simonwillison.net/2021/Mar/5/git-scraping/) -- I wish I had thought about this first!
+- [Choose Boring Technology - Dan McKinley](http://mcfunley.com/choose-boring-technology)
+- [Gently down the stream - Mitch Seymour](https://www.gentlydownthe.stream/)
+
+## SQL
+
+- [The Best Medium-Hard Data Analyst SQL Interview Questions](https://quip.com/2gwZArKuWk7W) -- There are some great interactive SQL tutorials out there, such as [SQLBolt](https://sqlbolt.com/) and [Select Star SQL](https://selectstarsql.com/), but this one takes the cake due to its complexity. [The Ultimate SQL guide](https://count.co/canvas/pB7iGb4yyi2) is a comprehensive guide made with Count.
+
+## Good advice
+
+- [Don't Call Yourself A Programmer, And Other Career Advice](https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/)
+- [Memos - Sriram Krishnan](https://sriramk.com/memos)
 - [Common Bugs in Writing](https://www.cs.columbia.edu/~hgs/etc/writing-bugs.html)
+- [Rules of Programming - Rob Pike](http://users.ece.utexas.edu/~adnan/pike.html)
+- [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.nature.com/articles/d41586-019-02918-5)
+- [How to Build an Economic Model in Your Spare Time - Hal R. Varian](https://fermatslibrary.com/p/e2e6484d#email-newsletter) -- The academic wisdom in this article goes beyond the world of economics.
 - [Fast - Patrick Collison](https://patrickcollison.com/fast)
 - [Beautiful Polished Rocks - Steve Jobs](https://vimeo.com/842437838) -- the best metaphor for product design I've ever heard.
+- [Visual design rules you can safely follow every time - Anthony Hobday](https://anthonyhobday.com/sideprojects/saferules/) -- Good follow-up to [Web Design in 4 minutes](https://jgthms.com/web-design-in-4-minutes/) by Jeremy Thomas.
 
 ## Inspiring data analysis
 
@@ -183,10 +179,11 @@ title: Links
 - [Is Seattle Really Seeing an Uptick In Cycling? - Jake VanderPlas](https://jakevdp.github.io/blog/2014/06/10/is-seattle-really-seeing-an-uptick-in-cycling/)
 - [How we changed our roof and cut 1.5 tons of CO2e - Martin Daniel](http://www.martindaniel.co/roof/index.html)
 - [WWW: Who Will Win? - Peter Norvig](https://github.com/norvig/pytudes/blob/main/ipynb/WWW.ipynb)
-- [State of dataviz: top insights - Henri Battiste](https://observablehq.com/blog/state-of-dataviz-2021) -- I like this one because of how pretty the charts are 🦋
 - [Wealth shown to scale - Matt Korostoff](https://mkorostoff.github.io/1-pixel-wealth/)
 - [Are Pop Lyrics Getting More Repetitive? - Colin Morris](https://pudding.cool/2017/05/song-repetition/)
 - [Tracking the Fake GitHub Star Black Market - Fraser Marlow, Yuhan Luo, Alana Glassco](https://dagster.io/blog/fake-stars)
+- [Why the super rich are inevitable - The Pudding](https://pudding.cool/2022/12/yard-sale) -- Really cool dataviz.
+- [Kaggle contest on Observing Dark World - Cam Davidson-Pilon](https://nbviewer.jupyter.org/github/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Chapter5_LossFunctions/Ch5_LossFunctions_PyMC3.ipynb#Example:-Kaggle-contest-on-Observing-Dark-World) -- If you're not convinced about the power of Bayesian machine learning then read this and get your mind blown.
 
 ## Data sources
 
@@ -232,6 +229,10 @@ title: Links
 - [Blog maps](https://tomcritchlow.com/2023/04/03/blog-maps/)
 - [Decktwo](https://www.instagram.com/deck_two/)
 - [eycndy.com](https://eycndy.com/)
+- [Fred's ImageMagick Scripts](http://www.fmwconcepts.com/imagemagick/index.php)
+- [Cameras and Lenses - Bartosz Ciechanowski](https://ciechanow.ski/cameras-and-lenses/) -- 100% worth a read.
+- [Ditherpunk - Surma](https://surma.dev/things/ditherpunk/)
+- [Visually stunning math concepts which are easy to explain - StackExchange](https://math.stackexchange.com/questions/733754/visually-stunning-math-concepts-which-are-easy-to-explain)
 
 ## Cool
 
