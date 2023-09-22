@@ -90,6 +90,7 @@ toc: true
 - [IDEA](https://idea-instructions.com/)
 - [Shaded relief](http://www.shadedrelief.com/)
 - [Leslie Lamport](https://lamport.azurewebsites.net/pubs/pubs.html)
+- [Curtis Miller](https://ntguardian.wordpress.com/blog/)
 
 ## Data science
 
@@ -126,9 +127,9 @@ toc: true
 - [The Bitter Lesson - Richard Sutton](http://incompleteideas.net/IncIdeas/BitterLesson.html)
 - [Introduction to Locality-Sensitive Hashing - Tyler Neylon](https://unboxresearch.com/articles/lsh_post1.html)
 - [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
-- [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
 - [A Machine Learning Primer - Mihail Eric](https://www.confetti.ai/assets/ml-primer/ml_primer.pdf) -- A good read for beginners in machine learning algorithms.
 - [Fitting Bayesian structural time series with the bsts R package - Steven L. Scott](http://www.unofficialgoogledatascience.com/2017/07/fitting-bayesian-structural-time-series.html)
+- [Super Fast String Matching in Python - Chris van den Berg](https://bergvca.github.io/2017/10/14/super-fast-string-matching.html)
 
 ## Data science
 
@@ -143,6 +144,7 @@ toc: true
 - [The Data Science Hierarchy of Needs - Monica Rogati](https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007)
 - [Tuesday Changes Everything - Jesper Juul](https://www.jesperjuul.net/ludologist/2010/06/08/tuesday-changes-everything-a-mathematical-puzzle/)
 - [Doing Named Entity Recognition? Don't optimize for F1 - Christopher Manning](https://nlpers.blogspot.com/2006/08/doing-named-entity-recognition-dont.html) -- A rather niche topic, but well explained.
+- [Lessons learned building an ML trading system that turned $5k into $200k](https://archive.ph/A7298#selection-63.0-63.72)
 
 ## Data engineering
 
@@ -234,6 +236,9 @@ toc: true
 - [Cameras and Lenses - Bartosz Ciechanowski](https://ciechanow.ski/cameras-and-lenses/) -- 100% worth a read.
 - [Ditherpunk - Surma](https://surma.dev/things/ditherpunk/)
 - [Visually stunning math concepts which are easy to explain - StackExchange](https://math.stackexchange.com/questions/733754/visually-stunning-math-concepts-which-are-easy-to-explain)
+- [Cars, bars and burger joints: William Eggleston’s iconic America – in pictures](https://www.theguardian.com/artanddesign/gallery/2022/nov/22/cars-bars-and-burger-joints-william-egglestons-iconic-america-in-pictures)
+- [Spectrolite](https://spectrolite.app/)
+- [RamenHaus](https://ramen.haus/)
 
 ## Cool
 
@@ -248,3 +253,5 @@ toc: true
 - [BOOOOOOM](https://www.booooooom.com/)
 - [indieblog.page](https://indieblog.page/)
 - [Cloudhiker](https://cloudhiker.net/)
+- [Fish doorbells! Historic sandwiches! 50 of the weirdest, most wonderful corners of the web](https://www.theguardian.com/technology/2023/aug/31/fish-doorbells-historic-sandwiches-50-of-the-weirdest-most-wonderful-corners-of-the-web-picked-by-an-expert)
+- [Marginalia](https://search.marginalia.nu/)
