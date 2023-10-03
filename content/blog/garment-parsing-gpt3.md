@@ -167,7 +167,7 @@ Try out your fine-tuned model:
 openai api completions.create -m ada:ft-personal:garment-parser-2022-11-20-18-49-25 -p <YOUR_PROMPT>
 ```
 
-$0.04 is pretty cheap. Also it's quite cool they display this in the CLI. It would probably cost more in electricity if I were to do run on my laptop ⚡️
+$0.04 is pretty cheap. Also it's quite cool they display this in the CLI. It would probably cost more in electricity bills if I were to run this on my laptop ⚡️
 
 ## Parsing new inputs
 
@@ -549,6 +549,7 @@ TRUTH
 OUTPUT
 {'body': [{'material': 'recycle polyester', 'proportion': 100.0}], 'lace': [{'material': 'nylon', 'proportion': 100.0}], 'cup lining': [{'material': 'polyester', 'proportion': 100.0}]}
 ```
+
 </details>
 
 Here is a summary of the errors I can spot:
