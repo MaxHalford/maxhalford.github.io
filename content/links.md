@@ -92,7 +92,7 @@ toc: true
 - [Leslie Lamport](https://lamport.azurewebsites.net/pubs/pubs.html)
 - [Curtis Miller](https://ntguardian.wordpress.com/blog/)
 
-## Data science
+## Machine learning
 
 - [The Elements of Statistical Learning - Jerome H. Friedman, Robert Tibshirani, and Trevor Hastie](http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf)
 - [Machine Learning - Tom Mitchell](http://personal.disco.unimib.it/Vanneschi/McGrawHill_-_Machine_Learning_-Tom_Mitchell.pdf) -- I think this wonderful textbook is under-appreciated.
@@ -145,6 +145,7 @@ toc: true
 - [Tuesday Changes Everything - Jesper Juul](https://www.jesperjuul.net/ludologist/2010/06/08/tuesday-changes-everything-a-mathematical-puzzle/)
 - [Doing Named Entity Recognition? Don't optimize for F1 - Christopher Manning](https://nlpers.blogspot.com/2006/08/doing-named-entity-recognition-dont.html) -- A rather niche topic, but well explained.
 - [Lessons learned building an ML trading system that turned $5k into $200k](https://archive.ph/A7298#selection-63.0-63.72)
+- [Common statistical tests are linear models (or: how to teach stats)](https://lindeloev.github.io/tests-as-linear/)
 
 ## Data engineering
 
