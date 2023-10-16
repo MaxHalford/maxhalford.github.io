@@ -1,5 +1,5 @@
 +++
-date = "2023-10-10"
+date = "2023-10-16"
 title = "Sh*t flows downhill, but not at Carbonfact"
 tags = ['data-eng']
 +++
