@@ -6,6 +6,8 @@ images = ["/img/blog/kpi-evolution-decomposition/sum-conjugate.png"]
 toc = true
 +++
 
+**Edit** -- _I published a notebook [here](https://gist.github.com/MaxHalford/9fba0c2d6800d0f0643902bf57b99780) that deals with the case where dimension values may (dis)appear from one period of time to the next. The notebook decomposes a ratio, but the logic is also valid for decomposing a sum._
+
 ## Motivation
 
 Say you're a data analyst at a company. You've built a dashboard with several KPIs. You're happy because it took you a couple of days of hard work. You even went the extra mile of writing unit tests. You share the dashboard on Slack with the relevant stakeholders, call it a day, and go grab a beer.
