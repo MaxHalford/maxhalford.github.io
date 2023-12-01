@@ -55,7 +55,7 @@ How do we go about doing this in practice? What needs to happen is for the SQL q
 
 I haven't found an easy way to do this with dbt. I found this [tip](https://discourse.getdbt.com/t/tips-and-tricks-about-working-with-dbt/287/2) from the dbt forums about how to feed edited views -- and optionally their dependencies -- to the `dbt run` command. There's also this [gist](https://gist.github.com/jtalmi/c6265c8a17120cfb150c97512cb68aa6) that does something similar. However, I haven't found a way to switch the target dataset dynamically.
 
-I did stumble on dbt's [stateful selection](https://docs.getdbt.com/reference/node-selection/syntax#stateful-selection) and [defer](https://docs.getdbt.com/reference/node-selection/defer) documentation, but I don't find these concepts straightforward. Even the dbt docs [admit](https://docs.getdbt.com/reference/node-selection/methods#the-state-method) state selection is complicated. There's a comprehensive example [here](https://docs.getdbt.com/blog/slim-ci-cd-with-bitbucket-pipelines), but it feels rather cumbersome to store/load artifacts from a previous run.
+I did stumble on dbt's [stateful selection](https://docs.getdbt.com/reference/node-selection/syntax#stateful-selection) and [defer](https://docs.getdbt.com/reference/node-selection/defer) documentation, but I don't find these concepts straightforward. Even the dbt docs [admit](https://docs.getdbt.com/reference/node-selection/methods#the-state-method) state selection is complicated. There's a comprehensive example [here](https://docs.getdbt.com/blog/slim-ci-cd-with-bitbucket-pipelines), and a detailed testimony [here](https://discourse.getdbt.com/t/how-we-sped-up-our-ci-runs-by-10x-using-slim-ci/2603). But the dbt approach of storing/loading artifacts from a previous run feels cumbersome.
 
 We've implemented a minimalist dbt-like tool at Carbonfact called [lea](https://github.com/carbonfact/lea). Many people have told me that we're crazy and should just stick to dbt. They're probably right. But dbt boils the ocean, and we only need a subset of its features. It's also a great learning experience, and allows us to experiment with new ideas.
 
@@ -78,3 +78,9 @@ The `--select git+` part selects all the views that have been edited in the pull
 I'm sure that the same efficiency could be achieved with dbt, but that's not the point. The point is that more and more people are doing analytics, and I believe it's important to put simple tools in their hands. Not everyone needs the full power of dbt, and it's important to have a low barrier to entry. I'm not saying that lea is the answer, but I do think we need tools that make it easy to do the right thing -- aka the [pit of success](https://blog.codinghorror.com/falling-into-the-pit-of-success/).
 
 Feel welcome to reach out if you want to riff on this topic and/or tell me I'm doing everything wrong ✌️
+
+<div align="center" >
+<figure style="width: 90%;">
+    <img src="/img/blog/efficient-elt-refreshes/happy-martin.png" style="box-shadow: none;">
+</figure>
+</div>
