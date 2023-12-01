@@ -22,9 +22,9 @@ We have identified two problems with this setup:
 1. It is not efficient. In a pull request, all the views are materialized, even if only one view is modified. This wastes time, money, and carbon.
 2. When we do a diff between the pull request dataset and the production dataset, we are not guaranteed both datasets are using the same source data. This is because the pull request dataset is materialized at the time of the pull request, and the production dataset is periodically refreshed -- every 3 hours in our case.
 
-This second problem is more subtle and merits some context. Let's say we have a view that counts events on our platform. We edit the view to filter out some undesired events. We commit our change and open a pull request. The pull request dataset is materialized, and the unit tests pass. We then compare the pull request dataset with the production dataset. We are surprised because we notice the number of events has actually increased. This is because the diff is conflating two things: the events filtered out by the new logic, and the new events due to pull request dataset having access to more recent data.
+This second problem is more subtle and merits some context. Let's say we have a view that counts events on our platform. We edit the view to filter out some undesired events. We commit our change and open a pull request. The pull request dataset is materialized, and the unit tests pass. We then compare the pull request dataset with the production dataset. We are surprised because we notice the number of events has actually increased.
 
-Here's a schematic of what's happening:
+This is because the diff is conflating two things: the events filtered out by the new logic, and the new events due to pull request dataset having access to more recent data. Here's a schematic of what's happening:
 
 <div align="center" >
 <figure style="width: 90%;">
@@ -55,9 +55,9 @@ How do we go about doing this in practice? What needs to happen is for the SQL q
 
 I haven't found an easy way to do this with dbt. I found this [tip](https://discourse.getdbt.com/t/tips-and-tricks-about-working-with-dbt/287/2) from the dbt forums about how to feed edited views -- and optionally their dependencies -- to the `dbt run` command. There's also this [gist](https://gist.github.com/jtalmi/c6265c8a17120cfb150c97512cb68aa6) that does something similar. However, I haven't found a way to switch the target dataset dynamically.
 
-I did stumble on dbt's [stateful selection](https://docs.getdbt.com/reference/node-selection/syntax#stateful-selection) documentation, but I don't see a straightforward way to use it in this context. Even the dbt docs [admit](https://docs.getdbt.com/reference/node-selection/methods#the-state-method) state selection is complicated. There's a comprehensive example [here](https://docs.getdbt.com/blog/slim-ci-cd-with-bitbucket-pipelines), but it feels rather cumbersome to have to store/download artifacts from a previous run.
+I did stumble on dbt's [stateful selection](https://docs.getdbt.com/reference/node-selection/syntax#stateful-selection) documentation, but I don't see a straightforward way to use it in this context. Even the dbt docs [admit](https://docs.getdbt.com/reference/node-selection/methods#the-state-method) state selection is complicated. There's a comprehensive example [here](https://docs.getdbt.com/blog/slim-ci-cd-with-bitbucket-pipelines), but it feels rather cumbersome to have to store/load artifacts from a previous run.
 
-We've implemented a minimalist dbt-like tool at Carbonfact called [lea](https://github.com/carbonfact/lea). Many people have told me that we're crazy and just stick to dbt. They're probably right. But dbt boils the ocean, and we only need a subset of its features. It's also a great learning experience, and allows us to experiment with new ideas.
+We've implemented a minimalist dbt-like tool at Carbonfact called [lea](https://github.com/carbonfact/lea). Many people have told me that we're crazy and should just stick to dbt. They're probably right. But dbt boils the ocean, and we only need a subset of its features. It's also a great learning experience, and allows us to experiment with new ideas.
 
 Here is what our CI/CD looks like with lea:
 
@@ -73,7 +73,7 @@ The following command is where the magic happens:
 lea run --select git+ --freeze-unselected
 ```
 
-The `--select git+` part selects all the views that have been edited in the pull request, as well as their descendants. This ensures we will materialize all the parts of the DAG that depend on the changes we made. The `--freeze-unselected` part freezes all the tables which are not selected, meaning that the SQL queries will target the production dataset for the unselected views. This is all done in a stateless manner, meaning we don't have to store artifacts from previous runs.
+The `--select git+` part selects all the views that have been edited in the pull request, as well as their descendants. This ensures we will materialize all the parts of the DAG that depend on the changes we made. The `--freeze-unselected` part freezes all the tables which are not selected, meaning that the SQL queries will target the production dataset for the unselected views. This is all done in a stateless manner: we don't have to store/load artifacts from previous runs.
 
 I'm sure that the same efficiency could be achieved with dbt, but that's not the point. The point is that more and more people are doing analytics, and I believe it's important to put simple tools in their hands. Not everyone needs the full power of dbt, and it's important to have a low barrier to entry. I'm not saying that lea is the answer, but I do think we need tools that make it easy to do the right thing -- aka the [pit of success](https://blog.codinghorror.com/falling-into-the-pit-of-success/).
 
