@@ -9,11 +9,11 @@ tags = ['kaggle']
 
 I co-organised a data science competition during the second half of 2020. This was in fact the 5th edition of the "Défi IA", which is a recurring event that happens on a yearly basis. It is essentially a supervised machine learning competition for students from French speaking universities and engineering schools. This year was the first time that Kaggle was used to host the competition. Before that we used a custom platform that I wrote during my student years. You can read more about this [here](/blog/openbikes-challenge).
 
-I'm not going to go into a lot of depth with regards to the competition details, siùply because everything is [already explained on Kaggle](https://www.kaggle.com/c/defi-ia-insa-toulouse/overview). In a nutshell, the goal of the competition is to predict a person's job from their bio. A bio is a short description of said person. For instance, the following job description corresponds to a professor:
+I'm not going to go into a lot of depth with regards to the competition details, simply because everything is [already explained on Kaggle](https://www.kaggle.com/c/defi-ia-insa-toulouse/overview). In a nutshell, the goal of the competition is to predict a person's job from their bio. A bio is a short description of said person. For instance, the following job description corresponds to a professor:
 
 > She is also a Ronald D. Asmus Policy Entrepreneur Fellow with the German Marshall Fund and is a Visiting Fellow at the Centre for International Studies (CIS) at the University of Oxford. This commentary first appeared at Sada, an online journal published by the Carnegie Endowment for International Peace.
 
-Along with the bio and the job title, we also know each person's gender. For the sake of simplicity we only considered cisgender people, and not LGBTQIA+ people. We also only included 20 different jobs. Note that we obtained our data following the opensource code provided with the 2019 Microsoft paper entitled [*Bias in Bios: A Case Study of Semantic Representation Bias in a High-Stakes Setting*](https://www.microsoft.com/en-us/research/publication/bias-in-bios-a-case-study-of-semantic-representation-bias-in-a-high-stakes-setting/).
+Along with the bio and the job title, we also know each person's gender. For the sake of simplicity we only considered cisgender people, and not LGBTQIA+ people. We also only included 20 different jobs. Note that we obtained our data following the opensource code provided with the 2019 Microsoft paper entitled [_Bias in Bios: A Case Study of Semantic Representation Bias in a High-Stakes Setting_](https://www.microsoft.com/en-us/research/publication/bias-in-bios-a-case-study-of-semantic-representation-bias-in-a-high-stakes-setting/).
 
 In the above example, it's quite easy to guess that the bio corresponds to a professor. Words such as "university" and "published" are highly indicative of a professor. In my perception of reality, a university professor isn't necessarily associated with any gender in particular. This gut feeling is verified if we look at the competition data:
 
@@ -78,7 +78,7 @@ In the above example, it's quite easy to guess that the bio corresponds to a pro
 
 Other jobs are more polarised. For instance, rappers are mostly men and yoga teachers are typically women. This is just the way things are in modern western societies. I am in no position to say if this state of things is good or bad. What I do know is that machine learning models replicate the bias that can be found in data in their predictions. Machine learning models are meant to be accurate, and therefore would rely on gendered words such as "she" and "his" to make their predictions. Machine learning is very pragmatic that way.
 
-For whatever reason, we might want to build models that don't exploit gender to make a prediction. We might want to do this because as a society we believe that each gender should be equally represented in each job -- note that I'm not expressing an opinion. To do so we may want to break the negative reinforcement loop that automated decisions would entail. Concretely, we could prefer to have a decision process that is less accurate while being fairer. There is a whole area of research called [fair learning](https://www.wikiwand.com/en/Fairness_(machine_learning)) that tackles these questions.
+For whatever reason, we might want to build models that don't exploit gender to make a prediction. We might want to do this because as a society we believe that each gender should be equally represented in each job -- note that I'm not expressing an opinion. To do so we may want to break the negative reinforcement loop that automated decisions would entail. Concretely, we could prefer to have a decision process that is less accurate while being fairer. There is a whole area of research called [fair learning](<https://www.wikiwand.com/en/Fairness_(machine_learning)>) that tackles these questions.
 
 Fair learning is very exciting, and we thought it would be worthwhile to include fairness as a competition metric. The main goal being to encourage students to discover fair learning by themselves, as it not necessarily a topic that is being taught in their curriculums.
 
@@ -128,7 +128,7 @@ def macro_disparate_impact(people):
 Note that the Kaggle leaderboard ranking used the macro F1 score proposed on the platform. Kaggle effectively locks you in and doesn't allow you to provide a custom metric. Therefore, once the competition was over, I downloaded the best private submission from each team and ran this metric myself on each submission. Thankfully, Kaggle's admin interface for managing submissions is quite good.
 
 I picked this metric because it makes sense to me. It encourages a model to be discriminative in a good
-way. To minimise the metric, a model has to restrain itself from assigning the most likely job to a person. In other words, the model *necessarily* has to be less accurate. But it's a tradeoff! I think this pretty cool, and as far as I know this hasn't been done on Kaggle before.
+way. To minimise the metric, a model has to restrain itself from assigning the most likely job to a person. In other words, the model _necessarily_ has to be less accurate. But it's a tradeoff! I think this pretty cool, and as far as I know this hasn't been done on Kaggle before.
 
 In the case of this competition, we assume that the goal is to reach a perfect balance of men and women for each job. However, we could perfectly well imagine a more nuanced goal. For instance, we could say that we would like 30% of rappers to be women and 70% to be men. This would still be "better" than a 10%/90% split -- which is the reality -- but might also be more realistic.
 
@@ -140,10 +140,10 @@ Once the competition was over, the students were instructed to send me their cod
 
 - Everyone used Python. That's somewhat interesting because during the past years there were still some teams that used R.
 - Apart from one team, everyone sent me one or more [Jupyter Notebooks](https://jupyter.org/). I wonder if they know about Jupyter Lab 😉
-- 14 used some flavor of [BERT](https://www.wikiwand.com/en/BERT_(language_model)).
+- 14 used some flavor of [BERT](<https://www.wikiwand.com/en/BERT_(language_model)>).
 - 14 preprocessed the text in some way (lowercasing, stemming, stop words, etc.)
 - Absolutely no team did any effort to make their model fairer with respect to both genders 😩
-- 2 did [cross-validation](https://www.wikiwand.com/en/Cross-validation_(statistics)). The rest did a simple train/test split, if that.
+- 2 did [cross-validation](<https://www.wikiwand.com/en/Cross-validation_(statistics)>). The rest did a simple train/test split, if that.
 - 8 used a [TF-IDF](https://www.wikiwand.com/en/Tf%E2%80%93idf) approach.
 - 16 really used [scikit-learn](https://scikit-learn.org/stable/). Other teams used scikit-learn only for metrics and train/test splitting.
 - My estimate is that 17 teams made a real effort. From what I can tell, the 12 others just mindlessly imported libraries, figured out the API, and [called it a day](https://tenor.com/view/and-thats-it-guys-its-awrap-finished-lets-call-it-aday-happy-gif-14375900).
@@ -174,7 +174,7 @@ I mentionned above that a perfect macro disparate impact is equal to 1. The macr
 
 Sadly, it seems that no teams managed to really remove any bias whatsoever from their model. I'll be honest: I'm very disappointed with the way this turned out. The best performing teams seem to have made no effort whatsoever. Fair learning is a relatively sophisticated topic, so I wouldn't be surprised that students had some difficulties. With the whole COVID 19 situation, the relationship between teachers and students might have been affected, and teachers might not have had the opportunity to discuss a topic that is not part of the official curriculum with their students.
 
-And yet, my gut feeling is that many teams have had the wrong focus. Having looked at each team's code, most people used very sophisticated neural networks based on transformer architectures. That's great, because I know for a fact that the latter are not part of the official curriculum in French schools as well, so it shows some form of motivation. However, I'm worried that students used a "toolbox" approach whereby they imported and trained a fancy model because it's the *goût du jour*.
+And yet, my gut feeling is that many teams have had the wrong focus. Having looked at each team's code, most people used very sophisticated neural networks based on transformer architectures. That's great, because I know for a fact that the latter are not part of the official curriculum in French schools as well, so it shows some form of motivation. However, I'm worried that students used a "toolbox" approach whereby they imported and trained a fancy model because it's the _goût du jour_.
 
 In my opinion, if a student is able to understand BERT and transformers, then surely she is capable of understanding fair learning. The problem is that I believe that they don't understand these notions very well. Instead, they only manage to figure out the API provided by a library they found on GitHub and imported in their notebook. I fear that they simply didn't do any fair learning because the toolboxes they used didn't provide any fair learning capability. That's very worrying. It might also hint at a blindspot in the library ecosystem. I would love to be wrong about all this.
 
@@ -182,18 +182,18 @@ Here is the ranking with respect to fairness for the top 10 competitors on the K
 
 | Country  | School                 | Team name        | Macro F1 | Disparate impact | Sent code |
 | :------- | :--------------------- | :--------------- | :------- | :--------------- | :-------: |
-| France   | UPS                    | Test             | 0.81971  | 3.49578          |     ✅     |
-| France   | ENSEEIHT               | Pyramids         | 0.82685  | 3.74924          |     ✅     |
-| France   | UPS                    | FairleNessSROnly | 0.81443  | 3.94925          |     ❌     |
-| France   | INSA                   | Salle104         | 0.82598  | 3.95849          |     ✅     |
-| France   | UR2                    | WeTried          | 0.84247  | 4.00975          |     ✅     |
-| Cameroun | ENSPY                  | Fred             | 0.82733  | 4.03571          |     ✅     |
-| France   | Université de Bordeaux | CMI ISI datadax  | 0.81639  | 4.10829          |     ✅     |
-| Cameroun | ENSPY                  | GI               | 0.82446  | 4.13195          |     ✅     |
-| France   | Université Jean Monnet | Minions          | 0.82354  | 4.23495          |     ✅     |
-| France   | UJM                    | BravoNils        | 0.82932  | 4.26414          |     ✅     |
+| France   | UPS                    | Test             | 0.81971  | 3.49578          |    ✅     |
+| France   | ENSEEIHT               | Pyramids         | 0.82685  | 3.74924          |    ✅     |
+| France   | UPS                    | FairleNessSROnly | 0.81443  | 3.94925          |    ❌     |
+| France   | INSA                   | Salle104         | 0.82598  | 3.95849          |    ✅     |
+| France   | UR2                    | WeTried          | 0.84247  | 4.00975          |    ✅     |
+| Cameroun | ENSPY                  | Fred             | 0.82733  | 4.03571          |    ✅     |
+| France   | Université de Bordeaux | CMI ISI datadax  | 0.81639  | 4.10829          |    ✅     |
+| Cameroun | ENSPY                  | GI               | 0.82446  | 4.13195          |    ✅     |
+| France   | Université Jean Monnet | Minions          | 0.82354  | 4.23495          |    ✅     |
+| France   | UJM                    | BravoNils        | 0.82932  | 4.26414          |    ✅     |
 
-*Note: I removed Olivier Chotin from the ranking because he's not a student.*
+_Note: I removed Olivier Chotin from the ranking because he's not a student._
 
 Again, I'm quite disappointed with these standings from an effort point of view. While writing this blog post, I took 10 minutes to see the effect of replacing "he" by "she" and "his" by "her" on a plain and simple logistic regression. In my cross-validation, the macro disparate impact went from 5.11 and 3.85 and the macro F1 score remained simple. It would have been nice to see at least a couple of teams that produced some decent fairness results. Alas, I'm sorry to say, these models wouldn't be used. Regardless of their accuracy, the main objective of this competition was to reduce the disparate impact.
 
@@ -337,7 +337,7 @@ They did a good job at organising their code. They also explained what they were
 
 I would like to thank the professors that contributed to organising this competition. Hopefully this competition helped to shed some light on the need to teach the basics of fair machine learning to data science students.
 
-On a personal level, I'm mildly disappointed with the turn out. Until now, the competition kept growing in size. I actually thought that COVID 19 would increase the turnout because this was a completely virtual event. I'm not a student anymore so I'm not sure what is the state of things though. In any case, this edition wasn't very rewarding for me. I do this *pro bono* so it helps when people are actively participating. I also got a lot of emails ranting about the fairness metric without proposing any alternative. Many students asked me questions that I had clearly instructed the teachers to provide to said students. Nobody used the forum and instead sent me personal emails, which I find sad. The whole point of these competitions is to create a sense of togetherness and allow students from differents schools/countries to meet each other.
+On a personal level, I'm mildly disappointed with the turn out. Until now, the competition kept growing in size. I actually thought that COVID 19 would increase the turnout because this was a completely virtual event. I'm not a student anymore so I'm not sure what is the state of things though. In any case, this edition wasn't very rewarding for me. I do this _pro bono_ so it helps when people are actively participating. I also got a lot of emails ranting about the fairness metric without proposing any alternative. Many students asked me questions that I had clearly instructed the teachers to provide to said students. Nobody used the forum and instead sent me personal emails, which I find sad. The whole point of these competitions is to create a sense of togetherness and allow students from differents schools/countries to meet each other.
 
 Nonetheless, I got some positive feedback from a significant number of students. Hopefully, this competition will have provided them with a decent setting to explore the ever-changing world of NLP. Even though it seems the students didn't put a lot of effort into the fair learning aspect, hopefully they're now aware of the concept and will it in mind during their professional career.
 

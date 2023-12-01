@@ -91,6 +91,7 @@ toc: true
 - [Shaded relief](http://www.shadedrelief.com/)
 - [Leslie Lamport](https://lamport.azurewebsites.net/pubs/pubs.html)
 - [Curtis Miller](https://ntguardian.wordpress.com/blog/)
+- [Naftali Harris](https://www.naftaliharris.com/)
 
 ## Machine learning
 
@@ -144,7 +145,7 @@ toc: true
 - [The Data Science Hierarchy of Needs - Monica Rogati](https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007)
 - [Tuesday Changes Everything - Jesper Juul](https://www.jesperjuul.net/ludologist/2010/06/08/tuesday-changes-everything-a-mathematical-puzzle/)
 - [Doing Named Entity Recognition? Don't optimize for F1 - Christopher Manning](https://nlpers.blogspot.com/2006/08/doing-named-entity-recognition-dont.html) -- A rather niche topic, but well explained.
-- [Lessons learned building an ML trading system that turned $5k into $200k](https://archive.ph/A7298#selection-63.0-63.72)
+- [Lessons learned building an ML trading system that turned \\$5k into \\$200k](https://archive.ph/A7298#selection-63.0-63.72)
 - [Common statistical tests are linear models (or: how to teach stats)](https://lindeloev.github.io/tests-as-linear/)
 
 ## Data engineering
@@ -171,11 +172,15 @@ toc: true
 - [Memos - Sriram Krishnan](https://sriramk.com/memos)
 - [Common Bugs in Writing](https://www.cs.columbia.edu/~hgs/etc/writing-bugs.html)
 - [Rules of Programming - Rob Pike](http://users.ece.utexas.edu/~adnan/pike.html)
-- [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.nature.com/articles/d41586-019-02918-5)
+- [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.signalsblog.ca/right-turn-cormac-mccarthy-and-me-on-how-to-write-a-good-science-paper/)
 - [How to Build an Economic Model in Your Spare Time - Hal R. Varian](https://fermatslibrary.com/p/e2e6484d#email-newsletter) -- The academic wisdom in this article goes beyond the world of economics.
 - [Fast - Patrick Collison](https://patrickcollison.com/fast)
-- [Beautiful Polished Rocks - Steve Jobs](https://vimeo.com/842437838) -- the best metaphor for product design I've ever heard.
 - [Visual design rules you can safely follow every time - Anthony Hobday](https://anthonyhobday.com/sideprojects/saferules/) -- Good follow-up to [Web Design in 4 minutes](https://jgthms.com/web-design-in-4-minutes/) by Jeremy Thomas.
+
+## Product
+
+- [Beautiful Polished Rocks - Steve Jobs](https://vimeo.com/842437838) -- the best metaphor for product design I've ever heard.
+- [Stevey's Google Platforms Rant](https://gist.github.com/chitchcock/1281611) -- insights about product design at GAFAs.
 
 ## Inspiring data analysis
 
@@ -187,7 +192,8 @@ toc: true
 - [Are Pop Lyrics Getting More Repetitive? - Colin Morris](https://pudding.cool/2017/05/song-repetition/)
 - [Tracking the Fake GitHub Star Black Market - Fraser Marlow, Yuhan Luo, Alana Glassco](https://dagster.io/blog/fake-stars)
 - [Why the super rich are inevitable - The Pudding](https://pudding.cool/2022/12/yard-sale) -- Really cool dataviz.
-- [Kaggle contest on Observing Dark World - Cam Davidson-Pilon](https://nbviewer.jupyter.org/github/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Chapter5_LossFunctions/Ch5_LossFunctions_PyMC3.ipynb#Example:-Kaggle-contest-on-Observing-Dark-World) -- If you're not convinced about the power of Bayesian machine learning then read this and get your mind blown.
+- [Kaggle contest on Observing Dark World - Cam Davidson-Pilon](https://nbviewer.jupyter.org/github/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Chapter5_LossFunctions/Ch5_LossFunctions_PyMC3.ipynb#Example:-Kaggle-contest-on-Observing-Dark-World) -- If you're doubtful about the power of Bayesian machine learning, then read this and get mindblown.
+- [looria.com/reddit](https://www.looria.com/reddit) -- This is a website that aggregates informal product reviews found on Reddit. There's a bunch of cool NLP stuff going on behind the scenes. For instance here's recommendations for [cycling](https://looria.com/reddit/cycling/products) and [camping gear](https://looria.com/reddit/campinggear/products).
 
 ## Data sources
 
@@ -249,7 +255,6 @@ toc: true
 - [Starlink Satellites Tracker](https://findstarlink.com/)
 - [Based Cooking](https://based.cooking/)
 - [ReadComicOnline](https://readcomiconline.li/) -- I recommend [these](https://www.bedetheque.com/indispensables.html) French comics.
-- [Looria](https://looria.com/reddit/overview) -- especially for [cycling](https://looria.com/reddit/cycling/products) and [camping gear](https://looria.com/reddit/campinggear/products)
 - [Same Energy](https://same.energy)
 - [BOOOOOOM](https://www.booooooom.com/)
 - [indieblog.page](https://indieblog.page/)
