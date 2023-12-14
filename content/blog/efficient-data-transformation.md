@@ -3,6 +3,7 @@ date = "2023-12-01"
 draft = false
 title = "Efficient ELT refreshes"
 tags = ['data-eng']
+images = ["/img/blog/efficient-elt-refreshes/after.png"]
 +++
 
 A tenant of the modern data stack is the use of ELT (Extract, Load, Transform) over ETL (Extract, Transform, Load). In a nutshell, this means that most of the data transformation is done in the data warehouse. This has become the _de facto_ standard for modern data teams, and is epitomized by [dbt](https://www.getdbt.com/) and its ecosystem. It's a great time to be a data engineer!

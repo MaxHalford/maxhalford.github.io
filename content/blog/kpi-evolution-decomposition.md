@@ -8,6 +8,8 @@ toc = true
 
 **Edit** -- _I published a notebook [here](https://gist.github.com/MaxHalford/9fba0c2d6800d0f0643902bf57b99780) that deals with the case where dimension values may (dis)appear from one period of time to the next. The notebook decomposes a ratio, but the logic is also valid for decomposing a sum._
 
+**Edit 2** -- _I've stumbled on [this article](https://medium.com/@shaozhifei/metric-decomposition-formula-to-understand-metric-trend-e693b7a4c8cf) by Shao Zhifei which provides a good derivation of the ratio decomposition formula. I contacted Shao Zhifei on LinkedIn, and he told me they heavily use these formulas at [Grab](https://www.grab.com/). He also pointed out a typo in the ratio decomposition formula which I have now fixed._
+
 ## Motivation
 
 Say you're a data analyst at a company. You've built a dashboard with several KPIs. You're happy because it took you a couple of days of hard work. You even went the extra mile of writing unit tests. You share the dashboard on Slack with the relevant stakeholders, call it a day, and go grab a beer.
@@ -435,16 +437,16 @@ $$
 \end{align*}
 $$
 
-The average value $KPI_t$ can be thought of as a weighted average of the $r_j(t)$ values, with the weights being $s_j(t)$. Given that, if the weights $s_j(t)$ change to $s_j(t+1)$, the weighted average will move towards $r_j(t+1)$ but will be anchored by the initial value $KPI_t$. Therefore, we can replace $r_j(t)$ in the second term with $KPI_t$:
+This decomposition is valid. However, the second term -- the mix effect -- isn't exactly what we want. The mix effect's purpose is to measure the impact of change in share. If the share of a group increases, the mix effect should be positive if the rate of that group is higher than the average rate, and negative if the rate of that group is lower than the average rate. We can obtain by replacing $r_j(t)$ with $r_j(t) KPI_t$, without changing the value of the sum:
 
 $$
 \begin{align*}
     KPI_{t+1} - KPI_{t} &= \sum_{j=1}^m s_j(t+1) \times (r_j(t+1) - r_j(t)) \\\\
-    &+ \sum_{j=1}^m (s_j(t+1) - s_j(t)) \times (r_j(t+1) - KPI_t)
+    &+ \sum_{j=1}^m (s_j(t+1) - s_j(t)) \times (r_j(t) - KPI_t)
 \end{align*}
 $$
 
-There we have it. We've expressed $KPI_{t+1}$ -- the KPI change -- as the sum of:
+There we have it. We've expressed $KPI_{t+1}$ as the sum of:
 
 1. The initial KPI value $KPI_{t}$
 2. The inner effect: the change in the average value of each group
