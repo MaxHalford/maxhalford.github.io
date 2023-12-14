@@ -233,7 +233,7 @@ I've formatted the columns for readability. In practice, you might have these co
 dimensions = ['month', 'group']
 ```
 
-This then allows us to add additional columns that allow comparing the current ratios to the previous ones. This can be done with pandas' `lag` method:
+This then allows us to add additional columns that allow comparing the current ratios to the previous ones. This can be done with pandas' `shift` method:
 
 ```py
 decomp['month'] = decomp.date.dt.month
