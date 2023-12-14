@@ -2,6 +2,7 @@
 date = "2023-12-14"
 title = "Funnel decomposition"
 tags = ['data-science']
+images = ["/img/blog/funnel-decomposition/revenue-funnel.png"]
 draft = false
 toc = true
 +++
