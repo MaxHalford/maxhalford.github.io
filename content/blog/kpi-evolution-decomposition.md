@@ -197,7 +197,7 @@ We can sum both columns to get the total change in the KPI:
 
 This corresponds exactly to the yearly changes calculated above.
 
-### Left/right vs. right/left decomposition
+### Right/left vs. Left/right decomposition
 
 If you've been paying attention, you might have noticed that I sliced the KPI arbitrarily. I could have just as well decomposed the KPI as follows:
 
