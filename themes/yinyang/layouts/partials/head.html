@@ -12,11 +12,12 @@
   <!-- Umami -->
   {{ if not (eq hugo.Environment "development") }}
   <!-- <script async defer data-website-id="6023252a-3a97-470f-b4ee-5082d242bb9a" src="https://umami.pourtan.eu/umami.js"></script> -->
-  <script defer
+  <script
+    defer
     src="https://unpkg.com/@tinybirdco/flock.js"
     data-host="https://api.tinybird.co"
     data-token="p.eyJ1IjogImMwMjJhMjg1LWJmY2YtNDc0OC1hYzczLTJhMDQ1Njk3NTI0YyIsICJpZCI6ICIzNjc3NjQ3Ny04MTE2LTRmYWQtYjcwMy1iZmM3YjMwZGJjMjMifQ.A0vHm-VWbXG6uBFZiwuspN_AyfSYNrdZE3IgwgWSt4g"
-    ></script>
+  ></script>
   {{ end }}
 
   <meta charset="utf-8" />
@@ -28,16 +29,18 @@
   <meta property="og:url" content="{{ .Permalink }}" />
   <link rel="canonical" href="{{ .Permalink }}" />
 
-  {{ template "_internal/opengraph.html" . }}
-  {{ template "_internal/twitter_cards.html" . }}
+  {{ template "_internal/opengraph.html" . }} {{ template
+  "_internal/twitter_cards.html" . }}
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦔</text></svg>">
+  <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦆</text></svg>"
+  />
   <!-- {{- if .Site.Params.favicon -}}
   <link rel="shortcut icon" href="{{ .Site.Params.favicon }}" type="image/x-png" />
   {{- end -}} -->
 
-  {{ partial "seo" . }}
-  {{- if .IsHome -}}
+  {{ partial "seo" . }} {{- if .IsHome -}}
   <title>{{ .Site.Title }}</title>
   <meta property="og:title" content="{{ .Site.Title }}" />
   <meta property="og:type" content="website" />
@@ -47,46 +50,57 @@
   <meta property="og:title" content="{{ .Title }} • {{ .Site.Title }}" />
   <meta property="og:type" content="article" />
   <meta name="description" content="{{ default .Summary .Description }}" />
-  {{- end }}
-
-  <link rel="stylesheet" href="{{ .Site.Params.staticPrefix }}{{ "css/flexboxgrid-6.3.1.min.css" | relURL }}" />
-  {{ if not .IsHome -}}
-  <link rel="stylesheet" href="{{ .Site.Params.staticPrefix }}{{ "css/github-markdown.min.css" | relURL }}" />
-  <link rel="stylesheet" href="{{ .Site.Params.staticPrefix }}{{ "css/highlight/github.css" | relURL }}" />
-  {{- end }}
-  <link rel="stylesheet" href="{{ "css/index.css" | relURL }}">
+  {{- end }} <link rel="stylesheet" href="{{ .Site.Params.staticPrefix }}{{
+  "css/flexboxgrid-6.3.1.min.css" | relURL }}" /> {{ if not .IsHome -}} <link
+  rel="stylesheet" href="{{ .Site.Params.staticPrefix }}{{
+  "css/github-markdown.min.css" | relURL }}" /> <link rel="stylesheet" href="{{
+  .Site.Params.staticPrefix }}{{ "css/highlight/github.css" | relURL }}" /> {{-
+  end }} <link rel="stylesheet" href="{{ "css/index.css" | relURL }}">
   <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Permanent+Marker&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- MathJax -->
   <script>
     MathJax = {
       tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$','$$'], ['\\[', '\\]']],
+        inlineMath: [
+          ["$", "$"],
+          ["\\(", "\\)"],
+        ],
+        displayMath: [
+          ["$$", "$$"],
+          ["\\[", "\\]"],
+        ],
         processEscapes: true,
         processEnvironments: true,
-        tags: 'ams'
+        tags: "ams",
       },
       options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"],
       },
     };
 
-    window.addEventListener('load', (event) => {
-        document.querySelectorAll('mjx-container').forEach(function(x){
-          x.parentElement.classList += 'has-jax'})
+    window.addEventListener("load", (event) => {
+      document.querySelectorAll("mjx-container").forEach(function (x) {
+        x.parentElement.classList += "has-jax";
       });
-
+    });
   </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script
+    type="text/javascript"
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+  ></script>
 
-    <!-- KaTeX -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <!-- KaTeX -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
 

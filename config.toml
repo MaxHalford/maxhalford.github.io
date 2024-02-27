@@ -10,7 +10,7 @@ pygmentsUseClasses = true
   name = "Max Halford"
 
 [params]
-  headTitle = "Max Halford ツ"
+  headTitle = "Max Halford 🦆"
   mainSections = ["blog"]
   favicon = "/img/favicon.ico"
   images = ["/img/belle-ile.jpg"]

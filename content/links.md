@@ -92,6 +92,8 @@ toc: true
 - [Leslie Lamport](https://lamport.azurewebsites.net/pubs/pubs.html)
 - [Curtis Miller](https://ntguardian.wordpress.com/blog/)
 - [Naftali Harris](https://www.naftaliharris.com/)
+- [Laird Breyer](http://www.lbreyer.com/welcome.html) -- wrote some cool software for text classification called dbacl, and markovpr which is a PageRank implementation.
+- [Vicky Boykis](https://vickiboykis.com/) -- the OG behind [Normconf](https://normconf.com/)
 
 ## Machine learning
 
@@ -131,6 +133,23 @@ toc: true
 - [A Machine Learning Primer - Mihail Eric](https://www.confetti.ai/assets/ml-primer/ml_primer.pdf) -- A good read for beginners in machine learning algorithms.
 - [Fitting Bayesian structural time series with the bsts R package - Steven L. Scott](http://www.unofficialgoogledatascience.com/2017/07/fitting-bayesian-structural-time-series.html)
 - [Super Fast String Matching in Python - Chris van den Berg](https://bergvca.github.io/2017/10/14/super-fast-string-matching.html)
+- [Poisson regression and non-normal loss - scikit-learn](https://scikit-learn.org/dev/auto_examples/linear_model/plot_poisson_regression_non_normal_loss.html#sphx-glr-auto-examples-linear-model-plot-poisson-regression-non-normal-loss-py)
+- [Perfect lung cancer detections in a $1 million ML competition with an ingenious hack - Yusaku Sako](https://medium.com/@u39kun/i-find-machine-learning-competitions-exciting-and-addicting-438fe95b33f5)
+- [Beware Default Random Forest Importances](https://explained.ai/rf-importance/index.html)
+- [From RankNet to LambdaRank to LambdaMART: An Overview](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/MSR-TR-2010-82.pdf)
+- [Word2Vec Tutorial - The Skip-Gram Model - Chris McCormick](http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)
+- [Causal Inference for The Brave and True](https://matheusfacure.github.io/python-causality-handbook/landing-page.html)
+- [Data Distribution Shifts and Monitoring - Chip Huyen](https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html)
+- [Creating Confidence Intervals for Machine Learning Classifiers - Sebastian Raschka](https://sebastianraschka.com/blog/2022/confidence-intervals-for-ml.html)
+- [Machine Learning @ VU](https://mlvu.github.io/)
+- [SVD Image Compression, Explained - Dennis Miczek](https://dmicz.github.io/machine-learning/svd-image-compression/)
+
+## Deep learning
+
+- [Transformers from scratch - Peter Bloem](http://peterbloem.nl/blog/transformers)
+- [Explaining RNNs without neural networks](https://explained.ai/rnn/index.html)
+- [Practical Deep Learning for Coders](https://course.fast.ai/)
+- [What Is ChatGPT Doing... and Why Does It Work?](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/)
 
 ## Data science
 
@@ -148,6 +167,17 @@ toc: true
 - [Lessons learned building an ML trading system that turned \\$5k into \\$200k](https://archive.ph/A7298#selection-63.0-63.72)
 - [Common statistical tests are linear models (or: how to teach stats)](https://lindeloev.github.io/tests-as-linear/)
 
+## Mathematics
+
+- [Paul's Online Notes](https://tutorial.math.lamar.edu/)
+- [Mathematics Quizzes](https://www.mathopolis.com/questions/quizzes.php)
+
+## Physics
+
+- [Portail Électricité - Vikidia](https://fr.vikidia.org/wiki/Portail:%C3%89lectricit%C3%A9)
+- [Simulating Fluids, Fire, and Smoke in Real-Time - Andrew Chan](https://andrewkchan.dev/posts/fire.html)
+- [GPS - Bartosz Ciechanowski](https://ciechanow.ski/gps/) -- [all his articles](https://ciechanow.ski/archives/) are great.
+
 ## Data engineering
 
 - [Emerging Architectures for Modern Data Infrastructure](https://future.com/emerging-architectures-modern-data-infrastructure/)
@@ -159,28 +189,12 @@ toc: true
 - [The Log: What every software engineer should know about real-time data's unifying abstraction - Jay Kreps](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying)
 - [Command-line Tools can be 235x Faster than your Hadoop Cluster - Adam Drake](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
 - [Git scraping, the five minute lightning talk - Simon Willison](https://simonwillison.net/2021/Mar/5/git-scraping/) -- I wish I had thought about this first!
-- [Choose Boring Technology - Dan McKinley](http://mcfunley.com/choose-boring-technology)
 - [Gently down the stream - Mitch Seymour](https://www.gentlydownthe.stream/)
-
-## SQL
-
-- [The Best Medium-Hard Data Analyst SQL Interview Questions](https://quip.com/2gwZArKuWk7W) -- There are some great interactive SQL tutorials out there, such as [SQLBolt](https://sqlbolt.com/) and [Select Star SQL](https://selectstarsql.com/), but this one takes the cake due to its complexity. [The Ultimate SQL guide](https://count.co/canvas/pB7iGb4yyi2) is a comprehensive guide made with Count.
-
-## Good advice
-
-- [Don't Call Yourself A Programmer, And Other Career Advice](https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/)
-- [Memos - Sriram Krishnan](https://sriramk.com/memos)
-- [Common Bugs in Writing](https://www.cs.columbia.edu/~hgs/etc/writing-bugs.html)
-- [Rules of Programming - Rob Pike](http://users.ece.utexas.edu/~adnan/pike.html)
-- [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.signalsblog.ca/right-turn-cormac-mccarthy-and-me-on-how-to-write-a-good-science-paper/)
-- [How to Build an Economic Model in Your Spare Time - Hal R. Varian](https://fermatslibrary.com/p/e2e6484d#email-newsletter) -- The academic wisdom in this article goes beyond the world of economics.
-- [Fast - Patrick Collison](https://patrickcollison.com/fast)
-- [Visual design rules you can safely follow every time - Anthony Hobday](https://anthonyhobday.com/sideprojects/saferules/) -- Good follow-up to [Web Design in 4 minutes](https://jgthms.com/web-design-in-4-minutes/) by Jeremy Thomas.
-
-## Product
-
-- [Beautiful Polished Rocks - Steve Jobs](https://vimeo.com/842437838) -- the best metaphor for product design I've ever heard.
-- [Stevey's Google Platforms Rant](https://gist.github.com/chitchcock/1281611) -- insights about product design at GAFAs.
+- [Turning the database inside-out with Apache Samza](https://www.confluent.io/blog/turning-the-database-inside-out-with-apache-samza/)
+- [The Snowflake Elastic Data Warehouse](https://pages.cs.wisc.edu/~yxy/cs839-s20/papers/snowflake.pdf)
+- [Differential Dataflow](https://timelydataflow.github.io/differential-dataflow/) -- also see the [Naiad](https://dl.acm.org/doi/pdf/10.1145/2517349.2522738) paper
+- [Time, Clocks, and the Ordering of Events in a Distributed System - Leslie Lamport](https://lamport.azurewebsites.net/pubs/time-clocks.pdf)
+- [How Query Engines Work](https://howqueryengineswork.com/00-introduction.html)
 
 ## Inspiring data analysis
 
@@ -194,6 +208,9 @@ toc: true
 - [Why the super rich are inevitable - The Pudding](https://pudding.cool/2022/12/yard-sale) -- Really cool dataviz.
 - [Kaggle contest on Observing Dark World - Cam Davidson-Pilon](https://nbviewer.jupyter.org/github/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Chapter5_LossFunctions/Ch5_LossFunctions_PyMC3.ipynb#Example:-Kaggle-contest-on-Observing-Dark-World) -- If you're doubtful about the power of Bayesian machine learning, then read this and get mindblown.
 - [looria.com/reddit](https://www.looria.com/reddit) -- This is a website that aggregates informal product reviews found on Reddit. There's a bunch of cool NLP stuff going on behind the scenes. For instance here's recommendations for [cycling](https://looria.com/reddit/cycling/products) and [camping gear](https://looria.com/reddit/campinggear/products).
+- [Who is the average nomad?](https://nomadlist.com/digital-nomad-statistics#unattractive) -- feeds from NomadList live data.
+- [Every Noise at Once](https://everynoise.com/engenremap.html) -- uses PCA to map music genres.
+- [How Big is YouTube? - Ethan Zuckerman](https://ethanzuckerman.com/2023/12/22/how-big-is-youtube/)
 
 ## Data sources
 
@@ -202,6 +219,56 @@ toc: true
 - [bigquery-public-data](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=new_york&t=citibike_trips&page=table&project=orc-orc&ws=!1m4!1m3!3m2!1sbigquery-public-data!2samerica_health_rankings)
 - [fh-bigquery](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=new_york&t=citibike_trips&page=table&project=orc-orc&ws=!1m4!1m3!3m2!1sfh-bigquery!2sbbqtoronto)
 - [Wikidata Query Service](https://query.wikidata.org/#%23Map%20of%20hospitals%0A%23added%202017-08%0A%23defaultView%3AMap%0ASELECT%20DISTINCT%20%2a%20WHERE%20%7B%0A%20%20%3Fitem%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ16917%3B%0A%20%20%20%20%20%20%20%20wdt%3AP625%20%3Fgeo%20.%0A%7D)
+- [New-York City transport data](https://www.nyc.gov/html/dot/html/about/datafeeds.shtml#vision)
+- [Reverse Engineering Bumble’s API](https://blog.securityevaluators.com/reverse-engineering-bumbles-api-a2a0d39b3a87) -- a fun/scary API reverse engineering example that worked in 2020
+- [ccxt](https://github.com/ccxt/ccxt) -- access cryptocurrency exchanges' APIs
+- [Our World in Data](https://ourworldindata.org/)
+
+## Food for thought
+
+- [If Sapiens were a blog post - Neil Kakkar](https://neilkakkar.com/sapiens.html)
+- [Fast - Patrick Collison](https://patrickcollison.com/fast)
+- [Choose Boring Technology - Dan McKinley](http://mcfunley.com/choose-boring-technology)
+- [Memos - Sriram Krishnan](https://sriramk.com/memos)
+- [What is Money, Anyway? - Lyn Alden](https://www.lynalden.com/what-is-money/)
+- [The Final Speech from The Great Dictator](https://www.charliechaplin.com/en/articles/29-the-final-speech-from-the-great-dictator-)
+- [The tyranny of the algorithm: why every coffee shop looks the same](https://www.theguardian.com/news/2024/jan/16/the-tyranny-of-the-algorithm-why-every-coffee-shop-looks-the-same)
+- [Against Disruption: On the Bulletpointization of Books](https://lithub.com/against-disruption-on-the-bulletpointization-of-books/)
+
+## SQL
+
+- [The Best Medium-Hard Data Analyst SQL Interview Questions](https://quip.com/2gwZArKuWk7W) -- There are some great interactive SQL tutorials out there, such as [SQLBolt](https://sqlbolt.com/) and [Select Star SQL](https://selectstarsql.com/), but this one takes the cake due to its complexity. [The Ultimate SQL guide](https://count.co/canvas/pB7iGb4yyi2) is a comprehensive guide made with Count.
+
+## Programming
+
+- [The Grand Unified Theory of Software Architecture](https://danuker.go.ro/the-grand-unified-theory-of-software-architecture.html)
+- [Don't Call Yourself A Programmer, And Other Career Advice](https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/)
+- [Rules of Programming - Rob Pike](http://users.ece.utexas.edu/~adnan/pike.html)
+- [Why Lisp?](https://github.com/naver/lispe/wiki/6.16-Why-Lisp)
+
+## Writing
+
+- [Common Bugs in Writing](https://www.cs.columbia.edu/~hgs/etc/writing-bugs.html)
+- [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.signalsblog.ca/right-turn-cormac-mccarthy-and-me-on-how-to-write-a-good-science-paper/)
+- [How to Build an Economic Model in Your Spare Time - Hal R. Varian](https://fermatslibrary.com/p/e2e6484d#email-newsletter) -- The academic wisdom in this article goes beyond the world of economics.
+
+## Web development
+
+- [Visual design rules you can safely follow every time - Anthony Hobday](https://anthonyhobday.com/sideprojects/saferules/) -- Good follow-up to [Web Design in 4 minutes](https://jgthms.com/web-design-in-4-minutes/) by Jeremy Thomas.
+- [Typography in ten minutes](https://practicaltypography.com/typography-in-ten-minutes.html)
+- [alpine.js](https://alpinejs.dev/) -- I usually go to Vue.js for web dev, but my brother made me realize alpine.js is a great alternative for small projects.
+
+## Building a product
+
+- [Beautiful Polished Rocks - Steve Jobs](https://vimeo.com/842437838) -- the best metaphor for product design I've ever heard.
+- [Stevey's Google Platforms Rant](https://gist.github.com/chitchcock/1281611) -- insights about product design at GAFAs.
+- [Jeff Bezos on the disagree and commit principle](https://x.com/StartupArchive_/status/1736006653722362216?s=20)
+
+## I don't have a clue but it looks cool
+
+- [Superpermutations - Greg Egan](https://www.gregegan.net/SCIENCE/Superpermutations/Superpermutations.html)
+- [Clifford Algebra: A visual introduction](https://slehar.wordpress.com/2014/03/18/clifford-algebra-a-visual-introduction/)
+- [GPT in 500 lines of SQL](https://explainextended.com/2023/12/31/happy-new-year-15/)
 
 ## Eye candy
 
@@ -234,18 +301,48 @@ toc: true
 - [Jorge Jacinto](http://www.jorgejacinto.com/)
 - [WaveFunctionCollapse](https://github.com/mxgmn/WaveFunctionCollapse)
 - [Owen D. Pomery](https://owenpomery.com/cabin)
-- [einsteigenbitte.eu](einsteigenbitte.eu) -- I love "weird" websites like Claire Glanois'
 - [19th Century French Artists Predicted The World Of The Future In This Series Of Postcards](https://singularityhub.com/2012/10/15/19th-century-french-artists-predicted-the-world-of-the-future-in-this-series-of-postcards/)
 - [Blog maps](https://tomcritchlow.com/2023/04/03/blog-maps/)
 - [Decktwo](https://www.instagram.com/deck_two/)
 - [eycndy.com](https://eycndy.com/)
 - [Fred's ImageMagick Scripts](http://www.fmwconcepts.com/imagemagick/index.php)
-- [Cameras and Lenses - Bartosz Ciechanowski](https://ciechanow.ski/cameras-and-lenses/) -- 100% worth a read.
 - [Ditherpunk - Surma](https://surma.dev/things/ditherpunk/)
 - [Visually stunning math concepts which are easy to explain - StackExchange](https://math.stackexchange.com/questions/733754/visually-stunning-math-concepts-which-are-easy-to-explain)
 - [Cars, bars and burger joints: William Eggleston’s iconic America – in pictures](https://www.theguardian.com/artanddesign/gallery/2022/nov/22/cars-bars-and-burger-joints-william-egglestons-iconic-america-in-pictures)
 - [Spectrolite](https://spectrolite.app/)
 - [RamenHaus](https://ramen.haus/)
+- [SportsNetUSA.net](https://www.sportsnetusa.net/)
+- [readcomiconline](https://readcomiconline.li/)
+- [MUBI](https://mubi.com/en/fr/showing)
+- [La vida en viñetas](https://twitter.com/lavidaenvinetas)
+- [Plotting 3 years of hourly data in 150ms](https://leeoniya.github.io/uPlot/demos/time-periods.html)
+- [What I've learned about flow fields so far](https://damoonrashidi.me/articles/flow-field-methods)
+- [Dear Data](https://www.dear-data.com/theproject)
+- [FAA Aviation Maps](https://www.beautifulpublicdata.com/faa-aviation-maps/)
+
+## Pretty websites
+
+- [MotherDuck: Data Infrastructure and Analytics](https://motherduck.com/)
+- [Welcome to the Operational Analytics Club 👋](https://www.operationalanalytics.club/)
+- [Snaplet](https://www.snaplet.dev/)
+- [Noun Project: Free Icons & Stock Photos for Everything](https://thenounproject.com/)
+- [Benthos Studio](https://studio.benthos.dev/)
+- [Claire Glanois](einsteigenbitte.eu)
+- [API for Automated Image and Video Generation](https://www.bannerbear.com/)
+- [𝚜𝚙𝚎𝚗𝚌𝚎𝚛𝚌𝚑𝚊𝚗𝚐.𝚖𝚎 𝚒𝚜 𝚠𝚊𝚗𝚍𝚎𝚛𝚒𝚗𝚐](https://www.spencerchang.me/)
+- [Maintenance 🌱 Digital Garden](https://digitalgarden.hypha.coop/maintenance)
+- [Equals | The fastest way for startups to do any analysis](https://equals.com/)
+- [Maki.vc | European Venture Capital Firm](https://maki.vc/)
+- [Harlequin: The DuckDB IDE for Your Terminal.](https://harlequin.sh/)
+- [Inter font family](https://rsms.me/inter/)
+- [Neatnik](https://neatnik.net/)
+- [The Creative Independent](https://thecreativeindependent.com/)
+- [Bay 12 Games: Dwarf Fortress](http://www.bay12games.com/dwarves/)
+- [Browserbear](https://www.browserbear.com/)
+
+I like these retrocool websites:
+
+- [learntarot.com](http://www.learntarot.com/cards.htm)
 
 ## Cool
 
@@ -261,3 +358,6 @@ toc: true
 - [Cloudhiker](https://cloudhiker.net/)
 - [Fish doorbells! Historic sandwiches! 50 of the weirdest, most wonderful corners of the web](https://www.theguardian.com/technology/2023/aug/31/fish-doorbells-historic-sandwiches-50-of-the-weirdest-most-wonderful-corners-of-the-web-picked-by-an-expert)
 - [Marginalia](https://search.marginalia.nu/)
+- [Anna's Archive](https://annas-archive.org/)
+- [Browser games](https://www.asahi-net.or.jp/~cs8k-cyu/browser.html) -- these are made by a single _doujin_ developer called Kenta Cho
+- [Pong wars](https://pong-wars.vercel.app/)
