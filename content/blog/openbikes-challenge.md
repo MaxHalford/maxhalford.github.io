@@ -11,17 +11,15 @@ Before the 2016 summer holidays one of my professors, [Aurélien Garivier](https
 
 The challenge was split into two phases. During the first phase, the teams were provided with data spanning from the 1st of April until the 5th of October at 10 AM. The data contained updates on the number of bikes at each station, the geographical position of the stations and the weather in each city. They were asked to forecast the number of bikes at 30 stations for 10 fixed timesteps ranging from the 5th of October at 10 AM until the 9th of October. We picked 10 stations from Toulouse, Lyon and Paris. Each team had access to an account page where they could deposit their submission which were then automatically scored. A public leaderboard was available at the homepage of the website Axel and I built.
 
-During the second part of the challenge, which lasted from the 12th of January 2017 until the 20th of January 2017, the teams were provided with a new dataset containing similar data than the first part, except that Lyon has been swapped out for New-York. The data went from the 1st of April 2016 until the 11th of January 2017. The timesteps to predict were the same - both test sets went from a Wednesday till a Sunday. The teams did not get any feedback when they made a submission during the second part, they were scored based on their last submission, *à l'aveugle*.
+During the second part of the challenge, which lasted from the 12th of January 2017 until the 20th of January 2017, the teams were provided with a new dataset containing similar data than the first part, except that Lyon has been swapped out for New-York. The data went from the 1st of April 2016 until the 11th of January 2017. The timesteps to predict were the same - both test sets went from a Wednesday till a Sunday. The teams did not get any feedback when they made a submission during the second part, they were scored based on their last submission, _à l'aveugle_.
 
 In each part of the challenge the chosen metric to score the students was the [mean absolute error](https://www.wikiwand.com/en/Mean_absolute_error) between their submissions and the truth. The use of the MAE makes it possible to say things such as "team A was, on average, 3.2 bikes off target".
-
 
 ## Technical notes
 
 Axel and I had been collecting freely available bike sharing data since October 2015. To do this we put in a place a homemade crawler which would interrogate various APIs and aggregate their data into a single format. We stored the number of bikes at each station at different timesteps with MongoDB. The metadata concerning the of the cities and the bike stations was stored with PostgreSQL. We also exposed an API to be able to use our data in an hypothetical mobile app. We deployed our crawler/API on a 20$ DigitalOcean server. The glue language was Python. [The whole thing is available on GitHub](https://github.com/OpenBikes/api.openbikes.co).
 
 To host the challenge I wrote a simple Django application (my first time!) which Axel kindly deployed on the same server as the crawler. The application used a SQLite as a database backend, partly because I wanted to try it out in production but because anything more powerful was unnecessary. Moreover SQLite stores it's data in `*.db` file which can easily be transfered for doing some descriptive statistics. Again, [the code is available on GitHub](https://github.com/OpenBikes/challenge.openbikes.co).
-
 
 ## Results
 
@@ -593,7 +591,7 @@ As for the ranking for the second part of the challenge (the blindfolded part), 
 </table>
 </div>
 
-Team "Le Gruppetto" is officially the winner of the challenge! The fact that the second part of the competition was blindfolded completely reversed the rankings and favored teams with robust methods whilst penalizing overfitters. Whatsmore, "only" 39 teams took part in the second part (50 did in the first one); maybe some teams felt that their ranking wouldn't change, but the fact is that "Le Gruppetto" were 34th before being 1st. *It isn't over till the fat lady sings*. The following chart shows the best score per team for both parts of the challenge.
+Team "Le Gruppetto" is officially the winner of the challenge! The fact that the second part of the competition was blindfolded completely reversed the rankings and favored teams with robust methods whilst penalizing overfitters. Whatsmore, "only" 39 teams took part in the second part (50 did in the first one); maybe some teams felt that their ranking wouldn't change, but the fact is that "Le Gruppetto" were 34th before being 1st. _It isn't over till the fat lady sings_. The following chart shows the best score per team for both parts of the challenge.
 
 <div align="center">
 <figure>
@@ -601,7 +599,6 @@ Team "Le Gruppetto" is officially the winner of the challenge! The fact that the
     <figcaption>I'm the orange spot overlapped by a cyan one in the bottom left!</figcaption>
 </figure>
 </div>
-
 
 ## Who used what?
 
@@ -646,6 +643,6 @@ Personally I had a great experience organization wise. I had a few panic attacks
 
 ## Datasets
 
-I've made the datasets that were used during both parts of the challenge available - including the true answers - [click on this link to download them](https://www.dropbox.com/s/ic8m0b3mf5wxk4r/challenge.zip?dl=0).
+I've made the datasets that were used during both parts of the challenge available - including the true answers - ~~[click on this link to download them](https://www.dropbox.com/s/ic8m0b3mf5wxk4r/challenge.zip?dl=0)~~. Edit in 2024: this link is now dead, but you can find a lot of bike sharing data [here](https://github.com/MaxHalford/bike-sharing-history).
 
 Feel free to email me if you have any questions.
