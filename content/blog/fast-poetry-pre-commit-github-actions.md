@@ -45,6 +45,7 @@ runs:
         virtualenvs-create: true
         virtualenvs-in-project: true
         installer-parallel: true
+        virtualenvs-path: .venv
       if: steps.cached-dotlocal.outputs.cache-hit != 'true'
 
     - name: Install dependencies
