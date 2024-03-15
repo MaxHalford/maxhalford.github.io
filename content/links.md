@@ -94,6 +94,7 @@ toc: true
 - [Naftali Harris](https://www.naftaliharris.com/)
 - [Laird Breyer](http://www.lbreyer.com/welcome.html) -- wrote some cool software for text classification called dbacl, and markovpr which is a PageRank implementation.
 - [Vicky Boykis](https://vickiboykis.com/) -- the OG behind [Normconf](https://normconf.com/)
+- [Danielle Navarro](https://blog.djnavarro.net/)
 
 ## Machine learning
 

@@ -153,7 +153,7 @@ decomp = (
     .groupby([period, dim])
     [metric].agg(['mean', 'count', 'sum'])
     .reset_index()
-    .sort_values(period, dim)
+    .sort_values([period, dim])
 )
 
 decomp['mean_lag'] = decomp.groupby(dim)['mean'].shift(1)
