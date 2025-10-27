@@ -43,11 +43,10 @@ from google.oauth2 import service_account
 dotenv.load_dotenv()
 
 EMAIL_ACCOUNTS = [
-    "max@carbonfact.com",
-    "felix@carbonfact.com",
-    "alexis@carbonfact.com",
-    "juliette@carbonfact.com",
-    "aditya@carbonfact.com",
+    "m@carbonfact.com",
+    "f@carbonfact.com",
+    "a@carbonfact.com",
+    "k@carbonfact.com"
 ]
 WRITE_PROJECT_ID = "google-calendar-import"
 WRITE_TABLE_ID = "google_calendar_import.google_calendar"
