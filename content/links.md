@@ -344,6 +344,7 @@ toc: true
 - [Alto](https://alto.so/) -- turn Apple Notes into a website.
 - [Scrappy](https://pontus.granstrom.me/scrappy/) -- loads of links and good ideas in this one.
 - [Hyperclay](https://docs.hyperclay.com/docs/example-apps/)
+- [How to tame a user interface using a spreadsheet](https://blog.gingerbeardman.com/2025/10/11/how-to-tame-a-user-interface-using-a-spreadsheet/)
 
 ## Building a product
 
