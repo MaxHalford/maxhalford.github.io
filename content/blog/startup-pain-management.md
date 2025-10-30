@@ -1,7 +1,7 @@
 +++
 date = "2025-10-27"
-title = "Pain management when building a startup"
-tags = ['shower-thoughts']
+title = "No pain no startup"
+tags = ['showerthought']
 +++
 
 I've been working at Carbonfact for close to 4 years. Two other people and I were the first hires. I got to build a large share of the initial systems. I've been involved in many business decisions, but I've mostly actively contributed to technical aspects.

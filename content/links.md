@@ -367,6 +367,7 @@ toc: true
 - [Clifford Algebra: A visual introduction](https://slehar.wordpress.com/2014/03/18/clifford-algebra-a-visual-introduction/)
 - [GPT in 500 lines of SQL](https://explainextended.com/2023/12/31/happy-new-year-15/)
 - [Phase behavior of Cacio e Pepe sauce](https://arxiv.org/pdf/2501.00536)
+- [Who needs Graphviz when you can build it yourself?](https://spidermonkey.dev/blog/2025/10/28/iongraph-web.html)
 
 ## Eye candy
 
