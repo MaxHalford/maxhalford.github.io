@@ -11,7 +11,7 @@
 
 
 
-- [Pain management when building a startup](https://maxhalford.github.io/blog/startup-pain-management/)
+- [No pain no startup](https://maxhalford.github.io/blog/startup-pain-management/)
 - [Scraping Google Calendar events](https://maxhalford.github.io/blog/google-calendar-scraping/)
 - [Warmshowers sparks joy](https://maxhalford.github.io/blog/warmshowers-sparks-joy/)
 - [Do LLMs identify fonts?](https://maxhalford.github.io/blog/llm-font-identification/)
