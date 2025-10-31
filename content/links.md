@@ -261,6 +261,7 @@ toc: true
 - [Forget Shorter Showers](https://orionmagazine.org/article/forget-shorter-showers/)
 - [Conditional Optimism: Economic Perspectives on Deep Decarbonization - Michael Grubb](https://www.ineteconomics.org/perspectives/blog/growth-with-decarbonization-is-not-an-oxymoron)
 - [Climate Change: a practical guide](https://www.tmrow.com/climatechange/)
+- [The computational structure of life cycle assessment - Reinout Heijungs & Sangwon Suh](https://web.universiteitleiden.nl/cml/ssp/publications/2002_004.pdf) -- good introduction to LCA algorithms for technical people.
 
 ## Data sources
 
