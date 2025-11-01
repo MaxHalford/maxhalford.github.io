@@ -255,7 +255,7 @@ toc: true
 - [The Limits to Growth - Donella Meadows](https://www.donellameadows.org/wp-content/userfiles/Limits-to-Growth-digital-scan-version.pdf) -- it's not very often that a paper is so accurate in its predictions.
 - [Consumer Hardware Carbon Reduction Guide - Google](https://www.gstatic.com/gumdrop/sustainability/google-2024-consumer-hardware-carbon-reduction.pdf)
 - [The LCA paradox - Frida Røyne](https://meaningfulsustainabilityjobs.blog/2024/09/29/the-lca-paradox/)
-- [Scope 3 Data in LCA of organisations Between Simplification, Overwhelming & Greenwashing](https://video.ethz.ch/events/lca/2023/autumn/83rd/9094196a-4300-4494-87d3-c5e872ad8e62.html)
+- [Scope 3 Data in LCA of organisations Betw^een Simplification, Overwhelming & Greenwashing](https://video.ethz.ch/events/lca/2023/autumn/83rd/9094196a-4300-4494-87d3-c5e872ad8e62.html)
 - [Climate TRACE](https://climatetrace.org/explore)
 - [Can the economy become fossil free? - Jean-Marc Jancovici](https://jancovici.com/en/video/40-min-can-the-economy-become-fossil-free/)
 - [Forget Shorter Showers](https://orionmagazine.org/article/forget-shorter-showers/)
@@ -304,9 +304,6 @@ toc: true
 - [Renting is for Suckers](https://andrewkelley.me/post/renting-is-for-suckers.html) -- good arguments as to why you shouldn't default to using cloud services.
 - [I Deleted My Second Brain](https://www.joanwestenberg.com/p/i-deleted-my-second-brain)
 - [Ira Glass on Storytelling](https://www.youtube.com/watch?v=X2wLP0izeJE) -- good taste and being critical of one's own work is the key to becoming a better creator.
-
-## *Mens sana in corpore sano*
-
 - [Burnout profile](https://www.lizandmollie.com/burnout-profile)
 
 ## SQL
@@ -428,6 +425,7 @@ toc: true
 - [Teenage Artist Virginia Frances Sterrett's Hauntingly Beautiful Century-Old Dreamscapes for French Fairy Tales](https://www.themarginalian.org/2022/01/27/virginia-frances-sterrett-old-french-fairy-tales/)
 - [MacPaint Art From The Mid-80s Still Looks Great Today](https://blog.decryption.net.au/posts/macpaint.html)
 - [Beautiful Public Data](https://www.beautifulpublicdata.com/)
+- [Making of a Great Martini](https://www.guybuffet.com/gallery-image/Limited-Edition-Prints/G0000gRfwWbFR9iw/I0000XT5fhOfxSBM)
 
 ## Pretty websites
 
