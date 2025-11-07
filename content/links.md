@@ -305,6 +305,7 @@ toc: true
 - [I Deleted My Second Brain](https://www.joanwestenberg.com/p/i-deleted-my-second-brain)
 - [Ira Glass on Storytelling](https://www.youtube.com/watch?v=X2wLP0izeJE) -- good taste and being critical of one's own work is the key to becoming a better creator.
 - [Burnout profile](https://www.lizandmollie.com/burnout-profile)
+- [High Agency In 30 Minutes - George Mack](https://www.highagency.com/)
 
 ## SQL
 
