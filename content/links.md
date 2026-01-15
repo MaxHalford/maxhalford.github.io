@@ -188,6 +188,7 @@ toc: true
 - [Input metrics & weekly business review - Working backwards](https://workingbackwards.com/concepts/input-metrics/)
 - [If spreadsheets are eternal, are BI tools transitory?](https://www.dataduel.co/if-spreadsheets-are-eternal-are-bi-tools-transitory/)
 - [Dimensional Modeling Techniques](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/) -- old but gold.
+- [Motif](https://www.youtube.com/watch?v=itR-eFJ3voY) -- they had cool ideas about funnel analytics before they sadly shut down.
 
 ## Mathematics
 
@@ -261,7 +262,7 @@ toc: true
 - [Forget Shorter Showers](https://orionmagazine.org/article/forget-shorter-showers/)
 - [Conditional Optimism: Economic Perspectives on Deep Decarbonization - Michael Grubb](https://www.ineteconomics.org/perspectives/blog/growth-with-decarbonization-is-not-an-oxymoron)
 - [Climate Change: a practical guide](https://www.tmrow.com/climatechange/)
-- [The computational structure of life cycle assessment - Reinout Heijungs & Sangwon Suh](https://web.universiteitleiden.nl/cml/ssp/publications/2002_004.pdf) -- good introduction to LCA algorithms for technical people.
+- [The computational structure of life cycle assessment - Reinout Heijungs & Sangwon Suh](/static/files/misc/The%20Computational%20Structure%20of%20Life%20Cycle%20Assessment.pdf) -- good introduction to LCA algorithms for technical people.
 
 ## Data sources
 
@@ -306,6 +307,7 @@ toc: true
 - [Ira Glass on Storytelling](https://www.youtube.com/watch?v=X2wLP0izeJE) -- good taste and being critical of one's own work is the key to becoming a better creator.
 - [Burnout profile](https://www.lizandmollie.com/burnout-profile)
 - [High Agency In 30 Minutes - George Mack](https://www.highagency.com/)
+- [Richard Feynman on the question *Why?*](https://www.youtube.com/watch?v=36GT2zI8lVA)
 
 ## SQL
 
@@ -353,6 +355,7 @@ toc: true
 - [The Duolinguo Handbook](https://handbook.duolingo.com/)
 - [How to develop product sense](https://www.lennysnewsletter.com/p/product-sense)
 - [The Browser Company's company values](https://www.thebrowser.company/values/) -- they made the Arc browser, which rekindled the browser wars.
+- [Secrets to Optimal Client Service](https://www.youtube.com/watch?v=hJbwyN4ZoCg&t=174s) -- actionable advice from a Goldman Sachs bigwig.
 
 ## LLMs
 
@@ -367,6 +370,7 @@ toc: true
 - [GPT in 500 lines of SQL](https://explainextended.com/2023/12/31/happy-new-year-15/)
 - [Phase behavior of Cacio e Pepe sauce](https://arxiv.org/pdf/2501.00536)
 - [Who needs Graphviz when you can build it yourself?](https://spidermonkey.dev/blog/2025/10/28/iongraph-web.html)
+- [More than one hundred years of film sizes](https://wichm.home.xs4all.nl/filmsize.html)
 
 ## Eye candy
 
@@ -427,6 +431,7 @@ toc: true
 - [MacPaint Art From The Mid-80s Still Looks Great Today](https://blog.decryption.net.au/posts/macpaint.html)
 - [Beautiful Public Data](https://www.beautifulpublicdata.com/)
 - [Making of a Great Martini](https://www.guybuffet.com/gallery-image/Limited-Edition-Prints/G0000gRfwWbFR9iw/I0000XT5fhOfxSBM)
+- [The Land of Giants™](https://choishine.com/Giants.html)
 
 ## Pretty websites
 
@@ -451,6 +456,8 @@ toc: true
 - [Berkeley Mono™](https://usgraphics.com/products/berkeley-mono)
 - [gatyou.studio](https://www.gatyou.studio/)
 - [yeet.cx](https://yeet.cx/compose)
+- [Helena Zhang](https://www.helenazhang.com/) -- made [Departure Mono](https://departuremono.com/)
+- [hey.milo.gg](https://hey.milo.gg/)
 
 I like these retrocool websites:
 
@@ -495,6 +502,7 @@ I like these retrocool websites:
 - [King of the Fells: Joss Naylor, the shepherd with an unbeatable running record](https://www.theguardian.com/sport/ng-interactive/2024/dec/18/king-of-the-fells-joss-naylor-the-shepherd-with-an-unbeatable-running-record)
 - [Hamburger America](https://www.youtube.com/watch?v=Mkpc5Q1Mgdc&ab_channel=banjoe)
 - [tënk](https://www.on-tenk.com/) -- an eclectic French documentary platform
+- [history of Japan - Bill Wurtz](https://www.youtube.com/watch?v=Mh5LY4Mz15o)
 
 ## Kids
 

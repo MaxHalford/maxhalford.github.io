@@ -8,7 +8,7 @@ tags = ['data-science']
 
 I would argue almost all metrics we look at are incorrect. For instance, I work at a company who's goal is to measure the carbon footprint of clothing items. I can tell you first hand our measurements are stock full of assumptions. In the sustainability world, it's not surprising to get reports like this one:
 
-<div align="center">{{< tweet user=noahqk id=1620150260877389824 >}}</div>
+<div align="center">{{< x user=noahqk id=1620150260877389824 >}}</div>
 </br>
 
 Depending on what assumptions you make, you will get different results if you do a [life cycle assessment](https://en.wikipedia.org/wiki/Life-cycle_assessment), which is the _de facto_ method for assessing environmental impacts. Some people can go on all day about how to measure the impact of packaging, even though it only represents a small portion of the footprint for most manufactured products.

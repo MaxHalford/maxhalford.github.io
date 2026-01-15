@@ -57,7 +57,7 @@ The main feedback we get about River is performance. Some people want to process
 
 We've had discussions about this, and have decided to work on a new library, which for now is called [light-river](https://github.com/online-ml/light-river). Our analysis is that we're in a similar position as scikit-learn. The latter is choke-full of great machine learning implementations. And yet, in practice, many people use XGBoost and LightGBM. This is because gradient boosted trees have proven time and time again that they're usually the best pick. Apart from explainability, why would anyone run a Naive Bayes or a linear model? In fact, even scikit-learn implemented their own [flavor](https://pydata.org/nyc2019/schedule/presentation/5/deep-dive-into-scikit-learns-histgradientboostingclassifier-and-regressor/) of LightGBM because of how good it is.
 
-<div align="center">{{< tweet user=marktenenholtz id=1593227472392200193 >}}</div>
+<div align="center">{{< x user=marktenenholtz id=1593227472392200193 >}}</div>
 
 Our belief is that a small library dedicated to performance will address this feedback we're. By performance, we mean model accuracy as well as throughput. We also want to focus on portability, for instance by enabling models to be run in WebAssembly. Imagine being able to run an anomaly detection from within your favorite database, how cool would that be?
 

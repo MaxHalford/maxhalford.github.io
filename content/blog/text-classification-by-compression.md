@@ -6,6 +6,8 @@ tags = ['machine-learning', 'text-processing']
 
 **Edit** -- *I posted this [on Hackernews](https://news.ycombinator.com/item?id=27440093) and got some valuable feedback. Many brought up the fact that you should be able to reuse the internal state of the compressor instead of recompressing the training data each time a prediction is made. There's also some insightful references to data compression theory and its ties to statistical learning*
 
+**Edit (2025-06-29)** -- *Python 3.14 introduces [`compression.zstd`](https://docs.python.org/3/library/compression.zstd.html#compression.zstd.train_dict), which implement's Facebook's Zstandard compression algorithm, as discussed in the comments section below.
+
 Last night I felt like reading [*Artificial Intelligence: A Modern Approach*](http://aima.cs.berkeley.edu/). I stumbled on something fun in the natural language processing chapter. The section I was reading dealt with classifying text. The idea of the particular subsection I was reading was to classify documents by using a [compression algorithm](https://en.wikipedia.org/wiki/Data_compression). This is such a left field idea, and yet it does make sense when you think about it. To quote the book:
 
 > In effect, compression algorithms are creating a language model. The [LZW algorithm](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch) in particular directly models a maximum-entropy probability distribution.
