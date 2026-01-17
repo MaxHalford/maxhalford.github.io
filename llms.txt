@@ -11,6 +11,7 @@
 
 
 
+- [Nostalgia for a time I didn’t experience](https://maxhalford.github.io/blog/anemoia/)
 - [Row level lineage at Carbonfact](https://maxhalford.github.io/blog/row-level-lineage/)
 - [No pain no startup](https://maxhalford.github.io/blog/startup-pain-management/)
 - [Scraping Google Calendar events](https://maxhalford.github.io/blog/google-calendar-scraping/)
