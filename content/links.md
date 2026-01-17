@@ -189,6 +189,8 @@ toc: true
 - [If spreadsheets are eternal, are BI tools transitory?](https://www.dataduel.co/if-spreadsheets-are-eternal-are-bi-tools-transitory/)
 - [Dimensional Modeling Techniques](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/) -- old but gold.
 - [Motif](https://www.youtube.com/watch?v=itR-eFJ3voY) -- they had cool ideas about funnel analytics before they sadly shut down.
+- [Facets](https://pair-code.github.io/facets/) -- it's too bad this project is not actively maintained anymore, it had a lot of potential.
+- [Crossfilter](https://crossfilter.github.io/crossfilter/) -- I like these tools that let you slice and dice data in the browser.
 
 ## Mathematics
 
@@ -199,10 +201,6 @@ toc: true
 
 - [Simulating Fluids, Fire, and Smoke in Real-Time - Andrew Chan](https://andrewkchan.dev/posts/fire.html)
 - [GPS - Bartosz Ciechanowski](https://ciechanow.ski/gps/) -- [all his articles](https://ciechanow.ski/archives/) are great.
-
-## Finance
-
-- [Quantitative Trading Summary - Headlands Tech](https://blog.headlandstech.com/2017/08/03/quantitative-trading-summary/)
 
 ## Data engineering
 
@@ -503,6 +501,8 @@ I like these retrocool websites:
 - [Hamburger America](https://www.youtube.com/watch?v=Mkpc5Q1Mgdc&ab_channel=banjoe)
 - [tënk](https://www.on-tenk.com/) -- an eclectic French documentary platform
 - [history of Japan - Bill Wurtz](https://www.youtube.com/watch?v=Mh5LY4Mz15o)
+- [Montreal Ice Surfer](https://www.youtube.com/watch?v=yqDKqXZTYYU)
+- [Latche, l'esprit des lieux](https://www.france.tv/documentaires/documentaires-societe/8031087-latche-l-esprit-des-lieux.html) -- about Mitterand's link with Soustons, which is where I live (archive attempt [here](https://web.archive.org/web/20260117125941/https://www.france.tv/documentaires/documentaires-societe/8031087-latche-l-esprit-des-lieux.html))
 
 ## Kids
 
