@@ -1,11 +1,180 @@
 <!doctype html><html lang=en><head><script defer src=https://analytics.eu.umami.is/script.js data-website-id=ff740bb2-f741-4bc5-975e-49691d82ef39></script><meta charset=utf-8><meta name=generator content="Hugo 0.155.1"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content><meta property="og:url" content="https://maxhalford.github.io/blog/detrak-solver/"><link rel=canonical href=https://maxhalford.github.io/blog/detrak-solver/><meta property="og:url" content="https://maxhalford.github.io/blog/detrak-solver/"><meta property="og:site_name" content="Max Halford"><meta property="og:title" content="Solving Détrak with brute force"><meta property="og:description" content="Détrak is a simple board game. There’s a 5x5 grid, and players need to place 12 domino-like pieces to cover the grid completely. The domino symbols are determined by rolling two dice. The dice are six-sided, and their rolls are shared by all players. Points are scored based on adjacencies of matching symbols.
-The goal is to find the optimal placement of the pieces to maximize the score based on the rolled symbols. What makes it competitive is that everyone has to work with the same rolls. This involves logical thinking and spatial reasoning. But you also have to juggle luck and risk, because you can’t predict the dice rolls."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="blog"><meta property="article:published_time" content="2026-02-02T00:00:00+00:00"><meta property="article:modified_time" content="2026-02-02T00:00:00+00:00"><meta property="article:tag" content="Optimization"><meta property="og:image" content="https://maxhalford.github.io/img/belle-ile.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://maxhalford.github.io/img/belle-ile.jpg"><meta name=twitter:title content="Solving Détrak with brute force"><meta name=twitter:description content="Détrak is a simple board game. There’s a 5x5 grid, and players need to place 12 domino-like pieces to cover the grid completely. The domino symbols are determined by rolling two dice. The dice are six-sided, and their rolls are shared by all players. Points are scored based on adjacencies of matching symbols.
-The goal is to find the optimal placement of the pieces to maximize the score based on the rolled symbols. What makes it competitive is that everyone has to work with the same rolls. This involves logical thinking and spatial reasoning. But you also have to juggle luck and risk, because you can’t predict the dice rolls."><link rel=icon href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦔</text></svg>"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/maxhalford.github.io\/"},"articleSection":"blog","name":"Solving Détrak with brute force","headline":"Solving Détrak with brute force","description":"\u003cp\u003e\u003ca href=\u0022https:\/\/cdn.1j1ju.com\/medias\/6a\/e0\/d8-detrak-regle.pdf\u0022\u003eDétrak\u003c\/a\u003e is a simple board game. There\u0026rsquo;s a 5x5 grid, and players need to place 12 domino-like pieces to cover the grid completely. The domino symbols are determined by rolling two dice. The dice are six-sided, and their rolls are shared by all players. Points are scored based on adjacencies of matching symbols.\u003c\/p\u003e\n\u003cp\u003e\n  \u003cimg src=\u0022https:\/\/github.com\/MaxHalford\/detrak\/raw\/main\/46.jpg\u0022 width=\u002260%\u0022\u003e\n\u003c\/p\u003e\n\u003cp\u003eThe goal is to find the optimal placement of the pieces to maximize the score based on the rolled symbols. What makes it competitive is that everyone has to work with the same rolls. This involves logical thinking and spatial reasoning. But you also have to juggle luck and risk, because you can\u0026rsquo;t predict the dice rolls.\u003c\/p\u003e","inLanguage":"en-US","author":"","creator":"","publisher":"","accountablePerson":"","copyrightHolder":"","copyrightYear":"2026","datePublished":"2026-02-02 00:00:00 \u002b0000 UTC","dateModified":"2026-02-02 00:00:00 \u002b0000 UTC","url":"https:\/\/maxhalford.github.io\/blog\/detrak-solver\/","keywords":["optimization"]}</script><title>Solving Détrak with brute force • Max Halford</title><meta property="og:title" content="Solving Détrak with brute force • Max Halford"><meta property="og:type" content="article"><meta name=description content="Détrak is a simple board game. There&rsquo;s a 5x5 grid, and players need to place 12 domino-like pieces to cover the grid completely. The domino symbols are determined by rolling two dice. The dice are six-sided, and their rolls are shared by all players. Points are scored based on adjacencies of matching symbols.
+The goal is to find the optimal placement of the pieces to maximize the score based on the rolled symbols. What makes it competitive is that everyone has to work with the same rolls. This involves logical thinking and spatial reasoning. But you also have to juggle luck and risk, because you can’t predict the dice rolls."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="blog"><meta property="article:published_time" content="2026-02-02T00:00:00+00:00"><meta property="article:modified_time" content="2026-02-02T00:00:00+00:00"><meta property="article:tag" content="Optimization"><meta property="article:tag" content="Llm"><meta property="og:image" content="https://maxhalford.github.io/img/belle-ile.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://maxhalford.github.io/img/belle-ile.jpg"><meta name=twitter:title content="Solving Détrak with brute force"><meta name=twitter:description content="Détrak is a simple board game. There’s a 5x5 grid, and players need to place 12 domino-like pieces to cover the grid completely. The domino symbols are determined by rolling two dice. The dice are six-sided, and their rolls are shared by all players. Points are scored based on adjacencies of matching symbols.
+The goal is to find the optimal placement of the pieces to maximize the score based on the rolled symbols. What makes it competitive is that everyone has to work with the same rolls. This involves logical thinking and spatial reasoning. But you also have to juggle luck and risk, because you can’t predict the dice rolls."><link rel=icon href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦔</text></svg>"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/maxhalford.github.io\/"},"articleSection":"blog","name":"Solving Détrak with brute force","headline":"Solving Détrak with brute force","description":"\u003cp\u003e\u003ca href=\u0022https:\/\/cdn.1j1ju.com\/medias\/6a\/e0\/d8-detrak-regle.pdf\u0022\u003eDétrak\u003c\/a\u003e is a simple board game. There\u0026rsquo;s a 5x5 grid, and players need to place 12 domino-like pieces to cover the grid completely. The domino symbols are determined by rolling two dice. The dice are six-sided, and their rolls are shared by all players. Points are scored based on adjacencies of matching symbols.\u003c\/p\u003e\n\u003cp\u003e\n  \u003cimg src=\u0022https:\/\/github.com\/MaxHalford\/detrak\/raw\/main\/46.jpg\u0022 width=\u002260%\u0022\u003e\n\u003c\/p\u003e\n\u003cp\u003eThe goal is to find the optimal placement of the pieces to maximize the score based on the rolled symbols. What makes it competitive is that everyone has to work with the same rolls. This involves logical thinking and spatial reasoning. But you also have to juggle luck and risk, because you can\u0026rsquo;t predict the dice rolls.\u003c\/p\u003e","inLanguage":"en-US","author":"","creator":"","publisher":"","accountablePerson":"","copyrightHolder":"","copyrightYear":"2026","datePublished":"2026-02-02 00:00:00 \u002b0000 UTC","dateModified":"2026-02-02 00:00:00 \u002b0000 UTC","url":"https:\/\/maxhalford.github.io\/blog\/detrak-solver\/","keywords":["optimization","llm"]}</script><title>Solving Détrak with brute force • Max Halford</title><meta property="og:title" content="Solving Détrak with brute force • Max Halford"><meta property="og:type" content="article"><meta name=description content="Détrak is a simple board game. There&rsquo;s a 5x5 grid, and players need to place 12 domino-like pieces to cover the grid completely. The domino symbols are determined by rolling two dice. The dice are six-sided, and their rolls are shared by all players. Points are scored based on adjacencies of matching symbols.
 
   
 
 The goal is to find the optimal placement of the pieces to maximize the score based on the rolled symbols. What makes it competitive is that everyone has to work with the same rolls. This involves logical thinking and spatial reasoning. But you also have to juggle luck and risk, because you can&rsquo;t predict the dice rolls."><link rel=stylesheet href=/css/flexboxgrid-6.3.1.min.css><link rel=stylesheet href=/css/github-markdown.min.css><link rel=stylesheet href=/css/highlight/github.css><link rel=stylesheet href=/css/index.css><link rel=preconnect href=https://fonts.gstatic.com><link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Permanent+Marker&display=swap" rel=stylesheet><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:!0,processEnvironments:!0,tags:"ams"},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}},window.addEventListener("load",e=>{document.querySelectorAll("mjx-container").forEach(function(e){e.parentElement.classList+="has-jax"})})</script><script src=https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js></script><script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script></head><body><article class=post id=article><div class="row center-xs" style=text-align:left><div class="col-xs-12 col-sm-10 col-md-7 col-lg-5"><div class=header><header class=header-parts><div class="signatures site-title"><a href=/>Max Halford ツ</a></div><div class=header-links><a class=header-link href=/>Blog</a>
 <a class=header-link href=/links/>Links</a>
 <a class=header-link href=/bio/>Bio</a></div></header></div><header class=post-header><h1 class=post-title>Solving Détrak with brute force</h1><div class="row post-desc"><div class="col-xs-12 post-desc-items"><time class=posts-line-date datetime="2026-02-02 00:00:00 UTC">2026-02-02
-</time><span class=posts-line-tag>optimization</span></div></div></header><div class="post-content markdown-body"><h2 id=toc>Table of contents</h2><nav id=TableOfContents></nav><p><a href=https://cdn.1j1ju.com/medias/6a/e0/d8-detrak-regle.pdf>Détrak</a> is a simple board game. There&rsquo;s a 5x5 grid, and players need to place 12 domino-like pieces to cover the grid completely. The domino symbols are determined by rolling two dice. The dice are six-sided, and their rolls are shared by all players. Points are scored based on adjacencies of matching symbols.</p><p><img src=https://github.com/MaxHalford/detrak/raw/main/46.jpg width=60%></p><p>The goal is to find the optimal placement of the pieces to maximize the score based on the rolled symbols. What makes it competitive is that everyone has to work with the same rolls. This involves logical thinking and spatial reasoning. But you also have to juggle luck and risk, because you can&rsquo;t predict the dice rolls.</p><p>I don&rsquo;t think the game is very popular. There is <a href=https://zwyx.dev/>Alex from Australia</a> who made a <a href=https://detrak.net/2026-02-02>web version</a> of the game, with approval from the original creator. But I haven&rsquo;t seen much else about it online.</p><p>Naturally vanquishing other humans is not enough. What you really want to achieve is reach the optimal score for the given rolls. ~4 years ago I <a href=https://github.com/MaxHalford/detrak/tree/20ada659beea6d06bb57e23f5e894f4eacab7da0>tried</a> to do it via brute force. I got to a working Python script. But it was too slow to find the solution in a reasonable time. I gave up and went on with my life.</p><p>The thing is, I&rsquo;m not a combinatorial optimization expert. I know what beam search is, I understand the purpose of pruning, I&rsquo;m aware of branch and bound, I even read a good chunk of <a href=https://www.goodreads.com/book/show/27543.Artificial_Intelligence>Modern Artificial Intelligence</a> back in the day. But I don&rsquo;t have the experience nor time to determine which techniques are best suited for a given problem. I just tried to optimize my brute-force search as much as I could, but I didn&rsquo;t get very far.</p><p>Fast forward to January 2026. I decided to give it another go. This time I obviously have Claude Code to help me. And this changes everything. I got it to produce a solution that churns ~1M boards per second, which is more than enough to suggest a strong candidate solution in a matter of minutes. The solution came with a <a href=https://maxhalford.github.io/detrak/>decent web interface</a> to interact with the solver.</p><p><img src=/img/blog/detrak-solver/solver.png width=60%></p><p>I am genuinely impressed by how much of a leap this represents compared to my previous attempt. Claude Code enabled me ship a project I would never have taken the time to finish. In that sense, I feel AI coding assistants can make us more creative via productivity gains. Especially for throw-away projects like this, where code maintainability is not a concern. It is invigorating to think of an idea and see it materialize in a short amount of time.</p><p>Mind you, Claude Code did make mistakes. It forgot the diagonal score counted twice, it initially thought both diagonals counted, and it picked the wrong diagonal when I corrected it. But those mistakes are on both sides. I could have been more precise in my prompts.</p><p>I feel bittersweet at the end of this project. This initially was a hard enough problem for me to solve on my own. I don&rsquo;t feel like I learned much now that I have a working solution. My initial intent was to come up with smart tricks by myself, and write a short research paper about it. But now that feels unnecessary.</p></div><script type=text/javascript>var s=document.createElement("script");s.setAttribute("src","https://utteranc.es/client.js"),s.setAttribute("repo","MaxHalford/maxhalford.github.io"),s.setAttribute("issue-term","pathname"),s.setAttribute("crossorigin","anonymous"),s.setAttribute("async",null),s.setAttribute("theme","github-light"),document.body.appendChild(s)</script><div style=display:flex;flex-direction:row;justify-content:center;align-items:center;gap:20px;margin-bottom:30px><div class=do-the-thing><div class=elevator><svg class="sweet-svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" enable-background="new 0 0 100 100" height="100" width="100"><path d="M70 47.5H30c-1.4.0-2.5 1.1-2.5 2.5v40c0 1.4 1.1 2.5 2.5 2.5h40c1.4.0 2.5-1.1 2.5-2.5V50C72.5 48.6 71.4 47.5 70 47.5zm-22.5 40h-5v-25h5v25zm10 0h-5v-25h5v25zm10 0h-5V60c0-1.4-1.1-2.5-2.5-2.5H40c-1.4.0-2.5 1.1-2.5 2.5v27.5h-5v-35h35v35z"/><path d="M50 42.5c1.4.0 2.5-1.1 2.5-2.5V16l5.7 5.7c.5.5 1.1.7 1.8.7s1.3-.2 1.8-.7c1-1 1-2.6.0-3.5l-10-10c-1-1-2.6-1-3.5.0l-10 10c-1 1-1 2.6.0 3.5 1 1 2.6 1 3.5.0l5.7-5.7v24c0 1.4 1.1 2.5 2.5 2.5z"/></svg>
-Back to the top</div></div><div class=subscribe><a href=http://eepurl.com/iRBqMg>Subscribe</a></div></div><script src=https://cdnjs.cloudflare.com/ajax/libs/elevator.js/1.0.1/elevator.min.js></script><script>var elementButton=document.querySelector(".elevator"),elevator=new Elevator({element:elementButton,mainAudio:"/music/elevator.mp3",endAudio:"/music/ding.mp3"})</script><style>.down-arrow{font-size:120px;margin-top:90px;margin-bottom:90px;text-shadow:0 -20px #0c1f31,0 0 #c33329;color:transparent;-webkit-transform:scaleY(.8);-moz-transform:scaleY(.8);transform:scaleY(.8)}.elevator{text-align:center;cursor:pointer;width:140px;margin:auto}.elevator:hover{opacity:.7}.elevator svg{width:40px;height:40px;display:block;margin:auto;margin-bottom:5px}</style></div></div></article><script src=https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin=anonymous referrerpolicy=no-referrer></script><script>const images=Array.from(document.querySelectorAll("img"));images.forEach(e=>{mediumZoom(e,{margin:0,scrollOffset:40,container:null,template:null})})</script></body></html>
+</time><span class=posts-line-tag>optimization</span>
+<span class=posts-line-tag>llm</span></div></div></header><div class="post-content markdown-body"><h2 id=toc>Table of contents</h2><nav id=TableOfContents></nav><p><a href=https://cdn.1j1ju.com/medias/6a/e0/d8-detrak-regle.pdf>Détrak</a> is a simple board game. There&rsquo;s a 5x5 grid, and players need to place 12 domino-like pieces to cover the grid completely. The domino symbols are determined by rolling two dice. The dice are six-sided, and their rolls are shared by all players. Points are scored based on adjacencies of matching symbols.</p><p><img src=https://github.com/MaxHalford/detrak/raw/main/46.jpg width=60%></p><p>The goal is to find the optimal placement of the pieces to maximize the score based on the rolled symbols. What makes it competitive is that everyone has to work with the same rolls. This involves logical thinking and spatial reasoning. But you also have to juggle luck and risk, because you can&rsquo;t predict the dice rolls.</p><p>I don&rsquo;t think the game is very popular. There is <a href=https://zwyx.dev/>Alex from Australia</a> who made a <a href=https://detrak.net/2026-02-02>web version</a> of the game, with approval from the original creator. But I haven&rsquo;t seen much else about it online.</p><p>Naturally vanquishing other humans is not enough. What you really want to achieve is reach the optimal score for the given rolls. ~4 years ago I <a href=https://github.com/MaxHalford/detrak/tree/20ada659beea6d06bb57e23f5e894f4eacab7da0>tried</a> to do it via brute force. I got to a working Python script. But it was too slow to find the solution in a reasonable time. I gave up and went on with my life.</p><p>The thing is, I&rsquo;m not a combinatorial optimization expert. I know what beam search is, I understand the purpose of pruning, I&rsquo;m aware of branch and bound, I even read a good chunk of <a href=https://www.goodreads.com/book/show/27543.Artificial_Intelligence>Modern Artificial Intelligence</a> back in the day. But I don&rsquo;t have the experience nor time to determine which techniques are best suited for a given problem. I just tried to optimize my brute-force search as much as I could, but I didn&rsquo;t get very far.</p><p>Fast forward to January 2026. I decided to give it another go. This time I obviously have Claude Code to help me. And this changes everything. I got it to produce a solution that churns ~1M boards per second, which is more than enough to suggest a strong candidate solution in a matter of minutes. The solution came with a <a href=https://maxhalford.github.io/detrak/>decent web interface</a> to interact with the solver.</p><p><img src=/img/blog/detrak-solver/solver.png width=60%></p><p>I am genuinely impressed by how much of a leap this represents compared to my previous attempt. Claude Code enabled me ship a project I would never have taken the time to finish. In that sense, I feel AI coding assistants can make us more creative via productivity gains. Especially for throw-away projects like this, where code maintainability is not a concern. It is invigorating to think of an idea and see it materialize in a short amount of time.</p><p>Mind you, Claude Code did make mistakes. It forgot the diagonal score counted twice, it initially thought both diagonals counted, and it picked the wrong diagonal when I corrected it. But those mistakes are on both sides. I could have been more precise in my prompts.</p><p>I feel bittersweet at the end of this project. This initially was a hard enough problem for me to solve on my own. I don&rsquo;t feel like I learned much now that I have a working solution. My initial intent was to come up with smart tricks by myself, and write a short research paper about it. But now that feels unnecessary.</p><details><summary>For the record, here is a summary by Claude Code of the solver it built</summary><pre tabindex=0><code>Overview
+
+  The solver uses branch-and-bound with backtracking to find optimal domino placements on a 5×5 grid. The problem is combinatorially
+  explosive (~10^18 nodes without pruning), so heavy optimization is required.
+
+  ---
+  Core Algorithm (Pseudo-code)
+
+  function solve(startSymbol, dominoes):
+      grid = new Grid(startSymbol at [0,0])
+      bestSolution = null
+      bestScore = -∞
+
+      # Phase 1: Quick greedy to get initial bound
+      greedySolution = greedySearch(grid, dominoes, beamWidth=3)
+      if greedySolution:
+          bestScore = score(greedySolution)
+
+      # Phase 2: Full search with pruning
+      stack = [{depth: 0, placements: generatePlacements(grid, dominoes[0])}]
+
+      while stack not empty:
+          frame = stack.top()
+
+          if frame.depth == 12:  # All dominoes placed
+              if grid.score &gt; bestScore:
+                  bestScore = grid.score
+                  bestSolution = grid.copy()
+              backtrack()
+              continue
+
+          # Pruning checks
+          if upperBound(grid, remainingDominoes) &lt;= bestScore:
+              backtrack()
+              continue
+
+          if transpositionTable.has(grid.hash) with better result:
+              backtrack()
+              continue
+
+          if not hasValidTiling(grid):  # Constraint propagation
+              backtrack()
+              continue
+
+          # Try next placement
+          placement = frame.nextPlacement()
+          if placement:
+              grid.place(placement)
+              stack.push({depth+1, generatePlacements(...)})
+          else:
+              backtrack()
+
+  ---
+  Zobrist Hashing
+
+  A technique for incrementally computing a unique hash of the grid state:
+
+  # Initialization (once)
+  ZOBRIST[25][7] = random 64-bit values  # position × symbol
+
+  # Grid hash update (O(1) per cell change)
+  function setCell(idx, newValue):
+      if oldValue != null:
+          hash ^= ZOBRIST[idx][oldValue]   # Remove old
+      hash ^= ZOBRIST[idx][newValue]       # Add new
+
+  # Lookup
+  transpositionTable[hash] = {bestScore, depth, flag}
+
+  Why it works: XOR is its own inverse, so placing/removing a symbol toggles the same bits. Two identical grid states always produce the
+   same hash.
+
+  ---
+  Optimization Techniques
+  ┌────────────────────────┬──────────────────────────────────────────────────────────────────────┐
+  │       Technique        │                             Description                              │
+  ├────────────────────────┼──────────────────────────────────────────────────────────────────────┤
+  │ Transposition Table    │ Cache explored states by Zobrist hash; skip re-exploration           │
+  ├────────────────────────┼──────────────────────────────────────────────────────────────────────┤
+  │ Upper Bound Pruning    │ Estimate max possible score for remaining cells; prune if ≤ best     │
+  ├────────────────────────┼──────────────────────────────────────────────────────────────────────┤
+  │ Constraint Propagation │ Reject states with isolated empty cells or odd empty count           │
+  ├────────────────────────┼──────────────────────────────────────────────────────────────────────┤
+  │ Beam Search            │ Limit to top 20 moves per depth by heuristic score                   │
+  ├────────────────────────┼──────────────────────────────────────────────────────────────────────┤
+  │ Move Ordering          │ Prioritize: killer moves (500×), history heuristic, greedy potential │
+  ├────────────────────────┼──────────────────────────────────────────────────────────────────────┤
+  │ Incremental Scoring    │ Track per-line scores; O(1) total score lookup                       │
+  ├────────────────────────┼──────────────────────────────────────────────────────────────────────┤
+  │ Domino Ordering        │ Try doubles first, then by symbol frequency                          │
+  └────────────────────────┴──────────────────────────────────────────────────────────────────────┘
+  ---
+  Move Ordering Heuristics (Pseudo-code)
+
+  function scorePlacement(placement):
+      score = 0
+
+      # Greedy: matching neighbors
+      score += countMatchingNeighbors(pos1, sym1) * 2
+      score += countMatchingNeighbors(pos2, sym2) * 2
+
+      # Doubles bonus (guaranteed 2-run)
+      if sym1 == sym2: score += 3
+
+      # Killer move (caused cutoff at this depth before)
+      if placement in killerMoves[depth]: score *= 500
+
+      # History heuristic (led to good solutions globally)
+      score += historyTable[placementKey]
+
+      return score
+
+  ---
+  Upper Bound Calculation
+
+  function upperBound(grid, remainingDominoes):
+      total = 0
+      for each line (5 rows + 5 cols + 1 anti-diag):
+          if line complete:
+              total += actualScore(line)
+          else:
+              # Best possible: fill remaining with optimal symbols
+              total += maxPossibleScore(line, remainingDominoes)
+
+      total += antiDiagonalScore  # Counted twice (×2 rule)
+      return total
+
+  ---
+  Constraint Propagation
+
+  function hasValidTiling(grid):
+      emptyCells = grid.countEmpty()
+
+      # Must be even (dominoes cover 2 cells)
+      if emptyCells % 2 != 0: return false
+
+      # No isolated cells (would be impossible to fill)
+      for each empty cell:
+          if all 4 neighbors are filled:
+              return false
+
+      return true
+
+  ---
+  Performance Tricks
+
+  - Flat arrays: 25-cell Int8Array instead of 2D array (cache locality)
+  - Typed arrays: Int32Array for scores in worker (no GC)
+  - Packed move keys: idx1*1000000 + idx2*10000 + sym1*100 + sym2 for fast hashing
+  - Batch processing: Process 3000 nodes, then yield to UI with setTimeout(..., 0)
+  - Web Worker: Full search runs off main thread
+
+  ---
+  Scoring Table
+  ┌────────────┬───────┐
+  │ Run Length │ Score │
+  ├────────────┼───────┤
+  │ 0-1        │ -5    │
+  ├────────────┼───────┤
+  │ 2          │ +2    │
+  ├────────────┼───────┤
+  │ 3          │ +3    │
+  ├────────────┼───────┤
+  │ 4          │ +8    │
+  ├────────────┼───────┤
+  │ 5          │ +10   │
+  └────────────┴───────┘
+  Anti-diagonal scores count double.
+</code></pre></details></div><script type=text/javascript>var s=document.createElement("script");s.setAttribute("src","https://utteranc.es/client.js"),s.setAttribute("repo","MaxHalford/maxhalford.github.io"),s.setAttribute("issue-term","pathname"),s.setAttribute("crossorigin","anonymous"),s.setAttribute("async",null),s.setAttribute("theme","github-light"),document.body.appendChild(s)</script><div style=display:flex;flex-direction:row;justify-content:center;align-items:center;gap:20px;margin-bottom:30px><div class=do-the-thing><div class=elevator><svg class="sweet-svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" enable-background="new 0 0 100 100" height="100" width="100"><path d="M70 47.5H30c-1.4.0-2.5 1.1-2.5 2.5v40c0 1.4 1.1 2.5 2.5 2.5h40c1.4.0 2.5-1.1 2.5-2.5V50C72.5 48.6 71.4 47.5 70 47.5zm-22.5 40h-5v-25h5v25zm10 0h-5v-25h5v25zm10 0h-5V60c0-1.4-1.1-2.5-2.5-2.5H40c-1.4.0-2.5 1.1-2.5 2.5v27.5h-5v-35h35v35z"/><path d="M50 42.5c1.4.0 2.5-1.1 2.5-2.5V16l5.7 5.7c.5.5 1.1.7 1.8.7s1.3-.2 1.8-.7c1-1 1-2.6.0-3.5l-10-10c-1-1-2.6-1-3.5.0l-10 10c-1 1-1 2.6.0 3.5 1 1 2.6 1 3.5.0l5.7-5.7v24c0 1.4 1.1 2.5 2.5 2.5z"/></svg>
+Back to the top</div></div><div class=subscribe><a href=http://eepurl.com/iRBqMg>Subscribe</a></div></div><script src=https://cdnjs.cloudflare.com/ajax/libs/elevator.js/1.0.1/elevator.min.js></script><script>var elementButton=document.querySelector(".elevator"),elevator=new Elevator({element:elementButton,mainAudio:"/music/elevator.mp3",endAudio:"/music/ding.mp3"})</script><style>.down-arrow{font-size:120px;margin-top:90px;margin-bottom:90px;text-shadow:0 -20px #0c1f31,0 0 #c33329;color:transparent;-webkit-transform:scaleY(.8);-moz-transform:scaleY(.8);transform:scaleY(.8)}.elevator{text-align:center;cursor:pointer;width:140px;margin:auto}.elevator:hover{opacity:.7}.elevator svg{width:40px;height:40px;display:block;margin:auto;margin-bottom:5px}</style><div class=related-content><h3 style=margin-top:10px!important;margin-bottom:10px!important>Related posts</h3><ul style=margin-top:0><li><a href=/blog/llm-font-identification/>Do LLMs identify fonts?</a></li></ul></div></div></div></article><script src=https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin=anonymous referrerpolicy=no-referrer></script><script>const images=Array.from(document.querySelectorAll("img"));images.forEach(e=>{mediumZoom(e,{margin:0,scrollOffset:40,container:null,template:null})})</script></body></html>
