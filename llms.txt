@@ -11,6 +11,7 @@
 
 
 
+- [Solving Détrak with brute force](https://maxhalford.github.io/blog/detrak-solver/)
 - [Nostalgia for a time I didn’t experience](https://maxhalford.github.io/blog/anemoia/)
 - [Row level lineage at Carbonfact](https://maxhalford.github.io/blog/row-level-lineage/)
 - [No pain no startup](https://maxhalford.github.io/blog/startup-pain-management/)
