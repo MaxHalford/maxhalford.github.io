@@ -192,15 +192,13 @@ toc: true
 - [Facets](https://pair-code.github.io/facets/) -- it's too bad this project is not actively maintained anymore, it had a lot of potential.
 - [Crossfilter](https://crossfilter.github.io/crossfilter/) -- I like these tools that let you slice and dice data in the browser.
 
-## Mathematics
+## Educational material
 
 - [Paul's Online Notes](https://tutorial.math.lamar.edu/)
 - [Mathematics Quizzes](https://www.mathopolis.com/questions/quizzes.php)
-
-## Physics
-
 - [Simulating Fluids, Fire, and Smoke in Real-Time - Andrew Chan](https://andrewkchan.dev/posts/fire.html)
 - [GPS - Bartosz Ciechanowski](https://ciechanow.ski/gps/) -- [all his articles](https://ciechanow.ski/archives/) are great.
+- [Grid.Space](https://grid.space/stem/)
 
 ## Data engineering
 
