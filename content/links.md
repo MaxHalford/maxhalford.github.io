@@ -503,7 +503,7 @@ I like these retrocool websites:
 - [history of Japan - Bill Wurtz](https://www.youtube.com/watch?v=Mh5LY4Mz15o)
 - [Montreal Ice Surfer](https://www.youtube.com/watch?v=yqDKqXZTYYU)
 - [Latche, l'esprit des lieux](https://www.france.tv/documentaires/documentaires-societe/8031087-latche-l-esprit-des-lieux.html) -- about Mitterand's link with Soustons, which is where I live (archive attempt [here](https://web.archive.org/web/20260117125941/https://www.france.tv/documentaires/documentaires-societe/8031087-latche-l-esprit-des-lieux.html))
-- [Shifty](https://www.bbc.co.uk/iplayer/episodes/m002d2jv/shifty) -- about how Thatcher capsized Britain
+- [Shifty](https://www.bbc.co.uk/iplayer/episodes/m002d2jv/shifty) -- about life in Britain before the turn of the century
 
 ## Kids
 
