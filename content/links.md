@@ -107,6 +107,7 @@ toc: true
 - [Rusty Conover](https://rusty.today/)
 - [Austin Z. Henley](https://austinhenley.com/blog.html)
 - [Charlie Marsh](https://notes.crmarsh.com/)
+- [Andy Pavlo](https://www.cs.cmu.edu/~pavlo/) -- [reviews](https://www.cs.cmu.edu/~pavlo/blog/2026/01/2025-databases-retrospective.html?#fileformats) database landscape every year.
 
 ## Machine learning
 
@@ -502,6 +503,7 @@ I like these retrocool websites:
 - [history of Japan - Bill Wurtz](https://www.youtube.com/watch?v=Mh5LY4Mz15o)
 - [Montreal Ice Surfer](https://www.youtube.com/watch?v=yqDKqXZTYYU)
 - [Latche, l'esprit des lieux](https://www.france.tv/documentaires/documentaires-societe/8031087-latche-l-esprit-des-lieux.html) -- about Mitterand's link with Soustons, which is where I live (archive attempt [here](https://web.archive.org/web/20260117125941/https://www.france.tv/documentaires/documentaires-societe/8031087-latche-l-esprit-des-lieux.html))
+- [Shifty](https://www.bbc.co.uk/iplayer/episodes/m002d2jv/shifty) -- about how Thatcher capsized Britain
 
 ## Kids
 

@@ -138,21 +138,25 @@ body {
 }
 
 .posts-line-subtitle {
-  padding-top: 5px;
+  margin-top: 5px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 10px;
 }
 
-.posts-line-emoji {
-  font-size: 1rem;
-  padding-top: 5px;
+.posts-line-icon {
+  color: gray;
+  display: flex;
+}
+
+.posts-line-icon svg {
+  display: block;
 }
 
 .posts-line-date {
   color: gray;
   font-size: 1rem;
-  padding-top: 3px;
   font-family: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo",
     "Courier", monospace;
   white-space: nowrap;
@@ -167,7 +171,6 @@ body {
   border-width: 2px;
   border-radius: 8px;
   padding: 4px 5px;
-  margin-top: 1px;
   font-size: 0.9rem;
   white-space: nowrap;
   font-family: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo",
@@ -393,7 +396,7 @@ code.has-jax {
   .posts-line-tag {
     display: none;
   }
-  .posts-line-emoji {
+  .posts-line-icon {
     display: none;
   }
 }
