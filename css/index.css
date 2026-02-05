@@ -57,6 +57,33 @@ pre {
   background-color: #f6f8fa !important;
   font-size: 15px !important;
   border-radius: 6px !important;
+  position: relative;
+}
+
+.copy-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+  color: #57606a;
+  border-radius: 4px;
+}
+
+pre:hover .copy-button {
+  opacity: 1;
+}
+
+.copy-button:hover {
+  background: #d0d7de;
+}
+
+.copy-button.copied {
+  color: #1a7f37;
 }
 
 /* i18n */
@@ -277,25 +304,22 @@ body {
 
 details {
   margin-bottom: 16px;
-  border-color: #eaecef;
-  border-width: 3px;
-  border-radius: 5px;
-  border-style: solid;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  border: none;
 }
 
 details > summary {
-  margin-left: 10px;
-  font-weight: bold;
+  font-weight: 600;
+  color: #57606a;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+details > summary:hover {
+  color: #0969da;
 }
 
 details > pre {
-  margin-top: 6px;
-}
-
-summary:hover {
-  cursor: pointer;
+  margin-top: 12px;
 }
 
 .inline-svg {
