@@ -11,6 +11,7 @@
 
 
 
+- [Text classification with Python 3.14's zstd module](https://maxhalford.github.io/blog/text-classification-zstd/)
 - [Solving Détrak with brute force](https://maxhalford.github.io/blog/detrak-solver/)
 - [Nostalgia for a time I didn’t experience](https://maxhalford.github.io/blog/anemoia/)
 - [Row level lineage at Carbonfact](https://maxhalford.github.io/blog/row-level-lineage/)
