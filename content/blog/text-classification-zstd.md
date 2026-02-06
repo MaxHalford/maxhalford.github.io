@@ -4,7 +4,7 @@ title = "Text classification with Python 3.14's zstd module"
 tags = ['machine-learning', 'text-processing', 'python']
 +++
 
-Python 3.14 [introduced](https://docs.python.org/3/whatsnew/3.14.html#whatsnew314-zstandard) a new module called [`compression.zstd`](https://docs.python.org/3/library/compression.zstd.html). It is a standard library implementation of Facebook's [Zstandard (Zstd)](https://en.wikipedia.org/wiki/Zstd) compression algorithm. It was developed a decade ago by Yann Collet, who holds a [blog](https://fastcompression.blogspot.com/) devoted to compression algorithms.
+Python 3.14 [introduced](https://docs.python.org/3/whatsnew/3.14.html#whatsnew314-zstandard) the [`compression.zstd`](https://docs.python.org/3/library/compression.zstd.html) module. It is a standard library implementation of Facebook's [Zstandard (Zstd)](https://en.wikipedia.org/wiki/Zstd) compression algorithm. It was developed a decade ago by Yann Collet, who holds a [blog](https://fastcompression.blogspot.com/) devoted to compression algorithms.
 
 I am not a compression expert, but Zstd caught my eye because it supports incremental compression. You can feed it data to compress in chunks, and it will maintain an internal state. It's particularly well [suited](https://facebook.github.io/zstd/) for compressing small data. It's perfect for the classify text via compression trick, which I described in [a previous blog post](/blog/text-classification-by-compression/) 5 years ago.
 
