@@ -232,7 +232,7 @@ talk.religion.misc       0.87      0.85      0.86       628
 
 The results are good: it reaches 91% accuracy in less than 2 seconds. To put this into perspective, the LZW-based implementation I made 5 years ago reached 89% accuracy in about 32 minutes. So this is a significant improvement, both in terms of accuracy and speed.
 
-To give another element of comparison, I ran a batch TF-IDF + logistic regression baseline on the same dataset. The model is retrained on all the previous data every 100 samples.
+To give another element of comparison, I ran a batch TF-IDF + logistic regression baseline on the same dataset. The model is retrained every 100 iterations, on all previously seen data for the given iteration.
 
 <details>
   <summary>Batch TF-IDF + logistic regression comparison</summary>
