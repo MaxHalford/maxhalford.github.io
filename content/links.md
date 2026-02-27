@@ -108,6 +108,8 @@ toc: true
 - [Austin Z. Henley](https://austinhenley.com/blog.html)
 - [Charlie Marsh](https://notes.crmarsh.com/)
 - [Andy Pavlo](https://www.cs.cmu.edu/~pavlo/) -- [reviews](https://www.cs.cmu.edu/~pavlo/blog/2026/01/2025-databases-retrospective.html?#fileformats) database landscape every year.
+- [Harriet Fell](https://www.ccs.neu.edu/home/fell/)
+- [Cam Pedersen](https://campedersen.com/) -- has a pretty Berkeley Mono website
 
 ## Machine learning
 
@@ -260,6 +262,7 @@ toc: true
 - [Conditional Optimism: Economic Perspectives on Deep Decarbonization - Michael Grubb](https://www.ineteconomics.org/perspectives/blog/growth-with-decarbonization-is-not-an-oxymoron)
 - [Climate Change: a practical guide](https://www.tmrow.com/climatechange/)
 - [The computational structure of life cycle assessment - Reinout Heijungs & Sangwon Suh](/static/files/misc/The%20Computational%20Structure%20of%20Life%20Cycle%20Assessment.pdf) -- good introduction to LCA algorithms for technical people.
+- [Ecodex](https://getecodex.com/) -- homogenous database of emission factors
 
 ## Data sources
 
@@ -274,6 +277,8 @@ toc: true
 - [Our World in Data](https://ourworldindata.org/)
 - [Beyond the route: Introducing granular MTA bus speed data](https://new.mta.info/article/beyond-route-introducing-granular-mta-bus-speed-data)
 - [csvbase](https://csvbase.com/)
+- [CIA World Factbook](https://cia-factbook-archive.fly.dev/)
+
 
 ## Tables is all you need
 
@@ -508,3 +513,7 @@ I like these retrocool websites:
 ## Kids
 
 - [The Kid Should See This](https://thekidshouldseethis.com/)
+
+## Cycling
+
+- [Sheldon Brown's Bicycle Glossary](https://www.sheldonbrown.com/glossary.html)
