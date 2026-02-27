@@ -3136,6 +3136,8 @@ class: center, middle
 &lt;li&gt;&lt;a href="https://austinhenley.com/blog.html"&gt;Austin Z. Henley&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://notes.crmarsh.com/"&gt;Charlie Marsh&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.cs.cmu.edu/~pavlo/"&gt;Andy Pavlo&lt;/a&gt; &amp;ndash; &lt;a href="https://www.cs.cmu.edu/~pavlo/blog/2026/01/2025-databases-retrospective.html?#fileformats"&gt;reviews&lt;/a&gt; database landscape every year.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ccs.neu.edu/home/fell/"&gt;Harriet Fell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://campedersen.com/"&gt;Cam Pedersen&lt;/a&gt; &amp;ndash; has a pretty Berkeley Mono website&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="machine-learning"&gt;Machine learning&lt;/h2&gt;
 &lt;ul&gt;
@@ -3288,6 +3290,7 @@ class: center, middle
 &lt;li&gt;&lt;a href="https://www.ineteconomics.org/perspectives/blog/growth-with-decarbonization-is-not-an-oxymoron"&gt;Conditional Optimism: Economic Perspectives on Deep Decarbonization - Michael Grubb&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.tmrow.com/climatechange/"&gt;Climate Change: a practical guide&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://maxhalford.github.io/static/files/misc/The%20Computational%20Structure%20of%20Life%20Cycle%20Assessment.pdf"&gt;The computational structure of life cycle assessment - Reinout Heijungs &amp;amp; Sangwon Suh&lt;/a&gt; &amp;ndash; good introduction to LCA algorithms for technical people.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://getecodex.com/"&gt;Ecodex&lt;/a&gt; &amp;ndash; homogenous database of emission factors&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="data-sources"&gt;Data sources&lt;/h2&gt;
 &lt;ul&gt;
@@ -3302,6 +3305,7 @@ class: center, middle
 &lt;li&gt;&lt;a href="https://ourworldindata.org/"&gt;Our World in Data&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://new.mta.info/article/beyond-route-introducing-granular-mta-bus-speed-data"&gt;Beyond the route: Introducing granular MTA bus speed data&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://csvbase.com/"&gt;csvbase&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cia-factbook-archive.fly.dev/"&gt;CIA World Factbook&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="tables-is-all-you-need"&gt;Tables is all you need&lt;/h2&gt;
 &lt;ul&gt;
