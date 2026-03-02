@@ -2,8 +2,8 @@
 
 > Max Halford's blog ツ
 
-- [Blog](https://maxhalford.github.io/blog/)
 - [Bio](https://maxhalford.github.io/bio/)
+- [Blog](https://maxhalford.github.io/blog/)
 - [Links](https://maxhalford.github.io/links/)
 - [Slides](https://maxhalford.github.io/slides/)
 
