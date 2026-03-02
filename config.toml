@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "Max Halford"
 theme = "yinyang"
 enableRobotsTXT = true
+enableGitInfo = true
 pygmentsUseClasses = true
 
 [params.author]
@@ -15,6 +16,9 @@ pygmentsUseClasses = true
   favicon = "/img/favicon.ico"
   images = ["/img/belle-ile.jpg"]
   description = "Max Halford's blog ツ"
+
+[params.social]
+  twitter = "halford_max"
 
 [markup.goldmark.renderer]
   unsafe = true

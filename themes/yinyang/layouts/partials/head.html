@@ -24,30 +24,41 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="{{ .Site.Params.author.name }}" />
-  <meta property="og:url" content="{{ .Permalink }}" />
   <link rel="canonical" href="{{ .Permalink }}" />
 
-  {{ template "_internal/opengraph.html" . }} {{ template
-  "_internal/twitter_cards.html" . }}
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:site_name" content="{{ .Site.Title }}" />
+  <meta property="og:locale" content="{{ replace .Site.LanguageCode "-" "_" }}" />
+  {{ with .Site.Params.images -}}
+  <meta property="og:image" content="{{ index . 0 | absURL }}" />
+  {{- end }}
+
+  {{ template "_internal/twitter_cards.html" . }}
 
   <link
     rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦔</text></svg>"
   />
-  <!-- {{- if .Site.Params.favicon -}}
-  <link rel="shortcut icon" href="{{ .Site.Params.favicon }}" type="image/x-png" />
-  {{- end -}} -->
 
   {{ partial "seo" . }} {{- if .IsHome -}}
   <title>{{ .Site.Title }}</title>
   <meta property="og:title" content="{{ .Site.Title }}" />
   <meta property="og:type" content="website" />
   <meta name="description" content="{{ .Site.Params.description }}" />
+  <meta property="og:description" content="{{ .Site.Params.description }}" />
   {{- else -}}
   <title>{{ .Title }} • {{ .Site.Title }}</title>
   <meta property="og:title" content="{{ .Title }} • {{ .Site.Title }}" />
   <meta property="og:type" content="article" />
-  <meta name="description" content="{{ default .Summary .Description }}" />
+  <meta name="description" content="{{ default (.Summary | plainify | truncate 200) .Description }}" />
+  <meta property="og:description" content="{{ default (.Summary | plainify | truncate 200) .Description }}" />
+  {{- if .Date -}}
+  <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" />
+  <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}" />
+  {{- end -}}
+  {{- range .Params.tags -}}
+  <meta property="article:tag" content="{{ . }}" />
+  {{- end -}}
   {{- end }} <link rel="stylesheet" href="{{ .Site.Params.staticPrefix }}{{
   "css/flexboxgrid-6.3.1.min.css" | relURL }}" /> {{ if not .IsHome -}} <link
   rel="stylesheet" href="{{ .Site.Params.staticPrefix }}{{
