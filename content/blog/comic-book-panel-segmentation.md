@@ -52,7 +52,7 @@ Image.fromarray((grayscale * 255).astype('uint8'), 'L')
 
 <div align="center" >
 <figure style="width: 90%;">
-    <img src="/img/blog/comic-book-panel-segmentation/grayscale.png">
+    <img src="/img/blog/comic-book-panel-segmentation/grayscale.webp">
 </figure>
 </div>
 
@@ -282,7 +282,7 @@ img
 
 <div align="center" >
 <figure style="width: 90%;">
-    <img src="/img/blog/comic-book-panel-segmentation/order.png">
+    <img src="/img/blog/comic-book-panel-segmentation/order.webp">
 </figure>
 </div>
 
@@ -304,7 +304,7 @@ I determined which steps to perform by working with a single example. Obviously,
 
 <div align="center" >
 <figure style="width: 90%;">
-    <img src="/img/blog/comic-book-panel-segmentation/order_nested.png">
+    <img src="/img/blog/comic-book-panel-segmentation/order_nested.webp">
 </figure>
 </div>
 
@@ -329,7 +329,7 @@ Another thing I didn't take care of is the handling of non-square panels. For ex
 
 <div align="center" >
 <figure style="width: 90%;">
-    <img src="/img/blog/comic-book-panel-segmentation/non_rectangular_panels.png">
+    <img src="/img/blog/comic-book-panel-segmentation/non_rectangular_panels.webp">
 </figure>
 </div>
 

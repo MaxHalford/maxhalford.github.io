@@ -11,7 +11,7 @@ Recently some friends and I decided to launch [openbikes.co](http://openbikes.co
 
 In this post I want to show you the tools and the code to get a fully functional website for visualizing live data. In this particular case we will display bike stations in Toulouse, however I will keep the scripts as general as possible so they are easily modifiable for different data. Before starting here is a glimpse of the end result:
 
-<img class="centered" src="/img/blog/bike-stations/bikes.png"/>
+<img class="centered" src="/img/blog/bike-stations/bikes.webp"/>
 
 Pretty neat right? The marker color represents how many bikes are available and the circle in the center of each marker shows how many bike stands are available. In both cases, the <font color="forestgreen">greener</font> the marker the higher the amount (a <font color="firebrick">red</font>) indicator means not a lot. Thus <font color="orange">yellow</font> means that the bike station is "balanced". The cool thing is that you can set this up to update every minute or so.
 

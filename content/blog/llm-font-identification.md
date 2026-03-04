@@ -16,7 +16,7 @@ I evaluated only two LLMs: `gpt-4o-mini` and `gemini-2.5-flash-preview-05-20`. E
 
 <div align="center" >
 <figure style="width: 90%; margin: 0;">
-    <img src="/img/blog/llm-font-identification/marmite.png" style="box-shadow: none;">
+    <img src="/img/blog/llm-font-identification/marmite.webp" style="box-shadow: none;">
 </figure>
 </div>
 
@@ -24,13 +24,13 @@ Here are a couple extra difficult cases:
 
 <div align="center" >
 <figure style="width: 90%; margin: 0;">
-    <img src="/img/blog/llm-font-identification/taylor-swift.png" style="box-shadow: none;">
+    <img src="/img/blog/llm-font-identification/taylor-swift.webp" style="box-shadow: none;">
 </figure>
 </div>
 
 <div align="center" >
 <figure style="width: 90%; margin: 0;">
-    <img src="/img/blog/llm-font-identification/luka-cinta.png" style="box-shadow: none;">
+    <img src="/img/blog/llm-font-identification/luka-cinta.webp" style="box-shadow: none;">
 </figure>
 </div>
 

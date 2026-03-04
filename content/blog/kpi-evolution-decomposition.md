@@ -2,7 +2,7 @@
 date = "2023-08-09"
 title = 'Answering "Why did the KPI change?" using decomposition'
 tags = ['data-science']
-images = ["/img/blog/kpi-evolution-decomposition/sum-conjugate.png"]
+images = ["/img/blog/kpi-evolution-decomposition/sum-conjugate.webp"]
 toc = true
 +++
 
@@ -135,7 +135,7 @@ The intuition to have is geometric. The KPI can be represented as a rectangle be
 
 <div align="center" >
 <figure>
-    <img style="box-shadow: none;" src="/img/blog/kpi-evolution-decomposition/sum-right-left.png">
+    <img style="box-shadow: none;" src="/img/blog/kpi-evolution-decomposition/sum-right-left.webp">
 </figure>
 </div>
 
@@ -207,7 +207,7 @@ If you've been paying attention, you might have noticed that I sliced the KPI ar
 
 <div align="center" >
 <figure>
-    <img style="box-shadow: none;" src="/img/blog/kpi-evolution-decomposition/sum-left-right.png">
+    <img style="box-shadow: none;" src="/img/blog/kpi-evolution-decomposition/sum-left-right.webp">
 </figure>
 </div>
 
@@ -240,7 +240,7 @@ This is what the decomposition looks like:
 
 <div align="center" >
 <figure>
-    <img style="box-shadow: none;" src="/img/blog/kpi-evolution-decomposition/sum-conjugate.png">
+    <img style="box-shadow: none;" src="/img/blog/kpi-evolution-decomposition/sum-conjugate.webp">
 </figure>
 </div>
 

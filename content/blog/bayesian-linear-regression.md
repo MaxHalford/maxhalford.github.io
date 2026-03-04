@@ -361,7 +361,7 @@ for i, (xi, yi) in enumerate(sample(n_samples)):
 ```
 </details>
 
-![viz](/img/blog/bayesian-linear-regression/viz.png)
+![viz](/img/blog/bayesian-linear-regression/viz.webp)
 
 The first column represents the prior distribution of the weights. In other words, it shows what the model think the parameters should be, before seeing the next sample. The second column shows the distribution of the weights after the model has processed the next sample. In other words it represents the posterior distribution. You'll notice that the prior distribution at each row is equal to the posterior distribution of the previous row. This stems from the fact that the posterior after having seen a sample becomes the prior for the next sample. Finally, the third column shows how this impacts the uncertainty of the posterior predictive distribution. Intuitively, as more samples arrive, the uncertainty lowers and the shaded area -- which is a 95% predictive interval -- becomes slimmer. Likewise, the fact that the ellipse representing the weight distribution shrinks indicates that the model is growing in confidence. As we will see later on, this isn't always a good thing -- hint: [concept drift](https://en.wikipedia.org/wiki/Concept_drift).
 

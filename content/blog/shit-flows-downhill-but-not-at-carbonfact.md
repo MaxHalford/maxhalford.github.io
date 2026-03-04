@@ -18,7 +18,7 @@ I'm aligned with Joe that many issues stem from the lack of unison between engin
 
 <div align="center" >
 <figure style="width: 60%; margin: 0;">
-    <img style="box-shadow: none" src="/img/blog/shit-flows-downhill-but-not-at-carbonfact/traditional.png">
+    <img style="box-shadow: none" src="/img/blog/shit-flows-downhill-but-not-at-carbonfact/traditional.webp">
     <figcaption><i>A traditional setup in the Modern Data Stack.</i></figcaption>
 </figure>
 </div>
@@ -43,7 +43,7 @@ We do things differently at [Carbonfact](https://www.carbonfact.com/). Both the 
 
 <div align="center" >
 <figure style="width: 60%; margin: 0;">
-    <img style="box-shadow: none" src="/img/blog/shit-flows-downhill-but-not-at-carbonfact/at-carbonfact.png">
+    <img style="box-shadow: none" src="/img/blog/shit-flows-downhill-but-not-at-carbonfact/at-carbonfact.webp">
     <figcaption><i>What we do at Carbonfact.</i></figcaption>
 </figure>
 </div>

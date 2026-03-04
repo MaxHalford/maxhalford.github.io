@@ -122,6 +122,6 @@ function drawPolygon(ctx, polygon) {
 
 And we're nearly done! I hard coded some polygons so that the rest of the space is filled. I didn't figure out any obvious property to put it into a loop yet.
 
-![initial](/img/blog/recursive-polygons/result.png)
+![initial](/img/blog/recursive-polygons/result.webp)
 
 The full code is available on [GitHub](https://github.com/MaxHalford/procedural-art/blob/master/1_recursive_polygons.html).
