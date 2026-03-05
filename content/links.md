@@ -225,6 +225,7 @@ toc: true
 - [Dimensional Modeling Techniques - Kimball Group](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/)
 - [The power of interning: making a time series database 2000x smaller in Rust - Guillaume Endignoux](https://gendignoux.com/blog/2025/03/03/rust-interning-2000x.html) -- this guy takes the git scraping pattern really far, I like his taste.
 - [Functional Data Engineering — a modern paradigm for batch data processing](https://maximebeauchemin.medium.com/functional-data-engineering-a-modern-paradigm-for-batch-data-processing-2327ec32c42a) -- I strongly believe in this approach.
+- [BigQuery Best Practices](/files/misc/BigQuery%20Best%20Practices.pdf)
 
 ## Inspiring data analysis
 
@@ -310,6 +311,7 @@ toc: true
 - [Burnout profile](https://www.lizandmollie.com/burnout-profile)
 - [High Agency In 30 Minutes - George Mack](https://www.highagency.com/)
 - [Richard Feynman on the question *Why?*](https://www.youtube.com/watch?v=36GT2zI8lVA)
+- [Thinflation](https://mitxela.com/rants/thinflation)
 
 ## SQL
 
