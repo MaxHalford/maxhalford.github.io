@@ -11,11 +11,7 @@
 
   <!-- Umami -->
   {{ if not (eq hugo.Environment "development") }}
-  <script
-    defer
-    src="https://analytics.eu.umami.is/script.js"
-    data-website-id="ff740bb2-f741-4bc5-975e-49691d82ef39"
-  ></script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="ff740bb2-f741-4bc5-975e-49691d82ef39"></script>
   {{ end }}
 
   <meta charset="utf-8" />
@@ -29,8 +25,26 @@
   <meta property="og:url" content="{{ .Permalink }}" />
   <meta property="og:site_name" content="{{ .Site.Title }}" />
   <meta property="og:locale" content="{{ replace .Site.LanguageCode "-" "_" }}" />
-  {{ with .Site.Params.images -}}
-  <meta property="og:image" content="{{ index . 0 | absURL }}" />
+  {{- $ogImage := "" -}}
+  {{- with .Params.images -}}
+    {{- $ogImage = index . 0 -}}
+  {{- else -}}
+    {{- with .Resources.ByType "image" -}}
+      {{- $ogImage = (index . 0).RelPermalink -}}
+    {{- else -}}
+      {{- $firstImg := findRE `<img[^>]+src="([^"]+)"` .Content 1 -}}
+      {{- with $firstImg -}}
+        {{- $ogImage = replaceRE `<img[^>]+src="([^"]+)".*` "$1" (index . 0) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $ogImage -}}
+    {{- with .Site.Params.images -}}
+      {{- $ogImage = index . 0 -}}
+    {{- end -}}
+  {{- end -}}
+  {{- with $ogImage }}
+  <meta property="og:image" content="{{ . | absURL }}" />
   {{- end }}
 
   {{ template "_internal/twitter_cards.html" . }}

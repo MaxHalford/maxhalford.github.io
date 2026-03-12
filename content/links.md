@@ -463,6 +463,7 @@ toc: true
 - [Helena Zhang](https://www.helenazhang.com/) -- made [Departure Mono](https://departuremono.com/)
 - [hey.milo.gg](https://hey.milo.gg/)
 - [McMaster-Carr](https://www.mcmaster.com/) -- every online store should feel more like this.
+- [delphi.tools](https://delphi.tools/)
 
 I like these retrocool websites:
 
@@ -497,9 +498,10 @@ I like these retrocool websites:
 - [wplace.live](https://wplace.live/)
 - [historicaltechtree.com](https://www.historicaltechtree.com/) -- just like Civ!
 - [loadmo.re](https://loadmo.re/)
-- <a href="https://xn--sr8hvo.ws/previous">←</a>
+- [Admonymous](https://www.admonymous.co/)
+- <a href="https://xn--sr8hvo.ws/previous">⬅️</a>
 <a href="https://xn--sr8hvo.ws">IndieWeb Webring</a> 🕸💍
-<a href="https://xn--sr8hvo.ws/next">→</a>
+<a href="https://xn--sr8hvo.ws/next">➡️</a>
 
 
 ## Documentaries
