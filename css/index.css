@@ -60,6 +60,7 @@ pre {
   position: relative;
 }
 
+
 .copy-button {
   position: absolute;
   top: 8px;
@@ -341,6 +342,7 @@ details > pre {
 .markdown-body code {
   padding-bottom: 2px !important;
   padding-top: 5px !important;
+  white-space: nowrap;
 }
 
 table {
