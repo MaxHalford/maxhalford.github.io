@@ -68,7 +68,7 @@ $$
 I' \times (C' - C)
 $$
 
-The first term would be attributed to impressions evolutions, whilst the second would be attributed to the click rate change. Note that this is a purely geometric intepretation. An alternative slicing is shown in the following figure:
+The first term would be attributed to impressions evolutions, whilst the second would be attributed to the click rate change. Note that this is a purely geometric interpretation. An alternative slicing is shown in the following figure:
 
 <div align="center" >
 <figure  style="width: 50%;">
@@ -286,4 +286,4 @@ This is a good sanity check if you're going to implement this yourself.
 
 ## Towards a general solution
 
-Alas I don't have time to dive more into this. I've just had a baby and don't have the leasure to write as I used to. I wanted to put this on paper while the topic was hot in my mind. I will come back to it later, and hopefully derive a more general solution that can be applied to any metric formula. Indeed, the previous article and this one cover sums, ratios, and products. I suspect there is a general decomposition framework that can be applied to any formula.
+Alas I don't have time to dive more into this. I've just had a baby and don't have the leisure to write as I used to. I wanted to put this on paper while the topic was hot in my mind. I will come back to it later, and hopefully derive a more general solution that can be applied to any metric formula. Indeed, the previous article and this one cover sums, ratios, and products. I suspect there is a general decomposition framework that can be applied to any formula.

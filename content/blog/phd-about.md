@@ -29,7 +29,7 @@ Typically, relations are [normalised](https://en.wikipedia.org/wiki/Database_nor
 
 Normalisation has a lot of benefits, one of them being that it avoids redundancies. However, as I will try to make evident throughout this post, analysing data that is scattered across relations is a pain in the neck. Indeed, the tools that statisticians have at their disposal are typically made to process data that belongs to a single relation/entity. Of course, the data from the subrelations, can be joined back together, but this is a costly operation that is avoided at all cost in certain situations.
 
-As I mentionned, the focus of my PhD was on the querying aspect of databases. Users issue queries to the database via an interrogation language, which in 99% of cases is some flavor of [SQL](https://www.wikiwand.com/fr/Structured_Query_Language). For example, the following query can be used to count the number of meatball purchases that were made by blond Swedes in Ikea stores:
+As I mentioned, the focus of my PhD was on the querying aspect of databases. Users issue queries to the database via an interrogation language, which in 99% of cases is some flavor of [SQL](https://www.wikiwand.com/fr/Structured_Query_Language). For example, the following query can be used to count the number of meatball purchases that were made by blond Swedes in Ikea stores:
 
 ```sql
 SELECT COUNT(*)
@@ -67,7 +67,7 @@ The query compiler outputs a *query execution plan* (QEP for short). A QEP is a 
 <img src="/img/blog/phd-about/plan_3.svg" width="90%">
 </p>
 
-What changed between each of the above QEPs is the order in which the relations are joined with each other. This might seem harmless to the unnitiated eye, but in practice it can make the different between making a query run in 1 second or 1 hour. To summarise:
+What changed between each of the above QEPs is the order in which the relations are joined with each other. This might seem harmless to the uninitiated eye, but in practice it can make the different between making a query run in 1 second or 1 hour. To summarise:
 
 1. A user issues an SQL query to a database.
 2. Each query can be answered with many different query execution plans.
@@ -98,7 +98,7 @@ Due to the fact that a QEP is a tree of operators, its cost is the sum of the co
 
 Each algorithm has its pros and cons. Indeed, one algorithm might be faster than another, but it might also require more live memory. Therefore, in addition to picking the structure of the QEP, a query optimiser also has to decide which physical operators to use! In practice, a run-of-the-mill query with a half-dozen of relations can easily have thousands of candidate QEPs to consider.
 
-Luckily, the cost of an operator can be determined in a straighforward fashion. Indeed, the cost of an algorithm is something that can be derived by looking at what it does and what of data structures it uses. For instance, the cost of a nested loop join is proportional to $m \times n$, where $m$ is the length of the left-hand side relation and $n$ is the length of the right-hand side relation. I say proportional because the true cost also has to incorporate the time it takes to process one row, the time it takes to read a page of data from the disk, the time it takes to transfer a chunk of data in case of a network transfer, etc. But these variables don't have too much impact; what matters most is that the cost is a function of $m$ and $n$.
+Luckily, the cost of an operator can be determined in a straightforward fashion. Indeed, the cost of an algorithm is something that can be derived by looking at what it does and what kind of data structures it uses. For instance, the cost of a nested loop join is proportional to $m \times n$, where $m$ is the length of the left-hand side relation and $n$ is the length of the right-hand side relation. I say proportional because the true cost also has to incorporate the time it takes to process one row, the time it takes to read a page of data from the disk, the time it takes to transfer a chunk of data in case of a network transfer, etc. But these variables don't have too much impact; what matters most is that the cost is a function of $m$ and $n$.
 
 This is where cost modeling breaks down. Although the *formula* for determining the cost of an operator is easy to determine, you still have to determine its input sizes. In the previous paragraph, the input sizes are $m$ and $n$. For instance, take a nested loop join between purchases and customers. Let's say that there $300,000$ purchases and $80,000$ customers. The estimated cost of the nested loop join is thus $300,000 \times 80,000 = 24$ billion. The latter is then some multiplied by some constants that determine how long it takes to process one row. What's important to understand is that it's easy to determine the cost of the join because the number of purchases and of customers are known. But what happens if, say, we're joining blond Swedish customers with meatball purchases?
 

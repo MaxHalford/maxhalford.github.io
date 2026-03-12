@@ -472,7 +472,7 @@ $$\begin{equation}u = \alpha_t y (1 - p_t)^\gamma\end{equation}$$
 
 $$\begin{equation}v = \gamma p_t \log(p_t) + p_t - 1\end{equation}$$
 
-The derivatives of $u$ of $v$ with respect to $p_t$ are quite straightfoward:
+The derivatives of $u$ of $v$ with respect to $p_t$ are quite straightforward:
 
 $$\begin{equation}\frac{\partial u}{\partial p_t} = -\gamma \alpha_t y (1 - p_t)^{\gamma - 1} \end{equation}$$
 

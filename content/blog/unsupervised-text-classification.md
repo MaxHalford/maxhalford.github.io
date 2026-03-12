@@ -66,7 +66,7 @@ Manufacturers' domestic sales growth fell back slightly in the quarter, the surv
 The BCC found confidence increased in the quarter across both the manufacturing and service sectors although overall it failed to reach the levels at the start of 2004. The reduced threat of interest rate increases had contributed to improved confidence, it said. The Bank of England raised interest rates five times between November 2003 and August last year. But rates have been kept on hold since then amid signs of falling consumer confidence and a slowdown in output. "The pressure on costs and margins, the relentless increase in regulations, and the threat of higher taxes remain serious problems," BCC director general David Frost said. "While consumer spending is set to decelerate significantly over the next 12-18 months, it is unlikely that investment and exports will rise sufficiently strongly to pick up the slack."
 ```
 
-The first step take is to clean the text. I wrote a simple function that does just that.
+The first step to take is to clean the text. I wrote a simple function that does just that.
 
 ```py
 import string
@@ -93,7 +93,7 @@ I'm going to be using [spaCy](https://spacy.io/) for manipulating word embedding
 $ python -m spacy download en_core_web_lg
 ```
 
-Note that you could use any pre-trained word embeddings, including `en_core_web_sm` and `en_core_web_md`, which are smaller variants of `en_core_web_lg`. The fastText embeddings that I mentionned above would work too. Naturally, the performance of this method is going to be highly dependent on the quality of the word embeddings, as well as their adequacy with the dataset at hand. I'll get back to this point later on.
+Note that you could use any pre-trained word embeddings, including `en_core_web_sm` and `en_core_web_md`, which are smaller variants of `en_core_web_lg`. The fastText embeddings that I mentioned above would work too. Naturally, the performance of this method is going to be highly dependent on the quality of the word embeddings, as well as their adequacy with the dataset at hand. I'll get back to this point later on.
 
 The word vectors can be opened with a one-liner:
 

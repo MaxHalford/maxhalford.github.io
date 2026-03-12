@@ -19,7 +19,7 @@ class Point {
 }
 ```
 
-My intention is to have some kind of `Cross` class and then do some sort of `for` loop. The details of the `for` loop are the most tricky part, we'll back to them further on. Let's first implement the `Cross` class. I simply represented a cross as a stitch of 5 squares. My idea is that if I'm given the center of the cross then I guess the coordinates of the squares that it is composed of. The first thing to do is thus to define a `Square` class. We'll give it a `draw` method to display it on a `canvas`. The drawing procedure starts at the top-left of the square and makes it way around each corner in a clockwise manner.
+My intention is to have some kind of `Cross` class and then do some sort of `for` loop. The details of the `for` loop are the most tricky part, we'll come back to them further on. Let's first implement the `Cross` class. I simply represented a cross as a stitch of 5 squares. My idea is that if I'm given the center of the cross then I guess the coordinates of the squares that it is composed of. The first thing to do is thus to define a `Square` class. We'll give it a `draw` method to display it on a `canvas`. The drawing procedure starts at the top-left of the square and makes it way around each corner in a clockwise manner.
 
 ```javascript
 class Square {
@@ -166,7 +166,7 @@ drawRow(new Point(length * 4.5, length * 3.5), length, red, green, ctx)
 
 ![first_rows_smaller](/img/blog/morellet/first_rows_smaller.png)
 
-Looking good! All we have to do now is implemented a smart `for` loop and we should be good. I made a diagram to show where each row starts and the first color of that row. Naturally there are some crosses that start outside of the 16 by 16 grid.
+Looking good! All we have to do now is implement a smart `for` loop and we should be good. I made a diagram to show where each row starts and the first color of that row. Naturally there are some crosses that start outside of the 16 by 16 grid.
 
 ![grid](/img/blog/morellet/grid.png)
 

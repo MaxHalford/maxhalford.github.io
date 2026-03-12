@@ -31,7 +31,7 @@ It is interesting to note that without knowing the global solution to a problem 
 
 By DNA I mean the parameters that are inputed into the objective function we want to optimize, these are the candidate solutions.
 
-- In the case of the TSP the DNA is a list of consecutives nodes.
+- In the case of the TSP the DNA is a list of consecutive nodes.
 - In the case of a function minimization problem, the DNA is a vector.
 - In the case of fitting a polynomial to a curve the DNA is a list of coefficients.
 
@@ -95,7 +95,7 @@ Let's define *the polynomial that bests approximates a function*. A good measure
 
 ### Initialization
 
-First of all let's generate a dataframe that contains a list of points. Do as you please! For this example I computed $x^2$ for $x$ between (-2, 2) with a step of size $0.2$. In this case we know which function generated the sample of points to fit so we can measure the performance of the GA. In this case if should return $x^2$.
+First of all let's generate a dataframe that contains a list of points. Do as you please! For this example I computed $x^2$ for $x$ between (-2, 2) with a step of size $0.2$. In this case we know which function generated the sample of points to fit so we can measure the performance of the GA. In this case it should return $x^2$.
 
 Let's open it with the *pandas* module and convert it to a lookup table, *ie.* a dictionary where we can easily check for point values.
 
@@ -307,7 +307,7 @@ We wanted to find $x^2$ so this is pretty close! However the example was fairly 
 
 ### Applying it to more complicated data
 
-Let's try to these a polynomial of degree 4 with more complex data.
+Let's try to fit a polynomial of degree 4 with more complex data.
 
 ```python
 import pandas as pd

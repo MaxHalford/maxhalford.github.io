@@ -17,7 +17,7 @@ Data integration is a difficult problem to work on. In fact, in my experience, i
 
 I'm not yet convinced the kind of data integration we do at Carbonfact can be fully automated. We take a white gloved approach: we look at the customer's data with our eyes, we meet with them, we ask questions, and we write a bespoke connector. Our customers are delighted. But don't get fooled: we're not consultants, and our objective is to automate and scale our methodology. It's just really hard.
 
-The purpose of this blog post is to list some tough data integration topics we are seeing repeatidly at Carbonfact. This list should give proof that the "AI will replace data scientists" narrative is poppycock. I also want to use this post to give my team and our customers some food for thought.
+The purpose of this blog post is to list some tough data integration topics we are seeing repeatedly at Carbonfact. This list should give proof that the "AI will replace data scientists" narrative is poppycock. I also want to use this post to give my team and our customers some food for thought.
 
 I haven't listed everything: _le secret d'ennuyer est celui de tout dire._ There are mundane topics which we deal on a daily basis: normalizing human inputs, imputing missing data, etc. I gave an example of dealing with manually entered product compositions in a [previous blog post](/blog/carbonfact-nlp-open-problem/). Instead, here I've focused on hard stuff for which I do not see an obvious technical solution.
 

@@ -11,10 +11,10 @@ OpenBikes is a project with a Flask backend and a few upstart jobs. It lives at 
 
 ## Create and connect to a droplet
 
-Digital Ocean call their virtual machines (VMs) *droplets*. The first step is to log on to their website, create an account and register a bank card. There are many droplet capacity/power offers, personally I began with the 10 dollars per month deal. Once you've created the droplet you will receive a mail with the IP adress of the droplet and the password.
+Digital Ocean call their virtual machines (VMs) *droplets*. The first step is to log on to their website, create an account and register a bank card. There are many droplet capacity/power offers, personally I began with the 10 dollars per month deal. Once you've created the droplet you will receive a mail with the IP address of the droplet and the password.
 
 - Open a terminal.
-- Connect to the droplet : ``ssh root@<IP adress>``
+- Connect to the droplet : ``ssh root@<IP address>``
 - Copy/paste the password sent by mail.
 - Choose a new very very very secure password
 
@@ -28,7 +28,7 @@ Here are some basic security settings. You will want to install *fail2ban* to bl
 
 ## Some more optional settings
 
-It's a good practice to use another user account with non-permanent ``sudo`` rights. You will also want to set the server's timezone and update it's packages for further installations.
+It's a good practice to use another user account with non-permanent ``sudo`` rights. You will also want to set the server's timezone and update its packages for further installations.
 
 - Create a new user : ``adduser max``
 - Allow it to use sudo : ``adduser max sudo``
@@ -79,7 +79,7 @@ exec python3 collect.py
 
 ## Launch the website
 
-A Flask app always has a main script to run the website in the localhost. The only you need to add to the repository is a file ending in ``.wsgi``, for example ``openbikes.wsgi``, and add the following:
+A Flask app always has a main script to run the website in the localhost. The only thing you need to add to the repository is a file ending in ``.wsgi``, for example ``openbikes.wsgi``, and add the following:
 
 ```python
 import sys, os, logging
@@ -148,7 +148,7 @@ And voilà, you should be done.
 - If you update your website you will have to restart Apache with ``service apache2 restart``
 - Some configurations might require a server reboot with ``shutdown -r now``
 - If you get errors when connecting to the website's URL check the error log with ``cat /var/log/apache2/error.log``
-- To reinstall Apache is case something is broken:
+- To reinstall Apache in case something is broken:
 
 ```sh
 sudo apt-get remove apache2

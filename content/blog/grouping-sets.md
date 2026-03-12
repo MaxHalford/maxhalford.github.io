@@ -256,4 +256,4 @@ GROUP BY GROUPING SETS (
 
 I hope you found this post useful! Taking a step back, it does feel that this is reinventing the wheel somehow. Writing SQL to connect a data warehouse to a dashboard may seem awkward. But sometimes you're limited by your tools, and you don't have access to an expensive no-code interface to do all this for you.
 
-Note that I've been using Snowflake as an example because that's we use at work. But this is also available in [PostgreSQL](https://www.postgresql.org/docs/10/queries-table-expressions.html#QUERIES-GROUPING-SETS), as well as in [MySQL](https://mysqlserverteam.com/mysql-8-0-grouping-function/), but sadly not in SQLite 😢
+Note that I've been using Snowflake as an example because that's what we use at work. But this is also available in [PostgreSQL](https://www.postgresql.org/docs/10/queries-table-expressions.html#QUERIES-GROUPING-SETS), as well as in [MySQL](https://mysqlserverteam.com/mysql-8-0-grouping-function/), but sadly not in SQLite 😢

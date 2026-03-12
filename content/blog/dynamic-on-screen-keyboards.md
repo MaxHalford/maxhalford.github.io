@@ -13,7 +13,7 @@ I've recently been spending time at my brother's place. We usually eat in front 
 
 Typing stuff via an on-screen TV keyboard with a remote controller isn't something one does very often. It's likely pointless to try optimizing this process. And yet, I felt compelled to explore more efficient keyboard layouts.
 
-In particular, I immediatly wondered why these keyboards didn't reorganise their layout dynamically based on the current input. I did some research, and stumbled on [this](https://ediblecode.com/blog/tv-keyboards/) article comparing different TV keyboards back in 2017. The article mentions a Samsung TV that suggests the four most likely next characters:
+In particular, I immediately wondered why these keyboards didn't reorganise their layout dynamically based on the current input. I did some research, and stumbled on [this](https://ediblecode.com/blog/tv-keyboards/) article comparing different TV keyboards back in 2017. The article mentions a Samsung TV that suggests the four most likely next characters:
 
 <div align="center">
 <figure >

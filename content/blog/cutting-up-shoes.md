@@ -34,7 +34,7 @@ This second problem can be alleviated by addressing the first one. We could buil
 
 Mapping free text names to a taxonomy is a [classification](https://en.wikipedia.org/wiki/Classification) task. We could use a machine learning model to do this. Alas, this requires having a taxonomy available, which we don't have. The modern way to circumvent this could be to use [clustering](https://developers.google.com/machine-learning/clustering/overview#:~:text=In%20machine%20learning%20too%2C%20we,relies%20on%20unsupervised%20machine%20learning) to bucket the free text names into groups. We could then use [zero-shot classification](https://huggingface.co/tasks/zero-shot-classification) to build a training set for a classification model. Too complicated.
 
-What about doing it the old-fashioned way? That's what we did during our latest work retreat at Carbonfact. We got together in a room and did a [card sorting](https://www.nngroup.com/articles/card-sorting-definition/) exercise. The part names were printed out on pieces of paper that we layed out on a long kitchen table. Everyone took part and sorted the papers into groups, which we defined together on the fly. We recorded the taxonomy and the mapping in a shared spreadsheet.
+What about doing it the old-fashioned way? That's what we did during our latest work retreat at Carbonfact. We got together in a room and did a [card sorting](https://www.nngroup.com/articles/card-sorting-definition/) exercise. The part names were printed out on pieces of paper that we laid out on a long kitchen table. Everyone took part and sorted the papers into groups, which we defined together on the fly. We recorded the taxonomy and the mapping in a shared spreadsheet.
 
 <div align="center" >
 <figure style="margin: 0;">

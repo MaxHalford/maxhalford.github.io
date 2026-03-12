@@ -491,7 +491,7 @@ fig.savefig('delayed_progressive_validation.svg', bbox_inches='tight')
 
 If this looks similar to the previous chart, that's because it is. The errors line are slightly higher but that's about it. For this particular dataset, taking into account the delay doesn't affect the metric too much. But that conclusion may be different for other datasets. The point is with delayed progressive validation, we are now 100% sure that our estimate of the model's performance is reliable. We are certain of this fact because delayed progressive validation reproduces the real state of things by taking into account the order in which events transpire. Cross-validation and plain progressive validation, on the other, do not.
 
-I recommend for futher reading the papers I mentionned throughout this post, namely:
+I recommend for further reading the papers I mentioned throughout this post, namely:
 
 - [Beating the hold-out: Bounds for K-fold and progressive cross-validation](https://dl.acm.org/doi/pdf/10.1145/307400.307439)
 - [Delayed labelling evaluation for data streams](https://link.springer.com/article/10.1007/s10618-019-00654-y)

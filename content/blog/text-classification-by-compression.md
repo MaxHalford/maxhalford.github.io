@@ -105,7 +105,7 @@ for text in test['data']:
     predictions.append(predicted_label)
 ```
 
-So how well does this fair? Well, it takes over 5 minutes to run on my laptop for only 1,353 test cases. That's 0.2 seconds per document, which is rather slow! Here's the classification report:
+So how well does this fare? Well, it takes over 5 minutes to run on my laptop for only 1,353 test cases. That's 0.2 seconds per document, which is rather slow! Here's the classification report:
 
 ```py
 from sklearn.metrics import classification_report

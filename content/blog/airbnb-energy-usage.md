@@ -7,7 +7,7 @@ tags = ['sustainability', 'data-science']
 
 ## TLDR
 
-I compared the energy consumption of Airbnb guests versus their host, in the same appartment, during 2022. It appears that guests do in fact consume more energy than hosts. The data I used is available to any Airbnb host. I also open-sourced all the code I wrote for this analysis.
+I compared the energy consumption of Airbnb guests versus their host, in the same apartment, during 2022. It appears that guests do in fact consume more energy than hosts. The data I used is available to any Airbnb host. I also open-sourced all the code I wrote for this analysis.
 
 ## Introduction
 
@@ -44,7 +44,7 @@ I thought I would write a brief section as to how I collected the data. Maybe th
 
 ### Host stays
 
-To do a fair comparison, I had to know the days when someone who didn't book with Airbnb was in my SO's appartment -- basically friends and family. We did this by jogging our memory and backchecking our calendars. We manually inputted the dates into a table.
+To do a fair comparison, I had to know the days when someone who didn't book with Airbnb was in my SO's apartment -- basically friends and family. We did this by jogging our memory and backchecking our calendars. We manually inputted the dates into a table.
 
 ### Weather
 
@@ -139,7 +139,7 @@ is_guest               1.7145     0.451     3.798     0.000
 heating_degree_days    0.0405     0.001    27.288     0.000
 ```
 
-I ran a vanilla linear regression with [statsmodel](https://www.statsmodels.org/stable/index.html). The [adjusted $R^2$](https://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2) is 0.843, which is good enough to interpret the model. Moreover, all the regression coefficients appear to be significant. An interesting observation is that using the `temperature` variable instead of `heating_degree_days` leads to an ajusted $R^2$ of 0.578, which is significantly worse.
+I ran a vanilla linear regression with [statsmodel](https://www.statsmodels.org/stable/index.html). The [adjusted $R^2$](https://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2) is 0.843, which is good enough to interpret the model. Moreover, all the regression coefficients appear to be significant. An interesting observation is that using the `temperature` variable instead of `heating_degree_days` leads to an adjusted $R^2$ of 0.578, which is significantly worse.
 
 Positive coefficients linear regression are indicative of a variable being positively correlated with the target. In this case, the number of people, the fact that those people are guests, and the number of heating degree days are all positively correlated with the amount of kWh. Meanwhile, the weekend indicator is negatively correlated with the latter.
 

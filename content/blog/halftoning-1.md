@@ -27,7 +27,7 @@ I will be doing this in Go and will be using the following image to compare the 
 
 ## Average dithering
 
-*Average dithering* - also called *thresholding* - is the simplest dithering algorithm one may think of. The idea is to compare each pixel in a grayscale image to a threshold and to turn to the pixel to black or white based on it's intensity.
+*Average dithering* - also called *thresholding* - is the simplest dithering algorithm one may think of. The idea is to compare each pixel in a grayscale image to a threshold and to turn to the pixel to black or white based on its intensity.
 
 First and foremost, let's write down some code to open an image.
 
@@ -116,7 +116,7 @@ func newWhite(bounds image.Rectangle) *image.Gray {
 }
 ```
 
-Now that the basics are out of the way, we can get into the thick of it. Threshold dithering is very simple; indeed we only have to iterate through each pixel and compare it's intensity to a threshold between 0 and 255. In Go the grayscale values are the `uint8` type, meaning that they are unsigned ints written with 8 bits, thus our threshold value shall also be a `uint8`.
+Now that the basics are out of the way, we can get into the thick of it. Threshold dithering is very simple; indeed we only have to iterate through each pixel and compare its intensity to a threshold between 0 and 255. In Go the grayscale values are the `uint8` type, meaning that they are unsigned ints written with 8 bits, thus our threshold value shall also be a `uint8`.
 
 ```golang
 func ThresholdDither(gray *image.Gray) *image.Gray {

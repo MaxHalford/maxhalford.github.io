@@ -102,7 +102,7 @@ def get_children_ids(block):
             yield from rels['Ids']
 ```
 
-The dataframe construction is logic is rather straightforward that we've done the ID/block mapping. Obviously we're going to loop over each table. Then we're going to list the cells which belong to the table. We can then determine the number of cells and rows by looking at the `RowIndex` and `ColumnIndex` fields of each cell. Next, we loop over each cell and retrieve the cell's content, which can be either be words or checkboxes. We store the cell contents in a list of lists that represents the table. Once we're done looping over the cells, we can instantiate the `pandas.DataFrame` by assuming that the first row represents the column headers.
+The dataframe construction logic is rather straightforward that we've done the ID/block mapping. Obviously we're going to loop over each table. Then we're going to list the cells which belong to the table. We can then determine the number of cells and rows by looking at the `RowIndex` and `ColumnIndex` fields of each cell. Next, we loop over each cell and retrieve the cell's content, which can be either be words or checkboxes. We store the cell contents in a list of lists that represents the table. Once we're done looping over the cells, we can instantiate the `pandas.DataFrame` by assuming that the first row represents the column headers.
 
 ```py
 import pandas as pd
@@ -152,7 +152,7 @@ The first table is the one I'm interested in extracting.
 |    2 | 2                 | 47                      | HBMD460                       | Onlay Céramique dentaire NF EN ISO 6872 |      | 3                       | 3             | Aucun                            | 450,00                                                       | 100,00                                                   | 70,00                                                 | 380,00                                              |
 |    3 |                   |                         |                               |                                         |      | TOTAL € (des            | actes         | envisagés)                       | 1 060,00                                                     | 230,00                                                   | 161,00                                                | 899,00                                              |
 
-And there we go! You can now process the dataframe using whatever business logic applies to your problem. Hopefully this article might have saved you some previous minutes.
+And there we go! You can now process the dataframe using whatever business logic applies to your problem. Hopefully this article might have saved you some precious minutes.
 
 Amazon Textract is very good if you're processing a lot of files that have the same template. Alas, at my job, there are many templates, and Textract doesn't work on each of them. I thus use a different kind of logic where I extract annotations through an OCR and reconstruct rows myself with a clustering algorithm. I have yet to look into other table extraction tools such [`tabula-py`](https://tabula-py.readthedocs.io/en/latest/index.html) and [Camelot](https://camelot-py.readthedocs.io/en/master/).
 

@@ -71,7 +71,7 @@ function newTriangle(a, angle, sideLength) {
 }
 ```
 
-We make use of the fact that in a triangle each angle is 60 degrees. This means that if we start from `a` we can substract 30 degrees and deduce the position of `b`. Likewhise we can do the same operation to find `c` by adding 30 degrees to the input angle. By default the cosine and sine functions will give the positions of the points on the [unit circle](https://en.wikipedia.org/wiki/Unit_circle). We simply have to add the position of `a` to each point and multiply the result by `sideLength`. After all we're simply dealing with vectors.
+We make use of the fact that in a triangle each angle is 60 degrees. This means that if we start from `a` we can subtract 30 degrees and deduce the position of `b`. Likewise we can do the same operation to find `c` by adding 30 degrees to the input angle. By default the cosine and sine functions will give the positions of the points on the [unit circle](https://en.wikipedia.org/wiki/Unit_circle). We simply have to add the position of `a` to each point and multiply the result by `sideLength`. After all we're simply dealing with vectors.
 
 Now let's add to the `Triangle` class a `draw` method which draws the triangle on a given canvas.
 

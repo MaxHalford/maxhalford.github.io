@@ -42,7 +42,7 @@ The algorithm that follows should be quite straightforward and is quite fast.
 
 1. Compute $n$ equal frequency bins from the test
 2. Assign each observation in the training set to the matching bin
-3. For each training set bin $b_i$, count it's size
+3. For each training set bin $b_i$, count its size
 4. Assign weight $\frac{1}{size(b_i)}$ to each observation in the training set belonging to bin $b_i$
 5. Sample $k$ observations from the training set with the weights assigned
 
@@ -87,6 +87,6 @@ with plt.xkcd():
 
 ![expo-resample](/img/blog/subsampling-1/expo-resample.png)
 
-You can see that the subsample (the dashed line) has a similar distribution to the test set (the red). This is exactly what we during the competition. Our initial dataset had around 3 million rows and we actually used a subsample of 1.3 million rows. Less data but more representative data! The number of bins that you use doesn't matter too much in my experience, and the lower that number the faster the algorithm runs. As for the size of the subsample, the less your training set and test set distributions are difference, the less you will be able to subsample - at least if you are doing it without replacement, which is the only way that makes sense if you don't want to have duplicates.
+You can see that the subsample (the dashed line) has a similar distribution to the test set (the red). This is exactly what we during the competition. Our initial dataset had around 3 million rows and we actually used a subsample of 1.3 million rows. Less data but more representative data! The number of bins that you use doesn't matter too much in my experience, and the lower that number the faster the algorithm runs. As for the size of the subsample, the less your training set and test set distributions are different, the less you will be able to subsample - at least if you are doing it without replacement, which is the only way that makes sense if you don't want to have duplicates.
 
 I added the subsampling algorithm to my data science package called [xam](https://github.com/MaxHalford/xam). The next step will be to generalize the weighting and subsampling to multiple dimensions, but that's for part 2 because I haven't figured it out yet!

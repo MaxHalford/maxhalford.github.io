@@ -452,6 +452,6 @@ Query 9c: 874
 Query 9d: 486
 ```
 
-I'm sure it's possible to do this faster and with more obvious code, but this is as could I judged necessary with respect to the rest of my PhD work. The full script is available in [this GitHub repository](https://github.com/MaxHalford/online-selectivity-correction) in the `scripts` directory.
+I'm sure it's possible to do this faster and with more obvious code, but this is as much as I judged necessary with respect to the rest of my PhD work. The full script is available in [this GitHub repository](https://github.com/MaxHalford/online-selectivity-correction) in the `scripts` directory.
 
 I hope someday this helps someone!

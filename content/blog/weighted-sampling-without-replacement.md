@@ -29,7 +29,7 @@ Python has a [`random` module](https://docs.python.org/3/library/random.html) in
 
 I therefore set out to find a nice and simple algorithm to implement in pure Python. I knew that weighted sampling with replacement can be done with [Vose's alias method](https://www.keithschwarz.com/darts-dice-coins/) -- which I have implemented [here](https://github.com/MaxHalford/vose) in Cython. I also knew that simple (non-weighted) sampling without replacement can be done with [reservoir sampling](https://en.wikipedia.org/wiki/Reservoir_sampling). But I'd never looked into weighted sampling without replacement.
 
-After some research, I found the algorithm of Efraimidis and Spirakis, which is succintely presented in section 3.2 of [this](https://arxiv.org/pdf/1012.0256.pdf) paper. It's very simple, and from what I can tell it runs in $\mathcal{O}(nlog(n))$ time. Here is a Python implementation:
+After some research, I found the algorithm of Efraimidis and Spirakis, which is succinctly presented in section 3.2 of [this](https://arxiv.org/pdf/1012.0256.pdf) paper. It's very simple, and from what I can tell it runs in $\mathcal{O}(nlog(n))$ time. Here is a Python implementation:
 
 ```py
 import random
@@ -157,7 +157,7 @@ with plt.xkcd():
 
 ![bar_chart](/img/blog/weighted-sampling-without-replacement/bar_chart.svg)
 
-Let's now concern ourselves with speed. I've been sampling 3 elements from a list of length 10 in the above examples. Admittedly, those are small numbers. Let's see how this algorithm fairs against numpy.
+Let's now concern ourselves with speed. I've been sampling 3 elements from a list of length 10 in the above examples. Admittedly, those are small numbers. Let's see how this algorithm fares against numpy.
 
 **numpy.random.choice**
 
@@ -177,7 +177,7 @@ Let's now concern ourselves with speed. I've been sampling 3 elements from a lis
 4.19 µs ± 223 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 ```
 
-As you can see, the pure Python implementation is roughly 17 times faster. You might say that numpy is at a disavantage because it first has to cast the provided Python lists to numpy arrays. In fact that doesn't matter too much.
+As you can see, the pure Python implementation is roughly 17 times faster. You might say that numpy is at a disadvantage because it first has to cast the provided Python lists to numpy arrays. In fact that doesn't matter too much.
 
 **numpy.random.choice with arrays**
 

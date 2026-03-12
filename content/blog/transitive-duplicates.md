@@ -32,7 +32,7 @@ def is_same_user(user_1, user_2):
 
 The matching function entirely depends on your application. There is no silver bullet that will work for each and every case. Note that nowadays some people are [using machine learning](https://www.datarobot.com/use-cases/finding-duplicate-customer-records-database/) to find a good matching function. In this post I mostly want to talk about *how to search for duplicates*, given that a matching function has been established.
 
-A little twist to duplicate detection is the notion of *transitive duplicates*. Suppose you have 3 instances A, B, and C. Your matching function finds that A matches B and that B matches C. The matching function did not find any match between A and C. However, by applying transitivity, we can see that A and C in fact match because they are linked by B. A and C are thus transitive duplicated. Finding transitive duplicates is straightforward but costly. Indeed, from what I have gleaned the standard way to proceed is as follows:
+A little twist to duplicate detection is the notion of *transitive duplicates*. Suppose you have 3 instances A, B, and C. Your matching function finds that A matches B and that B matches C. The matching function did not find any match between A and C. However, by applying transitivity, we can see that A and C in fact match because they are linked by B. A and C are thus transitive duplicates. Finding transitive duplicates is straightforward but costly. Indeed, from what I have gleaned the standard way to proceed is as follows:
 
 1. Compare each combination of pairs of instances and check if they match.
 2. Organize the pairs into an undirected graph.
@@ -340,6 +340,6 @@ restaurants['real_id'] = find_partitions(
 )
 ```
 
-This brings us down to 4 seconds, which is 50% times faster that the plain variant without any tricks. I checked and most of the remaining computation time is taken by `fuzzywuzzy` library. Designing a better matching function is probably the next step to take in order to get this to go any faster.
+This brings us down to 4 seconds, which is 50% faster than the plain variant without any tricks. I checked and most of the remaining computation time is taken by `fuzzywuzzy` library. Designing a better matching function is probably the next step to take in order to get this to go any faster.
 
 I hope you enjoyed this post. I apologize for going through the explanations a bit quickly. I mostly wrote this because I wasn't able to find anything that satisfied my needs online. Hopefully some other people will find useful for their own problems. Feel free to shoot me an email if you have any remarks and/or questions.

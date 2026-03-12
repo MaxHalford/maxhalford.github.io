@@ -19,7 +19,7 @@ The next stop on my travel through the world of halftoning will be the implement
 
 I found a fair amount of resources about the method, most of them being implementations of Adrian Secord's paper. However, not many of these resources went into the nitty-gritty details which are not obvious for beginners in image processing. Before delving into the code, I want to go through some concepts that may seem obvious to some readers but that I judge worthy of detailing.
 
-In art, [stippling](https://en.wikipedia.org/wiki/Stippling) is a process where single-colored dots are laid out on a white image so as to reproduce an image. The denser the dots, the darker the area they cover. The visual appeal of stippled images comes from the way the dots are laid out. A good stippling method generates evenly spaces dots which makes the image seem *organized*. This kind of harmonious distribution is often referred to as [blue noise](https://en.wikipedia.org/wiki/Colors_of_noise#/Blue_noise) and is notoriously difficult to generate.
+In art, [stippling](https://en.wikipedia.org/wiki/Stippling) is a process where single-colored dots are laid out on a white image so as to reproduce an image. The denser the dots, the darker the area they cover. The visual appeal of stippled images comes from the way the dots are laid out. A good stippling method generates evenly spaced dots which makes the image seem *organized*. This kind of harmonious distribution is often referred to as [blue noise](https://en.wikipedia.org/wiki/Colors_of_noise#/Blue_noise) and is notoriously difficult to generate.
 
 Adrian Secord's idea - inspired Oliver Deussen's previous work from 2000 - is to use *weighted centroidal Voronoi diagrams* to place the dots. Although the name may seem far fetched, the underlying idea is very simple and can be broken down into three parts.
 
@@ -60,7 +60,7 @@ This procedure is called [Lloyd's algorithm](https://en.wikipedia.org/wiki/Lloyd
 </figure>
 </div>
 
-A weighted centroidal diagram is a centroidal Voronoi diagram where the centroids are calculated using a weighted average. In our case the weights are the gray scale intensities of an image. The idea is that we want the centroids to bundle around dark patches of an image and yet not to overlap. That's it, there is nothing more it; the results speak for themselves. The previous formulas are easy to adapt:
+A weighted centroidal diagram is a centroidal Voronoi diagram where the centroids are calculated using a weighted average. In our case the weights are the gray scale intensities of an image. The idea is that we want the centroids to bundle around dark patches of an image and yet not to overlap. That's it, there is nothing more to it; the results speak for themselves. The previous formulas are easy to adapt:
 
 $$c\_x = \frac{1}{W \times |S|} \sum\_{p \in S} p(w) \times p(x)$$
 
@@ -91,7 +91,7 @@ My implementation is inspired from the [roulette wheel selection algorithm](http
 3. See in which pocket the random number falls
 4. Pick a random point with the obtained intensity
 
-In our case the gray scale intensities go from 0 to 255, hence we will have 256 pockets. If we picked a random number between 0 and 255 then we would be picking intensities completely at random. We want to pick darker intensities more often, hence we are going to "weight" the pockets with the intensities. This is quite simple, each pocket will simply have a size/weight of $256 - i$ where $i$ is the intensity; this way the darker intensities - the ones closer to 0 - will have a higher waits.
+In our case the gray scale intensities go from 0 to 255, hence we will have 256 pockets. If we picked a random number between 0 and 255 then we would be picking intensities completely at random. We want to pick darker intensities more often, hence we are going to "weight" the pockets with the intensities. This is quite simple, each pocket will simply have a size/weight of $256 - i$ where $i$ is the intensity; this way the darker intensities - the ones closer to 0 - will have a higher weight.
 
 <div align="center" >
 <figure style="width: 60%;">

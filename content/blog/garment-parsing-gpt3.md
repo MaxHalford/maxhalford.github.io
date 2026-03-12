@@ -64,7 +64,7 @@ OpenAI's [fine-tuning documentation](https://beta.openai.com/docs/guides/fine-tu
 
 To fine-tune a GPT-3 model, you have to build a training set of [inputs](/files/datasets/nlp-carbonfact/inputs.txt) and [outputs](/files/datasets/nlp-carbonfact/outputs.json). OpenAI requires this to be in [JSON Lines text format](https://jsonlines.org/). OpenAI also recommends adding a `\n\n###\n\n` delimiter to each input, a blank space at the start of each output, and an ` END` delimiter at the end of each output. It beats me why they don't do this for you 🤷‍♂️
 
-Anyway, building the training set is straightforward. The dataset I have has is 600 samples, so I decided to use the first 300 for training and the rest for validation later on.
+Anyway, building the training set is straightforward. The dataset I have is 600 samples, so I decided to use the first 300 for training and the rest for validation later on.
 
 ```py
 import json
@@ -201,7 +201,7 @@ I find it a tad slow, especially considering I'm using the smallest model varian
 
 ## How good is it?
 
-The output from OpenAI is a piece of text. A tiny bit work is necessary to cast each output to JSON.
+The output from OpenAI is a piece of text. A tiny bit of work is necessary to cast each output to JSON.
 
 ```py
 test_outputs = []

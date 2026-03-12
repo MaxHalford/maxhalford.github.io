@@ -6,7 +6,7 @@ tags = ['sql']
 
 ## Introduction
 
-I'm currently working on a problem at work where I have to measure the impact of a <span style="color: SlateBlue;">growth initiative</span> on a <span style="color: MediumSeaGreen;">performance metric</span>. Hypothetically, this might to answer the following kind of question:
+I'm currently working on a problem at work where I have to measure the impact of a <span style="color: SlateBlue;">growth initiative</span> on a <span style="color: MediumSeaGreen;">performance metric</span>. Hypothetically, this might answer the following kind of question:
 
 > I've spent <span style="color: SlateBlue;">X amount of money</span>, what is the impact on the <span style="color: MediumSeaGreen;">number of visitors on my website</span>?
 
@@ -297,7 +297,7 @@ delta   pearson                 spearman
 
 ## Multiple $X$s and $Y$s
 
-We now have a framework to compute different kinds of cross-correlations between two variables over multiple time steps. Let's push the envelope and make it so that can compute the cross-correlations for multiple variables. To be precise, we would like to compute cross-correlations between <span style="color: SlateBlue;">a group of initiatives ($X$s) </span> and <span style="color: MediumSeaGreen;">a group of metrics ($Y$s)</span>.
+We now have a framework to compute different kinds of cross-correlations between two variables over multiple time steps. Let's push the envelope and make it so that we can compute the cross-correlations for multiple variables. To be precise, we would like to compute cross-correlations between <span style="color: SlateBlue;">a group of initiatives ($X$s) </span> and <span style="color: MediumSeaGreen;">a group of metrics ($Y$s)</span>.
 
 First of all, let's create some more dummy data. We'll also split the $X$s from the $Y$s. We're also going to [melt](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html) (or "unpivot" as some like to say) both groups. The reason why we do this is that it will simplify the subsequent code.
 

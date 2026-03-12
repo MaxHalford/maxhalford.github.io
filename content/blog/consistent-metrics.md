@@ -6,7 +6,7 @@ tags = ['data-science']
 
 [According to](https://www.un.org/en/dayof8billion) the United Nations, the 15th of November [was the day](https://www.bbc.co.uk/newsround/63632981) we crossed 8 billion humans on the planet. How can they be so sure of that? Surely there has to be some margin of error, meaning it could have happened on the 14th or 16th. Then again, does it matter?
 
-I would argue almost all metrics we look at are incorrect. For instance, I work at a company who's goal is to measure the carbon footprint of clothing items. I can tell you first hand our measurements are stock full of assumptions. In the sustainability world, it's not surprising to get reports like this one:
+I would argue almost all metrics we look at are incorrect. For instance, I work at a company whose goal is to measure the carbon footprint of clothing items. I can tell you first hand our measurements are stock full of assumptions. In the sustainability world, it's not surprising to get reports like this one:
 
 <div align="center">{{< x user=noahqk id=1620150260877389824 >}}</div>
 </br>

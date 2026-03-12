@@ -96,7 +96,7 @@ $$
 \frac{1}{jobs} \sum_{job \in jobs} \frac{max(P(male \mid job), P(female \mid job))}{min(P(male \mid job), P(female \mid job))}
 $$
 
-This metric is very straighforward to compute. Say you have a `people` dataframe that associates job predictions with genders:
+This metric is very straightforward to compute. Say you have a `people` dataframe that associates job predictions with genders:
 
 ```py
 >>> people.head()
@@ -153,7 +153,7 @@ Once the competition was over, the students were instructed to send me their cod
 - 12 used [NLTK](https://www.nltk.org/), which I find pretty cool considering how old it is.
 - 2 attempted to [rebalance](https://github.com/scikit-learn-contrib/imbalanced-learn) the dataset.
 - 2 built their own model in [PyTorch](https://pytorch.org/).
-- 8 built their own odel with [Keras](https://keras.io/).
+- 8 built their own model with [Keras](https://keras.io/).
 - 3 built an [RNN](https://en.wikipedia.org/wiki/Recurrent_neural_network).
 - 2 did [model ensembling](https://en.wikipedia.org/wiki/Ensemble_learning).
 - 7 used the [simpletransformers](https://github.com/ThilinaRajapakse/simpletransformers) library, which I find to be frightfully high level.
@@ -170,7 +170,7 @@ The [Kaggle leaderboard](https://www.kaggle.com/c/defi-ia-insa-toulouse/leaderbo
   <img src="/img/blog/fairness-competition/scores.svg" width="80%">
 </p>
 
-I mentionned above that a perfect macro disparate impact is equal to 1. The macro disparate impact in the data is 3.62. That is, if we use the ground truth labels as predictions and compute the macro disparate impact, then we obtain 3.62. The point of this competition is to do better than this, and not just focus on the predictive performance of the model.
+I mentioned above that a perfect macro disparate impact is equal to 1. The macro disparate impact in the data is 3.62. That is, if we use the ground truth labels as predictions and compute the macro disparate impact, then we obtain 3.62. The point of this competition is to do better than this, and not just focus on the predictive performance of the model.
 
 Sadly, it seems that no teams managed to really remove any bias whatsoever from their model. I'll be honest: I'm very disappointed with the way this turned out. The best performing teams seem to have made no effort whatsoever. Fair learning is a relatively sophisticated topic, so I wouldn't be surprised that students had some difficulties. With the whole COVID 19 situation, the relationship between teachers and students might have been affected, and teachers might not have had the opportunity to discuss a topic that is not part of the official curriculum with their students.
 

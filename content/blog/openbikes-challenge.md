@@ -19,7 +19,7 @@ In each part of the challenge the chosen metric to score the students was the [m
 
 Axel and I had been collecting freely available bike sharing data since October 2015. To do this we put in a place a homemade crawler which would interrogate various APIs and aggregate their data into a single format. We stored the number of bikes at each station at different timesteps with MongoDB. The metadata concerning the of the cities and the bike stations was stored with PostgreSQL. We also exposed an API to be able to use our data in an hypothetical mobile app. We deployed our crawler/API on a 20$ DigitalOcean server. The glue language was Python. [The whole thing is available on GitHub](https://github.com/OpenBikes/api.openbikes.co).
 
-To host the challenge I wrote a simple Django application (my first time!) which Axel kindly deployed on the same server as the crawler. The application used a SQLite as a database backend, partly because I wanted to try it out in production but because anything more powerful was unnecessary. Moreover SQLite stores it's data in `*.db` file which can easily be transfered for doing some descriptive statistics. Again, [the code is available on GitHub](https://github.com/OpenBikes/challenge.openbikes.co).
+To host the challenge I wrote a simple Django application (my first time!) which Axel kindly deployed on the same server as the crawler. The application used a SQLite as a database backend, partly because I wanted to try it out in production but because anything more powerful was unnecessary. Moreover SQLite stores its data in `*.db` file which can easily be transfered for doing some descriptive statistics. Again, [the code is available on GitHub](https://github.com/OpenBikes/challenge.openbikes.co).
 
 ## Results
 
@@ -591,7 +591,7 @@ As for the ranking for the second part of the challenge (the blindfolded part), 
 </table>
 </div>
 
-Team "Le Gruppetto" is officially the winner of the challenge! The fact that the second part of the competition was blindfolded completely reversed the rankings and favored teams with robust methods whilst penalizing overfitters. Whatsmore, "only" 39 teams took part in the second part (50 did in the first one); maybe some teams felt that their ranking wouldn't change, but the fact is that "Le Gruppetto" were 34th before being 1st. _It isn't over till the fat lady sings_. The following chart shows the best score per team for both parts of the challenge.
+Team "Le Gruppetto" is officially the winner of the challenge! The fact that the second part of the competition was blindfolded completely reversed the rankings and favored teams with robust methods whilst penalizing overfitters. What's more, "only" 39 teams took part in the second part (50 did in the first one); maybe some teams felt that their ranking wouldn't change, but the fact is that "Le Gruppetto" were 34th before being 1st. _It isn't over till the fat lady sings_. The following chart shows the best score per team for both parts of the challenge.
 
 <div align="center">
 <figure>

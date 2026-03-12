@@ -26,7 +26,7 @@ A workflow orchestrator is necessary to organise tasks into a DAG, and then exec
 
 The emergence of dbt is one of the nicest things that happened to the data analytics field in recent years.
 
-There's no doubt about dbt being an influencial tool. Instead of improving an existing workflow, it created its own paradigm. To me, it feels like what scikit-learn did for machine learning with its fit/predict concept, or what columnar databases did when they ousted Hadoop. dbt is setting a standard which most of its users seem to agree on.
+There's no doubt about dbt being an influential tool. Instead of improving an existing workflow, it created its own paradigm. To me, it feels like what scikit-learn did for machine learning with its fit/predict concept, or what columnar databases did when they ousted Hadoop. dbt is setting a standard which most of its users seem to agree on.
 
 dbt encourages you to massage your data in SQL rather than in, say, Python. SQL is a language that [was designed](https://en.wikipedia.org/wiki/SQL) to manipulate data, which is likely why dbt feels so natural. The rumors that [many teams are adopting it](https://www.getdbt.com/blog/next-layer-of-the-modern-data-stack/) is a testimony to dbt's pervasiveness.
 

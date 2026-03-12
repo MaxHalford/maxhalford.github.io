@@ -177,7 +177,7 @@ In this script we use the the code we wrote previously as a *module*. This makes
 
 ## Making a map
 
-Let's add a file called ``index.html`` to the ``templates`` folder, this will contain the map of Toulouse but il will easily be adaptable for other cities.
+Let's add a file called ``index.html`` to the ``templates`` folder, this will contain the map of Toulouse but it will easily be adaptable for other cities.
 
 First of all let's import all the libraries we will need.
 

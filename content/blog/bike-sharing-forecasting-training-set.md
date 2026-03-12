@@ -96,7 +96,7 @@ print(
 | 2023-08-05 13:00:00 |    17 |      1 |
 | 2023-08-05 13:15:00 |    17 |      1 |
 
-I want to emphasize this is just one way of doing it. Indeed, the exact state of a station at any given time is not known to us, so it has to be inferred. The above solution is not perfect, but it's a start, and it's definitely sufficient for training a forecasting model. A simple solution would be to increase the frequency at which the data is scrapped, but I don't have the budget for that.
+I want to emphasize this is just one way of doing it. Indeed, the exact state of a station at any given time is not known to us, so it has to be inferred. The above solution is not perfect, but it's a start, and it's definitely sufficient for training a forecasting model. A simple solution would be to increase the frequency at which the data is scraped, but I don't have the budget for that.
 
 For this problem, a useful model would be able to predict the amount of bikes in a station over the next 120 minutes, at 15 minutes intervals. Here's how to create these targets:
 

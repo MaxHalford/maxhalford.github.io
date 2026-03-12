@@ -35,7 +35,7 @@ An undesired consequence of this setup is that the data team is at the mercy of 
 7. Alice renames to the previous name so downstream dashboards don't break
 8. The same field is now named differently in two different places
 
-I think this is a very inefficient situation. Alice, an expensive data engineer, shouldn't have to waste time on low-value -- and possibly boring -- tasks. Tom shouldn't have to worry about breaking things for the data team when he's developping on the production application.
+I think this is a very inefficient situation. Alice, an expensive data engineer, shouldn't have to waste time on low-value -- and possibly boring -- tasks. Tom shouldn't have to worry about breaking things for the data team when he's developing on the production application.
 
 This was the reality [when I worked at Alan](/blog/one-year-at-alan). Our solution was to write a GitHub Action that would scan SQLAlchemy migration files in the production application pull requests, fetch the list of columns in use in the analytics views, compare the two, and in case of a conflict nudge the engineer to warn the data team before merging their pull request. This worked reasonably well, but it felt like duct tape on a problem that shouldn't exist in the first place.
 
@@ -54,10 +54,10 @@ This vastly simplifies the way we work:
 1. The engineering and data team work together on maintaining the analytics views. I thus have a good relationship with the engineers, as we don't work in silos.
 2. We have a dedicated `platform` schema in our warehouse to hold views that are customer-facing. During continuous integration, we can detect in a pull request whether a customer-facing view will break or not.
 3. Each business question only has one answer, which is provided by the analytics warehouse.
-4. The only times I've heard about inconsistent figures is because two views were doing the same thing, and one of them was wrong. This can be resolves by moving the logic into a shared view. The business logic is kept in one place.
+4. The only times I've heard about inconsistent figures is because two views were doing the same thing, and one of them was wrong. This can be resolved by moving the logic into a shared view. The business logic is kept in one place.
 5. Sometimes engineers want to grab data from the analytics warehouse -- think reverse-ETL -- which is usually an anti-pattern. In our case it's a non-issue because the application is already consuming the analytics warehouse.
 
-What I most enjoy is that the analytics warehouse, as well as the data team, are at the core of the company. Stakeholders don't have any other option than to trust the analytics warehouse, because there is not other source of information. This is a very different situation from the one I experienced at Alan, where the data team was a support function offering an analytics warehouse which wasn't always used.
+What I most enjoy is that the analytics warehouse, as well as the data team, are at the core of the company. Stakeholders don't have any other option than to trust the analytics warehouse, because there is no other source of information. This is a very different situation from the one I experienced at Alan, where the data team was a support function offering an analytics warehouse which wasn't always used.
 
 There is one downside to our approach: views need to be refreshed for data to be live on the customer platform. Our refresh takes ~150 seconds. We can afford this because we have slow moving data that doesn't need to be shown in real-time -- mainly reports. If we had real-time data, we would have to use a different approach, or switch to a streaming data warehouse.
 
