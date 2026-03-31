@@ -149,20 +149,21 @@ df
 
 </details>
 
-| date       | group | impressions | clicks | conversions | revenue |
-| :--------- | :---- | ----------: | -----: | ----------: | ------: |
-| 2018-01-01 | A     |        1000 |    150 |         120 |    8600 |
-| 2018-01-01 | B     |        2000 |    150 |         150 |    9400 |
-| 2018-01-01 | C     |        2500 |    250 |         125 |   10750 |
-| 2019-01-01 | A     |        1000 |    120 |         100 |    9055 |
-| 2019-01-01 | B     |        2150 |    200 |         145 |    8739 |
-| 2019-01-01 | C     |        2000 |    400 |         166 |   10147 |
-| 2018-02-01 | A     |          50 |     20 |          10 |     500 |
-| 2018-02-01 | B     |        2000 |    300 |         150 |   11400 |
-| 2018-02-01 | C     |        2500 |    250 |         125 |    8750 |
-| 2019-02-01 | A     |        2500 |   1000 |         500 |   50000 |
-| 2019-02-01 | B     |        2150 |    323 |         145 |   10739 |
-| 2019-02-01 | C     |        2000 |    320 |         166 |   12147 |
+```
+| date    | group | impressions | clicks | conversions | revenue  |
+| 2018-01 | A     |       1,000 |    150 |         120 |   $8,600 |
+| 2018-01 | B     |       2,000 |    150 |         150 |   $9,400 |
+| 2018-01 | C     |       2,500 |    250 |         125 |  $10,750 |
+| 2019-01 | A     |       1,000 |    120 |         100 |   $9,055 |
+| 2019-01 | B     |       2,150 |    200 |         145 |   $8,739 |
+| 2019-01 | C     |       2,000 |    400 |         166 |  $10,147 |
+| 2018-02 | A     |          50 |     20 |          10 |     $500 |
+| 2018-02 | B     |       2,000 |    300 |         150 |  $11,400 |
+| 2018-02 | C     |       2,500 |    250 |         125 |   $8,750 |
+| 2019-02 | A     |       2,500 |  1,000 |         500 |  $50,000 |
+| 2019-02 | B     |       2,150 |    323 |         145 |  $10,739 |
+| 2019-02 | C     |       2,000 |    320 |         166 |  $12,147 |
+```
 
 The overall change in revenue between 2018 and 2019 is:
 
@@ -212,20 +213,21 @@ for name, den, num in zip(ratio_names, funnel, funnel[1:]):
 decomp
 ```
 
-| date       | group | impressions | clicks_over_impressions | conversions_over_clicks | revenue_over_conversions |
-| :--------- | :---- | ----------: | ----------------------: | ----------------------: | -----------------------: |
-| 2018-01-01 | A     |        1000 |                     15% |                     80% |                      $72 |
-| 2018-01-01 | B     |        2000 |                    7.5% |                    100% |                      $63 |
-| 2018-01-01 | C     |        2500 |                     10% |                     50% |                      $86 |
-| 2019-01-01 | A     |        1000 |                     12% |                     83% |                      $57 |
-| 2019-01-01 | B     |        2150 |                      9% |                   72.5% |                      $60 |
-| 2019-01-01 | C     |        2000 |                     20% |                   41.5% |                      $61 |
-| 2018-02-01 | A     |          50 |                     40% |                     50% |                      $50 |
-| 2018-02-01 | B     |        2000 |                     15% |                     50% |                      $76 |
-| 2018-02-01 | C     |        2500 |                     10% |                     50% |                      $70 |
-| 2019-02-01 | A     |        2500 |                     40% |                     50% |                     $100 |
-| 2019-02-01 | B     |        2150 |                     15% |                     45% |                      $74 |
-| 2019-02-01 | C     |        2000 |                     16% |                     52% |                       73 |
+```
+| date    | group | impressions | clicks_over_impressions | conversions_over_clicks | revenue_over_conversions |
+| 2018-01 | A     |       1,000 |                    0.15 |                     0.8 |                   $71.67 |
+| 2018-01 | B     |       2,000 |                   0.075 |                     1.0 |                   $62.67 |
+| 2018-01 | C     |       2,500 |                     0.1 |                     0.5 |                   $86.00 |
+| 2019-01 | A     |       1,000 |                    0.12 |                    0.83 |                   $90.55 |
+| 2019-01 | B     |       2,150 |                    0.09 |                   0.725 |                   $60.27 |
+| 2019-01 | C     |       2,000 |                     0.2 |                   0.415 |                   $61.13 |
+| 2018-02 | A     |          50 |                     0.4 |                     0.5 |                   $50.00 |
+| 2018-02 | B     |       2,000 |                    0.15 |                     0.5 |                   $76.00 |
+| 2018-02 | C     |       2,500 |                     0.1 |                     0.5 |                   $70.00 |
+| 2019-02 | A     |       2,500 |                     0.4 |                     0.5 |                  $100.00 |
+| 2019-02 | B     |       2,150 |                    0.15 |                   0.449 |                   $74.06 |
+| 2019-02 | C     |       2,000 |                    0.16 |                  0.5188 |                   $73.17 |
+```
 
 I've formatted the columns for readability. In practice, you might have these columns directly available, and won't need to create them. The next step is to define the dimensions along which to decompose the evolution:
 
@@ -256,14 +258,15 @@ for i, _ in enumerate(ratio_names):
 decomp
 ```
 
-| date       | group | impressions_contribution | clicks_over_impressions_contribution | conversions_over_clicks_contribution | revenue_over_conversions_contribution |
-| :--------- | :---- | -----------------------: | -----------------------------------: | -----------------------------------: | ------------------------------------: |
-| 2019-01-01 | A     |                       $0 |                               -$1720 |                             $286.667 |                              $1888.33 |
-| 2019-01-01 | B     |                     $705 |                             $2428.33 |                            -$3446.67 |                             -$347.667 |
-| 2019-01-01 | C     |                   -$2150 |                                $8600 |                               -$2924 |                                -$4129 |
-| 2019-02-01 | A     |                   $24500 |                                   $0 |                                   $0 |                                $25000 |
-| 2019-02-01 | B     |                     $855 |                                  $19 |                               -$1254 |                                 -$281 |
-| 2019-02-01 | C     |                   -$1750 |                                $4200 |                                 $420 |                                  $527 |
+```
+| date    | group | impressions | clicks_over_impressions | conversions_over_clicks | revenue_over_conversions |
+| 2019-01 | A     |          $0 |                 -$1,720 |                    $287 |                   $1,888 |
+| 2019-01 | B     |        $705 |                  $2,428 |                 -$3,447 |                    -$348 |
+| 2019-01 | C     |      -$2150 |                  $8,600 |                 -$2,924 |                  -$4,129 |
+| 2019-02 | A     |     $24,500 |                      $0 |                      $0 |                  $25,000 |
+| 2019-02 | B     |        $855 |                     $19 |                 -$1,254 |                    -$281 |
+| 2019-02 | C     |     -$1,750 |                  $4,200 |                    $420 |                     $527 |
+```
 
 We observe that the highest contributor to the revenue growth of Februrary 2019 is the increase in average spend. This makes sense, because the average spend increased by $25,000. Meanwhile, the number of conversions slightly decreased for group B in both January and February, each time resulting in a negative contribution to revenue. I think it's very powerful to be able to attribute a loss of revenue to a specific factor this way.
 

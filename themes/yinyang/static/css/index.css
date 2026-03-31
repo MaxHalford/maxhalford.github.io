@@ -57,14 +57,17 @@ pre {
   background-color: #f6f8fa !important;
   font-size: 15px !important;
   border-radius: 6px !important;
-  position: relative;
 }
 
+.code-wrapper {
+  position: relative;
+}
 
 .copy-button {
   position: absolute;
   top: 8px;
   right: 8px;
+  z-index: 1;
   padding: 4px 8px;
   background: transparent;
   border: none;
@@ -75,7 +78,7 @@ pre {
   border-radius: 4px;
 }
 
-pre:hover .copy-button {
+.code-wrapper:hover .copy-button {
   opacity: 1;
 }
 

@@ -464,6 +464,7 @@ toc: true
 - [hey.milo.gg](https://hey.milo.gg/)
 - [McMaster-Carr](https://www.mcmaster.com/) -- every online store should feel more like this.
 - [delphi.tools](https://delphi.tools/)
+- [Mariano Pascual](https://www.marianopascual.me/)
 
 I like these retrocool websites:
 
