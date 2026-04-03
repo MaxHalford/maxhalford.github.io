@@ -226,6 +226,7 @@ toc: true
 - [The power of interning: making a time series database 2000x smaller in Rust - Guillaume Endignoux](https://gendignoux.com/blog/2025/03/03/rust-interning-2000x.html) -- this guy takes the git scraping pattern really far, I like his taste.
 - [Functional Data Engineering — a modern paradigm for batch data processing](https://maximebeauchemin.medium.com/functional-data-engineering-a-modern-paradigm-for-batch-data-processing-2327ec32c42a) -- I strongly believe in this approach.
 - [BigQuery Best Practices](/files/misc/BigQuery%20Best%20Practices.pdf)
+- [Ten years late to the dbt party (DuckDB edition)](https://rmoff.net/2026/02/19/ten-years-late-to-the-dbt-party-duckdb-edition/) -- Robin Moffatt graces us with a fresh yet deep dbt primer
 
 ## Inspiring data analysis
 
@@ -250,6 +251,7 @@ toc: true
 - [Winners of the $10,000 ISBN visualization bounty - Anna's Blog](https://annas-archive.org/blog/all-isbns-winners.html)
 - [Vanishing home field advantage in English football](https://blog.engora.com/2025/07/vanishing-home-field-advantage-in.html?m=1)
 - [I am an Airbus A350 Pilot](https://jameshard.ing/pilot)
+- [Depuis 1958](https://depuis1958.fr/) -- [538](https://fivethirtyeight.com/methodology/how-our-pollster-ratings-work/) for French presidential elections
 
 ## Sustainability
 
@@ -279,7 +281,9 @@ toc: true
 - [Beyond the route: Introducing granular MTA bus speed data](https://new.mta.info/article/beyond-route-introducing-granular-mta-bus-speed-data)
 - [csvbase](https://csvbase.com/)
 - [CIA World Factbook](https://cia-factbook-archive.fly.dev/)
-
+- [nsppolls](https://github.com/nsppolls/nsppolls) -- French election polls
+- [Replication Data for: Election Polling Errors across Time and Space](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/8421DX)
+- [fivethirtyeight/data](https://github.com/fivethirtyeight/data/tree/master)
 
 ## Tables is all you need
 
@@ -375,6 +379,7 @@ toc: true
 - [Phase behavior of Cacio e Pepe sauce](https://arxiv.org/pdf/2501.00536)
 - [Who needs Graphviz when you can build it yourself?](https://spidermonkey.dev/blog/2025/10/28/iongraph-web.html)
 - [More than one hundred years of film sizes](https://wichm.home.xs4all.nl/filmsize.html)
+- [The Wobbly Table Theorem](https://timvieira.github.io/table-theorem/)
 
 ## Eye candy
 
