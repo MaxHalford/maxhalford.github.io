@@ -470,6 +470,7 @@ toc: true
 - [McMaster-Carr](https://www.mcmaster.com/) -- every online store should feel more like this.
 - [delphi.tools](https://delphi.tools/)
 - [Mariano Pascual](https://www.marianopascual.me/)
+- [loackme](https://loack.me/)
 
 I like these retrocool websites:
 
@@ -505,6 +506,7 @@ I like these retrocool websites:
 - [historicaltechtree.com](https://www.historicaltechtree.com/) -- just like Civ!
 - [loadmo.re](https://loadmo.re/)
 - [Admonymous](https://www.admonymous.co/)
+- [Middle Earth Interactive Map](https://middle-earth-interactive-map.web.app/)
 - <a href="https://xn--sr8hvo.ws/previous">⬅️</a>
 <a href="https://xn--sr8hvo.ws">IndieWeb Webring</a> 🕸💍
 <a href="https://xn--sr8hvo.ws/next">➡️</a>
