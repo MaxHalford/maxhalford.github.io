@@ -260,6 +260,7 @@ body {
 
 .post-content p {
   margin-bottom: 1em;
+  text-wrap: pretty;
 }
 
 .related-content {
@@ -324,6 +325,114 @@ details > summary:hover {
 
 details > pre {
   margin-top: 12px;
+}
+
+/* details with class="modal" — render as a button and open a modal on click */
+
+details.modal {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+details.modal > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  background: #f6f8fa;
+  color: #24292f;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+details.modal > summary::-webkit-details-marker,
+details.modal > summary::marker {
+  display: none;
+  content: "";
+}
+
+details.modal > summary::after {
+  content: "↗";
+  font-size: 0.9em;
+  color: #57606a;
+}
+
+details.modal > summary:hover {
+  background: #eaeef2;
+  border-color: #0969da;
+  color: #0969da;
+}
+
+details.modal > summary:hover::after {
+  color: #0969da;
+}
+
+details.modal > *:not(summary) {
+  display: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.modal-overlay-content {
+  background: white;
+  border-radius: 8px;
+  max-width: min(900px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  padding: 32px 24px 24px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.modal-overlay-content > *:first-child {
+  margin-top: 0;
+}
+
+.modal-overlay-header {
+  color: #57606a;
+  font-size: 0.95em;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eaecef;
+}
+
+.modal-overlay-header code {
+  color: inherit;
+  background: #f6f8fa;
+}
+
+.modal-overlay-content > *:last-child {
+  margin-bottom: 0;
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  color: #57606a;
+  padding: 4px 8px;
+}
+
+.modal-close:hover {
+  color: #0969da;
 }
 
 .inline-svg {

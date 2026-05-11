@@ -110,6 +110,7 @@ toc: true
 - [Andy Pavlo](https://www.cs.cmu.edu/~pavlo/) -- [reviews](https://www.cs.cmu.edu/~pavlo/blog/2026/01/2025-databases-retrospective.html?#fileformats) database landscape every year.
 - [Harriet Fell](https://www.ccs.neu.edu/home/fell/)
 - [Cam Pedersen](https://campedersen.com/) -- has a pretty Berkeley Mono website
+- [Willem Pennings](https://willempennings.nl/)
 
 ## Machine learning
 
@@ -194,6 +195,7 @@ toc: true
 - [Motif](https://www.youtube.com/watch?v=itR-eFJ3voY) -- they had cool ideas about funnel analytics before they sadly shut down.
 - [Facets](https://pair-code.github.io/facets/) -- it's too bad this project is not actively maintained anymore, it had a lot of potential.
 - [Crossfilter](https://crossfilter.github.io/crossfilter/) -- I like these tools that let you slice and dice data in the browser.
+- [Input metrics and weekly business review](https://workingbackwards.com/concepts/input-metrics/)
 
 ## Educational material
 
@@ -340,6 +342,7 @@ toc: true
 - [Technical discussions are hard; a few tips](https://gael-varoquaux.info/programming/technical-discussions-are-hard-a-few-tips.html)
 - [Octavia Butler’s Advice on Writing](https://www.themarginalian.org/2023/09/20/octavia-butler-advice-on-writing/)
 - [Writing Advice and Literary Wisdom from the Great E.B. White](https://lithub.com/writing-advice-and-literary-wisdom-from-the-great-e-b-white/)
+- [New Yorker Magazine Style Guide](https://www.scribd.com/doc/280735682/sanchez-the-new-yorker-style-sheet) -- there's even a dedicated [Skill](https://mcpmarket.com/tools/skills/new-yorker-writing-style)!
 
 ## Web development
 
@@ -364,6 +367,7 @@ toc: true
 - [How to develop product sense](https://www.lennysnewsletter.com/p/product-sense)
 - [The Browser Company's company values](https://www.thebrowser.company/values/) -- they made the Arc browser, which rekindled the browser wars.
 - [Secrets to Optimal Client Service](https://www.youtube.com/watch?v=hJbwyN4ZoCg&t=174s) -- actionable advice from a Goldman Sachs bigwig.
+- [Conceptual Integrity](https://cseweb.ucsd.edu/~wgg/CSE131B/Design/node6.html#:~:text=Conceptual%20integrity%20is%20the%20principle,of%20the%20same%20overall%20design.)
 
 ## LLMs
 
@@ -441,6 +445,7 @@ toc: true
 - [Beautiful Public Data](https://www.beautifulpublicdata.com/)
 - [Making of a Great Martini](https://www.guybuffet.com/gallery-image/Limited-Edition-Prints/G0000gRfwWbFR9iw/I0000XT5fhOfxSBM)
 - [The Land of Giants™](https://choishine.com/Giants.html)
+- [Amiga Graphics Archive](https://amiga.lychesis.net/)
 
 ## Pretty websites
 

@@ -1,5 +1,5 @@
 +++
-date = "2026-03-12"
+date = "2026-08-12"
 title = "Squill: infinite canvas for writing SQL"
 tags = ['sql', 'web-dev']
 draft = true

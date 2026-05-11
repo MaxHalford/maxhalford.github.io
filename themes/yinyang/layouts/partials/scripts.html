@@ -34,6 +34,48 @@ images.forEach(img => {
 </script>
 
 <script>
+document.querySelectorAll("details.modal").forEach(details => {
+  const summary = details.querySelector("summary");
+  if (!summary) return;
+  summary.addEventListener("click", (e) => {
+    e.preventDefault();
+    const overlay = document.createElement("div");
+    overlay.className = "modal-overlay";
+    const inner = document.createElement("div");
+    inner.className = "modal-overlay-content";
+    const close = document.createElement("button");
+    close.className = "modal-close";
+    close.setAttribute("aria-label", "Close");
+    close.innerHTML = "&times;";
+    inner.appendChild(close);
+    const header = document.createElement("div");
+    header.className = "modal-overlay-header";
+    header.innerHTML = summary.innerHTML;
+    inner.appendChild(header);
+    Array.from(details.childNodes).forEach(node => {
+      if (node === summary) return;
+      inner.appendChild(node.cloneNode(true));
+    });
+    overlay.appendChild(inner);
+    document.body.appendChild(overlay);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const closeModal = () => {
+      overlay.remove();
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKey);
+    };
+    const onKey = (ev) => { if (ev.key === "Escape") closeModal(); };
+    close.addEventListener("click", closeModal);
+    overlay.addEventListener("click", (ev) => {
+      if (ev.target === overlay) closeModal();
+    });
+    document.addEventListener("keydown", onKey);
+  });
+});
+</script>
+
+<script>
 document.querySelectorAll("pre:not(.mermaid)").forEach(pre => {
   const button = document.createElement("button");
   button.className = "copy-button";
