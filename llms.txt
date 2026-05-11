@@ -11,6 +11,7 @@
 
 
 
+- [Autonomous web scraping with Claude Code](https://maxhalford.github.io/blog/autonomous-web-scraping-claude-code/)
 - [Lower your warehouse costs via DuckDB transpilation](https://maxhalford.github.io/blog/warehouse-cost-reduction-quack-mode/)
 - [Text classification with Python 3.14's zstd module](https://maxhalford.github.io/blog/text-classification-zstd/)
 - [Solving Détrak with brute force](https://maxhalford.github.io/blog/detrak-solver/)
