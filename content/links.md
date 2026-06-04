@@ -268,6 +268,7 @@ toc: true
 - [Climate Change: a practical guide](https://www.tmrow.com/climatechange/)
 - [The computational structure of life cycle assessment - Reinout Heijungs & Sangwon Suh](/files/misc/The%20Computational%20Structure%20of%20Life%20Cycle%20Assessment.pdf) -- good introduction to LCA algorithms for technical people.
 - [Ecodex](https://getecodex.com/) -- homogenous database of emission factors
+- [CarbonRunner has closed down](https://carbonrunner.io/) -- echoes how I feel about sustainability companies
 
 ## Data sources
 
@@ -384,6 +385,8 @@ toc: true
 - [Who needs Graphviz when you can build it yourself?](https://spidermonkey.dev/blog/2025/10/28/iongraph-web.html)
 - [More than one hundred years of film sizes](https://wichm.home.xs4all.nl/filmsize.html)
 - [The Wobbly Table Theorem](https://timvieira.github.io/table-theorem/)
+- [On Rendering the Sky, Sunsets, and Planets](https://blog.maximeheckel.com/posts/on-rendering-the-sky-sunsets-and-planets/)
+- [Hail Mary star map](https://valhovey.github.io/gaia-mary/)
 
 ## Eye candy
 
@@ -446,6 +449,7 @@ toc: true
 - [Making of a Great Martini](https://www.guybuffet.com/gallery-image/Limited-Edition-Prints/G0000gRfwWbFR9iw/I0000XT5fhOfxSBM)
 - [The Land of Giants™](https://choishine.com/Giants.html)
 - [Amiga Graphics Archive](https://amiga.lychesis.net/)
+- [MRRArt](https://mrrartpro.com/)
 
 ## Pretty websites
 

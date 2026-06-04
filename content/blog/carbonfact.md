@@ -1,8 +1,7 @@
 +++
 date = "2026-07-01"
-title = "My tenure at Carbonfact"
+title = "I'm leaving Carbonfact"
 toc = true
-tags = ['text-processing']
 draft = true
 +++
 
