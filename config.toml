@@ -30,3 +30,6 @@ pygmentsUseClasses = true
 
 [robots]
   llmsTXT = true
+
+[security]
+  allowContent = ['text/html', 'text/markdown', 'text/org', 'text/asciidoc', 'text/pandoc', 'text/rst']
