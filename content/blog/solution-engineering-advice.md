@@ -2,7 +2,7 @@
 date = "2026-06-04"
 title = "My unvarnished guide to solution engineering"
 toc = true
-tags = ['data-science']
+tags = ['data-science', 'showerthoughts']
 +++
 
 ## Introduction

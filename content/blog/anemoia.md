@@ -1,7 +1,7 @@
 +++
 date = "2026-01-17"
 title = "Nostalgia for a time I didn’t experience"
-tags = ['showerthought']
+tags = ['showerthoughts']
 +++
 
 Our everyday vocabulary fails to capture subtle emotions. Some languages developed to fill in these gaps. An example that became popular is *Schadenfreude*, which means taking pleasure in someone else’s misfortune. It has an opposite in German, *Fremdscham*, which is the vicarious embarrassment you feel when witnessing someone else’s humiliation. Its Finnish equivalent *myötähäpeä* is slightly more well known.
