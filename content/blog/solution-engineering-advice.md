@@ -1,6 +1,6 @@
 +++
 date = "2026-06-04"
-title = "Lessons learned doing solution engineering"
+title = "My unvarnished guide to solution engineering"
 toc = true
 tags = ['data-science']
 +++
