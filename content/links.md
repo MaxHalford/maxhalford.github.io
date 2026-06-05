@@ -23,7 +23,7 @@ toc: true
 - [Edwin Chen](http://blog.echen.me/)
 - [Use the index, Luke!](http://use-the-index-luke.com/)
 - [Jack Preston](https://unwttng.com/)
-- [Agustinus Kristiadi](https://wiseodd.github.io/)
+- [Agustinus Kristiadi](https://agustinus.kristia.de/)
 - [DataGenetics](http://datagenetics.com/blog.html)
 - [Katherine Bailey](https://katbailey.github.io/)
 - [Netflix Research](https://research.netflix.com/)
@@ -37,7 +37,7 @@ toc: true
 - [explained.ai](https://explained.ai/)
 - [Better Explained](https://betterexplained.com/)
 - [Genetic Argonaut](https://geneticargonaut.blogspot.com/)
-- [pandas blog](https://pandas-dev.github.io/pandas-blog/)
+- [pandas blog](https://pandas.pydata.org/community/blog/)
 - [Towards Data Science](https://towardsdatascience.com/)
 - [Probably Overthinking It](https://www.allendowney.com/blog/)
 - [Simply Statistics](https://simplystatistics.org/)
@@ -64,7 +64,7 @@ toc: true
 - [Evan Miller](https://www.evanmiller.org/index.html)
 - [Eric Jang](http://evjang.com/)
 - [Andrey Akinshin](https://aakinshin.net/)
-- [Single Lunch](https://www.singlelunch.com/blog/)
+- [Single Lunch](https://www.singlelunch.com/)
 - [Freakonometrics](https://freakonometrics.hypotheses.org/)
 - [Martin Daniel](http://www.martindaniel.co/)
 - [Chris Kiehl](https://chriskiehl.com/)
@@ -140,9 +140,9 @@ toc: true
 - [Gaussian Process, not quite for dummies - Yuge Shi](https://yugeten.github.io/posts/2019/09/GP/) -- Gaussian processes are quite difficult to understand (at least, for me) but Yuge gives some great visual intuitions.
 - [Frequentism and Bayesianism: A Python-driven Primer - Jake VanderPlas](https://arxiv.org/pdf/1411.5018.pdf)
 - [Variational Inference: A Review for Statisticians - David Blei and his flock](https://arxiv.org/pdf/1601.00670.pdf)
-- [The Performance of Decision Tree Evaluation Strategies - Andrew Tulloch](http://tullo.ch/articles/decision-tree-evaluation/)
+- [The Performance of Decision Tree Evaluation Strategies - Andrew Tulloch](https://web.archive.org/web/20251009145426/https://tullo.ch/articles/decision-tree-evaluation/)
 - [Simplifying Graph Convolutional Networks - Felix Wu et al.](https://arxiv.org/pdf/1902.07153.pdf) -- A nice example of putting the horse before the cart.
-- [MIT 6.867 machine learning course notes - Tommi Jaakola](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-867-machine-learning-fall-2006/lecture-notes/) -- For people who enjoy concise mathematical notation.
+- [MIT 6.867 machine learning course notes - Tommi Jaakola](https://ocw.mit.edu/courses/6-867-machine-learning-fall-2006/pages/lecture-notes/) -- For people who enjoy concise mathematical notation.
 - [A Recipe for Training Neural Networks - Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
 - [The Bitter Lesson - Richard Sutton](http://incompleteideas.net/IncIdeas/BitterLesson.html)
 - [Introduction to Locality-Sensitive Hashing - Tyler Neylon](https://unboxresearch.com/articles/lsh_post1.html)
@@ -236,12 +236,12 @@ toc: true
 - [Is Seattle Really Seeing an Uptick In Cycling? - Jake VanderPlas](https://jakevdp.github.io/blog/2014/06/10/is-seattle-really-seeing-an-uptick-in-cycling/)
 - [How we changed our roof and cut 1.5 tons of CO2e - Martin Daniel](http://www.martindaniel.co/roof/index.html)
 - [WWW: Who Will Win? - Peter Norvig](https://github.com/norvig/pytudes/blob/main/ipynb/WWW.ipynb)
-- [Wealth shown to scale - Matt Korostoff](https://mkorostoff.github.io/1-pixel-wealth/)
+- [Wealth shown to scale - Matt Korostoff](https://web.archive.org/web/20250221135837/https://mkorostoff.github.io/1-pixel-wealth/)
 - [Are Pop Lyrics Getting More Repetitive? - Colin Morris](https://pudding.cool/2017/05/song-repetition/)
 - [Tracking the Fake GitHub Star Black Market - Fraser Marlow, Yuhan Luo, Alana Glassco](https://dagster.io/blog/fake-stars)
 - [Why the super rich are inevitable - The Pudding](https://pudding.cool/2022/12/yard-sale) -- Really cool dataviz.
 - [Kaggle contest on Observing Dark World - Cam Davidson-Pilon](https://nbviewer.jupyter.org/github/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Chapter5_LossFunctions/Ch5_LossFunctions_PyMC3.ipynb#Example:-Kaggle-contest-on-Observing-Dark-World) -- If you're doubtful about the power of Bayesian machine learning, then read this and get mindblown.
-- [looria.com/reddit](https://www.looria.com/reddit) -- This is a website that aggregates informal product reviews found on Reddit. There's a bunch of cool NLP stuff going on behind the scenes. For instance here's recommendations for [cycling](https://looria.com/reddit/cycling/products) and [camping gear](https://looria.com/reddit/campinggear/products).
+- [looria.com/reddit](https://web.archive.org/web/20260118125023/https://www.looria.com/reddit) -- This is a website that aggregates informal product reviews found on Reddit. There's a bunch of cool NLP stuff going on behind the scenes. For instance here's recommendations for [cycling](https://web.archive.org/web/20250415043149/https://www.looria.com/reddit/cycling/products) and [camping gear](https://web.archive.org/web/20250417032634/https://www.looria.com/reddit/campinggear/products).
 - [Who is the average nomad?](https://nomadlist.com/digital-nomad-statistics#unattractive) -- feeds from NomadList live data.
 - [Every Noise at Once](https://everynoise.com/engenremap.html) -- uses PCA to map music genres.
 - [How Big is YouTube? - Ethan Zuckerman](https://ethanzuckerman.com/2023/12/22/how-big-is-youtube/)
@@ -313,7 +313,7 @@ toc: true
 - [You Could Just Choose Optimism](https://quarter--mile.com/You-Could-Just-Choose-Optimism)
 - [Your actions reflect your priorities](https://tombrady.com/posts/your-actions-reflect-your-priorities) -- Tom Brady's take on it being about the process, not the outcome.
 - [Renting is for Suckers](https://andrewkelley.me/post/renting-is-for-suckers.html) -- good arguments as to why you shouldn't default to using cloud services.
-- [I Deleted My Second Brain](https://www.joanwestenberg.com/p/i-deleted-my-second-brain)
+- [I Deleted My Second Brain](https://www.joanwestenberg.com/i-deleted-my-second-brain-692aa40d59d5f06dd5131e43/)
 - [Ira Glass on Storytelling](https://www.youtube.com/watch?v=X2wLP0izeJE) -- good taste and being critical of one's own work is the key to becoming a better creator.
 - [Burnout profile](https://www.lizandmollie.com/burnout-profile)
 - [High Agency In 30 Minutes - George Mack](https://www.highagency.com/)
@@ -339,7 +339,7 @@ toc: true
 - [Common Bugs in Writing](https://www.cs.columbia.edu/~hgs/etc/writing-bugs.html)
 - [Novelist Cormac McCarthy’s tips on how to write a great science paper - Savage and Yeh](https://www.signalsblog.ca/right-turn-cormac-mccarthy-and-me-on-how-to-write-a-good-science-paper/)
 - [How to Build an Economic Model in Your Spare Time - Hal R. Varian](https://fermatslibrary.com/p/e2e6484d#email-newsletter) -- The academic wisdom in this article goes beyond the world of economics.
-- [The Double-Entry Counting Method](https://beancount.github.io/docs/the_double_entry_counting_method.html#double-entry-bookkeeping) - Great example of documenting a technical concept.
+- [The Double-Entry Counting Method](https://beancount.github.io/docs/the_double_entry_counting_method/) - Great example of documenting a technical concept.
 - [Technical discussions are hard; a few tips](https://gael-varoquaux.info/programming/technical-discussions-are-hard-a-few-tips.html)
 - [Octavia Butler’s Advice on Writing](https://www.themarginalian.org/2023/09/20/octavia-butler-advice-on-writing/)
 - [Writing Advice and Literary Wisdom from the Great E.B. White](https://lithub.com/writing-advice-and-literary-wisdom-from-the-great-e-b-white/)
@@ -430,7 +430,7 @@ toc: true
 - [Spectrolite](https://spectrolite.app/)
 - [RamenHaus](https://ramen.haus/)
 - [SportsNetUSA.net](https://www.sportsnetusa.net/)
-- [readcomiconline](https://readcomiconline.li/)
+- [readcomiconline](https://web.archive.org/web/20260511044954/https://readcomiconline.li/)
 - [MUBI](https://mubi.com/en/fr/showing)
 - [La vida en viñetas](https://twitter.com/lavidaenvinetas)
 - [Plotting 3 years of hourly data in 150ms](https://leeoniya.github.io/uPlot/demos/time-periods.html)
@@ -495,7 +495,7 @@ I like these retrocool websites:
 - [Every Noise at Once](https://everynoise.com/)
 - [Starlink Satellites Tracker](https://findstarlink.com/)
 - [Based Cooking](https://based.cooking/)
-- [ReadComicOnline](https://readcomiconline.li/) -- I recommend [these](https://www.bedetheque.com/indispensables.html) French comics.
+- [ReadComicOnline](https://web.archive.org/web/20260511044954/https://readcomiconline.li/) -- I recommend [these](https://www.bedetheque.com/indispensables.html) French comics.
 - [Same Energy](https://same.energy)
 - [BOOOOOOM](https://www.booooooom.com/)
 - [indieblog.page](https://indieblog.page/)
