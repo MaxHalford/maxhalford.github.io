@@ -319,6 +319,7 @@ toc: true
 - [High Agency In 30 Minutes - George Mack](https://www.highagency.com/)
 - [Richard Feynman on the question *Why?*](https://www.youtube.com/watch?v=36GT2zI8lVA)
 - [Thinflation](https://mitxela.com/rants/thinflation)
+- [They're Made out of Meat](https://www.eastoftheweb.com/short-stories/UBooks/TheyMade.shtml)
 
 ## SQL
 
@@ -370,6 +371,11 @@ toc: true
 - [Secrets to Optimal Client Service](https://www.youtube.com/watch?v=hJbwyN4ZoCg&t=174s) -- actionable advice from a Goldman Sachs bigwig.
 - [Conceptual Integrity](https://cseweb.ucsd.edu/~wgg/CSE131B/Design/node6.html#:~:text=Conceptual%20integrity%20is%20the%20principle,of%20the%20same%20overall%20design.)
 
+## Finance
+
+- [Bill Ackman business masterclass](https://x.com/radha_ai/status/2062485734586712095)
+- [Plain Text Accounting](https://plaintextaccounting.org/) -- I use [hledger](https://hledger.org/) + Claude Code to import bank statements
+
 ## LLMs
 
 - [The surprising ease and effectiveness of AI in a loop](https://interconnected.org/home/2023/03/16/singularity)
@@ -387,6 +393,7 @@ toc: true
 - [The Wobbly Table Theorem](https://timvieira.github.io/table-theorem/)
 - [On Rendering the Sky, Sunsets, and Planets](https://blog.maximeheckel.com/posts/on-rendering-the-sky-sunsets-and-planets/)
 - [Hail Mary star map](https://valhovey.github.io/gaia-mary/)
+- [screen.toys](https://screen.toys/)
 
 ## Eye candy
 
@@ -450,6 +457,7 @@ toc: true
 - [The Land of Giants™](https://choishine.com/Giants.html)
 - [Amiga Graphics Archive](https://amiga.lychesis.net/)
 - [MRRArt](https://mrrartpro.com/)
+- [Lili](https://lili-lines.github.io/fr/)
 
 ## Pretty websites
 
