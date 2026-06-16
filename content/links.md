@@ -373,7 +373,7 @@ toc: true
 
 ## Finance
 
-- [Bill Ackman business masterclass](https://x.com/radha_ai/status/2062485734586712095)
+- [Everything You Need to Know About Finance and Investing in Less Than an Hour](https://x.com/radha_ai/status/2062485734586712095) -- Bill Ackman business masterclass
 - [Plain Text Accounting](https://plaintextaccounting.org/) -- I use [hledger](https://hledger.org/) + Claude Code to import bank statements
 
 ## LLMs
