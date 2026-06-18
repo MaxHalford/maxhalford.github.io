@@ -11,10 +11,10 @@
 
 
 
-- [My unvarnished guide to solution engineering](https://maxhalford.github.io/blog/solution-engineering-advice/)
+- [My unvarnished guide to solution engineering](https://maxhalford.github.io/blog/solution-engineering-advice/): Lessons from a few years as a data scientist talking to customers and selling enterprise SaaS at an early startup.
 - [Autonomous web scraping with Claude Code](https://maxhalford.github.io/blog/autonomous-web-scraping-claude-code/)
-- [Lower your warehouse costs via DuckDB transpilation](https://maxhalford.github.io/blog/warehouse-cost-reduction-quack-mode/)
-- [Text classification with Python 3.14's zstd module](https://maxhalford.github.io/blog/text-classification-zstd/)
+- [Lower your warehouse costs via DuckDB transpilation](https://maxhalford.github.io/blog/warehouse-cost-reduction-quack-mode/): DuckDB is great but most teams are stuck on BigQuery or Snowflake. Here's how to keep your warehouse but offload compute to DuckDB via SQL transpilation.
+- [Text classification with Python 3.14's zstd module](https://maxhalford.github.io/blog/text-classification-zstd/): Python 3.14 added Zstandard to stdlib; its incremental API finally makes classify-by-compression practical.
 - [Solving Détrak with brute force](https://maxhalford.github.io/blog/detrak-solver/)
 - [Nostalgia for a time I didn’t experience](https://maxhalford.github.io/blog/anemoia/)
 - [Row level lineage at Carbonfact](https://maxhalford.github.io/blog/row-level-lineage/)
@@ -36,7 +36,7 @@
 - [Efficient ELT refreshes](https://maxhalford.github.io/blog/efficient-data-transformation/)
 - [Online machine learning on the road @ IDE+A, TH Köln](https://maxhalford.github.io/blog/online-machine-learning-on-the-road/)
 - [Sh*t flows downhill, but not at Carbonfact](https://maxhalford.github.io/blog/shit-flows-downhill-but-not-at-carbonfact/)
-- [Answering "Why did the KPI change?" using decomposition](https://maxhalford.github.io/blog/kpi-evolution-decomposition/)
+- [Answering "Why did the KPI change?" using decomposition](https://maxhalford.github.io/blog/kpi-evolution-decomposition/): A practical recipe for explaining why a metric moved by decomposing the change into per-dimension contributions.
 - [Measuring the carbon footprint of pizzas](https://maxhalford.github.io/blog/carbon-footprint-pizzas/)
 - [Graph components with DuckDB](https://maxhalford.github.io/blog/graph-components-duckdb/)
 - [For analytics, don't use dynamic JSON keys](https://maxhalford.github.io/blog/no-dynamic-keys-in-json/)
@@ -53,9 +53,9 @@
 - [A rant against dbt ref](https://maxhalford.github.io/blog/dbt-ref-rant/)
 - [First IRL meetup with the River developers](https://maxhalford.github.io/blog/first-river-meetup/)
 - [Online machine learning with River @ GAIA](https://maxhalford.github.io/blog/online-machine-learning-with-river/)
-- [Fuzzy regex matching in Python](https://maxhalford.github.io/blog/fuzzy-regex-matching-in-python/)
+- [Fuzzy regex matching in Python](https://maxhalford.github.io/blog/fuzzy-regex-matching-in-python/): How to use the Python regex library to locate a pattern in noisy text; useful when input has typos or OCR errors.
 - [OCR spelling correction is hard](https://maxhalford.github.io/blog/ocr-spelling-correction-is-hard/)
-- [Comic book panel segmentation](https://maxhalford.github.io/blog/comic-book-panel-segmentation/)
+- [Comic book panel segmentation](https://maxhalford.github.io/blog/comic-book-panel-segmentation/): Slicing comic book pages into individual panels with scikit-image, motivated by wanting to read Thorgal on a phone.
 - [Online machine learning in practice @ PyData PDX](https://maxhalford.github.io/blog/online-machine-learning-in-practice-pydata-pdx/)
 - [The online machine learning predict/fit switcheroo](https://maxhalford.github.io/blog/predict-fit-switcheroo/)
 - [Weighted sampling without replacement in pure Python](https://maxhalford.github.io/blog/weighted-sampling-without-replacement/)
@@ -77,12 +77,12 @@
 - [What my PhD was about](https://maxhalford.github.io/blog/phd-about/)
 - [Computing cross-correlations in SQL](https://maxhalford.github.io/blog/sql-cross-correlations/)
 - [Unsupervised text classification with word embeddings](https://maxhalford.github.io/blog/unsupervised-text-classification/)
-- [Focal loss implementation for LightGBM](https://maxhalford.github.io/blog/lightgbm-focal-loss/)
+- [Focal loss implementation for LightGBM](https://maxhalford.github.io/blog/lightgbm-focal-loss/): An end-to-end guide to using a custom loss like focal loss in LightGBM, covering the four steps required: custom loss, custom metric, init value, and margin handling.
 - [A few intermediate pandas tricks](https://maxhalford.github.io/blog/pandas-tricks/)
 - [A brief introduction to online machine learning @ Hong Kong Machine Learning Meetup](https://maxhalford.github.io/blog/brief-introduction-to-online-machine-learning/)
 - [The correct way to evaluate online machine learning models](https://maxhalford.github.io/blog/online-learning-evaluation/)
 - [Online machine learning with decision trees @ Toulouse AOC workgroup](https://maxhalford.github.io/blog/online-machine-learning-with-decision-trees/)
-- [Server-sent events in Flask without extra dependencies](https://maxhalford.github.io/blog/flask-sse-no-deps/)
+- [Server-sent events in Flask without extra dependencies](https://maxhalford.github.io/blog/flask-sse-no-deps/): How to push live updates from a Flask server to the browser using Server-Sent Events, without Redis or extra packages.
 - [I got plagiarized and Google didn't help](https://maxhalford.github.io/blog/plagiarism-google-didnt-help/)
 - [Our solution to the IDAO 2020 qualifiers](https://maxhalford.github.io/blog/idao-2020-qualifiers-solution/)
 - [Speeding up scikit-learn for single predictions](https://maxhalford.github.io/blog/speeding-up-sklearn-single-predictions/)
@@ -102,7 +102,7 @@
 - [An approach based on Bayesian networks for query selectivity estimation @ DASFAA](https://maxhalford.github.io/blog/an-approach-based-on-bayesian-networks-for-query-selectivity-estimation-slides/)
 - [Morellet crosses with JavaScript](https://maxhalford.github.io/blog/morellet/)
 - [Streaming groupbys in pandas for big datasets](https://maxhalford.github.io/blog/pandas-streaming-groupby/)
-- [Target encoding done the right way](https://maxhalford.github.io/blog/target-encoding/)
+- [Target encoding done the right way](https://maxhalford.github.io/blog/target-encoding/): How target encoding works for categorical variables, with smoothing and cross-validation so you don't leak the target.
 - [Stella triangles with JavaScript](https://maxhalford.github.io/blog/stella-triangles/)
 - [Unknown pleasures with JavaScript](https://maxhalford.github.io/blog/unknown-pleasures/)
 - [Subsampling a training set to match a test set - Part 1](https://maxhalford.github.io/blog/subsampling-1/)

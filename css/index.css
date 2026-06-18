@@ -206,6 +206,13 @@ body {
   white-space: nowrap;
   font-family: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo",
     "Courier", monospace;
+  text-decoration: none;
+}
+
+a.posts-line-tag:hover {
+  color: #333;
+  border-color: #333;
+  background-color: #f6f8fa;
 }
 
 .site-footer {
