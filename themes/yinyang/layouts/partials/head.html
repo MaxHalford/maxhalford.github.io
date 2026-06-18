@@ -25,29 +25,23 @@
   <meta property="og:url" content="{{ .Permalink }}" />
   <meta property="og:site_name" content="{{ .Site.Title }}" />
   <meta property="og:locale" content="{{ replace .Site.LanguageCode "-" "_" }}" />
-  {{- $ogImage := "" -}}
-  {{- with .Params.images -}}
-    {{- $ogImage = index . 0 -}}
-  {{- else -}}
-    {{- with .Resources.ByType "image" -}}
-      {{- $ogImage = (index . 0).RelPermalink -}}
-    {{- else -}}
-      {{- $firstImg := findRE `<img[^>]+src="([^"]+)"` .Content 1 -}}
-      {{- with $firstImg -}}
-        {{- $ogImage = replaceRE `<img[^>]+src="([^"]+)".*` "$1" (index . 0) -}}
-      {{- end -}}
-    {{- end -}}
-  {{- end -}}
-  {{- if not $ogImage -}}
-    {{- with .Site.Params.images -}}
-      {{- $ogImage = index . 0 -}}
-    {{- end -}}
-  {{- end -}}
+  {{- $ogImage := partial "og-image.html" . -}}
   {{- with $ogImage }}
-  <meta property="og:image" content="{{ . | absURL }}" />
+  <meta property="og:image" content="{{ . }}" />
   {{- end }}
 
-  {{ template "_internal/twitter_cards.html" . }}
+  {{- $twitterDesc := default (.Summary | plainify | truncate 200) .Description -}}
+  {{- $twitterTitle := cond .IsHome .Site.Title (printf "%s • %s" .Title .Site.Title) -}}
+  <meta name="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}" />
+  <meta name="twitter:title" content="{{ $twitterTitle }}" />
+  <meta name="twitter:description" content="{{ $twitterDesc }}" />
+  {{- with $ogImage }}
+  <meta name="twitter:image" content="{{ . }}" />
+  {{- end }}
+  {{- with .Site.Params.social.twitter }}
+  <meta name="twitter:site" content="@{{ . }}" />
+  <meta name="twitter:creator" content="@{{ . }}" />
+  {{- end }}
 
   <link
     rel="icon"
@@ -86,6 +80,11 @@
     rel="stylesheet"
   />
 
+  {{- /* Load MathJax only when the page actually contains math.
+         Auto-detect display math ($$ or \[); inline-only posts can opt in with `math = true`. */ -}}
+  {{- $raw := .RawContent | default "" -}}
+  {{- $needsMath := or (eq .Params.math true) (in $raw "$$") (in $raw "\\[") -}}
+  {{- if $needsMath }}
   <!-- MathJax -->
   <script>
     MathJax = {
@@ -121,6 +120,7 @@
     async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
   ></script>
+  {{- end }}
 
   {{ .Site.Params.extraHead | safeHTML }}
 </head>

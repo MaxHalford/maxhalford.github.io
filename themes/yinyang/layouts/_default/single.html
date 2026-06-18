@@ -22,7 +22,7 @@
               {{ end }}
                 {{ if isset .Params "tags" }}
                     {{ range $tag := .Params.tags }}
-                        <span class="posts-line-tag">{{ $tag }}</span>
+                        <a class="posts-line-tag" href="/tags/{{ $tag | urlize }}/">{{ $tag }}</a>
                     {{ end }}
                 {{ end }}
             </div>

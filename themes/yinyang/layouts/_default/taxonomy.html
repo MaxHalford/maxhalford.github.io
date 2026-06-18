@@ -9,9 +9,11 @@
         <div class="header">
           {{ partial "header.html" . }}
         </div>
-        <div id="posts-list">
-          {{ range (where site.RegularPages "Type" "in" site.Params.mainSections).GroupByDate "2006" -}}
 
+        <h1 class="taxonomy-term">#{{ .Title | lower }}</h1>
+
+        <div id="posts-list">
+          {{ range .Pages.GroupByDate "2006" -}}
             {{ range .Pages }}
             <div class="row posts-line">
 
@@ -38,7 +40,6 @@
                     {{ else }}
                         <span class="posts-line-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" /><path d="M13.5 6.5l4 4" /></svg></span>
                     {{ end }}
-
 
                     <time class="posts-line-date" datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}}</time>
                     {{ if isset .Params "tags" }}

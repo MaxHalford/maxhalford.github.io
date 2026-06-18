@@ -2,7 +2,8 @@
 date = "2020-09-20"
 toc = true
 title = "Focal loss implementation for LightGBM"
-tags = ['machine-learning']
+description = "An end-to-end guide to using a custom loss like focal loss in LightGBM, covering the four steps required: custom loss, custom metric, init value, and margin handling."
+tags = ['machine-learning', 'python']
 +++
 
 **Edit (2021-01-26)** -- *I initially wrote this blog post using version 2.3.1 of LightGBM. I've now updated it to use version 3.1.1. There are a couple of subtle but important differences between version 2.x.y and 3.x.y. If you're using version 2.x.y, then I strongly recommend you to upgrade to version 3.x.y.*

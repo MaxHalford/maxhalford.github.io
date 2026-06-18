@@ -1,8 +1,9 @@
 +++
 date = "2022-03-05"
 title = "Comic book panel segmentation"
+description = "Slicing comic book pages into individual panels with scikit-image, motivated by wanting to read Thorgal on a phone."
 toc = true
-tags = ['image-processing']
+tags = ['image-processing', 'python']
 +++
 
 **Edit (2023-05-26)** -- *I've learnt about the [Kumiko project](https://github.com/njean42/kumiko), which is exactly devoted to slicing comic book panels. There's even a live [tool](https://kumiko.njean.me/demo). I discovered it thanks to being pinged on [this](https://github.com/njean42/kumiko/issues/12) issue.*

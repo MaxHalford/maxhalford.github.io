@@ -1,8 +1,9 @@
 +++
 date = "2022-04-04"
 title = "Fuzzy regex matching in Python"
+description = "How to use the Python regex library to locate a pattern in noisy text; useful when input has typos or OCR errors."
 toc = true
-tags = ['text-processing']
+tags = ['text-processing', 'python']
 +++
 
 ## Fuzzy string matching in a nutshell

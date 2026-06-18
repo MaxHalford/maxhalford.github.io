@@ -1,7 +1,8 @@
 +++
 date = "2026-03-12"
 title = "Lower your warehouse costs via DuckDB transpilation"
-tags = ['data-eng']
+description = "DuckDB is great but most teams are stuck on BigQuery or Snowflake. Here's how to keep your warehouse but offload compute to DuckDB via SQL transpilation."
+tags = ['data-eng', 'sql']
 +++
 
 Many people [seem to admire](https://survey.stackoverflow.co/2025/technology#2-databases) DuckDB. But most of us are stuck with our traditional warehouses, because they're entrenched in our data stacks and IT landscape. This is with good reason: BigQuery, Snowflake, ClickHouse and co. are great software. But they're not cheap, and keeping a warehouse's monthly bill under control is non-trivial.

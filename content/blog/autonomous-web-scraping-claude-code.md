@@ -41,7 +41,7 @@ claude -p "Scrape @scrape/$(filter-out $@,$(MAKECMDGOALS))/scrape.py" \
 <details class="modal">
   <summary><code>CLAUDE.md</code> (system prompt)</summary>
 
-# Pub quiz
+## Pub quiz
 
 This is a project for learning pub quiz questions, and associated knowledge. Questions and answers are scraped from the web, such as The Guardian's weekly quiz, University Challenge, etc.
 

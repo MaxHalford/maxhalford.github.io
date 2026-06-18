@@ -1,6 +1,7 @@
 {{- if and (ne .Kind "home") (ne .Kind "section") (ne .Kind "taxonomy") (ne .Kind "term") -}}
 {{- $desc := .Description -}}
 {{- if not $desc -}}{{- $desc = .Summary | plainify | truncate 200 -}}{{- end -}}
+{{- $ogImage := partial "og-image.html" . -}}
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -13,6 +14,9 @@
     "name": {{ .Title | jsonify | safeJS }},
     "headline": {{ .Title | jsonify | safeJS }},
     "description": {{ $desc | jsonify | safeJS }},
+    {{- with $ogImage }}
+    "image": {{ . | jsonify | safeJS }},
+    {{- end }}
     "inLanguage": "en-US",
     "author": {
         "@type": "Person",

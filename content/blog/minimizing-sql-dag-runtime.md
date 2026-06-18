@@ -1,7 +1,7 @@
 +++
 date = "2025-02-08"
 title = "Minimizing the runtime of a SQL DAG"
-tags = ['data-engineering', 'python']
+tags = ['data-eng', 'python']
 +++
 
 I recently looked into reducing the runtime of [Carbonfact](https://www.carbonfact.com/)'s SQL DAG. Our DAG is made up of roughly 160 SQL queries. It takes about 10 minutes to run with BigQuery, using on-demand pricing. It's decent. However, the results of our DAG feed customer dashboards, and we have the (bad) habit of refreshing the DAG several times a day. Reducing the runtime by a few minutes can be a nice quality-of-life improvement.

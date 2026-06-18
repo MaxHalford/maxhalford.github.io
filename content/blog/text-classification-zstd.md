@@ -1,6 +1,7 @@
 +++
 date = "2026-02-06"
 title = "Text classification with Python 3.14's zstd module"
+description = "Python 3.14 added Zstandard to stdlib; its incremental API finally makes classify-by-compression practical."
 tags = ['machine-learning', 'text-processing', 'python']
 +++
 

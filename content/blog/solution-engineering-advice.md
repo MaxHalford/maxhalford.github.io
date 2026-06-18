@@ -1,6 +1,7 @@
 +++
 date = "2026-06-04"
 title = "My unvarnished guide to solution engineering"
+description = "Lessons from a few years as a data scientist talking to customers and selling enterprise SaaS at an early startup."
 toc = true
 tags = ['data-science', 'showerthoughts']
 +++
@@ -235,4 +236,4 @@ I enjoyed being a solution engineer. It's a refreshing change from working on so
 
 I'm convinced many data scientists and engineers underestimate their worth outside their usual scope. The clarity of thought a data-trained person brings is still underappreciated across many parts of a business. Plenty of companies still run on a swamp of ad hoc Excel files, with no real system for organizing themselves. That bar is lower than it looks from inside a tech team.
 
-These days, Forward Deployed Engineers and Product Engineers are well sought after, and each is [having its moment](https://www.linkedin.com/pulse/rise-forward-deployed-engineer-kelly-vaughn-xnmbe/). With the rise of AI, and the commoditization of writing software, your worth can increase by becoming a technical mind that can chat with customers.
+These days, [Forward Deployed Engineers](https://read.technically.dev/p/whats-a-forward-deployed-engineer?hide_intro_popup=true) and Product Engineers are well sought after, and each is [having its moment](https://www.linkedin.com/pulse/rise-forward-deployed-engineer-kelly-vaughn-xnmbe/). With the rise of AI, and the commoditization of writing software, your worth can increase by becoming a technical mind that can chat with customers.

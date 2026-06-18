@@ -1,0 +1,19 @@
+{{- $ogImage := "" -}}
+{{- with .Params.images -}}
+  {{- $ogImage = index . 0 -}}
+{{- else -}}
+  {{- with .Resources.ByType "image" -}}
+    {{- $ogImage = (index . 0).RelPermalink -}}
+  {{- else -}}
+    {{- $firstImg := findRE `<img[^>]+src="([^"]+)"` .Content 1 -}}
+    {{- with $firstImg -}}
+      {{- $ogImage = replaceRE `<img[^>]+src="([^"]+)".*` "$1" (index . 0) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $ogImage -}}
+  {{- with .Site.Params.images -}}
+    {{- $ogImage = index . 0 -}}
+  {{- end -}}
+{{- end -}}
+{{- return ($ogImage | absURL) -}}

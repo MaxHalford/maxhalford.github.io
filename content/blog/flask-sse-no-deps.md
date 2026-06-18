@@ -1,7 +1,8 @@
 +++
 date = "2020-05-04"
 title = "Server-sent events in Flask without extra dependencies"
-tags = ['web-dev']
+description = "How to push live updates from a Flask server to the browser using Server-Sent Events, without Redis or extra packages."
+tags = ['web-dev', 'python']
 +++
 
 [Server-sent events (SSE)](https://en.wikipedia.org/wiki/Server-sent_events) is a mechanism for sending updates from a server to a client. The fundamental difference with [WebSockets](https://en.wikipedia.org/wiki/WebSocket) is that the communication only goes in one direction. In other words, the client cannot send information to the server. For many usecases this is all you might need. Indeed, if you just want to receive notifications/updates/messages, then using a WebSocket is overkill. Once you've implemented the SSE functionality on your server, then all you need on a JavaScript client is an [`EventSource`](https://developer.mozilla.org/en-US/docs/Web/API/EventSource). Trust me, it's very straightforward.

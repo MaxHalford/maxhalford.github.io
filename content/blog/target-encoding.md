@@ -2,7 +2,8 @@
 date = "2018-10-13"
 draft = false
 title = "Target encoding done the right way"
-tags = ['machine-learning']
+description = "How target encoding works for categorical variables, with smoothing and cross-validation so you don't leak the target."
+tags = ['machine-learning', 'python']
 +++
 
 When you're doing supervised learning, you often have to deal with categorical variables. That is, variables which don't have a natural numerical representation. The problem is that most machine learning algorithms require the input data to be numerical. At some point or another a data science pipeline will require converting categorical variables to numerical variables.
