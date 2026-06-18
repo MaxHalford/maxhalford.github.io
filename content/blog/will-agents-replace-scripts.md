@@ -1,7 +1,7 @@
 +++
 date = "2026-07-02"
 title = "Will agents replace scripts?"
-tags = ['llm']
+tags = ['llm', 'showerthoughts']
 +++
 
 I think coding agents are a good thing. They're powerful, and we're still scratching the surface of what they can do. But that's no excuse to forget good practices and hard-won expertise.
