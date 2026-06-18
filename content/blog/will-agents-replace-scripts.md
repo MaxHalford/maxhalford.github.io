@@ -30,6 +30,8 @@ Moreover, having scripts running on a schedule outside of version control is a r
 
 Hopefully the better pattern wins out. But that only happens if the tools non-technical people use lead them to the [pit of success](https://blog.codinghorror.com/falling-into-the-pit-of-success/). In this case I hope Claude Cowork will let you schedule scripts, and not just agents. The pessimist in me tells me they won't, because their priority is to get us to burn tokens.
 
+Anyhoo, I allowed myself to make a comment:
+
 <div align="center" >
 <figure style="width: 90%; margin: 0;">
     <img src="/img/blog/will-agents-replace-scripts/slack-2.png">
