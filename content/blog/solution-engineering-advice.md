@@ -4,7 +4,14 @@ title = "My unvarnished guide to solution engineering"
 description = "Lessons from a few years as a data scientist talking to customers and selling enterprise SaaS at an early startup."
 toc = true
 tags = ['data-science', 'showerthoughts']
+images = ["/img/blog/solution-engineering-advice/cover.png"]
 +++
+
+<div align="center" >
+<figure style="width: 100%; margin: 0;">
+    <img src="/img/blog/solution-engineering-advice/cover.png" style="box-shadow: none;">
+</figure>
+</div>
 
 ## Introduction
 
