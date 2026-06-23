@@ -292,12 +292,10 @@ html[data-theme="dark"] .theme-toggle .icon-owl {
 
 .posts-line-tag {
   color: var(--muted);
-  border: solid;
-  border-color: var(--border);
-  border-width: 2px;
+  border: 2px solid var(--border);
   border-radius: 8px;
-  padding: 4px 5px;
-  font-size: 0.9rem;
+  padding: 3px 8px;
+  font-size: 0.85rem;
   white-space: nowrap;
   font-family: var(--mono);
   text-decoration: none;
