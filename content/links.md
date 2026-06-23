@@ -488,6 +488,7 @@ toc: true
 - [delphi.tools](https://delphi.tools/)
 - [Mariano Pascual](https://www.marianopascual.me/)
 - [loackme](https://loack.me/)
+- [Earendil](https://earendil.com/)
 
 I like these retrocool websites:
 
