@@ -1,12 +1,58 @@
-/* global */
+/* ============================================================
+   Table of contents
+   1. Theme variables (light / dark)
+   2. Base & links
+   3. Typography (markdown body, headings)
+   4. Code blocks & copy button
+   5. Header, nav & theme toggle
+   6. Posts list
+   7. Post content
+   8. Footer
+   9. Details & modal
+   10. Tables
+   11. Taxonomy, gallery & misc
+   12. Mermaid
+   13. Dark mode overrides
+   14. Responsive
+   ============================================================ */
+
+/* 1. Theme variables -------------------------------------- */
+
+:root {
+  --bg: #ffffff;
+  --text: #333333;
+  --muted: #6a737d;
+  --border: #eaecef;
+  --accent: #4169e1; /* royalblue */
+  --code-bg: #f6f8fa;
+  --card-hover: #f6f8fa;
+  --mono: "Source Code Pro", "SFMono-Regular", "Consolas", "Liberation Mono",
+    "Menlo", "Courier", monospace;
+  --sans: "Bricolage Grotesque", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+html[data-theme="dark"] {
+  --bg: #0d1117;
+  --text: #c9d1d9;
+  --muted: #8b949e;
+  --border: #30363d;
+  --accent: #79a8ff;
+  --code-bg: #161b22;
+  --card-hover: #161b22;
+}
+
+/* 2. Base & links ----------------------------------------- */
 
 body {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: var(--sans);
   margin: 0 20px;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 a {
-  color: #333;
+  color: var(--text);
   text-decoration: none;
 }
 
@@ -15,29 +61,19 @@ a:hover {
 }
 
 .markdown-body a {
-  color: #333;
   text-decoration: underline;
   text-underline-offset: 0.16em;
   text-decoration-thickness: 0.06em;
 }
 
 .markdown-body a:hover {
-  color: royalblue;
+  color: var(--accent);
 }
 
-.post-ads {
-  margin: 50px 0;
-}
-
-.markdown-body > h2,
-h3 {
-  margin-top: 1.5em !important;
-}
-
-/* overwrite github-markdown */
+/* 3. Typography (overrides github-markdown) --------------- */
 
 .markdown-body {
-  font-family: "PT Serif", serif;
+  font-family: "Source Serif 4", "PT Serif", serif;
   line-height: 1.55;
   font-size: 19px;
 }
@@ -46,15 +82,47 @@ h3 {
   margin-top: 0;
 }
 
-.markdown-body h2,
-h3 {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 1.3em;
-  font-weight: bold;
+.markdown-body h1 {
+  font-family: var(--sans);
+  letter-spacing: -0.015em;
 }
 
+.markdown-body h2,
+.markdown-body h3 {
+  font-family: var(--sans);
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 1.5em !important;
+}
+
+.markdown-body code {
+  font-family: var(--mono) !important;
+  padding-bottom: 2px !important;
+  padding-top: 5px !important;
+  white-space: nowrap;
+}
+
+.markdown-body hr {
+  height: 0.05em;
+}
+
+.katex {
+  font-size: 1.1em !important;
+}
+
+code.has-jax {
+  -webkit-font-smoothing: antialiased;
+  background: inherit !important;
+  border: none !important;
+  font-size: 100%;
+}
+
+/* 4. Code blocks & copy button ---------------------------- */
+
 pre {
-  background-color: #f6f8fa !important;
+  background-color: var(--code-bg) !important;
+  font-family: var(--mono) !important;
   font-size: 15px !important;
   border-radius: 6px !important;
 }
@@ -74,7 +142,7 @@ pre {
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.2s;
-  color: #57606a;
+  color: var(--muted);
   border-radius: 4px;
 }
 
@@ -83,20 +151,14 @@ pre {
 }
 
 .copy-button:hover {
-  background: #d0d7de;
+  background: var(--border);
 }
 
 .copy-button.copied {
   color: #1a7f37;
 }
 
-/* i18n */
-
-.Chinese .markdown-body {
-  line-height: 200%;
-}
-
-/* header */
+/* 5. Header, nav & theme toggle --------------------------- */
 
 .header {
   margin-bottom: 30px;
@@ -114,6 +176,7 @@ pre {
 .header-links {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 15px;
   justify-content: center;
 }
@@ -121,6 +184,43 @@ pre {
 .header-link {
   font-weight: 600;
   font-size: 20px;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+}
+
+.theme-toggle svg {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover svg {
+  transform: rotate(18deg);
+}
+
+/* Sun in light mode, owl in dark mode */
+.theme-toggle .icon-owl {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle .icon-sun {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle .icon-owl {
+  display: block;
 }
 
 .post-header {
@@ -144,11 +244,7 @@ pre {
   text-decoration: none;
 }
 
-body {
-  color: #333;
-}
-
-/* posts list */
+/* 6. Posts list ------------------------------------------- */
 
 #posts-list {
   min-height: 70%;
@@ -177,7 +273,7 @@ body {
 }
 
 .posts-line-icon {
-  color: gray;
+  color: var(--muted);
   display: flex;
 }
 
@@ -186,68 +282,39 @@ body {
 }
 
 .posts-line-date {
-  color: gray;
+  color: var(--muted);
   font-size: 1rem;
-  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo",
-    "Courier", monospace;
+  font-family: var(--mono);
   white-space: nowrap;
   display: flex;
   align-items: center;
 }
 
 .posts-line-tag {
-  color: gray;
+  color: var(--muted);
   border: solid;
-  border-color: #eaecef;
+  border-color: var(--border);
   border-width: 2px;
   border-radius: 8px;
   padding: 4px 5px;
   font-size: 0.9rem;
   white-space: nowrap;
-  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo",
-    "Courier", monospace;
+  font-family: var(--mono);
   text-decoration: none;
 }
 
 a.posts-line-tag:hover {
-  color: #333;
-  border-color: #333;
-  background-color: #f6f8fa;
+  color: var(--text);
+  border-color: var(--text);
+  background-color: var(--card-hover);
 }
 
-.site-footer {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center !important;
-  flex-wrap: wrap;
-  padding: 12px 0;
-  border-width: 1px;
-  border-style: solid none;
-  border-color: #eaecef;
-  border-bottom: 0;
-}
-
-/* post */
-
-.post-content img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.12);
-  text-align: center;
-}
+/* 7. Post content ----------------------------------------- */
 
 .post-title {
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 0.4em;
-}
-
-.markdown-body h1 {
-  font-family: "Helvetica Neue";
 }
 
 .post-desc-items {
@@ -270,10 +337,20 @@ a.posts-line-tag:hover {
   text-wrap: pretty;
 }
 
+.post-content img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
 .related-content {
   border-width: 2px;
   border-style: dashed;
-  border-color: #333;
+  border-color: var(--text);
   padding: 0 15px;
   margin-bottom: 30px;
   margin-top: 30px;
@@ -286,33 +363,36 @@ a.posts-line-tag:hover {
 .subscribe {
   border-width: 2px;
   border-style: dashed;
-  border-color: #333;
+  border-color: var(--text);
   padding: 10px 15px;
   margin-bottom: 30px;
   margin-top: 30px;
 }
 
-/* taxonomy */
-
-.taxonomy-term {
-  font-size: 3rem;
+.post-ads {
+  margin: 50px 0;
 }
 
-/* gallery */
+/* 8. Footer ----------------------------------------------- */
 
-.gallery-img {
-  text-align: center;
+.site-footer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center !important;
+  flex-wrap: wrap;
+  padding: 12px 0;
+  border-width: 1px;
+  border-style: solid none;
+  border-color: var(--border);
+  border-bottom: 0;
 }
 
-.gallery-img span {
-  text-align: center;
-}
-.gallery-img-desc {
-  font-size: 0.8em;
-  font-weight: 800;
+.site-footer-item {
+  margin-right: 12px;
 }
 
-/* details and summary (basically a collapsable div) */
+/* 9. Details & modal -------------------------------------- */
 
 details {
   margin-bottom: 16px;
@@ -321,20 +401,20 @@ details {
 
 details > summary {
   font-weight: 600;
-  color: #57606a;
+  color: var(--muted);
   cursor: pointer;
   padding: 4px 0;
 }
 
 details > summary:hover {
-  color: #0969da;
+  color: var(--accent);
 }
 
 details > pre {
   margin-top: 12px;
 }
 
-/* details with class="modal" — render as a button and open a modal on click */
+/* details.modal — render as a button and open a modal on click */
 
 details.modal {
   display: inline-block;
@@ -345,10 +425,10 @@ details.modal > summary {
   list-style: none;
   cursor: pointer;
   padding: 6px 12px;
-  border: 1px solid #d0d7de;
+  border: 1px solid var(--border);
   border-radius: 6px;
-  background: #f6f8fa;
-  color: #24292f;
+  background: var(--code-bg);
+  color: var(--text);
   font-weight: 600;
   display: inline-flex;
   align-items: center;
@@ -365,17 +445,17 @@ details.modal > summary::marker {
 details.modal > summary::after {
   content: "↗";
   font-size: 0.9em;
-  color: #57606a;
+  color: var(--muted);
 }
 
 details.modal > summary:hover {
-  background: #eaeef2;
-  border-color: #0969da;
-  color: #0969da;
+  background: var(--card-hover);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 details.modal > summary:hover::after {
-  color: #0969da;
+  color: var(--accent);
 }
 
 details.modal > *:not(summary) {
@@ -394,7 +474,7 @@ details.modal > *:not(summary) {
 }
 
 .modal-overlay-content {
-  background: white;
+  background: var(--bg);
   border-radius: 8px;
   max-width: min(900px, 100%);
   max-height: 100%;
@@ -408,21 +488,21 @@ details.modal > *:not(summary) {
   margin-top: 0;
 }
 
+.modal-overlay-content > *:last-child {
+  margin-bottom: 0;
+}
+
 .modal-overlay-header {
-  color: #57606a;
+  color: var(--muted);
   font-size: 0.95em;
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #eaecef;
+  border-bottom: 1px solid var(--border);
 }
 
 .modal-overlay-header code {
   color: inherit;
-  background: #f6f8fa;
-}
-
-.modal-overlay-content > *:last-child {
-  margin-bottom: 0;
+  background: var(--code-bg);
 }
 
 .modal-close {
@@ -434,35 +514,15 @@ details.modal > *:not(summary) {
   cursor: pointer;
   font-size: 24px;
   line-height: 1;
-  color: #57606a;
+  color: var(--muted);
   padding: 4px 8px;
 }
 
 .modal-close:hover {
-  color: #0969da;
+  color: var(--accent);
 }
 
-.inline-svg {
-  display: inline-block;
-  height: 1.4rem;
-  width: 1.4rem;
-  top: 0.4rem;
-  position: relative;
-}
-
-.site-footer-item {
-  margin-right: 12px;
-}
-
-.katex {
-  font-size: 1.1em !important;
-}
-
-.markdown-body code {
-  padding-bottom: 2px !important;
-  padding-top: 5px !important;
-  white-space: nowrap;
-}
+/* 10. Tables ---------------------------------------------- */
 
 table {
   font-size: 0.9em !important;
@@ -480,6 +540,33 @@ td {
   border-collapse: separate !important;
 }
 
+/* 11. Taxonomy, gallery & misc ---------------------------- */
+
+.taxonomy-term {
+  font-size: 3rem;
+}
+
+.gallery-img {
+  text-align: center;
+}
+
+.gallery-img span {
+  text-align: center;
+}
+
+.gallery-img-desc {
+  font-size: 0.8em;
+  font-weight: 800;
+}
+
+.inline-svg {
+  display: inline-block;
+  height: 1.4rem;
+  width: 1.4rem;
+  top: 0.4rem;
+  position: relative;
+}
+
 .utterances {
   margin-bottom: 30px !important;
 }
@@ -488,14 +575,185 @@ td {
   margin-bottom: 1em !important;
 }
 
-code.has-jax {
-  -webkit-font-smoothing: antialiased;
-  background: inherit !important;
-  border: none !important;
-  font-size: 100%;
+/* i18n */
+
+.Chinese .markdown-body {
+  line-height: 200%;
 }
 
-/* Mobile */
+/* 12. Mermaid --------------------------------------------- */
+
+.mermaid {
+  background-color: white !important;
+}
+
+/* 13. Dark mode overrides --------------------------------- */
+/* index.css loads after github-markdown.min.css and the highlight
+   theme, so these win without editing the vendored files.        */
+
+html[data-theme="dark"] .markdown-body {
+  color: var(--text);
+  background-color: transparent;
+}
+
+html[data-theme="dark"] .markdown-body h1,
+html[data-theme="dark"] .markdown-body h2,
+html[data-theme="dark"] .markdown-body h3,
+html[data-theme="dark"] .markdown-body h4,
+html[data-theme="dark"] .markdown-body h5,
+html[data-theme="dark"] .markdown-body h6 {
+  color: var(--text);
+}
+
+html[data-theme="dark"] .markdown-body h1,
+html[data-theme="dark"] .markdown-body h2 {
+  border-bottom-color: var(--border);
+}
+
+html[data-theme="dark"] .markdown-body blockquote {
+  color: var(--muted);
+  border-left-color: var(--border);
+}
+
+html[data-theme="dark"] .markdown-body hr {
+  background-color: var(--border);
+}
+
+html[data-theme="dark"] .markdown-body table tr {
+  background-color: transparent;
+  border-top-color: var(--border);
+}
+
+html[data-theme="dark"] .markdown-body table tr:nth-child(2n) {
+  background-color: var(--code-bg);
+}
+
+html[data-theme="dark"] .markdown-body table th,
+html[data-theme="dark"] .markdown-body table td {
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .markdown-body code {
+  background-color: rgba(110, 118, 129, 0.4);
+}
+
+html[data-theme="dark"] .markdown-body pre code {
+  background-color: transparent;
+}
+
+/* Syntax highlighting — GitHub Dark palette (chroma classes) */
+
+html[data-theme="dark"] .chroma {
+  background-color: transparent;
+  color: var(--text);
+}
+
+html[data-theme="dark"] .chroma .hl {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+html[data-theme="dark"] .chroma .lnt,
+html[data-theme="dark"] .chroma .ln {
+  color: #6e7681;
+}
+
+html[data-theme="dark"] .chroma .k,
+html[data-theme="dark"] .chroma .kc,
+html[data-theme="dark"] .chroma .kd,
+html[data-theme="dark"] .chroma .kn,
+html[data-theme="dark"] .chroma .kp,
+html[data-theme="dark"] .chroma .kr,
+html[data-theme="dark"] .chroma .kt,
+html[data-theme="dark"] .chroma .o,
+html[data-theme="dark"] .chroma .ow {
+  color: #ff7b72;
+}
+
+html[data-theme="dark"] .chroma .s,
+html[data-theme="dark"] .chroma .sa,
+html[data-theme="dark"] .chroma .sb,
+html[data-theme="dark"] .chroma .sc,
+html[data-theme="dark"] .chroma .dl,
+html[data-theme="dark"] .chroma .sd,
+html[data-theme="dark"] .chroma .s2,
+html[data-theme="dark"] .chroma .se,
+html[data-theme="dark"] .chroma .sh,
+html[data-theme="dark"] .chroma .si,
+html[data-theme="dark"] .chroma .sx,
+html[data-theme="dark"] .chroma .s1 {
+  color: #a5d6ff;
+}
+
+html[data-theme="dark"] .chroma .sr,
+html[data-theme="dark"] .chroma .ss,
+html[data-theme="dark"] .chroma .nt {
+  color: #7ee787;
+}
+
+html[data-theme="dark"] .chroma .m,
+html[data-theme="dark"] .chroma .mb,
+html[data-theme="dark"] .chroma .mf,
+html[data-theme="dark"] .chroma .mh,
+html[data-theme="dark"] .chroma .mi,
+html[data-theme="dark"] .chroma .il,
+html[data-theme="dark"] .chroma .mo,
+html[data-theme="dark"] .chroma .nv,
+html[data-theme="dark"] .chroma .vc,
+html[data-theme="dark"] .chroma .vg,
+html[data-theme="dark"] .chroma .vi,
+html[data-theme="dark"] .chroma .no,
+html[data-theme="dark"] .chroma .na,
+html[data-theme="dark"] .chroma .nb,
+html[data-theme="dark"] .chroma .bp {
+  color: #79c0ff;
+}
+
+html[data-theme="dark"] .chroma .nf,
+html[data-theme="dark"] .chroma .nc,
+html[data-theme="dark"] .chroma .nd,
+html[data-theme="dark"] .chroma .ne,
+html[data-theme="dark"] .chroma .nl {
+  color: #d2a8ff;
+}
+
+html[data-theme="dark"] .chroma .nn {
+  color: #ffa657;
+}
+
+html[data-theme="dark"] .chroma .c,
+html[data-theme="dark"] .chroma .ch,
+html[data-theme="dark"] .chroma .cm,
+html[data-theme="dark"] .chroma .c1,
+html[data-theme="dark"] .chroma .cs,
+html[data-theme="dark"] .chroma .cp,
+html[data-theme="dark"] .chroma .cpf,
+html[data-theme="dark"] .chroma .gp,
+html[data-theme="dark"] .chroma .go,
+html[data-theme="dark"] .chroma .gu,
+html[data-theme="dark"] .chroma .gh {
+  color: #8b949e;
+}
+
+html[data-theme="dark"] .chroma .err {
+  color: #f85149;
+  background-color: transparent;
+}
+
+html[data-theme="dark"] .chroma .gd {
+  color: #ffa198;
+  background-color: #490202;
+}
+
+html[data-theme="dark"] .chroma .gi {
+  color: #7ee787;
+  background-color: #04260f;
+}
+
+html[data-theme="dark"] .chroma .w {
+  color: #484f58;
+}
+
+/* 14. Responsive ------------------------------------------ */
 
 @media screen and (max-width: 600px) {
   .header {
@@ -544,12 +802,4 @@ code.has-jax {
   .posts-line-icon {
     display: none;
   }
-}
-
-.markdown-body hr {
-  height: 0.05em;
-}
-
-.mermaid {
-    background-color: white !important;
 }
