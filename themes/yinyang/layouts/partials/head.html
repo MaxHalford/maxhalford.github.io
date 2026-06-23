@@ -1,4 +1,19 @@
 <head>
+  <!-- Theme (light/dark): set before first paint to avoid a flash -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("theme");
+        var theme =
+          stored ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63302552-1"></script>
   <script>
@@ -76,7 +91,7 @@
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link
-    href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Permanent+Marker&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Source+Code+Pro:wght@400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=Permanent+Marker&display=swap"
     rel="stylesheet"
   />
 

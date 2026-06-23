@@ -1,3 +1,19 @@
+<script>
+  // Dark mode toggle (initial theme is set in head.html before paint)
+  (function () {
+    var toggle = document.getElementById("theme-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", function () {
+      var current = document.documentElement.getAttribute("data-theme");
+      var next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try {
+        localStorage.setItem("theme", next);
+      } catch (e) {}
+    });
+  })();
+</script>
+
 <!-- <script src="{{ .Site.Params.staticPrefix }}{{ "js/highlight.pack.js" | relURL }}"></script> -->
 <!-- <script src="https://unpkg.com/quicklink@0.1.1/dist/quicklink.umd.js"></script> -->
 {{ if and .Site.Params.lazyImage (not .IsHome) -}}

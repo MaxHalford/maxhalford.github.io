@@ -48,7 +48,7 @@
             s.setAttribute( 'issue-term', 'pathname' );
             s.setAttribute( 'crossorigin', 'anonymous' );
             s.setAttribute( 'async', null );
-            s.setAttribute( 'theme', 'github-light' );
+            s.setAttribute( 'theme', document.documentElement.getAttribute('data-theme') === 'dark' ? 'github-dark' : 'github-light' );
             document.body.appendChild( s );
           </script>
           {{ end }}
