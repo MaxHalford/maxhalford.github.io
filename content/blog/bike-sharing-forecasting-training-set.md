@@ -14,7 +14,7 @@ table td, table th {
 }
 </style>
 
-Last night I went to a [Toulouse Data Science](https://www.meetup.com/fr-FR/tlse-data-science/) meetup. The talks were about generative AI and information retrieval, which aren't topics I'm knowledgeable about. However, one of the speakers was a [friend](https://github.com/raphaelsty) of mine, so I went to support him. Toulouse is my hometown, so I bumped into a few people I knew. It was a nice evening.
+Last night I went to a [Toulouse Data Science](https://www.meetup.com/fr-FR/tlse-data-science/) meetup. The talks were about generative AI and information retrieval, which aren't topics I'm knowledgeable about. However, one of the speakers was a [friend](https://github.com/raphaelsty) of mine, so I went to support him. Toulouse used to be my hometown, so I bumped into a few people I knew. It was a nice evening.
 
 I chatted with an old office [mate](https://scholar.google.com/citations?user=eoxrO3MAAAAJ&hl=en) from when I interned at INSA Toulouse. He initially encouraged me to work on [OpenBikes](https://www.youtube.com/watch?v=vQGdzKkyPP0), which was a project to scrape bike sharing data in order to train a forecasting model. It never really made it into production. However, the project taught me a lot about machine learning and software engineering, and [opened](https://actu.fr/occitanie/toulouse_31555/dataconnexions-openbikes-recoit-le-prix-special-open-data-toulouse-metropole_3632308.html) a few doors. I'm grateful for his advice at the time. I shut down the OpenBikes project when I started my PhD, due to a lack of time.
 
