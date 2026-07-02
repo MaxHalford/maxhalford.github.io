@@ -197,6 +197,16 @@ toc: true
 - [Crossfilter](https://crossfilter.github.io/crossfilter/) -- I like these tools that let you slice and dice data in the browser.
 - [Input metrics and weekly business review](https://workingbackwards.com/concepts/input-metrics/)
 
+## Agentic analytics
+
+- [How we built a lab to evaluate data agents - Hex](https://hex.tech/blog/evaluate-data-agents/)
+- [The Surprising Truth About AI-Native Semantic Layers - MotherDuck](https://motherduck.com/blog/oops-maybe-we-do-need-semantic-layers/)
+- [Building an answering machine - MotherDuck](https://motherduck.com/blog/analytics-agents/)
+- [Getting AI to write good SQL: Text-to-SQL techniques explained - Google](https://cloud.google.com/blog/products/databases/techniques-for-improving-text-to-sql)
+- [Automatic Metadata Extraction for Text-to-SQL - AT&T](https://arxiv.org/pdf/2505.19988)
+- [Does "AI-Ready Data" simply mean "Good Data Modeling"? - MotherDuck](https://motherduck.com/blog/bird-bench-and-data-models/)
+- [Inside OpenAI's in-house data agent](https://openai.com/index/inside-our-in-house-data-agent/)
+
 ## Educational material
 
 - [Paul's Online Notes](https://tutorial.math.lamar.edu/)
@@ -229,6 +239,7 @@ toc: true
 - [Functional Data Engineering — a modern paradigm for batch data processing](https://maximebeauchemin.medium.com/functional-data-engineering-a-modern-paradigm-for-batch-data-processing-2327ec32c42a) -- I strongly believe in this approach.
 - [BigQuery Best Practices](/files/misc/BigQuery%20Best%20Practices.pdf)
 - [Ten years late to the dbt party (DuckDB edition)](https://rmoff.net/2026/02/19/ten-years-late-to-the-dbt-party-duckdb-edition/) -- Robin Moffatt graces us with a fresh yet deep dbt primer
+- [Karpathy's Autoresearch found a 3-year-old bug in our query engine (and improved performance by 11%) - Posthog](https://posthog.com/blog/karpathy-autoresearch-query-engine-bug)
 
 ## Inspiring data analysis
 
