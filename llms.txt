@@ -11,6 +11,7 @@
 
 
 
+- [Will agents replace scripts?](https://maxhalford.github.io/blog/will-agents-replace-scripts/)
 - [My unvarnished guide to solution engineering](https://maxhalford.github.io/blog/solution-engineering-advice/): Lessons from a few years as a data scientist talking to customers and selling enterprise SaaS at an early startup.
 - [Autonomous web scraping with Claude Code](https://maxhalford.github.io/blog/autonomous-web-scraping-claude-code/)
 - [Lower your warehouse costs via DuckDB transpilation](https://maxhalford.github.io/blog/warehouse-cost-reduction-quack-mode/): DuckDB is great but most teams are stuck on BigQuery or Snowflake. Here's how to keep your warehouse but offload compute to DuckDB via SQL transpilation.

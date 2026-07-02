@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Max Halford</title><link>https://maxhalford.github.io/</link><description>Recent content on Max Halford</description><generator>Hugo</generator><language>en-us</language><managingEditor>maxhalford25@gmail.com (Max Halford)</managingEditor><webMaster>maxhalford25@gmail.com (Max Halford)</webMaster><lastBuildDate>Mon, 29 Jun 2026 09:31:09 +0200</lastBuildDate><atom:link href="https://maxhalford.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>My unvarnished guide to solution engineering</title><link>https://maxhalford.github.io/blog/solution-engineering-advice/</link><pubDate>Thu, 04 Jun 2026 00:00:00 +0000</pubDate><author>maxhalford25@gmail.com (Max Halford)</author><guid>https://maxhalford.github.io/blog/solution-engineering-advice/</guid><description>&lt;div align="center" &gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Max Halford</title><link>https://maxhalford.github.io/</link><description>Recent content on Max Halford</description><generator>Hugo</generator><language>en-us</language><managingEditor>maxhalford25@gmail.com (Max Halford)</managingEditor><webMaster>maxhalford25@gmail.com (Max Halford)</webMaster><lastBuildDate>Thu, 02 Jul 2026 14:57:56 +0200</lastBuildDate><atom:link href="https://maxhalford.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Will agents replace scripts?</title><link>https://maxhalford.github.io/blog/will-agents-replace-scripts/</link><pubDate>Thu, 02 Jul 2026 00:00:00 +0000</pubDate><author>maxhalford25@gmail.com (Max Halford)</author><guid>https://maxhalford.github.io/blog/will-agents-replace-scripts/</guid><description>&lt;p&gt;I am in favor of coding agents. They&amp;rsquo;re here to stay, so we might as well figure out enjoyable ways to work with them. I&amp;rsquo;m aligned with Charity Majors&amp;rsquo; &lt;a href="https://charitydotwtf.substack.com/p/make-ai-boring-again"&gt;Make AI Boring Again&lt;/a&gt; piece. I&amp;rsquo;m also increasingly convinced they won&amp;rsquo;t replace techies, because the non-techies still need us.&lt;/p&gt;
+&lt;p&gt;I stumbled on this Slack thread at work:&lt;/p&gt;
+&lt;div align="center" &gt;
+&lt;figure style="width: 90%; margin: 0;"&gt;
+ &lt;img src="https://maxhalford.github.io/img/blog/will-agents-replace-scripts/slack.png"&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p&gt;At work, we log the hours we spend on each customer, and we report them weekly. It&amp;rsquo;s tedious and error-prone. But it&amp;rsquo;s useful: we want to know where time is going, what to improve, and how to price our services.&lt;/p&gt;</description></item><item><title>My unvarnished guide to solution engineering</title><link>https://maxhalford.github.io/blog/solution-engineering-advice/</link><pubDate>Thu, 04 Jun 2026 00:00:00 +0000</pubDate><author>maxhalford25@gmail.com (Max Halford)</author><guid>https://maxhalford.github.io/blog/solution-engineering-advice/</guid><description>&lt;div align="center" &gt;
 &lt;figure style="width: 100%; margin: 0;"&gt;
  &lt;img src="https://maxhalford.github.io/img/blog/solution-engineering-advice/cover.png" style="box-shadow: none;"&gt;
 &lt;/figure&gt;
@@ -3233,6 +3240,16 @@ class: center, middle
 &lt;li&gt;&lt;a href="https://crossfilter.github.io/crossfilter/"&gt;Crossfilter&lt;/a&gt; &amp;ndash; I like these tools that let you slice and dice data in the browser.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://workingbackwards.com/concepts/input-metrics/"&gt;Input metrics and weekly business review&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id="agentic-analytics"&gt;Agentic analytics&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://hex.tech/blog/evaluate-data-agents/"&gt;How we built a lab to evaluate data agents - Hex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://motherduck.com/blog/oops-maybe-we-do-need-semantic-layers/"&gt;The Surprising Truth About AI-Native Semantic Layers - MotherDuck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://motherduck.com/blog/analytics-agents/"&gt;Building an answering machine - MotherDuck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/databases/techniques-for-improving-text-to-sql"&gt;Getting AI to write good SQL: Text-to-SQL techniques explained - Google&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/pdf/2505.19988"&gt;Automatic Metadata Extraction for Text-to-SQL - AT&amp;amp;T&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://motherduck.com/blog/bird-bench-and-data-models/"&gt;Does &amp;ldquo;AI-Ready Data&amp;rdquo; simply mean &amp;ldquo;Good Data Modeling&amp;rdquo;? - MotherDuck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://openai.com/index/inside-our-in-house-data-agent/"&gt;Inside OpenAI&amp;rsquo;s in-house data agent&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id="educational-material"&gt;Educational material&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://tutorial.math.lamar.edu/"&gt;Paul&amp;rsquo;s Online Notes&lt;/a&gt;&lt;/li&gt;
@@ -3265,6 +3282,7 @@ class: center, middle
 &lt;li&gt;&lt;a href="https://maximebeauchemin.medium.com/functional-data-engineering-a-modern-paradigm-for-batch-data-processing-2327ec32c42a"&gt;Functional Data Engineering — a modern paradigm for batch data processing&lt;/a&gt; &amp;ndash; I strongly believe in this approach.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://maxhalford.github.io/files/misc/BigQuery%20Best%20Practices.pdf"&gt;BigQuery Best Practices&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://rmoff.net/2026/02/19/ten-years-late-to-the-dbt-party-duckdb-edition/"&gt;Ten years late to the dbt party (DuckDB edition)&lt;/a&gt; &amp;ndash; Robin Moffatt graces us with a fresh yet deep dbt primer&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://posthog.com/blog/karpathy-autoresearch-query-engine-bug"&gt;Karpathy&amp;rsquo;s Autoresearch found a 3-year-old bug in our query engine (and improved performance by 11%) - Posthog&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="inspiring-data-analysis"&gt;Inspiring data analysis&lt;/h2&gt;
 &lt;ul&gt;
