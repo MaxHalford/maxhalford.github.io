@@ -19,27 +19,6 @@
   margin: 0 auto;
 }
 
-.freelance-page .theme-toggle {
-  color: var(--bcm-ink);
-}
-
-.freelance-page .theme-toggle .icon-sun,
-html[data-theme="dark"] .freelance-page .theme-toggle .icon-sun {
-  display: block;
-}
-
-.freelance-page .theme-toggle .icon-owl,
-html[data-theme="dark"] .freelance-page .theme-toggle .icon-owl {
-  display: none;
-}
-
-.freelance-theme-toggle {
-  position: absolute;
-  z-index: 10;
-  top: 22px;
-  right: 28px;
-}
-
 .freelance-hero {
   position: relative;
   isolation: isolate;
@@ -207,7 +186,6 @@ html[data-theme="dark"] .freelance-page .theme-toggle .icon-owl {
 }
 
 @media (max-width: 560px) {
-  .freelance-theme-toggle { display: none; }
   .freelance-hero { margin-top: 20px; }
   .freelance-logo { margin-top: 34px; }
   .logo-max { padding-left: 4%; }
