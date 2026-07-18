@@ -2,6 +2,7 @@
 
 > Max Halford's blog ツ
 
+- [Better Call Max](https://maxhalford.github.io/freelance/)
 - [Bio](https://maxhalford.github.io/bio/)
 - [Blog](https://maxhalford.github.io/blog/)
 - [Links](https://maxhalford.github.io/links/)
