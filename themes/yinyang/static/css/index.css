@@ -186,7 +186,34 @@ pre {
   font-size: 20px;
 }
 
+.hire-me-link {
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    #e53935,
+    #f57c00,
+    #d4a900,
+    #2e9b50,
+    #168aad,
+    #5e60ce,
+    #b23a8a
+  );
+  background-size: 160% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.25s ease;
+}
+
+.hire-me-link:hover {
+  background-position: 100% 0;
+}
+
 .theme-toggle {
+  position: fixed;
+  z-index: 100;
+  top: 22px;
+  right: 28px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -230,6 +257,7 @@ html[data-theme="dark"] .theme-toggle .icon-owl {
 .site-title {
   font-size: 1.8rem;
   margin-top: 32px;
+  text-align: center;
 }
 
 .site-date-catalog {
@@ -754,6 +782,9 @@ html[data-theme="dark"] .chroma .w {
 /* 14. Responsive ------------------------------------------ */
 
 @media screen and (max-width: 600px) {
+  .theme-toggle {
+    display: none;
+  }
   .header {
     justify-content: center;
   }
