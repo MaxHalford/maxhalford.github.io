@@ -39,7 +39,7 @@
 
   <meta property="og:url" content="{{ .Permalink }}" />
   <meta property="og:site_name" content="{{ .Site.Title }}" />
-  <meta property="og:locale" content="{{ replace .Site.LanguageCode "-" "_" }}" />
+  <meta property="og:locale" content="{{ replace .Site.Language.Locale "-" "_" }}" />
   {{- $ogImage := partial "og-image.html" . -}}
   {{- with $ogImage }}
   <meta property="og:image" content="{{ . }}" />
@@ -88,6 +88,9 @@
   "css/github-markdown.min.css" | relURL }}" /> <link rel="stylesheet" href="{{
   .Site.Params.staticPrefix }}{{ "css/highlight/github.css" | relURL }}" /> {{-
   end }} <link rel="stylesheet" href="{{ "css/index.css" | relURL }}">
+  {{- if eq .Layout "freelance" }}
+  <link rel="stylesheet" href="{{ "css/freelance.css" | relURL }}">
+  {{- end }}
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link

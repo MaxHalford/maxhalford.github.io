@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ partial "head.html" . }}
+
+<body class="freelance-page">
+  <div class="freelance-theme-toggle">
+    {{ partial "theme-toggle.html" . }}
+  </div>
+  <div class="freelance-shell">
+    <main>
+      <section class="freelance-hero" aria-labelledby="freelance-title">
+        <div class="hero-kicker">Data problems? People problems?</div>
+        <h1 class="freelance-logo" id="freelance-title">
+          <span class="logo-better">Better Call</span>
+          <span class="logo-max">Max!</span>
+        </h1>
+        <p class="hero-pitch">
+          Practical help for data teams that need to ship, hire, or get unstuck.
+          No grand transformation programme. Just senior, hands-on support.
+        </p>
+        <a class="hero-cta" href="mailto:maxhalford25@gmail.com?subject=Better%20Call%20Max">
+          <span>Tell me what's stuck</span>
+          <strong>maxhalford25@gmail.com</strong>
+        </a>
+        <div class="sunburst" aria-hidden="true"></div>
+      </section>
+
+      <section class="services" aria-label="What I can do for you">
+        <div class="section-heading">
+          <span>What I do</span>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <span class="service-number">01</span>
+            <h3>Analytics engineering</h3>
+            <p>This is my bread and butter. Bring me in to turn messy data into facts that people trust. I cover a wide range.</p>
+            <ul>
+              <li>Data modelling (dbt, SQL)</li>
+              <li>Turn business objectives into metrics</li>
+              <li>(Re)wire data sources</li>
+              <li>Parse messy, unstructured data</li>
+              <li>Reporting/dashboarding setup</li>
+              <li>Data warehouse FinOps</li>
+              <li>Agentic analytics workflows</li>
+            </ul>
+          </article>
+
+          <article class="service-card service-card-red">
+            <span class="service-number">02</span>
+            <h3>Hiring</h3>
+            <p>Arguably the most important topic, and yet time consuming and mentally taxing. Let me carry the burden.</p>
+            <ul>
+              <li>Clarify role requirements</li>
+              <li>Create clear evaluation scorecards</li>
+              <li>Organise the hiring funnel</li>
+              <li>Screen candidates</li>
+              <li>Conduct technical and case interviews</li>
+              <li>Run background checks</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">03</span>
+            <h3>Mentoring</h3>
+            <p>I can bring an outside perspective, both on technical and strategic matters.</p>
+            <ul>
+              <li>Review processes and ways of working</li>
+              <li>Challenge business objectives and KPIs</li>
+              <li>Review ownership and workload sharing</li>
+              <li>Spot bottlenecks and unclear responsibilities</li>
+              <li>Hold coaching office hours</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="rate-strip" aria-label="Daily rate">
+        <p>One simple rate</p>
+        <div><strong>€1,000</strong><span>/ day</span></div>
+        <small>I pay for my own coding agent.</small>
+      </section>
+
+      <section class="final-call">
+        <div>
+          <p class="final-eyebrow">Senior help, hands-on delivery.</p>
+          <h2>Let's talk about what's bothering you.</h2>
+        </div>
+        <a href="mailto:maxhalford25@gmail.com?subject=Better%20Call%20Max">Better call Max <span aria-hidden="true">→</span></a>
+      </section>
+    </main>
+
+  </div>
+  {{ partial "scripts.html" . }}
+</body>
+</html>

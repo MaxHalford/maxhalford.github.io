@@ -1,5 +1,5 @@
 baseURL = "https://maxhalford.github.io/"
-languageCode = "en-us"
+locale = "en-US"
 title = "Max Halford"
 theme = "yinyang"
 enableRobotsTXT = true

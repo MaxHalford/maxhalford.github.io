@@ -55,11 +55,11 @@ mainSections = ["posts"]
 [languages]
   [languages.en]
     contentDir = "content/en"
-    languageName = "English"
+    label = "English"
     weight = 1
   [languages.cn]
     contentDir = "content/cn"
-    languageName = "Chinese"
+    label = "Chinese"
     weight = 2
 ```
 
@@ -87,7 +87,7 @@ extraHead = '<script src="xxxx.js"></script>'
 
 ```
 baseURL = "https://blog.joway.io/"
-languageCode = "en-us"
+locale = "en-US"
 title = "Joway's Blog"
 theme = "yinyang"
 DefaultContentLanguage = "cn"
@@ -99,11 +99,11 @@ DefaultContentLanguage = "cn"
 [languages]
   [languages.en]
     contentDir = "content/en"
-    languageName = "English"
+    label = "English"
     weight = 1
   [languages.cn]
     contentDir = "content/cn"
-    languageName = "Chinese"
+    label = "Chinese"
     weight = 2
 
 [params]
