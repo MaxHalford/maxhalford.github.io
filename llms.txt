@@ -1,6 +1,6 @@
 # Max Halford
 
-> Max Halford's blog ツ
+> Max Halford's blog
 
 - [Better Call Max](https://maxhalford.github.io/freelance/)
 - [Bio](https://maxhalford.github.io/bio/)
@@ -12,16 +12,13 @@
 
 
 
-- [The owner isn’t here](https://maxhalford.github.io/blog/2026-07-19-the-owner-isnt-here/)
 - [Will agents replace scripts?](https://maxhalford.github.io/blog/will-agents-replace-scripts/)
 - [My unvarnished guide to solution engineering](https://maxhalford.github.io/blog/solution-engineering-advice/): Lessons from a few years as a data scientist talking to customers and selling enterprise SaaS at an early startup.
 - [Autonomous web scraping with Claude Code](https://maxhalford.github.io/blog/autonomous-web-scraping-claude-code/)
 - [Lower your warehouse costs via DuckDB transpilation](https://maxhalford.github.io/blog/warehouse-cost-reduction-quack-mode/): DuckDB is great but most teams are stuck on BigQuery or Snowflake. Here's how to keep your warehouse but offload compute to DuckDB via SQL transpilation.
 - [Text classification with Python 3.14's zstd module](https://maxhalford.github.io/blog/text-classification-zstd/): Python 3.14 added Zstandard to stdlib; its incremental API finally makes classify-by-compression practical.
 - [Solving Détrak with brute force](https://maxhalford.github.io/blog/detrak-solver/)
-- [Nostalgia for a time I didn’t experience](https://maxhalford.github.io/blog/anemoia/)
 - [Row level lineage at Carbonfact](https://maxhalford.github.io/blog/row-level-lineage/)
-- [No pain no startup](https://maxhalford.github.io/blog/startup-pain-management/)
 - [Scraping Google Calendar events](https://maxhalford.github.io/blog/google-calendar-scraping/)
 - [Warmshowers sparks joy](https://maxhalford.github.io/blog/warmshowers-sparks-joy/)
 - [Do LLMs identify fonts?](https://maxhalford.github.io/blog/llm-font-identification/)
@@ -121,6 +118,15 @@
 - [An introduction to genetic algorithms](https://maxhalford.github.io/blog/genetic-algorithms-introduction/)
 - [Setting up a droplet to host a Flask app](https://maxhalford.github.io/blog/flask-droplet/)
 - [Visualizing bike stations live data](https://maxhalford.github.io/blog/bike-stations/)
+- [Showerthoughts](https://maxhalford.github.io/blog/thoughts/)
+
+### Showerthoughts
+
+
+
+- [Nostalgia for a time I didn't experience](https://maxhalford.github.io/blog/thoughts/anemoia/)
+- [No pain no startup](https://maxhalford.github.io/blog/thoughts/startup-pain-management/)
+- [The owner isn't here](https://maxhalford.github.io/blog/thoughts/the-owner-isnt-here/)
 
 ## Slides
 
