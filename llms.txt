@@ -12,6 +12,7 @@
 
 
 
+- [The owner isn’t here](https://maxhalford.github.io/blog/2026-07-19-the-owner-isnt-here/)
 - [Will agents replace scripts?](https://maxhalford.github.io/blog/will-agents-replace-scripts/)
 - [My unvarnished guide to solution engineering](https://maxhalford.github.io/blog/solution-engineering-advice/): Lessons from a few years as a data scientist talking to customers and selling enterprise SaaS at an early startup.
 - [Autonomous web scraping with Claude Code](https://maxhalford.github.io/blog/autonomous-web-scraping-claude-code/)
