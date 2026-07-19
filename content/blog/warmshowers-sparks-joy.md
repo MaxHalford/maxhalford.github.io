@@ -2,7 +2,7 @@
 date = "2025-08-24"
 draft = false
 title = "Warmshowers sparks joy"
-tags = ['bike-touring', 'showerthoughts']
+tags = ['bike-touring']
 +++
 
 I have a friend with whom I like to go travelling on a bicycle. We usually go for a couple of weeks, and we've been doing it regularly over the past five years. We've cycled in France and England so far. Both countries have many affordable campsites, and there's always a decent hotel/Airbnb not too far for when it's raining.

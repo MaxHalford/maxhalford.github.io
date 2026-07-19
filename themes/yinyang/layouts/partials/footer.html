@@ -1,6 +1,8 @@
 <div class="site-footer">
   <div class="site-footer-item">
-    <a href='{{ .Site.Params.staticPrefix }}{{ "index.xml" | relURL }}'>{{ partial "fontawesome.html" "rss" }}</a>
+    {{- $rssURL := (.Site.Params.staticPrefix | default "") | printf "%sindex.xml" | relURL -}}
+    {{- with .OutputFormats.Get "RSS" }}{{ $rssURL = .RelPermalink }}{{ end -}}
+    <a href="{{ $rssURL }}">{{ partial "fontawesome.html" "rss" }}</a>
   </div>
   <div class="site-footer-item">
     <a href="https://github.com/MaxHalford" rel="me">{{ partial "fontawesome.html" "github" }}</a>

@@ -176,9 +176,13 @@ pre {
 .header-links {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 15px;
+  align-self: center;
+  column-gap: 15px;
+  row-gap: 2px;
   justify-content: center;
+  max-width: 280px;
 }
 
 .header-link {
@@ -186,7 +190,7 @@ pre {
   font-size: 20px;
 }
 
-.hire-me-link {
+.rainbow-link {
   color: transparent;
   background: linear-gradient(
     90deg,
@@ -205,7 +209,7 @@ pre {
   transition: background-position 0.25s ease;
 }
 
-.hire-me-link:hover {
+.rainbow-link:hover {
   background-position: 100% 0;
 }
 
@@ -284,16 +288,19 @@ html[data-theme="dark"] .theme-toggle .icon-owl {
   border-radius: 6px;
   display: flex;
   flex-direction: column;
-  align-items: left;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 2px;
 }
 
 .posts-line-title {
   font-weight: bold;
   font-size: 1.3rem;
+  line-height: 1.2;
 }
 
 .posts-line-subtitle {
-  margin-top: 5px;
+  margin-top: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -416,6 +423,64 @@ a.posts-line-tag:hover {
 
 .site-footer-item {
   margin-right: 12px;
+}
+
+/* Showerthoughts */
+
+.thoughts-layout,
+.thoughts-layout > .row,
+.thoughts-shell {
+  min-height: 100vh;
+}
+
+.thoughts-shell {
+  display: flex;
+  flex-direction: column;
+}
+
+.thought-cloud {
+  flex: 1;
+  min-height: 320px;
+  position: relative;
+  margin: 10px 0 20px;
+}
+
+.thought-bubble {
+  position: absolute;
+  max-width: min(280px, 85vw);
+  padding: 9px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+  animation: thought-float var(--float-time, 7s) ease-in-out var(--float-delay, 0s) infinite alternate;
+}
+
+.thought-bubble:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+@keyframes thought-float {
+  33% {
+    transform: translate(var(--float-x-1, 35px), var(--float-y-1, -25px));
+  }
+  66% {
+    transform: translate(var(--float-x-2, -30px), var(--float-y-2, 35px));
+  }
+  100% {
+    transform: translate(var(--float-x-3, 45px), var(--float-y-3, 20px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thought-bubble {
+    animation: none;
+  }
 }
 
 /* 9. Details & modal -------------------------------------- */
@@ -795,6 +860,7 @@ html[data-theme="dark"] .chroma .w {
     margin-bottom: 30px;
   }
   .site-title {
+    margin-top: 12px;
     margin-bottom: 10px;
   }
   .site-footer {

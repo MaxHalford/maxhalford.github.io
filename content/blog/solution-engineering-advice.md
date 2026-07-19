@@ -3,7 +3,7 @@ date = "2026-06-04"
 title = "My unvarnished guide to solution engineering"
 description = "Lessons from a few years as a data scientist talking to customers and selling enterprise SaaS at an early startup."
 toc = true
-tags = ['data-science', 'showerthoughts']
+tags = ['data-science']
 images = ["/img/blog/solution-engineering-advice/cover.png"]
 +++
 

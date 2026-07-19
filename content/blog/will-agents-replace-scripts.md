@@ -1,7 +1,7 @@
 +++
 date = "2026-07-02"
 title = "Will agents replace scripts?"
-tags = ['llm', 'showerthoughts']
+tags = ['llm']
 +++
 
 I am in favor of coding agents. They're here to stay, so we might as well figure out enjoyable ways to work with them. I'm aligned with Charity Majors' [Make AI Boring Again](https://charitydotwtf.substack.com/p/make-ai-boring-again) piece. I'm also increasingly convinced they won't replace techies, because the non-techies still need us.

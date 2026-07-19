@@ -11,11 +11,11 @@ pygmentsUseClasses = true
   name = "Max Halford"
 
 [params]
-  headTitle = "Max Halford ツ"
+  headTitle = "Max Halford"
   mainSections = ["blog"]
   favicon = "/img/favicon.ico"
   images = ["/img/belle-ile.jpg"]
-  description = "Max Halford's blog ツ"
+  description = "Max Halford's blog"
 
 [params.social]
   twitter = "halford_max"

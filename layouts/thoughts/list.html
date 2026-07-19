@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ partial "head.html" . }}
+
+<body class="thoughts-page">
+  <article class="posts thoughts-layout">
+    <div class="row center-xs" style="text-align: left;">
+      <div class="col-xs-12 col-sm-10 col-md-7 col-lg-5 thoughts-shell">
+        <div class="header">
+          {{ partial "header.html" . }}
+        </div>
+        <div class="thought-cloud" aria-label="Showerthoughts">
+          {{ range .RegularPages.ByDate.Reverse }}
+          <a class="thought-bubble" href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{ end }}
+        </div>
+
+        {{ partial "footer.html" . }}
+      </div>
+    </div>
+  </article>
+
+  {{ partial "scripts.html" . }}
+  <script>
+    (function () {
+      var cloud = document.querySelector(".thought-cloud");
+      var thoughts = Array.from(document.querySelectorAll(".thought-bubble"));
+      if (!cloud || !thoughts.length) return;
+
+      function overlaps(a, b, gap) {
+        return !(
+          a.right + gap < b.left || b.right + gap < a.left ||
+          a.bottom + gap < b.top || b.bottom + gap < a.top
+        );
+      }
+
+      function scatter() {
+        var width = cloud.clientWidth;
+        var height = cloud.clientHeight;
+        var placed = [];
+
+        thoughts.forEach(function (thought, index) {
+          thought.style.left = "0px";
+          thought.style.top = "0px";
+          var bubbleWidth = thought.offsetWidth;
+          var bubbleHeight = thought.offsetHeight;
+          var travelX = Math.min(100, Math.max(8, (width - bubbleWidth) / 2));
+          var travelY = Math.min(80, Math.max(20, (height - bubbleHeight) / 3));
+          var position;
+
+          for (var attempt = 0; attempt < 100; attempt += 1) {
+            var left = travelX + Math.random() * Math.max(1, width - bubbleWidth - travelX * 2);
+            var top = travelY + Math.random() * Math.max(1, height - bubbleHeight - travelY * 2);
+            var candidate = {
+              left: left,
+              top: top,
+              right: left + bubbleWidth,
+              bottom: top + bubbleHeight
+            };
+            if (!placed.some(function (other) { return overlaps(candidate, other, 24); })) {
+              position = candidate;
+              break;
+            }
+          }
+
+          position = position || {
+            left: 0,
+            top: (index * (bubbleHeight + 18)) % Math.max(bubbleHeight, height - bubbleHeight),
+            right: bubbleWidth,
+            bottom: bubbleHeight
+          };
+          placed.push(position);
+          thought.style.left = position.left + "px";
+          thought.style.top = position.top + "px";
+          [1, 2, 3].forEach(function (step) {
+            thought.style.setProperty("--float-x-" + step, (Math.random() * travelX * 2 - travelX) + "px");
+            thought.style.setProperty("--float-y-" + step, (Math.random() * travelY * 2 - travelY) + "px");
+          });
+          thought.style.setProperty("--float-time", (6 + Math.random() * 4) + "s");
+          thought.style.setProperty("--float-delay", (-Math.random() * 5) + "s");
+        });
+      }
+
+      scatter();
+      window.addEventListener("resize", scatter);
+    })();
+  </script>
+</body>
+</html>
