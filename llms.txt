@@ -125,8 +125,8 @@
 
 
 - [The owner isn’t here](https://maxhalford.github.io/blog/thoughts/2026-07-19-the-owner-isnt-here/)
-- [Nostalgia for a time I didn't experience](https://maxhalford.github.io/blog/thoughts/2026-01-17-anemoia/)
-- [No pain no startup](https://maxhalford.github.io/blog/thoughts/2025-10-27-startup-pain-management/)
+- [Nostalgia for a time I didn't experience](https://maxhalford.github.io/blog/thoughts/anemoia/)
+- [No pain no startup](https://maxhalford.github.io/blog/thoughts/startup-pain-management/)
 
 ## Slides
 
