@@ -126,7 +126,6 @@
 
 - [Nostalgia for a time I didn't experience](https://maxhalford.github.io/blog/thoughts/anemoia/)
 - [No pain no startup](https://maxhalford.github.io/blog/thoughts/startup-pain-management/)
-- [The owner isn't here](https://maxhalford.github.io/blog/thoughts/the-owner-isnt-here/)
 
 ## Slides
 
