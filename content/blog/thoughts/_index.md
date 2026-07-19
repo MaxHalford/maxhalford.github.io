@@ -1,9 +1,8 @@
-+++
-title = "Showerthoughts"
-
-[outputs]
-home = ["HTML", "RSS"]
-
-[cascade]
-type = "thoughts"
-+++
+---
+title: Showerthoughts
+outputs:
+  - HTML
+  - RSS
+cascade:
+  type: thoughts
+---
