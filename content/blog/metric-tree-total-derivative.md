@@ -39,7 +39,7 @@ JOIN y USING (account_id)
 JOIN z USING (account_id)
 ```
 
-So what's the point of using a metric tree? Visualization could a reason. But the metric is simple, so a table report is enough. The real reason is that the metric tree highlights the metric's structure. It shows how the metric is built, and how to break it down into its components.
+So what's the point of using a metric tree? Visualization could be a reason. But the metric is simple, so a table report is enough. The real reason is that the metric tree highlights the metric's structure. It shows how the metric is built, and how to break it down into its components.
 
 Whenever you implement a metric at a company, you need to be able to explain it. Someone will eventually ask you [why the metric changed](/blog/kpi-evolution-decomposition/) over time. There isn't always a simple answer to that question. It would be convenient if there was though.
 

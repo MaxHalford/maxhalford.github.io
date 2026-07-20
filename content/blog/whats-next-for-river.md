@@ -30,7 +30,7 @@ I am grateful to see people wanting to contribute to River. It's heartwarming an
 
 In 2022 I joined an early-stage startup, and then I became a dad in the fall of 2023. Both events naturally took priority over tinkering on River. To be honest, the project has been more or less in maintenance mode since my daughter was born. People kept contributing and downloads increased, but I simply didn't put in the time the project deserved.
 
-I want to call out that **this is fine**. Maintaining an open-source project can be a source of guilt. But it shouldn't. An open-source project is like a cactus: it appreciates every drop of water you give it and can survive without you. It's *normal* for you to prioritize the many delicate flowers around you that need (daily) attention.
+I want to point out that **this is fine**. Maintaining an open-source project can be a source of guilt. But it shouldn't. An open-source project is like a cactus: it appreciates every drop of water you give it and can survive without you. It's *normal* for you to prioritize the many delicate flowers around you that need (daily) attention.
 
 Coding agents came into our world right when I was getting used to this status quo. For all their flaws and consequences, they have allowed me to find more hours in the day to do the things I want. For one thing, I've been more efficient at work. I had a somewhat operational job, so coding agents had a rather positive impact on my workload.
 
@@ -46,52 +46,67 @@ Open-source is still in the cards for me, I'm sure of that. For me it's always b
 
 I have newfound motivation to work on River in particular. I still believe online machine learning is relevant -- and somewhat underappreciated. There are several research directions I want to pursue, and many things to implement. Furthermore, I want to put energy into educating people about where and how online machine learning applies.
 
-## A roadmap for River
+## River roadmap 12 months ahead
 
 River is not as widely used as "serious" machine learning packages like scikit-learn and PyTorch, which means we don't have to chastise ourselves for not publishing and following a rigid roadmap. But I believe it's beneficial to give users and contributors a rough idea of our direction without detailing all the stops and turns.
 
 Something I want to insist on is working on stuff that people need. As obvious as that might, River development has mostly been driven by contributor interest and area of expertise. For instance we've put a lot of effort in regression/classification models, when in fact people seem to use River for other tasks like anomaly detection, clustering, and drift detection. I know this because we have page visit statistics for our documentation website.
 
-Before I/we keep building, I want to get a concensus on rules for using coding agents.
+Before I/we keep building, I want us to write down a set rules for using coding agents. [Several](https://github.com/melissawm/open-source-ai-contribution-policies) open source projects are doing this. This is paramount, because having no rules at all is the quickest way to alienate contributors -- and potentially deteriorate the project's quality. There's an [ongoing discussion](https://github.com/online-ml/river/pull/1937), and I'm confident we're reaching a concensus that keeps the project's human touch, while improving our delivery speed/quality.
 
-### General
+### Live benchmarks
+
+### Drift detection
+
+River's `drift` module comes from scikit-multiflow. To be perfectly honest,
+
+- Better docs
+- Benchmarks
+- More methods
+
+
+### Anomaly detection
+
+- Fast implementation of half space trees
+        - tree
+            - dealing with dynamical trees; one pass clean up could be a solution
+            - categorical splits: how do that in an array-based implementation?
+            - ensure missing data is handled in a standardized fashion
+    - Go to use case for observability?
+
+### Clustering
+
+- Better docs, real use case
+- https://github.com/Rocketgraph/rocketgraph
+- Twitch for clustering?
+
+
+### `auto` module
+
+- Start with binary classification
+
+### Mini-batching
+
+- Hot loop in Rust
+- Get on-par with sklearn’s SGDClassifier and vowpal wabbit
+- Narwhals
+  - https://github.com/lightgbm-org/LightGBM/releases#release-v4.7.0
+- Train in rust, infer in python
+- Modules
+    - linear_model
+    - facto
+    - optim
+    - reco?
+
+### Rust package
+
+- Make it a first class citizen
+- Speed
+
+### Documentation
 
     - Review introductory docs
         - When to use what, TLDR section
         - Docs for agents?
     - AI guidelines
     - CLAUDE.md
-    - Speed
-
-###
-
-- Drift
-    - Better docs
-    - Benchmarks
-    - More methods
-- Clustering
-    - Better docs, real use case
-    - https://github.com/Rocketgraph/rocketgraph
-- Anomaly detection
-    - Fast implementation of half space trees
-        - tree
-            - dealing with dynamical trees; one pass clean up could be a solution
-            - categorical splits: how do that in an array-based implementation?
-            - ensure missing data is handled in a standardized fashion
-    - Go to use case for observability?
-- auto module
-    - Start with binary classification
-    - Twitch for clustering?
-- Mini-batching
-    - Hot loop in Rust
-    - Get on-par with sklearn’s SGDClassifier and vowpal wabbit
-    - Narwhals
-    - Train in rust, infer in python
-    - Modules
-        - linear_model
-        - facto
-        - optim
-        - reco?
-- Conformal prediction?
-- Rust package
-    - Make it a first class citizen
