@@ -1,6 +1,7 @@
 +++
 date = "2017-06-19"
 draft = false
+math = true
 title = "Subsampling a training set to match a test set - Part 1"
 tags = ['machine-learning']
 +++

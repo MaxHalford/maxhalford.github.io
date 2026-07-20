@@ -1,5 +1,6 @@
 +++
 date = "2022-03-06"
+math = true
 title = "OCR spelling correction is hard"
 tags = ['text-processing']
 +++

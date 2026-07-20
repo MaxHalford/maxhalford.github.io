@@ -1,6 +1,7 @@
 +++
 date = "2017-03-04"
 draft = false
+math = true
 title = "Grid paintings à la Mondrian with JavaScript"
 tags = ['generative-art']
 +++
@@ -180,4 +181,3 @@ initialRect.split(xPad, yPad, 0, 5, ctx)
 ```
 
 That's all there is to it! The full code is [available on GitHub](https://github.com/MaxHalford/procedural-art/blob/master/2_mondrian.html). I hope you enjoyed the read!
-

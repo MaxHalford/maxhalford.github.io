@@ -1,5 +1,6 @@
 +++
 date = "2022-08-24"
+math = true
 title = "Matrix inverse mini-batch updates"
 tags = ['online-machine-learning']
 +++

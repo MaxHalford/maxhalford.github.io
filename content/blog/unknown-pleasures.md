@@ -1,6 +1,7 @@
 +++
 date = "2017-07-24"
 draft = false
+math = true
 title = "Unknown pleasures with JavaScript"
 tags = ['generative-art']
 +++

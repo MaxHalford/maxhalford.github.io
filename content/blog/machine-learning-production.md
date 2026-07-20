@@ -1,6 +1,7 @@
 +++
 date = "2019-07-13"
 draft = false
+math = true
 title = "A smooth approach to putting machine learning into production"
 tags = ['machine-learning', 'data-eng']
 +++

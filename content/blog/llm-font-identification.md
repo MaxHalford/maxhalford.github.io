@@ -1,5 +1,6 @@
 +++
 date = "2025-07-30"
+math = true
 title = 'Do LLMs identify fonts?'
 tags = ['llm', 'scraping']
 +++

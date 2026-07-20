@@ -1,5 +1,6 @@
 +++
 date = "2022-06-28"
+math = true
 title = "A rant against dbt ref"
 toc = true
 tags = ['data-eng', 'sql', 'rant']

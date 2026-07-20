@@ -1,5 +1,6 @@
 +++
 date = "2021-12-24"
+math = true
 title = "Weighted sampling without replacement in pure Python"
 tags = ['python']
 +++

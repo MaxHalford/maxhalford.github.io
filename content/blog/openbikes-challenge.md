@@ -1,6 +1,7 @@
 +++
 date = "2017-01-26"
 draft = false
+math = true
 title = "A short introduction and conclusion to the OpenBikes 2016 Challenge"
 tags = ['kaggle']
 +++

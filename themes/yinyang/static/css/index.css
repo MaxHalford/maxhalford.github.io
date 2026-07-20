@@ -367,7 +367,9 @@ a.posts-line-tag:hover {
 
 .post-content p {
   margin-bottom: 1em;
-  text-wrap: pretty;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 .post-content img {
@@ -725,7 +727,7 @@ html[data-theme="dark"] .markdown-body table td {
 }
 
 html[data-theme="dark"] .markdown-body code {
-  background-color: rgba(110, 118, 129, 0.4);
+  background-color: var(--code-bg);
 }
 
 html[data-theme="dark"] .markdown-body pre code {
