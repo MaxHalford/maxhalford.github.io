@@ -63,7 +63,7 @@ $$
 f(\mathbf{x}^{t+1}) - f(\mathbf{x}^{t}) = \sum_{i=1}^n (x_i^{t+1} - x_i^{t}) \int_0^1 \frac{\partial f\left(\mathbf{x}^{t} + \alpha(\mathbf{x}^{t+1} - \mathbf{x}^{t})\right)}{\partial x_i}\,d\alpha
 $$
 
-This is the [integrated gradients](https://arxiv.org/abs/1703.01365) attribution. Unlike a gradient at one endpoint, its contributions add up to the observed finite change (up to numerical integration error). It is one principled allocation, rather than the unique allocation: nonlinear interactions can be divided differently by methods such as Shapley values.
+This is the [integrated gradients](https://arxiv.org/abs/1703.01365) attribution. Unlike a gradient at one endpoint, its contributions add up to the observed finite change, up to numerical integration error. It is one possible allocation, rather than the unique allocation: nonlinear interactions can be divided differently by methods such as Shapley values.
 
 
 I thought it would be interesting to try it out. I have some anonymized data from Carbonfact that I can use to illustrate the idea:
