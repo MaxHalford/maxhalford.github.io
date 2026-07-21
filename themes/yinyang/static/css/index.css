@@ -352,6 +352,7 @@ a.posts-line-tag:hover {
   color: var(--text);
   border-color: var(--text);
   background-color: var(--card-hover);
+  text-decoration: none;
 }
 
 /* 7. Post content ----------------------------------------- */
