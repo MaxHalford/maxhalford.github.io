@@ -45,17 +45,25 @@ Whenever you implement a metric at a company, you need to be able to explain it.
 
 I like the idea that a metric tree is essentially just a function. You can think of it as a multivariate function that takes a set of inputs and returns a single output. There may be intermediate outputs, depending on the metric's complexity. The metric tree is just a way to visualize the function's structure.
 
-Any well-defined function can be differentiated -- i.e. provided it is [continuously differentiable](https://en.wikipedia.org/wiki/Differentiable_function#:~:text=A%20function%20is%20said%20to%20be%20continuously%20differentiable%20if%20the,to%20have%20an%20essential%20discontinuity.). In particular, the [total derivative](https://en.wikipedia.org/wiki/Total_derivative) gives us a way to understand the change in the output with respect to each input. It is a linear approximation of the function at a given point.
+Any continuously differentiable function can be differentiated. In particular, the [total derivative](https://en.wikipedia.org/wiki/Total_derivative) gives us a way to understand a *local* change in the output with respect to each input. It is a linear approximation of the function at a given point.
 
 $$
 \frac{d f}{d t} = \sum_{i=1}^n \frac{\partial f}{\partial x_i} \frac{d x_i}{d t}
 $$
 
-You'd be right to find this a bit dumb, because it's Math 101. However, I haven't seen it used in the context of metric trees, or any kind of analytics engineering for that matter:
+You'd be right to find this a bit dumb, because it's Math 101. However, I haven't seen it used in the context of metric trees, or any kind of analytics engineering for that matter. For a finite change between two time steps, the corresponding first-order approximation is:
 
 $$
-f(x_{1}^{t+1}, \dots, x_{n}^{t+1}) - f(x_{1}^{t}, \dots, x_{n}^{t}) = \sum_{i=1}^n \frac{\partial f}{\partial x_i} \times (x_i^{t+1} - x_i^{t})
+f(\mathbf{x}^{t+1}) - f(\mathbf{x}^{t}) \approx \sum_{i=1}^n \left.\frac{\partial f}{\partial x_i}\right|_{\mathbf{x}^{t}} (x_i^{t+1} - x_i^{t})
 $$
+
+The evaluation point matters: here the gradient is evaluated at $\mathbf{x}^{t}$. The equality is exact when $f$ is affine, as in the health score below. For a nonlinear function, the exact straight-line decomposition integrates the gradient along the path from $\mathbf{x}^{t}$ to $\mathbf{x}^{t+1}$:
+
+$$
+f(\mathbf{x}^{t+1}) - f(\mathbf{x}^{t}) = \sum_{i=1}^n (x_i^{t+1} - x_i^{t}) \int_0^1 \frac{\partial f\left(\mathbf{x}^{t} + \alpha(\mathbf{x}^{t+1} - \mathbf{x}^{t})\right)}{\partial x_i}\,d\alpha
+$$
+
+This is the [integrated gradients](https://arxiv.org/abs/1703.01365) attribution. Unlike a gradient at one endpoint, its contributions add up to the observed finite change (up to numerical integration error). It is one principled allocation, rather than the unique allocation: nonlinear interactions can be divided differently by methods such as Shapley values.
 
 
 I thought it would be interesting to try it out. I have some anonymized data from Carbonfact that I can use to illustrate the idea:
@@ -86,7 +94,7 @@ health_score_func = 0.2 * x + 0.3 * y + 0.5 * z
 
 # Calculate gradient w.r.t. each input
 gradient = {
-    var: sp.diff(health_score_func, var) for var in variables
+    var: sp.diff(health_score_func, var)
     for var in variables
 }
 
@@ -146,17 +154,17 @@ account='C'
 =0.0 : diff(z)
 ```
 
-It works!
+It works exactly here because the health score is linear.
 
 - `observed_diff` corresponds to $f(x_{1}^{t+1}, \dots, x_{n}^{t+1}) - f(x_{1}^{t}, \dots, x_{n}^{t})$
 - `diff(x)` corresponds to $\frac{\partial f}{\partial x}\times (x_1^{t+1} - x_1^{t})$
-- `diff(y)` corresponds to $\frac{\partial f}{\partial x}\times (x_2^{t+1} - x_2^{t})$
-- `diff(z)` corresponds to $\frac{\partial f}{\partial x}\times (x_3^{t+1} - x_3^{t})$
-- `total_diff = diff(x) + diff(y) + diff(z)` corresponds to the sum of all the partial derivatives
+- `diff(y)` corresponds to $\frac{\partial f}{\partial y}\times (y^{t+1} - y^{t})$
+- `diff(z)` corresponds to $\frac{\partial f}{\partial z}\times (z^{t+1} - z^{t})$
+- `total_diff = diff(x) + diff(y) + diff(z)` corresponds to the sum of all the input contributions
 
-The total derivative method provides a way to explain the change in the health score with respect to each input. We can see how much each input contributed to the change in the health score. We know it is valid because summing up the partial derivatives matches the observed difference between $t$ and $t+1$.
+The total derivative method provides a way to explain the change in the health score with respect to each input. We can see how much each input contributed to the change in the health score. It is exact in this example because summing the contributions matches the observed difference between $t$ and $t+1$. For a nonlinear metric, the same endpoint-gradient calculation would generally leave a residual.
 
-What I particularly like about this method is its universal applicability. It should work for any metric tree. For instance, let's say that we wish to calculate a weighted average of the customer health score, by weighting each account by its $w$ value. At Carbonfact $w$ corresponds to the customer's importance.
+What I particularly like about this approach is how naturally it follows the structure of a metric tree. For instance, let's say that we wish to calculate a weighted average of the customer health score, by weighting each account by its $w$ value. At Carbonfact $w$ corresponds to the customer's importance.
 
 ```mermaid
 flowchart LR
@@ -192,9 +200,14 @@ symbols = {
     }
     for account in ['A', 'B', 'C']
 }
+weights = scores.groupby('account')['w'].first().to_dict()
 total_health_score_func = sum(
-    0.2 * variables['x'] + 0.3 * variables['y'] + 0.5 * variables['z']
-    for variables in symbols.values()
+    weights[account] * (
+        0.2 * variables['x'] +
+        0.3 * variables['y'] +
+        0.5 * variables['z']
+    )
+    for account, variables in symbols.items()
 )
 
 # Calculate gradient w.r.t. each input
@@ -230,26 +243,26 @@ diff_breakdown = {
 total_diff = sum(diff_breakdown.values())
 
 # Print results
-print(f"{observed_diff:+.1f} — observed_diff")
-print(f"{total_diff:+.1f} — total_diff")
+print(f"{observed_diff:+.3f} — observed_diff")
+print(f"{total_diff:+.3f} — total_diff")
 print("~~~~~~~~~~~")
 for (account, var), diff in diff_breakdown.items():
-    print(f"{diff:+.1f} : diff({account}, {var})")
+    print(f"{diff:+.3f} : diff({account}, {var})")
 ```
 
 ```diff
--0.4 : observed_diff
--0.4 : total_diff
+-0.439 : observed_diff
+-0.439 : total_diff
 ~~~~~~~~~~~
--0.4 : diff(A, x)
--0.9 : diff(A, y)
-=0.0 : diff(A, z)
-=0.0 : diff(B, x)
--0.6 : diff(B, y)
-=0.0 : diff(B, z)
-=0.0 : diff(C, x)
-+1.5 : diff(C, y)
-=0.0 : diff(C, z)
+-0.112 : diff(A, x)
+-0.252 : diff(A, y)
++0.000 : diff(A, z)
++0.000 : diff(B, x)
+-0.330 : diff(B, y)
++0.000 : diff(B, z)
++0.000 : diff(C, x)
++0.255 : diff(C, y)
++0.000 : diff(C, z)
 ```
 
 The overall total health score is a function of 9 inputs: $x$, $y$, and $z$ for each account. The total derivative method still works. We can see how much each input within each account contributed to the change in the total health score.
@@ -271,7 +284,10 @@ account_health_scores = {}
 for account, variables in symbols.items():
     account_symbol = sp.symbols(f'{account}')
     account_health_scores[account_symbol] = 0.2 * variables['x'] + 0.3 * variables['y'] + 0.5 * variables['z']
-total_health_score_func = sum(account_health_scores.keys())
+total_health_score_func = sum(
+    weights[str(account)] * account
+    for account in account_health_scores
+)
 
 # Calculate gradient w.r.t. each account
 gradient = {
@@ -284,8 +300,14 @@ diff_breakdown = {
     account: (
         gradient[account] *
         (
-            calculate_health_score(T1.query('account == @account'))
-            - calculate_health_score(T0.query('account == @account'))
+            health_score_func.subs({
+                var: T1.query('account == @account')[var].iloc[0]
+                for var in variables
+            })
+            - health_score_func.subs({
+                var: T0.query('account == @account')[var].iloc[0]
+                for var in variables
+            })
         )
     )
     for account in ['A', 'B', 'C']
@@ -294,18 +316,18 @@ total_diff = sum(diff_breakdown.values())
 
 # Print results
 for account, diff in diff_breakdown.items():
-    print(f"{diff:+.1f} : diff({account})")
+    print(f"{diff:+.3f} : diff({account})")
 ```
 
 ```diff
--1.3 : diff(A)
--0.6 : diff(B)
-+1.5 : diff(C)
+-0.364 : diff(A)
+-0.330 : diff(B)
++0.255 : diff(C)
 ```
 
 I find this very useful. To keep the metric tree metaphor alive, we can think of this as differentiating with respect to the branches, whilst the previous results were differentiating with respect to the leaves. The total derivative method is flexible enough to allow us to do that.
 
-Anyway, how valid is this method? Well, the total derivative method is a well-established concept in calculus. It doesn't work so well for non-linear functions, when there are discontinuities or sharp jumps. But it works well for linear functions, which should cover a lot of the use cases for metric trees. That being said, it is supposed to be used to study infinitesimal local changes. Ultimately, the total derivative method is part of the larger family of [sensitivity analysis](https://en.wikipedia.org/wiki/Sensitivity_analysis). There may be other valid methods in that family, but I think the total derivative has nice properties that make it a good candidate for differentiating metric trees.
+Anyway, how valid is this method? The total derivative is a well-established concept in calculus, but it describes infinitesimal local changes. Multiplying one endpoint's gradient by a finite input change is exact for affine functions and only a first-order approximation otherwise. For differentiable nonlinear metric trees, integrated gradients turn that local idea into an exact finite-change attribution by accumulating the gradient along a path. Functions with discontinuities or discrete decisions need other treatment. Ultimately, these methods are part of the larger family of [sensitivity analysis](https://en.wikipedia.org/wiki/Sensitivity_analysis).
 
 I have to apologize for the clunkiness of the code. I could have packaged this into something more elegant, but I wanted to keep the lid open on the implementation. I'm confident there's a nice way to package this into a friendly API.
 
