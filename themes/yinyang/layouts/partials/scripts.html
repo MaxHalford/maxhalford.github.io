@@ -1,16 +1,46 @@
 <script>
-  // Dark mode toggle (initial theme is set in head.html before paint)
+  // Theme selector (initial theme is set in head.html before paint)
   (function () {
     var toggle = document.getElementById("theme-toggle");
     if (!toggle) return;
+
+    var media = window.matchMedia("(prefers-color-scheme: dark)");
+    var preferences = ["system", "light", "dark"];
+
+    function applyTheme(preference, announce) {
+      var resolved = preference === "system"
+        ? (media.matches ? "dark" : "light")
+        : preference;
+      document.documentElement.setAttribute("data-theme-setting", preference);
+      document.documentElement.setAttribute("data-theme", resolved);
+      toggle.setAttribute("aria-label", "Theme: " + preference + ". Change theme");
+      toggle.setAttribute("title", "Theme: " + preference);
+      if (announce) {
+        var status = toggle.querySelector(".visually-hidden");
+        if (status) status.textContent = "Theme set to " + preference;
+      }
+    }
+
+    var current = document.documentElement.getAttribute("data-theme-setting") || "system";
+    applyTheme(current, false);
+
     toggle.addEventListener("click", function () {
-      var current = document.documentElement.getAttribute("data-theme");
-      var next = current === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
+      var current = document.documentElement.getAttribute("data-theme-setting") || "system";
+      var next = preferences[(preferences.indexOf(current) + 1) % preferences.length];
+      applyTheme(next, true);
       try {
-        localStorage.setItem("theme", next);
+        if (next === "system") localStorage.removeItem("theme");
+        else localStorage.setItem("theme", next);
       } catch (e) {}
     });
+
+    function handleSystemThemeChange() {
+      if (document.documentElement.getAttribute("data-theme-setting") === "system") {
+        applyTheme("system", false);
+      }
+    }
+    if (media.addEventListener) media.addEventListener("change", handleSystemThemeChange);
+    else if (media.addListener) media.addListener(handleSystemThemeChange);
   })();
 </script>
 

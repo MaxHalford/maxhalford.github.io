@@ -1,16 +1,19 @@
 <head>
-  <!-- Theme (light/dark): set before first paint to avoid a flash -->
+  <!-- Theme preference: set before first paint to avoid a flash -->
   <script>
     (function () {
+      var preference = "system";
       try {
         var stored = localStorage.getItem("theme");
-        var theme =
-          stored ||
-          (window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light");
-        document.documentElement.setAttribute("data-theme", theme);
+        if (stored === "light" || stored === "dark") preference = stored;
       } catch (e) {}
+      var theme = preference === "system"
+        ? (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light")
+        : preference;
+      document.documentElement.setAttribute("data-theme-setting", preference);
+      document.documentElement.setAttribute("data-theme", theme);
     })();
   </script>
 

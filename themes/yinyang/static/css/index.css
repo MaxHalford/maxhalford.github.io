@@ -19,6 +19,7 @@
 /* 1. Theme variables -------------------------------------- */
 
 :root {
+  color-scheme: light;
   --bg: #ffffff;
   --text: #333333;
   --muted: #6a737d;
@@ -32,6 +33,7 @@
 }
 
 html[data-theme="dark"] {
+  color-scheme: dark;
   --bg: #0d1117;
   --text: #c9d1d9;
   --muted: #8b949e;
@@ -234,24 +236,34 @@ pre {
 
 .theme-toggle svg {
   display: block;
-  transition: transform 0.3s ease;
 }
 
-.theme-toggle:hover svg {
-  transform: rotate(18deg);
-}
-
-/* Sun in light mode, owl in dark mode */
-.theme-toggle .icon-owl {
+/* System, sun, and moon icons represent the selected preference. */
+.theme-toggle .icon-light,
+.theme-toggle .icon-dark {
   display: none;
 }
 
-html[data-theme="dark"] .theme-toggle .icon-sun {
+html[data-theme-setting="light"] .theme-toggle .icon-system,
+html[data-theme-setting="dark"] .theme-toggle .icon-system {
   display: none;
 }
 
-html[data-theme="dark"] .theme-toggle .icon-owl {
+html[data-theme-setting="light"] .theme-toggle .icon-light,
+html[data-theme-setting="dark"] .theme-toggle .icon-dark {
   display: block;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .post-header {
