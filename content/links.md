@@ -500,6 +500,7 @@ toc: true
 - [Mariano Pascual](https://www.marianopascual.me/)
 - [loackme](https://loack.me/)
 - [Earendil](https://earendil.com/)
+- [SavvyCal](https://savvycal.com/)
 
 I like these retrocool websites:
 
@@ -551,6 +552,7 @@ I like these retrocool websites:
 - [Latche, l'esprit des lieux](https://www.france.tv/documentaires/documentaires-societe/8031087-latche-l-esprit-des-lieux.html) -- about Mitterand's link with Soustons, which is where I live (archive attempt [here](https://web.archive.org/web/20260117125941/https://www.france.tv/documentaires/documentaires-societe/8031087-latche-l-esprit-des-lieux.html))
 - [Shifty](https://www.bbc.co.uk/iplayer/episodes/m002d2jv/shifty) -- about life in Britain before the turn of the century
 - [The Story of C++](https://www.youtube.com/watch?v=lI7tMxzSJ7w) and most of the other [Cult.Repo](https://www.cultrepo.com/) -- formerly HoneyPot -- videos are awesome
+- [Obree](https://www.youtube.com/watch?v=qKta3RPyLIo)
 
 ## Kids
 
