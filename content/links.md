@@ -169,6 +169,7 @@ toc: true
 - [CARTE: toward table foundation models - Gaël Varoquaux](https://gael-varoquaux.info/science/carte-toward-table-foundation-models.html)
 - [Everything you always wanted to know about extreme classification - Microsoft Research](https://www.microsoft.com/en-us/research/blog/everything-you-always-wanted-to-know-about-extreme-classification-but-were-afraid-to-ask/) -- I love the idea that recsys can be framed as an extreme classification problem.
 - [Line scan camera image processing - Daniel Lawrence Lu](https://daniel.lawrence.lu/blog/y2025m09d21/)
+- [Distinguished Colloquium by Jeff Dean @ Princeton](https://www.youtube.com/watch?v=UTTeXZrpMR0&t=1s) -- main ideas which took place in deep learning between 2012 and 2026.
 
 ## Data science
 

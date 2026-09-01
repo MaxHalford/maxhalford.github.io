@@ -1,12 +1,12 @@
 +++
-date = "2026-09-02"
+date = "2026-09-01"
 title = "A brief guide to French polling data"
 tags = ['open-data', 'data-science']
 +++
 
-[FiveThirtyEight](https://en.wikipedia.org/wiki/FiveThirtyEight) is one of the reasons I went down the data science rabbit hole at university. What it achieved during the 2012 US presidential election felt like nothing short of predicting the future. And yet, all the data it used was out there in the open, available to anyone. I found that very inspiring at the time.
+[FiveThirtyEight](https://en.wikipedia.org/wiki/FiveThirtyEight) is one of the reasons I went down the data science rabbit hole, during my university years. What it achieved during the 2012 US presidential election felt like nothing short of predicting the future. And yet, all the data it used was out there in the open, available to anyone. I found that very inspiring at the time.
 
-France is going through a difficult political period. The far right has a serious chance of winning the next presidential election, while the rest of the political landscape looks fragmented. At least, that is what recent polls suggest. Polling data and the models built on top of it play a significant part in day-to-day political debate. As of writing, [this page](https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027) provides a useful overview of polling for the upcoming election.
+France is going through a difficult political period. The far right has a serious chance of winning the next presidential election, while the rest of the political landscape looks fragmented. At least, that is what recent polls suggest. Polling data and the models built on top of it play a significant part in day-to-day political debate -- sadly some may say. As of writing, [this page](https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027) provides a useful overview of polling for the upcoming election.
 
 I was between jobs until recently, and had planned to contribute to public efforts around polling data and modelling. It turns out I will not have time to do anything substantial before the 2027 French presidential election, so I thought I should share the small amount of research I'm sitting on, in case someone else wants to pick it up.
 
@@ -24,7 +24,7 @@ In France, polling organizations must submit published political polls to the [*
 
 Several projects work downstream of NSPPolls. I came across [presidentielle2027](https://github.com/MieuxVoter/presidentielle2027), which monitors the XML feed, opens a GitHub issue for each new poll, and relies on people to extract the data from each PDF into a CSV file. I had a [chat](https://github.com/MieuxVoter/presidentielle2027/issues/41) with the project's owner, [Pierre Puchaud](https://github.com/Ipuch), who gave me permission to leverage Claude. For now, I run it manually whenever a new issue appears in my notifications. I have not automated the process because a little friction forces me to review Claude's output. I considered creating a dedicated skill, but the project's existing [instructions](https://github.com/MieuxVoter/presidentielle2027/blob/main/COMMENT_AJOUTER_UN_SONDAGE.md) are enough for Claude to do the job reliably.
 
-The limitation of presidentielle2027 is that it focuses on presidential elections rather than municipal, parliamentary, and European ones. Those elections matter too: estimating polling errors requires as many comparable polls and outcomes as possible. I have not found an active project that collects and cleans all this data in one place, let alone one that links each poll to the corresponding result.
+The limitation of presidentielle2027 is that it focuses on presidential elections, and doesn't cover municipal, parliamentary, and European ones. Those elections matter too: estimating polling errors requires as many comparable polls and outcomes as possible. I have not found an active project that collects and cleans all this data in one place, let alone one that links each poll to the corresponding result.
 
 Ideally, such a dataset would contain:
 
