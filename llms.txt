@@ -12,6 +12,7 @@
 
 
 
+- [A brief guide to French polling data](https://maxhalford.github.io/blog/french-polling-data/)
 - [What's next for River (and myself)](https://maxhalford.github.io/blog/whats-next-for-river/)
 - [Will agents replace scripts?](https://maxhalford.github.io/blog/will-agents-replace-scripts/)
 - [My unvarnished guide to solution engineering](https://maxhalford.github.io/blog/solution-engineering-advice/): Lessons from a few years as a data scientist talking to customers and selling enterprise SaaS at an early startup.
