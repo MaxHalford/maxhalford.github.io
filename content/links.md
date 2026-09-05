@@ -111,6 +111,7 @@ toc: true
 - [Harriet Fell](https://www.ccs.neu.edu/home/fell/)
 - [Cam Pedersen](https://campedersen.com/) -- has a pretty Berkeley Mono website
 - [Willem Pennings](https://willempennings.nl/)
+- [Bret Victor](https://worrydream.com/)
 
 ## Machine learning
 
@@ -332,6 +333,7 @@ toc: true
 - [Richard Feynman on the question *Why?*](https://www.youtube.com/watch?v=36GT2zI8lVA)
 - [Thinflation](https://mitxela.com/rants/thinflation)
 - [They're Made out of Meat](https://www.eastoftheweb.com/short-stories/UBooks/TheyMade.shtml)
+- [Computational Public Space - Bret Victor](https://www.youtube.com/watch?v=7wa3nm0qcfM)
 
 ## SQL
 
@@ -357,6 +359,7 @@ toc: true
 - [Octavia Butler’s Advice on Writing](https://www.themarginalian.org/2023/09/20/octavia-butler-advice-on-writing/)
 - [Writing Advice and Literary Wisdom from the Great E.B. White](https://lithub.com/writing-advice-and-literary-wisdom-from-the-great-e-b-white/)
 - [New Yorker Magazine Style Guide](https://www.scribd.com/doc/280735682/sanchez-the-new-yorker-style-sheet) -- there's even a dedicated [Skill](https://mcpmarket.com/tools/skills/new-yorker-writing-style)!
+- [Everything I Know about Self-Publishing](https://kk.org/thetechnium/everything-i-know-about-self-publishing/)
 
 ## Web development
 
@@ -470,6 +473,7 @@ toc: true
 - [Amiga Graphics Archive](https://amiga.lychesis.net/)
 - [MRRArt](https://mrrartpro.com/)
 - [Lili](https://lili-lines.github.io/fr/)
+- [Crafting QR Codes](https://kylezhe.ng/writes/crafting-qr-codes)
 
 ## Pretty websites
 
@@ -502,6 +506,9 @@ toc: true
 - [loackme](https://loack.me/)
 - [Earendil](https://earendil.com/)
 - [SavvyCal](https://savvycal.com/)
+- [Playa Phone](https://playaphone.com/)
+- [jeffbridges.com](https://www.jeffbridges.com/mainmenu) -- yes, that Jeff Bridges
+- [boxscore.email](https://boxscore.email)
 
 I like these retrocool websites:
 
@@ -538,6 +545,7 @@ I like these retrocool websites:
 - [loadmo.re](https://loadmo.re/)
 - [Admonymous](https://www.admonymous.co/)
 - [Middle Earth Interactive Map](https://middle-earth-interactive-map.web.app/)
+- [cookingforengineers.com lasagna recipe](https://www.cookingforengineers.com/recipe/36/Meat-Lasagna)
 - <a href="https://xn--sr8hvo.ws/previous">⬅️</a>
 <a href="https://xn--sr8hvo.ws">IndieWeb Webring</a> 🕸💍
 <a href="https://xn--sr8hvo.ws/next">➡️</a>
