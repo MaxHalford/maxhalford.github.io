@@ -1,11 +1,11 @@
 +++
-date = "2026-08-12"
-title = "Squill: infinite canvas for writing SQL"
+date = "2026-10-05"
+title = "Squill: my canvas for writing SQL"
 tags = ['sql', 'web-dev']
 draft = true
 +++
 
-## Where do people write SQL?
+## Where do you write SQL queries?
 
 It's 2026, and I'm not convinced there's one place people flock to for writing SQL.
 
@@ -17,40 +17,39 @@ I don't believe people will pay for fancy code editors going forward, now that s
 
 ## Making a code editor is not so difficult anymore
 
-I vibe coded the widget at the top of this article. It combines two excellent pieces of open-source software:
-
-- [CodeMirror](https://codemirror.net/) is a code editor for the web. It is used in many high-traffic web interfaces, including Huggingface and MotherDuck. Here I tweaked the config to auto-complete keywords in uppercase and insert tabs on new lines.
-- [SQLGlot](https://github.com/tobymao/sqlglot) is a SQL parser. It's written in pure Python, and can therefore be used in the browser via WASM, using [Pyodide](https://pyodide.org/en/stable/). Because it's a parser, it can do different things like detecting syntax errors, semantic errors, transpiling, formatting, etc.
-
-Both tools work well together. CodeMirror can be customized in many ways, allowing you to benefit from SQLGlot's goodness:
-
-- Queries can be formatted at will -- insert [SQL caps lock meme](https://www.reddit.com/media?url=https://i.redd.it/0ciiv1xlmue61.png)
-- Syntax errors are caught *before* running the query
-- Unknown table references are detected too -- try changing `orders`
-
-And that's just after vibe coding for an hour. But don't take my word for it, try it! The widget's source code is embedded in this web page, so you can point your coding agent to this page to reproduce it and go further.
-
-*Sidenote: recently [Polyglot](https://github.com/tobilg/polyglot) made the rounds. It's a Rust reimplementation of SQLGlot, [made](https://www.linkedin.com/posts/tobiasmuellerlg_introducing-polyglot-a-rust-sql-transpiler-activity-7429117368427241472-CbJA?utm_source=share&utm_medium=member_desktop&rcm=ACoAABFKzCAB2vLy2pHCTDvHMEDJyQ4OWTtNZD8) with a [Ralph Wiggum loop](https://ghuntley.com/loop/). I'm not sure how I feel about this. It's as if SQLGlot was handmade woodwork and Polyglot is plastic injection molding.*
-
-## Will we still need to write SQL?
-
-Here I am rambling on about writing SQL, when omens foretell a world where analysts just write natural language. There's indeed been [movement](https://juhache.substack.com/p/sql-is-solved-heres-where-chat-bi) on the so-called *Text to SQL* topic, also known as *Chat BI*. It's been going on for a while in a semi-serious manner, but the meteoric rise of agentic workflows is making it very real indeed. My girlfriend works at Airbnb and showed me their internal tool, which is honestly outstanding. It's so good she simply doesn't write SQL anymore, and doesn't have to nag her Data team.
-
-I think analytics agent tools like [nao](https://getnao.io/) are on the right track. They will probably give established dashboarding tools a run for their money. It's probably a great thing that most end users will end up not having to write SQL, or to manually fiddle with bloated charting tools. However, for this to be possible, someone has to lay down the foundations. Someone has to construct the right data models, give the agents their context, debug dual sources of truth, etc. I simply do not see a world where writing SQL disappears entirely.
-
-My belief is that there will always be a need to interact with databases by writing SQL, with the assistance of AI or not. I've not been fully satisfied with the tools I've used in the past, so I've decided to roll out my own. I've named it [Squill](https://squill.dev/), and I'll share more about it in future articles! I do not seem to be alone: I stumbled on [Kavla](https://kavla.dev/) while writing this post, which is uncannily similar!
+I vibe coded the widget below:
 
 {{< rawhtml >}}
 
 <style>
+  #sqlglot-widget {
+    --sqlglot-loading-bg: #fff3cd;
+    --sqlglot-loading-text: #856404;
+    --sqlglot-valid-bg: #d4edda;
+    --sqlglot-valid-text: #155724;
+    --sqlglot-invalid-bg: #f8d7da;
+    --sqlglot-invalid-text: #721c24;
+    --sqlglot-error-line: #f8d7da40;
+    --sqlglot-error-border: #dc3545;
+    color: var(--text);
+  }
+  html[data-theme="dark"] #sqlglot-widget {
+    --sqlglot-loading-bg: #332b16;
+    --sqlglot-loading-text: #eac76b;
+    --sqlglot-valid-bg: #183326;
+    --sqlglot-valid-text: #8cdbab;
+    --sqlglot-invalid-bg: #3d2025;
+    --sqlglot-invalid-text: #ffadb5;
+    --sqlglot-error-line: #f8514926;
+    --sqlglot-error-border: #f85149;
+  }
   #sqlglot-container {
     margin: 1.5em 0;
-    margin-top: 0;
   }
   .sqlglot-tabs {
     display: flex;
     gap: 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border);
   }
   .sqlglot-tab {
     padding: 6px 16px;
@@ -61,18 +60,18 @@ My belief is that there will always be a need to interact with databases by writ
     border-bottom: none;
     border-radius: 4px 4px 0 0;
     background: none;
-    color: #666;
+    color: var(--muted);
   }
-  .sqlglot-tab:hover { color: #333; }
+  .sqlglot-tab:hover { color: var(--text); }
   .sqlglot-tab.active {
-    border-color: #ddd;
-    background: #fff;
-    color: #333;
+    border-color: var(--border);
+    background: var(--bg);
+    color: var(--text);
     margin-bottom: -1px;
     padding-bottom: 7px;
   }
   .sqlglot-editor-pane {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     border-top: none;
     overflow: hidden;
   }
@@ -90,12 +89,12 @@ My belief is that there will always be a need to interact with databases by writ
     padding: 8px 12px;
     font-size: 14px;
     font-family: monospace;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     border-top: none;
   }
-  #sqlglot-status.loading { background: #fff3cd; color: #856404; }
-  #sqlglot-status.valid { background: #d4edda; color: #155724; }
-  #sqlglot-status.invalid { background: #f8d7da; color: #721c24; }
+  #sqlglot-status.loading { background: var(--sqlglot-loading-bg); color: var(--sqlglot-loading-text); }
+  #sqlglot-status.valid { background: var(--sqlglot-valid-bg); color: var(--sqlglot-valid-text); }
+  #sqlglot-status.invalid { background: var(--sqlglot-invalid-bg); color: var(--sqlglot-invalid-text); }
   #sqlglot-message {
     flex: 1;
     min-width: 0;
@@ -127,13 +126,13 @@ My belief is that there will always be a need to interact with databases by writ
   }
   .sqlglot-btn:hover { opacity: 1; }
   .sqlglot-btn:disabled { opacity: 0.4; cursor: default; }
-  .cm-errorLine {
-    background: #f8d7da40;
-    box-shadow: inset 3px 0 0 #dc3545;
+  #sqlglot-widget .cm-errorLine {
+    background: var(--sqlglot-error-line);
+    box-shadow: inset 3px 0 0 var(--sqlglot-error-border);
   }
   #sqlglot-results:empty { display: none; }
   #sqlglot-results {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     border-top: none;
     max-height: 400px;
     overflow: auto;
@@ -149,23 +148,33 @@ My belief is that there will always be a need to interact with databases by writ
   #sqlglot-results td {
     padding: 6px 12px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border);
   }
   #sqlglot-results th {
-    background: #f8f9fa;
+    background: var(--code-bg);
     font-weight: 600;
     position: sticky;
     top: 0;
   }
   #sqlglot-results tbody tr:last-child td { border-bottom: none; }
-  #sqlglot-results tr:hover td { background: #f8f9fa; }
+  #sqlglot-results tr:hover td { background: var(--code-bg); }
   #sqlglot-results .sqlglot-error-msg {
     padding: 8px 12px;
-    color: #721c24;
-    background: #f8d7da;
+    color: var(--sqlglot-invalid-text);
+    background: var(--sqlglot-invalid-bg);
     font-family: monospace;
     font-size: 14px;
     white-space: pre-wrap;
+  }
+  #sqlglot-results .sqlglot-result-msg {
+    padding: 8px 12px;
+    font-family: monospace;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  #sqlglot-results .sqlglot-success-msg {
+    color: var(--sqlglot-valid-text);
+    background: var(--sqlglot-valid-bg);
   }
 </style>
 
@@ -207,12 +216,13 @@ My belief is that there will always be a need to interact with databases by writ
 <script type="module">
 
 import { EditorView, lineNumbers, highlightSpecialChars, drawSelection, dropCursor, highlightActiveLine, Decoration } from "@codemirror/view"
-import { EditorState, StateField, StateEffect } from "@codemirror/state"
+import { Compartment, EditorState, StateField, StateEffect } from "@codemirror/state"
 import { history, defaultKeymap, historyKeymap, indentWithTab } from "@codemirror/commands"
 import { syntaxHighlighting, indentUnit, bracketMatching, defaultHighlightStyle } from "@codemirror/language"
 import { highlightSelectionMatches } from "@codemirror/search"
 import { closeBrackets, closeBracketsKeymap, autocompletion, completionKeymap, completionStatus } from "@codemirror/autocomplete"
 import { sql } from "@codemirror/lang-sql"
+import { oneDark } from "@codemirror/theme-one-dark"
 import { keymap } from "@codemirror/view"
 import * as duckdb from "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.29.0/+esm"
 
@@ -284,8 +294,22 @@ const errorLineField = StateField.define({
   provide: f => EditorView.decorations.from(f),
 })
 
+// Reconfigure both editors when the site's resolved theme changes.
+const editorTheme = new Compartment()
+const getEditorTheme = () => document.documentElement.dataset.theme === "dark" ? oneDark : []
+const siteEditorTheme = EditorView.theme({
+  "&": { backgroundColor: "var(--bg)", color: "var(--text)" },
+  ".cm-gutters": {
+    backgroundColor: "var(--code-bg)",
+    color: "var(--muted)",
+    borderRightColor: "var(--border)",
+  },
+})
+
 // Shared CodeMirror extensions
 const baseExtensions = [
+  siteEditorTheme,
+  editorTheme.of(getEditorTheme()),
   errorLineField,
   lineNumbers(),
   highlightSpecialChars(),
@@ -331,6 +355,13 @@ const dataEditor = new EditorView({
   ],
   parent: document.getElementById("sqlglot-editor-data"),
 })
+
+const themeObserver = new MutationObserver(() => {
+  for (const editor of [queryEditor, dataEditor]) {
+    editor.dispatch({ effects: editorTheme.reconfigure(getEditorTheme()) })
+  }
+})
+themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] })
 
 // Tab switching
 let activeTab = "query"
@@ -561,7 +592,7 @@ runBtn.addEventListener("click", async () => {
       if (dataSQL.trim()) {
         await conn.query(dataSQL)
       }
-      const html = '<div style="padding:8px 12px;font-family:monospace;font-size:14px;color:#155724;background:#d4edda;">Data loaded successfully.</div>'
+      const html = '<div class="sqlglot-result-msg sqlglot-success-msg">Data loaded successfully.</div>'
       resultsEl.innerHTML = html
       tabState.data.results = html
     } else {
@@ -575,7 +606,7 @@ runBtn.addEventListener("click", async () => {
       const rows = result.toArray().map(row => row.toJSON())
       let html
       if (rows.length === 0) {
-        html = '<div style="padding:8px 12px;font-family:monospace;font-size:14px;color:#666;">No rows returned.</div>'
+        html = '<div class="sqlglot-result-msg">No rows returned.</div>'
       } else {
         const cols = Object.keys(rows[0])
         const header = cols.map(c => `<th>${c}</th>`).join("")
@@ -598,10 +629,31 @@ runBtn.addEventListener("click", async () => {
 
 </script>
 </div>
-<script>
-// Text comes first in source for SEO, but widget renders first visually
-const w = document.getElementById("sqlglot-widget")
-w.parentElement.prepend(w)
-</script>
 
 {{< /rawhtml >}}
+
+It combines excellent pieces of established open-source software:
+
+- [CodeMirror](https://codemirror.net/) is a code editor for the web. It is used in many high-traffic web interfaces, including Huggingface and MotherDuck. Here I tweaked the config to auto-complete keywords in uppercase and insert tabs on new lines.
+- [SQLGlot](https://github.com/tobymao/sqlglot) is a SQL parser. It's written in pure Python, and can therefore be used in the browser via WASM, using [Pyodide](https://pyodide.org/en/stable/). Because it's a parser, it can do different things like detecting syntax errors, semantic errors, transpiling, formatting, etc.
+- [DuckDB Wasm](https://duckdb.org/docs/lts/clients/wasm/overview) for running SQL queries in the browser. But that's a detail, because a browser based editor can execute queries on a remote database.
+
+These tools work well together. CodeMirror can be customized in many ways, allowing you to benefit from SQLGlot's goodness:
+
+- Queries can be formatted at will -- insert [SQL caps lock meme](https://www.reddit.com/media?url=https://i.redd.it/0ciiv1xlmue61.png)
+- Syntax errors are caught *before* running the query
+- Unknown table references are detected too -- try changing `orders`
+
+And that's just after vibe coding for an hour. But don't take my word for it, try it! The widget's source code is embedded in this web page, so you can point your coding agent to this page to reproduce it and go further.
+
+*Sidenote: recently [Polyglot](https://github.com/tobilg/polyglot) made the rounds. It's a Rust reimplementation of SQLGlot, [made](https://www.linkedin.com/posts/tobiasmuellerlg_introducing-polyglot-a-rust-sql-transpiler-activity-7429117368427241472-CbJA?utm_source=share&utm_medium=member_desktop&rcm=ACoAABFKzCAB2vLy2pHCTDvHMEDJyQ4OWTtNZD8) with a [Ralph Wiggum loop](https://ghuntley.com/loop/). I'm not sure how I feel about this. It's as if SQLGlot was handmade woodwork and Polyglot is plastic injection molding.*
+
+## Will we still need to write SQL?
+
+Here I am rambling on about writing SQL, when omens foretell a world where analysts just write natural language. There's indeed been [movement](https://juhache.substack.com/p/sql-is-solved-heres-where-chat-bi) on the so-called *Text to SQL* topic, also known as *Chat BI*. It's been going on for a while in a semi-serious manner, but the meteoric rise of agentic workflows is making it very real indeed. My girlfriend works at Airbnb and showed me their internal tool, which is honestly outstanding. It's so good she simply doesn't write SQL anymore, and doesn't have to nag her Data team.
+
+I think analytics agent tools like [nao](https://getnao.io/) are on the right track. They will probably give established dashboarding tools a run for their money. It's probably a great thing that most end users will end up not having to write SQL, or to manually fiddle with bloated charting tools. However, for this to be possible, someone has to lay down the foundations. Someone has to construct the right data models, give the agents their context, debug dual sources of truth, etc. I simply do not see a world where writing SQL disappears entirely.
+
+My belief is that there will always be a need to interact with databases by writing SQL, with the assistance of AI or not. I've not been fully satisfied with the tools I've used in the past, so I've decided to roll out my own. I've named it [Squill](https://maxhalford.github.com/squill). As of writing it supports DuckDB in the browser and BigQuery. It is mature enough for me to use at my day job.
+
+I did toy with the idea of turning Squill into a product, but code is so cheap now that I can't build a strong enough moat around it. I've decided to just build the SQL editor I love, and make it free of charge for others to enjoy. I do not seem to be alone: I stumbled on [Kavla](https://kavla.dev/) while writing this post, which is uncannily similar!
