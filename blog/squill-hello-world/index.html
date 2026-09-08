@@ -1,0 +1,446 @@
+<!doctype html><html lang=en><head><script>(function(){var t,n,e="system";try{t=localStorage.getItem("theme"),(t==="light"||t==="dark")&&(e=t)}catch{}n=e==="system"?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":e,document.documentElement.setAttribute("data-theme-setting",e),document.documentElement.setAttribute("data-theme",n)})()</script><script defer src=https://cloud.umami.is/script.js data-website-id=ff740bb2-f741-4bc5-975e-49691d82ef39></script><meta charset=utf-8><meta name=generator content="Hugo 0.165.0"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Max Halford"><link rel=canonical href=https://maxhalford.github.io/blog/squill-hello-world/><meta property="og:url" content="https://maxhalford.github.io/blog/squill-hello-world/"><meta property="og:site_name" content="Max Halford"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://maxhalford.github.io/img/belle-ile.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Squill: my canvas for writing SQL • Max Halford"><meta name=twitter:description content="Where do you write SQL queries? It&rsquo;s 2026, and I&rsquo;m not convinced there&rsquo;s one place people flock to for writing SQL.
+There are excellent tools like DataGrip, Count.co, and Hex, but …"><meta name=twitter:image content="https://maxhalford.github.io/img/belle-ile.jpg"><meta name=twitter:site content="@halford_max"><meta name=twitter:creator content="@halford_max"><link rel=icon href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦔</text></svg>"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/maxhalford.github.io\/blog\/squill-hello-world\/"},"articleSection":"blog","name":"Squill: my canvas for writing SQL","headline":"Squill: my canvas for writing SQL","description":"Where do you write SQL queries? It\u0026rsquo;s 2026, and I\u0026rsquo;m not convinced there\u0026rsquo;s one place people flock to for writing SQL.\nThere are excellent tools like DataGrip, Count.co, and Hex, but …","image":"https://maxhalford.github.io/img/belle-ile.jpg","inLanguage":"en-US","author":{"@type":"Person","name":"Max Halford","url":"https:\/\/maxhalford.github.io\/"},"publisher":{"@type":"Person","name":"Max Halford"},"copyrightHolder":"Max Halford","copyrightYear":"2026","datePublished":"2026-09-08T00:00:00Z","dateModified":"2026-09-08T21:15:26\u002b02:00","url":"https:\/\/maxhalford.github.io\/blog\/squill-hello-world\/","keywords":["sql","web-dev"]}</script><title>Squill: my canvas for writing SQL • Max Halford</title><meta property="og:title" content="Squill: my canvas for writing SQL • Max Halford"><meta property="og:type" content="article"><meta name=description content="Where do you write SQL queries? It&rsquo;s 2026, and I&rsquo;m not convinced there&rsquo;s one place people flock to for writing SQL.
+There are excellent tools like DataGrip, Count.co, and Hex, but …"><meta property="og:description" content="Where do you write SQL queries? It&rsquo;s 2026, and I&rsquo;m not convinced there&rsquo;s one place people flock to for writing SQL.
+There are excellent tools like DataGrip, Count.co, and Hex, but …"><meta property="article:published_time" content="2026-09-08T00:00:00Z"><meta property="article:modified_time" content="2026-09-08T21:15:26+02:00"><meta property="article:tag" content="sql"><meta property="article:tag" content="web-dev"><link rel=stylesheet href=/css/flexboxgrid-6.3.1.min.css><link rel=stylesheet href=/css/github-markdown.min.css><link rel=stylesheet href=/css/highlight/github.css><link rel=stylesheet href=/css/index.css><link rel=preconnect href=https://fonts.gstatic.com><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Source+Code+Pro:wght@400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=Permanent+Marker&display=swap" rel=stylesheet></head><body><article class=post id=article><div class="row center-xs" style=text-align:left><div class="col-xs-12 col-sm-10 col-md-7 col-lg-5"><div class=header><header class=header-parts><div class="signatures site-title"><a href=/>Max Halford</a></div><div class=header-links><a class=header-link href=/>Blog</a>
+<a class=header-link href=/links/>Links</a>
+<a class=header-link href=/bio/>Bio</a>
+<a class=header-link href=/blog/thoughts/>Showerthoughts</a>
+<a class=header-link href=https://maxhalford.github.io/squill/>Squill</a>
+<a class=header-link href=https://ill-be-back-production.up.railway.app/>I'll Be Back</a>
+<button id=theme-toggle class=theme-toggle type=button aria-label="Theme: system. Change theme" title="Theme: system">
+<svg class="icon-system" viewBox="0 0 24 24" width="25" height="25" fill="currentColor" aria-hidden="true"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2V4a8 8 0 100 16z"/></svg>
+<svg class="icon-light" viewBox="0 0 24 24" width="25" height="25" fill="currentColor" aria-hidden="true"><path d="M12 18a6 6 0 110-12 6 6 0 010 12zm0-2a4 4 0 100-8 4 4 0 000 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85 1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
+<svg class="icon-dark" viewBox="0 0 24 24" width="25" height="25" fill="currentColor" aria-hidden="true"><path d="M10 7a7 7 0 0012 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979.0 0010 7zm-6 5a8 8 0 0015.062 3.762A9 9 0 018.238 4.938 7.999 7.999.0 004 12z"/></svg>
+<span class=visually-hidden aria-live=polite></span></button></div></header></div><header class=post-header><h1 class=post-title>Squill: my canvas for writing SQL</h1><div class="row post-desc"><div class="col-xs-12 post-desc-items"><time class=posts-line-date datetime="2026-09-08 00:00:00 UTC">2026-09-08
+</time><a class=posts-line-tag href=/tags/sql/>sql</a>
+<a class=posts-line-tag href=/tags/web-dev/>web-dev</a></div></div></header><div class="post-content markdown-body"><h2 id=where-do-you-write-sql-queries>Where do you write SQL queries?</h2><p>It&rsquo;s 2026, and I&rsquo;m not convinced there&rsquo;s one place people flock to for writing SQL.</p><p>There are excellent tools like <a href=https://www.jetbrains.com/datagrip/>DataGrip</a>, <a href=https://count.co/gallery/b2b-saas-metric-tree>Count.co</a>, and <a href=https://hex.tech/blog/sql-for-data-analysis/>Hex</a>, but you have to pay for them. You can use the code editors offered by BigQuery/DataBricks/Snowflake, but I find them subpar and not actively maintained. Also, they&rsquo;re closed source so the community can&rsquo;t improve them. <a href=https://motherduck.com/>MotherDuck</a> is an exception in this category and is excellent &ndash; see their <a href=https://motherduck.com/blog/introducing-fixit-ai-sql-error-fixer/>FixIt</a> feature &ndash; but it only caters to DuckDB, which is still a niche.</p><p>There are some great free generalist tools, such as <a href=https://www.beekeeperstudio.io/>Beekeeper Studio</a>, <a href=https://dbeaver.io/>DBeaver</a>, and <a href=https://www.timestored.com/qstudio/>QStudio</a>. There are also apps that cater to specific databases like <a href=https://eggerapps.at/postico/v1.php>Postico</a> for PostgreSQL. For CLI aficionados there&rsquo;s <a href=https://harlequin.sh/>Harlequin</a> and the more recent <a href=https://github.com/Maxteabag/sqlit>sqlit</a>. I would argue that these solutions focus on traditional relational database workloads, and less so on modern analytical workloads like what DataGrip/Count.co/Hex are trying to solve for. Last but not least <a href=https://docs.getdbt.com/docs/install-dbt-extension>dbt</a> and <a href=https://sqlmesh.readthedocs.io/en/stable/guides/vscode/>SQLMesh</a> both have official VSCode plugins, which have some great features. But <a href=https://www.reddit.com/r/dataengineering/comments/1r0ff3b/ama_were_dbt_labs_ask_us_anything/>hell knows</a> what lies in both tools&rsquo; future.</p><p>I don&rsquo;t believe people will pay for fancy code editors going forward, now that shipping software isn&rsquo;t a blocker. Any copycat with a bit of patience and a credit card can mimic any app, so a good UX is not enough of a moat anymore. As an example, I think the pricing model offered by <a href=https://zed.dev/>Zed</a> is what will make sense: you can use the app as much as you want for free, and you can pay a premium for features that require compute &ndash; e.g. edit predictions, usage analytics, etc. It&rsquo;s fair and square.</p><h2 id=making-a-code-editor-is-not-so-difficult-anymore>Making a code editor is not so difficult anymore</h2><p>I vibe coded the widget below:</p><style>#sqlglot-widget{--sqlglot-loading-bg:#fff3cd;--sqlglot-loading-text:#856404;--sqlglot-valid-bg:#d4edda;--sqlglot-valid-text:#155724;--sqlglot-invalid-bg:#f8d7da;--sqlglot-invalid-text:#721c24;--sqlglot-error-line:#f8d7da40;--sqlglot-error-border:#dc3545;color:var(--text)}html[data-theme=dark] #sqlglot-widget{--sqlglot-loading-bg:#332b16;--sqlglot-loading-text:#eac76b;--sqlglot-valid-bg:#183326;--sqlglot-valid-text:#8cdbab;--sqlglot-invalid-bg:#3d2025;--sqlglot-invalid-text:#ffadb5;--sqlglot-error-line:#f8514926;--sqlglot-error-border:#f85149}#sqlglot-container{margin:1.5em 0}.sqlglot-tabs{display:flex;gap:0;border-bottom:1px solid var(--border)}.sqlglot-tab{padding:6px 16px;font-size:14px;font-family:monospace;cursor:pointer;border:1px solid transparent;border-bottom:none;border-radius:4px 4px 0 0;background:0 0;color:var(--muted)}.sqlglot-tab:hover{color:var(--text)}.sqlglot-tab.active{border-color:var(--border);background:var(--bg);color:var(--text);margin-bottom:-1px;padding-bottom:7px}.sqlglot-editor-pane{border:1px solid var(--border);border-top:none;overflow:hidden}.sqlglot-editor-pane .cm-editor{font-size:15px;min-height:200px}.sqlglot-editor-pane .cm-editor.cm-focused{outline:none}.sqlglot-editor-pane.hidden{display:none}#sqlglot-status{display:flex;align-items:center;padding:8px 12px;font-size:14px;font-family:monospace;border:1px solid var(--border);border-top:none}#sqlglot-status.loading{background:var(--sqlglot-loading-bg);color:var(--sqlglot-loading-text)}#sqlglot-status.valid{background:var(--sqlglot-valid-bg);color:var(--sqlglot-valid-text)}#sqlglot-status.invalid{background:var(--sqlglot-invalid-bg);color:var(--sqlglot-invalid-text)}#sqlglot-message{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#sqlglot-status.invalid .sqlglot-error{display:inline}.sqlglot-error{display:none;margin-left:1em}#sqlglot-actions{flex-shrink:0;display:flex;gap:6px;margin-left:12px}.sqlglot-btn{background:0 0;border:1px solid;color:inherit;font-family:monospace;font-size:13px;padding:2px 8px;border-radius:3px;cursor:pointer;opacity:.8}.sqlglot-btn:hover{opacity:1}.sqlglot-btn:disabled{opacity:.4;cursor:default}#sqlglot-widget .cm-errorLine{background:var(--sqlglot-error-line);box-shadow:inset 3px 0 0 var(--sqlglot-error-border)}#sqlglot-results:empty{display:none}#sqlglot-results{border:1px solid var(--border);border-top:none;max-height:400px;overflow:auto}#sqlglot-results table{width:100%;border-collapse:collapse;font-size:14px;font-family:monospace;margin:0}#sqlglot-results th,#sqlglot-results td{padding:6px 12px;text-align:left;border-bottom:1px solid var(--border)}#sqlglot-results th{background:var(--code-bg);font-weight:600;position:sticky;top:0}#sqlglot-results tbody tr:last-child td{border-bottom:none}#sqlglot-results tr:hover td{background:var(--code-bg)}#sqlglot-results .sqlglot-error-msg{padding:8px 12px;color:var(--sqlglot-invalid-text);background:var(--sqlglot-invalid-bg);font-family:monospace;font-size:14px;white-space:pre-wrap}#sqlglot-results .sqlglot-result-msg{padding:8px 12px;font-family:monospace;font-size:14px;color:var(--muted)}#sqlglot-results .sqlglot-success-msg{color:var(--sqlglot-valid-text);background:var(--sqlglot-valid-bg)}</style><div id=sqlglot-widget><div id=sqlglot-container><div class=sqlglot-tabs><button class="sqlglot-tab active" data-tab=query>Query</button>
+<button class=sqlglot-tab data-tab=data>Data</button></div><div id=sqlglot-editor-query class=sqlglot-editor-pane></div><div id=sqlglot-editor-data class="sqlglot-editor-pane hidden"></div><div id=sqlglot-status class=loading><div id=sqlglot-message><span class=sqlglot-label>Loading Pyodide + SQLGlot...</span>
+<span class=sqlglot-error></span></div><div id=sqlglot-actions><button id=sqlglot-format class=sqlglot-btn disabled>Format</button>
+<button id=sqlglot-run class=sqlglot-btn disabled>Run</button></div></div><div id=sqlglot-results></div></div><script type=importmap>
+{
+  "imports": {
+    "codemirror": "https://esm.sh/*codemirror@6.0.1",
+    "@codemirror/": "https://esm.sh/*@codemirror/",
+    "@lezer/": "https://esm.sh/*@lezer/",
+    "style-mod": "https://esm.sh/style-mod",
+    "w3c-keyname": "https://esm.sh/w3c-keyname",
+    "crelt": "https://esm.sh/crelt",
+    "@marijn/find-cluster-break": "https://esm.sh/@marijn/find-cluster-break"
+  }
+}
+</script><script type=module>
+
+import { EditorView, lineNumbers, highlightSpecialChars, drawSelection, dropCursor, highlightActiveLine, Decoration } from "@codemirror/view"
+import { Compartment, EditorState, StateField, StateEffect } from "@codemirror/state"
+import { history, defaultKeymap, historyKeymap, indentWithTab } from "@codemirror/commands"
+import { syntaxHighlighting, indentUnit, bracketMatching, defaultHighlightStyle } from "@codemirror/language"
+import { highlightSelectionMatches } from "@codemirror/search"
+import { closeBrackets, closeBracketsKeymap, autocompletion, completionKeymap, completionStatus } from "@codemirror/autocomplete"
+import { sql } from "@codemirror/lang-sql"
+import { oneDark } from "@codemirror/theme-one-dark"
+import { keymap } from "@codemirror/view"
+import * as duckdb from "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.29.0/+esm"
+
+const defaultQuery = `SELECT
+  customer_id,
+  COUNT(*) AS order_count,
+  SUM(amount) AS total_spent
+FROM orders
+WHERE created_at >= '2025-01-01'
+GROUP BY customer_id
+HAVING total_spent > 100
+ORDER BY total_spent DESC
+LIMIT 10`
+
+const defaultData = `CREATE OR REPLACE TABLE orders (
+  customer_id INTEGER,
+  amount DECIMAL(10,2),
+  created_at DATE
+);
+
+INSERT INTO orders VALUES
+  (1, 250.00, '2025-01-15'),
+  (1, 75.50, '2025-02-20'),
+  (2, 180.00, '2025-01-10'),
+  (2, 320.00, '2025-03-05'),
+  (2, 45.00, '2024-12-01'),
+  (3, 500.00, '2025-01-22'),
+  (3, 120.00, '2025-02-14'),
+  (4, 89.99, '2024-11-30'),
+  (4, 210.00, '2025-01-05'),
+  (4, 155.00, '2025-03-01');`
+
+const statusEl = document.getElementById("sqlglot-status")
+const labelEl = statusEl.querySelector(".sqlglot-label")
+const errorEl = statusEl.querySelector(".sqlglot-error")
+const formatBtn = document.getElementById("sqlglot-format")
+const runBtn = document.getElementById("sqlglot-run")
+const resultsEl = document.getElementById("sqlglot-results")
+
+// Per-tab state: validation status + results HTML
+const tabState = {
+  query: { statusClass: "loading", label: "Loading...", error: "", results: "" },
+  data:  { statusClass: "loading", label: "Loading...", error: "", results: "" },
+}
+
+function applyTabState(tab) {
+  const s = tabState[tab]
+  statusEl.className = s.statusClass
+  labelEl.textContent = s.label
+  errorEl.textContent = s.error
+  resultsEl.innerHTML = s.results
+}
+
+function saveTabState(tab) {
+  tabState[tab].results = resultsEl.innerHTML
+}
+
+// Error line decoration (shared definition, each editor gets its own state)
+const setErrorLines = StateEffect.define()
+const errorLineDeco = Decoration.line({ class: "cm-errorLine" })
+const errorLineField = StateField.define({
+  create() { return Decoration.none },
+  update(decos, tr) {
+    for (const e of tr.effects) {
+      if (e.is(setErrorLines)) return e.value
+    }
+    return decos.map(tr.changes)
+  },
+  provide: f => EditorView.decorations.from(f),
+})
+
+// Reconfigure both editors when the site's resolved theme changes.
+const editorTheme = new Compartment()
+const getEditorTheme = () => document.documentElement.dataset.theme === "dark" ? oneDark : []
+const siteEditorTheme = EditorView.theme({
+  "&": { backgroundColor: "var(--bg)", color: "var(--text)" },
+  ".cm-gutters": {
+    backgroundColor: "var(--code-bg)",
+    color: "var(--muted)",
+    borderRightColor: "var(--border)",
+  },
+})
+
+// Shared CodeMirror extensions
+const baseExtensions = [
+  siteEditorTheme,
+  editorTheme.of(getEditorTheme()),
+  errorLineField,
+  lineNumbers(),
+  highlightSpecialChars(),
+  history(),
+  drawSelection(),
+  dropCursor(),
+  highlightActiveLine(),
+  EditorState.allowMultipleSelections.of(true),
+  indentUnit.of("  "),
+  bracketMatching(),
+  closeBrackets(),
+  autocompletion(),
+  highlightSelectionMatches(),
+  syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+  sql({ upperCaseKeywords: true }),
+  keymap.of([indentWithTab, ...closeBracketsKeymap, ...completionKeymap, ...defaultKeymap, ...historyKeymap]),
+]
+
+// Query editor
+const queryEditor = new EditorView({
+  doc: defaultQuery,
+  extensions: [
+    ...baseExtensions,
+    EditorView.updateListener.of(update => {
+      if (update.docChanged) {
+        debouncedValidate()
+        tabState.query.results = ""
+        if (activeTab === "query") resultsEl.innerHTML = ""
+      }
+    }),
+  ],
+  parent: document.getElementById("sqlglot-editor-query"),
+})
+
+// Data editor
+const dataEditor = new EditorView({
+  doc: defaultData,
+  extensions: [
+    ...baseExtensions,
+    EditorView.updateListener.of(update => {
+      if (update.docChanged) debouncedValidate()
+    }),
+  ],
+  parent: document.getElementById("sqlglot-editor-data"),
+})
+
+const themeObserver = new MutationObserver(() => {
+  for (const editor of [queryEditor, dataEditor]) {
+    editor.dispatch({ effects: editorTheme.reconfigure(getEditorTheme()) })
+  }
+})
+themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] })
+
+// Tab switching
+let activeTab = "query"
+const tabButtons = document.querySelectorAll(".sqlglot-tab")
+const queryPane = document.getElementById("sqlglot-editor-query")
+const dataPane = document.getElementById("sqlglot-editor-data")
+
+function getActiveEditor() {
+  return activeTab === "query" ? queryEditor : dataEditor
+}
+
+tabButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (btn.dataset.tab === activeTab) return
+    saveTabState(activeTab)
+    tabButtons.forEach(t => t.classList.remove("active"))
+    btn.classList.add("active")
+    activeTab = btn.dataset.tab
+    if (activeTab === "query") {
+      queryPane.classList.remove("hidden")
+      dataPane.classList.add("hidden")
+    } else {
+      queryPane.classList.add("hidden")
+      dataPane.classList.remove("hidden")
+    }
+    applyTabState(activeTab)
+  })
+})
+
+// Load Pyodide + SQLGlot
+let pyodide = null
+
+async function initPyodide() {
+  const script = document.createElement("script")
+  script.src = "https://cdn.jsdelivr.net/pyodide/v0.27.4/full/pyodide.js"
+  document.head.appendChild(script)
+  await new Promise(resolve => script.onload = resolve)
+
+  pyodide = await loadPyodide()
+  await pyodide.loadPackage("micropip")
+  const micropip = pyodide.pyimport("micropip")
+  await micropip.install("sqlglot")
+
+  pyodide.runPython(`
+import json
+import sqlglot
+from sqlglot import exp
+from sqlglot.errors import ErrorLevel, ParseError
+
+def extract_tables(query):
+    """Extract table names from CREATE statements."""
+    tables = set()
+    try:
+        for expr in sqlglot.parse(query, read="duckdb"):
+            if isinstance(expr, exp.Create):
+                tables.add(expr.this.this.name)
+    except Exception:
+        pass
+    return json.dumps(list(tables))
+
+def validate_sql(query, known_tables_json="[]"):
+    known_tables = {t.lower() for t in json.loads(known_tables_json)}
+    errors = []
+    try:
+        expressions = sqlglot.parse(query, read="duckdb", error_level=ErrorLevel.RAISE)
+    except ParseError as e:
+        for err in e.errors:
+            errors.append({
+                "message": err.get("description", str(e)),
+                "line": err.get("line"),
+                "col": err.get("col"),
+                "highlight": err.get("highlight", ""),
+            })
+        if not errors:
+            errors.append({"message": str(e)})
+        return json.dumps(errors)
+    except Exception as e:
+        return json.dumps([{"message": str(e)}])
+
+    for expression in expressions:
+        if expression is None:
+            continue
+        for node in expression.find_all(exp.Anonymous):
+            errors.append({"message": f"Unknown function: {node.this}"})
+        if known_tables:
+            cte_names = {cte.alias.lower() for cte in expression.find_all(exp.CTE)}
+            seen = set()
+            for table in expression.find_all(exp.Table):
+                name = table.name
+                if name.lower() not in known_tables and name.lower() not in cte_names and name.lower() not in seen:
+                    seen.add(name.lower())
+                    errors.append({"message": f"Unknown table: {name}"})
+
+    return json.dumps(errors)
+
+def format_sql(query):
+    statements = sqlglot.transpile(query, read="duckdb", write="duckdb", pretty=True)
+    return ";\\n\\n".join(statements) + ";" if statements else ""
+  `)
+
+  formatBtn.disabled = false
+}
+
+// Load DuckDB WASM
+let db = null
+let conn = null
+
+async function initDuckDB() {
+  const JSDELIVR_BUNDLES = duckdb.getJsDelivrBundles()
+  const bundle = await duckdb.selectBundle(JSDELIVR_BUNDLES)
+  const workerUrl = URL.createObjectURL(
+    new Blob([`importScripts("${bundle.mainWorker}");`], { type: "text/javascript" })
+  )
+  const worker = new Worker(workerUrl)
+  const logger = new duckdb.ConsoleLogger()
+  db = new duckdb.AsyncDuckDB(logger, worker)
+  await db.instantiate(bundle.mainModule, bundle.pthreadWorker)
+  URL.revokeObjectURL(workerUrl)
+  conn = await db.connect()
+  runBtn.disabled = false
+}
+
+// Initialize both in parallel
+Promise.all([initPyodide(), initDuckDB()]).then(() => {
+  // Validate both tabs so each has its initial state
+  validateTab("query", queryEditor)
+  validateTab("data", dataEditor)
+  applyTabState(activeTab)
+}).catch(e => {
+  console.error("Init failed:", e)
+  setStatus(activeTab, "invalid", "Initialization error", "— " + e.message)
+  applyTabState(activeTab)
+})
+
+// Validation with debounce
+let timeout = null
+
+function debouncedValidate() {
+  if (!pyodide) return
+  clearTimeout(timeout)
+  timeout = setTimeout(validate, 150)
+}
+
+function clearErrorLines(editor) {
+  editor.dispatch({ effects: setErrorLines.of(Decoration.none) })
+}
+
+function markErrorLines(editor, errors) {
+  const doc = editor.state.doc
+  const decos = []
+  for (const err of errors) {
+    if (err.line && err.line >= 1 && err.line <= doc.lines) {
+      const line = doc.line(err.line)
+      decos.push(errorLineDeco.range(line.from))
+    }
+  }
+  editor.dispatch({
+    effects: setErrorLines.of(Decoration.set(decos, true))
+  })
+}
+
+function setStatus(tab, cls, label, error) {
+  tabState[tab].statusClass = cls
+  tabState[tab].label = label
+  tabState[tab].error = error
+  if (tab === activeTab) {
+    statusEl.className = cls
+    labelEl.textContent = label
+    errorEl.textContent = error
+  }
+}
+
+function validateTab(tab, editor) {
+  if (!pyodide) return
+  if (completionStatus(editor.state)) {
+    debouncedValidate()
+    return
+  }
+  const query = editor.state.doc.toString()
+  if (!query.trim()) {
+    setStatus(tab, "loading", "Empty query", "")
+    clearErrorLines(editor)
+    return
+  }
+  let knownTables = "[]"
+  if (tab === "query") {
+    knownTables = pyodide.globals.get("extract_tables")(dataEditor.state.doc.toString())
+  }
+  const result = pyodide.globals.get("validate_sql")(query, knownTables)
+  const errors = JSON.parse(result)
+  if (errors.length === 0) {
+    setStatus(tab, "valid", "Valid DuckDB SQL", "")
+    clearErrorLines(editor)
+  } else {
+    const messages = errors.map(e => e.message).join("; ")
+    setStatus(tab, "invalid", "Invalid SQL", "— " + messages)
+    markErrorLines(editor, errors)
+  }
+}
+
+function validate() {
+  validateTab(activeTab, getActiveEditor())
+}
+
+// Format button
+formatBtn.addEventListener("click", () => {
+  if (!pyodide) return
+  const editor = getActiveEditor()
+  const query = editor.state.doc.toString()
+  try {
+    const formatted = pyodide.globals.get("format_sql")(query)
+    editor.dispatch({
+      changes: { from: 0, to: editor.state.doc.length, insert: formatted }
+    })
+  } catch (e) {
+    // Can't format invalid SQL — validation will show the error
+  }
+})
+
+// Run button
+runBtn.addEventListener("click", async () => {
+  if (!conn) return
+  runBtn.disabled = true
+  resultsEl.innerHTML = ""
+  try {
+    if (activeTab === "data") {
+      const dataSQL = dataEditor.state.doc.toString()
+      if (dataSQL.trim()) {
+        await conn.query(dataSQL)
+      }
+      const html = '<div class="sqlglot-result-msg sqlglot-success-msg">Data loaded successfully.</div>'
+      resultsEl.innerHTML = html
+      tabState.data.results = html
+    } else {
+      // Query tab: seed data first, then run query
+      const dataSQL = dataEditor.state.doc.toString()
+      if (dataSQL.trim()) {
+        await conn.query(dataSQL)
+      }
+      const querySQL = queryEditor.state.doc.toString()
+      const result = await conn.query(querySQL)
+      const rows = result.toArray().map(row => row.toJSON())
+      let html
+      if (rows.length === 0) {
+        html = '<div class="sqlglot-result-msg">No rows returned.</div>'
+      } else {
+        const cols = Object.keys(rows[0])
+        const header = cols.map(c => `<th>${c}</th>`).join("")
+        const body = rows.map(row =>
+          "<tr>" + cols.map(c => `<td>${row[c]}</td>`).join("") + "</tr>"
+        ).join("")
+        html = `<table><thead><tr>${header}</tr></thead><tbody>${body}</tbody></table>`
+      }
+      resultsEl.innerHTML = html
+      tabState.query.results = html
+    }
+  } catch (e) {
+    const html = `<div class="sqlglot-error-msg">${e.message}</div>`
+    resultsEl.innerHTML = html
+    tabState[activeTab].results = html
+  } finally {
+    runBtn.disabled = false
+  }
+})
+
+</script></div><p>It combines excellent pieces of established open-source software:</p><ul><li><a href=https://codemirror.net/>CodeMirror</a> is a code editor for the web. It is used in many high-traffic web interfaces, including Huggingface and MotherDuck. Here I tweaked the config to auto-complete keywords in uppercase and insert tabs on new lines.</li><li><a href=https://github.com/tobymao/sqlglot>SQLGlot</a> is a SQL parser. It&rsquo;s written in pure Python, and can therefore be used in the browser via WASM, using <a href=https://pyodide.org/en/stable/>Pyodide</a>. Because it&rsquo;s a parser, it can do different things like detecting syntax errors, semantic errors, transpiling, formatting, etc.</li><li><a href=https://duckdb.org/docs/lts/clients/wasm/overview>DuckDB Wasm</a> for running SQL queries in the browser. But that&rsquo;s a detail, because a browser based editor can execute queries on a remote database.</li></ul><p>These tools work well together. CodeMirror can be customized in many ways, allowing you to benefit from SQLGlot&rsquo;s goodness:</p><ul><li>Queries can be formatted at will &ndash; insert <a href="https://www.reddit.com/media?url=https://i.redd.it/0ciiv1xlmue61.png">SQL caps lock meme</a></li><li>Syntax errors are caught <em>before</em> running the query</li><li>Unknown table references are detected too &ndash; try changing <code>orders</code></li></ul><p>And that&rsquo;s just after vibe coding for an hour. But don&rsquo;t take my word for it, try it! The widget&rsquo;s source code is embedded in this web page, so you can point your coding agent to this page to reproduce it and go further.</p><p><em>Sidenote: recently <a href=https://github.com/tobilg/polyglot>Polyglot</a> made the rounds. It&rsquo;s a Rust reimplementation of SQLGlot, <a href="https://www.linkedin.com/posts/tobiasmuellerlg_introducing-polyglot-a-rust-sql-transpiler-activity-7429117368427241472-CbJA?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAABFKzCAB2vLy2pHCTDvHMEDJyQ4OWTtNZD8">made</a> with a <a href=https://ghuntley.com/loop/>Ralph Wiggum loop</a>. I&rsquo;m not sure how I feel about this. It&rsquo;s as if SQLGlot was handmade woodwork and Polyglot is plastic injection molding.</em></p><h2 id=will-we-still-need-to-write-sql>Will we still need to write SQL?</h2><p>Here I am rambling on about writing SQL, when omens foretell a world where analysts just write natural language. There&rsquo;s indeed been <a href=https://juhache.substack.com/p/sql-is-solved-heres-where-chat-bi>movement</a> on the so-called <em>Text to SQL</em> topic, also known as <em>Chat BI</em>. It&rsquo;s been going on for a while in a semi-serious manner, but the meteoric rise of agentic workflows is making it very real indeed. My girlfriend works at Airbnb and showed me their internal tool, which is honestly outstanding. It&rsquo;s so good she simply doesn&rsquo;t write SQL anymore, and doesn&rsquo;t have to nag her Data team.</p><p>I think analytics agent tools like <a href=https://getnao.io/>nao</a> are on the right track. They will probably give established dashboarding tools a run for their money. It&rsquo;s probably a great thing that most end users will end up not having to write SQL, or to manually fiddle with bloated charting tools. However, for this to be possible, someone has to lay down the foundations. Someone has to construct the right data models, give the agents their context, debug dual sources of truth, etc. I simply do not see a world where writing SQL disappears entirely.</p><p>My belief is that there will always be a need to interact with databases by writing SQL, with the assistance of AI or not. I&rsquo;ve not been fully satisfied with the tools I&rsquo;ve used in the past, so I&rsquo;ve decided to roll out my own. I&rsquo;ve named it <a href=https://maxhalford.github.com/squill>Squill</a>. As of writing it supports DuckDB in the browser and BigQuery. It is mature enough for me to use at my day job.</p><p>I did toy with the idea of turning Squill into a product, but code is so cheap now that I can&rsquo;t build a strong enough moat around it. I&rsquo;ve decided to just build the SQL editor I love, and make it free of charge for others to enjoy. I do not seem to be alone: I stumbled on <a href=https://kavla.dev/>Kavla</a> while writing this post, which is uncannily similar! I&rsquo;m convinced the idea of writing SQL queries on a canvas has legs.</p></div><script type=text/javascript>var s=document.createElement("script");s.setAttribute("src","https://utteranc.es/client.js"),s.setAttribute("repo","MaxHalford/maxhalford.github.io"),s.setAttribute("issue-term","pathname"),s.setAttribute("crossorigin","anonymous"),s.setAttribute("async",null),s.setAttribute("theme",document.documentElement.getAttribute("data-theme")==="dark"?"github-dark":"github-light"),document.body.appendChild(s)</script></br><div style=display:flex;flex-direction:row;justify-content:center;align-items:center;gap:20px;margin-bottom:30px><div class=do-the-thing><div class=elevator><svg class="sweet-svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" enable-background="new 0 0 100 100" height="100" width="100"><path d="M70 47.5H30c-1.4.0-2.5 1.1-2.5 2.5v40c0 1.4 1.1 2.5 2.5 2.5h40c1.4.0 2.5-1.1 2.5-2.5V50C72.5 48.6 71.4 47.5 70 47.5zm-22.5 40h-5v-25h5v25zm10 0h-5v-25h5v25zm10 0h-5V60c0-1.4-1.1-2.5-2.5-2.5H40c-1.4.0-2.5 1.1-2.5 2.5v27.5h-5v-35h35v35z"/><path d="M50 42.5c1.4.0 2.5-1.1 2.5-2.5V16l5.7 5.7c.5.5 1.1.7 1.8.7s1.3-.2 1.8-.7c1-1 1-2.6.0-3.5l-10-10c-1-1-2.6-1-3.5.0l-10 10c-1 1-1 2.6.0 3.5 1 1 2.6 1 3.5.0l5.7-5.7v24c0 1.4 1.1 2.5 2.5 2.5z"/></svg>
+Back to the top</div></div><div class=subscribe><a href=http://eepurl.com/iRBqMg>Subscribe</a></div></div><script src=https://cdnjs.cloudflare.com/ajax/libs/elevator.js/1.0.1/elevator.min.js></script><script>var elementButton=document.querySelector(".elevator"),elevator=new Elevator({element:elementButton,mainAudio:"/music/elevator.mp3",endAudio:"/music/ding.mp3"})</script><style>.down-arrow{font-size:120px;margin-top:90px;margin-bottom:90px;text-shadow:0 -20px #0c1f31,0 0 #c33329;color:transparent;-webkit-transform:scaleY(.8);-moz-transform:scaleY(.8);transform:scaleY(.8)}.elevator{text-align:center;cursor:pointer;width:140px;margin:auto}.elevator:hover{opacity:.7}.elevator svg{fill:currentColor;width:40px;height:40px;display:block;margin:auto;margin-bottom:5px}</style><div class=related-content><h3 style=margin-top:10px!important;margin-bottom:10px!important>Related posts</h3><ul style=margin-top:0><li><a href=/blog/sql-subquery-enumeration/>SQL subquery enumeration</a></li><li><a href=/blog/dbt-ref-rant/>A rant against dbt ref</a></li><li><a href=/blog/graph-components-duckdb/>Graph components with DuckDB</a></li></ul></div></div></div></article><script>(function(){var e,n,o,t=document.getElementById("theme-toggle");if(!t)return;e=window.matchMedia("(prefers-color-scheme: dark)"),n=["system","light","dark"];function s(n,s){var o,i=n==="system"?e.matches?"dark":"light":n;document.documentElement.setAttribute("data-theme-setting",n),document.documentElement.setAttribute("data-theme",i),t.setAttribute("aria-label","Theme: "+n+". Change theme"),t.setAttribute("title","Theme: "+n),s&&(o=t.querySelector(".visually-hidden"),o&&(o.textContent="Theme set to "+n))}o=document.documentElement.getAttribute("data-theme-setting")||"system",s(o,!1),t.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme-setting")||"system",e=n[(n.indexOf(t)+1)%n.length];s(e,!0);try{e==="system"?localStorage.removeItem("theme"):localStorage.setItem("theme",e)}catch{}});function i(){document.documentElement.getAttribute("data-theme-setting")==="system"&&s("system",!1)}e.addEventListener?e.addEventListener("change",i):e.addListener&&e.addListener(i)})()</script><script src=https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin=anonymous referrerpolicy=no-referrer></script><script>const images=Array.from(document.querySelectorAll("img"));images.forEach(e=>{mediumZoom(e,{margin:0,scrollOffset:40,container:null,template:null})})</script><script>document.querySelectorAll("details.modal").forEach(e=>{const t=e.querySelector("summary");if(!t)return;t.addEventListener("click",n=>{n.preventDefault();const s=document.createElement("div");s.className="modal-overlay";const o=document.createElement("div");o.className="modal-overlay-content";const i=document.createElement("button");i.className="modal-close",i.setAttribute("aria-label","Close"),i.innerHTML="&times;",o.appendChild(i);const a=document.createElement("div");a.className="modal-overlay-header",a.innerHTML=t.innerHTML,o.appendChild(a),Array.from(e.childNodes).forEach(e=>{if(e===t)return;o.appendChild(e.cloneNode(!0))}),s.appendChild(o),document.body.appendChild(s);const l=document.body.style.overflow;document.body.style.overflow="hidden";const r=()=>{s.remove(),document.body.style.overflow=l,document.removeEventListener("keydown",c)},c=e=>{e.key==="Escape"&&r()};i.addEventListener("click",r),s.addEventListener("click",e=>{e.target===s&&r()}),document.addEventListener("keydown",c)})})</script><script>document.querySelectorAll("pre:not(.mermaid)").forEach(e=>{const t=document.createElement("button");t.className="copy-button",t.innerHTML=`<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path></svg>`,t.addEventListener("click",async()=>{const n=e.querySelector("code"),s=n?n.innerText:e.innerText;await navigator.clipboard.writeText(s),t.classList.add("copied"),t.innerHTML=`<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path></svg>`,setTimeout(()=>{t.classList.remove("copied"),t.innerHTML=`<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path></svg>`},2e3)});const n=document.createElement("div");n.className="code-wrapper",e.parentNode.insertBefore(n,e),n.appendChild(e),n.appendChild(t)})</script></body></html>

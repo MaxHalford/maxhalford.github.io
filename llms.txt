@@ -12,6 +12,7 @@
 
 
 
+- [Squill: my canvas for writing SQL](https://maxhalford.github.io/blog/squill-hello-world/)
 - [A brief guide to French polling data](https://maxhalford.github.io/blog/french-polling-data/)
 - [What's next for River (and myself)](https://maxhalford.github.io/blog/whats-next-for-river/)
 - [Will agents replace scripts?](https://maxhalford.github.io/blog/will-agents-replace-scripts/)
