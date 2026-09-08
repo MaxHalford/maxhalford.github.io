@@ -1,6 +1,5 @@
 +++
 date = "2019-05-06"
-draft = false
 title = "SQL subquery enumeration"
 tags = ['sql']
 +++

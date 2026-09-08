@@ -2,7 +2,7 @@
 date = "2023-08-09"
 title = 'Answering "Why did the KPI change?" using decomposition'
 description = "A practical recipe for explaining why a metric moved by decomposing the change into per-dimension contributions."
-tags = ['data-science']
+tags = ['data-science', 'decomposition']
 images = ["/img/blog/kpi-evolution-decomposition/sum-conjugate.webp"]
 toc = true
 +++

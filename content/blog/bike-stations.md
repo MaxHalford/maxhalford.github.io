@@ -1,6 +1,5 @@
 +++
 date = "2015-06-03"
-draft = false
 title = "Visualizing bike stations live data"
 tags = ['data-viz']
 +++

@@ -2,7 +2,7 @@
 date = "2025-05-06"
 title = "The total derivative of a metric tree"
 toc = true
-tags = ['data-science']
+tags = ['data-science', 'decomposition']
 +++
 
 *A metric tree is a visual way to organize a complex metric. Count gives a good introduction [here](https://count.co/blog/intro-to-metric-trees). [Abhi Sivasailam](https://www.linkedin.com/in/abhi-sivasailam/) gave a popular [talk](https://www.youtube.com/watch?v=Dbr8jmtfZ7Q&ab_channel=DataCouncil) at Data Council 2023 if watching videos is your thing. [Ergest Xheblati](https://www.linkedin.com/in/ergestx/) is someone to follow if you want to go deeper. There's also a [recent article](https://www.lightdash.com/blogpost/metric-trees-how-top-data-teams-impact-growth) from Lightdash. Finally, there's [this article](https://timodechau.com/metric-trees-for-digital-analysts/) by Timo Dechau, but it's behind a paywall. The concept has a [homonym](https://en.wikipedia.org/wiki/Metric_tree), so beware when you browse for it.*

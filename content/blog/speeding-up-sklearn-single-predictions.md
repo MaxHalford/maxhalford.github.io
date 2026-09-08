@@ -1,6 +1,5 @@
 +++
 date = "2020-03-31"
-draft = false
 title = "Speeding up scikit-learn for single predictions"
 tags = ['machine-learning']
 +++

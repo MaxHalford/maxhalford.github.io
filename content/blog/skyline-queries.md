@@ -1,6 +1,5 @@
 +++
 date = "2019-05-21"
-draft = false
 title = "Skyline queries in Python"
 tags = ['data-eng']
 +++

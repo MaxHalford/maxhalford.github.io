@@ -1,6 +1,5 @@
 +++
 date = "2019-09-16"
-draft = false
 title = "Finding fuzzy duplicates with pandas"
 tags = ['data-eng']
 +++

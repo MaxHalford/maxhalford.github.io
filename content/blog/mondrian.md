@@ -1,6 +1,5 @@
 +++
 date = "2017-03-04"
-draft = false
 math = true
 title = "Grid paintings à la Mondrian with JavaScript"
 tags = ['generative-art']

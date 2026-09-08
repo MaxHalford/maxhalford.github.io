@@ -1,6 +1,5 @@
 +++
 date = "2015-08-02"
-draft = false
 title = "An introduction to genetic algorithms"
 tags = ['machine-learning']
 +++

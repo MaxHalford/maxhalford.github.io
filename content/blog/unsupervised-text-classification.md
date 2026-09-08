@@ -1,6 +1,5 @@
 +++
 date = "2020-10-03"
-draft = false
 title = "Unsupervised text classification with word embeddings"
 tags = ['machine-learning', 'text-processing']
 +++

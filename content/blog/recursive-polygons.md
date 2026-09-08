@@ -1,6 +1,5 @@
 +++
 date = "2016-03-25"
-draft = false
 title = "Recursive polygons with JavaScript"
 tags = ['generative-art']
 +++

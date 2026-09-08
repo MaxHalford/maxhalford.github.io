@@ -1,6 +1,5 @@
 +++
 date = "2018-04-26"
-draft = false
 title = "Stella triangles with JavaScript"
 tags = ['generative-art']
 +++

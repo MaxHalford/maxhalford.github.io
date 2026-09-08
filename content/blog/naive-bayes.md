@@ -1,6 +1,5 @@
 +++
 date = "2015-09-10"
-draft = false
 title = "The Naïve Bayes classifier"
 tags = ['machine-learning']
 +++

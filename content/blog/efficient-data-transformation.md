@@ -1,6 +1,5 @@
 +++
 date = "2023-12-01"
-draft = false
 title = "Efficient ELT refreshes"
 tags = ['data-eng']
 images = ["/img/blog/efficient-elt-refreshes/after.png"]

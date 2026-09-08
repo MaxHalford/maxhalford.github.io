@@ -1,6 +1,5 @@
 +++
 date = "2016-11-27"
-draft = false
 title = "Halftoning with Go - Part 1"
 tags = ['image-processing']
 +++

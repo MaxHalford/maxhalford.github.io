@@ -1,6 +1,5 @@
 +++
 date = "2015-07-14"
-draft = false
 title = "Setting up a droplet to host a Flask app"
 tags = ['web-dev']
 +++

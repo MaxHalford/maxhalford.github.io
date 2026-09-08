@@ -1,6 +1,5 @@
 +++
 date = "2018-10-13"
-draft = false
 title = "Target encoding done the right way"
 description = "How target encoding works for categorical variables, with smoothing and cross-validation so you don't leak the target."
 tags = ['machine-learning', 'python']
