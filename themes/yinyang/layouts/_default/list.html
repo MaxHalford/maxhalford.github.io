@@ -3,10 +3,11 @@
 {{ partial "head.html" . }}
 
 <body>
-  <article class="posts">
+  <main class="posts">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
         {{ partial "header.html" . }}
+        <h1 class="visually-hidden">{{ .Title }}</h1>
         <div id="posts-list">
           {{ range (where site.RegularPages "Type" "in" site.Params.mainSections).GroupByDate "2006" -}}
 
@@ -37,7 +38,7 @@
         {{ partial "footer.html" . }}
       </div>
     </div>
-  </article>
+  </main>
 
   {{ partial "scripts.html" . }}
 </body>

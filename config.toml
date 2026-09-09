@@ -9,13 +9,21 @@ pygmentsUseClasses = true
 [params.author]
   email = "maxhalford25@gmail.com"
   name = "Max Halford"
+  url = "/bio/"
+  sameAs = [
+    "https://github.com/MaxHalford",
+    "https://www.linkedin.com/in/maxhalford",
+    "https://www.kaggle.com/maxhalford",
+    "https://scholar.google.com/citations?user=erRNNi0AAAAJ&hl=en",
+    "https://twitter.com/halford_max",
+  ]
 
 [params]
   headTitle = "Max Halford"
   mainSections = ["blog"]
   favicon = "/img/favicon.ico"
   images = ["/img/belle-ile.jpg"]
-  description = "Max Halford's blog"
+  description = "Technical essays by Max Halford on data science, machine learning, Python, SQL, and software engineering."
 
 [params.social]
   twitter = "halford_max"

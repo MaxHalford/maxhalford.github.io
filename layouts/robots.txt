@@ -4,4 +4,4 @@ Sitemap: {{ "sitemap.xml" | absURL }}
 Disallow: {{ .RelPermalink }}{{ end }}
 {{- $llmsGoTXT := resources.Get "llms.go.txt" -}}
 {{- $llmsTXT := $llmsGoTXT | resources.ExecuteAsTemplate "llms.txt" . -}}
-llms-txt: {{ $llmsTXT.Permalink }}
+# AI-readable index: {{ $llmsTXT.Permalink }}

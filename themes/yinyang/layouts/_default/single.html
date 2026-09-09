@@ -3,14 +3,16 @@
 {{ partial "head.html" . }}
 
 <body>
-  <article class="post {{ .Site.Language.Label }}" id="article">
+  <main class="post {{ .Site.Language.Label }}" id="article">
     <div class="row center-xs" style="text-align: left;">
       <div class="col-xs-12 col-sm-10 col-md-7 col-lg-5">
         <div class="header">
           {{ partial "header.html" . }}
         </div>
 
-        {{ if not .Params.hideTitle }}
+        {{ if .Params.hideTitle }}
+        <h1 class="visually-hidden">{{ .Title }}</h1>
+        {{ else }}
         <header class="post-header">
           <h1 class="post-title">{{ .Title }}</h1>
           {{ if in site.Params.mainSections .Type }}
@@ -128,7 +130,7 @@
         {{ end }}
       </div>
     </div>
-  </article>
+  </main>
 
   {{ partial "scripts.html" . }}
   {{ if .Site.Params.extraBody }}

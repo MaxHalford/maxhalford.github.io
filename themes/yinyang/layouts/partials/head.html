@@ -51,11 +51,15 @@
   <meta property="og:image" content="{{ . }}" />
   {{- end }}
 
-  {{- $twitterDesc := default (.Summary | plainify | truncate 200) .Description -}}
+  {{- $pageDesc := .Site.Params.description -}}
+  {{- if not .IsHome -}}
+    {{- $pageDesc = default (.Summary | plainify | htmlUnescape | truncate 200) .Description -}}
+  {{- end -}}
+  {{- $pageDesc = $pageDesc | plainify | htmlUnescape -}}
   {{- $twitterTitle := cond .IsHome .Site.Title (printf "%s • %s" .Title .Site.Title) -}}
   <meta name="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}" />
   <meta name="twitter:title" content="{{ $twitterTitle }}" />
-  <meta name="twitter:description" content="{{ $twitterDesc }}" />
+  <meta name="twitter:description" content="{{ $pageDesc }}" />
   {{- with $ogImage }}
   <meta name="twitter:image" content="{{ . }}" />
   {{- end }}
@@ -64,29 +68,26 @@
   <meta name="twitter:creator" content="@{{ . }}" />
   {{- end }}
 
-  <link
-    rel="icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦔</text></svg>"
-  />
+  <link rel="icon" href="{{ .Site.Params.favicon | relURL }}" sizes="any" />
 
   {{ partial "seo" . }} {{- if .IsHome -}}
   <title>{{ .Site.Title }}</title>
   <meta property="og:title" content="{{ .Site.Title }}" />
   <meta property="og:type" content="website" />
-  <meta name="description" content="{{ .Site.Params.description }}" />
-  <meta property="og:description" content="{{ .Site.Params.description }}" />
+  <meta name="description" content="{{ $pageDesc }}" />
+  <meta property="og:description" content="{{ $pageDesc }}" />
   {{- else -}}
   <title>{{ .Title }} • {{ .Site.Title }}</title>
   <meta property="og:title" content="{{ .Title }} • {{ .Site.Title }}" />
-  <meta property="og:type" content="article" />
-  <meta name="description" content="{{ default (.Summary | plainify | truncate 200) .Description }}" />
-  <meta property="og:description" content="{{ default (.Summary | plainify | truncate 200) .Description }}" />
-  {{- if .Date -}}
+  <meta property="og:type" content="{{ if and .IsPage (in .Site.Params.mainSections .Type) }}article{{ else if eq .RelPermalink "/bio/" }}profile{{ else }}website{{ end }}" />
+  <meta name="description" content="{{ $pageDesc }}" />
+  <meta property="og:description" content="{{ $pageDesc }}" />
+  {{- if and .IsPage (in .Site.Params.mainSections .Type) -}}
   <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" />
   <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}" />
-  {{- end -}}
   {{- range .Params.tags -}}
   <meta property="article:tag" content="{{ . }}" />
+  {{- end -}}
   {{- end -}}
   {{- end }} <link rel="stylesheet" href="{{ .Site.Params.staticPrefix }}{{
   "css/flexboxgrid-6.3.1.min.css" | relURL }}" /> {{ if not .IsHome -}} <link

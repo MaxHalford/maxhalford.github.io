@@ -3,12 +3,13 @@
 {{ partial "head.html" . }}
 
 <body class="thoughts-page">
-  <article class="posts thoughts-layout">
+  <main class="posts thoughts-layout">
     <div class="row center-xs" style="text-align: left;">
       <div class="col-xs-12 col-sm-10 col-md-7 col-lg-5 thoughts-shell">
         <div class="header">
           {{ partial "header.html" . }}
         </div>
+        <h1 class="visually-hidden">{{ .Title }}</h1>
         <div class="thought-cloud" aria-label="Showerthoughts">
           {{ range .RegularPages.ByDate.Reverse }}
           <a class="thought-bubble" href="{{ .RelPermalink }}">{{ .Title }}</a>
@@ -18,7 +19,7 @@
         {{ partial "footer.html" . }}
       </div>
     </div>
-  </article>
+  </main>
 
   {{ partial "scripts.html" . }}
   <script>

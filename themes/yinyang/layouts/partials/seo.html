@@ -1,38 +1,111 @@
-{{- if and (ne .Kind "home") (ne .Kind "section") (ne .Kind "taxonomy") (ne .Kind "term") -}}
-{{- $desc := .Description -}}
-{{- if not $desc -}}{{- $desc = .Summary | plainify | truncate 200 -}}{{- end -}}
+{{- $desc := .Site.Params.description -}}
+{{- if not .IsHome -}}
+  {{- $desc = default (.Summary | plainify | htmlUnescape | truncate 200) .Description -}}
+{{- end -}}
+{{- $desc = $desc | plainify | htmlUnescape -}}
+{{- $authorURL := default "/bio/" .Site.Params.author.url | absURL -}}
+{{- $personID := printf "%s#person" $authorURL -}}
+{{- $websiteID := printf "%s#website" .Site.BaseURL -}}
+{{- $sameAs := .Site.Params.author.sameAs -}}
+
+{{- if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ $websiteID | jsonify | safeJS }},
+      "url": {{ .Permalink | jsonify | safeJS }},
+      "name": {{ .Site.Title | jsonify | safeJS }},
+      "description": {{ $desc | jsonify | safeJS }},
+      "inLanguage": "en-US",
+      "publisher": { "@id": {{ $personID | jsonify | safeJS }} }
+    },
+    {
+      "@type": "Person",
+      "@id": {{ $personID | jsonify | safeJS }},
+      "name": {{ .Site.Params.author.name | jsonify | safeJS }},
+      "url": {{ $authorURL | jsonify | safeJS }},
+      "description": "Data scientist, open-source developer, and technical writer",
+      "sameAs": {{ $sameAs | jsonify | safeJS }}
+    }
+  ]
+}
+</script>
+{{- else if eq .RelPermalink "/bio/" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": {{ printf "%s#profile" .Permalink | jsonify | safeJS }},
+  "url": {{ .Permalink | jsonify | safeJS }},
+  "name": {{ .Title | jsonify | safeJS }},
+  "description": {{ $desc | jsonify | safeJS }},
+  "inLanguage": "en-US",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": {{ $personID | jsonify | safeJS }},
+    "name": {{ .Site.Params.author.name | jsonify | safeJS }},
+    "url": {{ $authorURL | jsonify | safeJS }},
+    "description": {{ $desc | jsonify | safeJS }},
+    "sameAs": {{ $sameAs | jsonify | safeJS }}
+  }
+}
+</script>
+{{- else if and .IsPage (in .Site.Params.mainSections .Type) }}
 {{- $ogImage := partial "og-image.html" . -}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ .Permalink }}"
-    },
-    "articleSection": "{{ .Section }}",
-    "name": {{ .Title | jsonify | safeJS }},
-    "headline": {{ .Title | jsonify | safeJS }},
-    "description": {{ $desc | jsonify | safeJS }},
-    {{- with $ogImage }}
-    "image": {{ . | jsonify | safeJS }},
-    {{- end }}
-    "inLanguage": "en-US",
-    "author": {
-        "@type": "Person",
-        "name": {{ .Site.Params.author.name | jsonify | safeJS }},
-        "url": "{{ .Site.BaseURL }}"
-    },
-    "publisher": {
-        "@type": "Person",
-        "name": {{ .Site.Params.author.name | jsonify | safeJS }}
-    },
-    "copyrightHolder": {{ .Site.Params.author.name | jsonify | safeJS }},
-    "copyrightYear": "{{ .Date.Format "2006" }}",
-    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
-    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
-    "url": "{{ .Permalink }}",
-    "keywords": [{{ if isset .Params "tags" }}{{ range $i, $tag := .Params.tags }}{{ if $i }}, {{ end }}{{ $tag | jsonify | safeJS }}{{ end }}{{ end }}]
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": {{ printf "%s#article" .Permalink | jsonify | safeJS }},
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ .Permalink | jsonify | safeJS }}
+  },
+  "isPartOf": { "@id": {{ $websiteID | jsonify | safeJS }} },
+  "articleSection": {{ .Section | jsonify | safeJS }},
+  "name": {{ .Title | jsonify | safeJS }},
+  "headline": {{ .Title | jsonify | safeJS }},
+  "description": {{ $desc | jsonify | safeJS }},
+  {{- with $ogImage }}
+  "image": {{ . | jsonify | safeJS }},
+  {{- end }}
+  "inLanguage": "en-US",
+  "author": {
+    "@type": "Person",
+    "@id": {{ $personID | jsonify | safeJS }},
+    "name": {{ .Site.Params.author.name | jsonify | safeJS }},
+    "url": {{ $authorURL | jsonify | safeJS }}
+  },
+  "publisher": {
+    "@type": "Person",
+    "@id": {{ $personID | jsonify | safeJS }},
+    "name": {{ .Site.Params.author.name | jsonify | safeJS }},
+    "url": {{ $authorURL | jsonify | safeJS }}
+  },
+  "copyrightHolder": {{ .Site.Params.author.name | jsonify | safeJS }},
+  "copyrightYear": {{ .Date.Format "2006" | jsonify | safeJS }},
+  "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify | safeJS }},
+  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify | safeJS }},
+  "url": {{ .Permalink | jsonify | safeJS }},
+  "wordCount": {{ .WordCount }},
+  "keywords": [{{ if isset .Params "tags" }}{{ range $i, $tag := .Params.tags }}{{ if $i }}, {{ end }}{{ $tag | jsonify | safeJS }}{{ end }}{{ end }}]
 }
 </script>
-{{- end -}}
+{{- else if .IsPage }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": {{ .Permalink | jsonify | safeJS }},
+  "url": {{ .Permalink | jsonify | safeJS }},
+  "name": {{ .Title | jsonify | safeJS }},
+  "description": {{ $desc | jsonify | safeJS }},
+  "inLanguage": "en-US",
+  "isPartOf": { "@id": {{ $websiteID | jsonify | safeJS }} },
+  "author": { "@id": {{ $personID | jsonify | safeJS }} }
+}
+</script>
+{{- end }}

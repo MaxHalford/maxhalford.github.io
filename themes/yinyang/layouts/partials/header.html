@@ -3,11 +3,11 @@
   {{ $isBio := hasPrefix .RelPermalink "/bio/" }}
   {{ $isThoughts := hasPrefix .RelPermalink "/blog/thoughts/" }}
   {{ $isBlog := or .IsHome (and (hasPrefix .RelPermalink "/blog/") (not $isThoughts)) }}
-  <div class="signatures site-title">
+  {{ if .IsHome }}<h1 class="signatures site-title">{{ else }}<div class="signatures site-title">{{ end }}
     <a href="{{ .Site.LanguagePrefix }}/"
       >{{ or .Site.Params.headTitle .Site.Params.author.name }}</a
     >
-  </div>
+  {{ if .IsHome }}</h1>{{ else }}</div>{{ end }}
   <div class="header-links">
     <a class="header-link" href="/"{{ if $isBlog }} aria-current="page"{{ end }}>Blog</a>
     <a class="header-link" href="/links/"{{ if $isLinks }} aria-current="page"{{ end }}>Links</a>

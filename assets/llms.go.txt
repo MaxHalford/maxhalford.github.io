@@ -22,7 +22,10 @@
 
 {{ range (where (sort .Pages "Weight" "asc" "Date" "desc" "Lastmod" "desc") "Params.sitemap_exclude" "ne" true) -}}
     {{ if .Title -}}
-        - [{{ .Title }}]({{ .Permalink }}){{ with .Description }}: {{ . }}{{ end }}
+        {{- $desc := .Description -}}
+        {{- if not $desc -}}{{- $desc = .Summary | plainify | htmlUnescape | truncate 240 -}}{{- end -}}
+        {{- $desc = replaceRE `\s+` " " $desc -}}
+        - [{{ .Title }}]({{ .Permalink }}){{ with $desc }}: {{ . }}{{ end }}
     {{- end }}
 {{ end -}}
 
@@ -38,7 +41,10 @@
 
 {{ range (where (sort .Pages "Weight" "asc" "Date" "desc" "Lastmod" "desc") "Params.sitemap_exclude" "ne" true) -}}
     {{ if .Title -}}
-        - [{{ .Title }}]({{ .Permalink }}){{ with .Description }}: {{ . }}{{ end }}
+        {{- $desc := .Description -}}
+        {{- if not $desc -}}{{- $desc = .Summary | plainify | htmlUnescape | truncate 240 -}}{{- end -}}
+        {{- $desc = replaceRE `\s+` " " $desc -}}
+        - [{{ .Title }}]({{ .Permalink }}){{ with $desc }}: {{ . }}{{ end }}
     {{- end }}
 {{ end }}
 {{ end -}}

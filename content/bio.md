@@ -1,5 +1,6 @@
 +++
-title = "Bio"
+title = "About Max Halford"
+description = "Max Halford is a data scientist, open-source developer, and co-creator of the River online machine learning library."
 hideTitle = true
 +++
 

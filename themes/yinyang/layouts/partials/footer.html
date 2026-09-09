@@ -1,39 +1,39 @@
-<div class="site-footer">
+<footer class="site-footer" aria-label="Profiles and feeds">
   <div class="site-footer-item">
     {{- $rssURL := (.Site.Params.staticPrefix | default "") | printf "%sindex.xml" | relURL -}}
     {{- with .OutputFormats.Get "RSS" }}{{ $rssURL = .RelPermalink }}{{ end -}}
-    <a href="{{ $rssURL }}">{{ partial "fontawesome.html" "rss" }}</a>
+    <a href="{{ $rssURL }}" aria-label="RSS feed">{{ partial "fontawesome.html" "rss" }}</a>
   </div>
   <div class="site-footer-item">
-    <a href="https://github.com/MaxHalford" rel="me">{{ partial "fontawesome.html" "github" }}</a>
+    <a href="https://github.com/MaxHalford" rel="me" aria-label="GitHub profile">{{ partial "fontawesome.html" "github" }}</a>
   </div>
   <div class="site-footer-item">
-    <a href="https://linkedin.com/in/maxhalford">{{ partial "fontawesome.html" "linkedin" }}</a>
+    <a href="https://linkedin.com/in/maxhalford" rel="me" aria-label="LinkedIn profile">{{ partial "fontawesome.html" "linkedin" }}</a>
   </div>
   <div class="site-footer-item">
-    <a href="https://twitter.com/halford_max">{{ partial "fontawesome.html" "twitter" }}</a>
+    <a href="https://twitter.com/halford_max" rel="me" aria-label="X profile">{{ partial "fontawesome.html" "twitter" }}</a>
   </div>
   <div class="site-footer-item">
-    <a href="https://kaggle.com/maxhalford">{{ partial "fontawesome.html" "kaggle" }}</a>
+    <a href="https://kaggle.com/maxhalford" rel="me" aria-label="Kaggle profile">{{ partial "fontawesome.html" "kaggle" }}</a>
   </div>
   <div class="site-footer-item">
-    <a href="/files/resume_max_halford.pdf">{{ partial "fontawesome.html" "resume" }}</a>
+    <a href="/files/resume_max_halford.pdf" aria-label="Résumé">{{ partial "fontawesome.html" "resume" }}</a>
   </div>
   <div class="site-footer-item">
-    <a href="https://scholar.google.com/citations?user=erRNNi0AAAAJ&hl=en">{{ partial "fontawesome.html" "gscholar" }}</a>
+    <a href="https://scholar.google.com/citations?user=erRNNi0AAAAJ&hl=en" rel="me" aria-label="Google Scholar profile">{{ partial "fontawesome.html" "gscholar" }}</a>
   </div>
   <div class="site-footer-item">
-    <a href="https://www.imdb.com/user/ur73044771">{{ partial "fontawesome.html" "popcorn" }}</a>
+    <a href="https://www.imdb.com/user/ur73044771" rel="me" aria-label="IMDb profile">{{ partial "fontawesome.html" "popcorn" }}</a>
   </div>
   <div class="site-footer-item">
-    <a href="https://play.spotify.com/user/1166811350">{{ partial "fontawesome.html" "spotify" }}</a>
+    <a href="https://play.spotify.com/user/1166811350" rel="me" aria-label="Spotify profile">{{ partial "fontawesome.html" "spotify" }}</a>
   </div>
   <div class="site-footer-item">
-    <a href="https://www.goodreads.com/user/show/67553795-lemax">{{ partial "fontawesome.html" "books" }}</a>
+    <a href="https://www.goodreads.com/user/show/67553795-lemax" rel="me" aria-label="Goodreads profile">{{ partial "fontawesome.html" "books" }}</a>
   </div>
   <div class="site-footer-item">
-    <a href="mailto:maxhalford25@gmail.com">{{ partial "fontawesome.html" "email" }}</a>
+    <a href="mailto:maxhalford25@gmail.com" aria-label="Email Max Halford">{{ partial "fontawesome.html" "email" }}</a>
   </div>
-</div>
+</footer>
 
 <!-- medium-zoom is loaded and initialised once in scripts.html (included on every page) -->
