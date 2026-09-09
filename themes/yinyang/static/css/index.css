@@ -190,6 +190,19 @@ pre {
 .header-link {
   font-weight: 600;
   font-size: 20px;
+  position: relative;
+}
+
+.header-link[aria-current="page"]::before {
+  content: "›";
+  color: currentColor;
+  font-size: 1.05em;
+  font-weight: 900;
+  line-height: 1;
+  position: absolute;
+  right: calc(100% + 0.18em);
+  top: 50%;
+  transform: translateY(-52%);
 }
 
 .rainbow-link {

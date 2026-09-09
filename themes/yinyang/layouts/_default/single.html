@@ -10,6 +10,7 @@
           {{ partial "header.html" . }}
         </div>
 
+        {{ if not .Params.hideTitle }}
         <header class="post-header">
           <h1 class="post-title">{{ .Title }}</h1>
           {{ if in site.Params.mainSections .Type }}
@@ -29,6 +30,7 @@
           </div>
           {{ end }}
         </header>
+        {{ end }}
 
         <div class="post-content markdown-body">
           {{ if .Params.toc }}

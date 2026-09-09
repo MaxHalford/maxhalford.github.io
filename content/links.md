@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Links
+hideTitle: true
 toc: true
 ---
 
