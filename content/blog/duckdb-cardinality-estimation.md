@@ -105,15 +105,15 @@ The query takes ~17 seconds instead of ~33, and peaks at 63 MB of memory instead
 
 No. Here are five benchmarks, with DuckDB v2.0.0 alone and with cardinal:
 
-| Benchmark | Queries | Total time | Faster / slower queries | Median estimate error |
+| Benchmark | Queries | Total time | Faster / same / slower queries | Median estimate error |
 |---|---|---|---|---|
-| [STATS-CEB](https://github.com/Nathaniel-Han/End-to-End-CardEst-Benchmark) | 146 | 130 s → 67 s | 42 / 2 | 23× → 1.9× |
-| [JOB](https://github.com/gregrahn/join-order-benchmark) | 113 | 3.5 s → 2.9 s | 29 / 10 | 19× → 2.2× |
-| [JOB-light](https://github.com/andreaskipf/learnedcardinalities) | 70 | 5.0 s → 4.8 s | 7 / 2 | 5.3× → 1.5× |
-| [DSB](https://github.com/microsoft/dsb), scale factor 10 | 219 | 2.5 s → 2.7 s | 0 / 23 | 4.1× → 2.2× |
-| TPC-H, scale factor 10 | 22 | 1.4 s → 1.3 s | 0 / 0 | 1.3× → 1.0× |
+| [STATS-CEB](https://github.com/Nathaniel-Han/End-to-End-CardEst-Benchmark) | 146 | 130 s → 67 s | 42 / 102 / 2 | 23× → 1.9× |
+| [JOB](https://github.com/gregrahn/join-order-benchmark) | 113 | 3.5 s → 2.9 s | 29 / 74 / 10 | 19× → 2.2× |
+| [JOB-light](https://github.com/andreaskipf/learnedcardinalities) | 70 | 5.0 s → 4.8 s | 7 / 61 / 2 | 5.3× → 1.5× |
+| [DSB](https://github.com/microsoft/dsb), scale factor 10 | 219 | 2.5 s → 2.7 s | 0 / 196 / 23 | 4.1× → 2.2× |
+| TPC-H, scale factor 10 | 22 | 1.4 s → 1.3 s | 0 / 22 / 0 | 1.3× → 1.0× |
 
-A query counts as faster or slower when its time changes by more than 10% and 10 ms. The estimate error is the median, over every join DuckDB considers, of how far off its estimate is from the true count.
+A query counts as faster or slower when its time changes by more than 10% and 10 ms, and as the same otherwise. The estimate error is the median, over every join DuckDB considers, of how far off its estimate is from the true count.
 
 The estimates get better everywhere. The runtime only follows where join order matters, which is when intermediate results explode: skewed many-to-many joins, like the power users above. STATS-CEB's slowest queries count billions of rows, and run twice as fast. DSB's queries take ~10 ms each at this scale, so better plans make no difference there, and small changes in the physical plan cost a few milliseconds. TPC-H's data is uniform, which DuckDB already estimates well: it's there to check cardinal does no harm.
 
