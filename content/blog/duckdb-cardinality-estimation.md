@@ -123,22 +123,16 @@ There are also limits. Cardinal only handles DuckDB tables, not Parquet or CSV f
 
 ## Trying it
 
-Cardinal isn't a [community extension](https://duckdb.org/community_extensions/) yet, so you'll have to build it from source. This compiles DuckDB itself, which took ~15 minutes on my laptop:
+Cardinal is a DuckDB [community extension](https://duckdb.org/community_extensions/extensions/cardinal), for DuckDB v2.0.0. There's nothing to configure: install it, load it, and run your queries as usual. The first query that needs a table's model fits it, and models are saved for later sessions. You can check what it learnt:
 
 ```sh
-git clone https://github.com/MaxHalford/cardinal
-cd cardinal
-git submodule update --init duckdb extension-ci-tools
-make release
-```
-
-You then get a DuckDB CLI with cardinal built in. There's nothing to configure: run your queries as usual. The first query that needs a table's model fits it, and models are saved for later sessions. You can check what it learnt:
-
-```sh
-./build/release/duckdb my.duckdb
+duckdb my.duckdb
 ```
 
 ```sql
+INSTALL cardinal FROM community;
+LOAD cardinal;
+
 CREATE TABLE a AS SELECT range AS id, range % 10 AS x FROM range(1000);
 CREATE TABLE b AS SELECT range % 1000 AS a_id, range % 7 AS y FROM range(10000);
 SELECT count(*) FROM a, b WHERE a.id = b.a_id AND a.x = 3 AND b.y = 2;
