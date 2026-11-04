@@ -5,6 +5,8 @@ tags = ['data-eng', 'nlp']
 images = ["/img/blog/wikipedia-on-turbopuffer/search-tuscany.png"]
 +++
 
+*TLDR: People edit Wikipedia pages all the time. We want a search index that keeps in sync. We do that with Redpanda Connect (ingestion) + turbopuffer (indexing) + a homemade [frontend](https://wikipedia-web-cfscc6ofha-uc.a.run.app/). We manage a 20s p99 ingestion delay, costing ~50$/month.*
+
 Today is "h4x day" at [turbopuffer](https://turbopuffer.com/). It's basically a 24-hour hackathon fueled by good food, electrolytes, and high beats per second music. Everyone picks a project, ideally something they would not have tackled in their regular work stream. It's very energizing. I'm grateful to be surrounded by so many smart and thoughtful people. I feel clumsy around my new colleagues.
 
 The ingestion aspect of a search engine has piqued my interest. turbopuffer is only 3 years old, so its scope is intentionally limited. We "only" handle the hardcore write/storage/query database stuff. Whatever has to happen before writing the data into turbopuffer is out of scope, so far. We basically tell people to write a script and orchestrate it themselves. But this part can be a maintenance nightmare. Judging by the success of companies that solve ingestion (e.g. [Fivetran](https://www.fivetran.com/) and [Airbyte](https://airbyte.com/)), it is a problem worth addressing.
