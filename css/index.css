@@ -1082,20 +1082,19 @@ html[data-theme="dark"] .chroma .w {
     display: none;
   }
   .post-index-row {
-    position: relative;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: auto minmax(0, 1fr);
     align-content: center;
-    min-height: 46px;
-  }
-  .post-index-row.is-new,
-  .post-index-row.is-draft {
-    padding-left: 2.2rem;
+    min-height: 0;
+    padding: 9px 0;
+    column-gap: 8px;
+    row-gap: 3px;
   }
   .post-index-status {
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 2rem;
+    position: static;
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+    width: auto;
     font-size: 0.8rem;
     text-align: left;
   }
@@ -1103,12 +1102,12 @@ html[data-theme="dark"] .chroma .w {
     display: block;
     grid-column: 1;
     grid-row: 2;
-    margin-top: 2px;
+    margin-top: 0;
     font-size: 0.8rem;
     line-height: 1;
   }
   .post-index-title {
-    grid-column: 1;
+    grid-column: 1 / -1;
     grid-row: 1;
     font-size: 1.05rem;
   }
