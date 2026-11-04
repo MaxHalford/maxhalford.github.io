@@ -70,6 +70,14 @@
 
   <link rel="icon" href="{{ .Site.Params.favicon | relURL }}" sizes="any" />
 
+  <!-- Preload the local fonts used above the fold to minimize font-related shifts. -->
+  <link rel="preload" href="{{ "fonts/BricolageGrotesque-Latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="{{ "fonts/PermanentMarker-Regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="{{ "fonts/SourceCodePro-Latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin />
+  {{- if .IsPage }}
+  <link rel="preload" href="{{ "fonts/SourceSerif4-Roman-Latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin />
+  {{- end }}
+
   {{ partial "seo" . }} {{- if .IsHome -}}
   <title>{{ .Site.Title }}</title>
   <meta property="og:title" content="{{ .Site.Title }}" />
@@ -95,16 +103,12 @@
   "css/github-markdown.min.css" | relURL }}" /> <link rel="stylesheet" href="{{
   .Site.Params.staticPrefix }}{{ "css/highlight/github.css" | relURL }}" /> {{-
   end }} <link rel="stylesheet" href="{{ "css/index.css" | relURL }}?v={{ now.Unix }}">
+  {{- if eq .RelPermalink "/blog/thoughts/" }}
+  <link rel="stylesheet" href="{{ "css/ideart.css" | relURL }}?v={{ now.Unix }}">
+  {{- end }}
   {{- if eq .Layout "freelance" }}
   <link rel="stylesheet" href="{{ "css/freelance.css" | relURL }}">
   {{- end }}
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Source+Code+Pro:wght@400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=Permanent+Marker&display=swap"
-    rel="stylesheet"
-  />
-
   {{- /* Load MathJax only when the page actually contains math.
          Auto-detect display math ($$ or \[); inline-only posts can opt in with `math = true`. */ -}}
   {{- $raw := .RawContent | default "" -}}

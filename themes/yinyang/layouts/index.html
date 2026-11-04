@@ -3,52 +3,39 @@
 {{ partial "head.html" . }}
 
 <body>
-  <main class="posts">
+  <main class="posts posts-home">
     <div class="row center-xs" style="text-align: left;">
       <div class="col-xs-12 col-sm-10 col-md-7 col-lg-5">
         <div class="header">
           {{ partial "header.html" . }}
         </div>
-        <div id="posts-list">
-          {{ range (where site.RegularPages "Type" "in" site.Params.mainSections).GroupByDate "2006" -}}
+      </div>
 
-            {{ range .Pages }}
-            <div class="row posts-line">
+      <div class="col-xs-12 col-sm-11 col-md-10 col-lg-9">
+        {{ $buildTime := now }}
+        {{ $newCutoff := $buildTime.AddDate 0 -1 0 }}
+        <div id="posts-list" class="post-index">
+          {{ range (where site.RegularPages "Type" "in" site.Params.mainSections).ByDate.Reverse }}
+          {{ $isDraft := and hugo.IsDevelopment .Draft }}
+          {{ $isNew := and (not $isDraft) (.Date.After $newCutoff) ($buildTime.After .Date) }}
+          <article class="post-index-row{{ if $isNew }} is-new{{ end }}{{ if $isDraft }} is-draft{{ end }}">
+            <span class="post-index-status">{{ if $isDraft }}draft{{ else if $isNew }}new{{ end }}</span>
 
-                {{ if isset .Params "medium" }}
-                    <a class="posts-line-title" href="{{ .Params.medium }}">{{ .Title }}</a>
-                {{ else if isset .Params "carbonfact" }}
-                    <a class="posts-line-title" href="{{ .Params.carbonfact }}">{{ .Title }}</a>
-                {{ else if isset .Params "recording" }}
-                    <a class="posts-line-title" href="{{ .Params.recording }}">{{ .Title }}</a>
-                {{ else if isset .Params "slides" }}
-                    <a class="posts-line-title" href="{{ .Params.slides }}">{{ .Title }}</a>
-                {{ else }}
-                    <a class="posts-line-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
-                {{ end }}
+            <time class="post-index-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
 
-                <div class="posts-line-subtitle">
-
-                    {{ if isset .Params "medium" }}
-                        <span class="posts-line-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" /><path d="M13.5 6.5l4 4" /></svg></span>
-                    {{ else if isset .Params "recording" }}
-                        <span class="posts-line-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16l13 -8z" /></svg></span>
-                    {{ else if isset .Params "slides" }}
-                        <span class="posts-line-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4l18 0" /><path d="M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10" /><path d="M12 16l0 4" /><path d="M9 20l6 0" /><path d="M8 12l3 -3l2 2l3 -3" /></svg></span>
-                    {{ else }}
-                        <span class="posts-line-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" /><path d="M13.5 6.5l4 4" /></svg></span>
-                    {{ end }}
-
-
-                    <time class="posts-line-date" datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "2006-01-02"}}</time>
-                    {{ if isset .Params "tags" }}
-                        {{ range $tag := .Params.tags }}
-                            <a class="posts-line-tag" href="/tags/{{ $tag | urlize }}/">{{ $tag }}</a>
-                        {{ end }}
-                    {{ end }}
-                </div>
-            </div>
+            {{ if isset .Params "medium" }}
+              <a class="post-index-title" href="{{ .Params.medium }}" title="{{ .Title }}">{{ .Title }}</a>
+            {{ else if isset .Params "carbonfact" }}
+              <a class="post-index-title" href="{{ .Params.carbonfact }}" title="{{ .Title }}">{{ .Title }}</a>
+            {{ else if isset .Params "recording" }}
+              <a class="post-index-title" href="{{ .Params.recording }}" title="{{ .Title }}">{{ .Title }}</a>
+            {{ else if isset .Params "slides" }}
+              <a class="post-index-title" href="{{ .Params.slides }}" title="{{ .Title }}">{{ .Title }}</a>
+            {{ else }}
+              <a class="post-index-title" href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
             {{ end }}
+
+          </article>
           {{ end }}
         </div>
 

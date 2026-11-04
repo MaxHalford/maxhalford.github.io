@@ -1,0 +1,12 @@
+week_start,week_end_exclusive,period_status,observed_through,coverage_days,project_name,model,batch,service_tier,token_type,model_requests,tokens,tokens_per_request,usd_per_million_tokens,cost_usd
+2026-08-31,2026-09-07,complete,2026-09-06,7,Default project,gpt-5.6-terra,false,default,input_uncached,20,6131,306.55,2.0,0.012262
+2026-08-31,2026-09-07,complete,2026-09-06,7,Default project,gpt-5.6-terra,false,default,input_cache_write,20,11162,558.1,2.5,0.027905
+2026-08-31,2026-09-07,complete,2026-09-06,7,Default project,gpt-5.6-terra,false,default,input_cached,20,37525,1876.25,0.2,0.007505
+2026-08-31,2026-09-07,complete,2026-09-06,7,Default project,gpt-5.6-terra,false,default,output,20,8595,429.75,12.0,0.10314
+2026-09-07,2026-09-14,week_to_date,2026-09-07,1,Default project,gpt-5.6-terra,false,default,input_uncached,6,732,122.0,2.0,0.001464
+2026-09-07,2026-09-14,week_to_date,2026-09-07,1,Default project,gpt-5.6-terra,false,default,input_cache_write,6,19367,3227.833333,2.5,0.0484175
+2026-09-07,2026-09-14,week_to_date,2026-09-07,1,Default project,gpt-5.6-terra,false,default,input_cached,6,61223,10203.833333,0.2,0.0122446
+2026-09-07,2026-09-14,week_to_date,2026-09-07,1,Default project,gpt-5.6-terra,false,default,output,6,10950,1825.0,12.0,0.1314
+2026-09-07,2026-09-14,week_to_date,2026-09-07,1,Default project,gpt-5-mini-2025-08-07,false,default,input_uncached,2,718,359.0,0.25,0.0001795
+2026-09-07,2026-09-14,week_to_date,2026-09-07,1,Default project,gpt-5-mini-2025-08-07,false,default,input_cached,2,0,0,,0
+2026-09-07,2026-09-14,week_to_date,2026-09-07,1,Default project,gpt-5-mini-2025-08-07,false,default,output,2,615,307.5,2.0,0.00123

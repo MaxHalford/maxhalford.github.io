@@ -2,89 +2,129 @@
 <html lang="en">
 {{ partial "head.html" . }}
 
-<body class="thoughts-page">
-  <main class="posts thoughts-layout">
+{{- $pages := .RegularPages.ByDate.Reverse -}}
+{{- $ideas := slice -}}
+{{- $missingImages := slice -}}
+{{- range $pages -}}
+  {{- $image := .Params.ideart.image | default "" -}}
+  {{- if $image -}}
+    {{- $ideas = $ideas | append . -}}
+  {{- else -}}
+    {{- $missingImages = $missingImages | append . -}}
+    {{- if hugo.IsDevelopment -}}
+      {{- warnf "Ideart: %q (%s) has no ideart.image and will not appear on the wall" .Title .File.Path -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $layout := hugo.Data.ideart | default dict -}}
+{{- $placements := index $layout "stickers" | default dict -}}
+<body class="ideart-page">
+  <main class="posts ideart-layout">
     <div class="row center-xs" style="text-align: left;">
-      <div class="col-xs-12 col-sm-10 col-md-7 col-lg-5 thoughts-shell">
-        <div class="header">
+      <div class="col-xs-12 col-sm-10 col-md-7 col-lg-5">
+        <div class="header ideart-header">
           {{ partial "header.html" . }}
         </div>
         <h1 class="visually-hidden">{{ .Title }}</h1>
-        <div class="thought-cloud" aria-label="Showerthoughts">
-          {{ range .RegularPages.ByDate.Reverse }}
-          <a class="thought-bubble" href="{{ .RelPermalink }}">{{ .Title }}</a>
-          {{ end }}
-        </div>
-
-        {{ partial "footer.html" . }}
       </div>
     </div>
   </main>
 
+  {{ if and hugo.IsDevelopment (gt (len $missingImages) 0) }}
+  <aside class="ideart-warning" role="status">
+    <strong>{{ len $missingImages }} {{ cond (eq (len $missingImages) 1) "post is" "posts are" }} hidden from the wall</strong>
+    <span>Add <code>ideart.image</code> to:</span>
+    <ul>
+      {{ range $missingImages }}<li>{{ .File.Path }}</li>{{ end }}
+    </ul>
+  </aside>
+  {{ end }}
+
+  {{- $mobileRows := div (add (len $ideas) 1) 2 -}}
+  {{- if lt $mobileRows 1 }}{{ $mobileRows = 1 }}{{ end -}}
+  <section
+    class="ideart-surface"
+    aria-label="Idea scrapbook"
+    data-development="{{ hugo.IsDevelopment }}"
+    style="--mobile-rows: {{ $mobileRows }};"
+  >
+
+        {{ range $index, $page := $ideas }}
+          {{- $key := $page.File.ContentBaseName -}}
+          {{- $placement := index $placements $key | default dict -}}
+          {{- $column := mod $index 3 -}}
+          {{- $row := div $index 3 -}}
+          {{- $x := index $placement "x" | default (add 7 (mul $column 30)) -}}
+          {{- $y := index $placement "y" | default (add 8 (mul $row 31)) -}}
+          {{- $width := index $placement "width" | default 29 -}}
+          {{- $rotation := index $placement "rotate" | default (sub (mul $column 5) 5) -}}
+          {{- $z := index $placement "z" | default (add $index 1) -}}
+          {{- $image := $page.Params.ideart.image -}}
+          {{- $alt := $page.Params.ideart.alt | default (printf "Sticker artwork for %s" $page.Title) -}}
+          <a
+            class="ideart-sticker{{ if eq $index 0 }} is-latest{{ end }}{{ if not $placement }} is-unplaced{{ end }}"
+            href="{{ $page.RelPermalink }}"
+            data-key="{{ $key }}"
+            data-title="{{ $page.Title }}"
+            data-date="{{ $page.Date.Format "2 January 2006" }}"
+            aria-label="Read {{ $page.Title }}"
+            style="--sticker-x: {{ $x }}%; --sticker-y: {{ $y }}%; --sticker-width: {{ $width }}%; --sticker-rotation: {{ $rotation }}deg; --sticker-z: {{ $z }}; --sticker-image: url('{{ $image | relURL }}');"
+          >
+            <span class="ideart-art">
+              <img
+                class="ideart-sticker-image"
+                src="{{ $image | relURL }}"
+                alt="{{ $alt }}"
+                {{ with $page.Params.ideart.width }}width="{{ . }}"{{ end }}
+                {{ with $page.Params.ideart.height }}height="{{ . }}"{{ end }}
+                {{ if eq $index 0 }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}
+                draggable="false"
+              >
+            </span>
+          </a>
+        {{ end }}
+
+        {{ if not $ideas }}
+        <p class="ideart-empty">The wall is waiting for its first sticker.</p>
+        {{ end }}
+  </section>
+
+  {{ if hugo.IsDevelopment }}
+  <aside class="ideart-workbench" aria-label="Ideart layout tools">
+    <div class="ideart-workbench-heading">
+      <strong>Layout mode</strong>
+      <span>Drag a sticker anywhere on the page</span>
+    </div>
+    <label>
+      Size
+      <input id="ideart-size" type="range" min="10" max="42" step="0.5" disabled>
+    </label>
+    <label>
+      Tilt
+      <input id="ideart-rotation" type="range" min="-18" max="18" step="0.5" disabled>
+    </label>
+    <div class="ideart-workbench-actions">
+      <button id="ideart-forward" type="button" disabled>Bring forward</button>
+      <button id="ideart-copy" type="button">Copy layout</button>
+      <button id="ideart-reset" type="button">Reset draft</button>
+    </div>
+    <p id="ideart-status" aria-live="polite">Draft changes stay in this browser.</p>
+  </aside>
+  {{ end }}
+
+  <dialog class="ideart-dialog" id="ideart-dialog" aria-labelledby="ideart-dialog-title">
+    <div class="ideart-dialog-card">
+      <button class="ideart-dialog-close" type="button" aria-label="Close idea">&times;</button>
+      <header>
+        <time id="ideart-dialog-date"></time>
+        <h2 id="ideart-dialog-title"></h2>
+      </header>
+      <article class="ideart-dialog-content markdown-body" id="ideart-dialog-content"></article>
+    </div>
+  </dialog>
+
   {{ partial "scripts.html" . }}
-  <script>
-    (function () {
-      var cloud = document.querySelector(".thought-cloud");
-      var thoughts = Array.from(document.querySelectorAll(".thought-bubble"));
-      if (!cloud || !thoughts.length) return;
-
-      function overlaps(a, b, gap) {
-        return !(
-          a.right + gap < b.left || b.right + gap < a.left ||
-          a.bottom + gap < b.top || b.bottom + gap < a.top
-        );
-      }
-
-      function scatter() {
-        var width = cloud.clientWidth;
-        var height = cloud.clientHeight;
-        var placed = [];
-
-        thoughts.forEach(function (thought, index) {
-          thought.style.left = "0px";
-          thought.style.top = "0px";
-          var bubbleWidth = thought.offsetWidth;
-          var bubbleHeight = thought.offsetHeight;
-          var travelX = Math.min(100, Math.max(8, (width - bubbleWidth) / 2));
-          var travelY = Math.min(80, Math.max(20, (height - bubbleHeight) / 3));
-          var position;
-
-          for (var attempt = 0; attempt < 100; attempt += 1) {
-            var left = travelX + Math.random() * Math.max(1, width - bubbleWidth - travelX * 2);
-            var top = travelY + Math.random() * Math.max(1, height - bubbleHeight - travelY * 2);
-            var candidate = {
-              left: left,
-              top: top,
-              right: left + bubbleWidth,
-              bottom: top + bubbleHeight
-            };
-            if (!placed.some(function (other) { return overlaps(candidate, other, 24); })) {
-              position = candidate;
-              break;
-            }
-          }
-
-          position = position || {
-            left: 0,
-            top: (index * (bubbleHeight + 18)) % Math.max(bubbleHeight, height - bubbleHeight),
-            right: bubbleWidth,
-            bottom: bubbleHeight
-          };
-          placed.push(position);
-          thought.style.left = position.left + "px";
-          thought.style.top = position.top + "px";
-          [1, 2, 3].forEach(function (step) {
-            thought.style.setProperty("--float-x-" + step, (Math.random() * travelX * 2 - travelX) + "px");
-            thought.style.setProperty("--float-y-" + step, (Math.random() * travelY * 2 - travelY) + "px");
-          });
-          thought.style.setProperty("--float-time", (6 + Math.random() * 4) + "s");
-          thought.style.setProperty("--float-delay", (-Math.random() * 5) + "s");
-        });
-      }
-
-      scatter();
-      window.addEventListener("resize", scatter);
-    })();
-  </script>
+  <script src="{{ "js/ideart.js" | relURL }}?v={{ now.Unix }}"></script>
 </body>
 </html>

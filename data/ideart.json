@@ -1,0 +1,25 @@
+{
+  "stickers": {
+    "2026-07-19-the-owner-isnt-here": {
+      "x": 67,
+      "y": 15,
+      "width": 22,
+      "rotate": 5,
+      "z": 3
+    },
+    "2026-01-17-anemoia": {
+      "x": 8,
+      "y": 24,
+      "width": 28,
+      "rotate": -7,
+      "z": 2
+    },
+    "2025-10-27-startup-pain-management": {
+      "x": 37,
+      "y": 57,
+      "width": 31,
+      "rotate": 4,
+      "z": 1
+    }
+  }
+}

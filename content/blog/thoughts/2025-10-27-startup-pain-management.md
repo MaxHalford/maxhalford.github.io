@@ -1,6 +1,11 @@
 ---
 title: No pain no startup
 date: 2025-10-27
+ideart:
+  image: /img/blog/ideart/startup-pain.webp
+  alt: A hammer striking a red graph-shaped anvil while a green shoot grows through a crack
+  width: 1200
+  height: 800
 ---
 
 I've been working at Carbonfact for close to 4 years. Two other people and I were the first hires. I got to build a large share of the initial systems. I've been involved in many business decisions, but I've mostly actively contributed to technical aspects.

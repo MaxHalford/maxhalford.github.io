@@ -113,6 +113,7 @@ toc: true
 - [Cam Pedersen](https://campedersen.com/) -- has a pretty Berkeley Mono website
 - [Willem Pennings](https://willempennings.nl/)
 - [Bret Victor](https://worrydream.com/)
+- [Marc Brooker](https://brooker.co.za/)
 
 ## Machine learning
 
@@ -172,6 +173,7 @@ toc: true
 - [Everything you always wanted to know about extreme classification - Microsoft Research](https://www.microsoft.com/en-us/research/blog/everything-you-always-wanted-to-know-about-extreme-classification-but-were-afraid-to-ask/) -- I love the idea that recsys can be framed as an extreme classification problem.
 - [Line scan camera image processing - Daniel Lawrence Lu](https://daniel.lawrence.lu/blog/y2025m09d21/)
 - [Distinguished Colloquium by Jeff Dean @ Princeton](https://www.youtube.com/watch?v=UTTeXZrpMR0&t=1s) -- main ideas which took place in deep learning between 2012 and 2026.
+- [François Fleuret's deep-learning courses 14x050](https://fleuret.org/dlc/#slides)
 
 ## Data science
 
@@ -243,8 +245,9 @@ toc: true
 - [BigQuery Best Practices](/files/misc/BigQuery%20Best%20Practices.pdf)
 - [Ten years late to the dbt party (DuckDB edition)](https://rmoff.net/2026/02/19/ten-years-late-to-the-dbt-party-duckdb-edition/) -- Robin Moffatt graces us with a fresh yet deep dbt primer
 - [Karpathy's Autoresearch found a 3-year-old bug in our query engine (and improved performance by 11%) - Posthog](https://posthog.com/blog/karpathy-autoresearch-query-engine-bug)
+- [Retro on Viberary](https://vickiboykis.com/2024/01/05/retro-on-viberary/)
 
-## Inspiring data analysis
+## Inspiring data analysis and viz
 
 - [Bayesian Rock Climbing Rankings - Ethan Rosenthal](https://www.ethanrosenthal.com/2022/04/15/bayesian-rock-climbing/)
 - [Is Seattle Really Seeing an Uptick In Cycling? - Jake VanderPlas](https://jakevdp.github.io/blog/2014/06/10/is-seattle-really-seeing-an-uptick-in-cycling/)
@@ -268,6 +271,8 @@ toc: true
 - [Vanishing home field advantage in English football](https://blog.engora.com/2025/07/vanishing-home-field-advantage-in.html?m=1)
 - [I am an Airbus A350 Pilot](https://jameshard.ing/pilot)
 - [Depuis 1958](https://depuis1958.fr/) -- [538](https://fivethirtyeight.com/methodology/how-our-pollster-ratings-work/) for French presidential elections
+- [neolabs.fyi](https://neolabs.fyi)
+- [Google Cloud Platform Pricing](https://gcloud-compute.com/)
 
 ## Sustainability
 
@@ -301,6 +306,7 @@ toc: true
 - [nsppolls](https://github.com/nsppolls/nsppolls) -- French election polls
 - [Replication Data for: Election Polling Errors across Time and Space](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/8421DX)
 - [fivethirtyeight/data](https://github.com/fivethirtyeight/data/tree/master)
+- [Goodreads Book Graph Datasets](https://cseweb.ucsd.edu/~jmcauley/datasets/goodreads.html)
 
 ## Tables is all you need
 
@@ -361,6 +367,7 @@ toc: true
 - [Writing Advice and Literary Wisdom from the Great E.B. White](https://lithub.com/writing-advice-and-literary-wisdom-from-the-great-e-b-white/)
 - [New Yorker Magazine Style Guide](https://www.scribd.com/doc/280735682/sanchez-the-new-yorker-style-sheet) -- there's even a dedicated [Skill](https://mcpmarket.com/tools/skills/new-yorker-writing-style)!
 - [Everything I Know about Self-Publishing](https://kk.org/thetechnium/everything-i-know-about-self-publishing/)
+- [Simplified Technical English](https://en.wikipedia.org/wiki/Simplified_Technical_English)
 
 ## Web development
 
@@ -547,6 +554,7 @@ I like these retrocool websites:
 - [Admonymous](https://www.admonymous.co/)
 - [Middle Earth Interactive Map](https://middle-earth-interactive-map.web.app/)
 - [cookingforengineers.com lasagna recipe](https://www.cookingforengineers.com/recipe/36/Meat-Lasagna)
+- [Cut up your books](https://attainablefelicity.mattkirkland.com/20260915/cut-up-your-books.html)
 - <a href="https://xn--sr8hvo.ws/previous">⬅️</a>
 <a href="https://xn--sr8hvo.ws">IndieWeb Webring</a> 🕸💍
 <a href="https://xn--sr8hvo.ws/next">➡️</a>
@@ -563,6 +571,8 @@ I like these retrocool websites:
 - [Shifty](https://www.bbc.co.uk/iplayer/episodes/m002d2jv/shifty) -- about life in Britain before the turn of the century
 - [The Story of C++](https://www.youtube.com/watch?v=lI7tMxzSJ7w) and most of the other [Cult.Repo](https://www.cultrepo.com/) -- formerly HoneyPot -- videos are awesome
 - [Obree](https://www.youtube.com/watch?v=qKta3RPyLIo)
+- [The Winterkeeper](https://www.theguardian.com/environment/ng-interactive/2023/dec/06/the-winterkeeper-steven-fuller-yellowstone-national-park) -- bet this guy is happier than most of us.
+- [Inside the mind of Karl Ove Knausgård](https://www.youtube.com/watch?v=MsppYPIw0hg)
 
 ## Kids
 
