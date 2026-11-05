@@ -7,7 +7,7 @@ images = ["/img/blog/wikipedia-on-turbopuffer/search-tuscany.png"]
 toc = true
 +++
 
-*TLDR: I use Redpanda Connect to keep 7.26M English Wikipedia articles indexed in turbopuffer for keyword, semantic, and hybrid search. The pipeline targets a 30s p99 ingestion SLO and costs roughly $60/month, including embedding inference. Demo [here](https://wikipedia-web-cfscc6ofha-uc.a.run.app/).*
+*TLDR: I use Redpanda Connect to keep 7.26M English Wikipedia articles indexed in turbopuffer for keyword, semantic, and hybrid search. The pipeline targets a 30s p95 ingestion SLO and costs roughly $60/month, including embedding inference. Demo [here](https://wikipedia-web-559056160005.us-central1.run.app/).*
 
 Today is "h4x day" at [turbopuffer](https://turbopuffer.com/). It's basically a 24-hour hackathon fueled by good food, electrolytes, and high beats per second music. Everyone picks a project, ideally something they would not have tackled in their regular work stream. It's very energizing. I'm grateful to be surrounded by so many smart and thoughtful people. I feel clumsy around my new colleagues.
 
@@ -47,9 +47,9 @@ The long-running system has two write paths and one read path:
 
 ```text
 Live updates:
-Wikipedia event stream -> fetch current page -> Redpanda Connect -> turbopuffer
+Wikipedia event stream -> batch changes -> fetch Cirrus documents -> turbopuffer
 
-Reconciliation (every 5min):
+Reconciliation (after gaps):
 MediaWiki recent changes -> fetch current pages -> turbopuffer watermark
 
 Search:
@@ -89,7 +89,7 @@ output:
 
 turbopuffer sends `embedding_text` through [Nemotron 3.5 Embed 1B](https://huggingface.co/nvidia/Nemotron-3.5-Embed-1B-BF16) during each write, stores the resulting vector, and maintains an [ANN index](https://turbopuffer.com/docs/query) over it. Query text goes through the same model at search time.
 
-The fast path listens to Wikimedia's `recentchange` stream. It keeps new pages and edits from the English article namespace, and discards the rest. A change event does not contain the full article, so the ingester fetches the latest HTML from Wikipedia's [REST API](https://www.mediawiki.org/wiki/API:REST_API) and converts it to plain text. The HTML marks its lead as [section zero](https://www.mediawiki.org/wiki/Parsing/Notes/Section_Wrapping), which lets me build `embedding_text` from the title and lead.
+The fast path listens to Wikimedia's `recentchange` stream. It keeps new pages and edits from the English article namespace, and discards the rest. A change event does not contain the full article, so the ingester groups five seconds of events and fetches their current [CirrusSearch documents](https://www.mediawiki.org/wiki/Extension:CirrusSearch) in one MediaWiki API request. Each document contains both the complete article text and its `opening_text`, so the online path uses the same semantic input as the dump.
 
 Not every edit changes the lead. At the current estimate, re-embedding it costs roughly $9/month, which is not enough to justify maintaining separate diffing state.
 
@@ -97,11 +97,16 @@ Here's the shape of the configuration:
 
 ```yaml
 input:
-  http_client:
-    url: https://stream.wikimedia.org/v2/stream/recentchange
-    stream:
-      enabled: true
-      reconnect: true
+  batched:
+    child:
+      http_client:
+        url: https://stream.wikimedia.org/v2/stream/recentchange
+        stream:
+          enabled: true
+          reconnect: true
+    policy:
+      count: 500
+      period: 5s
 
 pipeline:
   processors:
@@ -111,8 +116,8 @@ pipeline:
         } else {
           deleted()
         }
-    - http:
-        url: https://en.wikipedia.org/w/rest.php/v1/page/${! this.title }/with_html
+    - wikipedia_hydrate:
+        api_url: https://en.wikipedia.org/w/api.php
 
 output:
   turbopuffer:
@@ -122,11 +127,11 @@ output:
       period: 1s
 ```
 
-The stream gives low latency, but it is not the source of truth. Alongside it, the ingester runs a reconciliation pass every five minutes against MediaWiki's [`recentchanges` API](https://www.mediawiki.org/wiki/API:RecentChanges/en). Each pass chooses a fixed end time, lists everything that changed since the previous watermark, and fetches the current CirrusSearch document for every affected page. That covers edits which arrived while the SSE connection was down, as well as moves and deletes that the fast path does not handle.
+The stream gives low latency, but it is not the source of truth. After an interruption, I run a reconciliation pass against MediaWiki's [`recentchanges` API](https://www.mediawiki.org/wiki/API:RecentChanges/en). Each pass chooses a fixed end time, lists everything that changed since the previous watermark, and fetches the current CirrusSearch document for every affected page. That covers edits which arrived while the SSE connection was down, as well as moves and deletes that the fast path does not handle.
 
-The watermark is another small document stored in turbopuffer. It only advances after the complete window has been reconciled. If the process dies halfway through, it repeats the same window. Repetition is safe because writes and deletes check the Wikipedia revision ID. The stream makes changes visible quickly, whilst the periodic pass makes the index converge to Wikipedia's current state.
+The watermark is another small document stored in turbopuffer. It only advances after the complete window has been reconciled. If the process dies halfway through, it repeats the same window. Repetition is safe because writes and deletes check the Wikipedia revision ID. The stream makes changes visible quickly, whilst reconciliation makes the index converge to Wikipedia's current state.
 
-I gave the prototype a 30-second freshness SLO: 99% of page changes should reach turbopuffer within 30 seconds. At the time of writing, the p99 over the previous hour was 20.27 seconds. This includes embedding inference because it happens on the same write path.
+I gave the prototype a 30-second freshness SLO: 95% of page changes should reach turbopuffer within 30 seconds. At the time of writing, the p95 over the previous hour was 4.80 seconds.
 
 ### Bootstrapping from a dump
 
@@ -183,12 +188,12 @@ The averages hide what the two systems are actually returning. Pick a question b
 
 The low overlap does not tell us which system is better. Wikipedia's ranker is a useful reference, not ground truth. A proper evaluation would need relevance judgements for each result. This experiment only says that the two rankers disagree substantially.
 
-In terms of final output, I made a simple search [frontend](https://wikipedia-web-cfscc6ofha-uc.a.run.app/):
+In terms of final output, I made a simple search [frontend](https://wikipedia-web-559056160005.us-central1.run.app/):
 
 <div align="center">
 <figure style="width: 100%; margin: 2rem 0;">
-    <img src="/img/blog/wikipedia-on-turbopuffer/search-tuscany.png" alt="The Wikipedia on turbopuffer frontend showing search results for Tuscany and a p99 ingestion latency of 20.27 seconds." style="border: 1px solid #cbd5e1; border-radius: 10px; box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);">
-    <figcaption><i>Searching 7.3M English Wikipedia articles, with p99 ingestion latency below the 30-second SLO.</i></figcaption>
+    <img src="/img/blog/wikipedia-on-turbopuffer/search-tuscany.png" alt="The Wikipedia on turbopuffer frontend showing search results for Tuscany and p95 ingestion latency below five seconds." style="border: 1px solid #cbd5e1; border-radius: 10px; box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);">
+    <figcaption><i>Searching 7.3M English Wikipedia articles, with p95 ingestion latency below the 30-second SLO.</i></figcaption>
 </figure>
 </div>
 
