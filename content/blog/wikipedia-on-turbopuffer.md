@@ -49,7 +49,7 @@ The long-running system has two write paths and one read path:
 Live updates:
 Wikipedia event stream -> batch changes -> fetch Cirrus documents -> turbopuffer
 
-Reconciliation (after gaps):
+Reconciliation (~every 15min):
 MediaWiki recent changes -> fetch current pages -> turbopuffer watermark
 
 Search:
@@ -127,7 +127,7 @@ output:
       period: 1s
 ```
 
-The stream gives low latency, but it is not the source of truth. After an interruption, I run a reconciliation pass against MediaWiki's [`recentchanges` API](https://www.mediawiki.org/wiki/API:RecentChanges/en). Each pass chooses a fixed end time, lists everything that changed since the previous watermark, and fetches the current CirrusSearch document for every affected page. That covers edits which arrived while the SSE connection was down, as well as moves and deletes that the fast path does not handle.
+The stream gives low latency, but it is not the source of truth. Alongside it, the ingester runs a reconciliation pass on startup and roughly every 15 minutes against MediaWiki's [`recentchanges` API](https://www.mediawiki.org/wiki/API:RecentChanges/en). Each pass chooses a fixed end time, lists everything that changed since the previous watermark, and fetches the current CirrusSearch document for every affected page. That covers edits which arrived while the SSE connection was down, as well as moves and deletes that the fast path does not handle.
 
 The watermark is another small document stored in turbopuffer. It only advances after the complete window has been reconciled. If the process dies halfway through, it repeats the same window. Repetition is safe because writes and deletes check the Wikipedia revision ID. The stream makes changes visible quickly, whilst reconciliation makes the index converge to Wikipedia's current state.
 
