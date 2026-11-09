@@ -9,6 +9,8 @@ draft = true
 
 My PhD was about [cardinality estimation](/blog/phd-about/). When I wrapped it up, I wrote that "machine learning is cute, but I don't see PostgreSQL suddenly switching its cost model". Five years later, I still don't. But it turns out you don't need to switch the cost model. You just need to feed it better numbers.
 
+I first tested the premise by [giving DuckDB perfect estimates](/blog/perfect-cardinality-estimates/). They changed almost every plan and barely changed runtime. This post is about a less accurate estimator that sometimes leads DuckDB to a faster physical plan.
+
 DuckDB has an [extension mechanism](https://duckdb.org/docs/stable/extensions/overview), and it lets you get your hands on the optimizer. So I wrote [cardinal](https://github.com/MaxHalford/cardinal), an extension that learns a Bayesian network per table, and gives DuckDB its estimates instead of the default ones. Nothing else changes: same optimizer, same cost model, same results. Only the numbers do.
 
 On [STATS-CEB](https://github.com/Nathaniel-Han/End-to-End-CardEst-Benchmark), a benchmark of 146 queries on a Stack Exchange dump, the whole workload goes from 130 seconds to 67 seconds. Here's why, and how.
