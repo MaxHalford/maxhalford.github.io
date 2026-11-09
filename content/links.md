@@ -114,6 +114,7 @@ toc: true
 - [Willem Pennings](https://willempennings.nl/)
 - [Bret Victor](https://worrydream.com/)
 - [Marc Brooker](https://brooker.co.za/)
+- [Adrien Grand](https://jpountz.github.io/)
 
 ## Machine learning
 
