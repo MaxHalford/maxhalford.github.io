@@ -29,7 +29,7 @@ I'd also like to emphasize that although we have a lot of plans for River, we're
 
 I started working on River during my PhD. At the time, my goal was to implement online machine learning algorithms that only existed in papers and blog posts. I wanted to provide a coherent interface, similar to what scikit-learn did for batch machine learning. This was a good excuse to hone both my machine learning and Python skills.
 
-My belief is that River, Vowpal Wabbit, and scikit-learn's `partial_fit` methods are at the front of the pack. Anyone wanting to do online machine learning is better off nowadays than they were a few years ago. I'm proud of what we've built, and more importantly the nice little community we've [gathered](/content/blog/first-river-meetup.md). Definitely a lot of positive vibes 💫
+My belief is that River, Vowpal Wabbit, and scikit-learn's `partial_fit` methods are at the front of the pack. Anyone wanting to do online machine learning is better off nowadays than they were a few years ago. I'm proud of what we've built, and more importantly the nice little community we've [gathered](/blog/first-river-meetup/). Definitely a lot of positive vibes 💫
 
 And yet, I have to admit, sometimes I question whether what we're doing with River is useful. Although I'm quite involved in machine learning, my personal belief is that it doesn't necessarily have a significant positive impact on society. I'd like to be convinced otherwise, but until now I haven't.
 

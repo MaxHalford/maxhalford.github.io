@@ -491,7 +491,7 @@ toc: true
 - [Snaplet](https://www.snaplet.dev/)
 - [Noun Project: Free Icons & Stock Photos for Everything](https://thenounproject.com/)
 - [Benthos Studio](https://studio.benthos.dev/)
-- [Claire Glanois](einsteigenbitte.eu)
+- [Claire Glanois](https://web.archive.org/web/20260122130958/https://einsteigenbitte.eu/)
 - [API for Automated Image and Video Generation](https://www.bannerbear.com/)
 - [𝚜𝚙𝚎𝚗𝚌𝚎𝚛𝚌𝚑𝚊𝚗𝚐.𝚖𝚎 𝚒𝚜 𝚠𝚊𝚗𝚍𝚎𝚛𝚒𝚗𝚐](https://www.spencerchang.me/)
 - [Maintenance 🌱 Digital Garden](https://digitalgarden.hypha.coop/maintenance)
