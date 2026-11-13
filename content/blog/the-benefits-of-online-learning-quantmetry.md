@@ -1,6 +1,6 @@
 +++
 date = "2019-10-29"
 title = "The benefits of online machine learning @ Quantmetry"
-slides = "/slides/the-benefits-of-online-learning.html"
+slides = "/slides/the-benefits-of-online-learning/"
 tags = ['online-machine-learning']
 +++
