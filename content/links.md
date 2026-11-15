@@ -115,6 +115,7 @@ toc: true
 - [Bret Victor](https://worrydream.com/)
 - [Marc Brooker](https://brooker.co.za/)
 - [Adrien Grand](https://jpountz.github.io/)
+- [Xavier Denis](https://xav.io/)
 
 ## Machine learning
 
@@ -582,3 +583,4 @@ I like these retrocool websites:
 ## Cycling
 
 - [Sheldon Brown's Bicycle Glossary](https://www.sheldonbrown.com/glossary.html)
+- [JackBikes.org](https://jackbikes.org/)
