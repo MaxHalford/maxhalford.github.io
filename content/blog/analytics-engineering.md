@@ -1,6 +1,6 @@
 +++
 date = "2026-11-10"
-title = "Analytics engineering: building trustworthy data products"
+title = "An opinionated guide to analytics engineering"
 description = "Principles for turning raw operational data into dependable products that people can understand, trust, and use."
 tags = ['data-eng', 'sql']
 toc = true
