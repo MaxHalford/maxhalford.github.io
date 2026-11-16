@@ -14,14 +14,25 @@
       <div class="col-xs-12 col-sm-11 col-md-10 col-lg-9">
         {{ $buildTime := now }}
         {{ $newCutoff := $buildTime.AddDate 0 -1 0 }}
+        {{ $previousYear := "" }}
         <div id="posts-list" class="post-index">
           {{ range (where site.RegularPages "Type" "in" site.Params.mainSections).ByDate.Reverse }}
+          {{ $year := .Date.Format "2006" }}
           {{ $isDraft := and hugo.IsDevelopment .Draft }}
           {{ $isNew := and (not $isDraft) (.Date.After $newCutoff) ($buildTime.After .Date) }}
           <article class="post-index-row{{ if $isNew }} is-new{{ end }}{{ if $isDraft }} is-draft{{ end }}">
             <span class="post-index-status">{{ if $isDraft }}draft{{ else if $isNew }}new{{ end }}</span>
 
-            <time class="post-index-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+            <time class="post-index-date" datetime="{{ .Date.Format "2006-01-02" }}">
+              <span class="visually-hidden">{{ .Date.Format "2 January 2006" }}</span>
+              <span class="post-index-date-parts" aria-hidden="true">
+                <span class="post-index-year">{{ if ne $year $previousYear }}{{ $year }}{{ end }}</span>
+                <span>{{ if ne $year $previousYear }}-{{ end }}</span>
+                <span>{{ .Date.Format "01" }}</span>
+                <span>-</span>
+                <span>{{ .Date.Format "02" }}</span>
+              </span>
+            </time>
 
             {{ if isset .Params "medium" }}
               <a class="post-index-title" href="{{ .Params.medium }}" title="{{ .Title }}">{{ .Title }}</a>
@@ -36,6 +47,7 @@
             {{ end }}
 
           </article>
+          {{ $previousYear = $year }}
           {{ end }}
         </div>
 
