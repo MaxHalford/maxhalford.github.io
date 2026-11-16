@@ -5,6 +5,8 @@ toc = true
 tags = ['machine-learning']
 +++
 
+**Edit (2026-11-16)** -- The code initialized a precision matrix with $\alpha^{-1}I$ instead of $\alpha I$. The examples now agree with Bishop's definition of $\alpha$ as the prior precision. Smoothing now retains the prior precision, which prevents the matrix from becoming singular. The final Sherman-Morrison implementation also reset to the original prior for every observation instead of accumulating the posterior. Many thanks to [zenggs05](https://github.com/online-ml/river/issues/2106) for spotting these mistakes.
+
 ## Motivation
 
 Suppose you have an infinite stream of feature vectors $x_i$ and targets $y_i$. In this case, $i$ denotes the order in which the data arrives. If you're doing supervised learning, then your goal is to estimate $y_i$ *before* it is revealed to you. In order to do so, you have a model which is composed of parameters denoted $\theta_i$. For instance, $\theta_i$ represents the feature weights when using linear regression. After a while, $y_i$ will be revealed, which will allow you to update $\theta_i$ and thus obtain $\theta_{i+1}$. To perform the update, you may apply whichever learning rule you wish -- for instance most people use [some flavor of stochastic gradient descent](https://en.wikipedia.org/wiki/Stochastic_gradient_descent#/Extensions_and_variants). The process I just described is called [online supervised machine learning](https://en.wikipedia.org/wiki/Online_machine_learning). The difference between online machine learning and the more traditional batch machine learning is that an online model is dynamic and learns on the fly. Online learning solves a lot of pain points in real-world environments, mostly because it doesn't require retraining models from scratch every time new data arrives.
@@ -169,7 +171,7 @@ m\_{i+1} = S\_{i+1}(S\_i^{-1} m\_i + \beta x_i y_i)
 Note that $x\_i^\intercal x_i$ is the [outer product](https://en.wikipedia.org/wiki/Outer_product) of $x_i$ with itself. I'm using the convention where $x_i$ is a row and not a column. The outer product would be denoted as $x\_i x_i^\intercal$ if $x_i$ were instead a column. By now you might be thinking that I've produced these formulas from thin air, and you would be right. The steps for getting to these formulas are quite straightforward, assuming your calculus is not too rusty. However I won't be going into them in this blog post. If you want to go deeper into the maths, I recommend getting Christopher Bishop's and/or checking out [this video](https://www.youtube.com/watch?v=nrd4AnDLR3U&list=PLD0F06AA0D2E8FFBA&index=61). We can also obtain the predictive distribution:
 
 $$\begin{equation}
-\color{forestgreen} p(y_i) = \mathcal{N}(\mu_i, \sigma_i)
+\color{forestgreen} p(y_i) = \mathcal{N}(\mu_i, \sigma_i^2)
 \end{equation}$$
 
 $$\begin{equation}
@@ -177,7 +179,7 @@ $$\begin{equation}
 \end{equation}$$
 
 $$\begin{equation}
-\sigma_i = \frac{1}{\beta} + x\_i S\_i x\_i^\intercal
+\sigma_i^2 = \frac{1}{\beta} + x\_i S\_i x\_i^\intercal
 \end{equation}$$
 
 If you're a programmer/hacker/practitioner, then the two previous sets of formulas are all you need to get rolling. Assuming someone has worked out the analytical solution for you, the formulas are quite straightforward to implement. That's the sweet and sour conundrum of analytical Bayesian inference: the math is relatively hard to work out, but once you're done it's devilishly simple to implement. I'm going to use Python and define a class with two methods: `learn` and `fit`. The `learn` method is what most Pythonistas call `fit`. I use `learn` because I feel that it conveys more meaning. I determined that the most efficient way to proceed is to store the inverse of the covariance matrix instead of it's non-inverted version. All in all the code is quite simply, mostly thanks to [numpy](https://numpy.org/) which takes care of all the linear algebra details. I made it so that the `predict` method returns an instance of [`scipy.stats.norm`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html). This instance is nothing more than a 1D probability distribution with useful methods such as `.mean()`, `.std()`, `.interval()`, and `.pdf()`. From what I gather this isn't a very efficient way proceed, but it sure is convenient.
@@ -193,7 +195,7 @@ class BayesLinReg:
         self.alpha = alpha
         self.beta = beta
         self.mean = np.zeros(n_features)
-        self.cov_inv = np.identity(n_features) / alpha
+        self.cov_inv = alpha * np.identity(n_features)
 
     def learn(self, x, y):
 
@@ -238,7 +240,7 @@ from sklearn import metrics
 
 X, y = datasets.load_boston(return_X_y=True)
 
-model = BayesLinReg(n_features=X.shape[1], alpha=.3, beta=1)
+model = BayesLinReg(n_features=X.shape[1], alpha=1 / .3, beta=1)
 
 y_pred = np.empty(len(y))
 
@@ -293,7 +295,7 @@ def sample(n):
         y = np.dot(weights, x) + np.random.normal(0, .2)
         yield x, y
 
-model = BayesLinReg(n_features=2, alpha=2, beta=25)
+model = BayesLinReg(n_features=2, alpha=.5, beta=25)
 
 # The following 3 variables are just here for plotting purposes
 N = 100
@@ -498,7 +500,7 @@ First, let's train the initial implementation on the training and compute it's p
 ```python
 %%time
 
-model = BayesLinReg(n_features=X.shape[1], alpha=.3, beta=1)
+model = BayesLinReg(n_features=X.shape[1], alpha=1 / .3, beta=1)
 
 for x, y in zip(X_train, y_train):
     model.learn(x, y)
@@ -516,7 +518,7 @@ This produces a mean absolute error of around `0.57`, and takes approximatively 
 ```python
 %%time
 
-model = BatchBayesLinReg(n_features=X.shape[1], alpha=.3, beta=1)
+model = BatchBayesLinReg(n_features=X.shape[1], alpha=1 / .3, beta=1)
 
 model.learn(X_train, y_train)
 y_pred = model.predict(X_test).mean()
@@ -529,7 +531,7 @@ As expected, this outputs a mean absolute error of around `0.57`, which is ident
 ```python
 %%time
 
-model = BatchBayesLinReg(n_features=X.shape[1], alpha=.3, beta=1)
+model = BatchBayesLinReg(n_features=X.shape[1], alpha=1 / .3, beta=1)
 
 batch_size = 16
 n_batches = len(X_train) // batch_size
@@ -587,7 +589,7 @@ For the first `first_period` steps, the `sample` function generates samples usin
 ```python
 np.random.seed(42)
 
-model = BayesLinReg(n_features=2, alpha=2, beta=25)
+model = BayesLinReg(n_features=2, alpha=.5, beta=25)
 
 y_true = []
 y_pred = []
@@ -644,8 +646,11 @@ class RobustBayesLinReg(BayesLinReg):
 
         # Update the inverse covariance matrix, with smoothing
         cov_inv = (
-            self.smoothing * self.cov_inv +
-            (1 - self.smoothing) * self.beta * np.outer(x, x)
+            self.smoothing * self.cov_inv
+            + (1 - self.smoothing) * (
+                self.alpha * np.identity(self.n_features)
+                + self.beta * np.outer(x, x)
+            )
         )
 
         # Update the mean vector, with smoothing
@@ -663,11 +668,11 @@ class RobustBayesLinReg(BayesLinReg):
 
 I'll let you compare this with the initial implementation. In terms of update equations, by denoting with $\gamma$ the smoothing factor, this is what it looks like:
 
-$$S\_{i+1} = (\gamma S\_i^{-1} + (1 - \gamma)\beta x\_i^\intercal x_i)^{-1}$$
+$$S\_{i+1} = (\gamma S\_i^{-1} + (1 - \gamma)(\alpha I + \beta x\_i^\intercal x_i))^{-1}$$
 
 $$m\_{i+1} = S\_{i+1}(\gamma S\_i^{-1} m\_i + (1 - \gamma) \beta x_i y_i)$$
 
-Note that in the new implementation nothing changes for the `predict` method; we've therefore inherited from `BayesLinReg` to avoid an unnecessary copy/paste. The smoothing works essentially like an exponentially weighted average -- as a reference, see the `alpha` parametrisation of the [`ewm` method in `pandas`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.ewm.html). Let's check out the performance of this model on the same scenario when using a smoothing factor of `0.8` -- which is actually the only value I tried because it worked.
+The prior precision $\alpha I$ is not forgotten, so the matrix remains positive definite even when the recent feature vectors are collinear. Note that in the new implementation nothing changes for the `predict` method; we've therefore inherited from `BayesLinReg` to avoid an unnecessary copy/paste. The smoothing works essentially like an exponentially weighted average -- as a reference, see the `alpha` parametrisation of the [`ewm` method in `pandas`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.ewm.html). Let's check out the performance of this model on the same scenario when using a smoothing factor of `0.8` -- which is actually the only value I tried because it worked.
 
 <details>
   <summary>Click to see the code</summary>
@@ -675,7 +680,7 @@ Note that in the new implementation nothing changes for the `predict` method; we
 ```python
 np.random.seed(42)
 
-model = RobustBayesLinReg(smoothing=.8, n_features=2, alpha=2, beta=25)
+model = RobustBayesLinReg(smoothing=.8, n_features=2, alpha=.5, beta=25)
 
 y_true = []
 y_pred = []
@@ -716,51 +721,37 @@ ax.grid()
 
 It seems to be working very well! Some would say this is worth writing a research paper. I'm sure that there's already one that exists, but I haven't found it yet.
 
-## Zero mean isotropic Gaussian prior
+## Avoiding matrix inversion
 
 ![trump](/img/blog/bayesian-linear-regression/trump.jpg)
 
-This section title is a bit of a mouthful -- at least for me -- but it's actually simpler than it sounds. In his book, Christopher Bishop proposes a simpler prior distribution for the weights which significantly reduces the amount of computation to perform. Under this prior, which is still a $p$-dimensional Gaussian, the weights are centered around 0 -- hence the "zero mean" -- whilst they each have the same variance -- which corresponds to the "[isotropic](https://en.wikipedia.org/wiki/Isotropy)" part. Mathematically, the prior is defined as so:
+The implementation above computes a matrix inverse for every observation. This costs $\mathcal{O}(p^3)$ for $p$ features. Alas, it is unnecessary. The precision update only adds a rank-one matrix:
 
 $$\begin{equation}
-\color{royalblue} p(w_0) = \mathcal{N}(0, \alpha^{-1}I)
+S\_{i+1}^{-1} = S\_i^{-1} + \beta x\_i^\intercal x_i
 \end{equation}$$
 
-This leads to the following posterior distribution for the weights:
-
-$$\begin{equation}
-\color{mediumpurple} p(w\_{i+1} | w\_i, x\_i, y\_i) = \mathcal{N}(m\_{i+1}, S\_{i+1})
-\end{equation}$$
-
-$$\begin{equation}
-S\_{i+1} = (\alpha I + \beta x\_i^\intercal x_i)^{-1}
-\end{equation}$$
-
-$$\begin{equation}
-m\_{i+1} = \beta S_{i+1} x_i^\intercal y_i
-\end{equation}$$
-
-At a first glance, these formulas look just as heavy as before because they still necessitate a matrix inversion. The trick is that the equation for obtaining $S\_{i+1}$ has a particular structure that we can exploit. Indeed, it turns out that there is a wonderful formula to evaluate this equation without having to explicitely apply the inverse operation -- I love it when this happens. It's called the [Sherman–Morrison formula](https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula). Here it is with Wikipedia's notation:
+This particular structure allows us to use the [Sherman-Morrison formula](https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula):
 
 $$\begin{equation}
 (A + uv^\intercal)^{-1} = A^{-1} - \frac{A^{-1} uv^\intercal A^{-1}}{1 + v^\intercal A^{-1}u}
 \end{equation}$$
 
-In our case, we have:
+In our case, $A^{-1}$ is the current covariance $S_i$, $u = \beta x_i^\intercal$, and $v = x_i$. We can therefore update the covariance in $\mathcal{O}(p^2)$ without explicitly inverting the precision matrix. The posterior mean is recovered from the natural mean $\eta_i$:
 
 $$\begin{equation}
-A \leftarrow \alpha I
+\eta_0 = 0
 \end{equation}$$
 
 $$\begin{equation}
-u \leftarrow x
+\eta_{i+1} = \eta_i + \beta x_i y_i
 \end{equation}$$
 
 $$\begin{equation}
-v \leftarrow x
+m_{i+1} = S_{i+1}\eta_{i+1}
 \end{equation}$$
 
-This formula is efficient because we only have to compute $A^{-1}$ once. The following snippet contains the implementation of Bayesian linear regression with a zero mean isotropic Gaussian prior and the Sherman-Morrisson formula:
+Here is the updated implementation:
 
 ```python
 def sherman_morrison(A_inv, u, v):
@@ -776,16 +767,15 @@ class SimpleBayesLinReg:
         self.alpha = alpha
         self.beta = beta
         self.mean = np.zeros(n_features)
-        self.A_inv = np.linalg.inv(alpha * np.identity(n_features))
-        self.cov = self.A_inv
+        self.cov = np.identity(n_features) / alpha
+        self.eta = np.zeros(n_features)
 
     def learn(self, x, y):
 
-        # Update the inverse covariance matrix (Bishop eq. 3.54)
-        self.cov = sherman_morrison(A_inv=self.A_inv, u=self.beta * x, v=x)
+        self.cov = sherman_morrison(A_inv=self.cov, u=self.beta * x, v=x)
 
-        # Update the mean vector (Bishop eq. 3.53)
-        self.mean = self.beta * self.cov @ x * y
+        self.eta += self.beta * x * y
+        self.mean = self.cov @ self.eta
 
         return self
 
@@ -805,7 +795,7 @@ Let's apply progressive validation with the Boston housing dataset.
 ```python
 X, y = datasets.load_boston(return_X_y=True)
 
-model = SimpleBayesLinReg(n_features=X.shape[1], alpha=.3, beta=1)
+model = SimpleBayesLinReg(n_features=X.shape[1], alpha=1 / .3, beta=1)
 
 y_pred = np.empty(len(y))
 
@@ -816,7 +806,7 @@ for i, (xi, yi) in enumerate(zip(X, y)):
 print(metrics.mean_absolute_error(y, y_pred))
 ```
 
-This produces a mean absolute error of around `4.6`. For reference the initial implementation scored `3.78`, so this new model isn't as good.
+This produces the same mean absolute error of around `3.784`. The model is identical, but the learning step now costs $\mathcal{O}(p^2)$ instead of $\mathcal{O}(p^3)$.
 
 ## Conclusion
 
@@ -825,7 +815,6 @@ That wraps it up for now. There are definitely some more directions I would like
 - Supporting binary and multi-class classification: this would require determining other update formulas, probably based on a binomial distribution for the likelihood function.
 - Learning `alpha` and `beta`: in his book, Christopher Bishop points at some ways to estimate both hyperparameters from the data. However, I need to drink a lot more coffee in order to understand how he proceeds.
 - Handling sparse feature vectors: it would be nice to handle a large number features by allowing sparse computation (and not just manually filling the gaps of `x` with 0s!). This would lead the way, for instance, to Bayesian factorisation machines -- although that [already seems to be something](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.364.8054).
-- Non-zero mean isotropic Gaussian prior: the prior introduced in the last section doesn't perform as well as the initial implementation; I wonder if it's possible to specify a model somewhere in between and therefore obtain a better whilst still avoiding to have to compute a matrix inversion at every iteration.
 - Implementing a "master class" where all the variants and tricks I have presented are implemented and can be switched on or off.
 
 I will eventually dig into these topics. My initial plan was to include them in this post, but I've been waiting to publish this post for far too long -- plus it's already quite dense. If this post has peaked your interest and you would like to collaborate or have some questions, then feel free to get in touch with me at [maxhalford25@gmail.com](mailto:maxhalford25@gmail.com). Also, I've put all the code used in this blog post and put it in [this gist](https://gist.github.com/MaxHalford/c2cb7f2b064156fd780150650db9dec0). The next step for me is going to be to implement Bayesian linear regression in [creme](https://github.com/creme-ml/creme), which is an online machine learning library I maintain.
