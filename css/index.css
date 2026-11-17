@@ -513,6 +513,11 @@ a.posts-line-tag:hover {
   font-variant-numeric: tabular-nums;
 }
 
+.post-index-date-parts {
+  display: grid;
+  grid-template-columns: 4ch 1ch 2ch 1ch 2ch;
+}
+
 .post-index-title {
   min-width: 0;
   overflow: hidden;
