@@ -406,6 +406,7 @@ toc: true
 - [The surprising ease and effectiveness of AI in a loop](https://interconnected.org/home/2023/03/16/singularity)
 - [Enough AI copilots! We need AI HUDs](https://www.geoffreylitt.com/2025/07/27/enough-ai-copilots-we-need-ai-huds) -- funny how someone had the right idea 33 years ago.
 - [How to Build an Agent - Thorsten Ball](https://ampcode.com/how-to-build-an-agent)
+- [Prefer synthetic traffic over LLM-as-a-judge - Doug Turnbull](https://softwaredoug.com/blog/2026/11/12/agent-search-traffic)
 
 ## I don't have a clue but it looks cool
 
@@ -570,7 +571,7 @@ I like these retrocool websites:
 - [history of Japan - Bill Wurtz](https://www.youtube.com/watch?v=Mh5LY4Mz15o)
 - [Montreal Ice Surfer](https://www.youtube.com/watch?v=yqDKqXZTYYU)
 - [Latche, l'esprit des lieux](https://www.france.tv/documentaires/documentaires-societe/8031087-latche-l-esprit-des-lieux.html) -- about Mitterand's link with Soustons, which is where I live (archive attempt [here](https://web.archive.org/web/20260117125941/https://www.france.tv/documentaires/documentaires-societe/8031087-latche-l-esprit-des-lieux.html))
-- [Shifty](https://www.bbc.co.uk/iplayer/episodes/m002d2jv/shifty) -- about life in Britain before the turn of the century
+- [Shifty](https://www.bbc.co.uk/iplayer/episodes/m002d2jv/shifty) -- about life in Britain before the turn of the century; watch it on [thoughtmaybe](https://thoughtmaybe.com/shifty/)
 - [The Story of C++](https://www.youtube.com/watch?v=lI7tMxzSJ7w) and most of the other [Cult.Repo](https://www.cultrepo.com/) -- formerly HoneyPot -- videos are awesome
 - [Obree](https://www.youtube.com/watch?v=qKta3RPyLIo)
 - [The Winterkeeper](https://www.theguardian.com/environment/ng-interactive/2023/dec/06/the-winterkeeper-steven-fuller-yellowstone-national-park) -- bet this guy is happier than most of us.

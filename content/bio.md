@@ -6,7 +6,7 @@ hideTitle = true
 
 [Hello there](https://www.youtube.com/watch?v=wFBB-Xp9GZI) 👋
 
-I'm a data scientist interested in a wide array of topics. Previously I worked at [Carbonfact](https://www.carbonfact.com/), [Alan](https://alan.com/), [HelloFresh](https://www.hellofresh.com/). I did a [PhD](/blog/phd-about) applying machine learning -- [Bayesian networks](https://en.wikipedia.org/wiki/Bayesian_network) in particular 🕸️ -- to [query optimisation](https://en.wikipedia.org/wiki/Query_optimization) in relational databases 🤖
+I'm a data scientist interested in a wide array of topics. I've worked at [turbopuffer](https://turbopuffer.com/), [Carbonfact](https://www.carbonfact.com/), [Alan](https://alan.com/), [HelloFresh](https://www.hellofresh.com/). I did a [PhD](/blog/phd-about) applying machine learning -- [Bayesian networks](https://en.wikipedia.org/wiki/Bayesian_network) in particular 🕸️ -- to [query optimisation](https://en.wikipedia.org/wiki/Query_optimization) in relational databases 🤖
 
 I'm half British 🇬🇧 and half Belgian 🇧🇪. I went to university in Toulouse, France 🇫🇷. My academic 🎓 background is a mix of math 🧮, economics 💸, and computer science 🖥️. I got hooked into data science in 2014 after watching Brad Pitt and Jonah Hill nerding it out in [Moneyball](https://www.imdb.com/title/tt1210166/) ⚾
 

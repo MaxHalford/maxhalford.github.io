@@ -2,7 +2,7 @@
 date = "2026-02-02"
 title = "Solving Détrak with brute force"
 toc = true
-tags = ['optimization', 'llm']
+tags = ['optimization']
 +++
 
 [Détrak](https://cdn.1j1ju.com/medias/6a/e0/d8-detrak-regle.pdf) is a simple board game. There's a 5x5 grid, and players need to place 12 domino-like pieces to cover the grid completely. The domino symbols are determined by rolling two dice. The dice are six-sided, and their rolls are shared by all players. Points are scored based on adjacencies of matching symbols.
